@@ -12,11 +12,11 @@ fi
 title -l = "$bar Uninstall Addons ..."
 
 # restore file
-sed -i '/addons.php/ d' /srv/http/app/templates/header.php
+sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -rv /srv/http/{addons.php,runbash.sh}
+rm -rv /srv/http/{addonbash,addondl.php,addons.php}
 
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
