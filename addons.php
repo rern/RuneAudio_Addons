@@ -6,18 +6,23 @@ $version = $redis->hGetAll('addons');
 function addonblock($pkg) {
 	global $version;
 	$alias = $pkg['alias'];
-	if ($version[$alias]) {
+	if ($version[$alias]) {                                                                                         // * installed
 		$check = '<i class="fa fa-check blue"></i> ';
-		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
-			$btnin = '<a id="in'.$alias.'" class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
-		} else {
-			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {                                       // omit 'version' or 'version' not changed
+			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';                 //     disabled install button
+		} else {                                                                                                    // 'version' changed
+			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';       //     change install -> update button 
 		}
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
-	} else {
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';          // uninstall button
+	} else {                                                                                                        // * not yet install
+		if (isset($pkg['option'])) {
+			$option = 'option="'.$pkg['option'].'"';
+		} else {
+			$option = '';
+		}
 		$check = '';
-		$btnin = '<a id="in'.$alias.'" class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnin = '<a id="in'.$alias.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>'; // install button with option
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';                   // disabled uninstall button
 	}
 	echo '
 		<div class="boxed-group">
@@ -68,9 +73,12 @@ legend {
 }
 #addons .btn {
 	text-transform: capitalize;
+}
 </style>
 </head>
 <body>
+
+<?php require_once 'addoninfo.php'?>
 
 <div id="addons" class="container">
 
@@ -79,10 +87,11 @@ legend {
 /* each package block syntax:
 $package = array(
 	'title'       => 'title',
-	'version'     => 'n',    // omit for non-install package
+	'version'     => 'n',      // omit for non-install package
 	'alias'       => 'alias',
 	'description' => 'description.',
 	'sourcecode'  => 'https://url/to/sourcecode',
+	'option'      => 'input; ?yesno; !wait', // prompt, confirm, alert
 );
 addonblock($package);
 */
@@ -138,6 +147,7 @@ $package = array(
 	'alias'       => 'enha',
 	'description' => 'More minimalism and more fluid layout.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+	'option'      => 'Zoom level for local browser (1.5 : Full HD, 0.7 : <800px)',
 );
 addonblock($package);
 $package = array(
@@ -146,6 +156,8 @@ $package = array(
 	'alias'       => 'gpio',
 	'description' => 'GPIO connected relay module control.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+	'option'      => '?Overwrite DAC configuration from previous install'
+						.'!Get DAC configuration ready',
 );
 addonblock($package);
 $package = array(
@@ -162,6 +174,7 @@ $package = array(
 	'alias'       => 'samb',
 	'description' => 'Faster and more customized shares.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
+	'option'      => 'Password for user root (Cancel for no password)',
 );
 addonblock($package);
 $package = array(
@@ -170,6 +183,9 @@ $package = array(
 	'alias'       => 'tran',
 	'description' => 'Fast, easy, and free BitTorrent client.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+	'option'      => 'Password for Web Interface (Cancel for no password)'
+						.'; ?Install WebUI alternative (Transmission Web Control)'
+						.'; ?Start Transmission on system startup',
 );
 addonblock($package);
 $package = array(
@@ -177,6 +193,7 @@ $package = array(
 	'alias'       => 'webr',
 	'description' => 'Webradio files import.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/twebradio',
+	'option'      => 'Copy webradio files to /mnt/MPD/Webradio',
 );
 addonblock($package);
 ?>
@@ -187,7 +204,29 @@ addonblock($package);
 var btn = document.getElementsByClassName('btn');
 for (var i = 0; i < btn.length; i++) {
 	btn[i].onclick = function(e) {
-		window.location.href = 'addonbash.php?id='+ this.id;
+		var opt = '';
+		if (this.getAttribute('option')) {
+			var options = this.getAttribute('option').replace(/; /g, ';');
+			options = options.split(';');
+			if (options.length > 0) {
+				opt = '&opt=';
+				for (var j = 0; j < options.length; j++) {
+					var oj = options[j];
+					if (oj[0] == '!') {
+						alert(oj.slice(1));
+					} else if (oj[0] == '?') {
+						var yesno = confirm(oj.slice(1));
+						yesno = yesno ? 1 : 0;
+						opt += yesno +' ';
+					} else {
+						var ans = prompt(oj);
+						ans = ans ? ans : 0;
+						opt += ans +' ';
+					}
+				}
+			}
+		}
+		window.location.href = 'addonbash.php?id='+ this.id + opt;
 	}
 }
 </script>
