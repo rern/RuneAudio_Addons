@@ -16,9 +16,9 @@ if grep -q 'Addons' /srv/http/app/templates/header.php; then
     exit
 fi
 
-wgetnc https://github.com/rern/RuneAudio/raw/master/Addons/addonbash.sh
-wgetnc https://github.com/rern/RuneAudio/raw/master/Addons/addondl.php
-wgetnc https://github.com/rern/RuneAudio/raw/master/Addons/uninstall_addo.sh -P /usr/local/bin
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addonbash.php
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addondl.php
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/uninstall_addo.sh -P /usr/local/bin
 chmod +x /srv/http/runbash.sh /usr/local/bin/uninstall_addo.sh
 
 sed -e '/poweroff-modal/ i\
