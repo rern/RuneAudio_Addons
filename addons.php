@@ -7,17 +7,17 @@ function addonblock($pkg) {
 	global $version;
 	$alias = $pkg['alias'];
 	if ($version[$alias]) {
-		$check = '<i class="fa fa-check blue"></i>';
+		$check = '<i class="fa fa-check blue"></i> ';
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
-			$btnin = '<a id="in'.$alias.'" class="btn btn-default disabled"><i class="fa fa-check"></i>Install</a>';
+			$btnin = '<a id="in'.$alias.'" class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
 		} else {
-			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i>Update</a>';
+			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i>Uninstall</a>';
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		$check = '';
-		$btnin = '<a id="in'.$alias.'" class="btn btn-default"><i class="fa fa-check"></i>Install</a>';
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default disabled"><i class="fa fa-close"></i>Uninstall</a>';
+		$btnin = '<a id="in'.$alias.'" class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	echo '
 		<div class="boxed-group">
@@ -46,15 +46,28 @@ function addonblock($pkg) {
     <link rel="stylesheet" href="assets/css/gpiosettings.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 <style>
-	#addons .boxed-group {
-		padding: 20px;
-	}
-	#addons .btn {
-		text-transform: capitalize;
-	}
-	i {
-		margin-right: 10px;
-	}
+.container {
+	padding : 0 15px;
+}
+h1 {
+	display: inline-block;
+	width: calc(100% - 25px);
+}
+#close {
+	font-size: 24px;
+	width: 25px;
+}
+#addons .boxed-group {
+	padding: 10px 20px;
+}
+legend {
+	margin-bottom: 5px;
+}
+.blue {
+	color: #0095d8;
+}
+#addons .btn {
+	text-transform: capitalize;
 </style>
 </head>
 <body>
@@ -73,7 +86,6 @@ $package = array(
 );
 addonblock($package);
 */
-
 $package = array(
 	'title'       => 'Aria2',
 	'version'     => '1.1',
@@ -82,7 +94,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Backup-Restore Update',
 	'version'     => '1',
@@ -91,7 +102,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Expand Partition',
 	'alias'       => 'expa',
@@ -99,7 +109,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Fonts - Extended characters',
 	'version'     => '1',
@@ -108,7 +117,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'motd - RuneAudio Logo for SSH Terminal',
 	'version'     => '1',
@@ -117,7 +125,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/motd',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Rank Mirror Packages Servers',
 	'alias'       => 'rank',
@@ -125,7 +132,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'RuneUI Enhancements',
 	'version'     => '1',
@@ -134,7 +140,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'RuneUI GPIO',
 	'version'     => '1',
@@ -143,7 +148,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'RuneUI Password',
 	'version'     => '1',
@@ -152,7 +156,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_password',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Samba Upgrade',
 	'version'     => '1',
@@ -161,7 +164,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Transmission',
 	'version'     => '1',
@@ -170,7 +172,6 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 );
 addonblock($package);
-
 $package = array(
 	'title'       => 'Webradio Import',
 	'alias'       => 'webr',
