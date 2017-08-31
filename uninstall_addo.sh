@@ -20,7 +20,7 @@ rm -rv /srv/http/{addonbash,addondl.php,addons.php}
 
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
-curl '127.0.0.1/clear'
+systemctl reload php-fpm
 echo
 
 if pgrep midori >/dev/null; then
@@ -29,6 +29,8 @@ if pgrep midori >/dev/null; then
 	xinit &>/dev/null &
 	echo -e '\nLocal browser restarted.\n'
 fi
+
+redis-cli hdel addons main &> /dev/null
 
 title -l = "$bar Addons uninstalled successfully."
 
