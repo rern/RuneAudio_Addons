@@ -39,6 +39,7 @@ $("#addons").click(function() {
 
 echo '$("#addons").click(function(){$.get("addondl.php",function(d){0==d?window.location.href="addons.php":alert("Addons server not reachable.")})});
 ' >> /srv/http/assets/js/runeui.min.js
+
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
 systemctl reload php-fpm
@@ -49,6 +50,9 @@ if pgrep midori >/dev/null; then
 	xinit &>/dev/null &
 	echo 'Local browser restarted.'
 fi
+
+redis-cli hset addons main 1 &> /dev/null
+
 timestop
 title -l = "$bar Addons menu installed successfully."
 echo 'Uninstall: uninstall_addo.sh'
