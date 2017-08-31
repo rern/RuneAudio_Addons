@@ -63,6 +63,7 @@ $addon = array(
 'ingpio' => "$wget/RuneUI_password/raw/master/$wgetinst",
 'unaria' => $uninst.'aria.sh',
 'unback' => $uninst.'back.sh',
+'unexpa' => $uninst.'expa.sh',
 'unfont' => $uninst.'font.sh',
 'unmotd' => $uninst.'motd.sh',
 'unsamb' => $uninst.'samb.sh',
