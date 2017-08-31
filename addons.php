@@ -1,18 +1,36 @@
 <?php
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
-$addons = $redis->hGetAll('addons');
-$aria = $addons['aria'];
-$back = $addons['back'];
-$expa = $addons['expa'];
-$font = $addons['font'];
-$motd = $addons['motd'];
-$samb = $addons['samb'];
-$tran = $addons['tran'];
-$enha = $addons['enha'];
-$gpio = $addons['gpio'];
-$pass = $addons['pass'];
-$check = '<i class="fa fa-check blue"></i>';
+$version = $redis->hGetAll('addons');
+
+function addonblock($pkg) {
+	global $version;
+	$alias = $pkg['alias'];
+	if ($version[$alias]) {
+		$check = '<i class="fa fa-check blue"></i>';
+		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
+			$btnin = '<a id="in'.$alias.'" class="btn btn-default disabled"><i class="fa fa-check"></i>Install</a>';
+		} else {
+			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i>Update</a>';
+		}
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i>Uninstall</a>';
+	} else {
+		$check = '';
+		$btnin = '<a id="in'.$alias.'" class="btn btn-default"><i class="fa fa-check"></i>Install</a>';
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default disabled"><i class="fa fa-close"></i>Uninstall</a>';
+	}
+	echo '
+		<div class="boxed-group">
+		<legend>'.$check.$pkg['title'].'</legend>
+		<form class="form-horizontal">
+			<p>'.$pkg['description'].' ( <a href="'.$pkg['sourcecode'].'">More detail</a> )</p>'
+			.$btnin;
+	if (isset($pkg['version']))
+		echo ' &nbsp; '.$btnun;
+	echo
+		'</form>
+		</div>';
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,103 +60,125 @@ $check = '<i class="fa fa-check blue"></i>';
 <body>
 
 <div id="addons" class="container">
+
 <h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-lg"></i></a>
+<?php
+/* each package block syntax:
+$package = array(
+	'title'       => 'title',
+	'version'     => 'n',    // omit for non-install package
+	'alias'       => 'alias',
+	'description' => 'description.',
+	'sourcecode'  => 'https://url/to/sourcecode',
+);
+addonblock($package);
+*/
 
-<div class="boxed-group">
-<legend><?php if ($aria) echo $check;?>Aria2</legend>
-<form class="form-horizontal">
-<p>Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/aria2">GitHub</a> )</p>
-<a id="inaria" class="btn btn-default <?php if ($aria) echo 'disabled';?>">Install</a> &nbsp; <a id="unaria" class="btn btn-default <?php if (!$aria) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Aria2',
+	'version'     => '1.1',
+	'alias'       => 'aria',
+	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($back) echo $check;?>Backup-Restore Update</legend>
-<form class="form-horizontal">
-<p>Enable backup-restore settings and databases. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/backup-restore">GitHub</a> )</p>
-<a id="inback" class="btn btn-default <?php if ($back) echo 'disabled';?>">Install</a> &nbsp; <a id="unback" class="btn btn-default <?php if (!$back) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Backup-Restore Update',
+	'version'     => '1',
+	'alias'       => 'back',
+	'description' => 'Enable backup-restore settings and databases.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($expa) echo $check;?>Expand Partition</legend>
-<form class="form-horizontal">
-<p>Expand default 2GB partition to full capacity of SD card. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/expand_partition">GitHub</a> )</p>
-<a id="inexpa" class="btn btn-default <?php if ($expa) echo 'disabled';?>">Expand</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Expand Partition',
+	'alias'       => 'expa',
+	'description' => 'Expand default 2GB partition to full capacity of SD card.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($font) echo $check;?>Fonts - Extended characters</legend>
-<form class="form-horizontal">
-<p>Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics. ( More detail on <a href="https://github.com/rern/RuneAudio/tree/master/font_extended">GitHub</a> )</p>
-<a id="infont" class="btn btn-default <?php if ($font) echo 'disabled';?>">Install</a> &nbsp; <a id="unfont" class="btn btn-default <?php if (!$font) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Fonts - Extended characters',
+	'version'     => '1',
+	'alias'       => 'font',
+	'description' => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($motd) echo $check;?>'motd' RuneAudio Logo for SSH Terminal</legend>
-<form class="form-horizontal">
-<p>Message of the day - RuneAudio Logo and dimmed command prompt. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/motd">GitHub</a> )</p>
-<a id="inmotd" class="btn btn-default <?php if ($motd) echo 'disabled';?>">Install</a> &nbsp; <a id="unmotd" class="btn btn-default <?php if (!$motd) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
-	
-<div class="boxed-group">
-<legend>Rank Mirror Packages Servers</legend>
-<form class="form-horizontal">
-<p>Fix packages download errors. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/rankmirrors">GitHub</a> )</p>
-<a id="inrank" class="btn btn-default">Rank</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'motd - RuneAudio Logo for SSH Terminal',
+	'version'     => '1',
+	'alias'       => 'motd',
+	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/motd',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($enha) echo $check;?>RuneUI Enhancements</legend>
-<form class="form-horizontal">
-<p>More minimalism and more fluid layout. ( More detail on <a href="https://github.com/rern/RuneUI_enhancement/blob/master">GitHub</a> )</p>
-<a id="inenha" class="btn btn-default <?php if ($enha) echo 'disabled';?>">Install</a> &nbsp; <a id="unenha" class="btn btn-default <?php if (!$enha) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Rank Mirror Packages Servers',
+	'alias'       => 'rank',
+	'description' => 'Fix packages download errors caused by unreachable servers.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($gpio) echo $check;?>RuneUI GPIO</legend>
-<form class="form-horizontal">
-<p>GPIO connected relay module control. ( More detail on <a href="https://github.com/rern/RuneUI_GPIO/blob/master">GitHub</a> )</p>
-<a id="ingpio" class="btn btn-default <?php if ($gpio) echo 'disabled';?>">Install</a> &nbsp; <a id="ungpio" class="btn btn-default <?php if (!$gpio) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'RuneUI Enhancements',
+	'version'     => '1',
+	'alias'       => 'enha',
+	'description' => 'More minimalism and more fluid layout.',
+	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($pass) echo $check;?>RuneUI Password</legend>
-<form class="form-horizontal">
-<p>GPIO connected relay module control. ( More detail on <a href="https://github.com/rern/RuneUI_password/blob/master">GitHub</a> )</p>
-<a id="inpass" class="btn btn-default <?php if ($pass) echo 'disabled';?>">Install</a> &nbsp; <a id="unpass" class="btn btn-default <?php if (!$pass) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'RuneUI GPIO',
+	'version'     => '1',
+	'alias'       => 'gpio',
+	'description' => 'GPIO connected relay module control.',
+	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend><?php if ($samb) echo $check;?>Samba Upgrade</legend>
-<form class="form-horizontal">
-<p>Fast, easy, and free BitTorrent client. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/transmission">GitHub</a> )</p>
-<a id="insamb" class="btn btn-default <?php if ($samb) echo 'disabled';?>">Install</a> &nbsp; <a id="unsamb" class="btn btn-default <?php if (!$samb) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
-	
-<div class="boxed-group">
-<legend><?php if ($tran) echo $check;?>Transmission</legend>
-<form class="form-horizontal">
-<p>Faster and more customized shares. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/samba">GitHub</a> )</p>
-<a id="intran" class="btn btn-default <?php if ($tran) echo 'disabled';?>">Install</a> &nbsp; <a id="untran" class="btn btn-default <?php if (!$tran) echo 'disabled';?>">Uninstall</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'RuneUI Password',
+	'version'     => '1',
+	'alias'       => 'pass',
+	'description' => 'RuneUI access restriction.',
+	'sourcecode'  => 'https://github.com/rern/RuneUI_password',
+);
+addonblock($package);
 
-<div class="boxed-group">
-<legend>Webradio import</legend>
-<form class="form-horizontal">
-<p>Webradio files import script. ( More detail on <a href="https://github.com/rern/RuneAudio/blob/master/webradio">GitHub</a> )</p>
-<a id="inwebr" class="btn btn-default">Import</a>
-</form>
-</div>
+$package = array(
+	'title'       => 'Samba Upgrade',
+	'version'     => '1',
+	'alias'       => 'samb',
+	'description' => 'Faster and more customized shares.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
+);
+addonblock($package);
+
+$package = array(
+	'title'       => 'Transmission',
+	'version'     => '1',
+	'alias'       => 'tran',
+	'description' => 'Fast, easy, and free BitTorrent client.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+);
+addonblock($package);
+
+$package = array(
+	'title'       => 'Webradio Import',
+	'alias'       => 'webr',
+	'description' => 'Webradio files import.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/twebradio',
+);
+addonblock($package);
+?>
 
 </div>
 
