@@ -212,7 +212,13 @@ addonblock($package);
 var btn = document.getElementsByClassName('btn');
 for (var i = 0; i < btn.length; i++) {
 	btn[i].onclick = function(e) {
-		document.getElementById('loader').style.display = 'block';
+		var title = this.parentElement.previousElementSibling.innerHTML;
+		var inst = confirm('Install "'+ title +'"');
+		if (inst) {
+			document.getElementById('loader').style.display = 'block';
+		} else {
+			return
+		}
 		
 		var opt = '';
 		if (this.getAttribute('option')) {
