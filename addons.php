@@ -6,23 +6,23 @@ $version = $redis->hGetAll('addons');
 function addonblock($pkg) {
 	global $version;
 	$alias = $pkg['alias'];
-	if ($version[$alias]) {                                                                                         // * installed
+	if ($version[$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
-		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {                                       // omit 'version' or 'version' not changed
-			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';                 //     disabled install button
-		} else {                                                                                                    // 'version' changed
-			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';       //     change install -> update button 
+		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
+			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
+		} else {
+			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';          // uninstall button
-	} else {                                                                                                        // * not yet install
+		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+	} else {
 		if (isset($pkg['option'])) {
 			$option = 'option="'.$pkg['option'].'"';
 		} else {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a id="in'.$alias.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>'; // install button with option
-		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';                   // disabled uninstall button
+		$btnin = '<a id="in'.$alias.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	echo '
 		<div class="boxed-group">
@@ -59,7 +59,7 @@ h1 {
 	width: calc(100% - 25px);
 }
 #close {
-	font-size: 24px;
+	vertical-align: 10px;
 	width: 25px;
 }
 #addons .boxed-group {
@@ -78,11 +78,9 @@ legend {
 </head>
 <body>
 
-<?php require_once 'addoninfo.php'?>
-
 <div id="addons" class="container">
 
-<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-lg"></i></a>
+<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 <?php
 /* each package block syntax:
 $package = array(
@@ -91,7 +89,7 @@ $package = array(
 	'alias'       => 'alias',
 	'description' => 'description.',
 	'sourcecode'  => 'https://url/to/sourcecode',
-	'option'      => 'input; ?yesno; !wait', // prompt, confirm, alert
+	'option'      => 'input text; ?yesno text; !wait text', // <>prompt; <?>confirm; <!>alert
 );
 addonblock($package);
 */
@@ -147,7 +145,12 @@ $package = array(
 	'alias'       => 'enha',
 	'description' => 'More minimalism and more fluid layout.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
-	'option'      => 'Zoom level for local browser (1.5 : Full HD, 0.7 : <800px)',
+	'option'      => "Set zoom level to display directly connect to RPi."
+						."\n"
+						."\nLocal browser screen size:"
+						."\n0.7 : width less than 800px"
+						."\n1.2 : HD - 1280px"
+						."\n1.5 : Full HD - 1920px",
 );
 addonblock($package);
 $package = array(
@@ -156,8 +159,12 @@ $package = array(
 	'alias'       => 'gpio',
 	'description' => 'GPIO connected relay module control.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
-	'option'      => '?Overwrite DAC configuration from previous install'
-						.'!Get DAC configuration ready',
+	'option'      => "?DAC configuration from previous install found."
+						."\nOverwrite?"
+						.";!Get DAC configuration ready"
+						."\nFor external power DAC > power on"
+						."\n"
+						."\nMenu > MPD > setup and verify DAC works properly before continue.",
 );
 addonblock($package);
 $package = array(
@@ -193,11 +200,10 @@ $package = array(
 	'alias'       => 'webr',
 	'description' => 'Webradio files import.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/twebradio',
-	'option'      => 'Copy webradio files to /mnt/MPD/Webradio',
+	'option'      => '!Get webradio files in /mnt/MPD/Webradio ready.',
 );
 addonblock($package);
 ?>
-
 </div>
 
 <script>
@@ -206,8 +212,7 @@ for (var i = 0; i < btn.length; i++) {
 	btn[i].onclick = function(e) {
 		var opt = '';
 		if (this.getAttribute('option')) {
-			var options = this.getAttribute('option').replace(/; /g, ';');
-			options = options.split(';');
+			var options = this.getAttribute('option').replace(/; /g, ';').split(';');
 			if (options.length > 0) {
 				opt = '&opt=';
 				for (var j = 0; j < options.length; j++) {
@@ -219,9 +224,9 @@ for (var i = 0; i < btn.length; i++) {
 						yesno = yesno ? 1 : 0;
 						opt += yesno +' ';
 					} else {
-						var ans = prompt(oj);
-						ans = ans ? ans : 0;
-						opt += ans +' ';
+						var input = prompt(oj);
+						input = input ? input : 0;
+						opt += input +' ';
 					}
 				}
 			}
