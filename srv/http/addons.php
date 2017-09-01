@@ -234,11 +234,17 @@ for (var i = 0; i < btn.length; i++) {
 			}
 		}
 		if (this.id[0] == 'i') {
-			window.location.href = encodeURIComponent('addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod 755 install.sh; /usr/bin/sudo ./install.sh '+ opt);
+			window.location.href = encodeURIComponent(
+				'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl')
+				+'; chmod 755 install.sh; /usr/bin/sudo ./install.sh '+ opt
+			);
 		} else if (this.id[0] == 'u') {
-			window.location.href = encodeURIComponent('addonbash.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh');
+			window.location.href = encodeURIComponent(
+				'addonbash.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh');
 		} else {
-			window.location.href = encodeURIComponent('addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod 755 update.sh; /usr/bin/sudo ./update.sh');
+			window.location.href = encodeURIComponent(
+				'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') 
+				+'; chmod 755 update.sh; /usr/bin/sudo ./update.sh');
 		}
 	}
 }
