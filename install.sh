@@ -34,7 +34,7 @@ echo -e "$bar Modify files ..."
 header=/srv/http/app/templates/header.php
 echo $header
 sed -e '/poweroff-modal/ i\
-            <li><a href id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+            <li><a id="addons" style="cursor: pointer;"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $header
 
 footer=/srv/http/app/templates/footer.php
