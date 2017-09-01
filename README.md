@@ -1,6 +1,14 @@
 Addons for RuneAudio
 ---
-All addons in one page ready for easy installation via RuneUI Menu > Addons :  
+
+All addons in one page ready for easy installation via RuneUI  
+- install / uninstall directly in RuneUI, no need for ssh terminal
+- always reload list from source
+- installed indication
+- update indication (button)
+- easy to add others' addons scripts (bash)
+
+Menu > Addons :  
 - Aria2
 - Backup-Restore Uodate
 - Expand Partition
