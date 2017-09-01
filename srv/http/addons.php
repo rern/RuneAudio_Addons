@@ -74,8 +74,8 @@ addonblock($package);
 */
 $package = array(
 	'title'       => 'Addons main',
-	'version'     => '1',
-	'alias'       => 'addo',
+	'version'     => '20170901',
+	'alias'       => 'main',
 	'description' => 'This Addons main page.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -83,7 +83,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'Aria2',
-	'version'     => '1.1',
+	'version'     => '20170901',
 	'alias'       => 'aria',
 	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
@@ -92,7 +92,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'Backup-Restore Update',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'back',
 	'description' => 'Enable backup-restore settings and databases.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
@@ -109,7 +109,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'Fonts - Extended characters',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'font',
 	'description' => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
@@ -118,7 +118,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'motd - RuneAudio Logo for SSH Terminal',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'motd',
 	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/motd',
@@ -135,7 +135,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'RuneUI Enhancements',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'enha',
 	'description' => 'More minimalism and more fluid layout.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
@@ -150,7 +150,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'RuneUI GPIO',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'gpio',
 	'description' => 'GPIO connected relay module control.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
@@ -165,7 +165,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'RuneUI Password',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'pass',
 	'description' => 'RuneUI access restriction.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_password',
@@ -174,7 +174,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'Samba Upgrade',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'samb',
 	'description' => 'Faster and more customized shares.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
@@ -184,7 +184,7 @@ $package = array(
 addonblock($package);
 $package = array(
 	'title'       => 'Transmission',
-	'version'     => '1',
+	'version'     => '20170901',
 	'alias'       => 'tran',
 	'description' => 'Fast, easy, and free BitTorrent client.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
