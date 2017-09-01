@@ -17,7 +17,7 @@ sed -i '/<!--addons/, /<\/script>/d' /srv/http/app/templates/footer.php
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -rv /srv/http/{addonbash.php,addondl.php,addons.php}
+rm -rv /srv/http/{addonbash.php,addondl.php,addons.php,addonshead.php}
 
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
