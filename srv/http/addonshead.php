@@ -28,4 +28,7 @@ pre {color: #ddd;}
 </head>
 <body>
 
-<div class="container">
+<div id="loader" style="display: none;">
+	<div id="loaderbg"></div>
+	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
+</div>
