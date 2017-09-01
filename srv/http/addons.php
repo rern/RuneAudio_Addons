@@ -217,7 +217,6 @@ for (var i = 0; i < btn.length; i++) {
 		if (this.getAttribute('option')) {
 			var options = this.getAttribute('option').replace(/; /g, ';').split(';');
 			if (options.length > 0) {
-				opt = '&opt=';
 				for (var j = 0; j < options.length; j++) {
 					var oj = options[j];
 					if (oj[0] == '!') {
