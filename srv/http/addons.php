@@ -174,7 +174,7 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
 );
 addonblock($package);
-$package = array(
+/*$package = array(
 	'title'       => 'Samba Upgrade',
 	'version'     => '20170901',
 	'alias'       => 'samb',
@@ -183,7 +183,7 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'      => 'Password for user root (Cancel for no password)',
 );
-addonblock($package);
+addonblock($package);*/
 $package = array(
 	'title'       => 'Transmission',
 	'version'     => '20170901',
