@@ -16,10 +16,10 @@ if grep -q 'Addons' /srv/http/app/templates/header.php; then
     exit
 fi
 
-wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addonbash.php
-wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addondl.php
 wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/uninstall_addo.sh -P /usr/local/bin
 chmod +x /srv/http/runbash.sh /usr/local/bin/uninstall_addo.sh
+
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addonbash.php
 
 sed -e '/poweroff-modal/ i\
             <li><a href id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
@@ -38,6 +38,12 @@ $("#addons").click(function() {
 ' > /srv/http/assets/js/addons.js
 
 echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> /srv/http/app/templates/footer.php
+
+echo '<?php
+$result = exec('wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/addons.php -O /srv/http/addons.php; echo $?');
+if ($result == 0) exec('/usr/bin/sudo /usr/bin/systemctl reload php-fpm &; sleep 1');
+echo $result;
+' > /srv/http/addondl.php
 
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
