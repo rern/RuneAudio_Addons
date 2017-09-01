@@ -264,12 +264,11 @@ for (var i = 0; i < btn.length; i++) {
 			}
 		}
 		if (this.id[0] == 'i') {
-			console.log('0.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x install.sh; /usr/bin/sudo ./install.sh '+ opt);
-	//		window.location.href = '0.php?id='+ this.id + opt;
+			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x install.sh; /usr/bin/sudo ./install.sh '+ opt;
 		} else if (this.id[0] == 'u') {
-			console.log('0.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh');
+			window.location.href = 'addonbash.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh';
 		} else {
-			console.log('0.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x update.sh; /usr/bin/sudo ./update.sh');
+			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x update.sh; /usr/bin/sudo ./update.sh';
 		}
 	}
 }
