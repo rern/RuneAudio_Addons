@@ -39,8 +39,8 @@ sed -e '/poweroff-modal/ i\
 
 footer=/srv/http/app/templates/footer.php
 echo $footer
-echo '
-<script><!--addons-->
+echo '<!--addons-->
+<script>
 $("#addons").click(function() {
 	$.get("addondl.php", function(data) {
 		if (data == 0) {
