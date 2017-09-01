@@ -44,7 +44,9 @@ echo $footer
 echo '<!--addons-->
 <script>
 $("#addons").click(function() {
+	$('#loader').removeClass('hide');
 	$.get("addondl.php", function(data) {
+		$('#loader').addClass('hide');
 		if (data == 0) {
 			window.location.href = "addons.php";
 		} else {
