@@ -11,7 +11,7 @@ function addonblock($pkg) {
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
 		} else {
-			$btnin = '<a installurl="'.preg_replace('install.sh', 'update.sh', $pkg['installurl']).'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a installurl="'.str_replace('install.sh', 'update.sh', $pkg['installurl']).'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
