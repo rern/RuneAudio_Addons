@@ -26,7 +26,7 @@ sed -e '/poweroff-modal/ i\
 ' /srv/http/app/templates/header.php
 
 echo '
-<script>
+<script><!--addons-->
 $("#addons").click(function() {
 	$.get("addondl.php", function(data) {
 		if (data == 0) {
