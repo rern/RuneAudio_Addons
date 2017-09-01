@@ -1,9 +1,10 @@
 #!/bin/bash
 
+version=20170901
+
 # install.sh
 
 # addons menu for web based installation
-version=20170901
 
 rm $0
 
