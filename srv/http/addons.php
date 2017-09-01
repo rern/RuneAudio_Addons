@@ -144,7 +144,7 @@ $package = array(
 	'description' => 'More minimalism and more fluid layout.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'option'      => "Set zoom level to display directly connect to RPi."
+	'option'      => "Set zoom level for display directly connect to RPi."
 				."\n"
 				."\nLocal browser screen size:"
 				."\n0.7 : width less than 800px"
