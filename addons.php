@@ -11,7 +11,7 @@ function addonblock($pkg) {
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
 		} else {
-			$btnin = '<a id="up'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a installurl="'.preg_replace('install.sh', 'update.sh', $pkg['installurl']).'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
@@ -21,7 +21,7 @@ function addonblock($pkg) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a id="in'.$alias.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
+		$btnin = '<a id="in'.$alias.'" installurl="'.$pkg['installurl'].'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	echo '
@@ -82,14 +82,34 @@ legend {
 
 <h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 <?php
-/* each package block syntax:
+/* 
+### each package requires:
+	# scripts naming:
+		- 'install.sh'           name for install
+		- 'uninstall_<alias>.sh  name for uninstall
+		- 'update.sh'            name for update
+	# install.sh options:
+		- ';' delimiter
+		- start with '!'      = alert / ok to continue
+		- start with '?'      = confirm / ok = 1, cancel = 0
+		- start with '(none)' = prompt / ok = user input, blank-ok/cancel = 0
+		- "\n" escape new line inside double quotes for options messages
+	# version:
+		- omit for non-install package (will hide uninstall button)
+		- specified in install.sh
+		- changing in $package = array(...) will show update button
+		- update.sh must be in the same directory as install.sh
+		- major changes use update.sh to uninstall then reinstall
+
+### each package syntax:
 $package = array(
 	'title'       => 'title',
-	'version'     => 'n',      // omit for non-install package
+	'version'     => 'n',
 	'alias'       => 'alias',
 	'description' => 'description.',
 	'sourcecode'  => 'https://url/to/sourcecode',
-	'option'      => 'input text; ?yesno text; !wait text', // <>prompt; <?>confirm; <!>alert
+	'installurl'  => 'https://url/for/wget/install.sh',
+	'option'      => 'input text; ?yesno text; !wait text',
 );
 addonblock($package);
 */
@@ -99,6 +119,7 @@ $package = array(
 	'alias'       => 'aria',
 	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -107,6 +128,7 @@ $package = array(
 	'alias'       => 'back',
 	'description' => 'Enable backup-restore settings and databases.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -114,6 +136,7 @@ $package = array(
 	'alias'       => 'expa',
 	'description' => 'Expand default 2GB partition to full capacity of SD card.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -122,6 +145,7 @@ $package = array(
 	'alias'       => 'font',
 	'description' => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
+	'installurl'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -130,6 +154,7 @@ $package = array(
 	'alias'       => 'motd',
 	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/motd',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -137,6 +162,7 @@ $package = array(
 	'alias'       => 'rank',
 	'description' => 'Fix packages download errors caused by unreachable servers.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -145,6 +171,7 @@ $package = array(
 	'alias'       => 'enha',
 	'description' => 'More minimalism and more fluid layout.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => "Set zoom level to display directly connect to RPi."
 						."\n"
 						."\nLocal browser screen size:"
@@ -158,7 +185,8 @@ $package = array(
 	'version'     => '1',
 	'alias'       => 'gpio',
 	'description' => 'GPIO connected relay module control.',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
+	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
+	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'      => "?DAC configuration from previous install found."
 						."\nOverwrite?"
 						.";!Get DAC configuration ready"
@@ -173,6 +201,7 @@ $package = array(
 	'alias'       => 'pass',
 	'description' => 'RuneUI access restriction.',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_password',
+	'installurl'  => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
 );
 addonblock($package);
 $package = array(
@@ -181,6 +210,7 @@ $package = array(
 	'alias'       => 'samb',
 	'description' => 'Faster and more customized shares.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'      => 'Password for user root (Cancel for no password)',
 );
 addonblock($package);
@@ -190,6 +220,7 @@ $package = array(
 	'alias'       => 'tran',
 	'description' => 'Fast, easy, and free BitTorrent client.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'      => 'Password for Web Interface (Cancel for no password)'
 						.'; ?Install WebUI alternative (Transmission Web Control)'
 						.'; ?Start Transmission on system startup',
@@ -199,7 +230,8 @@ $package = array(
 	'title'       => 'Webradio Import',
 	'alias'       => 'webr',
 	'description' => 'Webradio files import.',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/twebradio',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 	'option'      => '!Get webradio files in /mnt/MPD/Webradio ready.',
 );
 addonblock($package);
@@ -231,7 +263,14 @@ for (var i = 0; i < btn.length; i++) {
 				}
 			}
 		}
-		window.location.href = 'addonbash.php?id='+ this.id + opt;
+		if (this.id[0] == 'i') {
+			console.log('0.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x install.sh; /usr/bin/sudo ./install.sh '+ opt);
+	//		window.location.href = '0.php?id='+ this.id + opt;
+		} else if (this.id[0] == 'u') {
+			console.log('0.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh');
+		} else {
+			console.log('0.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x update.sh; /usr/bin/sudo ./update.sh');
+		}
 	}
 }
 </script>
