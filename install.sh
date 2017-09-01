@@ -3,6 +3,7 @@
 # install.sh
 
 # addons menu for web based installation
+version=20170901
 
 rm $0
 
@@ -70,7 +71,7 @@ if pgrep midori >/dev/null; then
 	echo 'Local browser restarted.'
 fi
 
-redis-cli hset addons main 1 &> /dev/null
+redis-cli hset addons main $version &> /dev/null
 
 timestop
 title -l = "$bar Addons menu installed successfully."
