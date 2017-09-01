@@ -54,11 +54,13 @@ function addonblock($pkg) {
 		- start with '(none)' = prompt / ok = user input, blank-ok/cancel = 0
 		- "\n" escape new line inside double quotes for options messages
 	# version:
-		- omit for non-install package (will hide uninstall button)
-		- specified in install.sh
-		- changing in $package = array(...) will show update button
+		- specified both in install.sh and $package = array(...)
+		- installed vs $package = array(...) difference will show update button
 		- update.sh must be in the same directory as install.sh
 		- major changes use update.sh to uninstall then reinstall
+		- non-install package:
+		    omit to hide uninstall button
+		    run once - specified in install.sh to disable install button after run
 
 ### each package syntax:
 $package = array(
