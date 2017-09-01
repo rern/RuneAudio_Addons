@@ -63,6 +63,9 @@ if ($result == 0) exec('/usr/bin/sudo /usr/bin/systemctl reload php-fpm &; sleep
 echo $result;
 ' > /srv/http/addondl.php
 
+# set permission #######################################
+echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
+
 redis-cli hset addons main $version &> /dev/null
 
 timestop
