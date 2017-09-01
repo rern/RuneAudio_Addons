@@ -1,7 +1,8 @@
 <?php
 require_once('addonshead.php');
 
-echo '<h1>ADDONS TERMINAL</h1><a id="close" href="addons.php"><i class="fa fa-times fa-2x"></i></a>'
+echo '<div class="container">'
+	.'<h1>ADDONS TERMINAL</h1><a id="close" href="addons.php"><i class="fa fa-times fa-2x"></i></a>'
 	.'<p>Please wait until finished.</p>';
 
 function bash($cmd) {
