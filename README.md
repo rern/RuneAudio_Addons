@@ -6,7 +6,7 @@ All addons in one page ready for easy installation via RuneUI
 - always reload list from source
 - installed indication
 - update indication (button)
-- easy to add others' addons scripts (bash)
+- modular block for easy to add scripts(bash) from other sources
 
 Menu > Addons :  
 - Aria2
