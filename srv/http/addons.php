@@ -46,6 +46,7 @@ function addonblock($pkg) {
 		- 'install.sh'           name for install
 		- 'uninstall_<alias>.sh  name for uninstall
 		- 'update.sh'            name for update
+		- non-install package can be any names
 	# install.sh options:
 		- ';' delimiter
 		- start with '!'      = alert / ok to continue
@@ -103,7 +104,7 @@ $package = array(
 	'alias'       => 'expa',
 	'description' => 'Expand default 2GB partition to full capacity of SD card.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/install.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 );
 addonblock($package);
 $package = array(
@@ -129,7 +130,7 @@ $package = array(
 	'alias'       => 'rank',
 	'description' => 'Fix packages download errors caused by unreachable servers.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/install.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 );
 addonblock($package);
 $package = array(
@@ -198,7 +199,7 @@ $package = array(
 	'alias'       => 'webr',
 	'description' => 'Webradio files import.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'      => '!Get webradio files in /mnt/MPD/Webradio ready.',
 );
 addonblock($package);
