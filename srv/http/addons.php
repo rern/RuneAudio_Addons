@@ -71,14 +71,14 @@ $package = array(
 );
 addonblock($package);
 */
-$package = array(
+/*$package = array(
 	'title'       => 'Addons main',
 	'version'     => '1',
 	'alias'       => 'addo',
 	'description' => 'This Addons main page.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
-);
+);*/
 addonblock($package);
 $package = array(
 	'title'       => 'Aria2',
