@@ -1,7 +1,8 @@
 <?php
 require_once('addonshead.php');
 
-echo '<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
+echo '<div class="container">'
+	.'<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
 
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
