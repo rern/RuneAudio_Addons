@@ -18,3 +18,4 @@ All addons in one page ready for easy installation via RuneUI Menu > Addons :
 ```sh
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
+![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.jpg)
