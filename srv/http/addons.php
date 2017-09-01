@@ -234,6 +234,7 @@ for (var i = 0; i < btn.length; i++) {
 				}
 			}
 		}
+		document.getElementById('loader').classList.remove('hide');
 		if (this.id[0] == 'i') {
 			window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(
 				'wget -qN '+ this.getAttribute('installurl')
