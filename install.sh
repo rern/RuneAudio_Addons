@@ -20,6 +20,7 @@ wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/uninstall_addo.sh -P 
 chmod +x /srv/http/runbash.sh /usr/local/bin/uninstall_addo.sh
 
 wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addonbash.php
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/addonshead.php
 
 sed -e '/poweroff-modal/ i\
             <li><a href id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
