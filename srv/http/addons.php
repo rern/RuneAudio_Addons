@@ -143,11 +143,11 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => "Set zoom level to display directly connect to RPi."
-						."\n"
-						."\nLocal browser screen size:"
-						."\n0.7 : width less than 800px"
-						."\n1.2 : HD - 1280px"
-						."\n1.5 : Full HD - 1920px",
+				."\n"
+				."\nLocal browser screen size:"
+				."\n0.7 : width less than 800px"
+				."\n1.2 : HD - 1280px"
+				."\n1.5 : Full HD - 1920px",
 );
 addonblock($package);
 $package = array(
@@ -158,11 +158,11 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'      => "?DAC configuration from previous install found."
-						."\nOverwrite?"
-						.";!Get DAC configuration ready"
-						."\nFor external power DAC > power on"
-						."\n"
-						."\nMenu > MPD > setup and verify DAC works properly before continue.",
+				."\nOverwrite?"
+			.";!Get DAC configuration ready"
+				."\nFor external power DAC > power on"
+				."\n"
+				."\nMenu > MPD > setup and verify DAC works properly before continue.",
 );
 addonblock($package);
 $package = array(
@@ -192,8 +192,8 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'      => 'Password for Web Interface (Cancel for no password)'
-						.'; ?Install WebUI alternative (Transmission Web Control)'
-						.'; ?Start Transmission on system startup',
+			.'; ?Install WebUI alternative (Transmission Web Control)'
+			.'; ?Start Transmission on system startup',
 );
 addonblock($package);
 $package = array(
