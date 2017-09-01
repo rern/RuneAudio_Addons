@@ -26,6 +26,7 @@ sed -e '/poweroff-modal/ i\
 ' /srv/http/app/templates/header.php
 
 echo '
+<script>
 $("#addons").click(function() {
 	$.get("addondl.php", function(data) {
 		if (data == 0) {
@@ -35,9 +36,8 @@ $("#addons").click(function() {
 		}
 	});
 });
-' > /srv/http/assets/js/addons.js
-
-echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> /srv/http/app/templates/footer.php
+</script>
+' >> /srv/http/app/templates/footer.php
 
 echo '<?php
 $result = exec('wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/addons.php -O /srv/http/addons.php; echo $?');
