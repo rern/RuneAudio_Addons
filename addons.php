@@ -1,4 +1,8 @@
 <?php
+require_once('addonshead.php');
+
+echo '<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
+
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
 $version = $redis->hGetAll('addons');
@@ -36,52 +40,6 @@ function addonblock($pkg) {
 		'</form>
 		</div>';
 }
-?>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>RuneAudio - Addons</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="msapplication-tap-highlight" content="no" />
-    <link rel="stylesheet" href="assets/css/runeui.css">
-    <link rel="stylesheet" href="assets/css/gpiosettings.css">
-    <link rel="shortcut icon" href="assets/img/favicon.ico">
-<style>
-.container {
-	padding : 0 15px;
-}
-h1 {
-	display: inline-block;
-	width: calc(100% - 25px);
-}
-#close {
-	vertical-align: 10px;
-	width: 25px;
-}
-#addons .boxed-group {
-	padding: 10px 20px;
-}
-legend {
-	margin-bottom: 5px;
-}
-.blue {
-	color: #0095d8;
-}
-#addons .btn {
-	text-transform: capitalize;
-}
-</style>
-</head>
-<body>
-
-<div id="addons" class="container">
-
-<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-<?php
 /* 
 ### each package requires:
 	# scripts naming:
@@ -264,11 +222,11 @@ for (var i = 0; i < btn.length; i++) {
 			}
 		}
 		if (this.id[0] == 'i') {
-			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x install.sh; /usr/bin/sudo ./install.sh '+ opt;
+			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod 755 install.sh; /usr/bin/sudo ./install.sh '+ opt;
 		} else if (this.id[0] == 'u') {
 			window.location.href = 'addonbash.php?cmd=/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh';
 		} else {
-			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod +x update.sh; /usr/bin/sudo ./update.sh';
+			window.location.href = 'addonbash.php?cmd=wget -qN '+ this.getAttribute('installurl') +'; chmod 755 update.sh; /usr/bin/sudo ./update.sh';
 		}
 	}
 }
