@@ -35,10 +35,9 @@ $("#addons").click(function() {
 		}
 	});
 });
-' >> /srv/http/assets/js/runeui.js
+' > /srv/http/assets/js/addons.js
 
-echo '$("#addons").click(function(){$.get("addondl.php",function(d){0==d?window.location.href="addons.php":alert("Addons server not reachable.")})});
-' >> /srv/http/assets/js/runeui.min.js
+echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> /srv/http/app/templates/footer.php
 
 # refresh #######################################
 echo -e "$bar Clear PHP OPcache ..."
