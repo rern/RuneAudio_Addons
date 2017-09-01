@@ -61,20 +61,18 @@ if ($result == 0) exec('/usr/bin/sudo /usr/bin/systemctl reload php-fpm &; sleep
 echo $result;
 ' > /srv/http/addondl.php
 
-# refresh #######################################
-echo -e "$bar Clear PHP OPcache ..."
-systemctl reload php-fpm
-echo
-if pgrep midori >/dev/null; then
-	killall midori
-	sleep 1
-	xinit &>/dev/null &
-	echo 'Local browser restarted.'
-fi
-
 redis-cli hset addons main $version &> /dev/null
 
 timestop
 title -l = "$bar Addons menu installed successfully."
 echo 'Uninstall: uninstall_addo.sh'
 title -nt "$info Refresh browser and go to Menu > Addons."
+
+# clear opcache and restart local browser #######################################
+systemctl reload php-fpm
+
+if pgrep midori > /dev/null; then
+	killall midori
+	sleep 1
+	xinit &> /dev/null &
+fi
