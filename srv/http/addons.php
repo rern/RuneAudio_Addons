@@ -49,10 +49,11 @@ function addonblock($pkg) {
 		- non-install package can be any names
 	# install.sh user input:
 		- each input will be appended as install.sh arguments
-		- ';' delimiter ("\n" escape new line inside double quotes for messages)
+		- ';' = delimiter each input
 		- message starts with '!'      = 'js alert' message / ok to continue
 		- message starts with '?'      = 'js confirm' message / ok = 1, cancel = 0
 		- message starts with '(none)' = 'js prompt' message / ok = user input, blank-ok/cancel = 0
+		- '\n' = escaped new line inside double quoted message
 	# version:
 		- specified both in install.sh and $package = array(...)
 		- installed vs $package = array(...) difference will show update button
