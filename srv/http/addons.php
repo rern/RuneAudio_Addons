@@ -112,7 +112,6 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
-	'option'      => '#Password ?',
 );
 addonblock($package);
 $package = array(
@@ -212,7 +211,7 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'      => 'Password for Web Interface (Cancel for no password)'
+	'option'      => '#Password for Web Interface (Cancel for no password)'
 			.'; ?Install WebUI alternative (Transmission Web Control)'
 			.'; ?Start Transmission on system startup',
 );
@@ -241,7 +240,12 @@ for (var i = 0; i < btn.length; i++) {
 			case 'up': var type = 'Update "'; break;
 			default  : var type = 'Install "';
 		}
-		var title = this.parentElement.previousElementSibling.innerHTML.replace(/<i.*i> /, '');
+		var title = this
+					.parentElement
+					.previousElementSibling
+					.innerHTML
+						.replace(/<i.*i>/, '')
+						.replace(/<p.*p>/, '');
 		
 		if (!confirm(type + title +'"?')) return;
 		
