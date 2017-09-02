@@ -241,11 +241,11 @@ for (var i = 0; i < btn.length; i++) {
 			default  : var type = 'Install "';
 		}
 		var title = this
-					.parentElement
-					.previousElementSibling
-					.innerHTML
-						.replace(/<i.*i>/, '')
-						.replace(/<p.*p>/, '');
+				.parentElement
+				.previousElementSibling
+				.innerHTML
+					.replace(/<i.*i>/, '')
+					.replace(/<p.*p>/, '');
 		
 		if (!confirm(type + title +'"?')) return;
 		
