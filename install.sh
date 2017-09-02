@@ -25,7 +25,7 @@ echo -e "$bar Install new files ..."
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 rm master.zip /tmp/install/{.*,*.md,install.sh} &> /dev/null
-chmod 755 /tmp/install/root/* /tmp/install/usr/local/bin/uninstall*
+chmod 755 /tmp/install/usr/local/bin/uninstall*
 
 cp -r /tmp/install/* /
 rm -r /tmp/install
