@@ -11,19 +11,56 @@
     <link rel="stylesheet" href="assets/css/runeui.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 <style>
-.container {padding : 0 15px 20px 15px;}
-h1 {display: inline-block; width: calc(100% - 25px);}
-#close {vertical-align: 10px; width: 25px;}
-.boxed-group {padding: 10px 20px;}
-legend {margin-bottom: 5px;}
-.blue {color: #0095d8;}
-.btn {text-transform: capitalize;}
-p {color: #7795b4;}
-pre {color: #ddd; white-space: pre-wrap;}
-.cc {color: #00ffff; background: #00ffff;}
-.ky {color: #000; background: #ffff00;}
-.ck {color: #00ffff;}
-.wr {background: #ff0000;}
+.container {
+	padding : 0 15px 20px;
+}
+h1 {
+	display: inline-block;
+	width: calc(100% - 25px);
+}
+#close {
+	vertical-align: 10px;
+	width: 25px;
+}
+.boxed-group {
+	padding: 10px 20px;
+}
+legend {
+	margin-bottom: 5px;
+}
+legend p {
+	display: inline-block;
+	font-size: 14px;
+	margin-left: 15px;
+}
+legend span,
+pre {
+	color: #e0e7ee;
+	white-space: pre-wrap;
+}
+p {
+	color: #7795b4;
+}
+.btn {
+	text-transform: capitalize;
+}
+.blue {
+	color: #0095d8;
+}
+.cc {
+	color: #00ffff;
+	background: #00ffff;
+}
+.ky {
+	color: #000;
+	background: #ffff00;
+}
+.ck {
+	color: #00ffff;
+}
+.wr {
+	background: #ff0000;
+}
 </style>
 </head>
 <body>
