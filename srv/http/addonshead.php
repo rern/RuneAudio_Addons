@@ -19,7 +19,7 @@ legend {margin-bottom: 5px;}
 .blue {color: #0095d8;}
 .btn {text-transform: capitalize;}
 p {color: #7795b4;}
-pre {color: #ddd;}
+pre {color: #ddd; white-space: pre-wrap;}
 .cc {color: #00ffff; background: #00ffff;}
 .ky {color: #000; background: #ffff00;}
 .ck {color: #00ffff;}
