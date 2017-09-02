@@ -55,10 +55,10 @@ function addonblock($pkg) {
 	# <install>.sh option(arguments):
 		- each input will be appended as <install>.sh arguments
 		- ';' = delimiter each input
-		- message starts with '!'      = 'js alert'   wait     => ok = continue
-		- message starts with '?'      = 'js confirm' yes/no   => ok = 1, cancel = 0
+		- message starts with '!'      = 'js confirm' continue => ok = continue, cancel = exit install
+		- message starts with '?'      = 'js confirm' yes/no   => ok = 1,        cancel = 0
 		- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
-		- message starts with '(none)' = 'js prompt'  input    => ok = input, blank-ok/cancel = 0
+		- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
 		  ('\n' = escaped new line inside double quoted message)
 	# version:
 		- specified both in <install>.sh and $package = array(...)
@@ -231,12 +231,12 @@ addonblock($package);
 </div>
 
 <script>
-var btn = document.getElementsByClassName('btn');
-for (var i = 0; i < btn.length; i++) {
+var btn = document.getElementsByClassName( 'btn' );
+for ( var i = 0; i < btn.length; i++ ) {
 	btn[i].onclick = function() {
 		// user confirmation
-		var installurl = this.getAttribute('installurl');
-		switch(installurl.split('/').pop().substr(0,2)) {
+		var installurl = this.getAttribute( 'installurl' );
+		switch( installurl.split( '/' ).pop().substr( 0, 2 ) ) {
 			case 'un': var type = 'Uninstall "'; break;
 			case 'up': var type = 'Update "'; break;
 			default  : var type = 'Install "';
@@ -245,48 +245,47 @@ for (var i = 0; i < btn.length; i++) {
 				.parentElement
 				.previousElementSibling
 				.innerHTML
-					.replace(/<i.*i>/, '')
-					.replace(/<p.*p>/, '');
+					.replace( /<i.*i>/, '' )
+					.replace( /<p.*p>/, '' );
 		
-		if (!confirm(type + title +'"?')) return;
+		if ( !confirm( type + title +'"?' ) ) return;
 
 		// split each option per user prompt
 		var yesno = 1;
 		var opt = ' ';
-		if (this.getAttribute('option')) {
-			var option = this.getAttribute('option').replace(/; /g, ';').split(';');
-			if (option.length > 0) {
-				for (var j = 0; j < option.length; j++) {
+		if ( this.getAttribute( 'option' ) ) {
+			var option = this.getAttribute( 'option' ).replace( /; /g, ';' ).split( ';' );
+			if ( option.length > 0 ) {
+				for ( var j = 0; j < option.length; j++ ) {
 					var oj = option[j];
-					switch(oj[0]) {
-						case '!': 
-							yesno = confirm(oj.slice(1));
-							if (!yesno) return;
+					switch( oj[0] ) {
+						case '!':
+							if ( !confirm( oj.slice(1) ) ) return;
 							opt += 1 +' ';
 							break;
-						case '?': 
-							opt += confirm(oj.slice(1)) ? 1 +' ' : 0 +' ';
+						case '?':
+							opt += confirm( oj.slice(1) ) ? 1 +' ' : 0 +' ';
 							break;
-						case '#': 
-							var pwd = setpwd(oj.slice(1));
+						case '#':
+							var pwd = setpwd( oj.slice(1) );
 							opt += pwd ? pwd +' ' : 0 +' ';
 							break;
-						default : 
-							var input = prompt(oj);
+						default :
+							var input = prompt( oj );
 							opt += input ? input +' ' : 0 +' ';
 					}
 				}
 			}
 		}
 		
-		document.getElementById('loader').style.display = 'block';
+		document.getElementById( 'loader' ).style.display = 'block';
 		
 		// create temporary form for post submit
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonbash.php" method="post">'
 			+'<input type="hidden" name="cmd" value="'+ installurl + opt +'">'
 			+'</form>';
-		document.getElementById("formtemp").submit();
+		document.getElementById( 'formtemp' ).submit();
 	}
 }
 
