@@ -11,14 +11,18 @@ $version = $redis->hGetAll('addons');
 function addonblock($pkg) {
 	global $version;
 	$alias = $pkg['alias'];
+	$installurl = $pkg['installurl'];
+	$filename = end(explode('/', $installurl));
 	if ($version[$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
 		} else {
-			$btnin = '<a installurl="'.str_replace('install.sh', 'update.sh', $pkg['installurl']).'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$command = 'wget -qN '.str_replace($filename, 'update.sh', $installurl).'; chmod 755 update.sh; /usr/bin/sudo ./update.sh';
+			$btnin = '<a installurl="'.$command.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a id="un'.$alias.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$command = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
+		$btnun = '<a installurl="'.$command.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if (isset($pkg['option'])) {
 			$option = 'option="'.$pkg['option'].'"';
@@ -26,7 +30,8 @@ function addonblock($pkg) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a id="in'.$alias.'" installurl="'.$pkg['installurl'].'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
+		$command = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
+		$btnin = '<a installurl="'.$command.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	echo '
@@ -43,26 +48,26 @@ function addonblock($pkg) {
 }
 /* 
 ### each package requires:
-	# scripts naming:
-		- 'install.sh'           name for install
+	# scripts naming: ( must be, except <...> = any )
+		- '<install>.sh'         name for install
 		- 'uninstall_<alias>.sh  name for uninstall
 		- 'update.sh'            name for update
-		- non-install package can be any names
 	# install.sh user input:
 		- each input will be appended as install.sh arguments
 		- ';' = delimiter each input
 		- message starts with '!'      = 'js alert' message / ok to continue
 		- message starts with '?'      = 'js confirm' message / ok = 1, cancel = 0
 		- message starts with '(none)' = 'js prompt' message / ok = user input, blank-ok/cancel = 0
-		- '\n' = escaped new line inside double quoted message
+		  ('\n' = escaped new line inside double quoted message)
 	# version:
-		- specified both in install.sh and $package = array(...)
-		- installed vs $package = array(...) difference will show update button
-		- update.sh must be in the same directory as install.sh
+		- specified both in <install>.sh and $package = array(...)
+		- installed version stored in database
+		- $package = array(...) vs database - difference will show update button
+		- update.sh must be in the same directory as <install>.sh
 		- major changes use update.sh to uninstall then reinstall
 		- non-install package:
 		    omit to hide uninstall button
-		    run once - specified in install.sh to disable install button after run
+		    run once - specified any numbers in <install>.sh to disable install button after run
 
 ### each package syntax:
 $package = array(
@@ -78,7 +83,7 @@ addonblock($package);
 */
 $package = array(
 	'title'       => 'Addons main',
-	'version'     => '20170901',
+	'version'     => '20170902',
 	'alias'       => 'main',
 	'description' => 'This Addons main page.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
@@ -121,7 +126,7 @@ $package = array(
 );
 addonblock($package);
 $package = array(
-	'title'       => 'motd - RuneAudio Logo for SSH Terminal',
+	'title'       => 'Login Logo for SSH Terminal',
 	'version'     => '20170901',
 	'alias'       => 'motd',
 	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
@@ -212,13 +217,17 @@ addonblock($package);
 var btn = document.getElementsByClassName('btn');
 for (var i = 0; i < btn.length; i++) {
 	btn[i].onclick = function(e) {
-		var title = this.parentElement.previousElementSibling.innerHTML;
-		var inst = confirm('Install "'+ title +'"');
-		if (inst) {
-			document.getElementById('loader').style.display = 'block';
-		} else {
-			return
+		var installurl = this.getAttribute('installurl');
+		switch(installurl.split('/').pop().substr(0,2)) {
+			case 'un': var type = 'Uninstall "'; break;
+			case 'up': var type = 'Update "'; break;
+			default  : var type = 'Install "';
 		}
+		var title = this.parentElement.previousElementSibling.innerHTML.replace(/<i.*i> /, '');
+
+		if (!confirm(type + title +'"?')) return;
+
+		document.getElementById('loader').style.display = 'block';
 		
 		var opt = '';
 		if (this.getAttribute('option')) {
@@ -226,34 +235,15 @@ for (var i = 0; i < btn.length; i++) {
 			if (options.length > 0) {
 				for (var j = 0; j < options.length; j++) {
 					var oj = options[j];
-					if (oj[0] == '!') {
-						alert(oj.slice(1));
-					} else if (oj[0] == '?') {
-						var yesno = confirm(oj.slice(1));
-						yesno = yesno ? 1 : 0;
-						opt += yesno +' ';
-					} else {
-						var input = prompt(oj);
-						input = input ? input : 0;
-						opt += input +' ';
+					switch(oj[0]) {
+						case '!': alert(oj.slice(1)); break;
+						case '?': opt += confirm(oj.slice(1)) ? 1 : 0 +' ';
+						default : opt += prompt(oj) ? prompt(oj) : 0 +' ';
 					}
 				}
 			}
 		}
-		if (this.id[0] == 'i') {
-			window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(
-				'wget -qN '+ this.getAttribute('installurl')
-				+'; chmod 755 install.sh; /usr/bin/sudo ./install.sh '+ opt
-			);
-		} else if (this.id[0] == 'u') {
-			window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(
-				'/usr/bin/sudo /usr/local/bin/uninstall_'+ this.id.slice(2) +'.sh'
-			);
-		} else {
-			window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(
-				'wget -qN '+ this.getAttribute('installurl') 
-				+'; chmod 755 update.sh; /usr/bin/sudo ./update.sh');
-		}
+		window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(installurl + opt);
 	}
 }
 </script>
