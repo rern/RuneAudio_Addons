@@ -11,7 +11,7 @@ rm $0
 # import heading function
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-if grep -q 'Addons' /srv/http/app/templates/header.php; then
+if [[ -e /srv/http/addonbash.php ]]; then
     echo -e "$info Already installed."
     exit
 fi
