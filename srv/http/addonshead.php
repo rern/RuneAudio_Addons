@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/runeui.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
 <style>
-.container {padding : 0 15px;}
+.container {padding : 0 15px 20px 15px;}
 h1 {display: inline-block; width: calc(100% - 25px);}
 #close {vertical-align: 10px; width: 25px;}
 .boxed-group {padding: 10px 20px;}
