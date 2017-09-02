@@ -1,8 +1,10 @@
 Addons for RuneAudio
 ---
-![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.jpg)  
 
 All addons in one page ready for easy installation via RuneUI  
+
+![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.jpg)  
+
 - install / uninstall directly in RuneUI, no need for ssh terminal
 - always reload list from source
 - installed indication
