@@ -31,9 +31,9 @@ echo '</pre>';
 ?>
 </div>
 <script>
-setInterval(function() {
+window.addEventListener('resize', function() {
 	window.scrollTo(0,document.body.scrollHeight);
-}, 1000);
+});
 </script>
 
 </body>
