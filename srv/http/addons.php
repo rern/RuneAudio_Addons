@@ -97,6 +97,7 @@ $package = array(
 	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
+	'option'      => '?Start Aria2 on system startup',
 );
 addonblock($package);
 $package = array(
