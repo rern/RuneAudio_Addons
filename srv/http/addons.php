@@ -176,11 +176,12 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'      => "!Get DAC configuration ready"
-				."\nFor external power DAC > power on"
-				."\nMenu > MPD > setup and verify DAC works properly before continue."
-				."\n"
-				."\nContinue install?",
+	'option'      => "!Get DAC configuration ready:"
+			."\n"
+			."\nFor external power DAC > power on"
+			."\nMenu > MPD > setup and verify DAC works properly before continue."
+			."\n"
+			."\nContinue install?",
 );
 addonblock($package);
 $package = array(
