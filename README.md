@@ -1,7 +1,8 @@
 Addons for RuneAudio
 ---
+(Tested on RuneAudio 0.3 20160313)
 
-All addons in one page ready for easy installation via RuneUI  
+RuneAudio addons ready for easy installation via RuneUI.  
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.jpg)  
 
