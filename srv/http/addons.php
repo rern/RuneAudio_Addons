@@ -249,9 +249,9 @@ for (var i = 0; i < btn.length; i++) {
 					.replace(/<p.*p>/, '');
 		
 		if (!confirm(type + title +'"?')) return;
-		
-		document.getElementById('loader').style.display = 'block';
+
 		// split each option per user prompt
+		var yesno = 1;
 		var opt = ' ';
 		if (this.getAttribute('option')) {
 			var option = this.getAttribute('option').replace(/; /g, ';').split(';');
@@ -259,16 +259,28 @@ for (var i = 0; i < btn.length; i++) {
 				for (var j = 0; j < option.length; j++) {
 					var oj = option[j];
 					switch(oj[0]) {
-						case '!': alert(oj.slice(1)); break;
-						case '?': opt += confirm(oj.slice(1)) ? 1 +' ' : 0 +' '; break;
-						case '#': var pwd = setpwd(oj.slice(1));
-								opt += pwd ? pwd +' ' : 0 +' '; break;
-						default : var input = prompt(oj);
-								opt += input ? input +' ' : 0 +' ';
+						case '!': 
+							yesno = confirm(oj.slice(1));
+							if (!yesno) return;
+							opt += 1 +' ';
+							break;
+						case '?': 
+							opt += confirm(oj.slice(1)) ? 1 +' ' : 0 +' ';
+							break;
+						case '#': 
+							var pwd = setpwd(oj.slice(1));
+							opt += pwd ? pwd +' ' : 0 +' ';
+							break;
+						default : 
+							var input = prompt(oj);
+							opt += input ? input +' ' : 0 +' ';
 					}
 				}
 			}
 		}
+		
+		document.getElementById('loader').style.display = 'block';
+		
 		// create temporary form for post submit
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonbash.php" method="post">'
