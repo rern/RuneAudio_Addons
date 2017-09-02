@@ -43,14 +43,14 @@ footer=/srv/http/app/templates/footer.php
 echo $footer
 echo '<!--addons-->
 <script>
-$("#addons").click(function() {
-	$('#loader').removeClass('hide');
-	$.get("addondl.php", function(data) {
-		$('#loader').addClass('hide');
-		if (data == 0) {
+$( "#addons" ).click( function() {
+	$( "#loader" ).removeClass( "hide" );
+	$.get( "addondl.php", function( data ) {
+		$( "#loader" ).addClass( "hide" );
+		if ( data == 0 ) {
 			window.location.href = "addons.php";
 		} else {
-			alert("Addons server not reachable.");
+			alert( "Addons server not reachable." );
 		}
 	});
 });
@@ -58,8 +58,8 @@ $("#addons").click(function() {
 ' >> $footer
 
 echo '<?php
-$result = exec('wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addons.php -O /srv/http/addons.php; echo $?');
-if ($result == 0) exec('/usr/bin/sudo /usr/bin/systemctl reload php-fpm &; sleep 1');
+$result = exec("wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addons.php -O /srv/http/addons.php; echo $?");
+if ($result == 0) exec("/usr/bin/sudo /usr/bin/systemctl reload php-fpm &; sleep 1");
 echo $result;
 ' > /srv/http/addondl.php
 
