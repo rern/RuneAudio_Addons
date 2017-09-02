@@ -230,7 +230,7 @@ for (var i = 0; i < btn.length; i++) {
 
 		document.getElementById('loader').style.display = 'block';
 		
-		var opt = '';
+		var opt = ' ';
 		if (this.getAttribute('option')) {
 			var options = this.getAttribute('option').replace(/; /g, ';').split(';');
 			if (options.length > 0) {
@@ -238,13 +238,18 @@ for (var i = 0; i < btn.length; i++) {
 					var oj = options[j];
 					switch(oj[0]) {
 						case '!': alert(oj.slice(1)); break;
-						case '?': opt += confirm(oj.slice(1)) ? 1 : 0 +' ';
-						default : opt += prompt(oj) ? prompt(oj) : 0 +' ';
+						case '?': opt += confirm(oj.slice(1)) ? 1 +' ' : 0 +' '; break;
+						default : var input = prompt(oj);
+								opt += input ? input +' ' : 0 +' ';
 					}
 				}
 			}
 		}
-		window.location.href = 'addonbash.php?cmd='+ encodeURIComponent(installurl + opt);
+		document.body.innerHTML += 
+			'<form id="formtemp" action="addonbash.php" method="post">'
+			+'<input type="hidden" name="cmd" value="'+ installurl + opt +'">'
+			+'</form>';
+		document.getElementById("formtemp").submit();
 	}
 }
 </script>
