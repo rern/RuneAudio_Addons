@@ -13,8 +13,9 @@
 		- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
 		- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
 			multiple lines message:
-				',' ending only last line
-				'\n' = new line (must be inside double quotes)
+				 "...\n" = '\n' escaped n    - new line (must be inside double quotes)
+				."...\n" = '.'  starting dot - concatenate between lines
+				."...",  = ','  ending comma - only last line of each message
 	# version:
 		- specified both in <install>.sh and $package = array(...)
 		- installed version stored in database
