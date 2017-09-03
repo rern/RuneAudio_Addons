@@ -1,6 +1,20 @@
-<?php
-require_once('addonshead.php');
+<?php require_once('addonshead.php');?>
 
+<script>
+window.addEventListener('resize', function() {
+	window.scrollTo(0,document.body.scrollHeight);
+});
+	
+/*var h0 = document.body.scrollHeight;
+var h1;
+setInterval( function() {
+	h1 = document.body.scrollHeight;
+	if ( h1 > h0 ) window.scrollTo( 0, h1 );
+	h0 = h1;
+}, 1000 );*/
+</script>
+
+<?php
 echo '<div class="container">'
 	.'<h1>ADDONS TERMINAL</h1><a id="close" href="addons.php"><i class="fa fa-times fa-2x"></i></a>'
 	.'<p>Please wait until finished.</p>';
@@ -30,11 +44,6 @@ bash($_POST['cmd']);
 echo '</pre>';
 ?>
 </div>
-<script>
-window.addEventListener('resize', function() {
-	window.scrollTo(0,document.body.scrollHeight);
-});
-</script>
 
 </body>
 </html>
