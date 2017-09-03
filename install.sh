@@ -31,6 +31,7 @@ chmod 755 /tmp/install/usr/local/bin/uninstall*
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
+echo
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
