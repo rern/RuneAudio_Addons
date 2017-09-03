@@ -40,7 +40,7 @@ addonblock($package);
 $package = array(
 	'title'       => 'Addons main',
 	'version'     => '20170901',
-	'alias'       => 'main',
+	'alias'       => 'addo',
 	'description' => 'This Addons main page.',
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
