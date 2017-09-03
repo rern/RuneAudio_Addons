@@ -62,6 +62,7 @@ p {
 	color: #00ffff;
 }
 .wr {
+	color: #ffffff;
 	background: #ff0000;
 }
 </style>
