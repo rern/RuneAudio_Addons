@@ -41,7 +41,9 @@ function bash($cmd) {
 		$std = preg_replace('/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std); // tcolor
 		$std = preg_replace('/.\\[38;5;6m/', '<a class="ck">', $std);            // lcolor
 		$std = preg_replace('/.\\[0m/', '</a>', $std);                           // reset color
-		echo "$std";
+		if ( !strpos($std, 'warning:') ) {         // skip warnings
+			echo "$std";
+		}
 		@ flush();
 	}
 
