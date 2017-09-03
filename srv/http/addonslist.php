@@ -16,6 +16,7 @@
 				 "...\n" = '\n' escaped n    - new line (must be inside double quotes)
 				."...\n" = '.'  starting dot - concatenate between lines
 				."...",  = ','  ending comma - only last line of last message
+				\' escape quote, don't use escape double quotes
 	# version:
 		- specified both in <install>.sh and $package = array(...)
 		- installed version stored in database
@@ -27,7 +28,9 @@
 		    run once - specified any numbers in <install>.sh to disable install button after run
 
 ### each package syntax: 
-    < ... > = optional
+    - < ... > = optional
+    - \' escape quote, don't use escape double quotes
+    
 $package = array(
 	'title'       => 'title',
 	<'version'    => 'n',>
@@ -64,7 +67,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
-			.'!Package "glibc" may take some times to download.',
+			.'!Package \'glibc\' may take some times to download.',
 );
 addonblock($package);
 $package = array(
