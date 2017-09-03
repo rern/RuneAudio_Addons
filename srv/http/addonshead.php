@@ -36,7 +36,7 @@ legend p {
 legend span,
 pre {
 	color: #e0e7ee;
-	overflow-x:scroll;
+	overflow: auto;
 }
 p {
 	color: #7795b4;
