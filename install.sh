@@ -27,7 +27,7 @@ mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 rm master.zip /tmp/install/{.*,*.md,install.sh} &> /dev/null
 chown -R http:http /tmp/install/srv
-chmod 755 /tmp/install/usr/local/bin/uninstall*
+chmod 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
