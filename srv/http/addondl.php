@@ -1,6 +1,6 @@
 <?php
 exec(
-	'wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addons.php -O /srv/http/addons.php',
+	'wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -O /srv/http/addonslist.php',
 	$output,
 	$exit
 );
