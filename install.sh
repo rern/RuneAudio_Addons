@@ -41,29 +41,9 @@ sed -i '/poweroff-modal/ i\
 
 footer=/srv/http/app/templates/footer.php
 echo $footer
-echo '<!--addons-->
-<script>
-$( "#addons" ).click( function() {
-	$( "#loader" ).removeClass( "hide" );
-	$.get( "addondl.php", function( data ) {
-		$( "#loader" ).addClass( "hide" );
-		if ( data ) {
-			window.location.href = "addons.php";
-		} else {
-			alert( "Addons server not reachable." );
-		}
-	});
-});
-</script>
-' >> $footer
+echo '<script src="<?=$this->asset('/js/addons.js')?>"></script>' >> $footer
 
-echo '<?php
-exec("wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addons.php -O /srv/http/addons.php", $output, $result);
-if ($result == 1) exec("/usr/bin/sudo /usr/bin/systemctl reload php-fpm; sleep 1");
-echo $result;
-' > /srv/http/addondl.php
-
-# set permission #######################################
+# set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 redis-cli hset addons main $version &> /dev/null
