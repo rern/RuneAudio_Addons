@@ -41,7 +41,7 @@ sed -i '/poweroff-modal/ i\
 
 footer=/srv/http/app/templates/footer.php
 echo $footer
-echo '<script src="<?=$this->asset('/js/addons.js')?>"></script>' >> $footer
+echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $footer
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
