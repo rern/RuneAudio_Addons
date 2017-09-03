@@ -13,7 +13,7 @@ title -l = "$bar Uninstall Addons ..."
 
 # restore file
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
-sed -i '/<!--addons/, /<\/script>/d' /srv/http/app/templates/footer.php
+sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
