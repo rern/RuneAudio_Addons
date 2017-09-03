@@ -179,7 +179,7 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
-	'option'      => '!Get webradio files copied to /mnt/MPD/Webradio.',
+	'option'      => '!Get webradio files copied to /mnt/MPD/Webradio.'
 			."\n"
 			."\nContinue import?",
 );
