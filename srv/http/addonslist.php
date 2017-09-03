@@ -12,7 +12,9 @@
 		- message starts with '?'      = 'js confirm' yes/no   => ok = 1,        cancel = 0
 		- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
 		- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
-		  ('\n' = escaped new line inside double quoted message)
+			multiple lines message:
+				',' ending only last line
+				'\n' = new line (must be inside double quotes)
 	# version:
 		- specified both in <install>.sh and $package = array(...)
 		- installed version stored in database
@@ -23,16 +25,21 @@
 		    omit to hide uninstall button
 		    run once - specified any numbers in <install>.sh to disable install button after run
 
-### each package syntax:
+### each package syntax: 
+    < ... > = optional
 $package = array(
 	'title'       => 'title',
-	'version'     => 'n',
+	<'version'    => 'n',>
 	'alias'       => 'alias',
 	'description' => 'description.',
 	'maintainer'  => 'maintainer',
 	'sourcecode'  => 'https://url/to/sourcecode',
 	'installurl'  => 'https://url/for/wget/install.sh',
-	'option'      => 'input text; ?yesno text; !wait text',
+	<'option'     => '!confirm;'
+	                .'?yes/no;'
+	                .'#password;'
+	                ."input line 1\n"
+			."input line 2",>
 );
 addonblock($package);
 */
@@ -114,12 +121,12 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'option'      => "Set zoom level for display directly connect to RPi."
+	'option'      => "Set zoom level for display directly connect to RPi.\n"
 				."\n"
-				."\nLocal browser screen size:"
-				."\n0.7 : width less than 800px"
-				."\n1.2 : HD - 1280px"
-				."\n1.5 : Full HD - 1920px",
+				."Local browser screen size:\n"
+				."0.7 : width less than 800px\n"
+				."1.2 : HD - 1280px\n"
+				."1.5 : Full HD - 1920px",
 );
 addonblock($package);
 $package = array(
@@ -130,12 +137,12 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'      => "!Get DAC configuration ready:"
+	'option'      => "!Get DAC configuration ready:\n"
 			."\n"
-			."\nFor external power DAC > power on"
-			."\nMenu > MPD > setup and verify DAC works properly before continue."
+			."For external power DAC > power on\n"
+			."Menu > MPD > setup and verify DAC works properly before continue.\n"
 			."\n"
-			."\nContinue install?",
+			."Continue install?",
 );
 addonblock($package);
 $package = array(
@@ -167,9 +174,9 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'      => '#Password for Web Interface (Cancel for no password)'
-			.'; ?Install WebUI alternative (Transmission Web Control)'
-			.'; ?Start Transmission on system startup',
+	'option'      => '#Password for Web Interface (Cancel for no password);'
+			.'?Install WebUI alternative (Transmission Web Control);'
+			.'?Start Transmission on system startup',
 );
 addonblock($package);
 $package = array(
@@ -179,8 +186,8 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
-	'option'      => '!Get webradio files copied to /mnt/MPD/Webradio.'
+	'option'      => '!Get webradio files copied to /mnt/MPD/Webradio.\n'
 			."\n"
-			."\nContinue import?",
+			."Continue import?",
 );
 addonblock($package);
