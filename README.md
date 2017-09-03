@@ -12,6 +12,11 @@ RuneAudio addons ready for easy installation via RuneUI.
 - update indication (button)
 - modular block for easy to add scripts(bash) from other sources
 
+**Install**  
+```sh
+wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
+```
+
 Menu > Addons :  
 - Aria2
 - Backup-Restore Uodate
@@ -25,8 +30,3 @@ Menu > Addons :
 - Samba Upgrade
 - Transmission
 - Webradio Import
-
-**Install**  
-```sh
-wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
-```
