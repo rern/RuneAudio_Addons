@@ -15,9 +15,7 @@ setTimeout(function() {
 	var h1;
 	setInterval( function() {
 		h1 = pre.scrollHeight;
-		console.log('h0='+ h0 +' h1='+ h1);
 		if ( h1 > h0 ) {
-			console.log('scroll');
 			pre.scrollTop = pre.scrollHeight;
 			h0 = h1;
 		}
