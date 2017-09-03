@@ -19,7 +19,7 @@ sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
 echo -e "$bar Remove files ..."
 rm -rv /srv/http/{addonbash.php,addondl.php,addons.php,addonshead.php}
 
-redis-cli hdel addons main &> /dev/null
+redis-cli hdel addons addo &> /dev/null
 
 title -l = "$bar Addons uninstalled successfully."
 
