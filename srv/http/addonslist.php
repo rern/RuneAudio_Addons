@@ -15,7 +15,7 @@
 			multiple lines message:
 				 "...\n" = '\n' escaped n    - new line (must be inside double quotes)
 				."...\n" = '.'  starting dot - concatenate between lines
-				."...",  = ','  ending comma - only last line of each message
+				."...",  = ','  ending comma - only last line of last message
 	# version:
 		- specified both in <install>.sh and $package = array(...)
 		- installed version stored in database
@@ -63,7 +63,8 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'      => '?Start Aria2 on system startup',
+	'option'      => '?Start Aria2 on system startup;'
+			.'!Package "glibc" may take some times to download.',
 );
 addonblock($package);
 $package = array(
