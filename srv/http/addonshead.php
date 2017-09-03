@@ -38,7 +38,7 @@ pre {
 	color: #e0e7ee;
 }
 pre {
-	max-height: calc(100vh - 120px);
+	max-height: calc(100vh - 130px);
 	overflow: auto;
 }
 p {
