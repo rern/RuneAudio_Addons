@@ -6,17 +6,23 @@ $close = strpos($cmd, 'addo') ? '/' : 'addons.php';
 ?>
 
 <script>
-window.addEventListener('resize', function() {
-	window.scrollTo(0,document.body.scrollHeight);
-});
-	
-/*var h0 = document.body.scrollHeight;
-var h1;
-setInterval( function() {
-	h1 = document.body.scrollHeight;
-	if ( h1 > h0 ) window.scrollTo( 0, h1 );
-	h0 = h1;
-}, 1000 );*/
+// js for '<pre>' must be here before 'function bash()'.
+// php 'flush' loop waits for all outputs before going to next lines.
+// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
+setTimeout(function() { 
+	var pre = document.getElementsByTagName("pre")[0];
+	var h0 = pre.scrollHeight;
+	var h1;
+	setInterval( function() {
+		h1 = pre.scrollHeight;
+		console.log('h0='+ h0 +' h1='+ h1);
+		if ( h1 > h0 ) {
+			console.log('scroll');
+			pre.scrollTop = pre.scrollHeight;
+			h0 = h1;
+		}
+	}, 1000 );
+}, 100);
 </script>
 
 <?php
