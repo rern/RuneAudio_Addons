@@ -46,7 +46,7 @@ echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $fo
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
-redis-cli hset addons main $version &> /dev/null
+redis-cli hset addons addo $version &> /dev/null
 
 title -l = "$bar Addons menu installed successfully."
 echo 'Uninstall: uninstall_addo.sh'
