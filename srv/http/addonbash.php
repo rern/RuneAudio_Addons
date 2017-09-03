@@ -21,7 +21,7 @@ setInterval( function() {
 
 <?php
 echo '<div class="container">'
-	.'<h1>ADDONS TERMINAL</h1><a id="close" href="addons.php"><i class="fa fa-times fa-2x"></i></a>'
+	.'<h1>ADDONS TERMINAL</h1><a id="close" href=".$close.'"><i class="fa fa-times fa-2x"></i></a>'
 	.'<p>Please wait until finished.</p>';
 
 function bash($cmd) {
