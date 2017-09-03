@@ -28,18 +28,19 @@ h1 {
 legend {
 	margin-bottom: 5px;
 }
-legend p {
+p {
 	display: inline-block;
-	font-size: 14px;
 	margin-left: 15px;
+	font-size: 14px;
+	color: #7795b4;
 }
-legend span,
+span,
 pre {
 	color: #e0e7ee;
-	overflow: auto;
 }
-p {
-	color: #7795b4;
+pre {
+	max-height: calc(100vh - 120px);
+	overflow: auto;
 }
 .btn {
 	text-transform: capitalize;
