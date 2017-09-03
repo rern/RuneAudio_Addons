@@ -112,6 +112,7 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'option'      => '?Update package database after ranking?',
 );
 addonblock($package);
 $package = array(
