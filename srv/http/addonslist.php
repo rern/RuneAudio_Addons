@@ -1,8 +1,8 @@
 <p>
 Addons always gets the latest list from source.<br>
 <br>
-<span>20170901 - Initial release</span><br>
-	<ul>
+<span>20170901 - Initial release <a id="detail">Detail ▼</a></span><br>
+	<ul id="message" style="display: none;">
 <!--	<li>Aria2</li>-->
 	<li>Backup-Restore Update</li>
 	<li>Expand Partition</li>
@@ -125,6 +125,7 @@ addonblock($package);
 $package = array(
 	'title'       => 'Login Logo for SSH Terminal',
 	'version'     => '20170901',
+	'thumbnail'   => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
 	'alias'       => 'motd',
 	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'maintainer'  => 'r e r n',
@@ -145,6 +146,7 @@ addonblock($package);
 $package = array(
 	'title'       => 'RuneUI Enhancements',
 	'version'     => '20170901',
+	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'alias'       => 'enha',
 	'description' => 'More minimalism and more fluid layout.',
 	'maintainer'  => 'r e r n',
