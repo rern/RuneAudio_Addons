@@ -88,7 +88,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
-			.'!Package &quot;glibc&quot; may take some times to download.'
+			.'!Package &quot;glibc&quot; slow download may takes some times.'
 );
 addonblock($package);
 $package = array(
@@ -190,7 +190,7 @@ addonblock($package);
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
-	'option'      => 'Password for user root (Cancel for no password)'
+	'option'      => 'Password for user &quot;root&quot; (Cancel for no password)'
 );
 addonblock($package);*/
 $package = array(
@@ -201,9 +201,9 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'      => '#Password for Web Interface (Cancel for no password);'
+	'option'      => '#Password for user &quot;root&quot; (Cancel for no password);'
 			.'?Install WebUI alternative (Transmission Web Control);'
-			.'?Start Transmission on system startup'
+			.'?Start &quot;Transmission&quot; on system startup'
 );
 addonblock($package);
 $package = array(
