@@ -2,7 +2,7 @@ Addons for RuneAudio
 ---
 _Tested on RuneAudio beta 20160313_
 
-RuneAudio addons ready for easy installation via RuneUI.  
+RuneAudio Addons Menu for easy addons installation via RuneUI.  
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
