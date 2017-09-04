@@ -196,7 +196,7 @@ addonblock($package);
 	'option'      => 'Password for user &quot;root&quot; (Cancel for no password)'
 );
 addonblock($package);*/
-$package = array(
+/*$package = array(
 	'title'       => 'Transmission',
 	'version'     => '20170901',
 	'alias'       => 'tran',
@@ -208,7 +208,7 @@ $package = array(
 			.'?Install WebUI alternative (Transmission Web Control);'
 			.'?Start &quot;Transmission&quot; on system startup'
 );
-addonblock($package);
+addonblock($package);*/
 $package = array(
 	'title'       => 'Webradio Import',
 	'alias'       => 'webr',
