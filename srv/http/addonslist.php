@@ -93,7 +93,7 @@ addonblock($package);
 			.'!Package &quot;glibc&quot; slow download may take some times.'
 );
 addonblock($package);*/
-$package = array(
+/*$package = array(
 	'title'       => 'Backup-Restore Update',
 	'version'     => '20170901',
 	'alias'       => 'back',
@@ -102,7 +102,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 );
-addonblock($package);
+addonblock($package);*/
 $package = array(
 	'title'       => 'Expand Partition',
 	'alias'       => 'expa',
