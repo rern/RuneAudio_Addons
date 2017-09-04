@@ -23,11 +23,12 @@ setTimeout(function() {
 }, 100);
 </script>
 
-<?php
-echo '<div class="container">'
-	.'<h1>ADDONS TERMINAL</h1><a id="close" href="'.$close.'"><i class="fa fa-times fa-2x"></i></a>'
-	.'<p>Please wait until finished.</p>';
+<div class="container">
+<h1>ADDONS TERMINAL</h1><a id="close" href="'.$close.'"><i class="fa fa-times fa-2x"></i></a>
+<p>Please wait until finished.</p>
 
+<pre>
+<?php
 function bash($cmd) {
 	while (@ ob_end_flush()); // end all output buffers if any
 
@@ -52,10 +53,10 @@ function bash($cmd) {
 	pclose($proc);
 }
 
-echo '<pre>';
 bash($cmd);
-echo '</pre>';
 ?>
+</pre>
+
 </div>
 
 </body>
