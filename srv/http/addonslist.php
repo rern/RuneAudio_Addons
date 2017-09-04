@@ -18,13 +18,13 @@
 				."...\n" = .  starting dot - concatenate between lines
 	# version:
 		- specified both in <install>.sh and $package = array(...)
-		- installed version stored in database
-		- $package = array(...) vs database difference will show update button
+		- version from <install>.sh stored in database then disable/enable install/uninstall buttons
+		- database vs $package = array(...) difference will show update button
 		- update.sh must be in the same directory as <install>.sh
 		- major changes use update.sh to uninstall then reinstall
 		- non-install package:
 		    omit to hide uninstall button
-		    run once - specified any numbers in <install>.sh to disable install button after run
+		    run once package  - any numbers in <install>.sh will disable install button after run
 		    
 
 ### each package syntax: 
