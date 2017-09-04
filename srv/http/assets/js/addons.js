@@ -5,7 +5,7 @@ $( '#addons' ).click( function() {
 			window.location.href = 'addons.php';
 		} else {
 			alert( "Addons server cannot be reached.\n"
-				+"Try check and set date to current" );
+				+"Try check and set date to current." );
 			$( '#loader' ).addClass( 'hide' );
 		}
 	});
