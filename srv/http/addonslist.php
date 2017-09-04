@@ -223,3 +223,4 @@ $package = array(
 				."Continue import?"
 );
 addonblock($package);
+?>
