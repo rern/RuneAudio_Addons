@@ -1,5 +1,5 @@
 <p>
-Addons always get the latest list from source.<br>
+Addons always gets the latest list from source.<br>
 <br>
 <span>20170901 - Initial release</span><br>
 	<ul>
