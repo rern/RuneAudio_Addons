@@ -43,7 +43,7 @@ $package = array(
 	                .'?yes/no;'
 	                .'#password;'
 	                ."input line 1\n"
-	                ."input line 2"
+	                    ."input line 2"
 );
 addonblock($package);
 */
