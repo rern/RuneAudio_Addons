@@ -33,6 +33,9 @@ legend p {
 	font-size: 14px;
 	margin-left: 15px;
 }
+legend span {
+	margin-left: 8px;
+}
 legend span,
 pre {
 	color: #e0e7ee;
