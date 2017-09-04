@@ -119,7 +119,7 @@ $package = array(
 	'description' => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
-	'installurl'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended/install.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 );
 addonblock($package);
 $package = array(
