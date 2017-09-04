@@ -1,8 +1,9 @@
 <?php
 require_once('addonshead.php');
 
-echo '<div class="container">'
-	.'<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
+echo '
+	<div class="container">
+	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
 
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
@@ -13,6 +14,8 @@ function addonblock($pkg) {
 	$alias = $pkg['alias'];
 	$installurl = $pkg['installurl'];
 	$filename = end(explode('/', $installurl));
+	$thumbnail = isset($pkg['thumbnail']) ? $pkg['thumbnail'] : '';
+	
 	if ($version[$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
@@ -34,16 +37,25 @@ function addonblock($pkg) {
 		$btnin = '<a installurl="'.$command.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
+	
 	echo '
-		<div class="boxed-group">
-		<legend>'.$check.$pkg['title'].'<p>by<span>'.$pkg['maintainer'].'</span></p></legend>
-		<form class="form-horizontal">
-			<p>'.$pkg['description'].' ( <a href="'.$pkg['sourcecode'].'">More detail</a> )</p>'
-			.$btnin;
-	if (isset($pkg['version']))
-		echo ' &nbsp; '.$btnun;
-	echo
-		'</form>
+		<div class="boxed-group">';
+	if ($thumbnail) echo '
+		<div style="float: left; width: calc( 100% - 110px);">';
+	echo '
+			<legend>'.$check.$pkg['title'].'<p>by<span>'.$pkg['maintainer'].'</span></p></legend>
+			<form class="form-horizontal">
+				<p>'.$pkg['description'].' (<a href="'.$pkg['sourcecode'].'">More detail</a>)</p>'
+				.$btnin; if (isset($pkg['version']))echo ' &nbsp; '.$btnun;
+	echo '
+			</form>';
+	if ($thumbnail) echo '
+		</div>
+		<div style="float: right; width: 100px;">
+			<img src="'.$thumbnail.'">
+		</div>
+		<div style="clear: both;"></div>';
+	echo '
 		</div>';
 }
 
