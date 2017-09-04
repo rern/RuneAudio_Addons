@@ -12,6 +12,9 @@ h1 {
 .boxed-group {
 	padding: 10px 20px;
 }
+img {
+	max-width: 100px;
+}
 legend {
 	margin-bottom: 5px;
 }
