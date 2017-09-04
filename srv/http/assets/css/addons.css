@@ -35,7 +35,7 @@ pre {
 }
 pre {
 	max-height: calc(100vh - 130px);
-	white-space: nowrap;
+	white-space: pre;
 	overflow: auto;
 }
 p,
