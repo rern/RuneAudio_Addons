@@ -44,10 +44,11 @@ function bash($cmd) {
 		$std = preg_replace('/.\\[0m/', '</a>', $std);                           // reset color
 		// skip lines
 		if ( strpos($std, 'warning:') !== false || strpos($std, '[Y/n]') !== false) {
-			@ flush();
+			//
 		} else {
 			echo $std;
 		}
+		@ flush();
 	}
 
 	pclose($proc);
