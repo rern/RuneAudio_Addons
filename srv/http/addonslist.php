@@ -180,6 +180,7 @@ addonblock($package);*/
 $package = array(
 	'title'       => 'RuneUI Password',
 	'version'     => '20170901',
+	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'alias'       => 'pass',
 	'description' => 'RuneUI access restriction.',
 	'maintainer'  => 'r e r n',
