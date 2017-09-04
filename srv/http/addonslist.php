@@ -4,7 +4,7 @@
 
 	# scripts naming: ( must be, except <...> )
 		- '<install>.sh'         name for install
-		- 'uninstall_<alias>.sh  name for uninstall
+		- 'uninstall_<alias>.sh  name for uninstall ('<alias>' must be unique)
 		- 'update.sh'            name for update
 	# <install>.sh option(arguments):
 		- each input will be appended as <install>.sh arguments
