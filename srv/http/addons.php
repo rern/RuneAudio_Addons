@@ -45,14 +45,14 @@ function addonblock($pkg) {
 	echo '
 			<legend>'.$check.$pkg['title'].'<p>by<span>'.$pkg['maintainer'].'</span></p></legend>
 			<form class="form-horizontal">
-				<p>'.$pkg['description'].' (<a href="'.$pkg['sourcecode'].'">More detail</a>)</p>'
+				<p>'.$pkg['description'].' <a href="'.$pkg['sourcecode'].'">More &raquo;</a></p>'
 				.$btnin; if (isset($pkg['version']))echo ' &nbsp; '.$btnun;
 	echo '
 			</form>';
 	if ($thumbnail) echo '
 		</div>
 		<div style="float: right; width: 100px;">
-			<img src="'.$thumbnail.'">
+			<a href="'.$pkg['sourcecode'].'"><img src="'.$thumbnail.'"></a>
 		</div>
 		<div style="clear: both;"></div>';
 	echo '
@@ -64,6 +64,18 @@ require_once('addonslist.php');
 </div>
 
 <script>
+var detail = document.getElementById( 'detail' );
+detail.onclick = function() {
+	var msg = document.getElementById( 'message' );
+	if ( msg.style.display == 'none' ) {
+		msg.style.display = 'block';
+		detail.innerHTML = 'Detail ▲';
+	} else {
+		msg.style.display = 'none';
+		detail.innerHTML = 'Detail ▼';
+	}
+};
+
 var btn = document.getElementsByClassName( 'btn' );
 for ( var i = 0; i < btn.length; i++ ) {
 	btn[i].onclick = function() {
