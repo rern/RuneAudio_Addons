@@ -43,7 +43,7 @@ $package = array(
 	                .'?yes/no;'
 	                .'#password;'
 	                ."input line 1\n"
-	                ."input line 2",
+	                ."input line 2"
 );
 addonblock($package);
 */
@@ -67,7 +67,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
-			.'!Package &quot;glibc&quot; may take some times to download.',
+			.'!Package &quot;glibc&quot; may take some times to download.'
 );
 addonblock($package);
 $package = array(
@@ -116,7 +116,7 @@ $package = array(
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'      => '?Update package database after ranking?',
+	'option'      => '?Update package database after ranking?'
 );
 addonblock($package);
 $package = array(
@@ -132,7 +132,7 @@ $package = array(
 				."Local browser screen size:\n"
 				."0.7 : width less than 800px\n"
 				."1.2 : HD - 1280px\n"
-				."1.5 : Full HD - 1920px",
+				."1.5 : Full HD - 1920px"
 );
 addonblock($package);
 $package = array(
@@ -148,7 +148,7 @@ $package = array(
 			."For external power DAC > power on\n"
 			."Menu > MPD > setup and verify DAC works properly before continue.\n"
 			."\n"
-			."Continue install?",
+			."Continue install?"
 );
 addonblock($package);
 $package = array(
@@ -169,7 +169,7 @@ addonblock($package);
 	'maintainer'  => 'r e r n',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
-	'option'      => 'Password for user root (Cancel for no password)',
+	'option'      => 'Password for user root (Cancel for no password)'
 );
 addonblock($package);*/
 $package = array(
@@ -182,7 +182,7 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'      => '#Password for Web Interface (Cancel for no password);'
 			.'?Install WebUI alternative (Transmission Web Control);'
-			.'?Start Transmission on system startup',
+			.'?Start Transmission on system startup'
 );
 addonblock($package);
 $package = array(
@@ -194,6 +194,6 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'      => "!Get webradio files copied to /mnt/MPD/Webradio.\n"
 			."\n"
-			."Continue import?",
+			."Continue import?"
 );
 addonblock($package);
