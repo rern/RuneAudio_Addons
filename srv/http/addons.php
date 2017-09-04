@@ -36,7 +36,7 @@ function addonblock($pkg) {
 	}
 	echo '
 		<div class="boxed-group">
-		<legend>'.$check.$pkg['title'].'<p class="">by <span> '.$pkg['maintainer'].'</span></p></legend>
+		<legend>'.$check.$pkg['title'].'<p>by<span>'.$pkg['maintainer'].'</span></p></legend>
 		<form class="form-horizontal">
 			<p>'.$pkg['description'].' ( <a href="'.$pkg['sourcecode'].'">More detail</a> )</p>'
 			.$btnin;
