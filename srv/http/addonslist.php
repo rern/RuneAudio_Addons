@@ -34,8 +34,8 @@
 $package = array(
 	'title'       => 'title',
 	'* version'   => 'n',
-	'alias'       => 'alias',
-	'description' => 'description.',
+	'alias'       => 'alias (must be unique)',
+	'description' => 'description',
 	'maintainer'  => 'maintainer',
 	'sourcecode'  => 'https://url/to/sourcecode',
 	'installurl'  => 'https://url/for/wget/install.sh',
