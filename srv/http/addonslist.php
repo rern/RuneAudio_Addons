@@ -54,7 +54,8 @@ Addons always gets the latest list from source.<br>
     
 $package = array(
 	'title'       => 'title',
-	'* version'   => 'n',
+	'* version'   => 'version',
+	'* thumbnail' => 'https://url/to/image/w100px',
 	'alias'       => 'alias (must be unique)',
 	'description' => 'description',
 	'maintainer'  => 'maintainer',
@@ -72,6 +73,7 @@ addonblock($package);
 $package = array(
 	'title'       => 'Addons main',
 	'version'     => '20170901',
+	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'alias'       => 'addo',
 	'description' => 'This Addons main page.',
 	'maintainer'  => 'r e r n',
@@ -159,6 +161,7 @@ addonblock($package);
 /*$package = array(
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20170901',
+	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'alias'       => 'gpio',
 	'description' => 'GPIO connected relay module control.',
 	'maintainer'  => 'r e r n',
