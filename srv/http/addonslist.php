@@ -67,7 +67,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
-			.'!Package \'glibc\' may take some times to download.',
+			.'!Package &quot;glibc&quot; may take some times to download.',
 );
 addonblock($package);
 $package = array(
