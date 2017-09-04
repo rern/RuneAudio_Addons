@@ -79,7 +79,7 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 );
 addonblock($package);
-$package = array(
+/*$package = array(
 	'title'       => 'Aria2',
 	'version'     => '20170901',
 	'alias'       => 'aria',
@@ -89,7 +89,7 @@ $package = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
 			.'!Package &quot;glibc&quot; slow download may takes some times.'
-);
+);*/
 addonblock($package);
 $package = array(
 	'title'       => 'Backup-Restore Update',
@@ -156,7 +156,7 @@ $package = array(
 				."1.5 : Full HD - 1920px"
 );
 addonblock($package);
-$package = array(
+/*$package = array(
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20170901',
 	'alias'       => 'gpio',
@@ -170,7 +170,7 @@ $package = array(
 				."Menu > MPD > setup and verify DAC works properly before continue.\n"
 				."\n"
 				."Continue install?"
-);
+);*/
 addonblock($package);
 $package = array(
 	'title'       => 'RuneUI Password',
