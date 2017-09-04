@@ -1,3 +1,24 @@
+<p>
+Addons always get the latest list from source.<br>
+<br>
+<span>20170901 - Initial release</span><br>
+	<ul>
+<!--	<li>Aria2</li>-->
+	<li>Backup-Restore Update</li>
+	<li>Expand Partition</li>
+	<li>Fonts - Extended characters</li>
+	<li>RuneAudio Logo for SSH Terminal</li>
+	<li>Rank Mirror Package Servers</li>
+	<li>RuneUI Enhancements</li>
+<!--	<li>RuneUI GPIO</li>-->
+	<li>RuneUI Password</li>
+<!--	<li>Samba</li>-->
+<!--	<li>Transmission</li>-->
+	<li>Webradio Import</li>
+	</ul>
+</p>
+<br>
+
 <?php
 /* 
 ### each package requires:
