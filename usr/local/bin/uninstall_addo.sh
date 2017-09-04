@@ -17,7 +17,7 @@ sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -rv /srv/http/{addonbash.php,addondl.php,addons.php,addonshead.php}
+rm -rv /srv/http/addon*
 
 redis-cli hdel addons addo &> /dev/null
 
