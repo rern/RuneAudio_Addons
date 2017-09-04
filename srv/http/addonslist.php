@@ -1,6 +1,7 @@
 <?php
 /* 
 ### each package requires:
+
 	# scripts naming: ( must be, except <...> )
 		- '<install>.sh'         name for install
 		- 'uninstall_<alias>.sh  name for uninstall
@@ -13,10 +14,8 @@
 		- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
 		- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
 			multiple lines message:
-				 "...\n" = '\n' escaped n    - new line (must be inside double quotes)
-				."...\n" = '.'  starting dot - concatenate between lines
-				."...",  = ','  ending comma - only last line of last message
-				\' escape quote, don't use escape double quotes
+				 "...\n" = \n escaped n    - new line (must be inside double quotes)
+				."...\n" = .  starting dot - concatenate between lines
 	# version:
 		- specified both in <install>.sh and $package = array(...)
 		- installed version stored in database
@@ -26,24 +25,25 @@
 		- non-install package:
 		    omit to hide uninstall button
 		    run once - specified any numbers in <install>.sh to disable install button after run
+		    
 
 ### each package syntax: 
-    - < ... > = optional
-    - \' escape quote, don't use escape double quotes
+	- '* ...' - optional
+	- 'value' - parsed for html, use html escape characters
     
 $package = array(
 	'title'       => 'title',
-	<'version'    => 'n',>
+	'* version'   => 'n',
 	'alias'       => 'alias',
 	'description' => 'description.',
 	'maintainer'  => 'maintainer',
 	'sourcecode'  => 'https://url/to/sourcecode',
 	'installurl'  => 'https://url/for/wget/install.sh',
-	<'option'     => '!confirm;'
+	'* option'    => '!confirm;'
 	                .'?yes/no;'
 	                .'#password;'
 	                ."input line 1\n"
-			."input line 2",>
+	                ."input line 2",
 );
 addonblock($package);
 */
