@@ -24,10 +24,11 @@ setTimeout(function() {
 </script>
 
 <div class="container">
-<h1>ADDONS TERMINAL</h1><a id="close" href="<?=$close;?>"><i class="fa fa-times fa-2x"></i></a>
-<p>Please wait until finished.</p>
+	
+	<h1>ADDONS TERMINAL</h1><a id="close" href="<?=$close;?>"><i class="fa fa-times fa-2x"></i></a>
+	<p>Please wait until finished.</p>
 
-<pre>
+	<pre>
 <?php
 function bash($cmd) {
 	while (@ ob_end_flush()); // end all output buffers if any
@@ -53,10 +54,14 @@ function bash($cmd) {
 }
 
 bash($cmd);
-?>
-</pre>
 
-</div>
+echo '
+	</pre>
+
+</div>';
+
+opcache_reset();
+?>
 
 </body>
 </html>
