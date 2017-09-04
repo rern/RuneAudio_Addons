@@ -88,7 +88,7 @@ addonblock($package);
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start Aria2 on system startup;'
-			.'!Package &quot;glibc&quot; slow download may takes some times.'
+			.'!Package &quot;glibc&quot; slow download may take some times.'
 );*/
 addonblock($package);
 $package = array(
