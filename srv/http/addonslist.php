@@ -144,11 +144,11 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'      => "!Get DAC configuration ready:\n"
-			."\n"
-			."For external power DAC > power on\n"
-			."Menu > MPD > setup and verify DAC works properly before continue.\n"
-			."\n"
-			."Continue install?"
+				."\n"
+				."For external power DAC > power on\n"
+				."Menu > MPD > setup and verify DAC works properly before continue.\n"
+				."\n"
+				."Continue install?"
 );
 addonblock($package);
 $package = array(
@@ -193,7 +193,7 @@ $package = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'      => "!Get webradio files copied to /mnt/MPD/Webradio.\n"
-			."\n"
-			."Continue import?"
+				."\n"
+				."Continue import?"
 );
 addonblock($package);
