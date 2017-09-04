@@ -61,6 +61,7 @@ echo '
 </div>';
 
 opcache_reset();
+echo '<script>window.location.href = "/";</script>';
 ?>
 
 </body>
