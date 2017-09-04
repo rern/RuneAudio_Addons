@@ -91,8 +91,8 @@ addonblock($package);
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => '?Start &quot;Aria2&quot; on system startup;'
 			.'!Package &quot;glibc&quot; slow download may take some times.'
-);*/
-addonblock($package);
+);
+addonblock($package);*/
 $package = array(
 	'title'       => 'Backup-Restore Update',
 	'version'     => '20170901',
@@ -173,8 +173,8 @@ addonblock($package);
 				."Menu > MPD > setup and verify DAC works properly before continue.\n"
 				."\n"
 				."Continue install?"
-);*/
-addonblock($package);
+);
+addonblock($package);*/
 $package = array(
 	'title'       => 'RuneUI Password',
 	'version'     => '20170901',
