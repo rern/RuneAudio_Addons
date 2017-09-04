@@ -2,7 +2,14 @@
 require_once('addonshead.php');
 
 $cmd = $_POST['cmd'];
-$close = strpos($cmd, 'addo') ? '/' : 'addons.php'; 
+if (strpos($cmd, 'addo')) {
+	echo '<style>';
+	require_once('assets/css/addons.css');
+	echo '</style>';
+	$close = '/';
+} else {
+	$close = 'addons.php';
+} 
 ?>
 
 <script>
@@ -61,7 +68,6 @@ echo '
 </div>';
 
 opcache_reset();
-echo '<script>window.location.href = "/";</script>';
 ?>
 
 </body>
