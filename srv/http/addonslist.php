@@ -53,15 +53,16 @@ Addons always gets the latest list from source.<br>
 	- 'value' - parsed for html, use html escape characters
     
 $package = array(
-	'title'       => 'title',
-	'* version'   => 'version',
-	'* thumbnail' => 'https://url/to/image/w100px',
-	'alias'       => 'alias (must be unique)',
-	'description' => 'description',
-	'maintainer'  => 'maintainer',
-	'sourcecode'  => 'https://url/to/sourcecode',
-	'installurl'  => 'https://url/for/wget/install.sh',
-	'* option'    => '!confirm;'
+	'* version'     => 'version',
+	'title'         => 'title',
+	'maintainer'    => 'maintainer',
+	'description'   => 'description',
+	'* thumbnail'   => 'https://url/to/image/w100px',
+	'* buttonlabel' => 'install button label',
+	'sourcecode'    => 'https://url/to/sourcecode',
+	'installurl'    => 'https://url/for/wget/install.sh',
+	'alias'         => 'alias (must be unique)',
+	'* option'      => '!confirm;'
 	                .'?yes/no;'
 	                .'#password;'
 	                ."input line 1\n"
@@ -71,87 +72,89 @@ addonblock($package);
 */
 
 $package = array(
-	'title'       => 'Addons main',
-	'version'     => '20170901',
-	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
-	'alias'       => 'addo',
-	'description' => 'This Addons main page.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
-	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+	'version'      => '20170901',
+	'title'        => 'Addons main',
+	'maintainer'   => 'r e r n',
+	'description'  => 'This Addons main page.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
+	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+	'alias'        => 'addo',
 );
 addonblock($package);
 /*$package = array(
-	'title'       => 'Aria2',
-	'version'     => '20170901',
-	'alias'       => 'aria',
-	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'      => '?Start &quot;Aria2&quot; on system startup;'
+	'version'      => '20170901',
+	'title'        => 'Aria2',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
+	'alias'        => 'aria',
+	'option'       => '?Start &quot;Aria2&quot; on system startup;'
 			.'!Package &quot;glibc&quot; slow download may take some times.'
 );
 addonblock($package);*/
 /*$package = array(
-	'title'       => 'Backup-Restore Update',
-	'version'     => '20170901',
-	'alias'       => 'back',
-	'description' => 'Enable backup-restore settings and databases.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
+	'version'      => '20170901',
+	'title'        => 'Backup-Restore Update',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Enable backup-restore settings and databases.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
+	'alias'        => 'back',
 );
 addonblock($package);*/
 $package = array(
-	'title'       => 'Expand Partition',
-	'alias'       => 'expa',
-	'description' => 'Expand default 2GB partition to full capacity of SD card.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'title'        => 'Expand Partition',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
+	'buttonlabel'  => 'Expand',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'alias'        => 'expa',
 );
 addonblock($package);
 $package = array(
-	'title'       => 'Fonts - Extended characters',
-	'version'     => '20170901',
-	'alias'       => 'font',
-	'description' => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
+	'version'      => '20170901',
+	'title'        => 'Fonts - Extended characters',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
+	'alias'        => 'font',
 );
 addonblock($package);
 $package = array(
-	'title'       => 'Login Logo for SSH Terminal',
-	'version'     => '20170901',
-	'thumbnail'   => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
-	'alias'       => 'motd',
-	'description' => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/motd',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
+	'version'      => '20170901',
+	'title'        => 'Login Logo for SSH Terminal',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
+	'alias'        => 'motd',
 );
 addonblock($package);
 $package = array(
-	'title'       => 'Rank Mirror Packages Servers',
-	'alias'       => 'rank',
-	'description' => 'Fix packages download errors caused by unreachable servers.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'      => '?Update package database after ranking?'
+	'title'        => 'Rank Mirror Packages Servers',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fix packages download errors caused by unreachable servers.',
+	'buttonlabel'  => 'Rank',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'alias'        => 'rank',
+	'option'       => '?Update package database after ranking?'
 );
 addonblock($package);
 $package = array(
-	'title'       => 'RuneUI Enhancements',
-	'version'     => '20170901',
-	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
-	'alias'       => 'enha',
-	'description' => 'More minimalism and more fluid layout.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
-	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
+	'version'      => '20170901',
+	'title'        => 'RuneUI Enhancements',
+	'maintainer'   => 'r e r n',
+	'description'  => 'More minimalism and more fluid layout.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
+	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
+	'alias'        => 'enha',
 	'option'      => "Set zoom level for display directly connect to RPi.\n"
 				."\n"
 				."Local browser screen size:\n"
@@ -161,14 +164,14 @@ $package = array(
 );
 addonblock($package);
 /*$package = array(
-	'title'       => 'RuneUI GPIO',
-	'version'     => '20170901',
-	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
-	'alias'       => 'gpio',
-	'description' => 'GPIO connected relay module control.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'version'      => '20170901',
+	'title'        => 'RuneUI GPIO',
+	'maintainer'   => 'r e r n',
+	'description'  => 'GPIO connected relay module control.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
+	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'alias'        => 'gpio',
 	'option'      => "!Get DAC configuration ready:\n"
 				."\n"
 				."For external power DAC > power on\n"
@@ -178,47 +181,48 @@ addonblock($package);
 );
 addonblock($package);*/
 $package = array(
-	'title'       => 'RuneUI Password',
-	'version'     => '20170901',
-	'thumbnail'   => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
-	'alias'       => 'pass',
-	'description' => 'RuneUI access restriction.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_password',
-	'installurl'  => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
+	'version'      => '20170901',
+	'title'        => 'RuneUI Password',
+	'maintainer'   => 'r e r n',
+	'description'  => 'RuneUI access restriction.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
+	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
+	'alias'        => 'pass',
 );
 addonblock($package);
 /*$package = array(
-	'title'       => 'Samba Upgrade',
-	'version'     => '20170901',
-	'alias'       => 'samb',
-	'description' => 'Faster and more customized shares.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
-	'option'      => 'Password for user &quot;root&quot; (Cancel for no password)'
+	'version'      => '20170901',
+	'title'        => 'Samba Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Faster and more customized shares.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
+	'alias'        => 'samb',
+	'option'       => 'Password for user &quot;root&quot; (Cancel for no password)'
 );
 addonblock($package);*/
 /*$package = array(
-	'title'       => 'Transmission',
-	'version'     => '20170901',
-	'alias'       => 'tran',
-	'description' => 'Fast, easy, and free BitTorrent client.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'      => '#Password for user &quot;root&quot; (Cancel for no password);'
+	'version'      => '20170901',
+	'title'        => 'Transmission',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fast, easy, and free BitTorrent client.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
+	'alias'        => 'tran',
+	'option'       => '#Password for user &quot;root&quot; (Cancel for no password);'
 			.'?Install WebUI alternative (Transmission Web Control);'
 			.'?Start &quot;Transmission&quot; on system startup'
 );
 addonblock($package);*/
 $package = array(
-	'title'       => 'Webradio Import',
-	'alias'       => 'webr',
-	'description' => 'Webradio files import.',
-	'maintainer'  => 'r e r n',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
+	'title'        => 'Webradio Import',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Webradio files import.',
+	'buttonlabel'  => 'Import',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
+	'alias'        => 'webr',
 	'option'      => "!Get webradio files copied to /mnt/MPD/Webradio.\n"
 				."\n"
 				."Continue import?"
