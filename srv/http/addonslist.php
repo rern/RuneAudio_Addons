@@ -1,8 +1,14 @@
 <p>
 Addons always gets the latest list from source.<br>
 <br>
-<span>20170901 - Initial release <a id="detail">Detail ▼</a></span><br>
-	<ul id="message" style="display: none;">
+<span>20170905 <a id="detail">Detail ▼</a></span><br>
+<div  id="message" style="display: none;">
+<ul>
+	<li>set previous install to redis database</li>
+	<li>custom label for install button</li>
+</ul>
+<span>20170901 - Initial release</span><br>
+<ul>
 <!--	<li>Aria2</li>-->
 	<li>Backup-Restore Update</li>
 	<li>Expand Partition</li>
@@ -15,7 +21,8 @@ Addons always gets the latest list from source.<br>
 <!--	<li>Samba</li>-->
 <!--	<li>Transmission</li>-->
 	<li>Webradio Import</li>
-	</ul>
+</ul>
+</div>
 </p>
 <br>
 
