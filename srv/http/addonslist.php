@@ -159,9 +159,9 @@ $package = array(
 );
 addonblock($package);
 $package = array(
-	'title'        => 'Rank Mirror Packages Servers',
+	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix packages download errors caused by unreachable servers.',
+	'description'  => 'Fix package download errors caused by unreachable servers.',
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
