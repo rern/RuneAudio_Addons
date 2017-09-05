@@ -65,7 +65,7 @@ if ! grep -q 'buttonlabel' $file; then
 	echo $file
 	sed -i -e $'/thumbnail = isset/ a\
 	\t	\$buttonlabel = isset(\$pkg[\'buttonlabel\']) ? \$pkg[\'buttonlabel\'] : \'Install\';
-	' -e $'s/Install/\'\.\$buttonlabel\.\'/g
+	' -e $'s|</i> Install</a>|</i> \'\.\$buttonlabel\.\'</a>|g
 	' $file
 fi
 
