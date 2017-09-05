@@ -53,7 +53,7 @@ This Addons always gets the latest list from source.<br>
 		- major changes use update.sh to uninstall then reinstall
 		- non-install package:
 		    omit to hide uninstall button
-		    run once package  - any numbers in <install>.sh will disable install button after run
+		    run once package  - any numbers, in <install>.sh only, will disable install button after run
 		    
 
 ### each package syntax: 
@@ -202,14 +202,14 @@ $package = array(
 );
 addonblock($package);
 /*$package = array(
-	'version'      => '20170901',
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
+	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'alias'        => 'samb',
-	'option'       => 'Password for user &quot;root&quot; (Cancel for no password)'
+	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):'
 );
 addonblock($package);*/
 /*$package = array(
@@ -221,7 +221,7 @@ addonblock($package);*/
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'alias'        => 'tran',
-	'option'       => '#Password for user &quot;root&quot; (Cancel for no password);'
+	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):;'
 			.'?Install WebUI alternative (Transmission Web Control);'
 			.'?Start &quot;Transmission&quot; on system startup'
 );
