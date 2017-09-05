@@ -60,10 +60,14 @@ if ! grep -q 'white-space: pre;' $file; then
 fi
 
 ### /srv/http/addons.php ###########################################
-sed -i -e $'/thumbnail = isset/ a\
-\t	\$buttonlabel = isset(\$pkg[\'buttonlabel\']) ? \$pkg[\'buttonlabel\'] : \'Install\';
-' -e $'s/Install/\'\.\$buttonlabel\.\'/g
-' /srv/http/addons.php
+file=/srv/http/addons.php
+if ! grep -q 'buttonlabel' $file; then
+	echo $file
+	sed -i -e $'/thumbnail = isset/ a\
+	\t	\$buttonlabel = isset(\$pkg[\'buttonlabel\']) ? \$pkg[\'buttonlabel\'] : \'Install\';
+	' -e $'s/Install/\'\.\$buttonlabel\.\'/g
+	' $file
+fi
 
 redis-cli hset addons addo $version &> /dev/null
 
