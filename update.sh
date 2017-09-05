@@ -19,13 +19,7 @@ title -l = "$bar Update RuneAudio Addons ..."
 # modify files #######################################
 echo -e "$bar Update files ..."
 
-file=/srv/http/assets/css/addons.css
-if ! grep -q 'white-space: pre;' $file; then
-echo $file
-sed -i '/max-height: calc(100vh - 130px)/ a\
-    white-space: pre;
-' $file
-fi
+wgetnc https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/assets/css/addons.css -P /srv/http/assets/css
 
 redis-cli hset addons addo $version &> /dev/null
 
