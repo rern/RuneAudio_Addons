@@ -72,7 +72,7 @@ addonblock($package);
 */
 
 $package = array(
-	'version'      => '20170901',
+	'version'      => '20170905',
 	'title'        => 'Addons main',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
