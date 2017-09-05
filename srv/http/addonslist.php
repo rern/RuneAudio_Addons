@@ -29,13 +29,22 @@ This Addons always gets the latest list from source.<br>
 
 <?php
 /* 
+--------------------------------------------------------------------------------------------------------------
+
 ### each package requires:
 
-	# scripts naming: ( must be, except <...> )
+	# bash script files:
+		- install script
+		- uninstall script (no need for non-install addons)
+		- update script
+			- only when available
+			- must be in the same directory as install script
+			- use for uninstall then reinstall on major changes
+	# script files naming: ( must be, except <...> without '<>' )
 		- '<install>.sh'         name for install
 		- 'uninstall_<alias>.sh  name for uninstall ('<alias>' must be unique)
-		- 'update.sh'            name for update
-	# <install>.sh option(arguments):
+		- 'update.sh'            name for update (
+	# <install>.sh options(arguments):
 		- each input will be appended as <install>.sh arguments
 		- ';' = delimiter each input
 		- message starts with '!'      = 'js confirm' continue => ok = continue, cancel = exit install
@@ -49,17 +58,19 @@ This Addons always gets the latest list from source.<br>
 		- specified both in <install>.sh and $package = array(...)
 		- version from <install>.sh stored in database then disable/enable install/uninstall buttons
 		- database vs $package = array(...) difference will show update button
-		- update.sh must be in the same directory as <install>.sh
-		- major changes use update.sh to uninstall then reinstall
-		- non-install package:
+		- non-install addons:
 		    omit to hide uninstall button
-		    run once package  - any numbers, in <install>.sh only, will disable install button after run
+		    run once addons  - any numbers, in <install>.sh only, will disable install button after run
 		    
+	# # a '$package = array()' in this file:
+		- '* ...' - optional
+		- 'value' - parsed for html, use html escape characters
+		
+--------------------------------------------------------------------------------------------------------------
+*/
+/*
+--------------------------------------------------------------------------------------------------------------
 
-### each package syntax: 
-	- '* ...' - optional
-	- 'value' - parsed for html, use html escape characters
-    
 $package = array(
 	'* version'     => 'version',
 	'title'         => 'title',
@@ -77,6 +88,8 @@ $package = array(
 	                      ."input line 2"
 );
 addonblock($package);
+
+--------------------------------------------------------------------------------------------------------------
 */
 
 $package = array(
