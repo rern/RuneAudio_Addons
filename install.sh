@@ -48,6 +48,7 @@ echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $fo
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
+[[ $(stat -c %a /usr/bin/sudo) != 4755 ]] && chmod 4755 /usr/bin/sudo
 
 redis-cli hset addons addo $version &> /dev/null
 
