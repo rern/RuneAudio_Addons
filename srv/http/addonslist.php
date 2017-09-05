@@ -30,48 +30,15 @@ This Addons always gets the latest list from source.<br>
 <?php
 /* 
 --------------------------------------------------------------------------------------------------------------
-
-### each package requires:
-
-	# bash script files:
-		- install script
-		- uninstall script (no need for non-install addons)
-		- update script
-			- only when available
-			- must be in the same directory as install script
-			- use for uninstall then reinstall on major changes
-	# script files naming: ( must be, except <...> without '<>' )
-		- '<install>.sh'         name for install
-		- 'uninstall_<alias>.sh  name for uninstall ('<alias>' must be unique)
-		- 'update.sh'            name for update (
-	# <install>.sh options(arguments):
-		- each input will be appended as <install>.sh arguments
-		- ';' = delimiter each input
-		- message starts with '!'      = 'js confirm' continue => ok = continue, cancel = exit install
-		- message starts with '?'      = 'js confirm' yes/no   => ok = 1,        cancel = 0
-		- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
-		- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
-			multiple lines message:
-				 "...\n" = \n escaped n    - new line (must be inside double quotes)
-				."...\n" = .  starting dot - concatenate between lines
-	# version:
-		- specified both in <install>.sh and $package = array(...)
-		- version from <install>.sh stored in database then disable/enable install/uninstall buttons
-		- database vs $package = array(...) difference will show update button
-		- non-install addons:
-		    omit to hide uninstall button
-		    run once addons  - any numbers, in <install>.sh only, will disable install button after run
-		    
-	# # a '$package = array()' in this file:
-		- '* ...' - optional
-		- 'value' - parsed for html, use html escape characters
-		
+each package requires:
 --------------------------------------------------------------------------------------------------------------
-*/
-/*
---------------------------------------------------------------------------------------------------------------
-
-$package = array(
+1. bash script files:
+	- install script   - <any_name>.sh
+	- uninstall script - uninstall_<unique_alias>.sh (no need for non-install addons)
+2. in this file:
+	- $addon = array(...); addonblock($addon);
+--------------------------------------------------------------------------------------------------------------		
+$addon = array(
 	'* version'     => 'version',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
@@ -87,9 +54,29 @@ $package = array(
 	                  ."input line 1\n"
 	                      ."input line 2"
 );
-addonblock($package);
-
+addonblock($addon);
 --------------------------------------------------------------------------------------------------------------
+'* ...' - optional
+'value' - parsed for html, use html escape characters
+
+version:
+	- specified both in <install>.sh and $addon = array(...)
+	- version from <install>.sh stored in database then disable/enable buttons
+	- database vs $addon = array(...) difference will show update button
+	- non-install addons:
+		(none)             - install button always enable, no uninstall button
+		install scipt only - install button disable after run
+user input options:
+	- each input will be appended as <install>.sh arguments
+	- ';' = delimiter each input
+	- message starts with '!'      = 'js confirm' continue => ok = continue, cancel = exit install
+	- message starts with '?'      = 'js confirm' yes/no   => ok = 1,        cancel = 0
+	- message starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
+	- message starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
+		multiple lines message:
+			 "...\n" = \n escaped n    - new line (must be inside double quotes)
+			."...\n" = .  starting dot - concatenate between lines
+
 */
 
 $package = array(
