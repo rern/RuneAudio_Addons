@@ -8,22 +8,22 @@ $redis->pconnect('127.0.0.1');
 $version = $redis->hGetAll('addons');
 function addonblock($pkg) {
 	global $version;
+	$thumbnail = isset($pkg['thumbnail']) ? $pkg['thumbnail'] : '';
+	$buttonlabel = isset($pkg['buttonlabel']) ? $pkg['buttonlabel'] : 'Install';
 	$alias = $pkg['alias'];
 	$installurl = $pkg['installurl'];
 	$filename = end(explode('/', $installurl));
-	$thumbnail = isset($pkg['thumbnail']) ? $pkg['thumbnail'] : '';
-	$buttonlabel = isset($pkg['buttonlabel']) ? $pkg['buttonlabel'] : 'Install';
+	$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
+	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
 	
 	if ($version[$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$command = 'wget -qN '.str_replace($filename, 'update.sh', $installurl).'; chmod 755 update.sh; /usr/bin/sudo ./update.sh';
-			$btnin = '<a installurl="'.$command.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a cmd="'.$cmduninstall.'; '.$cmdinstall.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$command = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
-		$btnun = '<a installurl="'.$command.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if (isset($pkg['option'])) {
 			$option = 'option="'.$pkg['option'].'"';
@@ -31,8 +31,7 @@ function addonblock($pkg) {
 			$option = '';
 		}
 		$check = '';
-		$command = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
-		$btnin = '<a installurl="'.$command.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$btnin = '<a cmd="'.$cmdinstall.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
@@ -75,21 +74,17 @@ detail.onclick = function() {
 var btn = document.getElementsByClassName( 'btn' );
 for ( var i = 0; i < btn.length; i++ ) {
 	btn[i].onclick = function() {
+		var cmd = this.getAttribute( 'cmd' );
 		// user confirmation
-		var installurl = this.getAttribute( 'installurl' );
-		switch( installurl.split( '/' ).pop().substr( 0, 2 ) ) {
-			case 'un': var type = 'Uninstall "'; break;
-			case 'up': var type = 'Update "'; break;
-			default  : var type = 'Install "';
-		}
+		var type = this.innerHTML.split(' ').pop();
+		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = '';
 		var title = this
-				.parentElement
-				.previousElementSibling
-				.innerHTML
-					.replace( /<i.*i>/, '' )
-					.replace( /<p.*p>/, '' );
+					.parentElement
+					.previousElementSibling
+						.innerText
+						.replace( /by.*/, '' );
 		
-		if ( !confirm( type + title +'"?' ) ) return;
+		if ( !confirm( type +' " '+ title +' "?' ) ) return;
 		// split each option per user prompt
 		var yesno = 1;
 		var opt = ' ';
@@ -123,7 +118,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 		// create temporary form for post submit
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ installurl + opt +'">'
+			+'<input type="hidden" name="cmd" value="'+ cmd + opt +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
 	}
