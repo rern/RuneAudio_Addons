@@ -4,6 +4,7 @@ This Addons always gets the latest list from source.<br>
 <span>20170905 <a id="detail">Detail ▼</a></span><br>
 <div  id="message" style="display: none;">
 <ul>
+	<li>add Backup-Restore update</li>
 	<li>populate previous installed addons to redis database</li>
 	<li>custom label for install button for non-install addons</li>
 </ul>
@@ -70,10 +71,10 @@ $package = array(
 	'installurl'    => 'https://url/for/wget/install.sh',
 	'alias'         => 'alias (must be unique)',
 	'* option'      => '!confirm;'
-	                .'?yes/no;'
-	                .'#password;'
-	                ."input line 1\n"
-	                    ."input line 2"
+	                  .'?yes/no;'
+	                  .'#password;'
+	                  ."input line 1\n"
+	                      ."input line 2"
 );
 addonblock($package);
 */
@@ -102,7 +103,7 @@ addonblock($package);
 			.'!Package &quot;glibc&quot; slow download may take some times.'
 );
 addonblock($package);*/
-/*$package = array(
+$package = array(
 	'version'      => '20170901',
 	'title'        => 'Backup-Restore Update',
 	'maintainer'   => 'r e r n',
@@ -111,7 +112,7 @@ addonblock($package);*/
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 	'alias'        => 'back',
 );
-addonblock($package);*/
+addonblock($package);
 $package = array(
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
