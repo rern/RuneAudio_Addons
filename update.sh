@@ -2,7 +2,7 @@
 
 version=20170905
 
-# install.sh
+# update.sh
 
 rm $0
 
@@ -21,7 +21,7 @@ echo -e "$bar Update files ..."
 
 file=/srv/http/assets/css/addons.css
 echo $file
-sed -i '/max-height: calc(100vh - 130px)/ i\
+sed -i '/max-height: calc(100vh - 130px)/ a\
     white-space: pre;
 ' $file
 
