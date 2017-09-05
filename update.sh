@@ -20,10 +20,12 @@ title -l = "$bar Update RuneAudio Addons ..."
 echo -e "$bar Update files ..."
 
 file=/srv/http/assets/css/addons.css
+if ! grep -q 'white-space: pre;' $file; then
 echo $file
 sed -i '/max-height: calc(100vh - 130px)/ a\
     white-space: pre;
 ' $file
+fi
 
 redis-cli hset addons addo $version &> /dev/null
 
