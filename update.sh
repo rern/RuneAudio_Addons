@@ -59,6 +59,12 @@ if ! grep -q 'white-space: pre;' $file; then
 	' $file
 fi
 
+### /srv/http/addons.php ###########################################
+sed -i -e $'/thumbnail = isset/ a\
+\t	\$buttonlabel = isset(\$pkg[\'buttonlabel\']) ? \$pkg[\'buttonlabel\'] : \'Install\';
+' -e $'s/Install/\'\.\$buttonlabel\.\'/g
+' /srv/http/addons.php
+
 redis-cli hset addons addo $version &> /dev/null
 
 title -l = "$bar Addons Menu updated successfully."
