@@ -1,25 +1,23 @@
 <?php
 require_once('addonshead.php');
-
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
-
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
 $version = $redis->hGetAll('addons');
-
 function addonblock($pkg) {
 	global $version;
 	$alias = $pkg['alias'];
 	$installurl = $pkg['installurl'];
 	$filename = end(explode('/', $installurl));
 	$thumbnail = isset($pkg['thumbnail']) ? $pkg['thumbnail'] : '';
+	$buttonlabel = isset($pkg['buttonlabel']) ? $pkg['buttonlabel'] : 'Install';
 	
 	if ($version[$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
 		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
-			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> Install</a>';
+			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
 			$command = 'wget -qN '.str_replace($filename, 'update.sh', $installurl).'; chmod 755 update.sh; /usr/bin/sudo ./update.sh';
 			$btnin = '<a installurl="'.$command.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
@@ -34,7 +32,7 @@ function addonblock($pkg) {
 		}
 		$check = '';
 		$command = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
-		$btnin = '<a installurl="'.$command.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> Install</a>';
+		$btnin = '<a installurl="'.$command.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
@@ -58,7 +56,6 @@ function addonblock($pkg) {
 	echo '
 		</div>';
 }
-
 require_once('addonslist.php');
 ?>
 </div>
@@ -75,7 +72,6 @@ detail.onclick = function() {
 		detail.innerHTML = 'Detail ▼';
 	}
 };
-
 var btn = document.getElementsByClassName( 'btn' );
 for ( var i = 0; i < btn.length; i++ ) {
 	btn[i].onclick = function() {
@@ -94,7 +90,6 @@ for ( var i = 0; i < btn.length; i++ ) {
 					.replace( /<p.*p>/, '' );
 		
 		if ( !confirm( type + title +'"?' ) ) return;
-
 		// split each option per user prompt
 		var yesno = 1;
 		var opt = ' ';
@@ -133,7 +128,6 @@ for ( var i = 0; i < btn.length; i++ ) {
 		document.getElementById( 'formtemp' ).submit();
 	}
 }
-
 var pwd1, pwd2;
 function setpwd(msg) {
 	pwd1 = prompt(msg);
