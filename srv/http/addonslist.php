@@ -127,6 +127,7 @@ $package = array(
 	'title'        => 'Fonts - Extended characters',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 	'alias'        => 'font',
