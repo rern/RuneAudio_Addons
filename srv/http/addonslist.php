@@ -1,11 +1,11 @@
 <p>
-Addons always gets the latest list from source.<br>
+This Addons always gets the latest list from source.<br>
 <br>
 <span>20170905 <a id="detail">Detail ▼</a></span><br>
 <div  id="message" style="display: none;">
 <ul>
-	<li>set previous install to redis database</li>
-	<li>custom label for install button</li>
+	<li>populate previous installed addons to redis database</li>
+	<li>custom label for install button for non-install addons</li>
 </ul>
 <span>20170901 - Initial release</span><br>
 <ul>
