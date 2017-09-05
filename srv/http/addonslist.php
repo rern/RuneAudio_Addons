@@ -79,7 +79,7 @@ user input options:
 
 */
 
-$package = array(
+$addon = array(
 	'version'      => '20170905',
 	'title'        => 'Addons main',
 	'maintainer'   => 'r e r n',
@@ -89,8 +89,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 	'alias'        => 'addo',
 );
-addonblock($package);
-/*$package = array(
+addonblock($addon);
+/*$addon = array(
 	'version'      => '20170901',
 	'title'        => 'Aria2',
 	'maintainer'   => 'r e r n',
@@ -102,8 +102,8 @@ addonblock($package);
 	'option'       => '?Start &quot;Aria2&quot; on system startup;'
 			.'!Package &quot;glibc&quot; slow download may take some times.'
 );
-addonblock($package);*/
-$package = array(
+addonblock($addon);*/
+$addon = array(
 	'version'      => '20170901',
 	'title'        => 'Backup-Restore Update',
 	'maintainer'   => 'r e r n',
@@ -112,8 +112,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 	'alias'        => 'back',
 );
-addonblock($package);
-$package = array(
+addonblock($addon);
+$addon = array(
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
@@ -122,8 +122,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'alias'        => 'expa',
 );
-addonblock($package);
-$package = array(
+addonblock($addon);
+$addon = array(
 	'version'      => '20170901',
 	'title'        => 'Fonts - Extended characters',
 	'maintainer'   => 'r e r n',
@@ -133,8 +133,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 	'alias'        => 'font',
 );
-addonblock($package);
-$package = array(
+addonblock($addon);
+$addon = array(
 	'version'      => '20170901',
 	'title'        => 'Login Logo for SSH Terminal',
 	'maintainer'   => 'r e r n',
@@ -144,8 +144,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 	'alias'        => 'motd',
 );
-addonblock($package);
-$package = array(
+addonblock($addon);
+$addon = array(
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fix package download errors caused by unreachable servers.',
@@ -155,8 +155,8 @@ $package = array(
 	'alias'        => 'rank',
 	'option'       => '?Update package database after ranking?'
 );
-addonblock($package);
-$package = array(
+addonblock($addon);
+$addon = array(
 	'version'      => '20170901',
 	'title'        => 'RuneUI Enhancements',
 	'maintainer'   => 'r e r n',
@@ -172,8 +172,8 @@ $package = array(
 				."1.2 : HD - 1280px\n"
 				."1.5 : Full HD - 1920px"
 );
-addonblock($package);
-/*$package = array(
+addonblock($addon);
+/*$addon = array(
 	'version'      => '20170901',
 	'title'        => 'RuneUI GPIO',
 	'maintainer'   => 'r e r n',
@@ -189,8 +189,8 @@ addonblock($package);
 				."\n"
 				."Continue install?"
 );
-addonblock($package);*/
-$package = array(
+addonblock($addon);*/
+$addon = array(
 	'version'      => '20170901',
 	'title'        => 'RuneUI Password',
 	'maintainer'   => 'r e r n',
@@ -200,8 +200,8 @@ $package = array(
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
 	'alias'        => 'pass',
 );
-addonblock($package);
-/*$package = array(
+addonblock($addon);
+/*$addon = array(
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
@@ -211,8 +211,8 @@ addonblock($package);
 	'alias'        => 'samb',
 	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):'
 );
-addonblock($package);*/
-/*$package = array(
+addonblock($addon);*/
+/*$addon = array(
 	'version'      => '20170901',
 	'title'        => 'Transmission',
 	'maintainer'   => 'r e r n',
@@ -225,8 +225,8 @@ addonblock($package);*/
 			.'?Install WebUI alternative (Transmission Web Control);'
 			.'?Start &quot;Transmission&quot; on system startup'
 );
-addonblock($package);*/
-$package = array(
+addonblock($addon);*/
+$addon = array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import.',
@@ -238,5 +238,5 @@ $package = array(
 				."\n"
 				."Continue import?"
 );
-addonblock($package);
+addonblock($addon);
 ?>
