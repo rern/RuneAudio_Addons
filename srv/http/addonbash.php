@@ -37,7 +37,7 @@ setTimeout(function() {
 
 	<pre>
 <?php
-$dash = round($_POST['prewidth'] / 7.87);
+$dash = round($_POST['prewidth'] / 7.5);
 
 function bash($cmd) {
 	global $dash;
