@@ -116,9 +116,11 @@ for ( var i = 0; i < btn.length; i++ ) {
 		document.getElementById( 'loader' ).style.display = 'block';
 		
 		// create temporary form for post submit
+		var prewidth = document.getElementsByClassName( 'boxed-group' )[0].offsetWidth - 20;
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonbash.php" method="post">'
 			+'<input type="hidden" name="cmd" value="'+ cmd + opt +'">'
+			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
 	}
