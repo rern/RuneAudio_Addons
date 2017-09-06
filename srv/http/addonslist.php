@@ -81,7 +81,7 @@ user input options:
 
 $addon = array(
 	'version'      => '20170906',
-	'title'        => 'Addons main',
+	'title'        => 'Addons Menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
