@@ -234,7 +234,8 @@ $addon = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'alias'        => 'webr',
-	'option'      => "!Get webradio files copied to /mnt/MPD/Webradio.\n"
+	'option'      => "!Get webradio files copied to:\n"
+				."/mnt/MPD/Webradio\n"
 				."\n"
 				."Continue import?"
 );
