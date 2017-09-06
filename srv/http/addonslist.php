@@ -35,6 +35,7 @@ each package requires:
 1. bash script files:
 	- install script   - <any_name>.sh
 	- uninstall script - uninstall_<unique_alias>.sh (no need for non-install addons)
+	  (update by uninstall > install)
 2. in this file:
 	- $addon = array(...); addonblock($addon);
 --------------------------------------------------------------------------------------------------------------		
