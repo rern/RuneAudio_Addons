@@ -80,7 +80,7 @@ user input options:
 */
 
 $addon = array(
-	'version'      => '20170906',
+	'version'      => '20170906a',
 	'title'        => 'Addons Menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
