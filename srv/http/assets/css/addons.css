@@ -37,6 +37,8 @@ pre {
 	max-height: calc(100vh - 140px);
 	white-space: pre-wrap;
 	overflow: auto;
+	font-family: 'Inconsolata', monospace;
+	font-size: 15px;
 }
 p,
 ul {
