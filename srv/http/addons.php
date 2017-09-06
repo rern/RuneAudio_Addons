@@ -116,7 +116,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 		document.getElementById( 'loader' ).style.display = 'block';
 		
 		// width for title lines
-		var prewidth = document.getElementsByClassName( 'containner' )[0].offsetWidth - 50;
+		var prewidth = document.getElementsByClassName( 'container' )[0].offsetWidth - 50;
 		
 		// create temporary form for post submit
 		document.body.innerHTML += 
