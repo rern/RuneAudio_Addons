@@ -77,7 +77,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 		var cmd = this.getAttribute( 'cmd' );
 		// user confirmation
 		var type = this.innerHTML.split(' ').pop();
-		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = '';
+		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
 		var title = this
 					.parentElement
 					.previousElementSibling
