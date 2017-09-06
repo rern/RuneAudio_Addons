@@ -37,7 +37,10 @@ setTimeout(function() {
 
 	<pre>
 <?php
+$dash = round($_POST['prewidth'] / 7.15);
+
 function bash($cmd) {
+	global $dash;
 	while (@ ob_end_flush()); // end all buffer
 	ob_implicit_flush();      // start flush output without buffer
 	
@@ -46,6 +49,8 @@ function bash($cmd) {
 	while (!feof($popencmd)) {
 		$std = fread($popencmd, 4096);
 		
+		$std = preg_replace('/=(=+)=/', str_repeat('=', $dash), $std);           // fill line to width
+		$std = preg_replace('/-(-+)-/', str_repeat('-', $dash), $std);           // fill line to width
 		$std = preg_replace('/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std); // bar
 		$std = preg_replace('/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std); // info, yesno
 		$std = preg_replace('/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std); // warn
