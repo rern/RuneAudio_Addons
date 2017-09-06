@@ -2,7 +2,7 @@
 require_once('addonshead.php');
 
 $cmd = $_POST['cmd'];
-if (strpos($cmd, 'addo')) {
+if ( strpos($cmd, 'uninstall_addo.sh') && !strpos($cmd, 'install.sh') ) {
 	echo '<style>';
 	require_once('assets/css/addons.css');
 	echo '</style>';
@@ -38,12 +38,14 @@ setTimeout(function() {
 	<pre>
 <?php
 function bash($cmd) {
-	while (@ ob_end_flush()); // end all output buffers if any
+	while (@ ob_end_flush()); // end all buffer
+	ob_implicit_flush();      // start flush output without buffer
+	
+	$popencmd = popen("$cmd 2>&1", 'r');
 
-	$proc = popen("$cmd 2>&1", 'r');
-
-	while (!feof($proc)) {
-		$std = fread($proc, 4096);
+	while (!feof($popencmd)) {
+		$std = fread($popencmd, 4096);
+		
 		$std = preg_replace('/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std); // bar
 		$std = preg_replace('/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std); // info, yesno
 		$std = preg_replace('/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std); // warn
@@ -54,10 +56,9 @@ function bash($cmd) {
 		if ( !(strpos($std, 'warning:') !== false || stripos($std, 'y/n') !== false) ) {
 			echo "$std";
 		}
-		@ flush();
 	}
 
-	pclose($proc);
+	pclose($popencmd);
 }
 
 bash($cmd);
