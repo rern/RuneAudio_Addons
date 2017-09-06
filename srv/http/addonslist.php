@@ -1,7 +1,7 @@
 <p>
 This Addons always gets the latest list from source.<br>
 <br>
-<span>20170905 <a id="detail">Detail ▼</a></span><br>
+<span>20170906 <a id="detail">Detail ▼</a></span><br>
 <div  id="message" style="display: none;">
 <ul>
 	<li>add Backup-Restore update</li>
@@ -80,7 +80,7 @@ user input options:
 */
 
 $addon = array(
-	'version'      => '20170905',
+	'version'      => '20170906',
 	'title'        => 'Addons main',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
