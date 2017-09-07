@@ -5,9 +5,12 @@ echo '
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>';
 $redis = new Redis(); 
 $redis->pconnect('127.0.0.1');
-$version = $redis->hGetAll('addons');
+$GLOBALS['version'] = $redis->hGetAll('addons');
+
+$GLOBALS['list'] = '';
+$GLOBALS['blocks'] = '';
+
 function addonblock($pkg) {
-	global $version;
 	$thumbnail = isset($pkg['thumbnail']) ? $pkg['thumbnail'] : '';
 	$buttonlabel = isset($pkg['buttonlabel']) ? $pkg['buttonlabel'] : 'Install';
 	$alias = $pkg['alias'];
@@ -15,10 +18,10 @@ function addonblock($pkg) {
 	$filename = end(explode('/', $installurl));
 	$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
 	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
-	
-	if ($version[$alias]) {
+		
+	if ($GLOBALS['version'][$alias]) {
 		$check = '<i class="fa fa-check blue"></i> ';
-		if (!isset($pkg['version']) || $pkg['version'] == $version[$alias]) {
+		if (!isset($pkg['version']) || $pkg['version'] == $GLOBALS['version'][$alias]) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
 			$btnin = '<a cmd="'.$cmduninstall.'; '.$cmdinstall.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
@@ -35,24 +38,28 @@ function addonblock($pkg) {
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
-	echo '
-		<div class="boxed-group">';
-	if ($thumbnail) echo '
+	// addon list
+	$GLOBALS['list'] .= '<li alias="'.$alias.'">'.$pkg['title'].'</li>';
+	
+	// addon blocks
+	$GLOBALS['blocks'] .= '
+		<div id="'.$alias.'" class="boxed-group">';
+	if ($thumbnail) $GLOBALS['blocks'] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
-	echo '
+	$GLOBALS['blocks'] .= '
 			<legend>'.$check.$pkg['title'].'<p>by<span>'.$pkg['maintainer'].'</span></p></legend>
 			<form class="form-horizontal">
-				<p>'.$pkg['description'].' <a href="'.$pkg['sourcecode'].'">More &raquo;</a></p>'
-				.$btnin; if (isset($pkg['version']))echo ' &nbsp; '.$btnun;
-	echo '
+				<p>'.$pkg['description'].' <a href="'.$pkg['sourcecode'].'"> &nbsp; More &#x25B6</a></p>'
+				.$btnin; if (isset($pkg['version'])) $GLOBALS['blocks'] .= ' &nbsp; '.$btnun;
+	$GLOBALS['blocks'] .= '
 			</form>';
-	if ($thumbnail) echo '
+	if ($thumbnail) $GLOBALS['blocks'] .= '
 		</div>
 		<div style="float: right; width: 100px;">
 			<a href="'.$pkg['sourcecode'].'"><img src="'.$thumbnail.'"></a>
 		</div>
 		<div style="clear: both;"></div>';
-	echo '
+	$GLOBALS['blocks'] .= '
 		</div>';
 }
 require_once('addonslist.php');
@@ -71,6 +78,15 @@ detail.onclick = function() {
 		detail.innerHTML = 'Detail ▼';
 	}
 };
+
+var list = document.getElementById( 'list' ).children;
+for ( var i = 0; i < list.length; i++ ) {
+	list[i].onclick = function() {
+		var alias = this.getAttribute( 'alias' );
+		document.getElementById( alias ).scrollIntoView(true);
+	}
+}
+
 var btn = document.getElementsByClassName( 'btn' );
 for ( var i = 0; i < btn.length; i++ ) {
 	btn[i].onclick = function() {

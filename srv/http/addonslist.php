@@ -1,7 +1,8 @@
-<p>
+<?php
+$top = '
 This Addons always gets the latest list from source.<br>
 <br>
-<span>20170907 <a id="detail">Detail ▼</a></span><br>
+<span>20170907 <a id="detail"> &nbsp; Detail &#x25BC</a></span><br>
 <div  id="message" style="display: none;">
 <ul>
 	<li>fix bugs</li>
@@ -10,25 +11,9 @@ This Addons always gets the latest list from source.<br>
 	<li>custom label for install button for non-install addons</li>
 </ul>
 <span>20170901 - Initial release</span><br>
-<ul>
-<!--	<li>Aria2</li>-->
-	<li>Backup-Restore Update</li>
-	<li>Expand Partition</li>
-	<li>Fonts - Extended characters</li>
-	<li>RuneAudio Logo for SSH Terminal</li>
-	<li>Rank Mirror Package Servers</li>
-	<li>RuneUI Enhancements</li>
-<!--	<li>RuneUI GPIO</li>-->
-	<li>RuneUI Password</li>
-<!--	<li>Samba</li>-->
-<!--	<li>Transmission</li>-->
-	<li>Webradio Import</li>
-</ul>
 </div>
-</p>
-<br>
+';
 
-<?php
 /* 
 --------------------------------------------------------------------------------------------------------------
 each package requires:
@@ -82,7 +67,7 @@ user input options:
 */
 
 $addon = array(
-	'version'      => '20170907',
+	'version'      => '20170907a',
 	'title'        => 'Addons Menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
@@ -243,4 +228,15 @@ $addon = array(
 				."Continue import?"
 );
 addonblock($addon);
-?>
+
+// addon list
+echo '
+<ul id="list">
+'.$list
+.'</ul>
+'.$top
+.'<br>
+';
+
+// addon blocks
+echo $blocks;
