@@ -43,7 +43,7 @@ $dash = round($_POST['prewidth'] / 7.55);
 
 function bash($cmd) {
 	global $dash;
-	while (@ ob_end_flush()); // end all buffer
+	ob_end_flush(); // flush top part buffer
 	
 	$popencmd = popen("$cmd 2>&1", 'r');
 

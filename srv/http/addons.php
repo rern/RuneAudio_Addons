@@ -112,7 +112,9 @@ for ( var i = 0; i < btn.length; i++ ) {
 				}
 			}
 		}
-				
+		
+		document.getElementById( 'loader' ).style.display = 'block';
+		
 		// width for title lines
 		var prewidth = document.getElementsByClassName( 'container' )[0].offsetWidth - 50;
 		
