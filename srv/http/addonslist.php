@@ -207,6 +207,7 @@ addonblock($addon);
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
