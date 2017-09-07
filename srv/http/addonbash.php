@@ -1,4 +1,5 @@
 <?php
+ob_implicit_flush();      // start flush output without buffer
 require_once('addonshead.php');
 
 $cmd = $_POST['cmd'];
@@ -33,17 +34,16 @@ setTimeout(function() {
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close" href="<?=$close;?>"><i class="fa fa-times fa-2x"></i></a>
-	<p>Please wait until finished.</p>
 
 	<div class="hidescrollv">
 	<pre>
+Please wait ...
 <?php
 $dash = round($_POST['prewidth'] / 7.55);
 
 function bash($cmd) {
 	global $dash;
 	while (@ ob_end_flush()); // end all buffer
-	ob_implicit_flush();      // start flush output without buffer
 	
 	$popencmd = popen("$cmd 2>&1", 'r');
 
