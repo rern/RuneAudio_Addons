@@ -33,8 +33,13 @@ span,
 pre {
 	color: #e0e7ee;
 }
+.hidescrollv {
+	width: 100%;
+	overflow: hidden;
+}
 pre {
 	max-height: calc(100vh - 140px);
+	width: clac(100% + 18px);
 	white-space: pre-wrap;
 	overflow: auto;
 	font-family: 'Inconsolata', monospace;
