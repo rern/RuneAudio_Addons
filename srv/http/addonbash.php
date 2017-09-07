@@ -35,6 +35,7 @@ setTimeout(function() {
 	<h1>ADDONS TERMINAL</h1><a id="close" href="<?=$close;?>"><i class="fa fa-times fa-2x"></i></a>
 	<p>Please wait until finished.</p>
 
+	<div class="hidescrollv">
 	<pre>
 <?php
 $dash = round($_POST['prewidth'] / 7.55);
@@ -70,6 +71,7 @@ bash($cmd);
 
 echo '
 	</pre>
+	</div>
 
 </div>';
 
