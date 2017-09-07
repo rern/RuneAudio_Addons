@@ -1,9 +1,10 @@
 <p>
 This Addons always gets the latest list from source.<br>
 <br>
-<span>20170906 <a id="detail">Detail ▼</a></span><br>
+<span>20170907 <a id="detail">Detail ▼</a></span><br>
 <div  id="message" style="display: none;">
 <ul>
+	<li>fix bugs</li>
 	<li>add Backup-Restore update</li>
 	<li>populate previous installed addons to redis database</li>
 	<li>custom label for install button for non-install addons</li>
