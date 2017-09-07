@@ -33,13 +33,6 @@ span,
 pre {
 	color: #e0e7ee;
 }
-@font-face {
-	font-family: Inconsolata;
-	src: url('/assets/fonts/Inconsolata-Regular.woff') format('woff'),
-		url('/assets/fonts/Inconsolata-Regular.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
 pre {
 	max-height: calc(100vh - 140px);
 	white-space: pre-wrap;
