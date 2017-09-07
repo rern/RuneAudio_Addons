@@ -84,7 +84,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 						.innerText
 						.replace( /by.*/, '' );
 		
-		if ( !confirm( type +' " '+ title +' "?' ) ) return;
+		if ( !confirm( type +' "'+ title +'"?' ) ) return;
 		// split each option per user prompt
 		var yesno = 1;
 		var opt = ' ';
