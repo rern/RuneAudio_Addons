@@ -39,7 +39,7 @@ pre {
 }
 pre {
 	max-height: calc(100vh - 140px);
-	width: clac(100% + 18px);
+	width: calc(100% + 18px);
 	white-space: pre-wrap;
 	overflow: auto;
 	font-family: 'Inconsolata', monospace;
