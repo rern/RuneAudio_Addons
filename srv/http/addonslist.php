@@ -66,7 +66,7 @@ version:
 	- database vs $addon = array(...) difference will show update button
 	- non-install addons:
 		(none)             - install button always enable, no uninstall button
-		install scipt only - install button disable after run
+		install scipt only - install button disable after run (run once)
 user input options:
 	- each input will be appended as <install>.sh arguments
 	- ';' = delimiter each input
