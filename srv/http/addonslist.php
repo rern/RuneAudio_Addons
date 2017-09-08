@@ -27,6 +27,7 @@ each addon requires:
 	- (update)         - none
 		- use 'uninstall > install' to update by default
 		- different 'version' in this file and install file will show update button
+		- 'exit 1' for 'already installed' check to stop reinstall from running
 2. in this file:
 	- array(...),
 --------------------------------------------------------------------------------------------------------------		

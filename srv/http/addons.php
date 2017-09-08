@@ -43,7 +43,7 @@ function addonblock( $pkg ) {
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a cmd="'.$cmduninstall.'; '.$cmdinstall.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
