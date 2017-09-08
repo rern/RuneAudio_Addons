@@ -1,8 +1,7 @@
 <?php
 $addonsversion = '20170908';
-$log = '
-	Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.<br>'
-	.$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
+$log = 
+	$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
 	<br>
 	<div  id="message" style="display: none;">
 		<ul>
@@ -58,6 +57,8 @@ version:
 	- non-install addons:
 		(none) + (none)          - install button always enable, no uninstall button
 		(none) + 'install scipt' - install button disable after run (run once)
+description:
+	- allow html code
 option:
 	for user input
 	- each input will be appended as <install>.sh arguments
@@ -85,7 +86,8 @@ array(
 	'version'      => $addonsversion,
 	'title'        => 'Addons Menu',
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons main page.',
+	'description'  => 'This Addons main page.<br>'
+			.'<span>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</span>',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
