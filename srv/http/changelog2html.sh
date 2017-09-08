@@ -8,7 +8,7 @@
 #             </ul>
 #             <br>
 
-file=changelog.md
+file=/srv/http/changelog.md
 
 sed -e '/^\s*$/ d
 ' -e '1 s/## //
@@ -23,8 +23,12 @@ $addonsversion.'"'"' &nbsp; <a id="detail">changelog &#x25BC</a><br>\
 ' -e 's/^<li>- /	<li>/
 ' -e '/^\s*<li>/ s|$|</li>|;
 ' -e '/^## / i\
-	</ul>\
-	<br>
+	</ul>
+' -e '/^## / a\
+	<ul>
 ' -e 's/^## //
-' -e '$ s/$/'"'"'/
+' -e '$ a\
+	</ul>\
+	<br>\
+</div>'"'"'
 ' $file
