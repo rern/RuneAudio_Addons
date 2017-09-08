@@ -1,5 +1,5 @@
 <?php
-$addonsversion = '20170908';
+$addonsversion = '20170908'; // install.sh must be updated
 $log = 
 	$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
 	<br>
