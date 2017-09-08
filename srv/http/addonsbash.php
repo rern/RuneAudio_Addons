@@ -77,12 +77,10 @@ echo '
 
 sleep(1);
 echo '
-<script>
-alert("Finished.\
-	\n\
-	\nPlease see result information on screen.")
-</script>';
-
+	<script>
+		alert("Finished.\n\nPlease see result information on screen.")
+	</script>';
+	
 opcache_reset();
 ?>
 

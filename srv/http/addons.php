@@ -179,7 +179,7 @@ function formtemp(command) {
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
 		
 		document.body.innerHTML += 
-			'<form id="formtemp" action="addonbash.php" method="post">'
+			'<form id="formtemp" action="addonsbash.php" method="post">'
 			+'<input type="hidden" name="cmd" value="'+ command +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
