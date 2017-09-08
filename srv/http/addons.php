@@ -92,10 +92,9 @@ function addonblock( $pkg ) {
 	if ( btnlabel === ' Update' ) {
 		var cmdupdate = btn.getAttribute( 'cmd' );
 		var ok = confirm(
-			'Once "Addons Menu" uninstalled,\n'
-			+'reinstall must be done from SSH terminal.\n'
+			'There is an update for "Addons Menu".\n'
 			+'\n'
-			+'Continue uninstall?'
+			+'Update?'
 		);
 		if ( !ok ) return
 		formtemp( cmdupdate );
