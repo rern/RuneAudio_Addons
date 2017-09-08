@@ -1,7 +1,9 @@
 <?php
 $addonsversion = '20170908';
-$log = 
-	$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
+$log = '
+	Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.
+	'
+	.$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
 	<br>
 	<div  id="message" style="display: none;">
 		<ul>
