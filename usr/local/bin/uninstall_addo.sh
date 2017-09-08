@@ -4,7 +4,7 @@
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
 # check installed #######################################
-if [[ ! -e /srv/http/addonbash.php ]]; then
+if [[ ! -e /srv/http/addonsbash.php ]]; then
 	echo -e "Addons not found."
 	exit
 fi
