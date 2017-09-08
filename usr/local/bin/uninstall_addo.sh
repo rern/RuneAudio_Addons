@@ -6,7 +6,7 @@ wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; r
 # check installed #######################################
 if [[ ! -e /srv/http/addonsbash.php ]]; then
 	echo -e "Addons not found."
-	exit
+	exit 1
 fi
 
 title -l = "$bar Uninstall Addons ..."

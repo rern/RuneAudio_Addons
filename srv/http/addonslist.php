@@ -23,7 +23,7 @@ each addon requires:
 --------------------------------------------------------------------------------------------------------------
 1. bash script files:
 	- install script   - <any_name>.sh
-	- uninstall script - uninstall_<unique_alias>.sh (no need for non-install addons)
+	- uninstall script - /usr/local/bin/uninstall_<unique_alias>.sh (no need for non-install addons)
 	- (update)         - none
 		- use 'uninstall > install' to update by default
 		- different 'version' in this file and install file will show update button
