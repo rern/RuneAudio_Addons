@@ -1,22 +1,4 @@
 <?php
-$addonsversion = '20170908'; // install.sh must be updated
-$log = 
-	$addonsversion.' &nbsp; <a id="detail">changelog &#x25BC</a>
-	<br>
-	<div  id="message" style="display: none;">
-		<ul>
-		<li>auto update addons menu</li>
-		<li>improve layout</li>
-		<li>optimize code</li>
-		<li>add Backup-Restore update</li>
-		<li>populate previous installed addons to redis database</li>
-		<li>custom label for install button for non-install addons</li>
-		</ul>
-	20170901 - Initial release
-	<br>
-	</div>
-';
-
 /* 
 --------------------------------------------------------------------------------------------------------------
 each addon requires:
