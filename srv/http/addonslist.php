@@ -66,7 +66,12 @@ option:
 		- starts with '?'      = 'js confirm' yes/no   => ok = 1,        cancel = 0
 		- starts with '#'      = 'js prompt'  password => ok = password, blank-ok/cancel = 0
 		- starts with '(none)' = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
-		- message will be parsed for js alert/confirm/prompt, use '&quot;' for double quote
+		- message will be parsed for html value, use entity code for:
+			 &quot;  = "
+			 &#039;  = '
+			 &amp;   = &
+			 &lt;    = <
+			 &gt;    = >
 		- multiple lines:
 			 "...\n" = \n escaped n    - new line (must be inside double quotes)
 			."...\n" = .  starting dot - concatenate between lines
