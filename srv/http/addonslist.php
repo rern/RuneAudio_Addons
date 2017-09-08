@@ -58,7 +58,7 @@ version:
 		(none) + (none)          - install button always enable, no uninstall button
 		(none) + 'install scipt' - install button disable after run (run once)
 description:
-	- allow html code
+	- html allowed
 option:
 	for user input
 	- each input will be appended as <install>.sh arguments
