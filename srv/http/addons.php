@@ -58,7 +58,7 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list
-	$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$pkg[ 'title' ].'</li>';
+	if ( $alias !== 'addo' ) $GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$pkg[ 'title' ].'</li>';
 	
 	// addon blocks
 	$GLOBALS[ 'blocks' ] .= '
@@ -66,7 +66,7 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.$pkg[ 'title' ].'<p>by<span>'.$pkg[ 'maintainer' ].'</span></p></legend>
+			<legend>'.$check.strip_tags( $pkg[ 'title' ] ).'<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p></legend>
 			<form class="form-horizontal">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'"> &nbsp; More &#x25B6</a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
