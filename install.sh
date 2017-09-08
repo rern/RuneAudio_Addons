@@ -11,7 +11,7 @@ rm $0
 # import heading function
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-if [[ -e /srv/http/addonbash.php ]]; then
+if [[ -e /srv/http/addonsbash.php ]]; then
     echo -e "$info Already installed."
     exit
 fi
@@ -36,15 +36,19 @@ echo
 # modify files #######################################
 echo -e "$bar Modify files ..."
 
-header=/srv/http/app/templates/header.php
-echo $header
-sed -i '/poweroff-modal/ i\
+file=/srv/http/app/templates/header.php
+if grep -q 'id="addons"' $file; then
+	echo $file
+	sed -i '/poweroff-modal/ i\
             <li><a id="addons" style="cursor: pointer;"><i class="fa fa-cubes"></i> Addons</a></li>
-' $header
+	' $file
+fi
 
-footer=/srv/http/app/templates/footer.php
-echo $footer
-echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $footer
+file=/srv/http/app/templates/footer.php
+if grep -q 'addons.js' $file; then
+	echo $file
+	echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $file
+fi
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
