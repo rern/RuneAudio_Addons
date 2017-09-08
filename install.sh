@@ -37,7 +37,7 @@ echo
 echo -e "$bar Modify files ..."
 
 file=/srv/http/app/templates/header.php
-if grep -q 'id="addons"' $file; then
+if ! grep -q 'id="addons"' $file; then
 	echo $file
 	sed -i '/poweroff-modal/ i\
             <li><a id="addons" style="cursor: pointer;"><i class="fa fa-cubes"></i> Addons</a></li>
@@ -45,7 +45,7 @@ if grep -q 'id="addons"' $file; then
 fi
 
 file=/srv/http/app/templates/footer.php
-if grep -q 'addons.js' $file; then
+if ! grep -q 'addons.js' $file; then
 	echo $file
 	echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $file
 fi
