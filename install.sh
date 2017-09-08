@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=20170908
+version=20170908 # addonslist.php must be updated
 
 # install.sh
 
