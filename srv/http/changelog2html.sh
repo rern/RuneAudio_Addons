@@ -11,24 +11,30 @@
 file=changelog.md
 
 sed -e '/^\s*$/ d
-' -e '1 s/## //
-' -e '1 i\
+' -e '1 {
+s/## //
+i\
 <?php
-' -e '1 s/^/$addonsversion = "/
-' -e '1 s/$/";/
-' -e '1 a\
+s/^/$addonsversion = "/
+s/$/";/
+a\
 $log = \
 $addonsversion.'"'"' &nbsp; <a id="detail">changelog &#x25BC</a><br>\
 <div  id="message" style="display: none;">\
 	<ul>
-' -e '/^- / s/^/<li>/
-' -e 's/^<li>- /	<li>/
-' -e '/^\s*<li>/ s|$|</li>|;
-' -e '/^## / i\
+}
+' -e '/^- / {
+s/^- //
+s/^/	<li>/
+s|$|</li>|
+}
+' -e '/^## / {
+s/^## //
+i\
 	</ul>
-' -e '/^## / a\
+a\
 	<ul>
-' -e 's/^## //
+}
 ' -e '$ a\
 	</ul>\
 	<br>\
