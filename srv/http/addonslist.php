@@ -25,7 +25,9 @@ each addon requires:
 1. bash script files:
 	- install script   - <any_name>.sh
 	- uninstall script - uninstall_<unique_alias>.sh (no need for non-install addons)
-	  (update by uninstall > install)
+	- (update)         - none
+		- use 'uninstall > install' to update by default
+		- different 'version' in this file and install file will show update button
 2. in this file:
 	- array(...),
 --------------------------------------------------------------------------------------------------------------		
@@ -50,12 +52,12 @@ note: '* ...' = optional
 
 version:
 	for buttons enable/disable
-	- specified both in <install>.sh and $addon = array(...)
-	- version from <install>.sh stored in database then disable/enable buttons
-	- database vs $addon = array(...) difference will show update button
+	- specified both in 'array(...)' in this file and 'install script'
+	- version from 'install script' stored in database then disable/enable buttons
+	- database vs 'array(...)' difference will show update button
 	- non-install addons:
-		(none)             - install button always enable, no uninstall button
-		install scipt only - install button disable after run (run once)
+		(none) + (none)          - install button always enable, no uninstall button
+		(none) + 'install scipt' - install button disable after run (run once)
 option:
 	for user input
 	- each input will be appended as <install>.sh arguments
