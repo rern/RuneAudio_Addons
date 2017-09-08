@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=20170907a
+version=20170908
 
 # install.sh
 
