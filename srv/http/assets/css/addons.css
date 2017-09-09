@@ -30,7 +30,7 @@ legend p {
 legend span {
 	margin-left: 8px;
 }
-.scrollbar-measure {
+.divscrollbar {
 	width: 100px;
 	height: 100px;
 	overflow: scroll;
@@ -42,6 +42,7 @@ pre {
 	width: 100%;
 	white-space: pre-wrap;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch; /* ios momentum scroll */
 	font-family: 'Inconsolata', monospace;
 	font-size: 15px;
 }
