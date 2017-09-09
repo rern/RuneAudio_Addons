@@ -9,16 +9,9 @@ h1 {
 	vertical-align: 10px;
 	width: 25px;
 }
-#list {
-	list-style: none;
-}
-#list li::before {
-  content: "\25B6 \A0 \A0";
-  color: #0095d8;
-}
-#list li,
-a {
-	cursor: pointer;
+#list li::after {
+	content: "\A0 \25BC";
+	color: #0095d8;
 }
 .boxed-group {
 	padding: 10px 20px;
@@ -37,30 +30,44 @@ legend p {
 legend span {
 	margin-left: 8px;
 }
-span,
-pre {
-	color: #e0e7ee;
-}
-.hidescrollv {
-	width: 100%;
-	overflow: hidden;
+.scrollbar-measure {
+	width: 100px;
+	height: 100px;
+	overflow: scroll;
+	position: absolute;
+	top: -9999px;
 }
 pre {
 	max-height: calc(100vh - 140px);
-	width: calc(100% + 18px);
+	width: 100%;
 	white-space: pre-wrap;
 	overflow: auto;
 	font-family: 'Inconsolata', monospace;
 	font-size: 15px;
 }
+.btn {
+	text-transform: capitalize;
+}
+#bottom {
+	height: calc(100vh - 160px);
+}
+#close,
+#list,
+a {
+	cursor: pointer;
+}
+span,
+pre {
+	color: #e0e7ee;
+}
 p,
 ul {
 	color: #7795b4;
 }
-.btn {
-	text-transform: capitalize;
-}
-.blue {
+#close,
+legend i,
+#list,
+a {
 	color: #0095d8;
 }
 .cc {
