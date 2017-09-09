@@ -75,7 +75,7 @@ echo '
 
 </div>';
 
-sleep(1);
+usleep(500000);
 echo '
 	<script>
 		alert("Finished.\n\nPlease see result information on screen.")
