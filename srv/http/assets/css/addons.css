@@ -13,7 +13,7 @@ h1 {
 	list-style: none;
 }
 #list li::before {
-  content: "\25B6 \A0 \A0";
+  content: "\25BC \A0 \A0";
   color: #0095d8;
 }
 #list li,
