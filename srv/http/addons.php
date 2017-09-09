@@ -40,7 +40,7 @@ function addonblock( $pkg ) {
 	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
 		
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
-		$check = '<i class="fa fa-check blue"></i> ';
+		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
@@ -69,7 +69,7 @@ function addonblock( $pkg ) {
 	$GLOBALS[ 'blocks' ] .= '
 			<legend>'.$check.strip_tags( $pkg[ 'title' ] ).'<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p></legend>
 			<form class="form-horizontal">
-				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'"> &nbsp; More &#x25B6</a></p>'
+				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';
@@ -84,6 +84,7 @@ function addonblock( $pkg ) {
 }
 ?>
 </div>
+<div id="bottom"></div>
 
 <script>
 // auto update addons menu
@@ -121,6 +122,7 @@ for ( var i = 0; i < list.length; i++ ) {
 	list[i].onclick = function() {
 		var alias = this.getAttribute( 'alias' );
 		document.getElementById( alias ).scrollIntoView(true);
+		window.scrollBy(0, -15);
 	}
 }
 
