@@ -1,7 +1,7 @@
 <?php
 require_once( 'addonshead.php' );
-require_once( 'addonslist.php' );
 require_once( 'addonslog.php' );
+require_once( 'addonslist.php' );
 
 echo '
 	<div class="container">
