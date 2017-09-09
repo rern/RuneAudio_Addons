@@ -32,7 +32,7 @@ chmod -R 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
-./addonsdl.sh 1
+/srv/http/addonsdl.sh 1
 echo
 
 # modify files #######################################
