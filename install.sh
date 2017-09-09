@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version=20170909 # addonslist.php must be updated
+version=20170909 # only this addon main, edit version number in /changelog.md as well
 
 # install.sh
 
