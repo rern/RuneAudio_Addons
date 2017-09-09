@@ -48,6 +48,11 @@ pre {
 #bottom {
 	height: calc(100vh - 160px);
 }
+#close,
+#list,
+a {
+	cursor: pointer;
+}
 span,
 pre {
 	color: #e0e7ee;
@@ -57,9 +62,9 @@ ul {
 	color: #7795b4;
 }
 #close,
+legend i,
 #list,
 a {
-	cursor: pointer;
 	color: #0095d8;
 }
 .cc {
