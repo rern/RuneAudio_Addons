@@ -3,7 +3,7 @@ Guideline
 
 **Each addon requires:**  
 
-1. 2 bash script files
+1. bash script files
 2. an `array(...)` in `/srv/http/addonslist.php`  
 ---
   
@@ -115,7 +115,7 @@ title -nt "$info <additional info>"
 rm $0
 ```
     
-**2. an 'array()' in /srv/http/addonslist.php**  
+**2. an `array()` in `/srv/http/addonslist.php`**  
 ```php
 array(
 	'* version'     => 'version',
