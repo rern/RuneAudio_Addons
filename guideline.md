@@ -14,7 +14,7 @@ Guideline
   - `<alias>` must be unique
   - no need for non-install type
 - (update script)  - none
-  - use 'uninstall > install' to update
+  - default update: reinstall by 'uninstall' > 'install'
   - different `version` in this file and install file will show update button
   - `exit 1` for 'not found' check in uninstall to stop reinstall from running
   
