@@ -87,18 +87,17 @@ for user input
 - `;` = delimiter each input
 - message
 ```
-starts with ! = 'js confirm' continue => ok = continue, cancel = exit install
-starts with ? = 'js confirm' yes/no   => ok = 1,        cancel = 0
-starts with # = 'js prompt'  password => ok = password, blank-ok/cancel = 0
-starts with   = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
-
+select type by start with:
+    ! = 'js confirm' continue => ok = continue, cancel = exit install
+    ? = 'js confirm' yes/no   => ok = 1,        cancel = 0
+    # = 'js prompt'  password => ok = password, blank-ok/cancel = 0
+      = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
 message will be parsed as html, use entity code for:
     &quot; = "
     &#039; = '
     &amp;  = &
     &lt;   = <
-    &gt;   = >
-    
+    &gt;   = >  
 multiple lines:
     "...\n"  = escaped n    - new line (must be inside double quotes)
     ."...\n" = starting dot - concatenate between lines
