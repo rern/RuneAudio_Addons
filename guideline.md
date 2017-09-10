@@ -15,6 +15,38 @@ Guideline
   - use 'uninstall > install' to update
   - different `version` in this file and install file will show update button
   - `exit 1` for 'already installed' check to stop reinstall from running
+```sh
+version=yyyymmdd
+
+# delete itself
+rm $0
+
+# import heading function:
+wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
+# - heading
+# - badge
+# - dialog
+# - wget
+
+# check 'already installed'
+
+# start info
+
+# user input
+# get uninstall script
+# get files
+# backup existing files
+# chmod, chown
+# place files in destinations
+# remove install files
+# create files
+# modify files
+
+# finish info
+
+# clear opcache if needed
+# restart midori if needef
+```
     
 **2. an 'array()' in /srv/http/addonslist.php**  
 ```php
@@ -65,5 +97,5 @@ for user input
     - `&lt;`    = <
     - `&gt;`    = >
   - multiple lines:
-    - `"...\n"` = \n escaped n    - new line (must be inside double quotes)
-    - `."...\n"` = .  starting dot - concatenate between lines
+    - `"...\n"` = escaped n    - new line (must be inside double quotes)
+    - `."...\n"` = starting dot - concatenate between lines
