@@ -1,8 +1,7 @@
 Guideline
 ---
 **`changelog.md`** of Addons Menu   
-- file name and path cannot be change
-- Addons Menu uses it for
+- file name and path cannot be change - Addons Menu uses it for:
     - get `version` number for both `install.sh` and `addonslist.php`  
     - get content to display on web page
 - format must be:
