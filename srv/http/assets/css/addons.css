@@ -29,6 +29,9 @@ legend p {
 legend span {
 	margin-left: 8px;
 }
+legend > a:last-child {
+	float: right;
+}
 pre {
 	width: 100%;
 	max-height: calc(100vh - 140px);
