@@ -86,10 +86,10 @@ for user input
 - each input will be appended as <install>.sh arguments
 - `;` = delimiter each input
 - message (js alert/confirm/prompt):
-  - starts with `!` = `'js confirm' continue => ok = continue, cancel = exit install`
-  - starts with `?` = `'js confirm' yes/no   => ok = 1,        cancel = 0`
-  - starts with `#` = `'js prompt'  password => ok = password, blank-ok/cancel = 0`
-  - starts with ` ` = `'js prompt'  input    => ok = input,    blank-ok/cancel = 0`
+  - starts with `! = 'js confirm' continue => ok = continue, cancel = exit install`
+  - starts with `? = 'js confirm' yes/no   => ok = 1,        cancel = 0`
+  - starts with `# = 'js prompt'  password => ok = password, blank-ok/cancel = 0`
+  - starts with `  = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0`
   - message will be parsed for html value, use entity code for:
     - `&quot;  = "`
     - `&#039;  = '`
