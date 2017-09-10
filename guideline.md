@@ -1,19 +1,15 @@
 Guideline
 ---
-**`changelog.md`**  
-- file name and path cannot be change, it used by Addons Menu.
-- format and conversion:
+**`changelog.md`** of Addons Menu   
+- file name and path cannot be change
+- Addons Menu uses it for
+    - get `version` number for both `install.sh` and `addonslist.php`  
+    - get content to display on web page
+- format must be:
 ```
-## <yyyymmdd>
+## 20170901
 - abc
-- def 'ghi'
-```
-```
-<yyyymmdd>
-<ul>
-<li>abc</li>
-<li>def "ghi"</li>
-</ul>
+- def
 ```
 
 **Each addon requires:**  
