@@ -66,7 +66,7 @@ option:
 $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
-	'version'      => $addonsversion,
+	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'title'        => 'Addons Menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.<br>'
