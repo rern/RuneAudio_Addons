@@ -33,7 +33,7 @@ wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; r
 timestart
 
 # check 'already installed'
-if [[ true ]] &> /dev/null; then
+if [[ -e <file> ]] &> /dev/null; then
 	echo -e "$info <title> already installed."
 	exit 1
 fi
@@ -90,8 +90,8 @@ fi
 # import functions for timer, heading, badge, wget
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-# check installed - 'exit 1' needed
-if [[ !true ]]; then
+# check not installed - exit code '1' needed
+if [[ ! -e <file> ]]; then
 	echo -e "$info <title> not found."
 	exit 1
 fi
