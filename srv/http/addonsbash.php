@@ -78,7 +78,7 @@ echo '
 usleep(500000);
 ?>
 	<script>
-		window.clearInterval( intscroll );
+		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		alert( 'Finished.\n\nPlease see result information on screen.' );
 	</script>
