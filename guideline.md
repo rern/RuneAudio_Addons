@@ -34,33 +34,46 @@ if [[ true ]] &> /dev/null; then
 	exit
 fi
 
-# start heading
-title -l = "$bar Install <title> ..."
-
-# user input
-
-# get uninstall script
-wgetnc https://github.com/<path>/raw/master/uninstall_<alias>.sh -P /usr/local/bin
+# start install
+title -l = "$bar Install $runepwd ..."
+echo -e "$bar Get files ..."
+wgetnc https://github.com/<name>/<repository>/archive/master.zip
 
 # backup existing files
 echo -e "$bar Backup files ..."
-mv /<path>/file{,backup}
+mv /<path>/<file>{,.backup}
 
-# get files
-echo -e "$bar Get <title> files ..."
-wgetnc https://github.com/<path>/archive/master.zip
-bsdtar -xf master.zip --strip 1 -C /
-rm master.zip
-# chmod, chown
-# place files in destinations
-# remove install files
+# add files
+echo -e "$bar Install new files ..."
+rm -rf /tmp/install
+mkdir -p /tmp/install
+bsdtar -xf master.zip --strip 1 --exclude '<directory>/' -C /tmp/install
+rm master.zip /tmp/install/* &> /dev/null
+
+chown -R http:http /tmp/install
+chown -R root:root /tmp/install/usr/local/bin/uninstall*
+chmod -R 755 /tmp/install
+
+cp -rp /tmp/install/* /
+rm -r /tmp/install
+
 # create files
+echo -e "$bar Install new files ..."
+echo 'content' > <newfile>
+
 # modify files
+sed 's/existing/new/' /<path>/<file>
 
-# finish info
+# finish install
+title -l = "$bar <title> installed successfully."
+title -nt "$info <additional info>"
 
-# clear opcache if needed
-# restart midori if needef
+# restart local browser if needed
+if pgrep midori > /dev/null; then
+	killall midori
+	sleep 1
+	xinit &> /dev/null &
+fi
 ```
     
 **2. an 'array()' in /srv/http/addonslist.php**  
