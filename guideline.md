@@ -1,5 +1,20 @@
 Guideline
 ---
+**`changelog.md`**  
+- file name and path cannot be change, it used by Addons Menu.
+- format and conversion:
+```
+## <yyyymmdd>
+- abc
+- def 'ghi'
+```
+```
+<yyyymmdd>
+<ul>
+<li>abc</li>
+<li>def "ghi"</li>
+</ul>
+```
 
 **Each addon requires:**  
 
