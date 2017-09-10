@@ -69,8 +69,7 @@ array(
 ```
 `'* ...'` = optional  
 
-**version:**  
-for buttons enable/disable  
+**version:** for buttons enable/disable  
 - specified both in `array(...)` and 'install script'
 - version from 'install script' stored in database then disable/enable buttons
 - database vs `array(...)` difference will show update button
@@ -78,11 +77,9 @@ for buttons enable/disable
 	- (none) + (none)          - install button always enable, no uninstall button
 	- (none) + 'install scipt' - install button disable after run (run once)
     
-**description:**  
-- html allowed  
+**description:** html allowed  
 
-**option:**  
-for user input  
+**option:** for user input  
 - each input will be appended as <install>.sh arguments
 - `;` = delimiter each input
 - message
