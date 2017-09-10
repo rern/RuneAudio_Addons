@@ -14,7 +14,7 @@ Guideline
 - (update)         - none
   - use 'uninstall > install' to update
   - different `version` in this file and install file will show update button
-  - `exit 1` for 'already installed' check to stop reinstall from running
+  - `exit 1` for 'not found' check in uninstall to stop reinstall from running
   
 **install script**
 ```sh
@@ -81,6 +81,38 @@ if pgrep midori > /dev/null; then
 	sleep 1
 	xinit &> /dev/null &
 fi
+```
+
+**uninstall script**
+```sh
+#!/bin/bash
+
+# import functions for timer, heading, badge, wget
+wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
+
+# check installed - 'exit 1' needed
+if [[ !true ]]; then
+	echo -e "$info <title> not found."
+	exit 1
+fi
+
+# start uninstall
+title -l = $bar Uninstall <title> ...
+
+# remove files 
+echo -e "$bar Remove files ..."
+rm -v /<path>/<file>
+
+# restore files
+echo -e "$bar Restore files ..."
+sed 's/new/existing/' /<path>/<file>
+
+# finish uninstall
+title -l = "$bar <title> uninstalled successfully."
+title -nt "$info <additional info>"
+
+# delete itself
+rm $0
 ```
     
 **2. an 'array()' in /srv/http/addonslist.php**  
