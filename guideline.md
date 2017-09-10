@@ -21,21 +21,36 @@ version=yyyymmdd
 # delete itself
 rm $0
 
-# import heading function:
+# import functions for timer, heading, badge, wget
+    # detail: https://github.com/rern/title_script
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
-# - heading
-# - badge
-# - dialog
-# - wget
+
+# start timer
+timestart
 
 # check 'already installed'
+if [[ true ]] &> /dev/null; then
+	echo -e "$info <title> already installed."
+	exit
+fi
 
-# start info
+# start heading
+title -l = "$bar Install <title> ..."
 
 # user input
+
 # get uninstall script
-# get files
+wgetnc https://github.com/<path>/raw/master/uninstall_<alias>.sh -P /usr/local/bin
+
 # backup existing files
+echo -e "$bar Backup files ..."
+mv /<path>/file{,backup}
+
+# get files
+echo -e "$bar Get <title> files ..."
+wgetnc https://github.com/<path>/archive/master.zip
+bsdtar -xf master.zip --strip 1 -C /
+rm master.zip
 # chmod, chown
 # place files in destinations
 # remove install files
