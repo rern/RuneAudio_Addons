@@ -42,7 +42,7 @@ function addonblock( $pkg ) {
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
-			// !!! <button> tag will fail on 'formtemp' submit, use <a> instead
+			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
 			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
