@@ -9,9 +9,11 @@ Guideline
   
 **1. bash script files:**  
 
-- install script   - <any_name>.sh
-- uninstall script - /usr/local/bin/uninstall\_<unique_alias>.sh (no need for non-install addons)
-- (update)         - none
+- install script   - `<any_name>.sh`
+- uninstall script - `/usr/local/bin/uninstall\_<alias>.sh`
+  - `<alias>` must be unique
+  - no need for non-install type
+- (update script)  - none
   - use 'uninstall > install' to update
   - different `version` in this file and install file will show update button
   - `exit 1` for 'not found' check in uninstall to stop reinstall from running
