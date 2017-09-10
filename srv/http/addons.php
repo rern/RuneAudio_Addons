@@ -42,11 +42,11 @@ function addonblock( $pkg ) {
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
-			$btnin = '<button class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</button>';
+			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<button cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</button>';
+			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<button cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</button>';
+		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
 			$option = 'option="'.$pkg[ 'option' ].'"';
@@ -54,8 +54,8 @@ function addonblock( $pkg ) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<button cmd="'.$cmdinstall.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</button>';
-		$btnun = '<button class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</button>';
+		$btnin = '<a cmd="'.$cmdinstall.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
 	// addon list
@@ -89,7 +89,7 @@ function addonblock( $pkg ) {
 <script>
 // auto update addons menu
 (function() {
-	var btnupdate = document.getElementById( 'addo' ).getElementsByTagName( 'button' )[0];
+	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[0];
 	if ( btnupdate.innerText === ' Update' ) {
 		var ok = confirm(
 			'There is an update for "Addons Menu".\n'
