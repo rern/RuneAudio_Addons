@@ -11,7 +11,6 @@ h1 {
 }
 #list li::after {
 	content: "\A0 \25BC";
-	color: #0095d8;
 }
 .boxed-group {
 	padding: 10px 20px;
@@ -30,24 +29,22 @@ legend p {
 legend span {
 	margin-left: 8px;
 }
-.hidescrollv {
-	width: 100%;
-	overflow: hidden;
-}
 pre {
+	width: 100%;
 	max-height: calc(100vh - 140px);
-	width: calc(100% + 18px);
 	white-space: pre-wrap;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch; /* ios momentum scroll */
 	font-family: 'Inconsolata', monospace;
 	font-size: 15px;
 }
 .btn {
-	text-transform: capitalize;
+	text-transform: none;
 }
 #bottom {
 	height: calc(100vh - 160px);
 }
+
 #close,
 #list,
 a {

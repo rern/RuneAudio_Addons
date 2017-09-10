@@ -18,17 +18,17 @@ if ( strpos($cmd, 'uninstall_addo.sh') && !strpos($cmd, 'install.sh') ) {
 // php 'flush' loop waits for all outputs before going to next lines.
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
 setTimeout(function() { 
-	var pre = document.getElementsByTagName("pre")[0];
+	pre = document.getElementsByTagName("pre")[0];
 	var h0 = pre.scrollHeight;
 	var h1;
-	setInterval( function() {
+	intscroll = setInterval( function() {
 		h1 = pre.scrollHeight;
 		if ( h1 > h0 ) {
 			pre.scrollTop = pre.scrollHeight;
 			h0 = h1;
 		}
 	}, 1000 );
-}, 100);
+}, 1000);
 </script>
 
 <div class="container">
@@ -76,11 +76,13 @@ echo '
 </div>';
 
 usleep(500000);
-echo '
+?>
 	<script>
-		alert("Finished.\n\nPlease see result information on screen.")
-	</script>';
-	
+		window.clearInterval( intscroll );
+		pre.scrollTop = pre.scrollHeight;
+		alert( 'Finished.\n\nPlease see result information on screen.' );
+	</script>
+<?php
 opcache_reset();
 ?>
 
