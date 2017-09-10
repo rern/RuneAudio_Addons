@@ -88,7 +88,7 @@ array(
 				."1.2 : HD - 1280px\n"
 				."1.5 : Full HD - 1920px"
 ),
-/*array(
+array(
 	'version'      => '20170901',
 	'title'        => 'RuneUI GPIO',
 	'maintainer'   => 'r e r n',
@@ -103,7 +103,7 @@ array(
 				."Menu > MPD > setup and verify DAC works properly before continue.\n"
 				."\n"
 				."Continue install?"
-),*/
+),
 array(
 	'version'      => '20170901',
 	'title'        => 'RuneUI Password',
