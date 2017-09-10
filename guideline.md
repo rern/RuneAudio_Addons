@@ -1,17 +1,22 @@
 Guideline
 ---
 
-**each addon requires:**  
+**Each addon requires:**  
 
-1. bash script files:
-	- install script   - <any_name>.sh
-	- uninstall script - /usr/local/bin/uninstall_<unique_alias>.sh (no need for non-install addons)
-	- (update)         - none
-		- use 'uninstall > install' to update by default
-		- different 'version' in this file and install file will show update button
-		- 'exit 1' for 'already installed' check to stop reinstall from running
-    
+1. 2 bash script files
 2. an 'array()' in /srv/http/addonslist.php  
+---
+  
+**1. bash script files:**  
+
+- install script   - <any_name>.sh
+- uninstall script - /usr/local/bin/uninstall_<unique_alias>.sh (no need for non-install addons)
+- (update)         - none
+  - use 'uninstall > install' to update by default
+  - different 'version' in this file and install file will show update button
+  - 'exit 1' for 'already installed' check to stop reinstall from running
+    
+**2. an 'array()' in /srv/http/addonslist.php**  
 ```php
 array(
 	'* version'     => 'version',
