@@ -50,6 +50,11 @@ pre {
 a {
 	cursor: pointer;
 }
+#list li:hover,
+a:hover {
+    color: #00608c;
+    text-decoration: none;
+}
 span,
 pre {
 	color: #e0e7ee;
