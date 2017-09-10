@@ -42,11 +42,11 @@ function addonblock( $pkg ) {
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
-			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+			$btnin = '<button class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</button>';
 		} else {
-			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<button cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</button>';
 		}
-		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<button cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</button>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
 			$option = 'option="'.$pkg[ 'option' ].'"';
@@ -54,8 +54,8 @@ function addonblock( $pkg ) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a cmd="'.$cmdinstall.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
-		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnin = '<button cmd="'.$cmdinstall.'" '.$option.' class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</button>';
+		$btnun = '<button class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</button>';
 	}
 	
 	// addon list
@@ -89,17 +89,15 @@ function addonblock( $pkg ) {
 <script>
 // auto update addons menu
 (function() {
-	var btn = document.getElementById( 'addo' ).getElementsByTagName( 'a' )[ 1 ];
-	var btnlabel = btn.innerText;
-	if ( btnlabel === ' Update' ) {
-		var cmdupdate = btn.getAttribute( 'cmd' );
+	var btnupdate = document.getElementById( 'addo' ).getElementsByTagName( 'button' )[0];
+	if ( btnupdate.innerText === ' Update' ) {
 		var ok = confirm(
 			'There is an update for "Addons Menu".\n'
 			+'\n'
 			+'Update?'
 		);
 		if ( !ok ) return
-		formtemp( cmdupdate );
+		formtemp( btn.getAttribute( 'cmd' ) );
 	}
 })();
 
@@ -123,6 +121,13 @@ for ( var i = 0; i < list.length; i++ ) {
 		var alias = this.getAttribute( 'alias' );
 		document.getElementById( alias ).scrollIntoView(true);
 		window.scrollBy(0, -15);
+	}
+}
+// sroll top
+var legend = document.getElementsByTagName( 'legend' );
+for ( var i = 0; i < legend.length; i++ ) {
+	legend[i].onclick = function() {
+		window.scrollTo(0, 0);
 	}
 }
 
