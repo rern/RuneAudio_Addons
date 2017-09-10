@@ -68,6 +68,9 @@ echo 'content' > <newfile>
 # modify files
 sed 's/existing/new/' /<path>/<file>
 
+# stop timer
+timestop
+
 # finish install
 title -l = "$bar <title> installed successfully."
 title -nt "$info <additional info>"
