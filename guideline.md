@@ -15,8 +15,12 @@ Guideline
   - use 'uninstall > install' to update
   - different `version` in this file and install file will show update button
   - `exit 1` for 'already installed' check to stop reinstall from running
+  
+**install script**
 ```sh
-version=yyyymmdd
+#!/bin/bash
+
+version=<yyyymmdd>
 
 # delete itself
 rm $0
@@ -31,7 +35,7 @@ timestart
 # check 'already installed'
 if [[ true ]] &> /dev/null; then
 	echo -e "$info <title> already installed."
-	exit
+	exit 1
 fi
 
 # start install
