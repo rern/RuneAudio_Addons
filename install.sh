@@ -16,6 +16,9 @@ if [[ -e /srv/http/addonsbash.php ]]; then
     exit
 fi
 
+$type=installed
+[[ ${@:$#} == -u ]] && update=1; $type=updated
+
 # install RuneAudio Addons #######################################
 title -l = "$bar Install Addons menu ..."
 echo -e "$bar Get files ..."
@@ -60,9 +63,9 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 redis-cli hset addons addo $version &> /dev/null
 
-title -l = "$bar Addons menu installed successfully."
+title -l = "$bar Addons menu $type successfully."
 [[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
-title -nt "$info Refresh browser and go to Menu > Addons."
+[[ ! update ]] && title -nt "$info Refresh browser and go to Menu > Addons."
 
 # clear opcache if run from terminal #######################################
 [[ -t 1 ]] && systemctl reload php-fpm
