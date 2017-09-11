@@ -6,18 +6,18 @@ if (( $# == 0 )); then
 fi
 
 ### changelog.md > addonslog.php
-# remove -------------------------------------------------------
-sed -e '/^```note/,/^```/ d                   # note block
-' -e '/^\s*$/ d                               # emptyline
-# replace ------------------------------------------------------
-' -e $'s/\'/"/g                               # single quote > "
-' -e 's|\*\*\(.\+\)\*\*|<strong>\1</strong>|  # bold ** > <strong>
-' -e 's|__\(.\+\)__|<strong>\1</strong>|      # bold __ > <strong>
-' -e 's|\*\(.\+\)\*|<em>\1</em>|              # italic * > <em>
-' -e 's|_\(.\+\)_|<em>\1</em>|                # italic _ > <em>
+# remove ---------------------------------------------------------------
+sed -e '/^```note/,/^```/ d               # note block
+' -e '/^\s*$/ d                           # emptyline
+# replace --------------------------------------------------------------
+' -e $'s/\'/"/g                           # singlequote > "
+' -e 's|\*\*\(.\+\)\*\*|<span>\1</span>|  # bold   "**" > <span> (white)
+' -e 's|__\(.\+\)__|<span>\1</span>|      # bold   "__" > <span> (white)
+' -e 's|\*\(.\+\)\*|<em>\1</em>|          # italic "*"  > <em>
+' -e 's|_\(.\+\)_|<em>\1</em>|            # italic "_"  > <em>
 ' changelog.md |
-# addonslog.php ------------------------------------------------
-sed -e '1 {                                   # prepend
+# php start -----------------------------------------------------------
+sed -e '1 {
 s/^## //
 i\
 <?php
@@ -29,18 +29,20 @@ $addonsversion.'"'"' &nbsp; <a id="detail">changelog &#x25BC</a><br>\
 <div  id="message" style="display: none;">\
 	<ul>
 }
-' -e '/^## / {                               # bold ## to </ul>...<ul>
+# replace --------------------------------------------------------------
+' -e '/^## / {                           # bold   "## " > </ul>...<ul>
 s/^## //
 i\
 	</ul>
 a\
 	<ul>
 }
-' -e '/^- / {                                # bullet - to <li>
+' -e '/^- / {                            # bullet "- " > <li>
 s/^- //
 s/^/	<li>/
 s|$|</li>|
 }
+# php end --------------------------------------------------------------
 ' -e '$ a\
 	</ul>\
 	<br>\
