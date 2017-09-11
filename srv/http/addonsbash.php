@@ -10,8 +10,6 @@ if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 } else {
 	$close = 'addons.php';
 }
-
-$update = strpos( $cmd, '[[ $? != 1 ]]' ) ? 1 : 0;
 ?>
 
 <script>
@@ -44,7 +42,6 @@ $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
 function bash( $cmd ) {
 	global $dash;
-	global $update;
 	ob_end_flush(); // flush top part buffer
 	
 	$popencmd = popen( "$cmd 2>&1", 'r' );
@@ -60,25 +57,12 @@ function bash( $cmd ) {
 		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std ); // tcolor
 		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
 		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
-		if ( $update ) {
-			$std = preg_replace( '/Uninstall/', 'Update: Uninstall', $std );
-			$std = preg_replace( '/Install/', 'Reinstall', $std );
-			$std = preg_replace( '/ installed/', ' updated', $std );
-		}
 		// skip lines
 		if (
 				strpos( $std, 'warning:' ) !== false || 
 				stripos( $std, 'y/n' ) !== false ||
 				stripos( $std, 'Uninstall:' ) !== false
 		) continue;
-		// skip lines - update
-/*		if ( $update &&
-				(
-					stripos( $std, '-----' ) !== false ||
-					stripos( $std, ' i ' ) !== false ||
-					$std[0] == "\n"
-				)
-		) continue;*/
 			
 		echo $std;
 	}
