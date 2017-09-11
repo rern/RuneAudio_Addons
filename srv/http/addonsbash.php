@@ -37,6 +37,7 @@ setTimeout( function() {
 	<div class="hidescrollv">
 	<pre>
 Please wait ...
+
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
@@ -72,6 +73,8 @@ function bash( $cmd ) {
 
 ob_implicit_flush();      // start flush output without buffer
 
+echo $cmd;
+echo "\n";
 bash( $cmd );
 
 echo '
