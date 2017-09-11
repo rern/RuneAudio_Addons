@@ -5,9 +5,15 @@ if (( $# == 0 )); then
 	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
 fi
 
-sed -e '/^\s*$/ d
-' -e '1 {
-s/## //
+sed -e '/^```note/,/^```/ d
+' -e '/^\s*$/ d
+' -e $'s/\'/"/g
+' -e 's|\*\*\(.\+\)\*\*|<strong>\1</strong>|
+' -e 's|__\(.\+\)__|<strong>\1</strong>|
+' -e 's|\*\(.\+\)\*|<em>\1</em>|
+' -e 's|_\(.\+\)_|<em>\1</em>|
+' changelog.md | sed -e '1 {
+s/^## //
 i\
 <?php
 s/^/$addonsversion = "/
@@ -34,6 +40,6 @@ a\
 	</ul>\
 	<br>\
 </div>'"';"'
-' changelog.md > addonslog.php
+' > addonslog.php
 
 rm changelog.md
