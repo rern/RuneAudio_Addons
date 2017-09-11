@@ -1,9 +1,7 @@
 #!/bin/bash
 
-if (( $# == 0 )); then
-	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
-	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
-fi
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
 
 ### changelog.md > addonslog.php
 # remove ---------------------------------------------------------------
