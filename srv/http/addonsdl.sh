@@ -10,7 +10,7 @@ fi
 sed -e '/^```note/,/^```/ d                   # note block
 ' -e '/^\s*$/ d                               # emptyline
 # replace ------------------------------------------------------
-' -e $'s/\'/"/g                               # single quote ' > "
+' -e $'s/\'/"/g                               # single quote > "
 ' -e 's|\*\*\(.\+\)\*\*|<strong>\1</strong>|  # bold ** > <strong>
 ' -e 's|__\(.\+\)__|<strong>\1</strong>|      # bold __ > <strong>
 ' -e 's|\*\(.\+\)\*|<em>\1</em>|              # italic * > <em>
