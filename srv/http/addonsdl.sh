@@ -5,6 +5,7 @@ if (( $# == 0 )); then
 	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
 fi
 
+### changelog.md > addonslog.php
 # remove -------------------------------------------------------
 sed -e '/^```note/,/^```/ d                   # note block
 ' -e '/^\s*$/ d                               # emptyline
