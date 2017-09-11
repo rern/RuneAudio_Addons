@@ -20,8 +20,11 @@ Guideline
 **1. bash script files:**  
 
 - install script   - `<any_name>.sh`
+  - use non-invasive modification so other addons can survive after install / uninstall
+  - use modify over replace files unless necessary
 - uninstall script - `/usr/local/bin/uninstall\_<alias>.sh`
   - `<alias>` must be unique
+  - restore everything to pre-install state
   - no need for non-install type
 - (update script)  - none
   - default update: reinstall by 'uninstall' > 'install'
@@ -85,6 +88,7 @@ timestop
 
 # finish install
 title -l = "$bar <title> installed successfully."
+echo 'Uninstall: uninstall_<alias>.sh'
 title -nt "$info <additional info>"
 
 # restart local browser if needed
