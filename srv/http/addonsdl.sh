@@ -28,14 +28,14 @@ $addonsversion.'"'"' &nbsp; <a id="detail">changelog &#x25BC</a><br>\
 <div  id="message" style="display: none;">\
 	<ul>
 }
-' -e '/^## / {                               # bold
+' -e '/^## / {                               # 'version'
 s/^## //
 i\
 	</ul>
 a\
 	<ul>
 }
-' -e '/^- / {                                # bullet
+' -e '/^- / {                                # bullet list
 s/^- //
 s/^/	<li>/
 s|$|</li>|
