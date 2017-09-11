@@ -1,24 +1,25 @@
 <?php
-ob_implicit_flush();      // start flush output without buffer
-require_once('addonshead.php');
+require_once( 'addonshead.php' );
 
-$cmd = $_POST['cmd'];
-if ( strpos($cmd, 'uninstall_addo.sh') && !strpos($cmd, 'install.sh') ) {
+$cmd = $_POST[ 'cmd' ];
+if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 	echo '<style>';
-	require_once('assets/css/addons.css');
+	require_once( 'assets/css/addons.css' );
 	echo '</style>';
 	$close = '/';
 } else {
 	$close = 'addons.php';
-} 
+}
+
+$update = strpos( $cmd, '[[ $? != 1 ]]' ) ? 1 : 0;
 ?>
 
 <script>
 // js for '<pre>' must be here before 'function bash()'.
 // php 'flush' loop waits for all outputs before going to next lines.
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
-setTimeout(function() { 
-	pre = document.getElementsByTagName("pre")[0];
+setTimeout( function() { 
+	pre = document.getElementsByTagName( 'pre' )[ 0 ];
 	var h0 = pre.scrollHeight;
 	var h1;
 	intscroll = setInterval( function() {
@@ -28,7 +29,7 @@ setTimeout(function() {
 			h0 = h1;
 		}
 	}, 1000 );
-}, 1000);
+}, 1000 );
 </script>
 
 <div class="container">
@@ -39,35 +40,55 @@ setTimeout(function() {
 	<pre>
 Please wait ...
 <?php
-$dash = round($_POST['prewidth'] / 7.55);
+$dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
-function bash($cmd) {
+function bash( $cmd ) {
 	global $dash;
+	global $update;
 	ob_end_flush(); // flush top part buffer
 	
-	$popencmd = popen("$cmd 2>&1", 'r');
+	$popencmd = popen( "$cmd 2>&1", 'r' );
 
-	while (!feof($popencmd)) {
-		$std = fread($popencmd, 4096);
+	while ( !feof( $popencmd ) ) {
+		$std = fread( $popencmd, 4096 );
 		
-		$std = preg_replace('/=(=+)=/', str_repeat('=', $dash), $std);           // fit line to width
-		$std = preg_replace('/-(-+)-/', str_repeat('-', $dash), $std);           // fit line to width
-		$std = preg_replace('/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std); // bar
-		$std = preg_replace('/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std); // info, yesno
-		$std = preg_replace('/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std); // warn
-		$std = preg_replace('/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std); // tcolor
-		$std = preg_replace('/.\\[38;5;6m/', '<a class="ck">', $std);            // lcolor
-		$std = preg_replace('/.\\[0m/', '</a>', $std);                           // reset color
-		// skip lines
-		if ( !(strpos($std, 'warning:') !== false || stripos($std, 'y/n') !== false) ) {
-			echo "$std";
+		$std = preg_replace( '/=(=+)=/', str_repeat( '=', $dash ), $std );           // fit line to width
+		$std = preg_replace( '/-(-+)-/', str_repeat( '-', $dash ), $std );           // fit line to width
+		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std ); // bar
+		$std = preg_replace( '/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std ); // info, yesno
+		$std = preg_replace( '/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std ); // warn
+		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std ); // tcolor
+		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
+		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
+		if ( $update ) {
+			$std = preg_replace( '/Uninstall/', 'Update: Uninstall', $std );
+			$std = preg_replace( '/Install/', 'Reinstall', $std );
+			$std = preg_replace( '/ installed/', ' updated', $std );
 		}
+		// skip lines
+		if (
+				strpos( $std, 'warning:' ) !== false || 
+				stripos( $std, 'y/n' ) !== false ||
+				stripos( $std, 'Uninstall:' ) !== false
+		) continue;
+		// skip lines - update
+/*		if ( $update &&
+				(
+					stripos( $std, '-----' ) !== false ||
+					stripos( $std, ' i ' ) !== false ||
+					$std[0] == "\n"
+				)
+		) continue;*/
+			
+		echo $std;
 	}
 
-	pclose($popencmd);
+	pclose( $popencmd );
 }
 
-bash($cmd);
+ob_implicit_flush();      // start flush output without buffer
+
+bash( $cmd );
 
 echo '
 	</pre>
@@ -75,10 +96,10 @@ echo '
 
 </div>';
 
-usleep(500000);
+usleep( 500000 );
 ?>
 	<script>
-		window.clearInterval( intscroll );
+		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		alert( 'Finished.\n\nPlease see result information on screen.' );
 	</script>
