@@ -45,7 +45,7 @@ function addonblock( $pkg ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a cmd="'.$cmduninstall.' -u; [[ $? != 1 ]] && '.$cmdinstall.' -u" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
@@ -98,7 +98,7 @@ function addonblock( $pkg ) {
 			+'Update?'
 		);
 		if ( !ok ) return
-		formtemp( btnupdate.getAttribute( 'cmd' ) +' -u' ); // update flag
+		formtemp( btnupdate.getAttribute( 'cmd' ) ); // update flag
 	}
 })();
 
@@ -176,7 +176,6 @@ for ( var i = 0; i < btn.length; i++ ) {
 				}
 			}
 		}
-		if ( update > 0 ) opt += ' -u'; 
 		
 		document.getElementById( 'loader' ).style.display = 'block';
 		// send command
