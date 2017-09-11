@@ -9,7 +9,10 @@ if [[ ! -e /srv/http/addonsbash.php ]]; then
 	exit 1
 fi
 
-title -l = "$bar Uninstall Addons ..."
+$type=Uninstall
+[[ ${@:$#} == -u ]] && update=1; $type=Update
+
+title -l = "$bar $type Addons ..."
 
 # restore file
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
