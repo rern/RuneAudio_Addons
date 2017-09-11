@@ -9,8 +9,8 @@ if [[ ! -e /srv/http/addonsbash.php ]]; then
 	exit 1
 fi
 
-$type=Uninstall
-[[ ${@:$#} == -u ]] && update=1; $type=Update
+type=Uninstall
+[[ ${@:$#} == -u ]] && update=1; type=Update
 
 title -l = "$bar $type Addons ..."
 
