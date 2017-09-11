@@ -42,6 +42,7 @@ function addonblock( $pkg ) {
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
+			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
 			$btnin = '<a cmd="'.$cmduninstall.'; [[ $? != 1 ]] && { '.$cmdinstall.'; }" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
@@ -89,17 +90,15 @@ function addonblock( $pkg ) {
 <script>
 // auto update addons menu
 (function() {
-	var btn = document.getElementById( 'addo' ).getElementsByTagName( 'a' )[ 1 ];
-	var btnlabel = btn.innerText;
-	if ( btnlabel === ' Update' ) {
-		var cmdupdate = btn.getAttribute( 'cmd' );
+	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[0];
+	if ( btnupdate.innerText === ' Update' ) {
 		var ok = confirm(
 			'There is an update for "Addons Menu".\n'
 			+'\n'
 			+'Update?'
 		);
 		if ( !ok ) return
-		formtemp( cmdupdate );
+		formtemp( btnupdate.getAttribute( 'cmd' ) +' -u' ); // update flag
 	}
 })();
 
@@ -125,12 +124,21 @@ for ( var i = 0; i < list.length; i++ ) {
 		window.scrollBy(0, -15);
 	}
 }
+// sroll top
+var legend = document.getElementsByTagName( 'legend' );
+for ( var i = 0; i < legend.length; i++ ) {
+	legend[i].onclick = function() {
+		window.scrollTo(0, 0);
+	}
+}
 
 // buttons click
 var btn = document.getElementsByClassName( 'btn' );
 for ( var i = 0; i < btn.length; i++ ) {
 	btn[ i ].onclick = function() {
 		var cmd = this.getAttribute( 'cmd' );
+		var update = cmd.indexOf( '[[ $? != 1 ]]' );
+		console.log(update);
 		// user confirmation
 		var type = this.innerHTML.split(' ').pop();
 		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
@@ -168,6 +176,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 				}
 			}
 		}
+		if ( update > 0 ) opt += ' -u'; 
 		
 		document.getElementById( 'loader' ).style.display = 'block';
 		// send command
