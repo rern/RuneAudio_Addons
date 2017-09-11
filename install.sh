@@ -17,7 +17,7 @@ if [[ -e /srv/http/addonsbash.php ]]; then
 fi
 
 type=installed
-[[ ${@:$#} == -u ]] && update=1; $type=updated
+[[ ${@:$#} == -u ]] && update=1; type=updated
 
 # install RuneAudio Addons #######################################
 title -l = "$bar Install Addons menu ..."
