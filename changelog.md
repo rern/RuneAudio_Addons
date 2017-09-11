@@ -9,7 +9,7 @@ This file:
 ```
 
 ## 20170911
-- add **RuneUI GPIO** addon
+- add ~~RuneUI GPIO~~ addon
 - minor improvements
 
 ## 20170909
