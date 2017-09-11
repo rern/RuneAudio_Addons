@@ -15,6 +15,7 @@ sed -e '/^```note/,/^```/ d               # note block
 ' -e 's|__\(.\+\)__|<span>\1</span>|      # bold   "__" > <span> (white)
 ' -e 's|\*\(.\+\)\*|<em>\1</em>|          # italic "*"  > <em>
 ' -e 's|_\(.\+\)_|<em>\1</em>|            # italic "_"  > <em>
+' -e 's|~~\(.\+\)~~|<strike>\1</strike>|  # strike "~~" > <strike>
 ' changelog.md |
 # php start -----------------------------------------------------------
 sed -e '1 {
