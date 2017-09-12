@@ -16,9 +16,6 @@ if [[ -e /srv/http/addonsbash.php ]]; then
     exit
 fi
 
-type=installed
-[[ ${@:$#} == -u ]] && update=1; type=updated
-
 # install RuneAudio Addons #######################################
 [[ $1 != u ]] && title -l = "$bar Install Addons menu ..."
 echo -e "$bar Get files ..."
@@ -36,7 +33,9 @@ chmod -R 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
+/srv/http/addonsdl.sh 1 # '1' skip redownload
 version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
+
 echo
 
 # modify files #######################################
