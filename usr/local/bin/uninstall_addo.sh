@@ -9,7 +9,8 @@ if [[ ! -e /srv/http/addonsbash.php ]]; then
 	exit 1
 fi
 
-title -l = "$bar Uninstall Addons ..."
+[[ $1 != u ]] && type=Uninstall || type=Update
+title -l = "$bar $type Addons ..."
 
 # restore file
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
@@ -21,7 +22,7 @@ rm -rv /srv/http/{addon*,assets/css/addons.css,assets/js/addons.js}
 
 redis-cli hdel addons addo &> /dev/null
 
-title -l = "$bar Addons uninstalled successfully."
+[[ $1 != u ]] && title -l = "$bar Addons uninstalled successfully."
 
 # clear opcache if run from terminal #######################################
 [[ -t 1 ]] && systemctl reload php-fpm
