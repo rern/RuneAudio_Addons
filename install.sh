@@ -60,10 +60,13 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 redis-cli hset addons addo $version &> /dev/null
 
-[[ $1 != u ]] && type=installed || type=updated
-title -l = "$bar Addons menu $type successfully."
-[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
-[[ $1 != u ]] && title -nt "$info Refresh browser and go to Menu > Addons."
+if [[ $1 != u ]]; then
+	title -l = "$bar Addons menu installed successfully."
+	[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
+	title -nt "$info Refresh browser and go to Menu > Addons."
+else
+	title -l = "$bar Addons menu updated successfully."
+fi
 
 # clear opcache if run from terminal #######################################
 [[ -t 1 ]] && systemctl reload php-fpm
