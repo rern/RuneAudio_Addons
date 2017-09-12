@@ -7,8 +7,10 @@ Guideline
 - format must be:
 ```
 ## 20170901
-- abc
-- def
+- dark blue, 'quote', "double quote"
+- *italic*, _italic_
+- ~~strikethrough~~
+- **white**, __white__
 ```
 
 **Each addon requires:**  
