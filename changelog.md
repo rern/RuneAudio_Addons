@@ -8,15 +8,16 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 20170911
-- add **RuneUI GPIO** addon
+## 20170913
+- improve update messages
+- add "RuneUI GPIO" addon
 - minor improvements
 
 ## 20170909
 - auto update addons menu
 - improve layout
 - optimize code
-- add **Backup-Restore update**
+- add "Backup-Restore update"
 - populate previous installed addons to redis database
 - custom label for install button for non-install addons
 

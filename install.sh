@@ -20,7 +20,7 @@ type=installed
 [[ ${@:$#} == -u ]] && update=1; type=updated
 
 # install RuneAudio Addons #######################################
-title -l = "$bar Install Addons menu ..."
+[[ $1 != u ]] && title -l = "$bar Install Addons menu ..."
 echo -e "$bar Get files ..."
 wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 
@@ -36,8 +36,8 @@ chmod -R 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
-version=$( sed -n '1 s/## //p' /srv/http/changelog.md )
-/srv/http/addonsdl.sh 1
+/srv/http/addonsdl.sh
+version=$( grep 'addonsversion' addonslog.php | head -1 | cut -d '"' -f 2 )
 echo
 
 # modify files #######################################
@@ -63,9 +63,13 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 redis-cli hset addons addo $version &> /dev/null
 
-title -l = "$bar Addons menu $type successfully."
-[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
-[[ ! update ]] && title -nt "$info Refresh browser and go to Menu > Addons."
+if [[ $1 != u ]]; then
+	title -l = "$bar Addons menu installed successfully."
+	[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
+	title -nt "$info Refresh browser and go to Menu > Addons."
+else
+	title -l = "$bar Addons menu updated successfully."
+fi
 
 # clear opcache if run from terminal #######################################
 [[ -t 1 ]] && systemctl reload php-fpm

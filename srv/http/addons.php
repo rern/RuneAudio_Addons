@@ -98,7 +98,8 @@ function addonblock( $pkg ) {
 			+'Update?'
 		);
 		if ( !ok ) return
-		formtemp( btnupdate.getAttribute( 'cmd' ) ); // update flag
+    
+		formtemp( btnupdate.getAttribute( 'cmd' ) );
 	}
 })();
 
