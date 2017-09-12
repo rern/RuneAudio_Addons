@@ -54,7 +54,7 @@ if [[ -e <file> ]] &> /dev/null; then
 fi
 
 # start install
-title -l = "$bar Install $runepwd ..."
+[[ $1 != u ]] && title -l = "$bar Install $runepwd ..." # skip if update
 echo -e "$bar Get files ..."
 wgetnc https://github.com/<name>/<repository>/archive/master.zip
 
@@ -87,9 +87,13 @@ sed 's/existing/new/' /<path>/<file>
 timestop
 
 # finish install
-title -l = "$bar <title> installed successfully."
-echo 'Uninstall: uninstall_<alias>.sh'
-title -nt "$info <additional info>"
+if [[ $1 != u ]]; then
+	title -l = "$bar <title> installed successfully."
+	[[ -t 1 ]] && echo 'Uninstall: uninstall_<alias>.sh' # skip if web install
+	title -nt "$info <additional info>"
+else
+	title -l = "$bar <title> updated successfully."
+fi
 
 # restart local browser if needed
 if pgrep midori > /dev/null; then
@@ -113,7 +117,8 @@ if [[ ! -e <file> ]]; then
 fi
 
 # start uninstall
-title -l = $bar Uninstall <title> ...
+[[ $1 != u ]] && type=Uninstall || type=Update
+title -l = $bar $type <title> ...
 
 # remove files 
 echo -e "$bar Remove files ..."
@@ -124,8 +129,7 @@ echo -e "$bar Restore files ..."
 sed 's/new/existing/' /<path>/<file>
 
 # finish uninstall
-title -l = "$bar <title> uninstalled successfully."
-title -nt "$info <additional info>"
+[[ $1 != u ]] && title -l = "$bar <title> uninstalled successfully." # skip if update
 
 # delete itself
 rm $0
