@@ -45,7 +45,7 @@ file=/srv/http/app/templates/header.php
 if ! grep -q 'id="addons"' $file; then
 	echo $file
 	sed -i '/poweroff-modal/ i\
-            <li><a id="addons" style="cursor: pointer;"><i class="fa fa-cubes"></i> Addons</a></li>
+            <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 	' $file
 fi
 

@@ -77,23 +77,22 @@ ob_implicit_flush();      // start flush output without buffer
 echo str_replace( '; ', "\n", $cmd );
 echo '<br>';
 bash( $cmd );
-
-echo '
+?>
 	</pre>
 	</div>
+</div>
 
-</div>';
-
-usleep( 500000 );
-?>
-	<script>
-		clearInterval( intscroll );
-		pre.scrollTop = pre.scrollHeight;
+<script>
+	clearInterval( intscroll );
+	pre.scrollTop = pre.scrollHeight;
+	setTimeout( function() {
 		alert( 'Finished.\n\nPlease see result information on screen.' );
-	</script>
-<?php
-opcache_reset();
-?>
+	}, 500 );
+</script>
 
 </body>
 </html>
+
+<?php
+opcache_reset();
+?>
