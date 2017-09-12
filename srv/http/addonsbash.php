@@ -84,12 +84,13 @@ echo '
 
 </div>';
 
-usleep( 500000 );
 ?>
 	<script>
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		alert( 'Finished.\n\nPlease see result information on screen.' );
+		setTimeout( function() {
+			alert( 'Finished.\n\nPlease see result information on screen.' );
+		}, 500 );
 	</script>
 <?php
 opcache_reset();
