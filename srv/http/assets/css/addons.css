@@ -53,6 +53,9 @@ pre {
 a {
 	cursor: pointer;
 }
+strike {
+    text-decoration: line-through;
+}
 #list li:hover,
 a:hover {
     color: #00608c;
