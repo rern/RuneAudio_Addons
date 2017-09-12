@@ -48,6 +48,6 @@ s|$|</li>|
 	</ul>\
 	<br>\
 </div>'"';"'
-' > addonslog.php
+' > /srv/http/addonslog.php
 
-rm changelog.md
+rm /srv/http/changelog.md
