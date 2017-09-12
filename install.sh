@@ -34,7 +34,7 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 /srv/http/addonsdl.sh 1 # '1' skip redownload
-version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
+version=$( grep 'addonsversion' addonslog.php | head -1 | cut -d '"' -f 2 )
 
 echo
 
