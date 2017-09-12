@@ -26,17 +26,17 @@ rm -rf  /tmp/install
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 
+version=$( grep '^## ' /tmp/install/changelog.md | head -1 | cut ' ' -f 2 )
 mv /tmp/install/changelog.md /tmp/install/srv/http
+
 rm master.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
 chmod -R 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
-/srv/http/addonsdl.sh 1 # '1' skip redownload
-version=$( grep 'addonsversion' addonslog.php | head -1 | cut -d '"' -f 2 )
 
-echo
+[[ $1 == u ]] && /srv/http/addonsdl.sh 1 # '1' skip redownload on update
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
