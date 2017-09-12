@@ -36,7 +36,7 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-[[ $1 == u ]] && /srv/http/addonsdl.sh 1 # '1' skip redownload on update
+[[ $1 == u ]] && /srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php on update
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
