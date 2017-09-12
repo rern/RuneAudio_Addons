@@ -1,7 +1,9 @@
 #!/bin/bash
 
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
+if (( $# != 0 )); then # skip redownload for install.sh
+	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
+	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
+fi
 
 ### changelog.md > addonslog.php
 # remove ---------------------------------------------------------------
