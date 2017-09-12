@@ -28,7 +28,7 @@ Guideline
   - no need for non-install type
 - (update script)  - none
   - default update: reinstall by 'uninstall' > 'install'
-  - different `version` in this file and install file will show update button
+  - `version` in this file vs install file > update button
   - `exit 1` for 'not found' check in uninstall to stop reinstall from running
   
 **install script**
