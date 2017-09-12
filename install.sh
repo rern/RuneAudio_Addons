@@ -26,7 +26,7 @@ rm -rf  /tmp/install
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 
-version=$( grep '^## ' /tmp/install/changelog.md | head -1 | cut ' ' -f 2 )
+version=$( grep '^## ' /tmp/install/changelog.md | head -1 | cut -d ' ' -f 2 )
 mv /tmp/install/changelog.md /tmp/install/srv/http
 
 rm master.zip /tmp/install/* &> /dev/null
