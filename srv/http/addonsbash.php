@@ -50,8 +50,8 @@ function bash( $cmd ) {
 	while ( !feof( $popencmd ) ) {
 		$std = fread( $popencmd, 4096 );
 		
-		$std = preg_replace( '/=(=+)=/', str_repeat( '=', $dash ), $std );           // fit line to width
-		$std = preg_replace( '/-(-+)-/', str_repeat( '-', $dash ), $std );           // fit line to width
+		$std = preg_replace( '/=(=+)=/', str_repeat( '=', $dash ), $std );         // fit line to width
+		$std = preg_replace( '/-(-+)-/', str_repeat( '-', $dash ), $std );         // fit line to width
 		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std ); // bar
 		$std = preg_replace( '/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std ); // info, yesno
 		$std = preg_replace( '/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std ); // warn
@@ -73,8 +73,9 @@ function bash( $cmd ) {
 
 ob_implicit_flush();      // start flush output without buffer
 
-echo $cmd;
-echo "\n";
+
+echo str_replace( '; ', "\n", $cmd );
+echo '<br>';
 bash( $cmd );
 
 echo '
