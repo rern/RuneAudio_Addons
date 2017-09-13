@@ -10,8 +10,9 @@ rm $0
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
 if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
-    echo -e "$info $title already installed."
-    exit
+	title -l '=' "$info $title already installed."
+	title -nt "Please try update instead."
+	exit
 fi
 
 [[ $1 != u ]] && title -l = "$bar Install $title ..."
