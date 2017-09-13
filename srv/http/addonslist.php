@@ -95,7 +95,7 @@ array(
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh 1',
 	'alias'        => 'gpio',
 	'option'      => "!Get DAC configuration ready:\n"
 				."\n"
