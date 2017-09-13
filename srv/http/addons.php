@@ -161,7 +161,6 @@ for ( var i = 0; i < btn.length; i++ ) {
 					switch( oj[ 0 ] ) {
 						case '!':
 							if ( !confirm( oj.slice( 1 ) ) ) return;
-							opt += 1 +' ';
 							break;
 						case '?':
 							opt += confirm( oj.slice( 1 ) ) ? 1 +' ' : 0 +' ';
