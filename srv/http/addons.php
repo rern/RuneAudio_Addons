@@ -147,7 +147,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 					.parentElement
 					.previousElementSibling
 						.innerText
-						.replace( /by.*/, '' );
+						.replace( /.by.*/, '' );
 		
 		if ( !confirm( type +' "'+ title +'"?' ) ) return;
 		// split each option per user prompt
