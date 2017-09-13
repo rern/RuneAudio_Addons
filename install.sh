@@ -12,12 +12,12 @@ rm $0
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
 if [[ -e /usr/local/bin/uninstall_addo.sh ]]; then
-    echo -e "$info Already installed."
+    echo -e "$info Addons Menu already installed."
     exit
 fi
 
 # install RuneAudio Addons #######################################
-[[ $1 != u ]] && title -l = "$bar Install Addons menu ..."
+[[ $1 != u ]] && title -l = "$bar Install Addons Menu ..."
 echo -e "$bar Get files ..."
 wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 
@@ -62,11 +62,11 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 redis-cli hset addons addo $version &> /dev/null
 
 if [[ $1 != u ]]; then
-	title -l = "$bar Addons menu installed successfully."
+	title -l = "$bar Addons Menu installed successfully."
 	[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
 	title -nt "$info Refresh browser and go to Menu > Addons."
 else
-	title -l = "$bar Addons menu updated successfully."
+	title -l = "$bar Addons Menu updated successfully."
 fi
 
 # clear opcache if run from terminal #######################################
