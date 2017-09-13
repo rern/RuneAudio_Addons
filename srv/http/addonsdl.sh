@@ -26,7 +26,7 @@ s/^/$addonsversion = "/
 s/$/";/
 a\
 $log = \
-$addonsversion.'"'"' &nbsp; <a id="detail">changelog &#x25BC</a><br>\
+$addonsversion.'"'"'&emsp; <a id="detail">changelog &#x25BC</a><br>\
 <div  id="message" style="display: none;">\
 	<ul>
 }
