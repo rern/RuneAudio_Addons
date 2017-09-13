@@ -18,5 +18,4 @@ rm -rv /srv/http/{addon*,assets/css/addons.css,assets/js/addons.js}
 
 uninstallfinish $1
 
-# clear opcache if run from terminal #######################################
 [[ -t 1 ]] && clearcache
