@@ -11,7 +11,7 @@ rm $0
 # import heading function
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-if [[ -e /srv/http/addonsbash.php ]]; then
+if [[ -e /usr/local/bin/uninstall_addo.sh ]]; then
     echo -e "$info Already installed."
     exit
 fi
