@@ -68,7 +68,7 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.strip_tags( $pkg[ 'title' ] ).'<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
+			<legend>'.$check.strip_tags( $pkg[ 'title' ] ).'<p>&emsp;by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
