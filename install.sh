@@ -12,6 +12,7 @@ wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; r
 if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
 	title -l '=' "$info $title already installed."
 	title -nt "Please try update instead."
+	redis-cli hset addons $alias 1 &> /dev/null
 	exit
 fi
 
