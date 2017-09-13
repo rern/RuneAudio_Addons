@@ -45,7 +45,7 @@ array(
 array(
 	'alias'        => 'font',
 	'version'      => '20170901',
-	'title'        => 'Fonts - Extended characters',
+	'title'        => 'Fonts - Extended Characters',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
