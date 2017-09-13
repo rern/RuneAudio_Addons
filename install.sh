@@ -1,22 +1,20 @@
 #!/bin/bash
 
 alias=addo
-title='Addons Menu'
-# version=number - get from /changelog.md
 
-rm $0
+if [[ ! -e /srv/http/addonslist.php ]]; then
+# for installstart
+	echo "
+		'alias'   => 'addo',
+		'version' => '1',
+		'title'   => 'Addons Menu',
+	" > /srv/http/addonslist.php
+fi
 
 # import heading function
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
-	title -l '=' "$info $title already installed."
-	title -nt "Please try update instead."
-	redis-cli hset addons $alias 1 &> /dev/null
-	exit
-fi
-
-[[ $1 != u ]] && title -l = "$bar Install $title ..."
+installstart $1
 
 echo -e "$bar Get files ..."
 wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
@@ -26,7 +24,6 @@ rm -rf  /tmp/install
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 
-version=$( grep '^## ' /tmp/install/changelog.md | head -1 | cut -d ' ' -f 2 )
 mv /tmp/install/changelog.md /tmp/install/srv/http
 
 rm master.zip /tmp/install/* &> /dev/null
@@ -35,6 +32,9 @@ chmod -R 755 /tmp/install
 
 cp -rp /tmp/install/* /
 rm -r /tmp/install
+
+version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
+sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
 
 [[ $1 == u ]] && /srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php on update
 
@@ -59,14 +59,8 @@ fi
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 [[ $(stat -c %a /usr/bin/sudo) != 4755 ]] && chmod 4755 /usr/bin/sudo
 
-redis-cli hset addons $alias $version &> /dev/null
+installfinish $1
 
-if [[ $1 != u ]]; then
-	title -l = "$bar $title installed successfully."
-	[[ -t 1 ]] && echo 'Uninstall: uninstall_$alias.sh'
-	title -nt "$info Refresh browser and go to Menu > Addons."
-else
-	title -l = "$bar $title updated successfully."
-fi
+title -nt "$info Refresh browser and go to Menu > Addons."
 
 [[ -t 1 ]] && clearcache
