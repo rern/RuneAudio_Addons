@@ -1,23 +1,21 @@
 #!/bin/bash
 
+alias=addo
+title='Addons Menu'
 # version=number - get from /changelog.md
-
-# install.sh
-
-# addons menu for web based installation
 
 rm $0
 
 # import heading function
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-if [[ -e /usr/local/bin/uninstall_addo.sh ]]; then
-    echo -e "$info Addons Menu already installed."
+if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
+    echo -e "$info $title already installed."
     exit
 fi
 
-# install RuneAudio Addons #######################################
-[[ $1 != u ]] && title -l = "$bar Install Addons Menu ..."
+[[ $1 != u ]] && title -l = "$bar Install $title ..."
+
 echo -e "$bar Get files ..."
 wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 
@@ -59,22 +57,14 @@ fi
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 [[ $(stat -c %a /usr/bin/sudo) != 4755 ]] && chmod 4755 /usr/bin/sudo
 
-redis-cli hset addons addo $version &> /dev/null
+redis-cli hset addons $alias $version &> /dev/null
 
 if [[ $1 != u ]]; then
-	title -l = "$bar Addons Menu installed successfully."
-	[[ -t 1 ]] && echo 'Uninstall: uninstall_addo.sh'
+	title -l = "$bar $title installed successfully."
+	[[ -t 1 ]] && echo 'Uninstall: uninstall_$alias.sh'
 	title -nt "$info Refresh browser and go to Menu > Addons."
 else
-	title -l = "$bar Addons Menu updated successfully."
+	title -l = "$bar $title updated successfully."
 fi
 
-# clear opcache if run from terminal #######################################
-[[ -t 1 ]] && systemctl reload php-fpm
-
-# restart local browser #######################################
-if pgrep midori > /dev/null; then
-	killall midori
-	sleep 1
-	xinit &> /dev/null &
-fi
+[[ -t 1 ]] && clearcache
