@@ -50,7 +50,7 @@ wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; r
 timestart
 
 # check 'already installed'
-if [[ -e <file> ]] &> /dev/null; then
+if [[ -e /usr/local/bin/uninstall_<alias>.sh ]] &> /dev/null; then
 	echo -e "$info <title> already installed."
 	exit 1
 fi
@@ -113,7 +113,7 @@ fi
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
 # check not installed - exit code '1' needed
-if [[ ! -e <file> ]]; then
+if [[ ! -e /usr/local/bin/uninstall_<alias>.sh ]]; then
 	echo -e "$info <title> not found."
 	exit 1
 fi
