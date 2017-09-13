@@ -21,7 +21,8 @@ img {
 legend {
 	margin-bottom: 5px;
 }
-legend p {
+legend p,
+legend a {
 	display: inline-block;
 	font-size: 14px;
 	margin-left: 15px;
