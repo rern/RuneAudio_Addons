@@ -93,8 +93,8 @@ uninstallfinish $1
 **2. an `array()` in `/srv/http/addonslist.php`**  
 ```php
 array(
-	'alias'         => 'alias (must be unique)',
-	'version'       => 'version',
+	'alias'         => 'alias',
+	'* version'     => 'version',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
@@ -111,6 +111,9 @@ array(
 ```
 `'alias'`, `'version'`, `'title'` : must be in this order  
 `'* ...'` : optional  
+
+**alias**  
+- must be unique
 
 **version:** for buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
