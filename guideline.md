@@ -27,7 +27,7 @@ use format and functions as of the following example
 
 alias=<alias>
 
-# import default functions (detail: https://github.com/rern/title_script)
+# import default variables and functions (detail: https://github.com/rern/title_script)
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
 # function - start message, installed check
