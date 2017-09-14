@@ -14,15 +14,15 @@ Guideline
   - on-screen messages (stdout/stderr of ssh commands)
   - nofify on finished
   - `X` button > `opcache_reset()` and back to Addons page
-
-**Each addon requirement** for 
-1. install and uninstall script (bash)
-2. a php `array(...)` and a request to enlist it in Addons Menu
-
----
   
-**1. install and uninstall script:**  
-> stored anywhere reviewable  
+---
+
+**Each addon requires:**  
+1. install and uninstall scripts
+2. an `array(...)` and a request to enlist it in Addons Menu
+  
+**1. install and uninstall scripts:**  
+> bash script files stored anywhere reviewable  
 > use format as of the following example  
 > default variables and functions will take care most of on-screen messages and database
 > use non-invasive modification so other addons can survive after install / uninstall  
@@ -115,7 +115,7 @@ mv /<path>/<file>{.backup,}
 uninstallfinish $1
 ```
     
-**2. a php `array()` in `/srv/http/addonslist.php`**  
+**2. an `array()` in `/srv/http/addonslist.php`**  
 ```php
 array(
 	'alias'         => 'alias',
