@@ -21,8 +21,7 @@ array(
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'       => '?Start &quot;Aria2&quot; on system startup;'
-			.'!Package &quot;glibc&quot; slow download may take some times.'
+	'option'       => '?Start &quot;Aria2&quot; on system startup?'
 ),*/
 array(
 	'alias'        => 'back',
