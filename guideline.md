@@ -9,7 +9,7 @@ Guideline
 ---
   
 **1. bash script files:**  
-use format and functions as of the following example  
+use default variables, functions as of the following example  
 
 - install script   - `<any_name>.sh`
   - use non-invasive modification so other addons can survive after install / uninstall
@@ -25,22 +25,23 @@ use format and functions as of the following example
 ```sh
 #!/bin/bash
 
+### required
 alias=<alias>
 
-# import default variables and functions (detail: https://github.com/rern/title_script)
+### import default variables and functions (detail: https://github.com/rern/title_script)
 wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
 
-# function - start message, installed check
+### function - start message, installed check
 installstart $1
+
+# ----------------------------------------------------------------------------------------
 
 echo -e "$bar Get files ..."
 wgetnc https://github.com/<name>/<repository>/archive/master.zip
 
-# backup existing files
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
 
-# add files
 echo -e "$bar Install new files ..."
 rm -rf /tmp/install
 mkdir -p /tmp/install
@@ -54,17 +55,17 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-# create files
-echo -e "$bar Install new files ..."
+echo -e "$bar Create new files ..."
 echo 'content' > <newfile>
 
-# modify files
+echo -e "$bar Modify files ..."
 sed 's/existing/new/' /<path>/<file>
 
-# function - save version to database, finish message
+# ----------------------------------------------------------------------------------------
+
+### function - save version to database, finish message
 installfinish $1
 
-# extra info
 title -nt "extra info"
 
 # RuneUI opcache will be cleared on 'Addons Terminal' closed
@@ -80,13 +81,16 @@ wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; r
 # function - start message, installed check
 uninstallstart $1
 
-# remove files 
+# ----------------------------------------------------------------------------------------
+
 echo -e "$bar Remove files ..."
+mv /<path>/<file>{.backup,}
 rm -v /<path>/<file>
 
-# restore files
 echo -e "$bar Restore files ..."
 sed 's/new/existing/' /<path>/<file>
+
+# ----------------------------------------------------------------------------------------
 
 # function - remove version from database, finish message
 uninstallfinish $1
