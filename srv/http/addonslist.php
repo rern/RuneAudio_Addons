@@ -41,6 +41,7 @@ array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'option'       => '!Unmount and remove all USB drives before proceeding.'
 ),
 array(
 	'alias'        => 'font',
