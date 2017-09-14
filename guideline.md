@@ -9,13 +9,14 @@ Guideline
 ---
   
 **1. bash script files:**  
-use default variables, functions as of the following example  
+> use default variables, functions as of the following example  
+> use non-invasive modification so other addons can survive after install / uninstall
+> `<alias>` must be unique
 
 - install script   - `<any_name>.sh`
-  - use non-invasive modification so other addons can survive after install / uninstall
   - use modify over replace files unless necessary
+  - make backup if replace files
 - uninstall script - `/usr/local/bin/uninstall\_<alias>.sh`
-  - `<alias>` must be unique
   - restore everything to pre-install state
   - no need for non-install type
 - no update script required
@@ -28,13 +29,13 @@ use default variables, functions as of the following example
 ### required
 alias=<alias>
 
-### import default variables and functions (detail: https://github.com/rern/title_script)
-wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
+### import default variables and functions
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
 
 ### function - start message, installed check
 installstart $1
 
-# ----------------------------------------------------------------------------------------
+# start main script ---------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
 wgetnc https://github.com/<name>/<repository>/archive/master.zip
@@ -61,7 +62,7 @@ echo 'content' > <newfile>
 echo -e "$bar Modify files ..."
 sed 's/existing/new/' /<path>/<file>
 
-# ----------------------------------------------------------------------------------------
+# end main script ------------------------------------------------------------------------------------<<<
 
 ### function - save version to database, finish message
 installfinish $1
@@ -75,22 +76,25 @@ title -nt "extra info"
 ```sh
 #!/bin/bash
 
-# import functions for timer, heading, badge, wget
-wget -qN https://github.com/rern/title_script/raw/master/title.sh; . title.sh; rm title.sh
+### required
+alias=<alias>
+
+### import default variables and functions
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
 
 # function - start message, installed check
 uninstallstart $1
 
-# ----------------------------------------------------------------------------------------
+# start main script ----------------------------------------------------------------------------------->>>
 
 echo -e "$bar Remove files ..."
-mv /<path>/<file>{.backup,}
 rm -v /<path>/<file>
 
 echo -e "$bar Restore files ..."
 sed 's/new/existing/' /<path>/<file>
+mv /<path>/<file>{.backup,}
 
-# ----------------------------------------------------------------------------------------
+# end main script -----------------------------------------------------------------------------------<<<
 
 # function - remove version from database, finish message
 uninstallfinish $1
