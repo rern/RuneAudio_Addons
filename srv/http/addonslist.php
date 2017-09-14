@@ -96,8 +96,8 @@ array(
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh 1',
-	'option'      => "!Get DAC configuration ready:\n"
+	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'option'      => "?Get DAC configuration ready:\n"
 				."\n"
 				."For external power DAC > power on\n"
 				."Menu > MPD > setup and verify DAC works properly before continue.\n"
