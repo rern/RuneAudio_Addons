@@ -142,20 +142,3 @@ multiple lines:
     "...\n"  = escaped n    - new line (must be inside double quotes)
     ."...\n" = starting dot - concatenate between lines
 ```
-
-**`changelog.md`** (of Addons Menu only)   
-- file name and path cannot be change - Addons Menu uses it for:
-    - get `version` number for both `install.sh` and `addonslist.php`  
-    - get content to display on web page
-- format must be:
-```
-__note__
-note
----
-
-## <yyyymmdd>
-- dark blue, 'quote', "double quote"
-- *italic*, _italic_
-- ~~strikethrough~~
-- **white**, __white__
-```
