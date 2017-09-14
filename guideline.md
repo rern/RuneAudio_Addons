@@ -1,14 +1,14 @@
 Guideline
 ---
 
-**Each addon requires:**  
+**Each addon requirement** for 
+1. install and uninstall script (bash)
+3. a php `array(...)` (and a request to enlist it in Addons Menu)
 
-1. bash script files (stored anywhere reviewable)  
-2. an `array(...)` in `/srv/http/addonslist.php`  
-3. a pull request for `/srv/http/addonslist.php`  
 ---
   
-**1. bash script files:**  
+**1. install and uninstall script:**  
+> stored anywhere reviewable
 > use default variables, functions as of the following example  
 > use non-invasive modification so other addons can survive after install / uninstall
 > `<alias>` must be unique
@@ -100,7 +100,7 @@ mv /<path>/<file>{.backup,}
 uninstallfinish $1
 ```
     
-**2. an `array()` in `/srv/http/addonslist.php`**  
+**2. a php `array()` in `/srv/http/addonslist.php`**  
 ```php
 array(
 	'alias'         => 'alias',
