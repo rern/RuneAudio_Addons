@@ -1,17 +1,17 @@
 Guideline
 ---
 **Addons Menu Process:**  
-- Menu > Addons > download:
+- Menu > Addons > download: `addonsdl.php`
   - `addonslist.php`
-  - `changelog.md` > `addonslog.php`
-- Addons page:
+  - `changelog.md` > `addonsdl.sh` > `addonslog.php`
+- Addons page: `addons.php`
   - list from `addonslist.php` (link to each block)
   - changelog from `addonslog.php` (toggle show/hide)
   - each addon block from `addonslist.php`
   - install/uninstall/update buttons based on `version` from `addonslist.php` vs database
   - user input options
-- Addons Terminal page:
-  - on-screen messages (stdout/stderr of ssh commands)
+- Addons Terminal page: `addonsbash.php`
+  - on-screen messages (stdout/stderr of bash scripts)
   - nofify on finished
   - `X` button > `opcache_reset()` and back to Addons page
   
