@@ -13,16 +13,16 @@ Guideline
 > use non-invasive modification so other addons can survive after install / uninstall
 > `<alias>` must be unique
 
-- install script   - `<any_name>.sh`
+- install script  
   - use modify over replace files unless necessary
   - make backup if replace files
-- uninstall script - `/usr/local/bin/uninstall\_<alias>.sh`
+- uninstall script
   - restore everything to pre-install state
   - no need for non-install type
 - no update script required
   - update will be done by 'uninstall' > 'install'
   
-**install script**
+**install script** - `<any_name>.sh`  
 ```sh
 #!/bin/bash
 
@@ -72,7 +72,7 @@ title -nt "extra info"
 # RuneUI opcache will be cleared on 'Addons Terminal' closed
 ```
 
-**uninstall script**
+**uninstall script** - `/usr/local/bin/uninstall\_<alias>.sh`  
 ```sh
 #!/bin/bash
 
