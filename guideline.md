@@ -3,8 +3,9 @@ Guideline
 
 **Each addon requires:**  
 
-1. bash script files
+1. bash script files stored anywhere downloadable with `wget`  
 2. an `array(...)` in `/srv/http/addonslist.php`  
+3. a pull request for `/srv/http/addonslist.php`  
 ---
   
 **1. bash script files:**  
@@ -108,16 +109,18 @@ array(
 	                      ."input line 2"
 ),
 ```
-`'* ...'` = optional  
+`'alias'`, `'version'`, `'title'` : must be in this order
+`'* ...'` : optional  
 
 **version:** for buttons enable/disable  
-- `'version'` vs database differrence > disable/enable buttons
-- change `'version'` > show update button
+- `'version'` stored/removed from database > disable/enable buttons
+- change `'version'` > show `Update` button
 - non-install addons:
-	- (none) + (none)          - install button always enable, no uninstall button
-	- (none) + 'install scipt' - install button disable after run (run once)
+	- (none) + (none)          - `Install` button always enable, no `Uninstall` button
+	- (none) + 'install scipt' - `Install` button disable after run (run once)
     
-**description:** html allowed  
+**description:**  
+- html allowed  
 
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
@@ -125,7 +128,7 @@ array(
 - message
 ```
 select type by start with:
-    ! = 'js confirm' continue => ok = continue, cancel = exit install
+    ! = 'js confirm' continue => ok = continue, cancel = exit
     ? = 'js confirm' yes/no   => ok = 1,        cancel = 0
     # = 'js prompt'  password => ok = password, blank-ok/cancel = 0
       = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
@@ -146,6 +149,10 @@ multiple lines:
     - get content to display on web page
 - format must be:
 ```
+__note__
+note
+---
+
 ## <yyyymmdd>
 - dark blue, 'quote', "double quote"
 - *italic*, _italic_
