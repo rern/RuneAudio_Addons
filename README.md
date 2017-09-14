@@ -17,3 +17,5 @@ RuneAudio Addons Menu for easy addons installation via RuneUI.
 ```sh
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
+
+[**Guideline for Addons enthusias**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
