@@ -66,6 +66,8 @@ installfinish $1
 
 # extra info
 title -nt "extra info"
+
+# RuneUI opcache will be cleared on 'Addons Terminal' closed
 ```
 
 **uninstall script**
