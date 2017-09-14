@@ -19,4 +19,4 @@ wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/ins
 ```
 
 ---
-[**Guideline for Addons enthusiast**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
+[**Guideline for Addons enthusiasts**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
