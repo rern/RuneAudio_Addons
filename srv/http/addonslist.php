@@ -100,9 +100,7 @@ array(
 	'option'      => "?Get DAC configuration ready:\n"
 				."\n"
 				."For external power DAC > power on\n"
-				."Menu > MPD > setup and verify DAC works properly before continue.\n"
-				."\n"
-				."Continue install?"
+				."Menu > MPD > setup and verify DAC works properly before continue."
 ),
 array(
 	'alias'        => 'pass',
