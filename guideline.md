@@ -1,9 +1,23 @@
 Guideline
 ---
+**Addons Menu Process:**  
+- Menu > Addons > download:
+  - `addonslist.php`
+  - `changelog.md` > `addonslog.php`
+- Addons page:
+  - list from `addonslist.php` (link to each block)
+  - changelog from `addonslog.php` (toggle show/hide)
+  - each addon block from `addonslist.php`
+  - install/uninstall/update buttons based on `version` from `addonslist.php` vs database
+  - user input options
+- Addons Terminal page:
+  - on-screen messages (stdout/stderr of ssh commands)
+  - nofify on finished
+  - `X` button > `opcache_reset()` and back to Addons page
 
 **Each addon requirement** for 
 1. install and uninstall script (bash)
-3. a php `array(...)` (and a request to enlist it in Addons Menu)
+2. a php `array(...)` and a request to enlist it in Addons Menu
 
 ---
   
