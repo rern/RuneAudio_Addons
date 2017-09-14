@@ -8,10 +8,11 @@ Guideline
 ---
   
 **1. install and uninstall script:**  
-> stored anywhere reviewable
-> use default variables, functions as of the following example  
-> use non-invasive modification so other addons can survive after install / uninstall
-> `<alias>` must be unique
+> stored anywhere reviewable  
+> use format as of the following example  
+> default variables and functions will take care most of on-screen messages and database
+> use non-invasive modification so other addons can survive after install / uninstall  
+> `<alias>` must be unique  
 
 - install script  
   - use modify over replace files unless necessary
