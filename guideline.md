@@ -3,7 +3,7 @@ Guideline
 
 **Each addon requires:**  
 
-1. bash script files stored anywhere downloadable with `wget`  
+1. bash script files (stored anywhere reviewable)  
 2. an `array(...)` in `/srv/http/addonslist.php`  
 3. a pull request for `/srv/http/addonslist.php`  
 ---
@@ -109,7 +109,7 @@ array(
 	                      ."input line 2"
 ),
 ```
-`'alias'`, `'version'`, `'title'` : must be in this order
+`'alias'`, `'version'`, `'title'` : must be in this order  
 `'* ...'` : optional  
 
 **version:** for buttons enable/disable  
