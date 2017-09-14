@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# default variables and functions for addons install/uninstall scripts
+
 lcolor() {
 	local color=6
 	[[ $2 ]] && color=$2
