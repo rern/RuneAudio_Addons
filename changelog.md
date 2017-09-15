@@ -10,14 +10,12 @@ This file:
 
 ## 20170913
 - Improve update messages
-- Add "RuneUI GPIO" addon
 - Minor improvements
 
 ## 20170909
 - Auto update "Addons Menu"
 - Improve layout
 - Optimize code
-- Add "Backup-Restore update"
 - Populate previous installed addons to redis database
 - Custom label for install button for non-install addons
 
