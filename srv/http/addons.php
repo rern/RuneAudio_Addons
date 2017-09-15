@@ -143,9 +143,10 @@ for ( var i = 0; i < btn.length; i++ ) {
 		var type = this.innerHTML.split(' ').pop();
 		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
 		var title = this
-					.parentElement
-					.previousElementSibling
-						.innerText
+				.parentElement
+				.previousElementSibling
+					.innerText
+						.replace( /^ /, '' )
 						.replace( /.by.*/, '' );
 		
 		if ( !confirm( type +' "'+ title +'"?' ) ) return;
