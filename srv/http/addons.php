@@ -139,7 +139,6 @@ for ( var i = 0; i < btn.length; i++ ) {
 	btn[ i ].onclick = function() {
 		var cmd = this.getAttribute( 'cmd' );
 		var update = cmd.indexOf( '[[ $? != 1 ]]' );
-		console.log(update);
 		// user confirmation
 		var type = this.innerHTML.split(' ').pop();
 		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
