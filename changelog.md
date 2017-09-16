@@ -18,7 +18,7 @@ This file:
 - Minor improvements
 
 ## 20170909
-- Auto update **Addons Men**
+- Auto update **Addons Menu**
 - Improve layout
 - Optimize code
 - Populate previous installed addons to redis database
