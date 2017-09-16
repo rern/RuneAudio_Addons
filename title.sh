@@ -153,7 +153,7 @@ installfinish() {
 
 uninstallstart() {
 	
-	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then
