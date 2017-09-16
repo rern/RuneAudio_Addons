@@ -149,25 +149,25 @@ array(
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
 **description:**  
-- html allowed  
+- text / html
 
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
-- `;` = delimiter each input
-- message
+- `;` = delimiter each dialog prompt
+- dialog messages
 ```
-select type by start with:
-    ! = 'js confirm' continue => ok = continue, cancel = exit
-    ? = 'js confirm' yes/no   => ok = 1,        cancel = 0
-    # = 'js prompt'  password => ok = password, blank-ok/cancel = 0
-      = 'js prompt'  input    => ok = input,    blank-ok/cancel = 0
-message will be parsed as html, use entity code for:
+select type with leading marks:
+    ! = 'js confirm' !continue => ok = continue, cancel = exit
+    ? = 'js confirm' ?yes/no   => ok = 1,        cancel = 0
+    # = 'js prompt'  #password => ok = password, blank-ok/cancel = 0
+      = 'js prompt'  input     => ok = input,    blank-ok/cancel = 0
+entity codes must be used for:
     &quot; = "
     &#039; = '
     &amp;  = &
     &lt;   = <
     &gt;   = >  
-multiple lines:
-    "...\n"  = escaped n    - new line (must be inside double quotes)
-    ."...\n" = starting dot - concatenate between lines
+new line:
+    "...\n"  = escaped n inside double quotes
+   .'...'    = leading dot concatenate string
 ```
