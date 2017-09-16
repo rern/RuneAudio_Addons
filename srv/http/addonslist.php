@@ -34,7 +34,7 @@ array(
 ),
 array(
 	'alias'        => 'expa',
-	'title'        => 'Expand Partition*',
+	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
 	'buttonlabel'  => 'Expand',
