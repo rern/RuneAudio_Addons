@@ -110,7 +110,7 @@ array(
 ),
 array(
 	'alias'        => 'pass',
-	'title'        => 'RuneUI Password',
+	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
