@@ -134,7 +134,7 @@ array(
 	                      ."input line 2"
 ),
 ```
-`'alias'`, `'version'`, `'title'` : must be in this order  
+`'alias'`, `'version'`, `'title'` : must be in this order for 'installstart'  
 `'* ...'` : optional  
 
 **alias**  
