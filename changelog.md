@@ -9,7 +9,7 @@ This file:
 ```
 ## 20170917
 - Normalize install / uninstall / upgrade across addons
-- Normalize commands between Addons Menu and ssh terminal
+- Normalize commands between **Addons Menu** and ssh terminal
 - Release guideline with templates for addons scripts
 - Minor improvements
 
@@ -18,7 +18,7 @@ This file:
 - Minor improvements
 
 ## 20170909
-- Auto update "Addons Menu"
+- Auto update **Addons Men**
 - Improve layout
 - Optimize code
 - Populate previous installed addons to redis database
