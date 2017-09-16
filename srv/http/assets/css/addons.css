@@ -13,7 +13,7 @@ li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAG0lEQVQYV2NkwAIYiRd88Pzdf3TVjLQQJNpJAG6eEo+GbOwnAAAAAElFTkSuQmCC);
 }
 #list li::after {
-	content: "\A0 \25BC";
+	content: "\2003\25BC";
 }
 .boxed-group {
 	padding: 10px 20px;
