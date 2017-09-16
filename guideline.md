@@ -41,7 +41,7 @@ Guideline
 ```sh
 #!/bin/bash
 
-### required
+# required
 alias=<alias>
 
 ### import default variables and functions
@@ -82,22 +82,21 @@ sed 's/existing/new/' /<path>/<file>
 ### function - save version to database, finish message
 installfinish $1
 
+# extra info
 title -nt "extra info"
-
-# RuneUI opcache will be cleared on 'Addons Terminal' closed
 ```
 
 **uninstall script** - `/usr/local/bin/uninstall\_<alias>.sh`  
 ```sh
 #!/bin/bash
 
-### required
+# required
 alias=<alias>
 
 ### import default variables and functions
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
 
-# function - start message, installed check
+### function - start message, installed check
 uninstallstart $1
 
 # start main script ----------------------------------------------------------------------------------->>>
@@ -111,7 +110,7 @@ mv /<path>/<file>{.backup,}
 
 # end main script -----------------------------------------------------------------------------------<<<
 
-# function - remove version from database, finish message
+### function - remove version from database, finish message
 uninstallfinish $1
 ```
     
