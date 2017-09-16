@@ -3,8 +3,8 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'title'        => 'Addons Menu',
+	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.<br>'
 			.'<span>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</span>',
@@ -14,8 +14,8 @@ array(
 ),
 /*array(
 	'alias'        => 'aria',
-	'version'      => '20170901',
 	'title'        => 'Aria2',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
@@ -25,8 +25,8 @@ array(
 ),*/
 array(
 	'alias'        => 'back',
-	'version'      => '20170901',
 	'title'        => 'Backup-Restore Update',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enable backup-restore settings and databases.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
@@ -34,7 +34,7 @@ array(
 ),
 array(
 	'alias'        => 'expa',
-	'title'        => 'Expand Partition',
+	'title'        => 'Expand Partition*',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
 	'buttonlabel'  => 'Expand',
@@ -44,8 +44,8 @@ array(
 ),
 array(
 	'alias'        => 'font',
-	'version'      => '20170901',
 	'title'        => 'Fonts - Extended Characters',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
@@ -54,8 +54,8 @@ array(
 ),
 array(
 	'alias'        => 'motd',
-	'version'      => '20170901',
 	'title'        => 'Login Logo for SSH Terminal',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
@@ -74,8 +74,8 @@ array(
 ),
 array(
 	'alias'        => 'enha',
-	'version'      => '20170901',
 	'title'        => 'RuneUI Enhancements',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More minimalism and more fluid layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -90,8 +90,8 @@ array(
 ),
 array(
 	'alias'        => 'gpio',
-	'version'      => '20170901',
 	'title'        => 'RuneUI GPIO',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
@@ -104,8 +104,8 @@ array(
 ),
 array(
 	'alias'        => 'pass',
-	'version'      => '20170901',
 	'title'        => 'RuneUI Password',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
@@ -125,8 +125,8 @@ array(
 ),*/
 /*array(
 	'alias'        => 'tran',
-	'version'      => '20170901',
 	'title'        => 'Transmission',
+	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
