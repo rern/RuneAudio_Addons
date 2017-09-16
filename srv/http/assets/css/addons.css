@@ -37,7 +37,7 @@ legend > a:last-child {
 }
 pre {
 	width: 100%;
-	max-height: calc(100vh - 140px);
+	max-height: calc(100vh - 170px);
 	white-space: pre-wrap;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch; /* ios momentum scroll */
