@@ -119,8 +119,8 @@ uninstallfinish $1
 ```php
 array(
 	'alias'         => 'alias',
-	'* version'     => 'version',
 	'title'         => 'title',
+	'* version'     => 'version',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
 	'* thumbnail'   => 'https://url/to/image/w100px',
@@ -134,7 +134,7 @@ array(
 	                      ."input line 2"
 ),
 ```
-`'alias'`, `'version'`, `'title'` : must be in this order for 'installstart'  
+`'alias'`, `'title'` : must be in this order for 'installstart'  
 `'* ...'` : optional  
 
 **alias**  
