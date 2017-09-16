@@ -6,8 +6,8 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 # for installstart
 	echo "
 		'alias'   => 'addo',
-		'version' => '1',
 		'title'   => 'Addons Menu',
+		'version' => '1',
 	" > /srv/http/addonslist.php
 fi
 
