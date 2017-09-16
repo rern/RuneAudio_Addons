@@ -1,4 +1,10 @@
 <?php
+// sorting : by 'title'
+// fixed sequence : 'alias', 'title', 'version'
+// non-install type : omit 'version'
+// optional : 'thumbnail', 'option'
+// new addon mark : '*' after title - show 'star' symbol in 'Currently available:' list
+
 $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
