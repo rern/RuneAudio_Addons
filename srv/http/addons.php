@@ -35,9 +35,10 @@ echo $blocks;
 // <<<-------------------------------------------------------------------------------------------------
 
 function addonblock( $pkg ) {
+	$alias = $pkg[ 'alias' ];
+	$title = $pkg[ 'title' ];
 	$thumbnail = isset( $pkg[ 'thumbnail' ] ) ? $pkg[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $pkg[ 'buttonlabel' ]) ? $pkg[ 'buttonlabel' ] : 'Install';
-	$alias = $pkg[ 'alias' ];
 	$installurl = $pkg[ 'installurl' ];
 	$filename = end( explode( '/', $installurl ) );
 	$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
@@ -64,9 +65,8 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list
-	$title = $pkg[ 'title' ];
 	if ( $alias !== 'addo' ) {
-		$listtitle = str_replace( '*', ' <span>&star;</span>', $title );
+		$listtitle = preg_replace( '/\*$/', ' <span>&star;</span>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$listtitle.'</li>';
 	}
 	// addon blocks
