@@ -64,9 +64,10 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list
+	$title = $pkg[ 'title' ];
 	if ( $alias !== 'addo' ) {
-		$title = str_replace( '*', ' <span>&star;</span>', $pkg[ 'title' ] );
-		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$title.'</li>';
+		$listtitle = str_replace( '*', ' <span>&star;</span>', $title );
+		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$listtitle.'</li>';
 	}
 	// addon blocks
 	$GLOBALS[ 'blocks' ] .= '
@@ -74,7 +75,7 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.strip_tags( $pkg[ 'title' ] ).'&emsp;<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
+			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
@@ -90,8 +91,8 @@ function addonblock( $pkg ) {
 		</div>';
 }
 // >>>-------------------------------------------------------------------------------------------------
-?>
 
+?>
 </div>
 <div id="bottom"></div>
 
