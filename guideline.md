@@ -23,7 +23,7 @@ Guideline
   
 **1. install and uninstall scripts:**  
 > bash script files stored anywhere reviewable  
-> use script templates as of provided  
+> use script default `### template` lines  
 > default variables and functions will take care most of on-screen messages and database
 > use non-invasive modification so other addons can survive after install / uninstall  
 > `<alias>` must be unique  
@@ -44,10 +44,10 @@ Guideline
 # required
 alias=<alias>
 
-### import default variables and functions
+### template - import default variables and functions
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
 
-### function - start message, installed check
+### template - function - start message, installed check
 installstart $1
 
 # start main script ---------------------------------------------------------------------------------->>>
@@ -79,7 +79,7 @@ sed 's/existing/new/' /<path>/<file>
 
 # end main script ------------------------------------------------------------------------------------<<<
 
-### function - save version to database, finish message
+### template - function - save version to database, finish message
 installfinish $1
 
 # extra info
@@ -93,10 +93,10 @@ title -nt "extra info"
 # required
 alias=<alias>
 
-### import default variables and functions
+### template - import default variables and functions
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
 
-### function - start message, installed check
+### template - function - start message, installed check
 uninstallstart $1
 
 # start main script ----------------------------------------------------------------------------------->>>
@@ -110,7 +110,7 @@ mv /<path>/<file>{.backup,}
 
 # end main script -----------------------------------------------------------------------------------<<<
 
-### function - remove version from database, finish message
+### template - function - remove version from database, finish message
 uninstallfinish $1
 ```
     
