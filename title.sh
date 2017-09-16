@@ -122,7 +122,7 @@ wgetnc() {
 installstart() {
 	rm $0
 	
-	title=$( sed -n "/alias.*$alias/{n;n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
 	title=$( tcolor "$title" )
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -153,7 +153,7 @@ installfinish() {
 
 uninstallstart() {
 	
-	title=$( sed -n "/alias.*$alias/{n;n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
 	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then
