@@ -68,7 +68,6 @@ function addonblock( $pkg ) {
 		$title = str_replace( '*', ' <span>&star;</span>', $pkg[ 'title' ] );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$title.'</li>';
 	}
-	
 	// addon blocks
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
@@ -154,7 +153,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 				.parentElement
 				.previousElementSibling
 					.innerText
-						.replace( /^ /, '' )
+						.replace( /^ */, '' )
 						.replace( /.by.*/, '' );
 		
 		if ( !confirm( type +' "'+ title +'"?' ) ) return;
