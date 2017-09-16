@@ -20,7 +20,7 @@ array(
 ),
 /*array(
 	'alias'        => 'aria',
-	'title'        => 'Aria2',
+	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
@@ -120,7 +120,7 @@ array(
 ),
 /*array(
 	'alias'        => 'samb',
-	'title'        => 'Samba Upgrade',
+	'title'        => 'Samba Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
@@ -131,7 +131,7 @@ array(
 ),*/
 /*array(
 	'alias'        => 'tran',
-	'title'        => 'Transmission',
+	'title'        => 'Transmission *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client.',
