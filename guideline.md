@@ -136,7 +136,7 @@ array(
 `'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
 `'* ...'` : optional  
 
-**alias**  
+**alias** for addon reference  
 - must be unique
 
 **version:** for buttons enable/disable  
@@ -147,8 +147,9 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
-**description:**  
+**description:** for summary  
 - text / html
+- detail should be a linked to source code
 
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
