@@ -8,10 +8,10 @@ RuneAudio Addons Menu for easy addons installation via RuneUI.
 
 - install / uninstall directly in RuneUI, no need for ssh terminal
 - always reload list from source
-- show install messages
+- show messages during install
 - installed indication
-- update indication (button)
-- modular block for easy to add scripts(bash) from other sources
+- update indication
+- modular block for easy to add scripts from other sources
 
 **Install**  
 ```sh
@@ -19,4 +19,5 @@ wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/ins
 ```
 
 ---
+  
 [**Guideline for Addons enthusiasts**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
