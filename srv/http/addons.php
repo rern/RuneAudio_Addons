@@ -6,6 +6,7 @@ require_once( 'addonslist.php' );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
+	<legend>Currently available:</legend>
 ';
 // <<<-------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -24,7 +25,6 @@ for ( $i = 0; $i < $length; $i++ ) {
 }
 // >>>-------------------------------------------------------------------------------------------------
 echo '
-	Currently available:
 	<ul id="list">'.
 	$list.'
 	</ul>'.
@@ -35,10 +35,9 @@ echo $blocks;
 // <<<-------------------------------------------------------------------------------------------------
 
 function addonblock( $pkg ) {
-	$alias = $pkg[ 'alias' ];
-	$title = $pkg[ 'title' ];
 	$thumbnail = isset( $pkg[ 'thumbnail' ] ) ? $pkg[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $pkg[ 'buttonlabel' ]) ? $pkg[ 'buttonlabel' ] : 'Install';
+	$alias = $pkg[ 'alias' ];
 	$installurl = $pkg[ 'installurl' ];
 	$filename = end( explode( '/', $installurl ) );
 	$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
@@ -65,6 +64,7 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list
+	$title = $pkg[ 'title' ];
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <span>&star;</span>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$listtitle.'</li>';
@@ -91,8 +91,8 @@ function addonblock( $pkg ) {
 		</div>';
 }
 // >>>-------------------------------------------------------------------------------------------------
-?>
 
+?>
 </div>
 <div id="bottom"></div>
 

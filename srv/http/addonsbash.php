@@ -33,10 +33,10 @@ setTimeout( function() {
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
+	<legend>Please wait until finished...</legend>
 
 	<div class="hidescrollv">
 	<pre>
-Please wait until finished...
 
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
@@ -86,6 +86,7 @@ bash( $cmd );
 	clearInterval( intscroll );
 	pre.scrollTop = pre.scrollHeight;
 	setTimeout( function() {
+		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
 		var close = document.getElementById( 'close' );
 		close.children[0].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
