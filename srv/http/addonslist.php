@@ -18,17 +18,82 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*array(
+array(
+	'alias'        => 'enha',
+	'title'        => 'RuneUI Enhancements *',
+	'version'      => '20170901',
+	'maintainer'   => 'r e r n',
+	'description'  => 'More minimalism and more fluid layout.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
+	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
+	'option'      => "Set zoom level for display directly connect to RPi.\n"
+				."\n"
+				."Local browser screen size:\n"
+				."0.7 : width less than 800px\n"
+				."1.2 : HD - 1280px\n"
+				."1.5 : Full HD - 1920px"
+),
+array(
+	'alias'        => 'gpio',
+	'title'        => 'RuneUI GPIO *',
+	'version'      => '20170901',
+	'maintainer'   => 'r e r n',
+	'description'  => 'GPIO connected relay module control.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
+	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'option'      => "?Get DAC configuration ready:\n"
+				."\n"
+				."For external power DAC > power on\n"
+				."Menu > MPD > setup and verify DAC works properly before continue."
+),
+array(
+	'alias'        => 'pass',
+	'title'        => 'RuneUI Password *',
+	'version'      => '20170901',
+	'maintainer'   => 'r e r n',
+	'description'  => 'RuneUI access restriction.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
+	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
+),
+array(
 	'alias'        => 'aria',
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.<br> Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => '?Start &quot;Aria2&quot; on system startup?'
+),
+array(
+	'alias'        => 'tran',
+	'title'        => 'Transmission *',
+	'version'      => '20170901',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fast, easy, and free BitTorrent client.<br> Pre-configured and ready to use.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
+	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):;'
+			.'?Install WebUI alternative (Transmission Web Control);'
+			.'?Start &quot;Transmission&quot; on system startup'
+),
+/*array(
+	'alias'        => 'samb',
+	'title'        => 'Samba Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Faster and more customized shares.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
+	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):'
 ),*/
+
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
@@ -78,70 +143,6 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 	'option'       => '?Update package database after ranking?'
 ),
-array(
-	'alias'        => 'enha',
-	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20170901',
-	'maintainer'   => 'r e r n',
-	'description'  => 'More minimalism and more fluid layout.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
-	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
-	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'option'      => "Set zoom level for display directly connect to RPi.\n"
-				."\n"
-				."Local browser screen size:\n"
-				."0.7 : width less than 800px\n"
-				."1.2 : HD - 1280px\n"
-				."1.5 : Full HD - 1920px"
-),
-array(
-	'alias'        => 'gpio',
-	'title'        => 'RuneUI GPIO *',
-	'version'      => '20170901',
-	'maintainer'   => 'r e r n',
-	'description'  => 'GPIO connected relay module control.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
-	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'      => "?Get DAC configuration ready:\n"
-				."\n"
-				."For external power DAC > power on\n"
-				."Menu > MPD > setup and verify DAC works properly before continue."
-),
-array(
-	'alias'        => 'pass',
-	'title'        => 'RuneUI Password *',
-	'version'      => '20170901',
-	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
-	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
-	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
-),
-/*array(
-	'alias'        => 'samb',
-	'title'        => 'Samba Upgrade *',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Faster and more customized shares.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
-	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):'
-),*/
-/*array(
-	'alias'        => 'tran',
-	'title'        => 'Transmission *',
-	'version'      => '20170901',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):;'
-			.'?Install WebUI alternative (Transmission Web Control);'
-			.'?Start &quot;Transmission&quot; on system startup'
-),*/
 array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Import',
