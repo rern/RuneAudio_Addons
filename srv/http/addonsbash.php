@@ -16,7 +16,7 @@ if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 // js for '<pre>' must be here before 'function bash()'.
 // php 'flush' loop waits for all outputs before going to next lines.
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
-setTimeout( function() { 
+setTimeout( function() {
 	pre = document.getElementsByTagName( 'pre' )[ 0 ];
 	var h0 = pre.scrollHeight;
 	var h1;
@@ -32,11 +32,11 @@ setTimeout( function() {
 
 <div class="container">
 	
-	<h1>ADDONS TERMINAL</h1><a id="close" href="<?=$close;?>"><i class="fa fa-times fa-2x"></i></a>
+	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
 
 	<div class="hidescrollv">
 	<pre>
-Please wait ...
+Please wait until finished...
 
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
@@ -86,6 +86,10 @@ bash( $cmd );
 	clearInterval( intscroll );
 	pre.scrollTop = pre.scrollHeight;
 	setTimeout( function() {
+		var close = document.getElementById( 'close' );
+		close.children[0].classList.remove( 'disabled' );
+		close.href = '<?=$close;?>';
+		
 		alert( 'Finished.\n\nPlease see result information on screen.' );
 	}, 500 );
 </script>
