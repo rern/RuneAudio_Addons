@@ -3,7 +3,7 @@
 // fixed sequence   : 'alias', 'title', 'version'
 // non-install type : omit 'version'
 // optional         : 'thumbnail', 'option'
-// new addon mark   : '*' after title - show 'star' symbol in 'Currently available:' list
+// star badge       : '*' after 'title'
 
 $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ array(
 ),
 array(
 	'alias'        => 'enha',
-	'title'        => 'RuneUI Enhancements',
+	'title'        => 'RuneUI Enhancements*',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More minimalism and more fluid layout.',
@@ -96,7 +96,7 @@ array(
 ),
 array(
 	'alias'        => 'gpio',
-	'title'        => 'RuneUI GPIO',
+	'title'        => 'RuneUI GPIO*',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
