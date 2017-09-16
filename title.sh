@@ -137,7 +137,7 @@ installstart() {
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() {
-	version=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	version=$( sed -n "/alias.*$alias/{n;n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	timestop
