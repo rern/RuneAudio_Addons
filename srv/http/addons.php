@@ -100,7 +100,10 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list
-	if ( $alias !== 'addo' ) $GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$pkg[ 'title' ].'</li>';
+	if ( $alias !== 'addo' ) {
+		$title = str_replace( '*', ' <span>&star;</span>', $pkg[ 'title' ] );
+		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$title.'</li>';
+	}
 	
 	// addon blocks
 	$GLOBALS[ 'blocks' ] .= '
