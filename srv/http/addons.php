@@ -15,8 +15,8 @@ $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
 
 // sort
-$arraytitle = array_column($addons, 'title');
-array_multisort($arraytitle, SORT_NATURAL|SORT_FLAG_CASE, $addons);
+$arraytitle = array_column( $addons, 'title' );
+array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 
 $length = count( $addons );
 for ( $i = 0; $i < $length; $i++ ) {
