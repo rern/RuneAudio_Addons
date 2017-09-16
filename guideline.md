@@ -145,7 +145,7 @@ array(
 - change `'version'` > show `Update` button
 - non-install addons:
 	- omit > `Install` button always enable, no `Uninstall` button
-- run once addon:
+- run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
 **description:**  
