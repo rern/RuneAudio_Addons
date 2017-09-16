@@ -23,7 +23,7 @@ Guideline
   
 **1. install and uninstall scripts:**  
 > bash script files stored anywhere reviewable  
-> use script default `### template` lines  
+> must use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of on-screen messages and database
 > use non-invasive modification so other addons can survive after install / uninstall  
 > `<alias>` must be unique  
