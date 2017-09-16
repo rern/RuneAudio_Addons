@@ -68,15 +68,16 @@ span,
 pre {
 	color: #e0e7ee;
 }
-p,
-ul {
-	color: #7795b4;
-}
-#close,
 legend i,
+#close,
 #list,
 a {
 	color: #0095d8;
+}
+p,
+ul,
+.disabled {
+	color: #7795b4;
 }
 .cc {
 	color: #00ffff;
