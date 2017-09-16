@@ -79,6 +79,9 @@ ul,
 .disabled {
 	color: #7795b4;
 }
+.disabled:hover {
+	cursor: not-allowed;
+}
 .cc {
 	color: #00ffff;
 	background: #00ffff;
