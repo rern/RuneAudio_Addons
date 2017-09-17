@@ -14,6 +14,9 @@ RuneAudio Addons Menu for easy addons installation via RuneUI.
 - modular block for easy to add scripts from other sources
 
 **Install**  
+for beginners:  [Addons Menu Installation](https://github.com/rern/RuneAudio/blob/master/Addons_install/README.md)
+
+for ssh terminal:
 ```sh
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
