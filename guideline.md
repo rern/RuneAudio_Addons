@@ -44,8 +44,8 @@ Guideline
 # required
 alias=<alias>
 
-### template - import default variables and functions
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
+### template - import default variables, functions
+. /srv/http/title.sh
 
 ### template - function - start message, installed check
 installstart $1
@@ -93,8 +93,8 @@ title -nt "extra info"
 # required
 alias=<alias>
 
-### template - import default variables and functions
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
+### template - import default variables, functions
+. /srv/http/title.sh
 
 ### template - function - start message, installed check
 uninstallstart $1
