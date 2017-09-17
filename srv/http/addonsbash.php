@@ -58,10 +58,9 @@ function bash( $cmd ) {
 		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
 		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
 		// skip lines
-		if (
-				strpos( $std, 'warning:' ) !== false || 
-				stripos( $std, 'y/n' ) !== false ||
-				stripos( $std, 'Uninstall:' ) !== false
+		if ( stripos( $std, 'warning:' ) !== false
+				|| stripos( $std, 'y/n' ) !== false
+				|| stripos( $std, 'Uninstall:' ) !== false
 		) continue;
 			
 		echo $std;

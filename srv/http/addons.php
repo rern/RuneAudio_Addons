@@ -41,12 +41,12 @@ function addonblock( $pkg ) {
 	$installurl = $pkg[ 'installurl' ];
 	if ( $alias !== 'bash' ) {
 		$filename = end( explode( '/', $installurl ) );
-		$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename.' ';
+		$cmdinstall = "wget -qN $installurl; chmod 755 $filename; /usr/bin/sudo ./$filename ";
 	} else {
 		$cmdinstall = '/usr/bin/sudo ';
 	}
-	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
-	$cmdupdate = $cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u';
+	$cmduninstall = "/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh";
+	$cmdupdate = "$cmduninstall u; [[ $? != 1 ]] && $cmdinstall u";
 		
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
@@ -192,7 +192,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 		}
 		
 		if ( cmd === '/usr/bin/sudo ' ) {
-			if ( opt[0] !== '/' ) {
+			if ( opt[ 0 ] !== '/' ) {
 				opt = '/usr/bin/'+ opt;
 				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
 			}
@@ -201,13 +201,13 @@ for ( var i = 0; i < btn.length; i++ ) {
 		
 		document.getElementById( 'loader' ).style.display = 'block';
 		// send command
-		formtemp(cmd + opt);
+		formtemp( cmd + opt );
 
 	}
 }
 
 // post submit with temporary form
-function formtemp(command) {		
+function formtemp( command ) {		
 		// width for title lines
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
 		
