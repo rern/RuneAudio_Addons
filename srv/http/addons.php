@@ -81,7 +81,7 @@ function addonblock( $pkg ) {
 	$GLOBALS[ 'blocks' ] .= '
 			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal">
-				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
+				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';
@@ -190,7 +190,10 @@ for ( var i = 0; i < btn.length; i++ ) {
 			}
 		}
 		
-		if ( cmd === '/usr/bin/sudo ' && opt[0] !== '/' ) opt = '/usr/bin/'+ opt;
+		if ( cmd === '/usr/bin/sudo ' ) {
+			if ( opt[0] !== '/' ) opt = '/usr/bin/'+ opt;
+			opt += ';' // ';' replaced as blank line
+		}
 		
 		document.getElementById( 'loader' ).style.display = 'block';
 		// send command
