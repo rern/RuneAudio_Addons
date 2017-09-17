@@ -2,6 +2,8 @@
 
 alias=addo
 
+. /srv/http/title.sh
+
 uninstallstart $1
 
 # restore file
