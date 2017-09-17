@@ -11,6 +11,7 @@ This file:
 ## 20170918
 - Improve speed by avoid unnecessary downloads
 - Improve template for install/uninstall scripts
+- Add **BASH Command** for running commands and scripts
 
 ## 20170917
 - Normalize install / uninstall / upgrade across addons
