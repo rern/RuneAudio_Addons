@@ -24,7 +24,7 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Run BASH commands or script.',
 	'buttonlabel'  => 'Run',
-	'sourcecode'   => 'https://github.com/rern/',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons/blob/6b4d3c794f82368bd7907afaae9404c99d64b2e3/srv/http/addonslist.php#L21',
 	'installurl'   => '',
 	'option'       => "BASH Command or /full/path/script:"
 ),
