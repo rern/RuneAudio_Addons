@@ -1,8 +1,8 @@
 <?php
-// sorting          : by 'title'
-// fixed sequence   : 'alias', 'title', 'version'
-// non-install type : omit 'version'
-// optional         : 'thumbnail', 'option'
+// sorting          : 'title' ascending
+// fixed order      : 'alias', 'title', 'version'
+// non-install type : 'version' omitted
+// optional         : 'buttonlabel', 'option', 'thumbnail'
 // star badge       : '*' after 'title'
 
 $addons = array(
