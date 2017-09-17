@@ -22,8 +22,8 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
-**Cleanup**  
-Problems with install / uninstall / update, cleanup then reinstall will fix it.
+**Clean up**  
+Problems with install / uninstall / update, clean up then reinstall will fix it.
 ```sh
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
 sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
