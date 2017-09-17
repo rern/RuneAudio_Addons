@@ -22,9 +22,9 @@ array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or script.',
+	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
 	'buttonlabel'  => 'Run',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons/blob/6b4d3c794f82368bd7907afaae9404c99d64b2e3/srv/http/addonslist.php#L21',
+	'sourcecode'   => '',
 	'installurl'   => '',
 	'option'       => "BASH Command or /full/path/script:"
 ),
@@ -37,7 +37,7 @@ array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'option'      => "Set zoom level for display directly connect to RPi.\n"
+	'option'       => "Set zoom level for display directly connect to RPi.\n"
 				."\n"
 				."Local browser screen size:\n"
 				."0.7 : width less than 800px\n"
@@ -53,7 +53,7 @@ array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'      => "?Get DAC configuration ready:\n"
+	'option'       => "?Get DAC configuration ready:\n"
 				."\n"
 				."For external power DAC > power on\n"
 				."Menu > MPD > setup and verify DAC works properly before continue."
@@ -163,7 +163,7 @@ array(
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
-	'option'      => "!Get webradio files copied to:\n"
+	'option'       => "!Get webradio files copied to:\n"
 				."/mnt/MPD/Webradio\n"
 				."\n"
 				."Continue import?"
