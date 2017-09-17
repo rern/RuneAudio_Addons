@@ -74,7 +74,7 @@ function bash( $cmd ) {
 ob_implicit_flush();      // start flush output without buffer
 
 
-echo str_replace( '; ', "\n", $cmd );
+echo preg_replace( '/;\s*/', "\n", $cmd );
 echo '<br>';
 bash( $cmd );
 ?>
