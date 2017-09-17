@@ -165,13 +165,13 @@ uninstallstart() {
 	title -l '=' "$bar $type $title ..."
 }
 uninstallfinish() {
+	rm $0
+	
 	redis-cli hdel addons $alias &> /dev/null
 
 	[[ $1 == u ]] && exit
 	
 	title -l '=' "$bar $title uninstalled successfully."
-
-	rm $0
 }
 clearcache() {
 	systemctl reload php-fpm
