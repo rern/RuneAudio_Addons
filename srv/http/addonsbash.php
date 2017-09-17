@@ -92,7 +92,7 @@ bash( $cmd );
 		close.href = '<?=$close;?>';
 		
 		alert( 'Finished.\n\nPlease see result information on screen.' );
-	}, 500 );
+	}, 1000 );
 </script>
 
 </body>
