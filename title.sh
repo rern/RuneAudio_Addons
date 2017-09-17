@@ -122,6 +122,7 @@ wgetnc() {
 installstart() {
 	rm $0
 	
+	. /srv/http/title.sh &> /dev/null
 	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
@@ -152,7 +153,7 @@ installfinish() {
 }
 
 uninstallstart() {
-	
+	. /srv/http/title.sh &> /dev/null	
 	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
