@@ -83,9 +83,9 @@ bash( $cmd );
 </div>
 
 <script>
-	clearInterval( intscroll );
-	pre.scrollTop = pre.scrollHeight;
 	setTimeout( function() {
+		clearInterval( intscroll );
+		pre.scrollTop = pre.scrollHeight;
 		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
 		var close = document.getElementById( 'close' );
 		close.children[0].classList.remove( 'disabled' );
