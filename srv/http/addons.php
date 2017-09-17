@@ -39,8 +39,12 @@ function addonblock( $pkg ) {
 	$buttonlabel = isset( $pkg[ 'buttonlabel' ]) ? $pkg[ 'buttonlabel' ] : 'Install';
 	$alias = $pkg[ 'alias' ];
 	$installurl = $pkg[ 'installurl' ];
-	$filename = end( explode( '/', $installurl ) );
-	$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename;
+	if ( $alias !== 'bash' ) {
+		$filename = end( explode( '/', $installurl ) );
+		$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename.' ';
+	} else {
+		$cmdinstall = '/usr/bin/sudo ';
+	}
 	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
 		
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
@@ -161,7 +165,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 		if ( !confirm( type +' "'+ title +'"?' ) ) return;
 		// split each option per user prompt
 		var yesno = 1;
-		var opt = ' ';
+		var opt = '';
 		if ( this.getAttribute( 'option' ) ) {
 			var option = this.getAttribute( 'option' ).replace( /; /g, ';' ).split( ';' );
 			if ( option.length > 0 ) {
@@ -185,6 +189,8 @@ for ( var i = 0; i < btn.length; i++ ) {
 				}
 			}
 		}
+		
+		if ( cmd === '/usr/bin/sudo ' && opt[0] !== '/' ) opt = '/usr/bin/'+ opt;
 		
 		document.getElementById( 'loader' ).style.display = 'block';
 		// send command
