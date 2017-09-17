@@ -19,6 +19,16 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 array(
+	'alias'        => 'bash',
+	'title'        => 'BASH Command',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Run BASH commands or script.',
+	'buttonlabel'  => 'Run',
+	'sourcecode'   => 'https://github.com/rern/',
+	'installurl'   => '',
+	'option'       => "BASH Command or /full/path/script:"
+),
+array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20170901',
