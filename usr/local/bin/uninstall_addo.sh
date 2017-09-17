@@ -2,9 +2,6 @@
 
 alias=addo
 
-# import heading function
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/title.sh; . title.sh; rm title.sh
-
 uninstallstart $1
 
 # restore file
