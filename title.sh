@@ -122,7 +122,6 @@ wgetnc() {
 installstart() {
 	rm $0
 	
-	. /srv/http/title.sh &> /dev/null
 	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
@@ -152,8 +151,7 @@ installfinish() {
 	[[ -t 1 ]] && echo -e "\nUninstall: uninstall_$alias.sh"
 }
 
-uninstallstart() {
-	. /srv/http/title.sh &> /dev/null	
+uninstallstart() {	
 	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
@@ -167,13 +165,13 @@ uninstallstart() {
 	title -l '=' "$bar $type $title ..."
 }
 uninstallfinish() {
-	rm $0
-	
 	redis-cli hdel addons $alias &> /dev/null
 
 	[[ $1 == u ]] && exit
 	
 	title -l '=' "$bar $title uninstalled successfully."
+	
+	rm $0
 }
 clearcache() {
 	systemctl reload php-fpm
