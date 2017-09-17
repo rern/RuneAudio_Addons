@@ -22,6 +22,14 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
+**reset** if unable to update / uninstall
+```sh
+sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
+sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
+rm -rv /srv/http/{addons*,title.sh}
+rm -rv /srv/http/assets/{css/addons.css,js/addons.js}
+systemctl reload php-fpm
+```
 ---
   
 [**Guideline for Addons enthusiasts**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
