@@ -13,10 +13,9 @@ if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 ?>
 
 <script>
-// js for '<pre>' must be here before 'function bash()'.
-// php 'flush' loop waits for all outputs before going to next lines.
-// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
-setTimeout( function() {
+// php 'flush' finished outputs to <pre> before going to next lines
+// js scroll '<pre>' below 'flush' will do nothing
+setTimeout( function() { // wait for '<pre>' to load first
 	pre = document.getElementsByTagName( 'pre' )[ 0 ];
 	var h0 = pre.scrollHeight;
 	var h1;
@@ -29,7 +28,7 @@ setTimeout( function() {
 	}, 1000 );
 }, 1000 );
 </script>
-
+<!-- >>>----------------------------------------------------------------------------------------------- -->
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
@@ -37,7 +36,7 @@ setTimeout( function() {
 
 	<div class="hidescrollv">
 	<pre>
-
+<!-- <<<----------------------------------------------------------------------------------------------- -->
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
@@ -72,9 +71,8 @@ function bash( $cmd ) {
 }
 
 ob_implicit_flush();      // start flush output without buffer
-
-
-echo preg_replace( '/;\s*/', "\n", $cmd );
+// >>>-------------------------------------------------------------------------------------------------
+echo preg_replace( '/\s*;\s*/', '<br>', $cmd );
 echo '<br>';
 bash( $cmd );
 ?>
@@ -83,7 +81,7 @@ bash( $cmd );
 </div>
 
 <script>
-	setTimeout( function() {
+	setTimeout( function() { // wait for last line
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
@@ -98,6 +96,4 @@ bash( $cmd );
 </body>
 </html>
 
-<?php
-opcache_reset();
-?>
+<?php opcache_reset();?>

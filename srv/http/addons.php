@@ -46,6 +46,7 @@ function addonblock( $pkg ) {
 		$cmdinstall = '/usr/bin/sudo ';
 	}
 	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
+	$cmdupdate = $cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u';
 		
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
@@ -53,7 +54,7 @@ function addonblock( $pkg ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a cmd="'.$cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a cmd="'.$cmdupdate.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
@@ -79,7 +80,7 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
+			<legend>'.$check.preg_replace( '/\s*\*$/', '', $title ).'&emsp;<p>by<span>'.$pkg[ 'maintainer' ].'</span></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
@@ -191,8 +192,11 @@ for ( var i = 0; i < btn.length; i++ ) {
 		}
 		
 		if ( cmd === '/usr/bin/sudo ' ) {
-			if ( opt[0] !== '/' ) opt = '/usr/bin/'+ opt;
-			opt += ';' // ';' replaced as blank line
+			if ( opt[0] !== '/' ) {
+				opt = '/usr/bin/'+ opt;
+				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
+			}
+			opt += ';' // ; for <br>
 		}
 		
 		document.getElementById( 'loader' ).style.display = 'block';
