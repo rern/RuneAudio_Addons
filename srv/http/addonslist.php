@@ -18,7 +18,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*array(
+array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
@@ -27,7 +27,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons/blob/6b4d3c794f82368bd7907afaae9404c99d64b2e3/srv/http/addonslist.php#L21',
 	'installurl'   => '',
 	'option'       => "BASH Command or /full/path/script:"
-),*/
+),
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
