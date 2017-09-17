@@ -7,6 +7,11 @@ This file:
 - lines between ```note and ``` will be omitted
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
+
+## 20170918
+- Improve speed by avoid unnecessary downloads
+- Improve template for install/uninstall scripts
+
 ## 20170917
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
