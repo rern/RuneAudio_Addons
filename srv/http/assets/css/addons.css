@@ -64,6 +64,7 @@ a:hover {
     color: #00608c;
     text-decoration: none;
 }
+.boxed-group legend,
 span,
 pre {
 	color: #e0e7ee;
@@ -74,6 +75,7 @@ legend i,
 a {
 	color: #0095d8;
 }
+legend,
 p,
 ul,
 .disabled {
