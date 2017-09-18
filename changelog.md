@@ -8,10 +8,11 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 20170918
+## 20170919
 - Improve speed by avoid unnecessary downloads
 - Improve template for install/uninstall scripts
 - Add **BASH Command** for running commands and scripts
+- Add force update by long-press uninstall button
 
 ## 20170917
 - Normalize install / uninstall / upgrade across addons
