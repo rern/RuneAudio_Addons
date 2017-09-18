@@ -26,7 +26,7 @@ array(
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
 	'installurl'   => '',
-	'option'       => "BASH Command or /full/path/script:"
+	'option'       => "BASH commands or /full/path/script:"
 ),
 array(
 	'alias'        => 'enha',
