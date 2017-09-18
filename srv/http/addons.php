@@ -47,7 +47,7 @@ function addonblock( $pkg ) {
 	}
 	$cmduninstall = "/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh";
 	$cmdupdate = "$cmduninstall u; [[ $? != 1 ]] && $cmdinstall u";
-		
+	
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
@@ -56,7 +56,7 @@ function addonblock( $pkg ) {
 		} else {
 			$btnin = '<a cmd="'.$cmdupdate.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a cmd="'.$cmduninstall.'" cmdup="'.$cmdupdate.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
 			$option = 'option="'.$pkg[ 'option' ].'"';
@@ -80,7 +80,7 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.preg_replace( '/\s*\*$/', '', $title ).'&emsp;<p>by<span>'.$pkg[ 'maintainer' ].'</span></p><a>&#x25B2</a></legend>
+			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<span>'.strip_tags( $pkg[ 'maintainer' ] ).'</span></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
@@ -88,7 +88,7 @@ function addonblock( $pkg ) {
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
-		<div style="float: right; width: 100px;">
+		<div class="thumbnail" style="float: right; width: 100px;">
 			<a href="'.$pkg[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
 		</div>
 		<div style="clear: both;"></div>';
@@ -100,6 +100,9 @@ function addonblock( $pkg ) {
 ?>
 </div>
 <div id="bottom"></div>
+
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/vendor/hammer.min.js"></script>
 
 <script>
 // auto update addons menu
@@ -147,28 +150,21 @@ for ( var i = 0; i < legend.length; i++ ) {
 	}
 }
 
-// buttons click
-var btn = document.getElementsByClassName( 'btn' );
-for ( var i = 0; i < btn.length; i++ ) {
-	btn[ i ].onclick = function() {
-		var cmd = this.getAttribute( 'cmd' );
+// buttons click / click-hold
+$( '.btn' ).each( function() {
+	var $thisbtn = $( this );
+	var hammerbtn = new Hammer( this );
+	hammerbtn.on( 'tap', function () {
+		var cmd = $thisbtn.attr( 'cmd' );
 		var update = cmd.indexOf( '[[ $? != 1 ]]' );
-		// user confirmation
-		var type = this.innerHTML.split(' ').pop();
-		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
-		var title = this
-				.parentElement
-				.previousElementSibling
-					.innerText
-						.replace( /^ */, '' )
-						.replace( /.by.*/, '' );
-		
-		if ( !confirm( type +' "'+ title +'"?' ) ) return;
+		var type = $thisbtn.text().trim();
+		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
+		if ( !confirm( type +' "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
 		// split each option per user prompt
 		var yesno = 1;
 		var opt = '';
-		if ( this.getAttribute( 'option' ) ) {
-			var option = this.getAttribute( 'option' ).replace( /; /g, ';' ).split( ';' );
+		if ( $thisbtn.attr( 'option' ) ) {
+			var option = $thisbtn.attr( 'option' ).replace( /; /g, ';' ).split( ';' );
 			if ( option.length > 0 ) {
 				for ( var j = 0; j < option.length; j++ ) {
 					var oj = option[ j ];
@@ -190,7 +186,7 @@ for ( var i = 0; i < btn.length; i++ ) {
 				}
 			}
 		}
-		
+
 		if ( cmd === '/usr/bin/sudo ' ) {
 			if ( opt[ 0 ] !== '/' ) {
 				opt = '/usr/bin/'+ opt;
@@ -199,15 +195,28 @@ for ( var i = 0; i < btn.length; i++ ) {
 			opt += ';' // ; for <br>
 		}
 		
-		document.getElementById( 'loader' ).style.display = 'block';
+		$( '#loader' ).show();
 		// send command
 		formtemp( cmd + opt );
+	});
+	hammerbtn.on( 'press', function () {
+		if ( $thisbtn.text().trim() !== 'Uninstall' ) return;
+		if ( !confirm( 'Update "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
+		var cmdup = $thisbtn.attr( 'cmdup' );
+		formtemp( cmdup );
+	});
+} );
 
-	}
-}
-
+function gettitle( btn ) {
+	return btn.parentElement
+				.previousElementSibling
+					.innerText
+						.replace( /^ */, '' )
+						.replace( /.by.*/, '' )
+	;
+}	
 // post submit with temporary form
-function formtemp( command ) {		
+function formtemp(command) {		
 		// width for title lines
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
 		
