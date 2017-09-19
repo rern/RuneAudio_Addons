@@ -153,6 +153,10 @@ ul,
 	overflow: auto;
 	max-height: 800px;
 }
+#infoRadio {
+	padding: 0 100px;
+	text-align: left;
+}
 #infoButtons {
 	padding: 10px 0 20px 0;
 }
@@ -167,4 +171,9 @@ input {
 	border: 2px solid #34495e;
 	color: #e0e7ee;
 	background-color: #10161c;
+}
+input[type=radio],
+input[type=checkbox] {
+	height: 15px;
+	text-align: left;
 }
