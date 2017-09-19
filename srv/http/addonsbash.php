@@ -89,16 +89,16 @@ bash( $cmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
+		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
 		var close = document.getElementById( 'close' );
-		close.children[0].classList.remove( 'disabled' );
+		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
-		info({
-			icon: '<i class="fa fa-info-circle fa-lg">',
-			title: 'Finished',
-			message: 'Finished.\n\nPlease see result information on screen.',
-		});
+		info( {
+			icon:    '<i class="fa fa-info-circle fa-lg">',
+			title:   'Finished',
+			message: 'Please see result information on screen.',
+		} );
 	}, 1000 );
 </script>
 
