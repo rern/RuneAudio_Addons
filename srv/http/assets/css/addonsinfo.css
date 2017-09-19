@@ -36,12 +36,17 @@
 #infoTop a {
     color: #e0e7ee;
 }
+.info a {
+    color: #7795b4;
+    margin-right: 5px;
+}
 #infoTitle {
 	font-size: 1.1em;
 	line-height: 30px;
 }
 #infoContent {
 	padding: 25px 10px 10px 10px;
+    font-size: 16px;
 }
 #infoMessage {
 	word-wrap: break-word;
@@ -54,4 +59,12 @@
 #infoButtons a {
 	margin: 0 5px;
 	min-width: 70px;
+}
+input {
+	height: 41px;
+	padding: 0 10px;
+	border-radius: 6px;
+	border: 2px solid #34495e;
+	color: #e0e7ee;
+	background-color: #10161c;
 }
