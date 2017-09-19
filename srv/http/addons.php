@@ -107,8 +107,8 @@ function addonblock( $pkg ) {
 
 <script>
 // auto update addons menu
-(function() {
-	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[0];
+( function() {
+	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
 		var ok = confirm(
 			'There is an update for "Addons Menu".\n'
@@ -119,7 +119,7 @@ function addonblock( $pkg ) {
     
 		formtemp( btnupdate.getAttribute( 'cmd' ) );
 	}
-})();
+} )();
 
 // changelog show/hide
 var detail = document.getElementById( 'detail' );
@@ -137,17 +137,17 @@ detail.onclick = function() {
 // sroll up click
 var list = document.getElementById( 'list' ).children;
 for ( var i = 0; i < list.length; i++ ) {
-	list[i].onclick = function() {
+	list[ i ].onclick = function() {
 		var alias = this.getAttribute( 'alias' );
-		document.getElementById( alias ).scrollIntoView(true);
-		window.scrollBy(0, -15);
+		document.getElementById( alias ).scrollIntoView( true );
+		window.scrollBy( 0, -15 );
 	}
 }
 // sroll top
 var legend = document.getElementsByTagName( 'legend' );
 for ( var i = 0; i < legend.length; i++ ) {
-	legend[i].onclick = function() {
-		window.scrollTo(0, 0);
+	legend[ i ].onclick = function() {
+		window.scrollTo( 0, 0 );
 	}
 }
 
@@ -159,7 +159,7 @@ $( '.boxed-group .btn' ).each( function() {
 	hammerbtn.on( 'press', function () {
 		if ( $thisbtn.text().trim() !== 'Uninstall' ) return;
 //		if ( !confirm( 'Update "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
-		info({
+		info( {
 			title:  gettitle( $thisbtn[0] ),
 			message: 'Reinstall?',
 			cancel: 1,
@@ -167,17 +167,17 @@ $( '.boxed-group .btn' ).each( function() {
 				var cmdup = $thisbtn.attr( 'cmdup' );
 				formtemp( cmdup );				
 			}
-		});
-	});
+		} );
+	} );
 	
 	hammerbtn.on( 'tap', function () {
 		cmd = $thisbtn.attr( 'cmd' );
 //		update = cmd.indexOf( '[[ $? != 1 ]]' );
-		title = gettitle( $thisbtn[0] );
+		title = gettitle( $thisbtn[ 0 ] );
 		type = $thisbtn.text().trim();
 		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
 //		if ( !confirm( type +' "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
-		info({
+		info( {
 			title: title,
 			message: type +'?',
 			cancel: 1,
@@ -202,9 +202,9 @@ $( '.boxed-group .btn' ).each( function() {
 					formtemp( cmd );
 				}
 			}
-		});
+		} );
 		
-	});
+	} );
 	
 } );
 
@@ -214,59 +214,101 @@ function getoption() {
 	j++;
 	switch( oj[ 0 ] ) { // get 1st character
 		case '!':
-			info ({
-				icon: '<i class="fa fa-info-circle fa-lg">',
-				title: title,
+			info ( {
+				icon:    '<i class="fa fa-info-circle fa-lg">',
+				title:   title,
 				message: oj.slice( 1 ),
-				ok: function() {
+				ok:      function() {
 					sendcommand();
 				}
-			});
+			} );
 			break;
 		case '?':
-			info ({
-				title: title,
+			info ( {
+				title:   title,
 				message: oj.slice( 1 ),
-				cancel: function() {
+				cancel:  function() {
 					opt += '0 ';
 					sendcommand();
 				},
-				ok: function() {
+				ok:     function() {
 					opt += '1 ';
 					sendcommand();
 				}
-			});
+			} );
 			break;
-		case '#':
-			info ({
-				title: title,
-				message: oj.slice( 1 ),
-				passwordbox: 'Password',
-				cancel: function() {
+		case '@':
+			var oj = oj.slice( 1 ).split( '|' );
+			var oj1 = oj[ 1 ].replace( /'/g, '"' );
+			var oj1 = JSON.parse( oj1 );
+			var radio = '';
+			for ( var key in oj1 ) {
+				radio += '<input type="radio" name="inforadio" value="'+ oj1[ key ] +'"> '+ key +'<br>';
+			}
+			info ( {
+				title:    title,
+				message:  oj[ 0 ],
+				radiobox: radio,
+				cancel:   function() {
 					opt += '0 ';
 					sendcommand();
 				},
-				ok: function() {
-					opt += $( '#infoPasswordbox' ).val() +' ';
+				ok:       function() {
+					opt += $( '#infoRadio input[type=radio]:checked').val() +' ';
 					sendcommand();
 				}
-			});
+			} );
 			break;
-		default:
-			info ({
-				title: title,
-				message: oj,
-				textbox: 'input',
-				cancel: function() {
+		case '#':
+			msg = oj.slice( 1 );
+			info ( {
+				title:       title,
+				message:     msg,
+				passwordbox: 'Password',
+				cancel:      function() {
 					opt += '0 ';
 					sendcommand();
 				},
-				ok: function() {
+				ok:          function() {
+					verifypassword( msg, $( '#infoPasswordbox' ).val() );
+				}
+			} );
+			break;
+		default:
+			info ( {
+				title:   title,
+				message: oj,
+				textbox: 'input',
+				cancel:  function() {
+					opt += '0 ';
+					sendcommand();
+				},
+				ok:      function() {
 					opt += $( '#infoTextbox' ).val() +' ';
 					sendcommand();
 				}
-			});
+			} );
 	}
+}
+
+function verifypassword( msg, pwd ) {
+	info( {
+		message:     msg,
+		passwordbox: 'Retype password',
+		ok:          function() {
+			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
+				info( {
+					message: 'Passwords not matched. Please try again.',
+					ok:      function() {
+						verifypassword( msg, pwd )
+					}
+				} );
+			} else {
+				opt += pwd +' ';
+				sendcommand();
+			}
+		}
+	} );
 }
 function sendcommand() {
 	if ( j < olength ) {
@@ -285,7 +327,7 @@ function gettitle( btn ) {
 	;
 }
 // post submit with temporary form
-function formtemp(command) {		
+function formtemp( command ) {		
 		// width for title lines
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
 		
@@ -295,18 +337,6 @@ function formtemp(command) {
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
-}
-// password verify
-var pwd1, pwd2;
-function setpwd( msg ) {
-	pwd1 = prompt( msg );
-	if ( !pwd1 ) return;
-	pwd2 = prompt( 'Retype:'+ msg );
-	if ( pwd1 !== pwd2 ) {
-		alert( 'Passwords not matched. Try again.' );
-		setpwd( msg );
-	}
-	return pwd1
 }
 </script>
 
