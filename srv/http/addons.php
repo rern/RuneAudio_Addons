@@ -103,6 +103,7 @@ function addonblock( $pkg ) {
 
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
 
 <script>
 // auto update addons menu
@@ -151,62 +152,128 @@ for ( var i = 0; i < legend.length; i++ ) {
 }
 
 // buttons click / click-hold
-$( '.btn' ).each( function() {
+$( '.boxed-group .btn' ).each( function() {
 	var $thisbtn = $( this );
 	var hammerbtn = new Hammer( this );
-	hammerbtn.on( 'tap', function () {
-		var cmd = $thisbtn.attr( 'cmd' );
-		var update = cmd.indexOf( '[[ $? != 1 ]]' );
-		var type = $thisbtn.text().trim();
-		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
-		if ( !confirm( type +' "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
-		// split each option per user prompt
-		var yesno = 1;
-		var opt = '';
-		if ( $thisbtn.attr( 'option' ) ) {
-			var option = $thisbtn.attr( 'option' ).replace( /; /g, ';' ).split( ';' );
-			if ( option.length > 0 ) {
-				for ( var j = 0; j < option.length; j++ ) {
-					var oj = option[ j ];
-					switch( oj[ 0 ] ) {
-						case '!':
-							if ( !confirm( oj.slice( 1 ) ) ) return;
-							break;
-						case '?':
-							opt += confirm( oj.slice( 1 ) ) ? 1 +' ' : 0 +' ';
-							break;
-						case '#':
-							var pwd = setpwd( oj.slice( 1 ) );
-							opt += pwd ? pwd +' ' : 0 +' ';
-							break;
-						default :
-							var input = prompt( oj );
-							opt += input ? input +' ' : 0 +' ';
-					}
-				}
-			}
-		}
-
-		if ( cmd === '/usr/bin/sudo ' ) {
-			if ( opt[ 0 ] !== '/' ) {
-				opt = '/usr/bin/'+ opt;
-				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
-			}
-			opt += ';' // ; for <br>
-		}
-		
-		$( '#loader' ).show();
-		// send command
-		formtemp( cmd + opt );
-	});
+	
 	hammerbtn.on( 'press', function () {
 		if ( $thisbtn.text().trim() !== 'Uninstall' ) return;
-		if ( !confirm( 'Update "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
-		var cmdup = $thisbtn.attr( 'cmdup' );
-		formtemp( cmdup );
+//		if ( !confirm( 'Update "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
+		info({
+			title:  gettitle( $thisbtn[0] ),
+			message: 'Reinstall?',
+			cancel: 1,
+			ok: function() {
+				var cmdup = $thisbtn.attr( 'cmdup' );
+				formtemp( cmdup );				
+			}
+		});
 	});
+	
+	hammerbtn.on( 'tap', function () {
+		cmd = $thisbtn.attr( 'cmd' );
+//		update = cmd.indexOf( '[[ $? != 1 ]]' );
+		title = gettitle( $thisbtn[0] );
+		type = $thisbtn.text().trim();
+		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
+//		if ( !confirm( type +' "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
+		info({
+			title: title,
+			message: type +'?',
+			cancel: 1,
+			ok: function () {
+				// split each option per user prompt
+//				var yesno = 1;
+				opt = '';
+				if ( $thisbtn.attr( 'option' ) ) {
+					option = $thisbtn.attr( 'option' ).replace( /; /g, ';' ).split( ';' );
+					j = 0;
+					getoption();
+				} else if ( cmd === '/usr/bin/sudo ' ) {
+					if ( opt[ 0 ] !== '/' ) {
+						opt = '/usr/bin/'+ opt;
+						opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
+					}
+					opt += ';' // ; for <br>
+				
+					$( '#loader' ).show();
+					formtemp( cmd + opt );
+				} else {
+					formtemp( cmd );
+				}
+			}
+		});
+		
+	});
+	
 } );
 
+function getoption() {
+	olength = option.length;
+	oj = option[ j ];
+	j++;
+	switch( oj[ 0 ] ) { // get 1st character
+		case '!':
+			info ({
+				icon: '<i class="fa fa-info-circle fa-lg">',
+				title: title,
+				message: oj.slice( 1 ),
+				ok: function() {
+					sendcommand();
+				}
+			});
+			break;
+		case '?':
+			info ({
+				title: title,
+				message: oj.slice( 1 ),
+				cancel: function() {
+					opt += '0 ';
+				},
+				ok: function() {
+					opt += '1 ';
+					sendcommand();
+				}
+			});
+			break;
+		case '#':
+			info ({
+				title: title,
+				message: oj.slice( 1 ),
+				passwordbox: 'Password',
+				cancel: function() {
+					opt += '0 ';
+				},
+				ok: function() {
+					opt += $( '#infoPasswordbox' ).val() +' ';
+					sendcommand();
+				}
+			});
+			break;
+		default:
+			info ({
+				title: title,
+				message: oj,
+				textbox: 'input',
+				cancel: function() {
+					opt += '0 ';
+				},
+				ok: function() {
+					opt += $( '#infoTextbox' ).val() +' ';
+					sendcommand();
+				}
+			});
+	}
+}
+function sendcommand() {
+	if ( j < olength ) {
+		getoption();
+	} else {
+		console.log( opt );
+//		$( '#loader' ).show();
+//		formtemp( cmd + opt );
+	}
+}
 function gettitle( btn ) {
 	return btn.parentElement
 				.previousElementSibling
@@ -214,7 +281,7 @@ function gettitle( btn ) {
 						.replace( /^ */, '' )
 						.replace( /.by.*/, '' )
 	;
-}	
+}
 // post submit with temporary form
 function formtemp(command) {		
 		// width for title lines
