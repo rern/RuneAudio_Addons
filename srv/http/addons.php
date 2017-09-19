@@ -103,7 +103,7 @@ function addonblock( $pkg ) {
 
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>
-<script src="assets/js/addonsinfo.js"></script>
+<script src="assets/js/addons.js"></script>
 
 <script>
 // auto update addons menu
@@ -229,6 +229,7 @@ function getoption() {
 				message: oj.slice( 1 ),
 				cancel: function() {
 					opt += '0 ';
+					sendcommand();
 				},
 				ok: function() {
 					opt += '1 ';
@@ -243,6 +244,7 @@ function getoption() {
 				passwordbox: 'Password',
 				cancel: function() {
 					opt += '0 ';
+					sendcommand();
 				},
 				ok: function() {
 					opt += $( '#infoPasswordbox' ).val() +' ';
@@ -257,6 +259,7 @@ function getoption() {
 				textbox: 'input',
 				cancel: function() {
 					opt += '0 ';
+					sendcommand();
 				},
 				ok: function() {
 					opt += $( '#infoTextbox' ).val() +' ';
