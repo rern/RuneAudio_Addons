@@ -126,11 +126,11 @@ array(
 	'* buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'* option'      => '!confirm;'
+	'* option'      => '!prompt;'
 	                  .'?yes/no;'
+			  ."@radio|{'key1': 'value1', 'key2': 'value2'}"
 	                  .'#password;'
-	                  ."input line 1\n"
-	                      ."input line 2"
+	                  .'input'
 ),
 ```
 `'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
@@ -154,20 +154,13 @@ array(
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
 - `;` = delimiter each dialog prompt
-- dialog messages
+- `|` = delimiter message | json string(single quoted within double quotes)
+- dialog prompt
 ```
 select type with leading marks:
-    ! = 'js confirm' !continue => ok = continue, cancel = exit
-    ? = 'js confirm' ?yes/no   => ok = 1,        cancel = 0
-    # = 'js prompt'  #password => ok = password, blank-ok/cancel = 0
-      = 'js prompt'  input     => ok = input,    blank-ok/cancel = 0
-entity codes must be used for:
-    &quot; = "
-    &#039; = '
-    &amp;  = &
-    &lt;   = <
-    &gt;   = >  
-new line:
-    "...\n"  = escaped n inside double quotes
-   .'...'    = leading dot concatenate string
+    ! = prompt
+    ? = yes / no
+    @ = radio selector 
+    # = password
+      = input
 ```
