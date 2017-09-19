@@ -16,7 +16,7 @@ $( '#addons' ).click( function() {
 function info(option) {
 	// reset to default
 	$('#infoIcon').html('<i class="fa fa-question-circle fa-lg">');
-	$('#infoTitle').html('I n f o');
+	$('#infoTitle').html('Information');
 	$('#infoSelectbox, #infoRadio, #infoMessage').empty();
 	$('#infoTextbox, #infoPasswordbox, #infoSelectbox').val('');
 	$('#infoCheckbox').prop('checked', false);
