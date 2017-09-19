@@ -9,6 +9,7 @@ This file:
 ```
 
 ## 20170919
+- Better user prompt dialog boxes
 - Add force reinstall/update by long-press uninstall button
 - Improve speed by avoid unnecessary downloads
 - Improve template for install/uninstall scripts
