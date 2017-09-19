@@ -272,9 +272,8 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoption();
 	} else {
-		console.log( opt );
-//		$( '#loader' ).show();
-//		formtemp( cmd + opt );
+		$( '#loader' ).show();
+		formtemp( cmd + opt );
 	}
 }
 function gettitle( btn ) {

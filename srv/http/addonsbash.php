@@ -13,9 +13,10 @@ if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 ?>
 
 <script>
-// php 'flush' finished outputs to <pre> before going to next lines
-// js scroll '<pre>' below 'flush' will do nothing
-setTimeout( function() { // wait for '<pre>' to load first
+// js for '<pre>' must be here before 'function bash()'.
+// php 'flush' loop waits for all outputs before going to next lines.
+// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
+setTimeout( function() {
 	pre = document.getElementsByTagName( 'pre' )[ 0 ];
 	var h0 = pre.scrollHeight;
 	var h1;
@@ -28,7 +29,7 @@ setTimeout( function() { // wait for '<pre>' to load first
 	}, 1000 );
 }, 1000 );
 </script>
-<!-- >>>----------------------------------------------------------------------------------------------- -->
+
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
@@ -36,7 +37,7 @@ setTimeout( function() { // wait for '<pre>' to load first
 
 	<div class="hidescrollv">
 	<pre>
-<!-- <<<----------------------------------------------------------------------------------------------- -->
+
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
@@ -58,9 +59,10 @@ function bash( $cmd ) {
 		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
 		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
 		// skip lines
-		if ( stripos( $std, 'warning:' ) !== false
-				|| stripos( $std, 'y/n' ) !== false
-				|| stripos( $std, 'Uninstall:' ) !== false
+		if (
+				strpos( $std, 'warning:' ) !== false || 
+				stripos( $std, 'y/n' ) !== false ||
+				stripos( $std, 'Uninstall:' ) !== false
 		) continue;
 			
 		echo $std;
@@ -70,8 +72,9 @@ function bash( $cmd ) {
 }
 
 ob_implicit_flush();      // start flush output without buffer
-// >>>-------------------------------------------------------------------------------------------------
-echo preg_replace( '/\s*;\s*/', '<br>', $cmd );
+
+
+echo preg_replace( '/;\s*/', "\n", $cmd );
 echo '<br>';
 bash( $cmd );
 ?>
@@ -79,8 +82,11 @@ bash( $cmd );
 	</div>
 </div>
 
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/addons.js"></script>
+
 <script>
-	setTimeout( function() { // wait for last line
+	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
@@ -88,11 +94,17 @@ bash( $cmd );
 		close.children[0].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
-		alert( 'Finished.\n\nPlease see result information on screen.' );
+		info({
+			icon: '<i class="fa fa-info-circle fa-lg">',
+			title: 'Finished',
+			message: 'Finished.\n\nPlease see result information on screen.',
+		});
 	}, 1000 );
 </script>
 
 </body>
 </html>
 
-<?php opcache_reset();?>
+<?php
+opcache_reset();
+?>
