@@ -44,7 +44,7 @@ function info(option) {
 		var selectvalue = option['selectvalue'];
 		var checkbox = option['checkbox'];
 		var radiobox = option['radiobox'];
-		var radiohtml = option['radiohtml'];
+//		var radiohtml = option['radiohtml'];
 		var boxwidth = option['boxwidth'];
 		var ok = option['ok'];
 		var oktext = option['oktext'];
@@ -80,7 +80,7 @@ function info(option) {
 			$('#infoCheck').show();
 		}
 		if (radiobox) {
-			$('#infoRadio').html(radiobox +' '+ radiohtml).show();
+			$('#infoRadio').html(radiobox).show();
 		}
 		if (boxwidth) $('.infoBox').width(boxwidth);
 		
@@ -116,4 +116,3 @@ function info(option) {
 	});
 	
 }
-
