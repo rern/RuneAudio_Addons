@@ -206,7 +206,6 @@ $( '.boxed-group .btn' ).each( function() {
 } );
 function getoptions() {
 	okey = Object.keys( option );
-	console.log( okey );
 	olength = okey.length;
 	oj = okey[ j ];
 	switch( oj ) {
@@ -325,15 +324,32 @@ function getoptions() {
 			break;
 	}
 }
-
+function verifypassword( msg, pwd, fn ) {
+	info( {
+		message:     msg,
+		passwordbox: 'Retype password',
+		ok:          function() {
+			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
+				info( {
+					message: 'Passwords not matched. Please try again.',
+					ok:      function() {
+						verifypassword( msg, pwd )
+					}
+				} );
+			} else {
+				fn();
+			}
+		}
+	} );
+}
 function sendcommand() {
-	console.log(opt);
+	j++;
+	console.log(j +' / '+ olength);
 	if ( j < olength ) {
-		j++;
 		getoptions();
 	} else {
 		$( '#loader' ).show();
-//		formtemp( cmd + opt );
+		formtemp( cmd + opt );
 	}
 }
 function gettitle( btn ) {
