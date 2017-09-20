@@ -115,6 +115,8 @@ uninstallfinish $1
 ```
     
 **2. an `array()` in `/srv/http/addonslist.php`**  
+`'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
+`'* ...'` : optional 
 ```php
 array(
 	'alias'         => 'alias',
@@ -126,15 +128,42 @@ array(
 	'* buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'* option'      => '!prompt;'
-	                  .'?yes/no;'
-			  ."@radio|{'key1': 'value1', 'key2': 'value2'}"
-	                  .'#password;'
-	                  .'input'
+	'option'        => "{ 
+		'alert': 'message',
+		'confirm': 'message',
+		'prompt': {
+			'message': 'message',
+			'label': 'label'
+		},
+		'password': {
+			'message': 'message',
+			'label': 'label'
+		},
+		'radio': {
+			'message': 'message',
+			'list': {
+				'*key1': 'value1',
+				'key2': 'value2'
+			}
+		},
+		'checkbox': {
+			'message': 'message',
+			'list': {
+				'*key1': 'value1',
+				'key2': 'value2'
+			}
+		},
+		'select': {
+			'message': 'message',
+			'list': {
+				'key1': 'value1',
+				'key2': 'value2'
+			}
+		}
+	}"
+
 ),
 ```
-`'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
-`'* ...'` : optional  
 
 **alias** for addon reference  
 - must be unique
@@ -153,14 +182,6 @@ array(
 
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
-- `;` = delimiter each dialog prompt
-- `|` = delimiter message | json string(single quoted within double quotes)
-- dialog prompt
-```
-select type with leading marks:
-    ! = prompt
-    ? = yes / no
-    @ = radio selector 
-    # = password
-      = input
+- options are **single quoted** json (stored as string in html `<a ... option="..." ...>`)
+- `*` leading keys indicate pre-select items
 ```
