@@ -183,7 +183,7 @@ $( '.boxed-group .btn' ).each( function() {
 				if ( option ) {
 					opt = '';
 					j = 0;
-					option = option.replace( /'/g, '"' ).replace( /\s/g, '' );
+					option = option.replace( /'/g, '"' );
 					option = JSON.parse( option );
 					getoptions();
 				} else if ( cmd === '/usr/bin/sudo ' ) {
