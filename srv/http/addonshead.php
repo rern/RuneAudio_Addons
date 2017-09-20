@@ -64,10 +64,9 @@ if (scrollbarWidth !== 0) {
 				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">
 			</div>
 			<div id="infoSelect" class="info">
-				<a id="infoSelectLabel"></a> <select class="infoBox" id="infoSelectbox"></select>
+				<select class="infoBox" id="infoSelectbox"></select>
 			</div>
 			<div id="infoCheck" class="info">
-				<input type="checkbox" id="infoCheckbox"> <a id="infoCheckLabel"></a>
 			</div>
 			<div id="infoRadio" class="info">
 			</div>

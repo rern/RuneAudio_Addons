@@ -103,7 +103,7 @@ function addonblock( $pkg ) {
 
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>
-<script src="assets/js/addons.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
 
 <script>
 // auto update addons menu
@@ -158,7 +158,6 @@ $( '.boxed-group .btn' ).each( function() {
 	
 	hammerbtn.on( 'press', function () {
 		if ( $thisbtn.text().trim() !== 'Uninstall' ) return;
-//		if ( !confirm( 'Update "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
 		info( {
 			title:  gettitle( $thisbtn[0] ),
 			message: 'Reinstall?',
@@ -172,23 +171,21 @@ $( '.boxed-group .btn' ).each( function() {
 	
 	hammerbtn.on( 'tap', function () {
 		cmd = $thisbtn.attr( 'cmd' );
-//		update = cmd.indexOf( '[[ $? != 1 ]]' );
 		title = gettitle( $thisbtn[ 0 ] );
 		type = $thisbtn.text().trim();
 		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
-//		if ( !confirm( type +' "'+ gettitle( $thisbtn[0] ) +'"?' ) ) return;
 		info( {
 			title: title,
 			message: type +'?',
 			cancel: 1,
 			ok: function () {
-				// split each option per user prompt
-//				var yesno = 1;
-				opt = '';
-				if ( $thisbtn.attr( 'option' ) ) {
-					option = $thisbtn.attr( 'option' ).replace( /; /g, ';' ).split( ';' );
+				option = $thisbtn.attr( 'option' );
+				if ( option ) {
+					opt = '';
 					j = 0;
-					getoption();
+					option = option.replace( /'/g, '"' ).replace( /\s/g, '' );
+					option = JSON.parse( option );
+					getoptions();
 				} else if ( cmd === '/usr/bin/sudo ' ) {
 					if ( opt[ 0 ] !== '/' ) {
 						opt = '/usr/bin/'+ opt;
@@ -207,26 +204,26 @@ $( '.boxed-group .btn' ).each( function() {
 	} );
 	
 } );
-
-function getoption() {
-	olength = option.length;
-	oj = option[ j ];
-	j++;
-	switch( oj[ 0 ] ) { // get 1st character
-		case '!':
+function getoptions() {
+	okey = Object.keys( option );
+	console.log( okey );
+	olength = okey.length;
+	oj = okey[ j ];
+	switch( oj ) {
+		case 'alert':
 			info ( {
 				icon:    '<i class="fa fa-info-circle fa-lg">',
 				title:   title,
-				message: oj.slice( 1 ),
+				message: option[ oj ],
 				ok:      function() {
 					sendcommand();
 				}
 			} );
 			break;
-		case '?':
+		case 'confirm':
 			info ( {
 				title:   title,
-				message: oj.slice( 1 ),
+				message: option[ oj ],
 				cancel:  function() {
 					opt += '0 ';
 					sendcommand();
@@ -237,21 +234,48 @@ function getoption() {
 				}
 			} );
 			break;
-		case '@':
-			var oj = oj.slice( 1 ).split( '|' );
-			var oj1 = oj[ 1 ].replace( /'/g, '"' );
-			var oj1 = JSON.parse( oj1 );
-			var radio = '';
-			for ( var key in oj1 ) {
-				radio += '<input type="radio" name="inforadio" value="'+ oj1[ key ] +'"> '+ key +'<br>';
-			}
+		case 'prompt':
+			info ( {
+				title:   title,
+				message: option[ oj ][ 'message' ],
+				textbox: option[ oj ][ 'label' ],
+				ok:      function() {
+					var input = $( '#infoTextbox' ).val();
+					opt += ( input ? input : 0 ) +' ';
+					sendcommand();
+				}
+			} );
+			break;
+		case 'password':
+			info ( {
+				title:       title,
+				message: option[ oj ][ 'message' ],
+				passwordbox: option[ oj ][ 'label' ],
+				ok:          function() {
+					var pwd = $( '#infoPasswordbox' ).val();
+					if ( pwd ) {
+						verifypassword( msg, pwd, function() {
+							opt += pwd +' ';
+						} );
+					} else {
+						opt += '0 ';
+					}
+					sendcommand();
+				}
+			} );
+			break;
+		case 'radio':
 			info ( {
 				title:    title,
-				message:  oj[ 0 ],
-				radiobox: radio,
-				cancel:   function() {
-					opt += '0 ';
-					sendcommand();
+				message: option[ oj ][ 'message' ],
+				radiobox: function() {
+					var list = option[ oj ][ 'list' ];
+					var radiobox = '';
+					for ( var key in list ) {
+						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
+						radiobox += '<input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'> '+ key.replace( /^\*/, '' ) +'<br>';
+					}
+					return radiobox
 				},
 				ok:       function() {
 					opt += $( '#infoRadio input[type=radio]:checked').val() +' ';
@@ -259,63 +283,57 @@ function getoption() {
 				}
 			} );
 			break;
-		case '#':
-			msg = oj.slice( 1 );
+		case 'checkbox':
 			info ( {
-				title:       title,
-				message:     msg,
-				passwordbox: 'Password',
-				cancel:      function() {
-					opt += '0 ';
-					sendcommand();
+				title:    title,
+				message: option[ oj ][ 'message' ],
+				checkbox: function() {
+					var list = option[ oj ][ 'list' ];
+					var checkbox = '';
+					for ( var key in list ) {
+						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
+						checkbox += '<input type="checkbox" value="'+ list[ key ] +'"'+ checked +'> '+ key.replace( /^\*/, '' ) +'<br>';
+					}
+					return checkbox
 				},
-				ok:          function() {
-					verifypassword( msg, $( '#infoPasswordbox' ).val() );
+				ok:       function() {
+					$( '#infoCheck input[type=checkbox]:checked').each( function() {
+						opt += $( this ).val() +' ';
+					} );
+					sendcommand();
 				}
 			} );
 			break;
-		default:
+		case 'select':
 			info ( {
-				title:   title,
-				message: oj,
-				textbox: 'input',
-				cancel:  function() {
-					opt += '0 ';
-					sendcommand();
+				title:    title,
+				message: option[ oj ][ 'message' ],
+				selecthtml: function() {
+					var list = option[ oj ][ 'list' ];
+					var selecthtml = '';
+					for ( var key in list ) {
+						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
+						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'> '+ key.replace( /^\*/, '' ) +'</option>';
+					}
+					return selecthtml
 				},
-				ok:      function() {
-					opt += $( '#infoTextbox' ).val() +' ';
+				ok:       function() {
+					opt += $( '#infoSelectbox').val() +' ';
 					sendcommand();
 				}
 			} );
+			break;
 	}
 }
 
-function verifypassword( msg, pwd ) {
-	info( {
-		message:     msg,
-		passwordbox: 'Retype password',
-		ok:          function() {
-			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
-				info( {
-					message: 'Passwords not matched. Please try again.',
-					ok:      function() {
-						verifypassword( msg, pwd )
-					}
-				} );
-			} else {
-				opt += pwd +' ';
-				sendcommand();
-			}
-		}
-	} );
-}
 function sendcommand() {
+	console.log(opt);
 	if ( j < olength ) {
-		getoption();
+		j++;
+		getoptions();
 	} else {
 		$( '#loader' ).show();
-		formtemp( cmd + opt );
+//		formtemp( cmd + opt );
 	}
 }
 function gettitle( btn ) {

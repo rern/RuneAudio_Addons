@@ -83,7 +83,7 @@ bash( $cmd );
 </div>
 
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/addons.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
 
 <script>
 	setTimeout( function() {
