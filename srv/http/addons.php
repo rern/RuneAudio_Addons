@@ -223,10 +223,12 @@ function getoptions() {
 			info ( {
 				title:   title,
 				message: option[ oj ],
+				cancellabel: 'No',
 				cancel:  function() {
 					opt += '0 ';
 					sendcommand();
 				},
+				oklabel: 'Yes',
 				ok:     function() {
 					opt += '1 ';
 					sendcommand();
