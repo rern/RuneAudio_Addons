@@ -113,7 +113,7 @@ ul,
 	position: relative;
 	left: 50%;
 	top: 40%;
-	width: 440px;
+	width: 400px;
 	margin-left: -200px;
 	margin-top: -100px;
 	background: #19232d;
@@ -153,9 +153,18 @@ ul,
 	overflow: auto;
 	max-height: 800px;
 }
-#infoRadio {
+#infoRadio,
+#infoCheck {
 	padding: 0 100px;
 	text-align: left;
+}
+#infoSelectbox {
+	visibility: visible;
+	height: 40px;
+	padding: 10px 15px;
+	background: #34495e;
+	border: 0px solid #000000;
+	border-radius: 6px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
