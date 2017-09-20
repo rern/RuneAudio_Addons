@@ -44,8 +44,9 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'       => "{
 		'radio': {
-			'message': 'Set zoom level for display directly connect to RPi.<br>'
-						.'Local browser screen size:',
+			'message': 'Set zoom level for display directly connect to RPi.<br>
+						<br>
+						Local browser screen size:',
 			'list': {
 				'0.7 : width less than 800px': '0.7',
 				'1.2 : HD - 1280px': '1.2',
@@ -64,10 +65,10 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
-		'alert': 'Get DAC configuration ready:<br>"
-				."<br>"
-				."For external power DAC > power on<br>"
-				."Menu > MPD > setup and verify DAC works properly before continue.'
+		'alert': 'Get DAC configuration ready:<br>
+				<br>
+				For external power DAC > power on<br>
+				Menu > MPD > setup and verify DAC works properly before continue.'
 	}"
 ),
 array(
@@ -192,10 +193,10 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => "{
-		'alert': 'Get webradio files copied to:<br>"
-				."/mnt/MPD/Webradio<br>"
-				."<br>"
-				."Ok to continue'
+		'alert': 'Get webradio files copied to:<br>
+				/mnt/MPD/Webradio<br>
+				<br>
+				Ok to continue'
 	}"
 ),
 // array end ----------------------------------------------------------------------------------------------------
