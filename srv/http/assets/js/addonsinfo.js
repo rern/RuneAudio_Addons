@@ -3,7 +3,7 @@ function info(option) {
 	$('#infoIcon').html('<i class="fa fa-question-circle fa-lg">');
 	$('#infoTitle').html('Information');
 	$('#infoSelectbox, #infoRadio, #infoMessage').empty();
-	$('#infoTextbox, #infoPasswordbox, #infoSelectbox').val('');
+	$('#infoTextbox, #infoPasswordbox').val('');
 	$('#infoCheckbox').prop('checked', false);
 	$('.infoBox').width(200);
 	$('.info, #infoCancel').hide();
@@ -31,10 +31,10 @@ function info(option) {
 		var radiobox = option['radiobox'];
 		var boxwidth = option['boxwidth'];
 		var ok = option['ok'];
-		var oktext = option['oktext'];
+		var oklabel = option['oklabel'];
 		var okcolor = option['okcolor'];
 		var cancel = option['cancel'];
-		var canceltext = option['canceltext'];
+		var cancellabel = option['cancellabel'];
 		
 		if (icon) $('#infoIcon').html(icon);
 		if (title) $('#infoTitle').html(title);
@@ -76,7 +76,7 @@ function info(option) {
 				$('#infoOverlay').hide();
 			});
 		}
-		if (oktext) $('#infoOk').html(oktext);
+		if (oklabel) $('#infoOk').html(oklabel);
 		if (okcolor) $('#infoOk').css('background', okcolor);
 		if (cancel) {
 			$('#infoCancel').show();
@@ -85,7 +85,7 @@ function info(option) {
 				(typeof cancel === 'function') && cancel();
 			});
 		}
-		if (canceltext) $('#infoCancel').html(canceltext);
+		if (cancellabel) $('#infoCancel').html(cancellabel);
 	}
 	
 	$('#infoOverlay').show();
@@ -95,6 +95,10 @@ function info(option) {
 		if (e.which == 13) {
 //			$('#infoOverlay').hide();
 		}
+	});
+	$('#infoX').click(function () {
+		$('#infoOverlay').hide();
+		$('#infoTextbox, #infoPasswordbox').val('');
 	});
 	
 }
