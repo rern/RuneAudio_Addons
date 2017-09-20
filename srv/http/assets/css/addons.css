@@ -128,6 +128,8 @@ ul,
 	background: black;
 }
 #infoTop {
+	float: left;
+	width: calc( 100% - 40px; );
 	color: #e0e7ee;
 	line-height: 40px;
 	padding: 0 20px;
@@ -136,6 +138,16 @@ ul,
 #infoTop a {
     color: #e0e7ee;
 }
+#infoX {
+	float: right;
+	width: 40px;
+	line-height: 40px;
+	border-radius: 0 10px 0 0;
+	padding: 0;
+	color: #0095d8;
+	cursor: pointer;
+}
+
 .info a {
     color: #7795b4;
     margin-right: 5px;
