@@ -8,8 +8,8 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 20170919
-- Better user prompt dialog boxes
+## 2017021
+- Much better user prompt dialogs
 - Add force reinstall/update by long-press uninstall button
 - Improve speed by avoid unnecessary downloads
 - Improve template for install/uninstall scripts
