@@ -132,32 +132,32 @@ array(
 		'alert': 'message',
 		'confirm': 'message',
 		'prompt': {
-			'message': 'message',
-			'label': 'label'
+			'message': 'message text',
+			'label': 'label text'
 		},
 		'password': {
-			'message': 'message',
-			'label': 'label'
+			'message': 'message text',
+			'label': 'label text'
 		},
 		'radio': {
-			'message': 'message',
+			'message': 'message text',
 			'list': {
-				'*key1': 'value1',
-				'key2': 'value2'
+				'*list1': 'value1',
+				'list2': 'value2'
 			}
 		},
 		'checkbox': {
-			'message': 'message',
+			'message': 'message text',
 			'list': {
-				'*key1': 'value1',
-				'key2': 'value2'
+				'*list1': 'value1',
+				'list2': 'value2'
 			}
 		},
 		'select': {
-			'message': 'message',
+			'message': 'message text',
 			'list': {
-				'key1': 'value1',
-				'key2': 'value2'
+				'list1': 'value1',
+				'list2': 'value2'
 			}
 		}
 	}"
@@ -183,5 +183,6 @@ array(
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
 - options are **single quoted** json (stored as string in html `<a ... option="..." ...>`)
+- `message text`, `label text`, `listN`, `valueN` will be parsed as html - use entity for `'`, `"`, `<`, `>`, `&`
 - `*` leading keys indicate pre-select items
 ```
