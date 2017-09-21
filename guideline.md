@@ -182,7 +182,8 @@ array(
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
-- options must be **single quoted** json format
+- options must be **single quoted** json,` key:value` format
+- multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - `message text`, `label text`, `itemN`, `valueN` will be parsed as html - use entity for:
     - `&quot;` = `"`
     - `&#039;` = `'`
