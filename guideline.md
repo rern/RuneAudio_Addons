@@ -189,5 +189,5 @@ array(
     - `&amp;`  = `&`
     - `&lt;`   = `<`
     - `&gt;`   = `>` 
-- `*` leading `itemN` indicate pre-select items
+- `*` leading `itemN` = pre-select items
 ```
