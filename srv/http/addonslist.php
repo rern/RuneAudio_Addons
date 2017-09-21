@@ -29,7 +29,7 @@ array(
 	'option'       => "{
 		'prompt': {
 			'message': 'BASH commands or /full/path/script:',
-			'label': ''
+			'label': 'Commands'
 		}
 	}"
 ),
