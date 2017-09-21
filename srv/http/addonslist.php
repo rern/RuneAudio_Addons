@@ -29,7 +29,7 @@ array(
 	'option'       => "{
 		'prompt': {
 			'message': 'BASH commands or /full/path/script:',
-			'label': 'Commands'
+			'label': 'commands'
 		}
 	}"
 ),
@@ -107,11 +107,11 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => "{
 		'password': {
-			'message': 'Password for user &quot;root&quot; (Cancel for no password):',
-			'label: 'Password'
+			'message': 'Password for user &quot;root&quot; (blank = no password):',
+			'label': 'Password'
 		},
 		'confirm': 'Install WebUI alternative (Transmission Web Control)?',
-		'confirm': 'Start &quot;Transmission&quot; on system startup?'
+		'confirm1': 'Start &quot;Transmission&quot; on system startup?'
 	}"
 ),
 /*array(
@@ -125,8 +125,8 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
 		'password': {
-			'message': 'Password for user &quot;root&quot; (Cancel for no password):',
-			'label: 'Password'
+			'message': 'Password for user &quot;root&quot; (blank = no password):',
+			'label': 'Password'
 		}
 	}"
 ),*/
@@ -180,9 +180,6 @@ array(
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'       => "{
-		'confirm': 'Update package database after ranking?'
-	}"
 ),
 array(
 	'alias'        => 'webr',

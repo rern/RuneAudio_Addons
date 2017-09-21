@@ -59,7 +59,10 @@ function addonblock( $pkg ) {
 		$btnun = '<a cmd="'.$cmduninstall.'" cmdup="'.$cmdupdate.'" class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
-			$option = 'option="'.$pkg[ 'option' ].'"';
+			$pkgoption = preg_replace( '/\n|\t/', '', $pkg[ 'option' ] );
+			$pkgoption = htmlspecialchars( $pkgoption );
+			// remove '\n' new line and '\t' tab
+			$option = 'option="'.$pkgoption.'"';
 		} else {
 			$option = '';
 		}

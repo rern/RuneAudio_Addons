@@ -33,7 +33,7 @@ setTimeout( function() {
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
-	<legend>Please wait until finished...</legend>
+	<legend class="bl">Please wait until finished...</legend>
 
 	<div class="hidescrollv">
 	<pre>

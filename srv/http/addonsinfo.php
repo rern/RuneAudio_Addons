@@ -10,17 +10,17 @@
 		<div id="infoContent">
 			<p id="infoMessage" class="info"></p>
 			<div id="infoText" class="info">
-				<a id="infoTextLabel"></a> <input type="text" class="infoBox" id="infoTextbox">
+				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox">
 			</div>
 			<div id="infoPassword" class="info">
 				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">
 			</div>
-			<div id="infoSelect" class="info">
-				<select class="infoBox" id="infoSelectbox"></select>
-			</div>
-			<div id="infoCheck" class="info">
-			</div>
 			<div id="infoRadio" class="info">
+			</div>
+			<div id="infoCheckbox" class="info">
+			</div>
+			<div id="infoSelect" class="info">
+				<a id="infoSelectLabel"></a><select class="infoBox" id="infoSelectbox"></select>
 			</div>
 		</div>
 		<div id="infoButtons">
