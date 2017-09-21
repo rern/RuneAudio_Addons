@@ -183,6 +183,11 @@ array(
 **option:** for user input  
 - each input will be appended as <install>.sh arguments
 - options are **single quoted** json (stored as string in html `<a ... option="..." ...>`)
-- `message text`, `label text`, `listN`, `valueN` will be parsed as html - use entity for `'`, `"`, `<`, `>`, `&`
+- `message text`, `label text`, `listN`, `valueN` will be parsed as html - use entity for:
+    - `&quot;` = `"`
+    - `&#039;` = `'`
+    - `&amp;`  = `&`
+    - `&lt;`   = `<`
+    - `&gt;`   = `>` 
 - `*` leading keys indicate pre-select items
 ```
