@@ -102,3 +102,22 @@ function info(option) {
 	});
 	
 }
+
+function verifypassword( msg, pwd, fn ) {
+	info( {
+		message:     msg,
+		passwordbox: 'Retype password',
+		ok:          function() {
+			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
+				info( {
+					message: 'Passwords not matched. Please try again.',
+					ok:      function() {
+						verifypassword( msg, pwd )
+					}
+				} );
+			} else {
+				fn();
+			}
+		}
+	} );
+}
