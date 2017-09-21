@@ -10,6 +10,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <link rel="stylesheet" href="assets/css/runeui.css">
     <link rel="stylesheet" href="assets/css/addons.css">
+    <link rel="stylesheet" href="assets/css/addonsinfo.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 </head>
@@ -48,32 +49,4 @@ if (scrollbarWidth !== 0) {
 	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
 </div>
 
-<div id="infoOverlay">
-	<div id="infoBox">
-		<div id="infoTopBg">
-			<div id="infoTop">
-				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>
-			</div>
-		</div>
-		<div id="infoContent">
-			<p id="infoMessage" class="info"></p>
-			<div id="infoText" class="info">
-				<a id="infoTextLabel"></a> <input type="text" class="infoBox" id="infoTextbox">
-			</div>
-			<div id="infoPassword" class="info">
-				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">
-			</div>
-			<div id="infoSelect" class="info">
-				<select class="infoBox" id="infoSelectbox"></select>
-			</div>
-			<div id="infoCheck" class="info">
-			</div>
-			<div id="infoRadio" class="info">
-			</div>
-		</div>
-		<div id="infoButtons">
-			<a id="infoCancel" class="btn btn-default"></a>
-			<a id="infoOk" class="btn btn-primary"></a>
-		</div>
-	</div>
-</div>
+<?php require_once( 'addonsinfo.php' );?>
