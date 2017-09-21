@@ -182,7 +182,7 @@ array(
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
-- options are **single quoted** json (stored as string in html `<a ... option="..." ...>`)
+- options must be **single quoted** json string
 - `message text`, `label text`, `itemN`, `valueN` will be parsed as html - use entity for:
     - `&quot;` = `"`
     - `&#039;` = `'`
