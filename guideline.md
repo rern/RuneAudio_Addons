@@ -129,8 +129,10 @@ array(
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
 	'option'        => "{ 
-		'alert': 'message',
-		'confirm': 'message',
+		'alert': 'message text',
+		'confirm': 'message text',
+		'confirm1': 'message text 1',
+		'confirm2': 'message text 2',
 		'prompt': {
 			'message': 'message text',
 			'label': 'label text'
@@ -183,6 +185,7 @@ array(
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
 - options must be **single quoted** json,` key:value` format
+- `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - `message text`, `label text`, `itemN`, `valueN` will be parsed as html - use entity for:
     - `&quot;` = `"`
@@ -190,5 +193,4 @@ array(
     - `&amp;`  = `&`
     - `&lt;`   = `<`
     - `&gt;`   = `>` 
-- `*` leading `itemN` = pre-select items
 ```
