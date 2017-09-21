@@ -56,7 +56,7 @@ function addonblock( $pkg ) {
 		} else {
 			$btnin = '<a cmd="'.$cmdupdate.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a cmd="'.$cmduninstall.'" cmdup="'.$cmdupdate.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a cmd="'.$cmduninstall.'" cmdup="'.$cmdupdate.'" class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
 			$option = 'option="'.$pkg[ 'option' ].'"';
