@@ -62,39 +62,30 @@ $( '.btnun' ).each( function() {
 	} );
 } );	
 $( '.boxed-group .btn' ).click( function () {
-		var $thisbtn = $( this );
-		cmd = $thisbtn.attr( 'cmd' );
-		title = gettitle( $( this ) );
-		type = $thisbtn.text().trim();
-		if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
-		info( {
-			title: title,
-			message: type +'?',
-			cancel: 1,
-			ok: function () {
-				option = $thisbtn.attr( 'option' );
-				if ( option ) {
-					opt = '';
-					j = 0;
-					option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
-					option = JSON.parse( option );
-					getoptions();
-				} else if ( cmd === '/usr/bin/sudo ' ) {
-					if ( opt[ 0 ] !== '/' ) {
-						opt = '/usr/bin/'+ opt;
-						opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
-					}
-					opt += ';' // ; for <br>
-				
-					$( '#loader' ).show();
-					formtemp( cmd + opt );
-				} else {
-					formtemp( cmd );
-				}
+	var $thisbtn = $( this );
+	cmd = $thisbtn.attr( 'cmd' );
+	title = gettitle( $( this ) );
+	type = $thisbtn.text().trim();
+	if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
+	info( {
+		title: title,
+		message: type +'?',
+		cancel: 1,
+		ok: function () {
+			option = $thisbtn.attr( 'option' );
+			if ( option ) {
+				opt = '';
+				j = 0;
+				option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
+				option = JSON.parse( option );
+				getoptions();
+			} else {
+				formtemp( cmd );
 			}
-		} );
-		
+		}
 	} );
+	
+} );
 
 function gettitle( btn ) {
 	return btn.parent().prev()
@@ -239,6 +230,12 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
+		if ( cmd === '/usr/bin/sudo ' ) {
+			if ( opt[ 0 ] !== '/' ) {
+				opt = '/usr/bin/'+ opt;
+				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
+			}
+		}
 		$( '#loader' ).show();
 		formtemp( cmd + opt );
 	}
