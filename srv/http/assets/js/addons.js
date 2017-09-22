@@ -2,14 +2,15 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
-		var ok = confirm(
-			'There is an update for "Addons Menu".\n'
-			+'\n'
-			+'Update?'
-		);
-		if ( !ok ) return
-    
-		formtemp( btnupdate.getAttribute( 'cmd' ) );
+		info( {
+			message: 'There is an update for <fff>Addons Menu</fff><br>\
+						<br>\
+						Update?',
+			cancel: 1,
+			ok: function() {
+				formtemp( btnupdate.getAttribute( 'cmd' ) );				
+			}
+		} );
 	}
 } )();
 
@@ -239,8 +240,7 @@ function sendcommand() {
 		getoptions();
 	} else {
 		$( '#loader' ).show();
-//		formtemp( cmd + opt );
-		console.log( cmd + opt );
+		formtemp( cmd + opt );
 	}
 }
 // post submit with temporary form
