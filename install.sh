@@ -12,7 +12,7 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 # import heading function
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/title.sh; . title.sh; rm title.sh
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh; . addonstitle.sh
 
 installstart $1
 
