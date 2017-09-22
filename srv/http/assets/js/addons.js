@@ -56,7 +56,7 @@ $( '.btnun' ).each( function() {
 			cancel: 1,
 			ok: function() {
 				var cmdup = $thisbtn.attr( 'cmdup' );
-				formtemp( cmdup );				
+				formtemp( cmdup );
 			}
 		} );
 	} );
@@ -237,17 +237,17 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
-		formtemp( cmd + opt );
+		formtemp( cmd, opt );
 	}
 }
-// post submit with temporary form
-function formtemp( command ) {		
-		// width for title lines
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
+// post submit with temporary form (separate option to hide password)
+function formtemp( cmd, opt ) {
+		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ command +'">'
+			+'<input type="hidden" name="cmd" value="'+ cmd +'">'
+			+'<input type="hidden" name="opt" value="'+ ( opt ? opt : '' ) +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
