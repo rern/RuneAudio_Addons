@@ -123,7 +123,7 @@ function verifypassword( msg, pwd, fn ) {
 				info( {
 					message: 'Passwords not matched. Please try again.',
 					ok:      function() {
-						verifypassword( msg, pwd )
+						verifypassword( msg, pwd, fn )
 					}
 				} );
 			} else {

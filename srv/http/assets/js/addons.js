@@ -157,10 +157,10 @@ function getoptions() {
 				ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
-						verifypassword( msg, pwd, (function() {
+						verifypassword( msg, pwd, function() {
 							opt += pwd +' ';
 							sendcommand();
-						}) );
+						} );
 					} else {
 						opt += '0 ';
 						sendcommand();
