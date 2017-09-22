@@ -181,7 +181,8 @@ array(
 **description:**
 - detail should be a linked to external source code
 - text / html
-- `<white>...</white>` = white text
+- `<white>...</white>` = white text style
+- `<code>...</code>` = code style
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
@@ -192,5 +193,6 @@ array(
 - `message text`, `label text`, `itemN` - as html but:
     - `&quot;` = `"`
     - `&#039;` = `'`
-    - `<white>...</white>` = white text
+    - `<white>...</white>` = white text style
+    - `<code>...</code>` = code style
 ```
