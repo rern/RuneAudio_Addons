@@ -65,7 +65,9 @@ a:hover {
     text-decoration: none;
 }
 span,
-pre {
+pre,
+white,
+code {
 	color: #e0e7ee;
 }
 legend i,
@@ -76,6 +78,7 @@ a {
 }
 p,
 ul,
+.bl,
 .disabled {
 	color: #7795b4;
 }

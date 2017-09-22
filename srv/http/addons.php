@@ -6,7 +6,7 @@ require_once( 'addonslist.php' );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend>Currently available:</legend>
+	<legend class="bl">Currently available:</legend>
 ';
 // <<<-------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -41,24 +41,28 @@ function addonblock( $pkg ) {
 	$installurl = $pkg[ 'installurl' ];
 	if ( $alias !== 'bash' ) {
 		$filename = end( explode( '/', $installurl ) );
-		$cmdinstall = 'wget -qN '.$installurl.'; chmod 755 '.$filename.'; /usr/bin/sudo ./'.$filename.' ';
+		$cmdinstall = "wget -qN $installurl; chmod 755 $filename; /usr/bin/sudo ./$filename ";
 	} else {
 		$cmdinstall = '/usr/bin/sudo ';
 	}
-	$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
-		
+	$cmduninstall = "/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh";
+	$cmdupdate = "$cmduninstall u; [[ $? != 1 ]] && $cmdinstall u";
+	
 	if ( $GLOBALS[ 'version' ][ $alias ]) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a cmd="'.$cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a cmd="'.$cmdupdate.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a cmd="'.$cmduninstall.'" class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a cmd="'.$cmduninstall.'" cmdup="'.$cmdupdate.'" class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
-			$option = 'option="'.$pkg[ 'option' ].'"';
+			$pkgoption = preg_replace( '/\n|\t/', '', $pkg[ 'option' ] );
+			$pkgoption = htmlspecialchars( $pkgoption );
+			// remove '\n' new line and '\t' tab
+			$option = 'option="'.$pkgoption.'"';
 		} else {
 			$option = '';
 		}
@@ -87,7 +91,7 @@ function addonblock( $pkg ) {
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
-		<div style="float: right; width: 100px;">
+		<div class="thumbnail" style="float: right; width: 100px;">
 			<a href="'.$pkg[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
 		</div>
 		<div style="clear: both;"></div>';
@@ -100,133 +104,10 @@ function addonblock( $pkg ) {
 </div>
 <div id="bottom"></div>
 
-<script>
-// auto update addons menu
-(function() {
-	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[0];
-	if ( btnupdate.innerText === ' Update' ) {
-		var ok = confirm(
-			'There is an update for "Addons Menu".\n'
-			+'\n'
-			+'Update?'
-		);
-		if ( !ok ) return
-    
-		formtemp( btnupdate.getAttribute( 'cmd' ) );
-	}
-})();
-
-// changelog show/hide
-var detail = document.getElementById( 'detail' );
-detail.onclick = function() {
-	var msg = document.getElementById( 'message' );
-	if ( msg.style.display == 'none' ) {
-		msg.style.display = 'block';
-		detail.innerHTML = 'changelog ▲';
-	} else {
-		msg.style.display = 'none';
-		detail.innerHTML = 'changelog ▼';
-	}
-};
-
-// sroll up click
-var list = document.getElementById( 'list' ).children;
-for ( var i = 0; i < list.length; i++ ) {
-	list[i].onclick = function() {
-		var alias = this.getAttribute( 'alias' );
-		document.getElementById( alias ).scrollIntoView(true);
-		window.scrollBy(0, -15);
-	}
-}
-// sroll top
-var legend = document.getElementsByTagName( 'legend' );
-for ( var i = 0; i < legend.length; i++ ) {
-	legend[i].onclick = function() {
-		window.scrollTo(0, 0);
-	}
-}
-
-// buttons click
-var btn = document.getElementsByClassName( 'btn' );
-for ( var i = 0; i < btn.length; i++ ) {
-	btn[ i ].onclick = function() {
-		var cmd = this.getAttribute( 'cmd' );
-		var update = cmd.indexOf( '[[ $? != 1 ]]' );
-		// user confirmation
-		var type = this.innerHTML.split(' ').pop();
-		if ( ['Install', 'Uninstall', 'Update'].indexOf(type) < 0 ) type = 'Start';
-		var title = this
-				.parentElement
-				.previousElementSibling
-					.innerText
-						.replace( /^ */, '' )
-						.replace( /.by.*/, '' );
-		
-		if ( !confirm( type +' "'+ title +'"?' ) ) return;
-		// split each option per user prompt
-		var yesno = 1;
-		var opt = '';
-		if ( this.getAttribute( 'option' ) ) {
-			var option = this.getAttribute( 'option' ).replace( /; /g, ';' ).split( ';' );
-			if ( option.length > 0 ) {
-				for ( var j = 0; j < option.length; j++ ) {
-					var oj = option[ j ];
-					switch( oj[ 0 ] ) {
-						case '!':
-							if ( !confirm( oj.slice( 1 ) ) ) return;
-							break;
-						case '?':
-							opt += confirm( oj.slice( 1 ) ) ? 1 +' ' : 0 +' ';
-							break;
-						case '#':
-							var pwd = setpwd( oj.slice( 1 ) );
-							opt += pwd ? pwd +' ' : 0 +' ';
-							break;
-						default :
-							var input = prompt( oj );
-							opt += input ? input +' ' : 0 +' ';
-					}
-				}
-			}
-		}
-		
-		if ( cmd === '/usr/bin/sudo ' ) {
-			if ( opt[0] !== '/' ) opt = '/usr/bin/'+ opt;
-			opt += ';' // ';' replaced as blank line
-		}
-		
-		document.getElementById( 'loader' ).style.display = 'block';
-		// send command
-		formtemp(cmd + opt);
-
-	}
-}
-
-// post submit with temporary form
-function formtemp(command) {		
-		// width for title lines
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
-		
-		document.body.innerHTML += 
-			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ command +'">'
-			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
-			+'</form>';
-		document.getElementById( 'formtemp' ).submit();
-}
-// password verify
-var pwd1, pwd2;
-function setpwd( msg ) {
-	pwd1 = prompt( msg );
-	if ( !pwd1 ) return;
-	pwd2 = prompt( 'Retype:'+ msg );
-	if ( pwd1 !== pwd2 ) {
-		alert( 'Passwords not matched. Try again.' );
-		setpwd( msg );
-	}
-	return pwd1
-}
-</script>
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/vendor/hammer.min.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
+<script src="assets/js/addons.js"></script>
 
 </body>
 </html>

@@ -51,10 +51,10 @@ if ! grep -q 'id="addons"' $file; then
 fi
 
 file=/srv/http/app/templates/footer.php
-if ! grep -q 'addons.js' $file; then
-	echo $file
-	echo '<script src="<?=$this->asset('"'"'/js/addons.js'"'"')?>"></script>' >> $file
-fi
+echo $file
+! grep -q 'addons.js' $file &&
+echo '
+<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http

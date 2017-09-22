@@ -115,6 +115,8 @@ uninstallfinish $1
 ```
     
 **2. an `array()` in `/srv/http/addonslist.php`**  
+`'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
+`'* ...'` : optional 
 ```php
 array(
 	'alias'         => 'alias',
@@ -126,15 +128,44 @@ array(
 	'* buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'* option'      => '!confirm;'
-	                  .'?yes/no;'
-	                  .'#password;'
-	                  ."input line 1\n"
-	                      ."input line 2"
+	'option'        => "{ 
+		'alert': 'message text',
+		'confirm': 'message text',
+		'confirm1': 'message text 1',
+		'confirm2': 'message text 2',
+		'prompt': {
+			'message': 'message text',
+			'label': 'label text'
+		},
+		'password': {
+			'message': 'message text',
+			'label': 'label text'
+		},
+		'radio': {
+			'message': 'message text',
+			'list': {
+				'*item1': 'value1',
+				'item2': 'value2'
+			}
+		},
+		'checkbox': {
+			'message': 'message text',
+			'list': {
+				'item1': 'value1',
+				'*item2': 'value2'
+			}
+		},
+		'select': {
+			'message': 'message text',
+			'list': {
+				'item1': 'value1',
+				'item2': 'value2'
+			}
+		}
+	}"
+
 ),
 ```
-`'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
-`'* ...'` : optional  
 
 **alias** for addon reference  
 - must be unique
@@ -147,27 +178,21 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
-**description:** for summary  
+**description:**
+- detail should be a linked to external source code
 - text / html
-- detail should be a linked to source code
+- `<white>...</white>` = white text style
+- `<code>...</code>` = code style
 
-**option:** for user input  
+**option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
-- `;` = delimiter each dialog prompt
-- dialog messages
-```
-select type with leading marks:
-    ! = 'js confirm' !continue => ok = continue, cancel = exit
-    ? = 'js confirm' ?yes/no   => ok = 1,        cancel = 0
-    # = 'js prompt'  #password => ok = password, blank-ok/cancel = 0
-      = 'js prompt'  input     => ok = input,    blank-ok/cancel = 0
-entity codes must be used for:
-    &quot; = "
-    &#039; = '
-    &amp;  = &
-    &lt;   = <
-    &gt;   = >  
-new line:
-    "...\n"  = escaped n inside double quotes
-   .'...'    = leading dot concatenate string
+- options must be **single quoted** json,` key:value` format
+- `*` leading `itemN` = pre-select items
+- multiple dialogs of the same type must add trailing numbers to make `key`s unique
+- multiple `confirm` dialog(yes/no) should be switched to `checkbox`
+- `message text`, `label text`, `itemN` - as html but:
+    - `&quot;` = `"`
+    - `&#039;` = `'`
+    - `<white>...</white>` = white text style
+    - `<code>...</code>` = code style
 ```

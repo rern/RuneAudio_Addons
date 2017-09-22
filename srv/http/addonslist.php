@@ -1,8 +1,8 @@
 <?php
-// sorting          : by 'title'
-// fixed sequence   : 'alias', 'title', 'version'
-// non-install type : omit 'version'
-// optional         : 'thumbnail', 'option'
+// sorting          : 'title' ascending
+// fixed order      : 'alias', 'title', 'version'
+// non-install type : 'version' omitted
+// optional         : 'buttonlabel', 'option', 'thumbnail'
 // star badge       : '*' after 'title'
 
 $addons = array(
@@ -13,7 +13,7 @@ array(
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.<br>'
-			.'<span>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</span>',
+			.'<white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -22,27 +22,38 @@ array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or script.',
+	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
 	'buttonlabel'  => 'Run',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons/blob/6b4d3c794f82368bd7907afaae9404c99d64b2e3/srv/http/addonslist.php#L21',
+	'sourcecode'   => '',
 	'installurl'   => '',
-	'option'       => "BASH Command or /full/path/script:"
+	'option'       => "{
+		'prompt': {
+			'message': '<white>BASH</white> commands or /full/path/script:',
+			'label': 'commands'
+		}
+	}"
 ),
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'More minimalism and more fluid layout.',
+	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'option'      => "Set zoom level for display directly connect to RPi.\n"
-				."\n"
-				."Local browser screen size:\n"
-				."0.7 : width less than 800px\n"
-				."1.2 : HD - 1280px\n"
-				."1.5 : Full HD - 1920px"
+	'option'       => "{
+		'radio': {
+			'message': 'Set <white>zoom level</white> for display directly connect to RPi.<br>
+						<br>
+						Local browser screen size:',
+			'list': {
+				'Width less than 800px: 0.7': '0.7',
+				'HD - 1280px: 1.2': '1.2',
+				'*Full HD - 1920px: 1.5': '1.5'
+			}
+		}
+	}"
 ),
 array(
 	'alias'        => 'gpio',
@@ -53,10 +64,12 @@ array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'      => "?Get DAC configuration ready:\n"
-				."\n"
-				."For external power DAC > power on\n"
-				."Menu > MPD > setup and verify DAC works properly before continue."
+	'option'       => "{
+		'alert': 'Get <white>DAC configuration</white> ready:<br>
+				<br>
+				For external power: <code>DAC</code> > <code>power on</code><br>
+				<code>Menu</code> > <code>MPD</code> > <code>setup</code> > verify DAC works properly before continue.'
+	}"
 ),
 array(
 	'alias'        => 'pass',
@@ -78,7 +91,9 @@ array(
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'       => '?Start &quot;Aria2&quot; on system startup?'
+	'option'       => "{
+		'confirm': 'Start <white>Aria2</white> on system startup?'
+	}"
 ),
 array(
 	'alias'        => 'tran',
@@ -90,9 +105,19 @@ array(
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):;'
-			.'?Install WebUI alternative (Transmission Web Control);'
-			.'?Start &quot;Transmission&quot; on system startup'
+	'option'       => "{
+		'password': {
+			'message': 'Password for user <white>root</white> (blank = no password):',
+			'label': 'Password'
+		},
+		'checkbox': {
+			'message': '',
+			'list': {
+				'Install <white>WebUI</white> alternative?': '1',
+				'Start <white>Transmission</white> on system startup?': '1'
+			}
+		}
+	}"
 ),
 /*array(
 	'alias'        => 'samb',
@@ -103,7 +128,12 @@ array(
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
-	'option'       => '#Password for user &quot;root&quot; (Cancel for no password):'
+	'option'       => "{
+		'password': {
+			'message': 'Password for user <white>root</white> (blank = no password):',
+			'label': 'Password'
+		}
+	}"
 ),*/
 
 array(
@@ -123,7 +153,9 @@ array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'option'       => '!Unmount and remove all USB drives before proceeding.'
+	'option'       => "{
+		'alert': 'Unmount and remove all <white>USB drives</white> before proceeding.'
+	}"
 ),
 array(
 	'alias'        => 'font',
@@ -153,7 +185,6 @@ array(
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'       => '?Update package database after ranking?'
 ),
 array(
 	'alias'        => 'webr',
@@ -163,10 +194,12 @@ array(
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
-	'option'      => "!Get webradio files copied to:\n"
-				."/mnt/MPD/Webradio\n"
-				."\n"
-				."Continue import?"
+	'option'       => "{
+		'alert': 'Get webradio files copied to:<br>
+				<code>/mnt/MPD/Webradio</code><br>
+				<br>
+				Ok to continue'
+	}"
 ),
 // array end ----------------------------------------------------------------------------------------------------
 );

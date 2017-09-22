@@ -33,7 +33,7 @@ setTimeout( function() {
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
-	<legend>Please wait until finished...</legend>
+	<legend class="bl">Please wait until finished...</legend>
 
 	<div class="hidescrollv">
 	<pre>
@@ -82,16 +82,23 @@ bash( $cmd );
 	</div>
 </div>
 
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
+
 <script>
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementsByTagName( 'legend' )[0].innerHTML = '&nbsp;';
+		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
 		var close = document.getElementById( 'close' );
-		close.children[0].classList.remove( 'disabled' );
+		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
-		alert( 'Finished.\n\nPlease see result information on screen.' );
+		info( {
+			icon:    '<i class="fa fa-info-circle fa-lg">',
+			title:   'Finished',
+			message: 'Please see result information on screen.',
+		} );
 	}, 1000 );
 </script>
 
