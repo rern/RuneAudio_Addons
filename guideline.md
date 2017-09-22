@@ -188,10 +188,8 @@ array(
 - `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-- `message text`, `label text`, `itemN`, `valueN` will be parsed as html - use entity for:
+- `message text`, `label text`, `itemN`, `valueN` - as html but:
     - `&quot;` = `"`
     - `&#039;` = `'`
-    - `&amp;`  = `&`
-    - `&lt;`   = `<`
-    - `&gt;`   = `>` 
+    - `<white>...</white>` = white text
 ```
