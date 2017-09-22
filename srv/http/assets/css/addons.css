@@ -64,9 +64,10 @@ a:hover {
     color: #00608c;
     text-decoration: none;
 }
-fff,
 span,
-pre {
+pre,
+white,
+code {
 	color: #e0e7ee;
 }
 legend i,
