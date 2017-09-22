@@ -178,9 +178,10 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
-**description:** for summary  
+**description:**
+- detail should be a linked to external source code
 - text / html
-- detail should be a linked to source code
+- `<white>...</white>` = white text
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
@@ -188,7 +189,7 @@ array(
 - `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-- `message text`, `label text`, `itemN`, `valueN` - as html but:
+- `message text`, `label text`, `itemN` - as html but:
     - `&quot;` = `"`
     - `&#039;` = `'`
     - `<white>...</white>` = white text
