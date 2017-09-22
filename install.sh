@@ -13,7 +13,7 @@ fi
 
 # import heading function
 [[ ! -e /srv/http/addonstitle.sh ]] && wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh
-. addonstitle.sh
+. /srv/http/addonstitle.sh
 
 installstart $1
 
