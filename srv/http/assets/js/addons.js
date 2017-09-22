@@ -204,7 +204,7 @@ function getoptions() {
 				},
 				ok:       function() {
 					$( '#infoCheck input[type=checkbox]:checked').each( function() {
-						opt += $( this ).val() +' ';
+						opt += ( $( this ).val() ? 1 : 0 ) +' ';
 					} );
 					sendcommand();
 				}
