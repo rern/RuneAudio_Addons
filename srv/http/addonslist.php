@@ -110,8 +110,13 @@ array(
 			'message': 'Password for user &quot;root&quot; (blank = no password):',
 			'label': 'Password'
 		},
-		'confirm': 'Install WebUI alternative (Transmission Web Control)?',
-		'confirm1': 'Start &quot;Transmission&quot; on system startup?'
+		'checkbox': {
+			'message': '',
+			'list': {
+				'Install WebUI alternative?': '1',
+				'Start &quot;Transmission&quot; on system startup?': '1'
+			}
+		}
 	}"
 ),
 /*array(
@@ -191,7 +196,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => "{
 		'alert': 'Get webradio files copied to:<br>
-				/mnt/MPD/Webradio<br>
+				<code>/mnt/MPD/Webradio</code><br>
 				<br>
 				Ok to continue'
 	}"
