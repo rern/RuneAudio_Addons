@@ -3,7 +3,7 @@
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
 		info( {
-			message: 'There is an update for <fff>Addons Menu</fff><br>\
+			message: 'There is an update for <white>Addons Menu</white><br>\
 						<br>\
 						Update?',
 			cancel: 1,
