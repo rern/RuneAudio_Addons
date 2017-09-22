@@ -8,22 +8,21 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 2017021
+## 2017022
 - Much better user prompt dialogs
 - Add force reinstall/update by long-press uninstall button
 - Improve speed by avoid unnecessary downloads
-- Improve template for install/uninstall scripts
 - Add **BASH Command** for running commands and scripts
+- Improve template for install/uninstall scripts
+- Accommodate most prompt types: alert, confirm, textbox, password, radio, checkbox, select
 
 ## 20170917
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
 - Release guideline with templates for addons scripts
-- Minor improvements
 
 ## 20170913
 - Improve update messages
-- Minor improvements
 
 ## 20170909
 - Auto update **Addons Menu**
