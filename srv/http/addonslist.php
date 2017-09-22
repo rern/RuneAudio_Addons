@@ -113,7 +113,7 @@ array(
 		'checkbox': {
 			'message': '',
 			'list': {
-				'Install <white>WebUI</white> alternative?': '1',
+				'*Install <white>WebUI</white> alternative?': '1',
 				'Start <white>Transmission</white> on system startup?': '1'
 			}
 		}
