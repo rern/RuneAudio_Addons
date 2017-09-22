@@ -203,8 +203,8 @@ function getoptions() {
 					return checkboxhtml
 				},
 				ok:       function() {
-					$( '#infoCheck input[type=checkbox]:checked').each( function() {
-						opt += ( $( this ).val() ? 1 : 0 ) +' ';
+					$( '#infoCheckbox input[type=checkbox]').each( function() {
+						opt += ( $( this ).is( ':checked' ) ? 1 : 0 ) +' ';
 					} );
 					sendcommand();
 				}
@@ -239,7 +239,8 @@ function sendcommand() {
 		getoptions();
 	} else {
 		$( '#loader' ).show();
-		formtemp( cmd + opt );
+//		formtemp( cmd + opt );
+		console.log( cmd + opt );
 	}
 }
 // post submit with temporary form
