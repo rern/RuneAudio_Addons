@@ -37,7 +37,7 @@ Guideline
 - no update script required
   - update will be done by 'uninstall' > 'install'
   
-**install script** - `<any_name>.sh`  
+**install script** - `install.sh`  
 ```sh
 #!/bin/bash
 
