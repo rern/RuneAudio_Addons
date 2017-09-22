@@ -1,6 +1,7 @@
 #!/bin/bash
 
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
+sed -i '/addonsmenu.js/ d' /srv/http/app/templates/footer.php
 sed -i '/addons.js/ d' /srv/http/app/templates/footer.php
 rm -rv /srv/http/{addons*,title.sh}
 rm -rv /srv/http/assets/{css/addons*,js/addons*}
