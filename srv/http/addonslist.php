@@ -13,7 +13,7 @@ array(
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.<br>'
-			.'<span>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</span>',
+			.'<white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -28,7 +28,7 @@ array(
 	'installurl'   => '',
 	'option'       => "{
 		'prompt': {
-			'message': 'BASH commands or /full/path/script:',
+			'message': '<white>BASH</white> commands or /full/path/script:',
 			'label': 'commands'
 		}
 	}"
@@ -38,19 +38,19 @@ array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'More minimalism and more fluid layout.',
+	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'       => "{
 		'radio': {
-			'message': 'Set zoom level for display directly connect to RPi.<br>
+			'message': 'Set <white>zoom level</white> for display directly connect to RPi.<br>
 						<br>
 						Local browser screen size:',
 			'list': {
-				'0.7 : width less than 800px': '0.7',
-				'1.2 : HD - 1280px': '1.2',
-				'*1.5 : Full HD - 1920px': '1.5'
+				'Width less than 800px: 0.7': '0.7',
+				'HD - 1280px: 1.2': '1.2',
+				'*Full HD - 1920px: 1.5': '1.5'
 			}
 		}
 	}"
@@ -65,10 +65,10 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
-		'alert': 'Get DAC configuration ready:<br>
+		'alert': 'Get <white>DAC configuration</white> ready:<br>
 				<br>
-				For external power DAC > power on<br>
-				Menu > MPD > setup and verify DAC works properly before continue.'
+				For external power: <code>DAC</code> > <code>power on</code><br>
+				<code>Menu</code> > <code>MPD</code> > <code>setup</code> > verify DAC works properly before continue.'
 	}"
 ),
 array(
@@ -92,7 +92,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => "{
-		'confirm': 'Start &quot;Aria2&quot; on system startup?'
+		'confirm': 'Start <white>Aria2</white> on system startup?'
 	}"
 ),
 array(
@@ -107,14 +107,14 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => "{
 		'password': {
-			'message': 'Password for user &quot;root&quot; (blank = no password):',
+			'message': 'Password for user <white>root</white> (blank = no password):',
 			'label': 'Password'
 		},
 		'checkbox': {
 			'message': '',
 			'list': {
-				'Install WebUI alternative?': '1',
-				'Start &quot;Transmission&quot; on system startup?': '1'
+				'Install <white>WebUI</white> alternative?': '1',
+				'Start <white>Transmission</white> on system startup?': '1'
 			}
 		}
 	}"
@@ -130,7 +130,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
 		'password': {
-			'message': 'Password for user &quot;root&quot; (blank = no password):',
+			'message': 'Password for user <white>root</white> (blank = no password):',
 			'label': 'Password'
 		}
 	}"
@@ -154,7 +154,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'option'       => "{
-		'alert': 'Unmount and remove all USB drives before proceeding.'
+		'alert': 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	}"
 ),
 array(
