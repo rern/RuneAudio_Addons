@@ -187,7 +187,7 @@ array(
 - options must be **single quoted** json,` key:value` format
 - `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
-- multiple `confirm` dialog should be switched to `checkbox`
+- multiple `confirm` dialog(yes/no) should be switched to `checkbox`
 - `message text`, `label text`, `itemN`, `valueN` will be parsed as html - use entity for:
     - `&quot;` = `"`
     - `&#039;` = `'`
