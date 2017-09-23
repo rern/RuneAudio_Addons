@@ -9,7 +9,7 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'title'        => 'Addons Menu',
+	'title'        => '0', // force sorting always 1st - replace by 'Addons Menu' later
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.<br>'
