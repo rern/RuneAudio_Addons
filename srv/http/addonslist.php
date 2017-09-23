@@ -190,7 +190,7 @@ array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Webradio files import.',
+	'description'  => 'Webradio files import. Add files at anytime then start this addon.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
