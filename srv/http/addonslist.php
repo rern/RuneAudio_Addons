@@ -191,7 +191,8 @@ array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import.'
-			.'<br>Add files at anytime then start this addon to refresh Webradio list',
+			.'<br>Add files at anytime then start this addon to refresh Webradio list'
+			.'<br><white>Any import before 20170922 should run this addon again to improve sorting.</white>',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
