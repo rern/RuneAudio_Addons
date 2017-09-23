@@ -18,6 +18,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
+// ----------------------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
