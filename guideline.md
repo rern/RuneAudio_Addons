@@ -1,5 +1,6 @@
 Guideline
 ---
+
 **Addons Menu Process:**  
 - Menu > Addons > download: `addonsdl.php`
   - `addonslist.php`
@@ -8,8 +9,10 @@ Guideline
   - list from `addonslist.php` (link to each block)
   - changelog from `addonslog.php` (toggle show/hide)
   - each addon block from `addonslist.php`
-  - install/uninstall/update buttons based on `version` from `addonslist.php` vs database
-  - user input options
+  - install/uninstall/update status based on:
+     - `uninstall_<alias>.sh` file - installed marker
+     - `version` from `addonslist.php` vs database - buttons status
+  - user input dialogs
 - Addons Terminal page: `addonsbash.php`
   - on-screen messages (stdout/stderr of bash scripts)
   - nofify on finished
