@@ -186,7 +186,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 ),
-/*array(
+array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
@@ -200,6 +200,6 @@ array(
 				<br>
 				Ok to continue'
 	}"
-),*/
+),
 // array end ----------------------------------------------------------------------------------------------------
 );
