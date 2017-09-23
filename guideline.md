@@ -192,9 +192,10 @@ array(
 - `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-- `message text`, `label text`, `itemN` - as html but:
-    - `&quot;` = `"`
-    - `&#039;` = `'`
+- `message text`, `label text`, `itemN`:
+    - text / html (only quotes to be escaped)
+        - `&quot;` = `"`
+        - `&#039;` = `'`
     - `<white>...</white>` = white text style
     - `<code>...</code>` = code style
 ```
