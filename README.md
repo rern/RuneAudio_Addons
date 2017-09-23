@@ -11,7 +11,7 @@ RuneAudio Addons Menu for easy addons installation via RuneUI.
 - show messages during install
 - installed indication
 - update indication
-- modular block for easy to add scripts from other sources
+- modular template for easy to add addon scripts from other sources
 
 Install
 ---
