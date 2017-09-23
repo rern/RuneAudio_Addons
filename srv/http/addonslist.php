@@ -12,8 +12,7 @@ array(
 	'title'        => '0', // force sorting always 1st - replace by 'Addons Menu' later
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons main page.<br>'
-			.'<white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
+	'description'  => 'This Addons main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
