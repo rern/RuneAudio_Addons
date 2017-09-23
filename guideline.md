@@ -190,11 +190,11 @@ array(
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - multiple `confirm` dialog(yes/no) should be switched to `checkbox`
 
-**styling** `description`, `message text`, `label text`, `itemN`
-    - text / html
-    - only quotes need escape with entities
-        - `&quot;` = `"`
-        - `&#039;` = `'`
-    - `<white>...</white>` = white text style
-    - `<code>...</code>` = code style
+**_styling_** for `description`, `message text`, `label text`, `itemN`
+- text / html
+- only quotes need escape with entities
+    - `&quot;` = `"`
+    - `&#039;` = `'`
+- `<white>...</white>` = white text style
+- `<code>...</code>` = code style
 ```
