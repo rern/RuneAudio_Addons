@@ -1,9 +1,25 @@
-Addons for RuneAudio
+Addons Menu for RuneAudio
 ---
-_All tested on RuneAudio 0.3 20160313_
-_Most should work on 0.4b but some not tested yet_
 
-RuneAudio Addons Menu for easy addons installation via RuneUI.  
+_All tested on RuneAudio 0.3 20160313_  
+_(0.3+0.4b) - RuneAudio 0.3, 0.4b compatible_  
+_Most should work on 0.4b but some not tested yet_  
+
+**Addons Menu** for easy addons installation via RuneUI.  
+
+Currently available:
+- Aria2
+- Backup-Restore Update (0.3+0.4b)
+- BASH Commands
+- Expand Partition (0.3+0.4b)
+- Fonts - Extended Characters (0.3+0.4b)
+- Login Logo for SSH Terminal
+- Rank Mirror Package Servers (0.3+0.4b)
+- RuneUI Enhancements (0.3+0.4b)
+- RuneUI GPIO
+- RuneUI Password
+- Transmission
+- Webradio Import
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
