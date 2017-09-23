@@ -1,6 +1,7 @@
 Addons for RuneAudio
 ---
-_Tested on RuneAudio beta 20160313_
+_All tested on RuneAudio 0.3 20160313_
+_Most should work on 0.4b but some not tested yet_
 
 RuneAudio Addons Menu for easy addons installation via RuneUI.  
 
