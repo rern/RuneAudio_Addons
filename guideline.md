@@ -182,9 +182,6 @@ array(
     
 **description:**
 - detail should be a linked to external source code
-- text / html
-- `<white>...</white>` = white text style
-- `<code>...</code>` = code style
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
@@ -192,8 +189,10 @@ array(
 - `*` leading `itemN` = pre-select items
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 - multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-- `message text`, `label text`, `itemN`:
-    - text / html (only quotes to be escaped)
+
+**styling** `description`, `message text`, `label text`, `itemN`
+    - text / html
+    - only quotes need escape with entities
         - `&quot;` = `"`
         - `&#039;` = `'`
     - `<white>...</white>` = white text style
