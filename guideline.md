@@ -169,6 +169,7 @@ array(
 ```
 
 **alias** for addon reference  
+- 4 characters
 - must be unique
 
 **version:** for buttons enable/disable  
