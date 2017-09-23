@@ -11,6 +11,8 @@ echo '
 // <<<-------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
+
+$GLOBALS[ 'addonsmenu' ] = 'Addons Menu';
 $GLOBALS[ 'version' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
@@ -18,7 +20,6 @@ $GLOBALS[ 'blocks' ] = '';
 // sort
 $arraytitle = array_column( $addons, 'title' );
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
-
 $length = count( $addons );
 for ( $i = 0; $i < $length; $i++ ) {
 	addonblock( $addons[ $i ] );
@@ -73,9 +74,12 @@ function addonblock( $pkg ) {
 	
 	// addon list
 	$title = $pkg[ 'title' ];
+	// Addons Menu: hide in list and change to actual title
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <span>&star;</span>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'">'.$listtitle.'</li>';
+	} else {
+		$title = $GLOBALS[ 'addonsmenu' ];
 	}
 	// addon blocks
 	$GLOBALS[ 'blocks' ] .= '
