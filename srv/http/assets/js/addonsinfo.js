@@ -5,7 +5,7 @@ var infohtml = '\
 			<div id="infoTop">\
 				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>\
 			</div>\
-			<div id="infoX"><i class="fa fa-times fa-lg"></i></div>\
+			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>\
 			<div style="clear: both"></div>\
 		</div>\
 		<div id="infoContent">\
@@ -127,11 +127,11 @@ function setboxwidth( $box, html ) {
 	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
 	$box.html( html ).show();                    // show to get width
 	setTimeout( function() {                    // wait for radiohtml ready
-		$box.find( 'span' ).each( function() {   // get max width
+		$box.find( 'label' ).each( function() {   // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
-		var pad = ( contentW - 15 - maxW ) / 2; // 15 = button width
+		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
 		$box.css('padding-left', pad +'px');     // set padding-left
 		$( '#infoBox' ).css('left', '50%' );    // move back
 	}, 100);
