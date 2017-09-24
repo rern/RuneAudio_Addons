@@ -102,7 +102,7 @@ function getoptions() {
 	switch( oj0 ) {
 		case 'alert':
 			info( {
-				icon:    '<i class="fa fa-info-circle fa-lg">',
+				icon:    '<i class="fa fa-info-circle fa-2x">',
 				title:   title,
 				message: option[ oj ],
 				ok:      function() {

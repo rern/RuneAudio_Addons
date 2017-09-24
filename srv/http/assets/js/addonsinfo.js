@@ -33,7 +33,7 @@ $( 'body' ).prepend( infohtml );
 
 function info( option ) {
 	// reset to default
-	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-lg">' );
+	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
 	$( '#infoTitle' ).html( 'Information' );
 	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
 	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
