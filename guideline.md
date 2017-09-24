@@ -175,7 +175,7 @@ array(
 
 **alias** for addon reference  
 - 4 characters
-- must be unique
+- must be unique amomng aliases
 
 **version:** for buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
@@ -189,10 +189,11 @@ array(
 - detail should be a linked to external source code
 
 **option:** for user input dialogs  
-- each input will be appended as <install>.sh arguments
-- options must be **single quoted** json,` key:value` format
+- each option open a dialog
+- each value will be appended as <install>.sh arguments / parameters
+- options must be **single quoted** json, `" 'key': 'value' "` format
 - `*` leading `itemN` = pre-select items
-- dialogs:
+- dialog types:
 	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
 	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
@@ -208,11 +209,13 @@ array(
 		- `'custom': '?'` - `?` >  `'prompt'` for custom value
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 ---
+
 **styling** for `description`, `option` dialogs
 - text / html
 - only quotes need escape with entities
     - `&quot;` = `"`
     - `&#039;` = `'`
-- `<white>...</white>` = white text style
-- `<code>...</code>` = code style
+- preset styles:
+	- `<white>...</white>` = white text
+	- `<code>...</code>` = code
 ```
