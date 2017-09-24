@@ -71,8 +71,13 @@
 }
 #infoSelect button {
 	height: 40px;
+	margin-left: 5px;
 	padding-right: 25px;
 	font-size: 16px;
+}
+#infoSelect a {
+	margin: 0;
+	padding-left: 10px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
