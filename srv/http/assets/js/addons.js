@@ -207,6 +207,7 @@ function getoptions() {
 			info( {
 				title:    title,
 				message: ojson[ 'message' ],
+				selectlabel: ojson[ 'label' ],
 				selecthtml: function() {
 					var list = ojson[ 'list' ];
 					var selecthtml = '';
