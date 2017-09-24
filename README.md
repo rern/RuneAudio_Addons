@@ -22,8 +22,10 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
-**Reinstall**  
-Problems with install / uninstall / update, this clean up + reinstall will fix it.
+**Problems** with install / uninstall / update:  
+Long press `Uninstall` button to reinstall
+  
+or
 ```sh
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/reinstall.sh; chmod +x reinstall.sh; ./reinstall.sh
 ```
