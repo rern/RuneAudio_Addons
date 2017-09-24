@@ -201,7 +201,7 @@ array(
 	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 ---
-**_styling_** for `description`, `option` dialogs
+**styling** for `description`, `option` dialogs
 - text / html
 - only quotes need escape with entities
     - `&quot;` = `"`
