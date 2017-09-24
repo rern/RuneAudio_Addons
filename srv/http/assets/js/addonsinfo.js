@@ -29,7 +29,7 @@ var infohtml = '\
 	</div>\
 </div>\
 '
-$( 'body' ).append( infohtml );
+$( 'body' ).prepend( infohtml );
 
 function info( option ) {
 	// reset to default
