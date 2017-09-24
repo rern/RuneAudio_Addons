@@ -9,15 +9,15 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'title'        => '0', // force sorting always 1st - replace by 'Addons Menu' later
+	'title'        => 'Addons Menu',
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
+	'description'  => 'This Addons main page.'
+			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-// ----------------------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
@@ -36,9 +36,9 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20170924',
+	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
+	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
@@ -50,7 +50,8 @@ array(
 			'list': {
 				'Width less than 800px: 0.7': '0.7',
 				'HD - 1280px: 1.2': '1.2',
-				'*Full HD - 1920px: 1.5': '1.5'
+				'*Full HD - 1920px: 1.5': '1.5',
+				'Custom': '?'
 			}
 		}
 	}"
@@ -67,8 +68,9 @@ array(
 	'option'       => "{
 		'alert': 'Get <white>DAC configuration</white> ready:<br>
 				<br>
-				For external power: <code>DAC</code> > <code>power on</code><br>
-				<code>Menu</code> > <code>MPD</code> > <code>setup</code> > verify DAC works properly before continue.'
+				For external power: <white>DAC</white> > power on<br>
+				<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>
+				Ensure <white>DAC</white> works properly before continue.'
 	}"
 ),
 array(
@@ -114,7 +116,7 @@ array(
 			'message': '',
 			'list': {
 				'*Install <white>WebUI</white> alternative?': '1',
-				'Start <white>Transmission</white> on system startup?': '1'
+				'*Start <white>Transmission</white> on system startup?': '1'
 			}
 		}
 	}"
@@ -141,7 +143,7 @@ array(
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Enable backup-restore settings and databases.',
+	'description'  => 'Enable backup-restore settings and databases. (0.3+0.4b)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
@@ -149,7 +151,7 @@ array(
 	'alias'        => 'expa',
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
+	'description'  => 'Expand default 2GB partition to full capacity of SD card. (0.3+0.4b)',
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
@@ -162,7 +164,7 @@ array(
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
+	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
@@ -181,7 +183,7 @@ array(
 	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix package download errors caused by unreachable servers.',
+	'description'  => 'Fix package download errors caused by unreachable servers. (0.3+0.4b)',
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
