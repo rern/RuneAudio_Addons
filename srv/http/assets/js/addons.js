@@ -56,7 +56,7 @@ $( '.btnun' ).each( function() {
 			cancel: 1,
 			ok: function() {
 				var cmdup = $thisbtn.attr( 'cmdup' );
-				formtemp( cmdup );
+				formtemp( cmdup );				
 			}
 		} );
 	} );
@@ -175,8 +175,23 @@ function getoptions() {
 					return radiohtml
 				},
 				ok:       function() {
-					opt += $( '#infoRadio input[type=radio]:checked').val() +' ';
+					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
+					opt += radiovalue +' ';
 					sendcommand();
+				}
+			} );
+			$( '#infoRadio input' ).change( function() {
+				if ( $( this ).val() === '?' ) {
+					info( {
+						title:   title,
+						message: ojson[ 'message' ],
+						textlabel: 'Custom',
+						ok:      function() {
+							var input = $( '#infoTextbox' ).val();
+							opt += ( input ? input : 0 ) +' ';
+							sendcommand();
+						}
+					} );
 				}
 			} );
 			break;
@@ -222,6 +237,20 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
+			$( '#infoSelectbox' ).change( function() {
+				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
+					info( {
+						title:   title,
+						message: ojson[ 'message' ],
+						textlabel: 'Custom',
+						ok:      function() {
+							var input = $( '#infoTextbox' ).val();
+							opt += ( input ? input : 0 ) +' ';
+							sendcommand();
+						}
+					} );
+				}
+			} );
 			break;
 	}
 }
@@ -238,17 +267,17 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
-		formtemp( cmd, opt );
+		formtemp( cmd + opt );
 	}
 }
-// post submit with temporary form (separate option to hide password)
-function formtemp( cmd, opt ) {
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
+// post submit with temporary form
+function formtemp( command ) {		
+		// width for title lines
+		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
 		
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ cmd +'">'
-			+'<input type="hidden" name="opt" value="'+ ( opt ? opt : '' ) +'">'
+			+'<input type="hidden" name="cmd" value="'+ command +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
