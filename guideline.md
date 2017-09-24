@@ -191,6 +191,7 @@ array(
 - options must be **single quoted** json,` key:value` format
 - `*` leading `itemN` = pre-select items
 - dialogs:
+	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
 	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
 	- `'prompt'` - 1 input > `Ok` = input
