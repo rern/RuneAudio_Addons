@@ -1,16 +1,19 @@
 <?php
 require_once( 'addonshead.php' );
-
 $cmd = $_POST[ 'cmd' ];
+$opt = $_POST[ 'opt' ];
+// if uninstall only - css file will be gone
 if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 	echo '<style>';
 	require_once( 'assets/css/addons.css' );
+	require_once( 'assets/css/addonsinfo.css' );
 	echo '</style>';
 	$close = '/';
 } else {
 	$close = 'addons.php';
 }
 ?>
+
 <script>
 // hide vertical scrollbar on desktop
 var div = document.createElement('div');
@@ -101,7 +104,7 @@ ob_implicit_flush();      // start flush output without buffer
 
 echo preg_replace( '/;\s*/', "\n", $cmd );
 echo '<br>';
-bash( $cmd );
+bash( $cmd.$opt );
 ?>
 	</pre>
 	</div>
