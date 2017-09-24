@@ -161,6 +161,7 @@ array(
 		},
 		'select': {
 			'message': 'message text',
+			'label': 'label text',
 			'list': {
 				'item1': 'value1',
 				'item2': 'value2'
