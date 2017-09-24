@@ -97,4 +97,6 @@ input {
 input[type=radio],
 input[type=checkbox] {
 	height: 15px;
+	margin: 5px;
+	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
