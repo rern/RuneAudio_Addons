@@ -13,6 +13,7 @@ This file:
 - **Hide password** (and options) in terminal page
 - Add **custom input** for `'radio'` and `'select'` dialogs
 - Improve changelog styling
+- Fix `hammer.min.js` removal by RuneUI Enhancement
 
 ### 2017022
 - Much better user dialogs
