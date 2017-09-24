@@ -7,7 +7,8 @@ function info( option ) {
 	$( '.infoBox' ).width( 200 ).val('');
 	$( '.info, #infoCancel' ).hide();
 	$( '#infoOk' ).html( 'Ok' );
-	$( '#infoCancel' ).html( 'Cancel' )
+	$( '#infoCancel' ).html( 'Cancel' );
+	$( 'body' ).unbind( 'keypress' );
 
 	// simple use as info('message')
 	if ( typeof option != 'object' ) {
