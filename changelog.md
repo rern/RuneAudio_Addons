@@ -15,7 +15,7 @@ This file:
 
 ### 2017022
 - Much better user dialogs
-- Add force reinstall/update by **long-press** `'Uninstall'`
+- Add force reinstall/update by **long-press** `Uninstall`
 - Improve speed by avoid unnecessary downloads
 - Add **BASH Command** for running commands and scripts
 - Improve **templates** for install/uninstall scripts
