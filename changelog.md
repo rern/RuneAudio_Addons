@@ -24,17 +24,15 @@ This file:
 ### 20170917
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
-- Release guideline with templates for addons scripts
+- Release **Guideline** with templates for addons scripts
 
 ### 20170913
 - Improve update messages
 
 ### 20170909
 - Auto update **Addons Menu**
-- Improve layout
-- Optimize code
 - Populate previous installed addons to redis database
-- Custom label for install button for non-install addons
+- Custom label for `Install` for non-install addons
 
 ### 20170901
 - Initial release
