@@ -120,7 +120,7 @@ bash( $cmd );
 		close.href = '<?=$close;?>';
 		
 		info( {
-			icon:    '<i class="fa fa-info-circle fa-lg">',
+			icon:    '<i class="fa fa-info-circle fa-2x">',
 			title:   'Finished',
 			message: 'Please see result information on screen.',
 		} );
