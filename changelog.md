@@ -9,16 +9,17 @@ This file:
 ```
 
 ### 20170925
-- Improve select input dialog
-- Hide password in terminal page
+- Add **custom input** for **radio** and **select** dialogs
+- Press **Enter** in dialogs = click **Ok**
+- **Hide password** (and options) in terminal page
 
 ### 2017022
-- Much better user prompt dialogs
-- Add force reinstall/update by long-press uninstall button
+- Much better user dialogs
+- Add force **reinstall/update** by **long-press** uninstall button
 - Improve speed by avoid unnecessary downloads
 - Add **BASH Command** for running commands and scripts
-- Improve template for install/uninstall scripts
-- Accommodate most prompt types: alert, confirm, textbox, password, radio, checkbox, select
+- Improve **templates** for install/uninstall scripts
+- Support every dialog types: alert, confirm, textbox, password, radio, checkbox, select
 
 ### 20170917
 - Normalize install / uninstall / upgrade across addons
