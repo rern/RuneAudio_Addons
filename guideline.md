@@ -148,7 +148,8 @@ array(
 			'message': 'message text',
 			'list': {
 				'*item1': 'value1',
-				'item2': 'value2'
+				'item2': 'value2',
+				'custom': '?'
 			}
 		},
 		'checkbox': {
@@ -163,7 +164,8 @@ array(
 			'label': 'label text',
 			'list': {
 				'item1': 'value1',
-				'item2': 'value2'
+				'item2': 'value2',
+				'custom': '?'
 			}
 		}
 	}"
@@ -197,8 +199,13 @@ array(
 	- `'prompt'` - 1 input > `Ok` = input
 	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+		- `*` pre-select must be specified
+		- `'custom': '?'` - `?` >  `'prompt'` for custom value
 	- `'checkbox'` - choices > `Ok` = selected `valueN`s
-	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
+		- `*` pre-select optional
+	- `'select'` - 1 choice > `Ok` = selected `valueN`
+		- `*` pre-select optional
+		- `'custom': '?'` - `?` >  `'prompt'` for custom value
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
 ---
 **styling** for `description`, `option` dialogs
