@@ -9,7 +9,7 @@ This file:
 ```
 
 ### 20170925
-- Add `'custom input'` for `'radio'` and `'select'` dialogs
+- Add **custom input** for `'radio'` and `'select'` dialogs
 - Press `Enter` in dialogs = click `Ok`
 - **Hide password** (and options) in terminal page
 
