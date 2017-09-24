@@ -23,11 +23,9 @@ function info( option ) {
 		var textlabel = option[ 'textlabel' ];
 		var passwordlabel = option[ 'passwordlabel' ];
 		var radiohtml = option[ 'radiohtml' ];
-		var radiocustom = option[ 'radiocustom' ];
 		var checkboxhtml = option[ 'checkboxhtml' ];
 		var selectlabel = option[ 'selectlabel' ];
 		var selecthtml = option[ 'selecthtml' ];
-		var selectvalue = option[ 'selectvalue' ];
 		var boxwidth = option[ 'boxwidth' ];
 		var ok = option[ 'ok' ];
 		var oklabel = option[ 'oklabel' ];
