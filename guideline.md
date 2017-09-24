@@ -3,21 +3,20 @@ Guideline
 
 **Addons Menu Process:**  
 - Menu > Addons > download: `addonsdl.php`
-  - `addonslist.php`
-  - `changelog.md` > `addonsdl.sh` > `addonslog.php`
+	- `addonslist.php`
+	- `changelog.md` > `addonsdl.sh` > `addonslog.php`
 - Addons page: `addons.php`
-  - list from `addonslist.php` (link to each block)
-  - changelog from `addonslog.php` (toggle show/hide)
-  - each addon block from `addonslist.php`
-  - install/uninstall/update status based on:
-     - `uninstall_<alias>.sh` file - installed marker
-     - `version` from `addonslist.php` vs database - buttons status
-  - user input dialogs
+	- list from `addonslist.php` (link to each block)
+	- changelog from `addonslog.php` (toggle show/hide)
+	- each addon block from `addonslist.php`
+	- install/uninstall/update status based on:
+		- `uninstall_<alias>.sh` file - installed marker
+		- `version` from `addonslist.php` vs database - buttons status
+	- user input dialogs
 - Addons Terminal page: `addonsbash.php`
-  - on-screen messages (stdout/stderr of bash scripts)
-  - nofify on finished
-  - `X` button > `opcache_reset()` and back to Addons page
-  
+	- on-screen messages (stdout/stderr of bash scripts)
+	- nofify on finished
+	- `X` button > `opcache_reset()` and back to Addons page
 ---
 
 **Each addon requires:**  
@@ -32,13 +31,13 @@ Guideline
 > `<alias>` must be unique  
 
 - install script  
-  - use modify over replace files unless necessary
-  - make backup if replace files
+	- use modify over replace files unless necessary
+	- make backup if replace files
 - uninstall script
-  - restore everything to pre-install state
-  - no need for non-install type
+	- restore everything to pre-install state
+	- no need for non-install type
 - no update script required
-  - update will be done by 'uninstall' > 'install'
+	- update will be done by 'uninstall' > 'install'
   
 **install script** - `install.sh`  
 ```sh
@@ -173,6 +172,7 @@ array(
 ```
 
 **alias** for addon reference  
+- 4 characters
 - must be unique
 
 **version:** for buttons enable/disable  
@@ -185,19 +185,26 @@ array(
     
 **description:**
 - detail should be a linked to external source code
-- text / html
-- `<white>...</white>` = white text style
-- `<code>...</code>` = code style
 
 **option:** for user input dialogs  
 - each input will be appended as <install>.sh arguments
 - options must be **single quoted** json,` key:value` format
 - `*` leading `itemN` = pre-select items
+- dialogs:
+	- `'alert'` - wait > `Ok` = continue (no value)
+	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
+	- `'prompt'` - 1 input > `Ok` = input
+	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
+	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+	- `'checkbox'` - choices > `Ok` = selected `valueN`s
+	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
-- multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-- `message text`, `label text`, `itemN` - as html but:
+---
+**_styling_** for `description`, `option`
+- text / html
+- only quotes need escape with entities
     - `&quot;` = `"`
     - `&#039;` = `'`
-    - `<white>...</white>` = white text style
-    - `<code>...</code>` = code style
+- `<white>...</white>` = white text style
+- `<code>...</code>` = code style
 ```
