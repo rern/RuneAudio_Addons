@@ -1,20 +1,22 @@
 Guideline
 ---
+
 **Addons Menu Process:**  
 - Menu > Addons > download: `addonsdl.php`
-  - `addonslist.php`
-  - `changelog.md` > `addonsdl.sh` > `addonslog.php`
+	- `addonslist.php`
+	- `changelog.md` > `addonsdl.sh` > `addonslog.php`
 - Addons page: `addons.php`
-  - list from `addonslist.php` (link to each block)
-  - changelog from `addonslog.php` (toggle show/hide)
-  - each addon block from `addonslist.php`
-  - install/uninstall/update buttons based on `version` from `addonslist.php` vs database
-  - user input options
+	- list from `addonslist.php` (link to each block)
+	- changelog from `addonslog.php` (toggle show/hide)
+	- each addon block from `addonslist.php`
+	- install/uninstall/update status based on:
+		- `uninstall_<alias>.sh` file - installed marker
+		- `version` from `addonslist.php` vs database - buttons status
+	- user input dialogs
 - Addons Terminal page: `addonsbash.php`
-  - on-screen messages (stdout/stderr of bash scripts)
-  - nofify on finished
-  - `X` button > `opcache_reset()` and back to Addons page
-  
+	- on-screen messages (stdout/stderr of bash scripts)
+	- nofify on finished
+	- `X` button > `opcache_reset()` and back to Addons page
 ---
 
 **Each addon requires:**  
@@ -25,17 +27,17 @@ Guideline
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of on-screen messages and database  
-> use non-invasive modification so other addons can survive after install / uninstall  
-> `<alias>` must be unique  
+> use non-invasive modifications so other addons can survive after install / uninstall  
+> `<alias>` as of `array(...)`  
 
 - install script  
-  - use modify over replace files unless necessary
-  - make backup if replace files
+	- use modify over replace files unless necessary
+	- make backup if replace files
 - uninstall script
-  - restore everything to pre-install state
-  - no need for non-install type
+	- restore everything to pre-install state
+	- no need for non-install type
 - no update script required
-  - update will be done by 'uninstall' > 'install'
+	- update will be done by 'uninstall' > 'install'
   
 **install script** - `install.sh`  
 ```sh
@@ -158,6 +160,7 @@ array(
 		},
 		'select': {
 			'message': 'message text',
+			'label': 'label text',
 			'list': {
 				'item1': 'value1',
 				'item2': 'value2'
@@ -187,10 +190,18 @@ array(
 - each input will be appended as <install>.sh arguments
 - options must be **single quoted** json,` key:value` format
 - `*` leading `itemN` = pre-select items
+- dialogs:
+	- `X` - cancel and back to main page
+	- `'alert'` - wait > `Ok` = continue (no value)
+	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
+	- `'prompt'` - 1 input > `Ok` = input
+	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
+	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+	- `'checkbox'` - choices > `Ok` = selected `valueN`s
+	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
 - multiple dialogs of the same type must add trailing numbers to make `key`s unique
-- multiple `confirm` dialog(yes/no) should be switched to `checkbox`
-
-**_styling_** for `description`, `message text`, `label text`, `itemN`
+---
+**styling** for `description`, `option` dialogs
 - text / html
 - only quotes need escape with entities
     - `&quot;` = `"`
