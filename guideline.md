@@ -187,10 +187,8 @@ array(
 - detail should be a linked to external source code
 
 **option:** for user input dialogs  
-- each value will be appended as <install>.sh arguments / parameters
-- options must be **single quoted** json, `" 'key': 'value' "` format
-- `*` leading `itemN` = pre-select items
-- dialogs:
+- each option open a dialog
+- dialog types:
 	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
 	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
@@ -199,13 +197,18 @@ array(
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
 	- `'checkbox'` - choices > `Ok` = selected `valueN`s
 	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
-- multiple dialogs of the same type must add trailing numbers to make `itemN`s unique keys
+	- multiple dialogs of the same type must add trailing numbers to make each unique keys
+- each value will be appended as <install>.sh arguments / parameters
+- options must be **single quoted** json, `" 'key': 'value' "` format
+- `*` leading `itemN` = pre-select items
 ---
+
 **styling** for `description`, `option` dialogs
 - text / html
 - only quotes need escape with entities
     - `&quot;` = `"`
     - `&#039;` = `'`
-- `<white>...</white>` = white text style
-- `<code>...</code>` = code style
+- preset styles:
+	- `<white>...</white>` = white text
+	- `<code>...</code>` = code
 ```
