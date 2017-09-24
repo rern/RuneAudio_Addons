@@ -148,7 +148,8 @@ array(
 			'message': 'message text',
 			'list': {
 				'*item1': 'value1',
-				'item2': 'value2'
+				'item2': 'value2',
+				'custom': '?'
 			}
 		},
 		'checkbox': {
@@ -163,7 +164,8 @@ array(
 			'label': 'label text',
 			'list': {
 				'item1': 'value1',
-				'item2': 'value2'
+				'item2': 'value2',
+				'custom': '?'
 			}
 		}
 	}"
@@ -188,6 +190,9 @@ array(
 
 **option:** for user input dialogs  
 - each option open a dialog
+- each value will be appended as <install>.sh arguments / parameters
+- options must be **single quoted** json, `" 'key': 'value' "` format
+- `*` leading `itemN` = pre-select items
 - dialog types:
 	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
@@ -195,12 +200,14 @@ array(
 	- `'prompt'` - 1 input > `Ok` = input
 	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+		- `*` pre-select must be specified
+		- `'custom': '?'` - `?` >  `'prompt'` for custom value
 	- `'checkbox'` - choices > `Ok` = selected `valueN`s
-	- `'select'` - 1 choice > `Ok` = selected `valueN` (choices too long for `radio`)
-	- multiple dialogs of the same type must add trailing numbers to make each unique keys
-- each value will be appended as <install>.sh arguments / parameters
-- options must be **single quoted** json, `" 'key': 'value' "` format
-- `*` leading `itemN` = pre-select items
+		- `*` pre-select optional
+	- `'select'` - 1 choice > `Ok` = selected `valueN`
+		- `*` pre-select optional
+		- `'custom': '?'` - `?` >  `'prompt'` for custom value
+- multiple dialogs of the same type must add trailing numbers to make `key`s unique
 ---
 
 **styling** for `description`, `option` dialogs

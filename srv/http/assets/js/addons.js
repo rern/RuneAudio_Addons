@@ -102,7 +102,7 @@ function getoptions() {
 	switch( oj0 ) {
 		case 'alert':
 			info( {
-				icon:    '<i class="fa fa-info-circle fa-lg">',
+				icon:    '<i class="fa fa-info-circle fa-2x">',
 				title:   title,
 				message: option[ oj ],
 				ok:      function() {
@@ -170,13 +170,28 @@ function getoptions() {
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						radiohtml += '<input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'><span>&ensp;'+ key.replace( /^\*/, '' ) +'</span><br>';
+						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
 				},
 				ok:       function() {
-					opt += $( '#infoRadio input[type=radio]:checked').val() +' ';
+					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
+					opt += radiovalue +' ';
 					sendcommand();
+				}
+			} );
+			$( '#infoRadio input' ).change( function() {
+				if ( $( this ).val() === '?' ) {
+					info( {
+						title:   title,
+						message: ojson[ 'message' ],
+						textlabel: 'Custom',
+						ok:      function() {
+							var input = $( '#infoTextbox' ).val();
+							opt += ( input ? input : 0 ) +' ';
+							sendcommand();
+						}
+					} );
 				}
 			} );
 			break;
@@ -190,7 +205,7 @@ function getoptions() {
 					var checkboxhtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						checkboxhtml += '<input type="checkbox" value="'+ list[ key ] +'"'+ checked +'><span>&ensp;'+ key.replace( /^\*/, '' ) +'</span><br>';
+						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return checkboxhtml
 				},
@@ -207,6 +222,7 @@ function getoptions() {
 			info( {
 				title:    title,
 				message: ojson[ 'message' ],
+				selectlabel: ojson[ 'label' ],
 				selecthtml: function() {
 					var list = ojson[ 'list' ];
 					var selecthtml = '';
@@ -219,6 +235,20 @@ function getoptions() {
 				ok:       function() {
 					opt += $( '#infoSelectbox').val() +' ';
 					sendcommand();
+				}
+			} );
+			$( '#infoSelectbox' ).change( function() {
+				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
+					info( {
+						title:   title,
+						message: ojson[ 'message' ],
+						textlabel: 'Custom',
+						ok:      function() {
+							var input = $( '#infoTextbox' ).val();
+							opt += ( input ? input : 0 ) +' ';
+							sendcommand();
+						}
+					} );
 				}
 			} );
 			break;
@@ -237,17 +267,17 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
-		formtemp( cmd + opt );
+		formtemp( cmd, opt );
 	}
 }
-// post submit with temporary form
-function formtemp( command ) {		
-		// width for title lines
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50;
+// post submit with temporary form (separate option to hide password)
+function formtemp( cmd, opt ) {
+		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ command +'">'
+			+'<input type="hidden" name="cmd" value="'+ cmd +'">'
+			+'<input type="hidden" name="opt" value="'+ ( opt ? opt : '' ) +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();

@@ -1,13 +1,47 @@
+var infohtml = '\
+<div id="infoOverlay">\
+	<div id="infoBox">\
+		<div id="infoTopBg">\
+			<div id="infoTop">\
+				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>\
+			</div>\
+			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>\
+			<div style="clear: both"></div>\
+		</div>\
+		<div id="infoContent">\
+			<p id="infoMessage" class="info"></p>\
+			<div id="infoText" class="info">\
+				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox">\
+			</div>\
+			<div id="infoPassword" class="info">\
+				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">\
+			</div>\
+			<div id="infoRadio" class="info"></div>\
+			<div id="infoCheckbox" class="info"></div>\
+			<div id="infoSelect" class="info">\
+				<a id="infoSelectLabel"></a><select class="infoBox" id="infoSelectbox"></select>\
+			</div>\
+		</div>\
+		<div id="infoButtons">\
+			<a id="infoCancel" class="btn btn-default"></a>\
+			<a id="infoOk" class="btn btn-primary"></a>\
+		</div>\
+	</div>\
+</div>\
+'
+$( 'body' ).prepend( infohtml );
+
 function info( option ) {
 	// reset to default
-	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-lg">' );
+	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
 	$( '#infoTitle' ).html( 'Information' );
 	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
 	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
-	$( '.infoBox' ).width( 200 );
+	$( '.infoBox' ).width( 200 ).val('');
 	$( '.info, #infoCancel' ).hide();
 	$( '#infoOk' ).html( 'Ok' );
-	$( '#infoCancel' ).html( 'Cancel' )
+	$( '#infoCancel' ).html( 'Cancel' );
+	$( 'body' ).unbind( 'keypress' );
 
 	// simple use as info('message')
 	if ( typeof option != 'object' ) {
@@ -26,7 +60,6 @@ function info( option ) {
 		var checkboxhtml = option[ 'checkboxhtml' ];
 		var selectlabel = option[ 'selectlabel' ];
 		var selecthtml = option[ 'selecthtml' ];
-		var selectvalue = option[ 'selectvalue' ];
 		var boxwidth = option[ 'boxwidth' ];
 		var ok = option[ 'ok' ];
 		var oklabel = option[ 'oklabel' ];
@@ -38,17 +71,16 @@ function info( option ) {
 		if ( title ) $( '#infoTitle' ).html( title );
 		if ( message ) {
 			$( '#infoMessage' ).html( message ).show();
-			var infofocus = $( '#infoOk' );
 		}
 		if ( textlabel ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
 			$( '#infoText' ).show();
-			var infofocus = $( '#infoTextbox' );
+			var $infofocus = $( '#infoTextbox' );
 		}
 		if ( passwordlabel ) {
 			$( '#infoPasswordLabel' ).html( passwordlabel +' ' );
-			$( '#infoPassword' ).show();
-			var infofocus = $( '#infoPasswordbox' );
+			$( '#infoPassword' ).show().focus();
+			var $infofocus = $( '#infoPasswordbox' );
 		}
 		if ( radiohtml ) setboxwidth( $( '#infoRadio' ), radiohtml );
 		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
@@ -59,60 +91,51 @@ function info( option ) {
 		}
 		if ( boxwidth ) $( '.infoBox' ).width( boxwidth );
 		
-		if ( ok ) {
-			$( '#infoOk' ).off( 'click' ).on( 'click', function() {
-				$('#infoOverlay').hide();
-				(typeof ok === 'function') && ok();
-			} );
-		} else {
-			$( '#infoOk' ).off( 'click' ).on( 'click', function() {
-				$( '#infoOverlay' ).hide();
-			} );
-		}
 		if ( oklabel ) $( '#infoOk' ).html( oklabel );
 		if ( okcolor ) $( '#infoOk' ).css( 'background', okcolor );
 		if ( cancel ) {
 			$( '#infoCancel' ).show();
 			$( '#infoCancel' ).off( 'click' ).on( 'click', function() {
 				$( '#infoOverlay' ).hide();
-				( typeof cancel === 'function' ) && cancel();
+				if ( typeof cancel === 'function' ) cancel();
 			});
 		}
 		if ( cancellabel ) $( '#infoCancel' ).html( cancellabel );
 	}
 	
 	$( '#infoOverlay' ).show();
-	if ( infofocus ) infofocus.focus();
+	if ( $infofocus ) $infofocus.focus();
 	
-	$( '#infoOverlay' ).keypress( function(e) {
-		if ( e.which == 13 ) {
-//			$('#infoOverlay').hide();
-		}
+	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
+		$('#infoOverlay').hide();
+		if (ok && typeof ok === 'function') ok();
+	} );
+	$( 'body' ).keypress( function( e ) {
+		if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
 	} );
 	$( '#infoX' ).click( function() {
 		$( '#infoOverlay' ).hide();
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );
-	
+
 }
 
-function setboxwidth( box, html ) {
+function setboxwidth( $box, html ) {
 	var contentW = $( '#infoBox' ).width();
 	var maxW = 0;
 	var spanW = 0;
-	$( '#infoBox' ).css('left', '-100%' );                  // move out of screen
-	box.html( html ).show();             // show to get width
-	setTimeout( function() {                                // wait for radiohtml ready
-		box.find( 'span' ).each( function() { // get max width
+	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
+	$box.html( html ).show();                    // show to get width
+	setTimeout( function() {                    // wait for radiohtml ready
+		$box.find( 'label' ).each( function() {   // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
-		var pad = ( contentW - 15 - maxW ) / 2;            // 15 = button width
-		box.css('padding-left', pad +'px');  // set padding-left
-		$( '#infoBox' ).css('left', '50%' );               // move back
+		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
+		$box.css('padding-left', pad +'px');     // set padding-left
+		$( '#infoBox' ).css('left', '50%' );    // move back
 	}, 100);
 }
-
 function verifypassword( msg, pwd, fn ) {
 	$( '#infoPasswordbox' ).val( '' );
 	info( {

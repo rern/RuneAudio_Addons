@@ -29,7 +29,7 @@
 }
 #infoTop {
 	float: left;
-	width: calc( 100% - 40px; );
+	width: calc( 100% - 40px );
 	color: #e0e7ee;
 	line-height: 40px;
 	padding: 0 20px;
@@ -38,11 +38,16 @@
 #infoTop a {
     color: #e0e7ee;
 }
+#infoTop i {
+	margin-top: 5px;
+	vertical-align: top;
+}
 #infoX {
 	float: right;
 	width: 40px;
 	line-height: 40px;
 	border-radius: 0 10px 0 0;
+	margin-top: 5px;
 	padding: 0;
 	color: #0095d8;
 	cursor: pointer;
@@ -54,7 +59,7 @@
 }
 #infoTitle {
 	font-size: 1.1em;
-	line-height: 30px;
+	vertical-align: text-bottom;
 }
 #infoContent {
 	padding: 25px 10px 10px 10px;
@@ -69,13 +74,15 @@
 #infoCheckbox {
 	text-align: left;
 }
-#infoSelectbox {
-	visibility: visible;
+#infoSelect button {
 	height: 40px;
-	padding: 10px 15px;
-	background: #34495e;
-	border: 0px solid #000000;
-	border-radius: 6px;
+	margin-left: 5px;
+	padding-right: 25px;
+	font-size: 16px;
+}
+#infoSelect a {
+	margin: 0;
+	padding-left: 10px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
@@ -95,5 +102,6 @@ input {
 input[type=radio],
 input[type=checkbox] {
 	height: 15px;
-	text-align: left;
+	margin: 5px;
+	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }

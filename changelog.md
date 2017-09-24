@@ -5,31 +5,36 @@ This file:
     - get 'version' number for both 'install.sh' and 'addonslist.php'
     - get content to display as 'changelog' on RuneUI
 - lines between ```note and ``` will be omitted
-- ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
+- ###, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 2017022
-- Much better user prompt dialogs
-- Add force reinstall/update by long-press uninstall button
+### 20170925
+- Press `Enter` in dialogs = click `Ok`
+- **Hide password** (and options) in terminal page
+- Add **custom input** for `'radio'` and `'select'` dialogs
+- Improve changelog styling
+- Fix `hammer.min.js` removal by RuneUI Enhancement
+
+### 2017022
+- Much better user dialogs
+- Add force reinstall/update by **long-press** `Uninstall`
 - Improve speed by avoid unnecessary downloads
 - Add **BASH Command** for running commands and scripts
-- Improve template for install/uninstall scripts
-- Accommodate most prompt types: alert, confirm, textbox, password, radio, checkbox, select
+- Improve **templates** for install/uninstall scripts
+- Support every dialog types: alert, confirm, textbox, password, radio, checkbox, select
 
-## 20170917
+### 20170917
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
-- Release guideline with templates for addons scripts
+- Release **Guideline** with templates for addons scripts
 
-## 20170913
+### 20170913
 - Improve update messages
 
-## 20170909
+### 20170909
 - Auto update **Addons Menu**
-- Improve layout
-- Optimize code
 - Populate previous installed addons to redis database
-- Custom label for install button for non-install addons
+- Custom label for `Install` for non-install addons
 
-## 20170901
+### 20170901
 - Initial release

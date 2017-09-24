@@ -50,7 +50,8 @@ array(
 			'list': {
 				'Width less than 800px: 0.7': '0.7',
 				'HD - 1280px: 1.2': '1.2',
-				'*Full HD - 1920px: 1.5': '1.5'
+				'*Full HD - 1920px: 1.5': '1.5',
+				'Custom': '?'
 			}
 		}
 	}"
@@ -67,8 +68,9 @@ array(
 	'option'       => "{
 		'alert': 'Get <white>DAC configuration</white> ready:<br>
 				<br>
-				For external power: <code>DAC</code> > <code>power on</code><br>
-				<code>Menu</code> > <code>MPD</code> > <code>setup</code> > verify DAC works properly before continue.'
+				For external power: <white>DAC</white> > power on<br>
+				<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>
+				Ensure <white>DAC</white> works properly before continue.'
 	}"
 ),
 array(
@@ -114,7 +116,7 @@ array(
 			'message': '',
 			'list': {
 				'*Install <white>WebUI</white> alternative?': '1',
-				'Start <white>Transmission</white> on system startup?': '1'
+				'*Start <white>Transmission</white> on system startup?': '1'
 			}
 		}
 	}"
