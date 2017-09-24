@@ -69,13 +69,10 @@
 #infoCheckbox {
 	text-align: left;
 }
-#infoSelectbox {
-	display: none; /* for selectpicker */
+#infoSelect button {
 	height: 40px;
-	padding: 10px 15px;
-	background: #34495e;
-	border: 0px solid #000000;
-	border-radius: 6px;
+	padding-right: 25px;
+	font-size: 16px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
