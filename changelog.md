@@ -8,11 +8,11 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
-## 20170925
+### 20170925
 - Improve select input dialog
 - Hide password in terminal page
 
-## 2017022
+### 2017022
 - Much better user prompt dialogs
 - Add force reinstall/update by long-press uninstall button
 - Improve speed by avoid unnecessary downloads
@@ -20,20 +20,20 @@ This file:
 - Improve template for install/uninstall scripts
 - Accommodate most prompt types: alert, confirm, textbox, password, radio, checkbox, select
 
-## 20170917
+### 20170917
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
 - Release guideline with templates for addons scripts
 
-## 20170913
+### 20170913
 - Improve update messages
 
-## 20170909
+### 20170909
 - Auto update **Addons Menu**
 - Improve layout
 - Optimize code
 - Populate previous installed addons to redis database
 - Custom label for install button for non-install addons
 
-## 20170901
+### 20170901
 - Initial release
