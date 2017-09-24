@@ -8,6 +8,10 @@ This file:
 - ##, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
+### 20170925
+- Improve select input dialog
+- Hide password in terminal page
+
 ## 2017022
 - Much better user prompt dialogs
 - Add force reinstall/update by long-press uninstall button
