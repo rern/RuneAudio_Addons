@@ -70,7 +70,7 @@
 	text-align: left;
 }
 #infoSelectbox {
-	visibility: visible;
+	display: none; /* for selectpicker */
 	height: 40px;
 	padding: 10px 15px;
 	background: #34495e;
