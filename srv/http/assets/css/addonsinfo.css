@@ -97,5 +97,4 @@ input {
 input[type=radio],
 input[type=checkbox] {
 	height: 15px;
-	text-align: left;
 }
