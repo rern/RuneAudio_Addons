@@ -54,7 +54,7 @@ function info( option ) {
 		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
 		if ( selecthtml ) {
 			$( '#infoSelectLabel' ).html( selectlabel +' ' );
-			$( '#infoSelectbox' ).html( selecthtml );
+			$( '#infoSelectbox' ).html( selecthtml ).selectpicker();
 			$( '#infoSelect' ).show();
 		}
 		if ( boxwidth ) $( '.infoBox' ).width( boxwidth );
