@@ -173,7 +173,7 @@ array(
 
 **alias** for addon reference  
 - 4 characters
-- must be unique
+- must be unique amomng aliases
 
 **version:** for buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
