@@ -2,21 +2,42 @@
 require_once( 'addonshead.php' );
 
 $cmd = $_POST[ 'cmd' ];
-$opt = $_POST[ 'opt' ];
-
-// if uninstall only - css file will be gone
 if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 	echo '<style>';
 	require_once( 'assets/css/addons.css' );
-	require_once( 'assets/css/addonsinfo.css' );
 	echo '</style>';
 	$close = '/';
 } else {
 	$close = 'addons.php';
 }
 ?>
-
 <script>
+// hide vertical scrollbar on desktop
+var div = document.createElement('div');
+div.style.cssText = 
+	'width: 100px;'
+	+'msOverflowStyle: scrollbar;'
+	+'overflow: scroll;'
+	+'visibility: hidden;'
+	;
+document.body.appendChild(div);
+var scrollbarWidth = div.offsetWidth - div.clientWidth;
+document.body.removeChild(div);
+
+if (scrollbarWidth !== 0) {
+	var css = 
+		'.hidescrollv {\n'
+		+'	width: 100%;\n'
+		+'	overflow: hidden;\n'
+		+'}\n'
+		+'pre {\n'
+		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
+		+'}';
+	var style = document.createElement('style');
+	style.appendChild(document.createTextNode(css));
+	document.head.appendChild(style);
+}
+
 // js for '<pre>' must be here before 'function bash()'.
 // php 'flush' loop waits for all outputs before going to next lines.
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
@@ -64,7 +85,7 @@ function bash( $cmd ) {
 		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
 		// skip lines
 		if (
-				stripos( $std, 'warning:' ) !== false || 
+				strpos( $std, 'warning:' ) !== false || 
 				stripos( $std, 'y/n' ) !== false ||
 				stripos( $std, 'Uninstall:' ) !== false
 		) continue;
@@ -80,7 +101,7 @@ ob_implicit_flush();      // start flush output without buffer
 
 echo preg_replace( '/;\s*/', "\n", $cmd );
 echo '<br>';
-bash( $cmd.$opt );
+bash( $cmd );
 ?>
 	</pre>
 	</div>
