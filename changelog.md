@@ -12,6 +12,7 @@ This file:
 - Press `Enter` in dialogs = click `Ok`
 - **Hide password** (and options) in terminal page
 - Add **custom input** for `'radio'` and `'select'` dialogs
+- Improve changelog styling
 
 ### 2017022
 - Much better user dialogs
