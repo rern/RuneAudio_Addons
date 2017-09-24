@@ -19,7 +19,7 @@ sed -e '/^```note/,/^```/ d               # note block
 ' changelog.md |
 # php start -----------------------------------------------------------
 sed -e '1 {
-s/^## //
+s/^### //
 i\
 <?php
 s/^/$addonsversion = "/
