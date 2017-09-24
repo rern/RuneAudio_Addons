@@ -170,7 +170,7 @@ function getoptions() {
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						radiohtml += '<input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'><span>&ensp;'+ key.replace( /^\*/, '' ) +'</span><br>';
+						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
 				},
@@ -205,7 +205,7 @@ function getoptions() {
 					var checkboxhtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						checkboxhtml += '<input type="checkbox" value="'+ list[ key ] +'"'+ checked +'><span>&ensp;'+ key.replace( /^\*/, '' ) +'</span><br>';
+						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return checkboxhtml
 				},
