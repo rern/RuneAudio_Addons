@@ -44,6 +44,10 @@ pre {
 	font-family: 'Inconsolata', monospace;
 	font-size: 15px;
 }
+code {
+	font-family: 'Inconsolata', monospace;
+	font-size: 14px;
+}
 .btn {
 	text-transform: none;
 }
