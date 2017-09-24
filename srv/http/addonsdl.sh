@@ -7,15 +7,16 @@ fi
 
 ### changelog.md > addonslog.php
 # remove ---------------------------------------------------------------
-sed -e '/^```note/,/^```/ d               # note block
-' -e '/^\s*$/ d                           # emptyline
+sed -e '/^```note/,/^```/ d                # note block  > delete
+' -e '/^\s*$/ d                            # emptyline   > delete
 # replace --------------------------------------------------------------
-' -e $'s/\'/"/g                           # singlequote > "
-' -e 's|\*\*\(.\+\)\*\*|<span>\1</span>|  # bold   "**" > <span> (white)
-' -e 's|__\(.\+\)__|<span>\1</span>|      # bold   "__" > <span> (white)
-' -e 's|\*\(.\+\)\*|<em>\1</em>|          # italic "*"  > <em>
-' -e 's|_\(.\+\)_|<em>\1</em>|            # italic "_"  > <em>
-' -e 's|~~\(.\+\)~~|<strike>\1</strike>|  # strike "~~" > <strike>
+' -e $'s/\'/"/g                            # singlequote > "
+' -e 's|`\(.\+\)`|<code>\1</code>|         # code   `    > <code>
+' -e 's|\*\*\(.\+\)\*\*|<white>\1</white>| # bold   **   > <white>
+' -e 's|__\(.\+\)__|<white>\1</white>|     # bold   __   > <white>
+' -e 's|\*\(.\+\)\*|<em>\1</em>|           # italic *    > <em>
+' -e 's|_\(.\+\)_|<em>\1</em>|             # italic _    > <em>
+' -e 's|~~\(.\+\)~~|<strike>\1</strike>|   # strike ~~   > <strike>
 ' changelog.md |
 # php start -----------------------------------------------------------
 sed -e '1 {
@@ -31,14 +32,14 @@ $addonsversion.'"'"'&emsp; <a id="detail">changelog &#x25BC</a><br>\
 	<ul>
 }
 # replace --------------------------------------------------------------
-' -e '/^## / {                           # bold   "## " > </ul>...<ul>
+' -e '/^### / {                           # bold   "### " > </ul>...<ul>
 s/^## //
 i\
 	</ul>
 a\
 	<ul>
 }
-' -e '/^- / {                            # bullet "- " > <li>
+' -e '/^- / {                             # bullet "- " > <li>
 s/^- //
 s/^/	<li>/
 s|$|</li>|
