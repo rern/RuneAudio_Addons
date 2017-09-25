@@ -51,15 +51,16 @@ alias=<alias>
 ### template - import default variables, functions
 [[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
-[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
 
 ### template - function - start message, installed check
 installstart $1
+getuninstall $alias # for single file download (uninstall_<alias>.sh and install.sh must be in the same path)
 
 # start main script ---------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/master.zip
+wgetnc https://github.com/<name>/<repository>/archive/master.zip           # whole repository download
+wgetnc https://github.com/<name>/<repository>/raw/master/<path>/install.sh # single file download
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
