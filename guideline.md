@@ -49,6 +49,7 @@ alias=<alias>
 ### template - import default variables, functions
 [[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
+[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
 
 ### template - function - start message, installed check
 installstart $1
@@ -85,7 +86,7 @@ sed 's/existing/new/' /<path>/<file>
 ### template - function - save version to database, finish message
 installfinish $1
 
-# extra info
+# extra info if any
 title -nt "extra info"
 ```
 
@@ -118,20 +119,20 @@ uninstallfinish $1
 ```
     
 **2. an `array()` in `/srv/http/addonslist.php`**  
-`'alias'`, `'title'`, `'* version'` : must be in sequence for `installstart`  
-`'* ...'` : optional 
+`'alias'`, `'title'`, `'± version'` : must be in sequence for `installstart`  
+`'± ...'` : optional 
 ```php
 array(
 	'alias'         => 'alias',
 	'title'         => 'title',
-	'* version'     => 'version',
+	'± version'     => 'version',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
-	'* thumbnail'   => 'https://url/to/image/w100px',
-	'* buttonlabel' => 'install button label',
+	'± thumbnail'   => 'https://url/to/image/w100px',
+	'± buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'option'        => "{ 
+	'± option'        => "{ 
 		'alert': 'message text',
 		'confirm': 'message text',
 		'confirm1': 'message text 1',
@@ -173,11 +174,11 @@ array(
 ),
 ```
 
-**alias** for addon reference  
+`**'alias'**` - addon reference  
 - 4 characters
 - must be unique amomng aliases
 
-**version:** for buttons enable/disable  
+`**'version'**` - buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
 - change `'version'` > show `Update` button
 - non-install addons:
@@ -185,12 +186,12 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
-**description:**
+`**'description'**`
 - detail should be a linked to external source code
 
-**option:** for user input dialogs  
-- each option open a dialog
-- each value will be appended as <install>.sh arguments / parameters
+`**'option'**` - user inputs  
+- each `'key': ...` open a dialog
+- each `'value'` will be appended as `install.sh` arguments / parameters
 - options must be **single quoted** json, `" 'key': 'value' "` format
 - `*` leading `itemN` = pre-select items
 - dialog types:
