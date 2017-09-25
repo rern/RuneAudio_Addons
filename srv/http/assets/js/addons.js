@@ -47,26 +47,29 @@ for ( var i = 0; i < legend.length; i++ ) {
 // buttons click / click-hold
 $( '.btnun' ).each( function() {
 	var $thisbtn = $( this );
+	type = 'Update';
+
 	var hammerbtn = new Hammer( this );
 	
 	hammerbtn.on( 'press', function () {
+		alias = $thisbtn.attr( 'alias' );
+		title = gettitle( $thisbtn );
 		info( {
-			title:  gettitle( $thisbtn ),
+			title:  title,
 			message: 'Reinstall?',
 			cancel: 1,
 			ok: function() {
-				var cmdup = $thisbtn.attr( 'cmdup' );
-				formtemp( cmdup );				
+				formtemp( alias );				
 			}
 		} );
 	} );
 } );	
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
-	cmd = $thisbtn.attr( 'cmd' );
+	alias = $thisbtn.attr( 'alias' );
 	title = gettitle( $( this ) );
 	type = $thisbtn.text().trim();
-	if ( [ 'Install', 'Uninstall', 'Update' ].indexOf(type) < 0 ) type = 'Start';
+
 	info( {
 		title: title,
 		message: type +'?',
@@ -80,7 +83,7 @@ $( '.boxed-group .btn' ).click( function () {
 				option = JSON.parse( option );
 				getoptions();
 			} else {
-				formtemp( cmd );
+				formtemp( alias );
 			}
 		}
 	} );
@@ -260,23 +263,24 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
-		if ( cmd === '/usr/bin/sudo ' ) {
+		if ( alias === 'bash' ) {
 			if ( opt[ 0 ] !== '/' ) {
 				opt = '/usr/bin/'+ opt;
 				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
 			}
 		}
 		$( '#loader' ).show();
-		formtemp( cmd, opt );
+		formtemp( alias, opt );
 	}
 }
 // post submit with temporary form (separate option to hide password)
-function formtemp( cmd, opt ) {
+function formtemp( alias, opt ) {
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="cmd" value="'+ cmd +'">'
+			+'<input type="hidden" name="alias" value="'+ alias +'">'
+			+'<input type="hidden" name="type" value="'+ type +'">'
 			+'<input type="hidden" name="opt" value="'+ ( opt ? opt : '' ) +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
