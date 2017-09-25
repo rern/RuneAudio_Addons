@@ -8,6 +8,10 @@ This file:
 - ###, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
 ```
 
+### 20170926
+- General improvements
+- Minor fixes
+
 ### 20170925
 - Press `Enter` in dialogs = click `Ok`
 - **Hide password** (and options) in terminal page
