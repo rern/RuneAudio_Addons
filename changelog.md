@@ -1,11 +1,14 @@
 ```note  
 This file: 
-- file name and path ./RuneAudio_Addons/changelog.md cannot be change
+- file name and path ./RuneAudio_Addons/changelog.md cannot be changed.
 - Addons Menu uses it for:
-    - get 'version' number for both 'install.sh' and 'addonslist.php'
-    - get content to display as 'changelog' on RuneUI
-- lines between ```note and ``` will be omitted
-- ###, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
+    - convert to 'addonslog.php' for display as 'Changelog'
+    - get its own 'version' for 'install.sh' and 'addonslist.php'
+- styling
+	###, ## for 'date' lines only
+	- for each line
+	**, *, __, _, ~~ markdowns will be converted to html for RuneUI
+- This codeblock, lines between ```note and ```, will be omitted.
 ```
 
 ### 20170926
