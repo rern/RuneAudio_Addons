@@ -24,7 +24,7 @@ Guideline
 2. an `array(...)` and a request to enlist it in Addons Menu
   
 
-## 1. install and uninstall scripts:
+## 1. Install and Uninstall scripts:
 
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
@@ -41,7 +41,7 @@ Guideline
 - no update script required
 	- update will be done by 'uninstall' > 'install'
   
-**install script** - `install.sh`  
+**Install script** - `install.sh`  
 ```sh
 #!/bin/bash
 
@@ -92,7 +92,7 @@ installfinish $1
 title -nt "extra info"
 ```
 
-**uninstall script** - `/usr/local/bin/uninstall_<alias>.sh`  
+**Uninstall script** - `/usr/local/bin/uninstall_<alias>.sh`  
 ```sh
 #!/bin/bash
 
@@ -121,9 +121,8 @@ uninstallfinish $1
 ```
   
 
-## 2. an `array()` in `/srv/http/addonslist.php`
-
-`'alias'` : must be 1st, at index `[0]`  
+## 2. `array()` in `/srv/http/addonslist.php`
+  
 `'± ...'` : optional 
 ```php
 array(
@@ -178,9 +177,10 @@ array(
 ),
 ```
 
-**`'alias'`** - addon reference  
-- 4 characters
-- must be unique amomng aliases
+**`'alias'`** - reference point
+- must be 1st, at index `[0]`
+- must be unique among aliases
+- should be 4 characters
 
 **`'version'`** - buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
@@ -189,9 +189,6 @@ array(
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
-    
-**`'description'`**
-- detail should be a linked to external source code
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
@@ -212,7 +209,7 @@ array(
 	- `'select'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select optional
 		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-- multiple dialogs of the same type must add trailing numbers to make `key`s unique
+- multiple dialogs of the same type must add trailing numbers to make each `key` unique
 ---
 
 **styling** for `description`, `option` dialogs
