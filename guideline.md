@@ -123,7 +123,7 @@ uninstallfinish $1
 
 ## 2. an `array()` in `/srv/http/addonslist.php`
 
-`'alias'`, `'title'`, `'version'` : must be in sequence for `installstart`  
+`'alias'` : must be 1st, at index `[0]`  
 `'± ...'` : optional 
 ```php
 array(
