@@ -107,7 +107,7 @@ function bash( $command ) {
 		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
 		// skip lines
 		if (
-				strpos( $std, 'warning:' ) !== false || 
+				stripos( $std, 'warning:' ) !== false || 
 				stripos( $std, 'y/n' ) !== false ||
 				stripos( $std, 'Uninstall:' ) !== false
 		) continue;
