@@ -90,7 +90,7 @@ installfinish $1
 title -nt "extra info"
 ```
 
-**uninstall script** - `/usr/local/bin/uninstall\_<alias>.sh`  
+**uninstall script** - `/usr/local/bin/uninstall_<alias>.sh`  
 ```sh
 #!/bin/bash
 
