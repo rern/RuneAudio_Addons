@@ -45,9 +45,9 @@ function addonblock( $pkg ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a alias="'.$alias.'" class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a alias="'.$alias.'" class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $pkg[ 'option' ])) {
 			$pkgoption = preg_replace( '/\n|\t/', '', $pkg[ 'option' ] );
@@ -57,11 +57,11 @@ function addonblock( $pkg ) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a '.$option.' alias="'.$alias.'" class="btn btn-default"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$btnin = '<a class="btn btn-default" '.$option.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
-	// addon list
+	// addon list ---------------------------------------------------------------
 	$title = $pkg[ 'title' ];
 	// Addons Menu: hide in list and change to actual title
 	if ( $alias !== 'addo' ) {
@@ -70,14 +70,14 @@ function addonblock( $pkg ) {
 	} else {
 		$title = $GLOBALS[ 'addonsmenu' ];
 	}
-	// addon blocks
+	// addon blocks -------------------------------------------------------------
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
 			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>'.strip_tags( $pkg[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
-			<form class="form-horizontal">
+			<form class="form-horizontal" alias="'.$alias.'">
 				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
