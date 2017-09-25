@@ -75,14 +75,19 @@ chown -R http:http /tmp/install
 chown -R root:root /tmp/install/usr/local/bin/uninstall*
 chmod -R 755 /tmp/install
 
-cp -rp /tmp/install/* /
+cp -rv /tmp/install/* /
 rm -r /tmp/install
 
 echo -e "$bar Create new files ..."
-echo 'content' > <newfile>
+echo 'content' > /<path>/<newfile>
 
 echo -e "$bar Modify files ..."
-sed 's/existing/new/' /<path>/<file>
+file=<path>/<file>
+echo $file
+if ! grep -q 'check string' $file; then
+	echo 'content' >> $file
+	sed -i 's/existing/new/' $file
+fi
 
 # end main script ------------------------------------------------------------------------------------<<<
 
@@ -112,8 +117,10 @@ echo -e "$bar Remove files ..."
 rm -v /<path>/<file>
 
 echo -e "$bar Restore files ..."
-sed 's/new/existing/' /<path>/<file>
-mv /<path>/<file>{.backup,}
+file=/<path>/<file>
+echo $file
+sed 's/new/existing/' $file
+mv -v /<path>/<file>{.backup,}
 
 # end main script -----------------------------------------------------------------------------------<<<
 
