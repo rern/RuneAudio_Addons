@@ -47,6 +47,8 @@ pre {
 code {
 	font-family: 'Inconsolata', monospace;
 	font-size: 14px;
+	background-color: #333333;
+	border-radius: 3px;
 }
 .btn {
 	text-transform: none;
