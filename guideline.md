@@ -23,7 +23,10 @@ Guideline
 1. install and uninstall scripts
 2. an `array(...)` and a request to enlist it in Addons Menu
   
-**1. install and uninstall scripts:**  
+
+1. install and uninstall scripts:
+---
+
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of on-screen messages and database  
@@ -117,8 +120,11 @@ mv /<path>/<file>{.backup,}
 ### template - function - remove version from database, finish message
 uninstallfinish $1
 ```
-    
-**2. an `array()` in `/srv/http/addonslist.php`**  
+  
+
+2. an `array()` in `/srv/http/addonslist.php`
+---
+
 `'alias'`, `'title'`, `'version'` : must be in sequence for `installstart`  
 `'± ...'` : optional 
 ```php
