@@ -115,6 +115,14 @@ timestop() { # timelapse: any argument
 	echo -e "\nDuration$stringlapse ${min}:$sec"
 }
 
+getuninstall() {
+	alias=$1
+	shift
+	opt=$@
+	installurl=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'installurl.*=>' | cut -d "'" -f 4 )
+	cmduninstall=${installurl/install.sh/uninstall_$alias.sh}
+	echo $cmduninstall
+}
 wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
@@ -122,7 +130,10 @@ wgetnc() {
 installstart() {
 	rm $0
 	
-	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	# for ssh command line install
+	[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
+	
+	title=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'title.*=>' | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -137,7 +148,7 @@ installstart() {
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() {
-	version=$( sed -n "/alias.*$alias/{n;n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	version=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'version.*=>' | cut -d "'" -f 4 )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	timestop
@@ -152,7 +163,7 @@ installfinish() {
 }
 
 uninstallstart() {
-	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	title=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'title.*=>' | cut -d "'" -f 4 | sed 's/\s*\*$//' )
 	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then

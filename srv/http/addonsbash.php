@@ -1,9 +1,28 @@
 <?php
 require_once( 'addonshead.php' );
-$cmd = $_POST[ 'cmd' ];
-$opt = $_POST[ 'opt' ];
+
+$alias = $_POST[ 'alias' ];
+$type = $_POST[ 'type' ];
+
+$arrayalias = array_column( $addons, 'alias' );
+$aliasindex = array_search( $alias, $arrayalias );
+$addon = $addons[ $aliasindex ];
+$title = $addon[ 'title' ];
+$cmdinstall = 'wget -qN '.$addon[ 'installurl' ].'; chmod 755 install.sh; /usr/bin/sudo ./install.sh';
+$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
+$option = '';
+
+if ( $type === 'Uninstall' ) {
+	$command = $cmduninstall;
+} else if ( $type === 'Update' ) {
+	$command = $cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u';
+} else {
+	$command = $cmdinstall;
+	$option = $_POST[ 'opt' ];
+}
+	
 // if uninstall only - css file will be gone
-if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
+if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
 	require_once( 'assets/css/addons.css' );
 	require_once( 'assets/css/addonsinfo.css' );
@@ -13,9 +32,9 @@ if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
 	$close = 'addons.php';
 }
 ?>
-
+<!-------------------------------------------------------------------------------------------------->
 <script>
-// hide vertical scrollbar on desktop
+// hide <pre> vertical scrollbar on desktop
 var div = document.createElement('div');
 div.style.cssText = 
 	'width: 100px;'
@@ -65,15 +84,15 @@ setTimeout( function() {
 
 	<div class="hidescrollv">
 	<pre>
-
+<!-------------------------------------------------------------------------------------------------->
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
-function bash( $cmd ) {
+function bash( $command ) {
 	global $dash;
 	ob_end_flush(); // flush top part buffer
 	
-	$popencmd = popen( "$cmd 2>&1", 'r' );
+	$popencmd = popen( "$command 2>&1", 'r' );
 
 	while ( !feof( $popencmd ) ) {
 		$std = fread( $popencmd, 4096 );
@@ -102,10 +121,17 @@ function bash( $cmd ) {
 ob_implicit_flush();      // start flush output without buffer
 
 
-echo preg_replace( '/;\s*/', "\n", $cmd );
+// show each line of commands
+if ( $alias !== 'bash' ) {
+	echo preg_replace( '/;\s*/', "\n", $command );
+} else {
+	echo preg_replace( '/;\s*/', "\n", $command.' '.$option );
+}
 echo '<br>';
-bash( $cmd.$opt );
+
+bash( $command.' '.$option );
 ?>
+<!-------------------------------------------------------------------------------------------------->
 	</pre>
 	</div>
 </div>
@@ -122,9 +148,10 @@ bash( $cmd.$opt );
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
+		if ( '<?=$alias;?>' === 'bash' ) return;
 		info( {
 			icon:    '<i class="fa fa-info-circle fa-2x">',
-			title:   'Finished',
+			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
 	}, 1000 );
@@ -132,7 +159,7 @@ bash( $cmd.$opt );
 
 </body>
 </html>
-
+<!-------------------------------------------------------------------------------------------------->
 <?php
 opcache_reset();
 ?>

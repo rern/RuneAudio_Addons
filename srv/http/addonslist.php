@@ -1,6 +1,6 @@
 <?php
-// sorting          : 'title' ascending
-// fixed order      : 'alias', 'title', 'version'
+// fixed order      : 'alias' 1st, at index [0]
+// sorting          : 'title' ascending except 'Addons Menu'
 // non-install type : 'version' omitted
 // optional         : 'buttonlabel', 'option', 'thumbnail'
 // star badge       : '*' after 'title'
@@ -12,8 +12,7 @@ array(
 	'title'        => 'Addons Menu',
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons main page.'
-			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
+	'description'  => 'This <white>Addons Menu</white> main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -25,7 +24,7 @@ array(
 	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
-	'installurl'   => '',
+	'installurl'   => '/usr/bin/sudo',
 	'option'       => "{
 		'prompt': {
 			'message': '<white>BASH</white> commands or /full/path/script:',
@@ -189,7 +188,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 ),
 array(
-	'alias'        => 'webr',
+	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
@@ -204,6 +203,15 @@ array(
 				<br>
 				Ok to continue'
 	}"
+),
+array(
+	'alias'        => 'webr',
+	'title'        => 'Webradio Sorting',
+	'version'      => '20170925',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fix Webradio sorting.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
 // array end ----------------------------------------------------------------------------------------------------
 );
