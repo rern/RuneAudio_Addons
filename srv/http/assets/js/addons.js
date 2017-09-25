@@ -47,13 +47,13 @@ for ( var i = 0; i < legend.length; i++ ) {
 // buttons click / click-hold
 $( '.btnun' ).each( function() {
 	var $thisbtn = $( this );
-	type = 'Update';
 
 	var hammerbtn = new Hammer( this );
 	
 	hammerbtn.on( 'press', function () {
-		alias = $thisbtn.attr( 'alias' );
+		alias = $thisbtn.parent().attr( 'alias' );
 		title = gettitle( $thisbtn );
+		type = 'Update';
 		info( {
 			title:  title,
 			message: 'Reinstall?',
@@ -66,7 +66,7 @@ $( '.btnun' ).each( function() {
 } );	
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
-	alias = $thisbtn.attr( 'alias' );
+	alias = $thisbtn.parent().attr( 'alias' );
 	title = gettitle( $( this ) );
 	type = $thisbtn.text().trim();
 
