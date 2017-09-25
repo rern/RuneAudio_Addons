@@ -31,8 +31,6 @@ This file:
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
 - Release **Guideline** with templates for addons scripts
-
-### 20170913
 - Improve update messages
 
 ### 20170909
