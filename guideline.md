@@ -174,11 +174,11 @@ array(
 ),
 ```
 
-`**'alias'**` - addon reference  
+**`'alias'`** - addon reference  
 - 4 characters
 - must be unique amomng aliases
 
-`**'version'**` - buttons enable/disable  
+**`'version'`** - buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
 - change `'version'` > show `Update` button
 - non-install addons:
@@ -186,10 +186,10 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
     
-`**'description'**`
+**`'description'`**
 - detail should be a linked to external source code
 
-`**'option'**` - user inputs  
+**`'option'`** - user inputs  
 - each `'key': ...` open a dialog
 - each `'value'` will be appended as `install.sh` arguments / parameters
 - options must be **single quoted** json, `" 'key': 'value' "` format
