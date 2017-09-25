@@ -20,6 +20,7 @@ Currently available:
 - RuneUI Password
 - Transmission
 - Webradio Import
+- Webradio Sorting
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
@@ -39,13 +40,6 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
-**Problems** with install / uninstall / update:  
-Long press `Uninstall` button to reinstall  
-  
-or
-```sh
-wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/reinstall.sh; chmod +x reinstall.sh; ./reinstall.sh
-```
 ---
   
 [**Guideline for Addons enthusiasts**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
