@@ -12,7 +12,7 @@ This file:
 ```
 
 ### 20170926
-- General improvements
+- Improve code for better performance
 - Minor fixes
 
 ### 20170925
