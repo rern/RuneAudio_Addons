@@ -126,7 +126,7 @@ getuninstall() {
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
 installstart() {
-#	rm $0
+	rm $0
 	
 	# for ssh command line install
 	[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
