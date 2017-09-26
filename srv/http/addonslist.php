@@ -24,7 +24,7 @@ array(
 	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
-	'installurl'   => '/usr/bin/sudo',
+	'installurl'   => '',
 	'option'       => "{
 		'prompt': {
 			'message': '<white>BASH</white> commands or /full/path/script:',

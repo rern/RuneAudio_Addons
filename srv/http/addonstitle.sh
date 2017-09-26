@@ -115,20 +115,18 @@ timestop() { # timelapse: any argument
 	echo -e "\nDuration$stringlapse ${min}:$sec"
 }
 
-getuninstall() {
-	alias=$1
-	shift
-	opt=$@
-	installurl=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'installurl.*=>' | cut -d "'" -f 4 )
-	cmduninstall=${installurl/install.sh/uninstall_$alias.sh}
-	echo $cmduninstall
-}
 wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
 }
+getuninstall() {
+	installurl=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'installurl.*=>' | cut -d "'" -f 4 )
+	uninstallfile=${installurl/install.sh/uninstall_$alias.sh}
+	wgetnc $uninstallfile -P /usr/local/bin
+	chmod +x /usr/local/bin/uninstall_$alias.sh
+}
 installstart() {
-	rm $0
+#	rm $0
 	
 	# for ssh command line install
 	[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http

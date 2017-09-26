@@ -8,7 +8,11 @@ $arrayalias = array_column( $addons, 'alias' );
 $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $title = $addon[ 'title' ];
-$cmdinstall = 'wget -qN '.$addon[ 'installurl' ].'; chmod 755 install.sh; /usr/bin/sudo ./install.sh';
+$cmdinstall = '
+	wget -qN '.$addon[ 'installurl' ].'; 
+	[[ $? != 0 ]] && ( echo Download failed.; exit )
+	chmod 755 install.sh
+	/usr/bin/sudo ./install.sh';
 $cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
 $option = '';
 
@@ -17,7 +21,7 @@ if ( $type === 'Uninstall' ) {
 } else if ( $type === 'Update' ) {
 	$command = $cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u';
 } else {
-	$command = $cmdinstall;
+	$command = ( $alias !== 'bash' ) ? $cmdinstall : '/usr/bin/sudo';
 	$option = $_POST[ 'opt' ];
 }
 	
@@ -122,12 +126,12 @@ ob_implicit_flush();      // start flush output without buffer
 
 
 // show each line of commands
-if ( $alias !== 'bash' ) {
-	echo preg_replace( '/;\s*/', "\n", $command );
-} else {
-	echo preg_replace( '/;\s*/', "\n", $command.' '.$option );
-}
-echo '<br>';
+$find = array( '/\/usr\/bin\/sudo /', '/\[.*exit \)/', '/ \[\[ \$\? != 1 \]\] && /', '/\t*/', '/^\n/' );
+$cmd = preg_replace( $find, '', $command );
+$cmd = preg_replace( '/\s*;\s*/', "\n", $cmd );
+if ( $alias === 'bash' ) $cmd = str_replace( '/usr/bin/', '', $option ).'<br>';
+
+echo $cmd.'<br>';
 
 bash( $command.' '.$option );
 ?>
