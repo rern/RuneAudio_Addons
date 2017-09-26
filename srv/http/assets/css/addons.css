@@ -1,3 +1,11 @@
+@font-face {
+	font-family: 'Inconsolata';
+	src: url('../assets/fonts/Inconsolata.eot');
+	src: url('../assets/fonts/Inconsolata.eot?#iefix') format('embedded-opentype'),
+		url('../assets/fonts/Inconsolata.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 .container {
 	padding : 0 15px 20px;
 }
