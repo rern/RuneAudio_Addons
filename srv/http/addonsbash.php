@@ -25,6 +25,18 @@ if ( $type === 'Uninstall' ) {
 	$option = $_POST[ 'opt' ];
 }
 	
+// header - show commands
+$findcmd = array( 
+	'/\/usr\/bin\/sudo /',
+	'/\[.*exit \)/',
+	'/ \[\[ \$\? != 1 \]\] && /',
+	'/\t*/',
+	'/^\n/',
+);
+$cmd = preg_replace( $findcmd, '', $command );
+$cmd = preg_replace( '/\s*;\s*/', "\n", $cmd );
+if ( $alias === 'bash' ) $cmd = str_replace( '/usr/bin/', '', $option ).'<br>';
+
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
@@ -91,29 +103,34 @@ setTimeout( function() {
 <!-------------------------------------------------------------------------------------------------->
 <?php
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
+$replace = array(
+'/=(=+)=/'                 => str_repeat( '=', $dash ), // fit line to width
+'/-(-+)-/'                 => str_repeat( '-', $dash ), // fit line to width
+'/.\\[38;5;6m.\\[48;5;6m/' => '<a class="cc">',         // bar
+'/.\\[38;5;0m.\\[48;5;3m/' => '<a class="ky">',         // info, yesno
+'/.\\[38;5;7m.\\[48;5;1m/' => '<a class="wr">',         // warn
+'/.\\[38;5;6m.\\[48;5;0m/' => '<a class="ck">',         // tcolor
+'/.\\[38;5;6m/'            => '<a class="ck">',         // lcolor
+'/.\\[0m/'                 => '</a>',                   // reset color
+);
 
 function bash( $command ) {
 	global $dash;
+	global $replace;
 	ob_end_flush(); // flush top part buffer
 	
 	$popencmd = popen( "$command 2>&1", 'r' );
 
 	while ( !feof( $popencmd ) ) {
 		$std = fread( $popencmd, 4096 );
+
+		$std = preg_replace( array_keys( $replace ), array_values( $replace ), $std );
 		
-		$std = preg_replace( '/=(=+)=/', str_repeat( '=', $dash ), $std );         // fit line to width
-		$std = preg_replace( '/-(-+)-/', str_repeat( '-', $dash ), $std );         // fit line to width
-		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std ); // bar
-		$std = preg_replace( '/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std ); // info, yesno
-		$std = preg_replace( '/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std ); // warn
-		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std ); // tcolor
-		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
-		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
 		// skip lines
 		if (
 				stripos( $std, 'warning:' ) !== false || 
 				stripos( $std, 'y/n' ) !== false ||
-				stripos( $std, 'Uninstall:' ) !== false
+				stripos( $std, 'uninstall:' ) !== false
 		) continue;
 			
 		echo $std;
@@ -123,13 +140,6 @@ function bash( $command ) {
 }
 
 ob_implicit_flush();      // start flush output without buffer
-
-
-// show each line of commands
-$find = array( '/\/usr\/bin\/sudo /', '/\[.*exit \)/', '/ \[\[ \$\? != 1 \]\] && /', '/\t*/', '/^\n/' );
-$cmd = preg_replace( $find, '', $command );
-$cmd = preg_replace( '/\s*;\s*/', "\n", $cmd );
-if ( $alias === 'bash' ) $cmd = str_replace( '/usr/bin/', '', $option ).'<br>';
 
 echo $cmd.'<br>';
 
