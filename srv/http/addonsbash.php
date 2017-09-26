@@ -8,25 +8,30 @@ $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $arrayalias = array_column( $addons, 'alias' );
 $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
+$installurl = $addon[ 'installurl' ];
 $title = $addon[ 'title' ];
-$cmdinstall = '
-	wget -qN '.$addon[ 'installurl' ].' 
-	[[ $? != 0 ]] && ( echo -e "\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.\nPlease try again."; exit )
+$cmdinstall = "
+	wget -qN $installurl 
+	if [[ $? != 0 ]]; then
+		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
+		echo 'Please try again.'
+		exit
+	fi
 	chmod 755 install.sh
-	/usr/bin/sudo ./install.sh'
+	/usr/bin/sudo ./install.sh"
 ;
-$cmduninstall = '
-	/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh'
+$cmduninstall = "
+	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh"
 ;
 $option = '';
 
 if ( $type === 'Uninstall' ) {
 	$command = $cmduninstall;
 } else if ( $type === 'Update' ) {
-	$command = 
-		$cmduninstall.' u
-		[[ $? != 1 ]] && '.
-		$cmdinstall.' u'
+	$command = "
+		$cmduninstall u
+		[[ $? != 1 ]] && 
+		$cmdinstall u"
 	;
 } else {
 	$command = ( $alias !== 'bash' ) ? $cmdinstall : '/usr/bin/sudo';
@@ -36,9 +41,14 @@ if ( $type === 'Uninstall' ) {
 // header - show commands
 $findcmd = array( 
 	'|/usr/bin/sudo |',
+	'/if.*\n/',
+	'/fi.*\n/',
+	'/echo.*\n/',
+	'/exit.*\n/',
 	'/\[.*\n/',
 	'/\t*/',
 	'/^\n/',
+	'/^\s*\n/',
 );
 if ( $alias !== 'bash' ) {
 	$cmd = preg_replace( $findcmd, '', $command );	
