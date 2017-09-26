@@ -11,7 +11,7 @@ $addon = $addons[ $aliasindex ];
 $title = $addon[ 'title' ];
 $cmdinstall = '
 	wget -qN '.$addon[ 'installurl' ].' 
-	[[ $? != 0 ]] && ( echo -e "\e[38;5;7m\e[48;5;1m ! \e[0m Download failed.\nPlease try again."; exit )
+	[[ $? != 0 ]] && ( echo -e "\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.\nPlease try again."; exit )
 	chmod 755 install.sh
 	/usr/bin/sudo ./install.sh'
 ;
