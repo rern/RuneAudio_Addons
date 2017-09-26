@@ -116,15 +116,16 @@ echo $cmd.'<br>';
 
 // for convert bash stdout to html
 $replace = array(
-'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
-'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
-'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
-'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
-'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
-'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
-'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
-'/.\[0m/'                => '</a>',                   // reset color
+	'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
+	'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
+	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
+	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
+	'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
+	'/.\[0m/'                => '</a>',                   // reset color
 );
+$skip = array( 'warning:', 'y/n', 'uninstall:' );
 
 ob_implicit_flush(); // start flush - output bypass buffer to screen
 ob_end_flush();      // force flush current buffer (only after flush started)
@@ -138,10 +139,9 @@ while ( !feof( $popencmd ) ) {                        // each line
 		array_values( $replace ),
 		$std
 	);
-	if ( stripos( $std, 'warning:' ) !== false ||     // skip lines
-		stripos( $std, 'y/n' ) !== false ||
-		stripos( $std, 'uninstall:' ) !== false
-	) continue;
+	foreach( $skip as $find ) {                       // skip line
+		if ( stripos( $std, $find ) !== false ) continue 2;
+	}
 
 	echo $std;                                        // output
 }

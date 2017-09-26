@@ -33,15 +33,15 @@ echo '
 ';
 echo $blocks;
 // -------------------------------------------------------------------------------------------------
-function addonblock( $pkg ) {
-	$thumbnail = isset( $pkg[ 'thumbnail' ] ) ? $pkg[ 'thumbnail' ] : '';
-	$buttonlabel = isset( $pkg[ 'buttonlabel' ]) ? $pkg[ 'buttonlabel' ] : 'Install';
-	$alias = $pkg[ 'alias' ];
+function addonblock( $addon ) {
+	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
+	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
+	$alias = $addon[ 'alias' ];
 	$fileuninstall = file_exists( '/usr/local/bin/uninstall_'.$alias.'.sh' );
 	
 	if ( $GLOBALS[ 'version' ][ $alias ] && $fileuninstall ) {
 		$check = '<i class="fa fa-check"></i> ';
-		if ( !isset( $pkg[ 'version' ] ) || $pkg[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
+		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
@@ -49,10 +49,10 @@ function addonblock( $pkg ) {
 		}
 		$btnun = '<a class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
-		if ( isset( $pkg[ 'option' ])) {
-			$pkgoption = preg_replace( '/\n|\t/', '', $pkg[ 'option' ] );
-			$pkgoption = htmlspecialchars( $pkgoption );
-			$option = 'option="'.$pkgoption.'"';
+		if ( isset( $addon[ 'option' ])) {
+			$addonoption = preg_replace( '/\n|\t/', '', $addon[ 'option' ] );
+			$addonoption = htmlspecialchars( $addonoption );
+			$option = 'option="'.$addonoption.'"';
 		} else {
 			$option = '';
 		}
@@ -62,7 +62,7 @@ function addonblock( $pkg ) {
 	}
 	
 	// addon list ---------------------------------------------------------------
-	$title = $pkg[ 'title' ];
+	$title = $addon[ 'title' ];
 	// Addons Menu: hide in list and change to actual title
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <white>&star;</white>', $title );
@@ -76,16 +76,16 @@ function addonblock( $pkg ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>'.strip_tags( $pkg[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
+			<legend>'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$pkg[ 'description' ].' <a href="'.$pkg[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
-				.$btnin; if ( isset( $pkg[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
+				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
+				.$btnin; if ( isset( $addon[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
 		<div class="thumbnail" style="float: right; width: 100px;">
-			<a href="'.$pkg[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
+			<a href="'.$addon[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
 		</div>
 		<div style="clear: both;"></div>';
 	$GLOBALS[ 'blocks' ] .= '
