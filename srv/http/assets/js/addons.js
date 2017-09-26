@@ -69,7 +69,7 @@ $( '.boxed-group .btn' ).click( function () {
 	alias = $thisbtn.parent().attr( 'alias' );
 	title = gettitle( $( this ) );
 	type = $thisbtn.text().trim();
-
+	
 	info( {
 		title: title,
 		message: type +'?',
@@ -87,7 +87,7 @@ $( '.boxed-group .btn' ).click( function () {
 			}
 		}
 	} );
-	
+	if ( alias === 'bash' ) $( '#infoOk' ).click();
 } );
 
 function gettitle( btn ) {
