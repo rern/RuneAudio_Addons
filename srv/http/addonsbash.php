@@ -3,6 +3,7 @@ require_once( 'addonshead.php' );
 
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
+$dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
 $arrayalias = array_column( $addons, 'alias' );
 $aliasindex = array_search( $alias, $arrayalias );
@@ -10,7 +11,7 @@ $addon = $addons[ $aliasindex ];
 $title = $addon[ 'title' ];
 $cmdinstall = '
 	wget -qN '.$addon[ 'installurl' ].' 
-	[[ $? != 0 ]] && ( echo Download failed.; exit )
+	[[ $? != 0 ]] && ( echo -e "\e[38;5;7m\e[48;5;1m ! \e[0m Download failed.\nPlease try again."; exit )
 	chmod 755 install.sh
 	/usr/bin/sudo ./install.sh'
 ;
@@ -43,7 +44,8 @@ if ( $alias !== 'bash' ) {
 	$cmd = preg_replace( $findcmd, '', $command );	
 } else {
 	$cmd = str_replace( '/usr/bin/', '', $option );
-	$cmd = preg_replace( '/;\s*/', "\n", $cmd ).'<br>';
+	$cmd = preg_replace( '/;\s*/', "\n", $cmd );
+	$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
 }
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
@@ -113,7 +115,6 @@ setTimeout( function() {
 echo $cmd.'<br>';
 
 // for convert bash stdout to html
-$dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $replace = array(
 '/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
 '/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
