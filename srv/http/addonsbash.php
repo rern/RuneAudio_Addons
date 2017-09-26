@@ -9,17 +9,24 @@ $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $title = $addon[ 'title' ];
 $cmdinstall = '
-	wget -qN '.$addon[ 'installurl' ].'; 
+	wget -qN '.$addon[ 'installurl' ].' 
 	[[ $? != 0 ]] && ( echo Download failed.; exit )
 	chmod 755 install.sh
-	/usr/bin/sudo ./install.sh';
-$cmduninstall = '/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh';
+	/usr/bin/sudo ./install.sh'
+;
+$cmduninstall = '
+	/usr/bin/sudo /usr/local/bin/uninstall_'.$alias.'.sh'
+;
 $option = '';
 
 if ( $type === 'Uninstall' ) {
 	$command = $cmduninstall;
 } else if ( $type === 'Update' ) {
-	$command = $cmduninstall.' u; [[ $? != 1 ]] && '.$cmdinstall.' u';
+	$command = 
+		$cmduninstall.' u
+		[[ $? != 1 ]] && '.
+		$cmdinstall.' u'
+	;
 } else {
 	$command = ( $alias !== 'bash' ) ? $cmdinstall : '/usr/bin/sudo';
 	$option = $_POST[ 'opt' ];
@@ -27,16 +34,17 @@ if ( $type === 'Uninstall' ) {
 	
 // header - show commands
 $findcmd = array( 
-	'/\/usr\/bin\/sudo /',
-	'/\[.*exit \)/',
-	'/ \[\[ \$\? != 1 \]\] && /',
+	'|/usr/bin/sudo |',
+	'/\[.*\n/',
 	'/\t*/',
 	'/^\n/',
 );
-$cmd = preg_replace( $findcmd, '', $command );
-$cmd = preg_replace( '/\s*;\s*/', "\n", $cmd );
-if ( $alias === 'bash' ) $cmd = str_replace( '/usr/bin/', '', $option ).'<br>';
-
+if ( $alias !== 'bash' ) {
+	$cmd = preg_replace( $findcmd, '', $command );	
+} else {
+	$cmd = str_replace( '/usr/bin/', '', $option );
+	$cmd = preg_replace( '/;\s*/', "\n", $cmd ).'<br>';
+}
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
@@ -102,48 +110,41 @@ setTimeout( function() {
 	<pre>
 <!-------------------------------------------------------------------------------------------------->
 <?php
-$dash = round( $_POST[ 'prewidth' ] / 7.55 );
-$replace = array(
-'/=(=+)=/'                 => str_repeat( '=', $dash ), // fit line to width
-'/-(-+)-/'                 => str_repeat( '-', $dash ), // fit line to width
-'/.\\[38;5;6m.\\[48;5;6m/' => '<a class="cc">',         // bar
-'/.\\[38;5;0m.\\[48;5;3m/' => '<a class="ky">',         // info, yesno
-'/.\\[38;5;7m.\\[48;5;1m/' => '<a class="wr">',         // warn
-'/.\\[38;5;6m.\\[48;5;0m/' => '<a class="ck">',         // tcolor
-'/.\\[38;5;6m/'            => '<a class="ck">',         // lcolor
-'/.\\[0m/'                 => '</a>',                   // reset color
-);
-
-function bash( $command ) {
-	global $dash;
-	global $replace;
-	ob_end_flush(); // flush top part buffer
-	
-	$popencmd = popen( "$command 2>&1", 'r' );
-
-	while ( !feof( $popencmd ) ) {
-		$std = fread( $popencmd, 4096 );
-
-		$std = preg_replace( array_keys( $replace ), array_values( $replace ), $std );
-		
-		// skip lines
-		if (
-				stripos( $std, 'warning:' ) !== false || 
-				stripos( $std, 'y/n' ) !== false ||
-				stripos( $std, 'uninstall:' ) !== false
-		) continue;
-			
-		echo $std;
-	}
-
-	pclose( $popencmd );
-}
-
-ob_implicit_flush();      // start flush output without buffer
-
 echo $cmd.'<br>';
 
-bash( $command.' '.$option );
+// for convert bash stdout to html
+$dash = round( $_POST[ 'prewidth' ] / 7.55 );
+$replace = array(
+'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
+'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
+'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
+'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
+'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
+'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
+'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
+'/.\[0m/'                => '</a>',                   // reset color
+);
+
+ob_implicit_flush(); // start flush - output bypass buffer to screen
+ob_end_flush();      // force flush current buffer (only after flush started)
+	
+$popencmd = popen( "$command $option 2>&1", 'r' );    // start bash
+while ( !feof( $popencmd ) ) {                        // each line
+	$std = fread( $popencmd, 4096 );                  // read
+
+	$std = preg_replace(                              // convert to html
+		array_keys( $replace ),
+		array_values( $replace ),
+		$std
+	);
+	if ( stripos( $std, 'warning:' ) !== false ||     // skip lines
+		stripos( $std, 'y/n' ) !== false ||
+		stripos( $std, 'uninstall:' ) !== false
+	) continue;
+
+	echo $std;                                        // output
+}
+pclose( $popencmd );                                  // end bash
 ?>
 <!-------------------------------------------------------------------------------------------------->
 	</pre>
