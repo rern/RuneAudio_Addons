@@ -226,6 +226,6 @@ array(
     - `&quot;` = `"`
     - `&#039;` = `'`
 - preset styles:
-	- `<white>...</white>` = white text
-	- `<code>...</code>` = code
+	- `<white>...</white>`
+	- `<code>...</code>`
 ```
