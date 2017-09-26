@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="assets/css/addons.css">
     <link rel="stylesheet" href="assets/css/addonsinfo.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 </head>
 <body>
 
