@@ -54,7 +54,7 @@ alias=<alias>
 
 ### template - function - start message, installed check
 installstart $1
-getuninstall $alias # for single file download (uninstall_<alias>.sh and install.sh must be in the same path)
+getuninstall # for single file download (uninstall_<alias>.sh and install.sh must be in the same path)
 
 # start main script ---------------------------------------------------------------------------------->>>
 
