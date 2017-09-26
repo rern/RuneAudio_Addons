@@ -10,7 +10,7 @@ $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $installurl = $addon[ 'installurl' ];
 $title = $addon[ 'title' ];
-$cmdinstall = "
+$cmdinstall = <<<cmd
 	wget -qN $installurl 
 	if [[ $? != 0 ]]; then
 		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
@@ -18,21 +18,20 @@ $cmdinstall = "
 		exit
 	fi
 	chmod 755 install.sh
-	/usr/bin/sudo ./install.sh"
-;
-$cmduninstall = "
-	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh"
-;
+	/usr/bin/sudo ./install.sh
+cmd;
+$cmduninstall = <<<cmd
+	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
+cmd;
 $option = '';
 
 if ( $type === 'Uninstall' ) {
 	$command = $cmduninstall;
 } else if ( $type === 'Update' ) {
-	$command = "
+	$command = <<<cmd
 		$cmduninstall u
-		[[ $? != 1 ]] && 
-		$cmdinstall u"
-	;
+		[[ $? != 1 ]] && $cmdinstall u
+cmd;
 } else {
 	$command = ( $alias !== 'bash' ) ? $cmdinstall : '/usr/bin/sudo';
 	$option = $_POST[ 'opt' ];
@@ -45,7 +44,7 @@ $findcmd = array(
 	'/fi.*\n/',
 	'/echo.*\n/',
 	'/exit.*\n/',
-	'/\[.*\n/',
+	'/\[.*&& /',
 	'/\t*/',
 	'/^\n/',
 	'/^\s*\n/',
