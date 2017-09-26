@@ -135,8 +135,8 @@ uninstallfinish $1
 ```php
 array(
 	'alias'         => 'alias',
-	'title'         => 'title',
 	'± version'     => 'version',
+	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
 	'± thumbnail'   => 'https://url/to/image/w100px',
