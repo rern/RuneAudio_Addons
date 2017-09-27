@@ -20,17 +20,16 @@ Guideline
 ---
 
 **Each addon requires:**  
-1. install and uninstall scripts
-2. an `array(...)` and a request to enlist it in Addons Menu
+1. `install.sh` and `uninstall_<alias>.sh` scripts
+2. `array(...)` in `addonslist.php`
   
 
-## 1. Install and Uninstall scripts:
+## 1. `install.sh` and `uninstall_<alias>.sh` scripts
 
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of on-screen messages and database  
+> default variables and functions will take care most of on-screen messages and database data  
 > use non-invasive modifications so other addons can survive after install / uninstall  
-> `<alias>` as of `array(...)`  
 
 - install script  
 	- use modify over replace files unless necessary
@@ -38,10 +37,10 @@ Guideline
 - uninstall script
 	- restore everything to pre-install state
 	- no need for non-install type
-- no update script required
-	- update will be done by 'uninstall' > 'install'
+	
+- update will be done by uninstall > install
   
-**Install script** - `install.sh`  
+**1.1  `install.sh` template**
 ```sh
 #!/bin/bash
 
@@ -98,7 +97,7 @@ installfinish $1
 title -nt "extra info"
 ```
 
-**Uninstall script** - `/usr/local/bin/uninstall_<alias>.sh`  
+**1.2  `/usr/local/bin/uninstall_<alias>.sh` template**
 ```sh
 #!/bin/bash
 
@@ -129,9 +128,10 @@ uninstallfinish $1
 ```
   
 
-## 2. `array()` in `/srv/http/addonslist.php`
-  
-`'± ...'` : optional 
+## 2. `array(...)` in `addonslist.php`
+
+**`array(...)` template**  
+`'± ...'` : optional  
 ```php
 array(
 	'alias'         => 'alias',
@@ -220,7 +220,7 @@ array(
 - multiple dialogs of the same type must add trailing numbers to make each `key` unique
 ---
 
-**styling** for `description`, `option` dialogs
+**styling** for `description`, `option`
 - text / html
 - only quotes need escape with entities
     - `&quot;` = `"`
