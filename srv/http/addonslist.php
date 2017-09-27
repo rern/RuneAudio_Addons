@@ -9,7 +9,7 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'title'        => 'Addons Menu',
+	'title'        => '0',            // force sorting always 1st - replaced by 'Addons Menu' later
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
 	'description'  => 'This <white>Addons Menu</white> main page.',
@@ -193,7 +193,7 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 			.'<br>Add files at anytime then start this addon to refresh Webradio list'
-			.'<br><white>Any import before 20170922 should run this addon again to improve sorting.</white>',
+			.'<br><white>Webradio Sorting</white> should be installed as well.</white>',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
@@ -201,7 +201,8 @@ array(
 		'alert': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
-				Ok to continue'
+				Ok to continue',
+		'confirm': 'Install <white>Webradio Sorting</white> after import?'
 	}"
 ),
 array(
