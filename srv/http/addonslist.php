@@ -201,7 +201,7 @@ array(
 		'alert': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
-				Ok to continue',
+				<code>Ok</code> to continue',
 		'confirm': 'Install <white>Webradio Sorting</white> after import?'
 	}"
 ),
