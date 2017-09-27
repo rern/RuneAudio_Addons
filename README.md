@@ -6,6 +6,8 @@ _(0.3+0.4b) - RuneAudio 0.3, 0.4b compatible_
 _Most should work on 0.4b but some not tested yet_  
 
 **Addons Menu** for easy addons installation via RuneUI.  
+It's the same as running on SSH terminal.  
+Just much easier.  
 
 Currently available:
 - Aria2
