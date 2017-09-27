@@ -48,7 +48,6 @@ Guideline
 alias=<alias>
 
 ### template - import default variables, functions
-[[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
 ### template - function - start message, installed check
