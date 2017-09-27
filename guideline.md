@@ -52,13 +52,12 @@ alias=<alias>
 
 ### template - function - start message, installed check
 installstart $1
-getuninstall # for single file download (uninstall_<alias>.sh and install.sh must be in the same path)
+getuninstall # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
 
 # start main script ---------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/master.zip           # whole repository download
-wgetnc https://github.com/<name>/<repository>/raw/master/<path>/install.sh # single file download
+wgetnc https://github.com/<name>/<repository>/archive/master.zip # whole repository download
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
