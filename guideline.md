@@ -220,10 +220,9 @@ array(
 
 **styling** for `description`, `option`
 - text / html
-- only quotes need escape with entities
+- only quotes use html entities
     - `&quot;` = `"`
     - `&#039;` = `'`
 - preset styles:
 	- `<white>...</white>`
 	- `<code>...</code>`
-```
