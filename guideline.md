@@ -12,9 +12,11 @@ Guideline
 	- install/uninstall/update status based on:
 		- `uninstall_<alias>.sh` file - installed marker
 		- `version` from `addonslist.php` vs database - buttons status
-	- user input dialogs
+	- confirm dialog
+	- user input dialogs for options
+	- cancel by dialog `X` button
 - Addons Terminal page: `addonsbash.php`
-	- on-screen messages (stdout/stderr of bash scripts)
+	- on-screen messages, stdout/stderr of bash scripts
 	- nofify on finished
 	- `X` button > `opcache_reset()` and back to Addons page
 ---
