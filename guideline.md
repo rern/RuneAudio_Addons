@@ -128,8 +128,7 @@ uninstallfinish $1
 
 ### 2. `array(...)` in `addonslist.php`
 
-**`array(...)` template**  
-`'± ...'` : optional  
+**`array(...)` template**   
 ```php
 array(
 	'alias'         => 'alias',
@@ -182,7 +181,8 @@ array(
 
 ),
 ```
-
+`'± ...'` : optional  
+  
 **`'alias'`** - reference point
 - must be 1st, at index `[0]`
 - must be unique among aliases
