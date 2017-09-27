@@ -1,7 +1,7 @@
 Guideline
 ---
 
-**Addons Menu Process:**  
+### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
 	- `addonslist.php`
 	- `changelog.md` > `addonsdl.sh` > `addonslog.php`
@@ -19,12 +19,12 @@ Guideline
 	- `X` button > `opcache_reset()` and back to Addons page
 ---
 
-**Each addon requires:**  
+### Each addon requires:  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
 2. `array(...)` in `addonslist.php`
   
 
-## 1. `install.sh` and `uninstall_<alias>.sh` scripts
+### 1. `install.sh` and `uninstall_<alias>.sh` scripts**  
 
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
@@ -126,7 +126,7 @@ uninstallfinish $1
 ```
   
 
-## 2. `array(...)` in `addonslist.php`
+### 2. `array(...)` in `addonslist.php`
 
 **`array(...)` template**  
 `'± ...'` : optional  
