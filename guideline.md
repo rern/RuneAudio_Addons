@@ -95,7 +95,7 @@ installfinish $1
 title -nt "extra info"
 ```
 
-**1.2  `/usr/local/bin/uninstall_<alias>.sh` template**
+**1.2  `uninstall_<alias>.sh` template**
 ```sh
 #!/bin/bash
 
