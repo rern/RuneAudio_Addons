@@ -12,8 +12,8 @@ This file:
 ```
 
 ### 20170927
-- Improve code for better performance and errors handling
-- Minor fixes
+- Improve code for better performance
+- Improve terminal messages  and errors handling
 
 ### 20170925
 - Press `Enter` in dialogs = click `Ok`
