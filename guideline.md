@@ -37,7 +37,10 @@ Guideline
 - uninstall script
 	- restore everything to pre-install state
 	- no need for non-install type
-	
+	- file path:
+		- `/usr/local/bin/` if included in a root path extractable file
+		- or
+		- the same as `install.sh`
 - update will be done by uninstall > install
   
 **1.1  `install.sh` template**
