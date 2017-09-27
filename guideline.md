@@ -24,7 +24,7 @@ Guideline
 2. `array(...)` in `addonslist.php`
   
 
-### 1. `install.sh` and `uninstall_<alias>.sh` scripts**  
+### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
