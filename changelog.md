@@ -1,6 +1,6 @@
 ```note  
 This file: 
-- file name and path ./RuneAudio_Addons/changelog.md cannot be changed.
+- file name and path ./RuneAudio_Addons/changelog.md <-> install.sh and addonsdl.sh
 - Addons Menu uses it for:
     - convert to 'addonslog.php' for display as 'Changelog'
     - get its own 'version' for 'install.sh' and 'addonslist.php'
