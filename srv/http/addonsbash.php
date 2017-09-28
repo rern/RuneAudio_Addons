@@ -1,72 +1,4 @@
-<?php
-require_once( 'addonshead.php' );
-
-$alias = $_POST[ 'alias' ];
-$type = $_POST[ 'type' ];
-$dash = round( $_POST[ 'prewidth' ] / 7.55 );
-
-$arrayalias = array_column( $addons, 'alias' );
-$aliasindex = array_search( $alias, $arrayalias );
-$addon = $addons[ $aliasindex ];
-$installurl = $addon[ 'installurl' ];
-$title = $addon[ 'title' ];
-$cmdinstall = <<<cmd
-	wget -qN $installurl 
-	if [[ $? != 0 ]]; then
-		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
-		echo 'Please try again.'
-		exit
-	fi
-	chmod 755 install.sh
-	/usr/bin/sudo ./install.sh
-cmd;
-$cmduninstall = <<<cmd
-	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
-cmd;
-$option = '';
-
-if ( $type === 'Uninstall' ) {
-	$command = $cmduninstall;
-} else if ( $type === 'Update' ) {
-	$command = <<<cmd
-		$cmduninstall u
-		[[ $? != 1 ]] && $cmdinstall u
-cmd;
-} else {
-	$command = ( $alias !== 'bash' ) ? $cmdinstall : '/usr/bin/sudo';
-	$option = $_POST[ 'opt' ];
-}
-	
-// header - show commands
-$findcmd = array( 
-	'|/usr/bin/sudo |',
-	'/if.*\n/',
-	'/fi.*\n/',
-	'/echo.*\n/',
-	'/exit.*\n/',
-	'/\[.*&& /',
-	'/\t*/',
-	'/^\n/',
-	'/^\s*\n/',
-);
-if ( $alias !== 'bash' ) {
-	$cmd = preg_replace( $findcmd, '', $command );	
-} else {
-	$cmd = str_replace( '/usr/bin/', '', $option );
-	$cmd = preg_replace( '/;\s*/', "\n", $cmd );
-	$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
-}
-// if uninstall only - css file will be gone
-if ( $alias === 'addo' && $type !== 'Update' ) {
-	echo '<style>';
-	require_once( 'assets/css/addons.css' );
-	require_once( 'assets/css/addonsinfo.css' );
-	echo '</style>';
-	$close = '/';
-} else {
-	$close = 'addons.php';
-}
-?>
+<?php require_once( 'addonshead.php' );?>
 <!-------------------------------------------------------------------------------------------------->
 <script>
 // hide <pre> vertical scrollbar on desktop
@@ -121,6 +53,81 @@ setTimeout( function() {
 	<pre>
 <!-------------------------------------------------------------------------------------------------->
 <?php
+$alias = $_POST[ 'alias' ];
+$type = $_POST[ 'type' ];
+$dash = round( $_POST[ 'prewidth' ] / 7.55 );
+
+$arrayalias = array_column( $addons, 'alias' );
+$aliasindex = array_search( $alias, $arrayalias );
+$addon = $addons[ $aliasindex ];
+$installurl = $addon[ 'installurl' ];
+$installfile = basename( $installurl );
+$title = $addon[ 'title' ];
+
+$install = <<<cmd
+	wget -qN $installurl 
+	if [[ $? != 0 ]]; then
+		systemctl stop ntpd
+		ntpdate pool.ntp.org
+		systemctl start ntpd
+		if [[ $? != 0 ]]; then 
+			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
+			echo 'Please try again.'
+			exit
+		fi
+	fi
+	chmod 755 $installfile
+	/usr/bin/sudo ./$installfile
+cmd;
+$uninstall = <<<cmd
+	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
+cmd;
+// no html tab
+$cmdinstall = <<<cmd
+	wget -qN $installurl
+	chmod 755 $installfile
+	./$installfile
+cmd;
+
+$option = ( isset( $_POST[ 'opt' ] ) ) ? $_POST[ 'opt' ] : '';
+
+if ( $type === 'Uninstall' ) {
+	$command = $uninstall;
+	$cmd = "uninstall_$alias.sh";
+} else if ( $type === 'Update' ) {
+	$command = <<<cmd
+		$uninstall u
+		[[ $? != 1 ]] && $install u
+cmd;
+	$cmd = <<<cmd
+		uninstall_$alias.sh u
+		
+		$cmdinstall u
+cmd;
+} else {
+	if ( $alias !== 'bash' ) {
+		$command = $install;
+		$cmd = $cmdinstall;
+	} else {
+		$command = '/usr/bin/sudo';
+		$cmd = str_replace( '/usr/bin/', '', $option );
+		$cmd = preg_replace( '/;\s*/', "\n", $cmd );
+		$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
+	}
+}
+$cmd = preg_replace( '/\t*/', '', $cmd );
+
+// if uninstall only - css file will be gone
+if ( $alias === 'addo' && $type !== 'Update' ) {
+	echo '<style>';
+	require_once( 'assets/css/addons.css' );
+	require_once( 'assets/css/addonsinfo.css' );
+	echo '</style>';
+	$close = '/';
+} else {
+	$close = 'addons.php';
+}
+
 echo $cmd.'<br>';
 
 // for convert bash stdout to html
@@ -136,25 +143,25 @@ $replace = array(
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-ob_implicit_flush(); // start flush - output bypass buffer to screen
-ob_end_flush();      // force flush current buffer (only after flush started)
+ob_implicit_flush(); // start flush: bypass buffer - output to screen
+ob_end_flush();      // force flush: current buffer (run after flush started)
 	
-$popencmd = popen( "$command $option 2>&1", 'r' );    // start bash
-while ( !feof( $popencmd ) ) {                        // each line
-	$std = fread( $popencmd, 4096 );                  // read
+$popencmd = popen( "$command $option 2>&1", 'r' );        // start bash
+while ( !feof( $popencmd ) ) {                            // each line
+	$std = fread( $popencmd, 4096 );                      // read
 
-	$std = preg_replace(                              // convert to html
+	$std = preg_replace(                                  // convert to html
 		array_keys( $replace ),
 		array_values( $replace ),
 		$std
 	);
-	foreach( $skip as $find ) {                       // skip line
+	foreach( $skip as $find ) {                           // skip line
 		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
 
-	echo $std;                                        // output
+	echo $std;                                            // output
 }
-pclose( $popencmd );                                  // end bash
+pclose( $popencmd );                                      // end bash
 ?>
 <!-------------------------------------------------------------------------------------------------->
 	</pre>
