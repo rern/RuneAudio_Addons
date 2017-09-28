@@ -1,13 +1,17 @@
 Addons Menu for RuneAudio
 ---
-
-_All tested on RuneAudio 0.3 20160313_  
-_(0.3+0.4b) - RuneAudio 0.3, 0.4b compatible_  
-_Most should work on 0.4b but some not tested yet_  
-
+  
+> All tested on RuneAudio 0.3 20160313_  
+> (0.3+0.4b) - RuneAudio 0.3, 0.4b compatible_  
+> Most should work on 0.4b but some not tested yet_  
+  
+   
 **Addons Menu** for easy addons installation via RuneUI.  
 It's the same as running on SSH terminal.  
 Just much easier.  
+
+[**changelog**](https://github.com/rern/RuneAudio_Addons/blob/update/srv/http/changelog.md)  
+<hr>
 
 Currently available:
 - Aria2
