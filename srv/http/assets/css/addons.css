@@ -63,9 +63,13 @@ code {
 #bottom {
 	height: calc(100vh - 160px);
 }
-
-#close,
 #list,
+#list li {
+	width: fit-content;
+}
+#close,
+#list li,
+.boxed-group legend,
 a {
 	cursor: pointer;
 }
