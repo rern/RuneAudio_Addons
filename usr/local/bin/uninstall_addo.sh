@@ -19,5 +19,3 @@ rm -rv /srv/http/assets/{css/addons*,js/addons*}
 [[ $1 == u ]] && mv /tmp/addonslist.php /srv/http
 
 uninstallfinish $1
-
-[[ -t 1 ]] && clearcache
