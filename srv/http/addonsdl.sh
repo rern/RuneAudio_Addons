@@ -13,7 +13,7 @@ if (( $# == 0 )); then # skip redownload on update Addons Menu
 			exit 1
 		fi
 	fi
-	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/changelog.md -P /srv/http
+	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/changelog.md -P /srv/http
 fi
 
 ### changelog.md > addonslog.php
