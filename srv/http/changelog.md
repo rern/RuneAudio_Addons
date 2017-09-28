@@ -1,14 +1,12 @@
 ```note  
-This file: 
-- file name and path ./RuneAudio_Addons/changelog.md <-> install.sh and addonsdl.sh
-- Addons Menu uses it for:
+Addons Menu uses this file for:
     - convert to 'addonslog.php' for display as 'Changelog'
     - get its own 'version' for 'install.sh' and 'addonslist.php'
-- styling
+styling
 	###, ## for 'date' lines only
 	- for each line
 	**, *, __, _, ~~ markdowns will be converted to html for RuneUI
-- This codeblock, lines between ```note and ```, will be omitted.
+_This codeblock, lines between ```note and ```, will be omitted._
 ```
 
 ### 20170930
