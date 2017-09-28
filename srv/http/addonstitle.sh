@@ -162,7 +162,7 @@ installfinish() {
 	fi
 	
 	title -l '=' "$bar $title installed successfully."
-	[[ -t 1 ]] && echo -e "\nUninstall: uninstall_$alias.sh"
+	[[ -t 1 ]] && title -nt "Uninstall: uninstall_$alias.sh"
 }
 
 uninstallstart() {
