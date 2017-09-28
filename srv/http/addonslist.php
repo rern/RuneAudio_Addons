@@ -1,5 +1,5 @@
 <?php
-// fixed order      : 'alias' 1st, at index [0]
+// fixed order      : 'alias' 1st of each array
 // sorting          : 'title' ascending except 'Addons Menu'
 // non-install type : 'version' omitted
 // optional         : 'buttonlabel', 'option', 'thumbnail'
