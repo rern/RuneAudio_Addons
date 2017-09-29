@@ -1,8 +1,8 @@
 #!/bin/bash
 
-branch=update
-
 alias=addo
+
+(( $# == 0 )) && branch=master || branch=$1
 
 if [[ ! -e /srv/http/addonslist.php ]]; then
 # for installstart
