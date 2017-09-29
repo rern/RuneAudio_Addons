@@ -14,11 +14,11 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'title'        => 'Addons Menu',
+	'title'        => '0',
 	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons main page.'
-			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
+	'description'  => 'This Addons Menu main page.'
+			.'<br><white>Addons Menu installed before 20170930 must be updated.</white>',
 	'thumbnail'    => "$pathassets/RuneAudio_Addons/addonsthumb.png",
 	'sourcecode'   => "$pathrern/RuneAudio_Addons",
 	'installurl'   => "$pathrern/RuneAudio_Addons/raw/UPDATE/install.sh",
