@@ -12,13 +12,13 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 # import heading function
-[[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
 installstart $1
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
+wgetnc https://github.com/rern/RuneAudio_Addons/archive/update.zip
 
 echo -e "$bar Install new files ..."
 rm -rf  /tmp/install
