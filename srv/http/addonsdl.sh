@@ -22,7 +22,7 @@ sed -e '/^```note/,/^```/ d                      # note block  > delete
 ' -e '/^\s*$/ d                                  # emptyline   > delete
 # replace --------------------------------------------------------------
 ' -e $'s/\'/"/g                                  # singlequote > "
-' changelog.md |
+' /srv/http/changelog.md |
 perl -pe 's|`(.*?)`|<code>\1</code>|g' |         # code   `  > <code>
 perl -pe 's|\*\*(.*?)\*\*|<white>\1</white>|g' | # bold   ** > <white>
 perl -pe 's|__(.*?)__|<white>\1</white>|g' |     # bold   ** > <white>
