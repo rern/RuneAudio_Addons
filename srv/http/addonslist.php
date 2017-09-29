@@ -6,8 +6,8 @@
 // star badge       : '*' after 'title'
 
 $pathrern = 'https://github.com/rern';
-$pathasset = "$pathrern/_assets/raw/master";
-$pathrune = "$pathrern/RuneAudio/raw/master";
+$pathassets = "$pathrern/_assets/raw/master";
+$pathrune = "$pathrern/RuneAudio/raw/UPDATE";
 $pathrunesource = "$pathrern/RuneAudio/tree/master";
 
 $addons = array(
@@ -19,7 +19,7 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.'
 			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
-	'thumbnail'    => "$pathasset/RuneAudio_Addons/addonsthumb.png",
+	'thumbnail'    => "$pathassets/RuneAudio_Addons/addonsthumb.png",
 	'sourcecode'   => "$pathrern/RuneAudio_Addons",
 	'installurl'   => "$pathrern/RuneAudio_Addons/raw/UPDATE/install.sh",
 ),
@@ -44,7 +44,7 @@ array(
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout. (0.3+0.4b)',
-	'thumbnail'    => "$pathasset/RuneUI_enhancement/thumbenha.gif",
+	'thumbnail'    => "$pathassets/RuneUI_enhancement/thumbenha.gif",
 	'sourcecode'   => "$pathrern/RuneUI_enhancement",
 	'installurl'   => "$pathrern/RuneUI_enhancement/raw/UPDATE/install.sh",
 	'option'       => "{
@@ -67,7 +67,7 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
-	'thumbnail'    => "$pathasset/RuneUI_GPIO/GPIOs/4.jpg",
+	'thumbnail'    => "$pathassets/RuneUI_GPIO/GPIOs/4.jpg",
 	'sourcecode'   => "$pathrern/RuneUI_GPIO",
 	'installurl'   => "$pathrern/RuneUI_GPIO/raw/UPDATE/install.sh",
 	'option'       => "{
@@ -84,7 +84,7 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
-	'thumbnail'    => "$pathasset/RuneUI_password/thumbpass.gif",
+	'thumbnail'    => "$pathassets/RuneUI_password/thumbpass.gif",
 	'sourcecode'   => "$pathrern/RuneUI_password",
 	'installurl'   => "$pathrern/RuneUI_password/raw/UPDATE/install.sh",
 ),
