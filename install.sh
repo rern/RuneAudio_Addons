@@ -60,6 +60,7 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 installfinish $1
 
-title -nt "$info Refresh browser and go to Menu > Addons."
-
-[[ -t 1 ]] && clearcache
+if [[ -t 1 ]]; then
+	title -nt "$info Refresh browser and go to Menu > Addons."
+	clearcache
+fi
