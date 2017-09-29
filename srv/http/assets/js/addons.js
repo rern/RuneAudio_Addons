@@ -2,13 +2,17 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
+		type = 'Update';
 		info( {
+			title: 'Addons Menu',
 			message: 'There is an update for <white>Addons Menu</white><br>\
 						<br>\
-						Update?',
-			cancel: 1,
+						<code>Ok</code> to start update',
+			cancel: function() {
+				window.location.href = '/';
+			},
 			ok: function() {
-				formtemp( btnupdate.getAttribute( 'cmd' ) );				
+				formtemp( 'addo' );				
 			}
 		} );
 	}
