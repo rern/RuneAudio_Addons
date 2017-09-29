@@ -35,7 +35,7 @@ rm -r /tmp/install
 #version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
 #sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
 
-/srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php
+/srv/http/addonsdl.sh u # 'u' skip redownload, changelog.md to addonslog.php
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
