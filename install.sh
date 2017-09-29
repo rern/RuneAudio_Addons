@@ -32,9 +32,6 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-#version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
-#sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
-
 /srv/http/addonsdl.sh u # 'u' skip redownload, changelog.md to addonslog.php
 
 # modify files #######################################
@@ -60,7 +57,7 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 installfinish $1
 
-if [[ -t 1 ]]; then
+if [[ -t 1 ]]; then # for initial install via ssh terminal
 	title -nt "$info Refresh browser and go to Menu > Addons."
 	clearcache
 fi
