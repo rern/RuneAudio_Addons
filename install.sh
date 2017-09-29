@@ -32,11 +32,14 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
-sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
+#version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
+#sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
 
-[[ $1 == u ]] && /srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php on update
-
+if [[ $1 != u ]]; then
+	/srv/http/addonsdl.sh
+else
+	/srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php on update
+fi
 # modify files #######################################
 echo -e "$bar Modify files ..."
 
