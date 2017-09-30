@@ -119,24 +119,17 @@ wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
 }
-getuninstall() {
-	installurl=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'installurl.*=>' | cut -d "'" -f 4 )
-	uninstallfile=${installurl/install.sh/uninstall_$alias.sh}
-	wgetnc $uninstallfile -P /usr/local/bin
-	if [[ $? != 0 ]]; then
-		title -l '=' "$warn Uninstall file download failed."
-		title -nt "Please try install again."
-		exit
-	fi
-	chmod +x /usr/local/bin/uninstall_$alias.sh
+getvalue() {
+	echo "$addonslist" |
+		grep $1'.*=>' |
+		cut -d '>' -f 2 |
+		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
 installstart() {
 	rm $0
 	
-	# for ssh command line install
-	[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
-	
-	title=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'title.*=>' | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
 	title=$( tcolor "$title" )
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -150,8 +143,19 @@ installstart() {
 	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
+getuninstall() {
+	installurl=$( getvalue installurl )
+	uninstallfile=${installurl/install.sh/uninstall_$alias.sh}
+	wgetnc $uninstallfile -P /usr/local/bin
+	if [[ $? != 0 ]]; then
+		title -l '=' "$warn Uninstall file download failed. $alias"
+		title -nt "Please try install again."
+		exit
+	fi
+	chmod +x /usr/local/bin/uninstall_$alias.sh
+}
 installfinish() {
-	version=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'version.*=>' | cut -d "'" -f 4 )
+	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	timestop
@@ -166,7 +170,8 @@ installfinish() {
 }
 
 uninstallstart() {
-	title=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php | grep 'title.*=>' | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
 	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -187,8 +192,7 @@ uninstallfinish() {
 	
 	title -l '=' "$bar $title uninstalled successfully."
 }
-clearcache() {
-	systemctl reload php-fpm
+refreshmidori() {
 	if pgrep midori > /dev/null; then
 		killall midori
 		sleep 1
