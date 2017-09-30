@@ -1,6 +1,5 @@
 <?php
 // fixed order      : 'alias' at 1st of each array
-// 'installurl'     : use single quote only (extracted by bash)
 // sorting          : 'title' ascending except 'Addons Menu'
 // non-install type : 'version' omitted
 // optional         : 'buttonlabel', 'option', 'thumbnail'
@@ -190,7 +189,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 ),
 array(
-	'alias'        => 'webr',
+	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
@@ -205,6 +204,15 @@ array(
 				<br>
 				<code>&emsp;Ok&emsp;</code> to continue'
 	}"
+),
+array(
+	'alias'        => 'webr',
+	'title'        => 'Webradio Sorting',
+	'version'      => '20170925',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fix Webradio sorting.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
 // array end ----------------------------------------------------------------------------------------------------
 );
