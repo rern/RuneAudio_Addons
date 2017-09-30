@@ -1,13 +1,16 @@
 $( '#addons' ).click( function() {
 	// fix path if click in other menu pages
-	var path = /\/.*\//.test( window.location.pathname ) ? '../../' : '';
+	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
+	var filesh = ( $( '#addo .btn' ).first().text() === ' Update' ) ? 'addonsupdate.sh' : 'addonsdl.sh';
+	
 	$( '#loader' ).removeClass( 'hide' );
+	
 	$.post( 
 		path +'addonssudo.php',
-		{file: 'addonsdl.php'},
+		{ file: filesh },
 		function( data ) {
 			if ( data == 1 ) {
-				window.location.href = path +'addons.php';
+				location.href = path +'addons.php';
 			} else {
 				alert( "Addons server cannot be reached.\n"
 					+"Please try again later." );
