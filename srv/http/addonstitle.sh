@@ -192,7 +192,8 @@ uninstallfinish() {
 	
 	title -l '=' "$bar $title uninstalled successfully."
 }
-refreshmidori() {
+clearcache() {
+	[[ -t 1 ]] && systemctl reload php-fpm
 	if pgrep midori > /dev/null; then
 		killall midori
 		sleep 1
