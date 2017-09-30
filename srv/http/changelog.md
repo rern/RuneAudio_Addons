@@ -1,7 +1,7 @@
 ```note  
 Addons Menu uses this file for:
-    - convert to 'addonslog.php' for display as 'Changelog'
-    - get its own 'version' for 'install.sh' and 'addonslist.php'
+	- convert to 'addonslog.php' for display as 'Changelog'
+	- get its own 'version' for 'install.sh' and 'addonslist.php'
 styling
 	###, ## for 'date' lines only
 	- for each line
