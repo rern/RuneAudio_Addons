@@ -215,7 +215,7 @@ array(
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select must be specified
 		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-	- `'checkbox'` - choices > `Ok` = selected `valueN`s
+	- `'checkbox'` - multiple choices > `Ok` = selected `valueN`s
 		- `*` pre-select optional
 	- `'select'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select optional
