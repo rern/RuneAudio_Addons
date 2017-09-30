@@ -2,9 +2,6 @@
 
 alias=addo
 
-branch=master
-(( $# > 0 )) && [[ $1 != u ]] && branch=$1
-
 if [[ ! -e /srv/http/addonslist.php ]]; then
 # for installstart
 	echo "
@@ -21,14 +18,14 @@ wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitl
 installstart $1
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/$branch.zip
+wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 
 echo -e "$bar Install new files ..."
 rm -rf  /tmp/install
 mkdir -p /tmp/install
-bsdtar -xf $branch.zip --strip 1 -C /tmp/install
+bsdtar -xf master.zip --strip 1 -C /tmp/install
 
-rm $branch.zip /tmp/install/* &> /dev/null
+rm master.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
 chmod -R 755 /tmp/install
 
