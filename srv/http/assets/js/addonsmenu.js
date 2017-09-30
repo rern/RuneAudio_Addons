@@ -14,17 +14,7 @@ $( '#addons' ).click( function() {
 				$( '#loader' ).addClass( 'hide' );
 				return
 			}
-			if ( data == 'uptodate' ) {
-				location.href = path +'addons.php';
-			} else {
-				$.post( 
-					'addonssudo.php',
-					{file: 'addonsupdate.sh'},
-					function(data) {
-						location.href = path +'addons.php';
-					}
-				);
-			}
+			location.href = path +'addons.php';
 		}
 	);
 });
