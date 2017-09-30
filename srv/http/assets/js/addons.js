@@ -6,7 +6,7 @@
 		$.post( 
 			'addonssudo.php',
 			{file: 'addonsupdate.sh'},
-			function() {
+			function(data) {
 				window.location.href = 'addons.php';
 				$( '#loader' ).hide;
 			}
