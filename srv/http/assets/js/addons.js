@@ -43,13 +43,14 @@ $( '.btnun' ).each( function() {
 			message: 'Reinstall?',
 			cancel: 1,
 			ok: function() {
-				formtemp( alias );
+				formtemp();
 			}
 		} );
 	} );
 } );	
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
+	opt = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
 	title = gettitle( $( this ) );
@@ -60,13 +61,12 @@ $( '.boxed-group .btn' ).click( function () {
 		ok: function () {
 			option = $thisbtn.attr( 'option' );
 			if ( option ) {
-				opt = '';
 				j = 0;
 				option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
 				option = JSON.parse( option );
 				getoptions();
 			} else {
-				formtemp( alias );
+				formtemp();
 			}
 		}
 	} );
@@ -264,18 +264,18 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
-		formtemp( alias, opt );
+		formtemp();
 	}
 }
 // post submit with temporary form (separate option to hide password)
-function formtemp( alias, opt ) {
+function formtemp() {
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
 		document.body.innerHTML += 
 			'<form id="formtemp" action="addonsbash.php" method="post">'
 			+'<input type="hidden" name="alias" value="'+ alias +'">'
 			+'<input type="hidden" name="type" value="'+ type +'">'
-			+'<input type="hidden" name="opt" value="'+ ( opt ? opt : '' ) +'">'
+			+'<input type="hidden" name="opt" value="'+ opt +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
 			+'</form>';
 		document.getElementById( 'formtemp' ).submit();
