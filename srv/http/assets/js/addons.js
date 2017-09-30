@@ -2,16 +2,15 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
-		console.log(1);
 		$( '#loader' ).show();
-/*		$.post( 
+		$.post( 
 			path +'addonssudo.php',
-			{file: 'addonsupdate.php'},
+			{file: 'addonsupdate.sh'},
 			function() {
-				window.location.href = path +'addons.php';
-				$( '#loader' ).addClass( 'hide' );
+				window.location.href = 'addons.php';
+				$( '#loader' ).hide;
 			}
-		);*/
+		);
 	}
 } )();
 
