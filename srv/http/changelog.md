@@ -1,12 +1,13 @@
 ```note  
 Addons Menu uses this file for:
+	- get its own 'version' for 'install.sh', 'addonsdl.sh'
 	- convert to 'addonslog.php' for display as 'Changelog'
-	- get its own 'version' for 'install.sh' and 'addonslist.php'
 styling
 	###, ## for 'date' lines only
 	- for each line
 	**, *, __, _, ~~ markdowns will be converted to html for RuneUI
-_This codeblock, lines between ```note and ```, will be omitted._
+	
+*This code block, lines between ```note and ```, will be removed from 'Changelog'.
 ```
 
 ### 20171001
