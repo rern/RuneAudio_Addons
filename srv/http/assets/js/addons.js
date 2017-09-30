@@ -2,15 +2,18 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
-		$.post( 
+		console.log(1);
+		$( '#loader' ).show();
+/*		$.post( 
 			path +'addonssudo.php',
 			{file: 'addonsupdate.php'},
 			function() {
 				window.location.href = path +'addons.php';
+				$( '#loader' ).addClass( 'hide' );
 			}
-		);
+		);*/
 	}
-} );
+} )();
 
 // changelog show/hide
 var detail = document.getElementById( 'detail' );
