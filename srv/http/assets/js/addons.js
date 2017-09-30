@@ -8,7 +8,7 @@
 			title: 'Addons Menu',
 			message: 'There is an update for <white>Addons Menu</white><br>\
 						<br>\
-						<code>Ok</code> to start update',
+						<code>&emsp;Ok&emsp;</code> to start update',
 			cancel: function() {
 				window.location.href = '/';
 			},
