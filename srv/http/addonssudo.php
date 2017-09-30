@@ -1,5 +1,5 @@
 <?php
-exec( '/usr/bin/sudo /srv/http/'.$_POST[ 'file' ].';', $output, $exit );
+exec( '/usr/bin/sudo /srv/http/addonsdl.sh;', $output, $exit );
 
 if ( $exit !== 0 ) die( 'failed' );
 
