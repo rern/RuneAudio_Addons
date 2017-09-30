@@ -65,4 +65,6 @@ s|$|</li>|
 
 rm /srv/http/changelog.md
 
-echo $( grep '^$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
+versionredis=$( redis-cli hget addons addo )
+versionlog=$( grep '^$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
+[[ $versionredis == $versionlog ]] && echo uptodate || echo update
