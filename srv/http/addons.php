@@ -1,6 +1,6 @@
 <?php
-require_once( 'addonshead.php' );
 require_once( 'addonslog.php' );
+require_once( 'addonshead.php' );
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
