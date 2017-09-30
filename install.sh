@@ -40,7 +40,7 @@ echo -e "$bar Modify files ..."
 file=/srv/http/app/templates/header.php
 if ! grep -q 'id="addons"' $file; then
 	echo $file
-	sed $'/poweroff-modal/ i\
+	sed -i $'/poweroff-modal/ i\
             <li style="cursor: pointer;">\
                 <a id="addons" version="<?php $redis = new Redis(); $redis->pconnect( \'127.0.0.1\' ); echo $redis->hGetAll( \'addons\' )[ \'addo\' ];?>">\
                     <i class="fa fa-cubes"></i> Addons\
