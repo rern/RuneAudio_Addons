@@ -62,7 +62,7 @@ $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $installurl = $addon[ 'installurl' ];
 $installfile = basename( $installurl );
-$title = $addon[ 'title' ];
+$title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
 $install = <<<cmd
 	wget -qN $installurl 
