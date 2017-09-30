@@ -2,6 +2,7 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
+		alias = 'addo';
 		type = 'Update';
 		info( {
 			title: 'Addons Menu',
@@ -12,7 +13,7 @@
 				window.location.href = '/';
 			},
 			ok: function() {
-				formtemp( 'addo' );				
+				formtemp( alias );
 			}
 		} );
 	}
@@ -63,7 +64,7 @@ $( '.btnun' ).each( function() {
 			message: 'Reinstall?',
 			cancel: 1,
 			ok: function() {
-				formtemp( alias );				
+				formtemp( alias );
 			}
 		} );
 	} );
@@ -71,9 +72,8 @@ $( '.btnun' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
 	alias = $thisbtn.parent().attr( 'alias' );
-	title = gettitle( $( this ) );
 	type = $thisbtn.text().trim();
-	
+	title = gettitle( $( this ) );
 	info( {
 		title: title,
 		message: type +'?',
