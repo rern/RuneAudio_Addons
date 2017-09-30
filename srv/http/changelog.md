@@ -13,6 +13,7 @@ styling
 ### 20171001
 - Improve code for better performance
 - Improve terminal messages  and errors handling
+- Fix missing installed status
 
 ### 20170925
 - Press `Enter` in dialogs = click `Ok`
