@@ -1,5 +1,4 @@
 $( '#addons' ).click( function() {
-	var version = $( this ).attr( 'version' );
 	// fix path if click in other menu pages
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
 	
@@ -15,7 +14,7 @@ $( '#addons' ).click( function() {
 				$( '#loader' ).addClass( 'hide' );
 				return
 			}
-			if ( data == version ) {
+			if ( data == 'uptodate' ) {
 				location.href = path +'addons.php';
 			} else {
 				$.post( 
