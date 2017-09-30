@@ -17,6 +17,17 @@ if (( $# == 0 )); then # skip redownload on update Addons Menu
 	wget -qN $gitpath/changelog.md -P /srv/http
 fi
 
+versionredis=$( redis-cli hget addons addo )
+versionlog=$( grep -m 1 '^##' /srv/http/changelog.md | cut -d ' ' -f 2 )
+if [[ $versionredis != $versionlog ]]; then
+	/usr/local/bin/uninstall_addo.sh
+
+	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/install.sh -P /srv/http
+	chmod 755 /srv/http/install.sh
+	/srv/http/install.sh
+	exit
+fi
+
 ### changelog.md > addonslog.php
 # remove ---------------------------------------------------------------
 sed -e '/^```note/,/^```/ d                      # note block  > delete
@@ -64,13 +75,3 @@ s|$|</li>|
 ' > /srv/http/addonslog.php
 
 rm /srv/http/changelog.md
-
-versionredis=$( redis-cli hget addons addo )
-versionlog=$( grep '^$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
-if [[ $versionredis != $versionlog ]]; then
-	/usr/local/bin/uninstall_addo.sh
-
-	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/install.sh -P /srv/http
-	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh
-fi
