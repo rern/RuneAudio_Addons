@@ -2,7 +2,8 @@
 
 alias=addo
 
-branch=update
+branch=master
+(( $# > 0 )) && [[ $1 != u ]] && branch=$1
 
 if [[ ! -e /srv/http/addonslist.php ]]; then
 # for installstart
