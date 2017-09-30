@@ -7,7 +7,7 @@ alias=addo
 uninstallstart $1
 
 # restore file
-sed -i '\|//addo0|, \|//addo1| d' /srv/http/app/templates/header.php
+sed -i '\|<!--addo0-->|, \|<!--addo1-->| d' /srv/http/app/templates/header.php
 sed -i '/addonsmenu.js/ d' /srv/http/app/templates/footer.php
 
 # remove files #######################################
