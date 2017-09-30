@@ -119,10 +119,17 @@ wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
 }
+getvalue() {
+	echo "$addonslist" |
+		grep $1'.*=>' |
+		cut -d '>' -f 2 |
+		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
+}
 installstart() {
 	rm $0
 	
-	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
 	title=$( tcolor "$title" )
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -136,8 +143,19 @@ installstart() {
 	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
+getuninstall() {
+	installurl=$( getvalue installurl )
+	uninstallfile=${installurl/install.sh/uninstall_$alias.sh}
+	wgetnc $uninstallfile -P /usr/local/bin
+	if [[ $? != 0 ]]; then
+		title -l '=' "$warn Uninstall file download failed. $alias"
+		title -nt "Please try install again."
+		exit
+	fi
+	chmod +x /usr/local/bin/uninstall_$alias.sh
+}
 installfinish() {
-	version=$( sed -n "/alias.*$alias/{n;n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 )
+	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	timestop
@@ -148,11 +166,12 @@ installfinish() {
 	fi
 	
 	title -l '=' "$bar $title installed successfully."
-	[[ -t 1 ]] && echo -e "\nUninstall: uninstall_$alias.sh"
+	[[ -t 1 ]] && title -nt "Uninstall: uninstall_$alias.sh"
 }
 
 uninstallstart() {
-	title=$( sed -n "/alias.*$alias/{n;p}" /srv/http/addonslist.php | cut -d "'" -f 4 | sed 's/\s*\*$//' )
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
 	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then
@@ -174,7 +193,7 @@ uninstallfinish() {
 	title -l '=' "$bar $title uninstalled successfully."
 }
 clearcache() {
-	systemctl reload php-fpm
+	[[ -t 1 ]] && systemctl reload php-fpm
 	if pgrep midori > /dev/null; then
 		killall midori
 		sleep 1
