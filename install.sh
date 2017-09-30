@@ -59,7 +59,7 @@ installfinish $1
 
 # 'addo' has php variable as 'version' in addonslist.php
 version=$( grep '$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
-redis-cli hset addons addo $version
+redis-cli hset addons addo $version &> /dev/null
 
 if [[ -t 1 ]]; then # for initial install via ssh terminal
 	title -nt "$info Refresh browser and go to Menu > Addons."
