@@ -64,3 +64,5 @@ s|$|</li>|
 ' > /srv/http/addonslog.php
 
 rm /srv/http/changelog.md
+
+echo $( grep '^$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
