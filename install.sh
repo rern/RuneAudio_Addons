@@ -57,6 +57,10 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 installfinish $1
 
+# 'addo' has php variable as 'version' in addonslist.php
+version=$( grep '$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
+redis-cli hset addons addo $version
+
 if [[ -t 1 ]]; then # for initial install via ssh terminal
 	title -nt "$info Refresh browser and go to Menu > Addons."
 	clearcache
