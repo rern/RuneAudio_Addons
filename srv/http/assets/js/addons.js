@@ -1,19 +1,3 @@
-// auto update addons menu
-( function() {
-	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
-	if ( btnupdate.innerText === ' Update' ) {
-		$( '#loader' ).show();
-		$.post( 
-			'addonssudo.php',
-			{file: 'addonsupdate.sh'},
-			function(data) {
-				location.reload( true );
-				$( '#loader' ).hide;
-			}
-		);
-	}
-} )();
-
 // changelog show/hide
 var detail = document.getElementById( 'detail' );
 detail.onclick = function() {
