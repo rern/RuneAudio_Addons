@@ -41,11 +41,11 @@ file=/srv/http/app/templates/header.php
 if ! grep -q 'id="addons"' $file; then
 	echo $file
 	sed -i $'/poweroff-modal/ i\
-            <li style="cursor: pointer;"> //addo0\
+            <li style="cursor: pointer;"> <!--addo0-->\
                 <a id="addons" version="<?php $redis = new Redis(); $redis->pconnect( \'127.0.0.1\' ); echo $redis->hGetAll( \'addons\' )[ \'addo\' ];?>">\
                     <i class="fa fa-cubes"></i> Addons\
                 </a>\
-            </li> //addo1
+            </li> <!--addo1-->
 	' $file
 fi
 
