@@ -1,9 +1,9 @@
 #!/bin/bash
 
-/usr/local/bin/uninstall_addo.sh u
+/usr/local/bin/uninstall_addo.sh
 
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/update/install.sh -P /srv/http
 chmod 755 /srv/http/install.sh
-/srv/http/install.sh u
+/srv/http/install.sh
 
 [[ $? == 0 ]] && echo success
