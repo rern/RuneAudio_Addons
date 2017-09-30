@@ -207,7 +207,7 @@ array(
 		'alert': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
-				<code>Ok</code> to continue'
+				<code>&emsp;Ok&emsp;</code> to continue'
 	}"
 ),
 array(
