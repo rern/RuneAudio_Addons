@@ -4,7 +4,7 @@
 	if ( btnupdate.innerText === ' Update' ) {
 		$( '#loader' ).show();
 		$.post( 
-			path +'addonssudo.php',
+			'addonssudo.php',
 			{file: 'addonsupdate.sh'},
 			function() {
 				window.location.href = 'addons.php';
