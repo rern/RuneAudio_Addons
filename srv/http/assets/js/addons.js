@@ -2,22 +2,15 @@
 ( function() {
 	var btnupdate = document.getElementById( 'addo' ).getElementsByClassName( 'btn' )[ 0 ];
 	if ( btnupdate.innerText === ' Update' ) {
-		alias = 'addo';
-		type = 'Update';
-		info( {
-			title: 'Addons Menu',
-			message: 'There is an update for <white>Addons Menu</white><br>\
-						<br>\
-						<code>&emsp;Ok&emsp;</code> to start update',
-			cancel: function() {
-				window.location.href = '/';
-			},
-			ok: function() {
-				formtemp( alias );
+		$.post( 
+			path +'addonssudo.php',
+			{file: 'addonsupdate.php'},
+			function() {
+				window.location.href = path +'addons.php';
 			}
-		} );
+		);
 	}
-} )();
+} );
 
 // changelog show/hide
 var detail = document.getElementById( 'detail' );
