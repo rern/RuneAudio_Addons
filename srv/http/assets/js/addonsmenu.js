@@ -9,7 +9,7 @@ $( '#addons' ).click( function() {
 		path +'addonssudo.php',
 		{file: 'addonsdl.sh'},
 		function( data ) {
-			if ( !data ) {
+			if ( data === 'failed' ) {
 				alert( "Addons server cannot be reached.\n"
 					+"Please try again later." );
 				$( '#loader' ).addClass( 'hide' );
