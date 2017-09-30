@@ -7,7 +7,7 @@
 			'addonssudo.php',
 			{file: 'addonsupdate.sh'},
 			function(data) {
-				window.location.href = 'addons.php';
+				location.reload( true );
 				$( '#loader' ).hide;
 			}
 		);
