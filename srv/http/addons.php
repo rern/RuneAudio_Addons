@@ -10,7 +10,6 @@ echo '
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
-$GLOBALS[ 'addonsmenu' ] = 'Addons Menu';
 $GLOBALS[ 'version' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
