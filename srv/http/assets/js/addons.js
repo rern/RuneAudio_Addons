@@ -31,10 +31,9 @@ for ( var i = 0; i < legend.length; i++ ) {
 // buttons click / click-hold
 $( '.btnun' ).each( function() {
 	var $thisbtn = $( this );
-
 	var hammerbtn = new Hammer( this );
-	
 	hammerbtn.on( 'press', function () {
+		opt = '';
 		alias = $thisbtn.parent().attr( 'alias' );
 		title = gettitle( $thisbtn );
 		type = 'Update';
