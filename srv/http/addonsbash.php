@@ -96,16 +96,28 @@ if ( $type === 'Uninstall' ) {
 	$cmd = "uninstall_$alias.sh";
 } else if ( $type === 'Update' ) {
 	$command = <<<cmd
+		wget -qN $installurl
+		if [[ $? != 0 ]]; then 
+			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
+			echo 'Please try again.'
+			exit
+		fi
+		
 		$uninstall u
+		
 		if [[ $? != 1 ]]; then
 			echo
-			$install u
+			chmod 755 $installfile
+			/usr/bin/sudo ./$installfile u
 		fi
 cmd;
 	$cmd = <<<cmd
+		wget -qN $installurl
+		
 		uninstall_$alias.sh u
 		
-		$cmdinstall u
+		chmod 755 $installfile
+		/usr/bin/sudo ./$installfile u
 cmd;
 } else {
 	if ( $alias !== 'bash' ) {
