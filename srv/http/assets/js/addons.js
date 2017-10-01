@@ -10,21 +10,15 @@ $( '#revision' ).click( function() {
 } );
 
 // sroll up click
-var list = document.getElementById( 'list' ).children;
-for ( var i = 0; i < list.length; i++ ) {
-	list[ i ].onclick = function() {
-		var alias = this.getAttribute( 'alias' );
-		document.getElementById( alias ).scrollIntoView( true );
-		window.scrollBy( 0, -15 );
-	}
-}
+$( '#list li' ).click( function() {
+	var alias = this.getAttribute( 'alias' );
+	document.getElementById( alias ).scrollIntoView( true );
+	window.scrollBy( 0, -15 );
+} );
 // sroll top
-var legend = document.getElementsByTagName( 'legend' );
-for ( var i = 0; i < legend.length; i++ ) {
-	legend[ i ].onclick = function() {
-		window.scrollTo( 0, 0 );
-	}
-}
+$( 'legend' ).click( function() {
+	window.scrollTo( 0, 0 );
+} );
 
 // buttons click / click-hold
 $( '.btnun' ).each( function() {
@@ -268,12 +262,13 @@ function sendcommand() {
 function formtemp() {
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
-		document.body.innerHTML += 
+		$( 'body' ).append(
 			'<form id="formtemp" action="addonsbash.php" method="post">'
 			+'<input type="hidden" name="alias" value="'+ alias +'">'
 			+'<input type="hidden" name="type" value="'+ type +'">'
 			+'<input type="hidden" name="opt" value="'+ opt +'">'
 			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
-			+'</form>';
-		document.getElementById( 'formtemp' ).submit();
+			+'</form>'
+		);
+		$( '#formtemp' ).submit();
 }
