@@ -1,15 +1,13 @@
 // changelog show/hide
-var detail = document.getElementById( 'detail' );
-detail.onclick = function() {
-	var msg = document.getElementById( 'message' );
-	if ( msg.style.display == 'none' ) {
-		msg.style.display = 'block';
-		detail.innerHTML = 'changelog ▲';
+$( '#revision' ).click( function() {
+	if ( $( '#detail' ).is( ':visible' ) ) {
+		$( '#detail' ).hide();
+		$( this ).html( $( this ).html().replace( '▲', '▼' ) );
 	} else {
-		msg.style.display = 'none';
-		detail.innerHTML = 'changelog ▼';
+		$( '#detail' ).show();
+		$( this ).html( $( this ).html().replace( '▼', '▲' ) );
 	}
-};
+} );
 
 // sroll up click
 var list = document.getElementById( 'list' ).children;
