@@ -19,5 +19,5 @@ JS Plugins used by addons
 - Sortable
 - ZeroClipboard
 
-**Addons Menu**
+**Addons Menu, RuneUI Enhancement**
 - hammer
