@@ -9,8 +9,6 @@ Addons Menu for RuneAudio
 **Addons Menu** for easy addons installation via RuneUI.  
 It's the same as running on SSH terminal.  
 Just much easier.  
-
-[**changelog**](https://github.com/rern/RuneAudio_Addons/blob/update/srv/http/changelog.md)  
 <hr>
 
 Currently available:
