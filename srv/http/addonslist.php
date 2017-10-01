@@ -15,7 +15,7 @@ $addonsversion.'&ensp; <a id="detail">revision &#x25BC</a><br>
 ';
 
 // fixed order      : 'alias' must be at 1st of each array
-// non-install type : 'version' omitted
+// non-install type : 'version' line omitted (run once: set version to database on install)
 // optional         : 'buttonlabel', 'option', 'thumbnail'
 // star badge       : '*' after 'title' value
 
