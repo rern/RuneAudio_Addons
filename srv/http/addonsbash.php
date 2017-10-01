@@ -97,7 +97,10 @@ if ( $type === 'Uninstall' ) {
 } else if ( $type === 'Update' ) {
 	$command = <<<cmd
 		$uninstall u
-		[[ $? != 1 ]] && $install u
+		if [[ $? != 1 ]]; then
+			echo
+			$install u
+		fi
 cmd;
 	$cmd = <<<cmd
 		uninstall_$alias.sh u
