@@ -188,7 +188,7 @@ uninstallfinish() {
 	
 	redis-cli hdel addons $alias &> /dev/null
 
-	[[ $1 == u ]] && exit
+	[[ $1 == u ]] && return
 	
 	title -l '=' "$bar $title uninstalled successfully."
 }
