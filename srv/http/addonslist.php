@@ -1,17 +1,17 @@
 <?php
 $addonsversion = '20171001';
 $log = 
-$addonsversion.'&emsp; <a id="detail">update &#x25BC</a><br>
+$addonsversion.'&ensp; <a id="detail">revision &#x25BC</a><br>
 <div  id="message" style="display: none;">
 	<ul>
 		<li>Background auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 		<li>Fix missing installed status</li>
 	</ul>
-</div>
 	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
-Changelog &nbsp;<i class="fa fa-external-link"></i>
-</a>
+		Changelog &nbsp;<i class="fa fa-external-link"></i>
+	</a>
+</div>
 ';
 
 // fixed order      : 'alias' at 1st of each array
