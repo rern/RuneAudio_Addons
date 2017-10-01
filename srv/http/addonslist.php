@@ -14,8 +14,7 @@ $addonsversion.'&ensp; <a id="detail">revision &#x25BC</a><br>
 </div>
 ';
 
-// fixed order      : 'alias' at 1st of each array
-// sorting          : 'title' ascending except 'Addons Menu'
+// fixed order      : 'alias' must be at 1st of each array
 // non-install type : 'version' omitted
 // optional         : 'buttonlabel', 'option', 'thumbnail'
 // star badge       : '*' after 'title'
@@ -25,7 +24,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => '0',
-	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
+	'version'      => $addonsversion,
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
