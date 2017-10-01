@@ -4,7 +4,7 @@ require_once( 'addonshead.php' );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend class="bl">Currently available:</legend>
+	<legend>'.$revision.'</legend>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -29,8 +29,7 @@ for ( $i = 0; $i < $length; $i++ ) {
 echo '
 	<ul id="list">'.
 	$list.'
-	</ul>'.
-	$log.'
+	</ul>
 	<br>
 ';
 echo $blocks;
@@ -65,12 +64,10 @@ function addonblock( $addon ) {
 	
 	// addon list ---------------------------------------------------------------
 	$title = $addon[ 'title' ];
-	// Addons Menu: hide in list and change to actual title
+	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <white>&star;</white>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
-	} else {
-		$title = $GLOBALS[ 'addonsmenu' ];
 	}
 	// addon blocks -------------------------------------------------------------
 	$GLOBALS[ 'blocks' ] .= '

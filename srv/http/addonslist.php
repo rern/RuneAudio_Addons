@@ -1,19 +1,19 @@
 <?php
 $addonsversion = '20171001';
-$log = 
-$addonsversion.'&ensp; <a id="detail">revision &#x25BC</a><br>
-<div  id="message" style="display: none;">
+$revision = 
+'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
+<div  id="detail" style="display: none;">
 	<ul>
 		<li>Background auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 		<li>Fix missing installed status</li>
 	</ul>
 	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
-		Changelog &nbsp;<i class="fa fa-external-link"></i>
-	</a>
+		changelog &nbsp;<i class="fa fa-external-link"></i>
+	</a><br>
+	<br>
 </div>
 ';
-
 // fixed order      : 'alias' must be at 1st of each array
 // non-install type : 'version' line omitted (run once: set version to database on install)
 // optional         : 'buttonlabel', 'option', 'thumbnail'
@@ -26,7 +26,8 @@ array(
 	'title'        => 'Addons Menu',
 	'version'      => $addonsversion,
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
+	'description'  => 'This Addons main page.'
+			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
