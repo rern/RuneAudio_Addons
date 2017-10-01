@@ -206,8 +206,8 @@ array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
-			.'<br>Add files at anytime then start this addon to refresh Webradio list'
-			.'<br><white>Any import before 20170922 should run this addon again to improve sorting.</white>',
+			.'<br>Add files at anytime then run this addon to refresh Webradio list'
+			.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
@@ -223,7 +223,7 @@ array(
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting.',
+	'description'  => 'Fix Webradio sorting after import for 0.3 only. (no need for 0.4)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
