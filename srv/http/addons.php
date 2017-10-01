@@ -17,7 +17,10 @@ $GLOBALS[ 'blocks' ] = '';
 
 // sort
 $arraytitle = array_column( $addons, 'title' );
+$arraytitle[ 0 ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
+$arraytitle[ 0 ] = 'Addons Menu';
+
 $length = count( $addons );
 for ( $i = 0; $i < $length; $i++ ) {
 	addonblock( $addons[ $i ] );
