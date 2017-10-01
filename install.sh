@@ -23,7 +23,7 @@ wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 echo -e "$bar Install new files ..."
 rm -rf  /tmp/install
 mkdir -p /tmp/install
-bsdtar -xf master.zip --strip 1 -C /tmp/install
+bsdtar -xvf master.zip --strip 1 -C /tmp/install
 
 rm master.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
