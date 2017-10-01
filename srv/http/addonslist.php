@@ -4,9 +4,9 @@ $revision =
 '<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
 <div  id="detail" style="display: none;">
 	<ul>
+		<li>Fix missing installed status</li>
 		<li>Background auto update</li>
 		<li>Improve terminal messages and errors handling</li>
-		<li>Fix missing installed status</li>
 	</ul>
 	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
 		changelog &nbsp;<i class="fa fa-external-link"></i>
