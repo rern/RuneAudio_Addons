@@ -5,18 +5,22 @@ _revision 20171001_
 ### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
 	- `addonslist.php`
+	- download update and reinstall if there's an update
 - Addons page: `addons.php`
 	- revision and list from `addonslist.php` (link to each block)
 	- each addon block from `addonslist.php`
 	- install/uninstall/update status based on:
-		- `uninstall_<alias>.sh` file - installed marker
-		- `version` from `addonslist.php` vs database - buttons status
+		- installed markers:
+			- `uninstall_<alias>.sh` - file: installed status
+			- `redis-cli hget addons <alias>` - database: installed version
+		- `addonslist.php` - `'version'`: current version
 	- confirm dialog
 	- user input dialogs for options
 	- cancel by dialog `X` button
 - Addons Terminal page: `addonsbash.php`
 	- on-screen messages, stdout/stderr of bash scripts
 	- `X` button > `opcache_reset()` and back to Addons page
+	
 ---
 
 ### Each addon requires:  
