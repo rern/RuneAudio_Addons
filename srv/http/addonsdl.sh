@@ -1,18 +1,17 @@
 #!/bin/bash
 
 gitpath=https://github.com/rern/RuneAudio_Addons/raw/master
-if (( $# == 0 )); then # skip redownload on update Addons Menu
-	dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
-	if [[ $? != 0 ]]; then
-		if [[ $? == 5 ]]; then # github 'ca certificate failed' code > update time
-			systemctl stop ntpd
-			ntpdate pool.ntp.org
-			systemctl start ntpd
-			echo "$dl"
-			[[ $? != 0 ]] && exit 1
-		else
-			exit 1
-		fi
+
+dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
+if [[ $? != 0 ]]; then
+	if [[ $? == 5 ]]; then # github 'ca certificate failed' code > update time
+		systemctl stop ntpd
+		ntpdate pool.ntp.org
+		systemctl start ntpd
+		echo "$dl"
+		[[ $? != 0 ]] && exit 1
+	else
+		exit 1
 	fi
 fi
 
