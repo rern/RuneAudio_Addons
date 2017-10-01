@@ -32,8 +32,6 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-/srv/http/addonsdl.sh u # 'u' skip redownload, changelog.md to addonslog.php
-
 # modify files #######################################
 echo -e "$bar Modify files ..."
 
@@ -58,7 +56,7 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 installfinish $1
 
 # 'addo' has php variable as 'version' in addonslist.php
-version=$( grep '$addonsversion =' /srv/http/addonslog.php | cut -d '"' -f 2 )
+version=$( grep -m 1 '^$addonsversion =' /srv/http/addonslist.php | cut -d "'" -f 2 )
 redis-cli hset addons addo $version &> /dev/null
 
 if [[ -t 1 ]]; then # for initial install via ssh terminal
