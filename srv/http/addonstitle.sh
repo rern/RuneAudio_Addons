@@ -162,7 +162,7 @@ installfinish() {
 	
 	if [[ $1 == u ]]; then
 		title -l '=' "$bar $title updated successfully."
-		exit
+		return
 	fi
 	
 	title -l '=' "$bar $title installed successfully."
