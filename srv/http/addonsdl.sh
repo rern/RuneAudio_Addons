@@ -1,8 +1,8 @@
 #!/bin/bash
 
-gitpath=https://github.com/rern/RuneAudio_Addons/raw/master/srv/http
+gitpath=https://github.com/rern/RuneAudio_Addons/raw/master
 if (( $# == 0 )); then # skip redownload on update Addons Menu
-	dl=$( wget -qN $gitpath/addonslist.php -P /srv/http )
+	dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
 	if [[ $? != 0 ]]; then
 		if [[ $? == 5 ]]; then # github 'ca certificate failed' code > update time
 			systemctl stop ntpd
@@ -14,64 +14,15 @@ if (( $# == 0 )); then # skip redownload on update Addons Menu
 			exit 1
 		fi
 	fi
-	wget -qN $gitpath/changelog.md -P /srv/http
 fi
 
 versionredis=$( redis-cli hget addons addo )
-versionlog=$( grep -m 1 '^##' /srv/http/changelog.md | cut -d ' ' -f 2 )
+versionlog=$( grep -m 1 '^$addonsversion =' /srv/http/addonslist.php | cut -d "'" -f 2 )
 if [[ $versionredis != $versionlog ]]; then
 	/usr/local/bin/uninstall_addo.sh
 
-	wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/install.sh -P /srv/http
+	wget -qN $gitpath/install.sh -P /srv/http
 	chmod 755 /srv/http/install.sh
 	/srv/http/install.sh
 	exit
 fi
-
-### changelog.md > addonslog.php
-# remove ---------------------------------------------------------------
-sed -e '/^```note/,/^```/ d                      # note block  > delete
-' -e '/^\s*$/ d                                  # emptyline   > delete
-# replace --------------------------------------------------------------
-' -e $'s/\'/"/g                                  # singlequote > "
-' /srv/http/changelog.md |
-perl -pe 's|`(.*?)`|<code>\1</code>|g' |         # code   `  > <code>
-perl -pe 's|\*\*(.*?)\*\*|<white>\1</white>|g' | # bold   ** > <white>
-perl -pe 's|__(.*?)__|<white>\1</white>|g' |     # bold   ** > <white>
-perl -pe 's|\*(.*?)\*|<em>\1</em>|g' |           # italic *  > <em>
-perl -pe 's|_(.*?)_|<em>\1</em>|g' |             # italic _  > <em>
-perl -pe 's|~~(.*?)~~|<strike>\1</strike>|g' |   # strike ~~ > <strike>
-# php start -----------------------------------------------------------
-sed -e '1 {
-s/^### \|^## //
-i\
-<?php
-s/^/$addonsversion = "/
-s/$/";/
-a\
-$log = \
-$addonsversion.'"'"'&emsp; <a id="detail">changelog &#x25BC</a><br>\
-<div  id="message" style="display: none;">\
-	<ul>
-}
-# replace --------------------------------------------------------------
-' -e '/^### \|^## / {                     # bold   "### " > </ul>...<ul>
-s/^### \|^## //
-i\
-	</ul>
-a\
-	<ul>
-}
-' -e '/^- / {                             # bullet "- " > <li>
-s/^- //
-s/^/	<li>/
-s|$|</li>|
-}
-# php end --------------------------------------------------------------
-' -e '$ a\
-	</ul>\
-	<br>\
-</div>'"';"'
-' > /srv/http/addonslog.php
-
-rm /srv/http/changelog.md
