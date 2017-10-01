@@ -44,6 +44,13 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
+**get stuck?**
+```sh
+rm /usr/local/bin/uninstall_addo.sh
+redis-cli hdel addons addo
+```
+then reinstall.
+
 ---
   
 [**Guideline for Addons enthusiasts**](https://github.com/rern/RuneAudio_Addons/blob/master/guideline.md)  
