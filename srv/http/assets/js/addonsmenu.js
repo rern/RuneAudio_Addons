@@ -5,7 +5,7 @@ $( '#addons' ).click( function() {
 	$( '#loader' ).removeClass( 'hide' );
 	
 	$.get( 
-		path +'addonssudo.php',
+		path +'addonsdl.php',
 		function( data ) {
 			if ( data === 'failed' ) {
 				alert( "Addons server cannot be reached.\n"
