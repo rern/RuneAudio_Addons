@@ -5,10 +5,8 @@ _revision 20170927_
 ### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
 	- `addonslist.php`
-	- `changelog.md` > `addonsdl.sh` > `addonslog.php`
 - Addons page: `addons.php`
-	- list from `addonslist.php` (link to each block)
-	- changelog from `addonslog.php` (toggle show/hide)
+	- revision and list from `addonslist.php` (link to each block)
 	- each addon block from `addonslist.php`
 	- install/uninstall/update status based on:
 		- `uninstall_<alias>.sh` file - installed marker
@@ -18,7 +16,6 @@ _revision 20170927_
 	- cancel by dialog `X` button
 - Addons Terminal page: `addonsbash.php`
 	- on-screen messages, stdout/stderr of bash scripts
-	- nofify on finished
 	- `X` button > `opcache_reset()` and back to Addons page
 ---
 
@@ -30,8 +27,8 @@ _revision 20170927_
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
 > bash script files stored anywhere reviewable  
-> must use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of on-screen messages and database data  
+> must use script default `### template` lines except non-install addons
+> default variables and functions will take care most of on-screen messages and database data 
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
 - install script  
@@ -41,7 +38,7 @@ _revision 20170927_
 	- restore everything to pre-install state
 	- no need for non-install type
 	- file path:
-		- the same as `install.sh` for download by `getuninstall` function
+		- must be the same as `install.sh`
 		- destination `/usr/local/bin/` for custom download
 - update will be done by uninstall > install
   
@@ -191,7 +188,6 @@ array(
 **`'alias'`** - reference point
 - must be 1st, at index `[0]`
 - must be unique among aliases
-- should be 4 characters
 
 **`'version'`** - buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
@@ -204,7 +200,7 @@ array(
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
 - each `'value'` will be appended as `install.sh` arguments / parameters
-- options must be **single quoted** json, `" 'key': 'value' "` format
+- options must be **single quoted** json, `" 'key': 'value' "`
 - `*` leading `itemN` = pre-select items
 - dialog types:
 	- `X` - cancel and back to main page
