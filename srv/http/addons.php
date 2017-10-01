@@ -10,7 +10,7 @@ echo '
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
-$GLOBALS[ 'version' ] = $redis->hGetAll( 'addons' );
+$GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
 
@@ -39,9 +39,9 @@ function addonblock( $addon ) {
 	$alias = $addon[ 'alias' ];
 	$fileuninstall = file_exists( '/usr/local/bin/uninstall_'.$alias.'.sh' );
 	
-	if ( $GLOBALS[ 'version' ][ $alias ] && $fileuninstall ) {
+	if ( $GLOBALS[ 'redis' ][ $alias ] && $fileuninstall ) {
 		$check = '<i class="fa fa-check"></i> ';
-		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $GLOBALS[ 'version' ][ $alias ] ) {
+		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $GLOBALS[ 'redis' ][ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
