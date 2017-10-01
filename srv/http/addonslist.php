@@ -1,5 +1,5 @@
 <?php
-$addonsversion = "20171001";
+$addonsversion = '20171001';
 $log = 
 $addonsversion.'&emsp; <a id="detail">update &#x25BC</a><br>
 <div  id="message" style="display: none;">
