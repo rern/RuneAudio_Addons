@@ -160,13 +160,11 @@ installfinish() {
 	
 	timestop
 	
-	if [[ $1 == u ]]; then
+	if [[ $1 != u ]]; then
+		title -l '=' "$bar $title installed successfully."
+	else
 		title -l '=' "$bar $title updated successfully."
-		return
 	fi
-	
-	title -l '=' "$bar $title installed successfully."
-	[[ -t 1 ]] && title -nt "Uninstall: uninstall_$alias.sh"
 }
 
 uninstallstart() {
@@ -188,7 +186,7 @@ uninstallfinish() {
 	
 	redis-cli hdel addons $alias &> /dev/null
 
-	[[ $1 == u ]] && return
+	[[ $1 == u ]] && exit
 	
 	title -l '=' "$bar $title uninstalled successfully."
 }
