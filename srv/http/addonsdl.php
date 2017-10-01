@@ -1,7 +1,8 @@
 <?php
-exec('/srv/http/addonsdl.sh;', $output, $exit);
+exec( '/usr/bin/sudo /srv/http/addonsdl.sh;', $output, $exit );
 
-if ($exit === 0) {
-	opcache_reset();
-	echo 1;
-}
+if ( $exit !== 0 ) die( 'failed' );
+
+echo $output;
+
+opcache_reset();

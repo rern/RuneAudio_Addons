@@ -1,14 +1,19 @@
 $( '#addons' ).click( function() {
 	// fix path if click in other menu pages
-	var path = /\/.*\//.test( window.location.pathname ) ? '../../' : '';
+	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
+	
 	$( '#loader' ).removeClass( 'hide' );
-	$.get( path +'addonsdl.php', function( data ) {
-		if ( data == 1 ) {
-			window.location.href = path +'addons.php';
-		} else {
-			alert( "Addons server cannot be reached.\n"
-				+"Try check and set date to current." );
-			$( '#loader' ).addClass( 'hide' );
+	
+	$.get( 
+		path +'addonsdl.php',
+		function( data ) {
+			if ( data === 'failed' ) {
+				alert( "Addons server cannot be reached.\n"
+					+"Please try again later." );
+				$( '#loader' ).addClass( 'hide' );
+				return
+			}
+			location.href = path +'addons.php';
 		}
-	});
+	);
 });

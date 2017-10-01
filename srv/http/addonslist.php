@@ -1,19 +1,32 @@
 <?php
-// sorting          : 'title' ascending
-// fixed order      : 'alias', 'title', 'version'
-// non-install type : 'version' omitted
+$addonsversion = '20171001';
+$revision = 
+'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
+<div  id="detail" style="display: none;">
+	<ul>
+		<li>Fix missing installed status</li>
+		<li>Background auto update</li>
+		<li>Improve terminal messages and errors handling</li>
+	</ul>
+	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
+		changelog &nbsp;<i class="fa fa-external-link"></i>
+	</a><br>
+	<br>
+</div>
+';
+// fixed order      : 'alias' must be at 1st of each array
+// non-install type : 'version' line omitted (run once: set version to database on install)
 // optional         : 'buttonlabel', 'option', 'thumbnail'
-// star badge       : '*' after 'title'
+// star badge       : '*' after 'title' value
 
 $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => $addonsversion, // only this one, edit version number in /changelog.md
+	'version'      => $addonsversion,
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons main page.'
-			.'<br><white>Addons Menu installed before 20170906 needs uninstall then reinstall via SSH terminal.</white>',
+	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -189,7 +202,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 ),
 array(
-	'alias'        => 'webr',
+	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
@@ -202,8 +215,17 @@ array(
 		'alert': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
-				Ok to continue'
+				<code>&emsp;Ok&emsp;</code> to continue'
 	}"
+),
+array(
+	'alias'        => 'webr',
+	'title'        => 'Webradio Sorting',
+	'version'      => '20170925',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fix Webradio sorting.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
 // array end ----------------------------------------------------------------------------------------------------
 );

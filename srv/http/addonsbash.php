@@ -1,21 +1,7 @@
-<?php
-require_once( 'addonshead.php' );
-$cmd = $_POST[ 'cmd' ];
-$opt = $_POST[ 'opt' ];
-// if uninstall only - css file will be gone
-if ( strpos( $cmd, 'uninstall_addo.sh' ) && !strpos( $cmd, 'install.sh' ) ) {
-	echo '<style>';
-	require_once( 'assets/css/addons.css' );
-	require_once( 'assets/css/addonsinfo.css' );
-	echo '</style>';
-	$close = '/';
-} else {
-	$close = 'addons.php';
-}
-?>
-
+<?php require_once( 'addonshead.php' );?>
+<!-------------------------------------------------------------------------------------------------->
 <script>
-// hide vertical scrollbar on desktop
+// hide <pre> vertical scrollbar on desktop
 var div = document.createElement('div');
 div.style.cssText = 
 	'width: 100px;'
@@ -65,47 +51,122 @@ setTimeout( function() {
 
 	<div class="hidescrollv">
 	<pre>
-
+<!-------------------------------------------------------------------------------------------------->
 <?php
+$alias = $_POST[ 'alias' ];
+$type = $_POST[ 'type' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
-function bash( $cmd ) {
-	global $dash;
-	ob_end_flush(); // flush top part buffer
-	
-	$popencmd = popen( "$cmd 2>&1", 'r' );
+$arrayalias = array_column( $addons, 'alias' );
+$aliasindex = array_search( $alias, $arrayalias );
+$addon = $addons[ $aliasindex ];
+$installurl = $addon[ 'installurl' ];
+$installfile = basename( $installurl );
+$title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
-	while ( !feof( $popencmd ) ) {
-		$std = fread( $popencmd, 4096 );
+$install = <<<cmd
+	wget -qN $installurl 
+	if [[ $? != 0 ]]; then
+		systemctl stop ntpd
+		ntpdate pool.ntp.org
+		systemctl start ntpd
+		if [[ $? != 0 ]]; then 
+			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
+			echo 'Please try again.'
+			exit
+		fi
+	fi
+	chmod 755 $installfile
+	/usr/bin/sudo ./$installfile
+cmd;
+$uninstall = <<<cmd
+	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
+cmd;
+// no html tab
+$cmdinstall = <<<cmd
+	wget -qN $installurl
+	chmod 755 $installfile
+	./$installfile
+cmd;
+
+$option = ( isset( $_POST[ 'opt' ] ) ) ? $_POST[ 'opt' ] : '';
+
+if ( $type === 'Uninstall' ) {
+	$command = $uninstall;
+	$cmd = "uninstall_$alias.sh";
+} else if ( $type === 'Update' ) {
+	$command = <<<cmd
+		$uninstall u
+		if [[ $? != 1 ]]; then
+			echo
+			$install u
+		fi
+cmd;
+	$cmd = <<<cmd
+		uninstall_$alias.sh u
 		
-		$std = preg_replace( '/=(=+)=/', str_repeat( '=', $dash ), $std );         // fit line to width
-		$std = preg_replace( '/-(-+)-/', str_repeat( '-', $dash ), $std );         // fit line to width
-		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;6m/', '<a class="cc">', $std ); // bar
-		$std = preg_replace( '/.\\[38;5;0m.\\[48;5;3m/', '<a class="ky">', $std ); // info, yesno
-		$std = preg_replace( '/.\\[38;5;7m.\\[48;5;1m/', '<a class="wr">', $std ); // warn
-		$std = preg_replace( '/.\\[38;5;6m.\\[48;5;0m/', '<a class="ck">', $std ); // tcolor
-		$std = preg_replace( '/.\\[38;5;6m/', '<a class="ck">', $std );            // lcolor
-		$std = preg_replace( '/.\\[0m/', '</a>', $std );                           // reset color
-		// skip lines
-		if (
-				strpos( $std, 'warning:' ) !== false || 
-				stripos( $std, 'y/n' ) !== false ||
-				stripos( $std, 'Uninstall:' ) !== false
-		) continue;
-			
-		echo $std;
+		$cmdinstall u
+cmd;
+} else {
+	if ( $alias !== 'bash' ) {
+		$command = $install;
+		$cmd = $cmdinstall;
+	} else {
+		$command = '/usr/bin/sudo';
+		$cmd = str_replace( '/usr/bin/', '', $option );
+		$cmd = preg_replace( '/;\s*/', "\n", $cmd );
+		$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
 	}
+}
+$cmd = preg_replace( '/\t*/', '', $cmd );
 
-	pclose( $popencmd );
+// if uninstall only - css file will be gone
+if ( $alias === 'addo' && $type !== 'Update' ) {
+	echo '<style>';
+	require_once( 'assets/css/addons.css' );
+	require_once( 'assets/css/addonsinfo.css' );
+	echo '</style>';
+	$close = '/';
+} else {
+	$close = 'addons.php';
 }
 
-ob_implicit_flush();      // start flush output without buffer
+echo $cmd.'<br>';
 
+// for convert bash stdout to html
+$replace = array(
+	'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
+	'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
+	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
+	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
+	'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
+	'/.\[0m/'                => '</a>',                   // reset color
+);
+$skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-echo preg_replace( '/;\s*/', "\n", $cmd );
-echo '<br>';
-bash( $cmd.$opt );
+ob_implicit_flush(); // start flush: bypass buffer - output to screen
+ob_end_flush();      // force flush: current buffer (run after flush started)
+	
+$popencmd = popen( "$command $option 2>&1", 'r' );        // start bash
+while ( !feof( $popencmd ) ) {                            // each line
+	$std = fread( $popencmd, 4096 );                      // read
+
+	$std = preg_replace(                                  // convert to html
+		array_keys( $replace ),
+		array_values( $replace ),
+		$std
+	);
+	foreach( $skip as $find ) {                           // skip line
+		if ( stripos( $std, $find ) !== false ) continue 2;
+	}
+
+	echo $std;                                            // output
+}
+pclose( $popencmd );                                      // end bash
 ?>
+<!-------------------------------------------------------------------------------------------------->
 	</pre>
 	</div>
 </div>
@@ -122,9 +183,10 @@ bash( $cmd.$opt );
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
+		if ( '<?=$alias;?>' === 'bash' ) return;
 		info( {
 			icon:    '<i class="fa fa-info-circle fa-2x">',
-			title:   'Finished',
+			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
 	}, 1000 );
@@ -132,7 +194,7 @@ bash( $cmd.$opt );
 
 </body>
 </html>
-
+<!-------------------------------------------------------------------------------------------------->
 <?php
 opcache_reset();
 ?>

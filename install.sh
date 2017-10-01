@@ -12,7 +12,7 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 # import heading function
-[[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
 installstart $1
@@ -25,8 +25,6 @@ rm -rf  /tmp/install
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 
-mv /tmp/install/changelog.md /tmp/install/srv/http
-
 rm master.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
 chmod -R 755 /tmp/install
@@ -34,18 +32,13 @@ chmod -R 755 /tmp/install
 cp -rp /tmp/install/* /
 rm -r /tmp/install
 
-version=$( grep '^## ' /srv/http/changelog.md | head -1 | cut -d ' ' -f 2 )
-sed -i "s/\$addonsversion/'$version'/" /srv/http/addonslist.php
-
-[[ $1 == u ]] && /srv/http/addonsdl.sh u # 'u' skip redownload, changelog to addonslog.php on update
-
 # modify files #######################################
 echo -e "$bar Modify files ..."
 
 file=/srv/http/app/templates/header.php
 if ! grep -q 'id="addons"' $file; then
 	echo $file
-	sed -i '/poweroff-modal/ i\
+	sed -i $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 	' $file
 fi
@@ -62,6 +55,11 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 
 installfinish $1
 
-title -nt "$info Refresh browser and go to Menu > Addons."
+# 'addo' has php variable as 'version' in addonslist.php
+version=$( grep -m 1 '^$addonsversion =' /srv/http/addonslist.php | cut -d "'" -f 2 )
+redis-cli hset addons addo $version &> /dev/null
 
-[[ -t 1 ]] && clearcache
+if [[ -t 1 ]]; then # for initial install via ssh terminal
+	title -nt "$info Refresh browser and go to Menu > Addons."
+	clearcache
+fi

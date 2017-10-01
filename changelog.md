@@ -1,12 +1,7 @@
-```note  
-This file: 
-- file name and path ./RuneAudio_Addons/changelog.md cannot be change
-- Addons Menu uses it for:
-    - get 'version' number for both 'install.sh' and 'addonslist.php'
-    - get content to display as 'changelog' on RuneUI
-- lines between ```note and ``` will be omitted
-- ###, **, *, __, _, ~~ markdowns will be converted to html for RuneUI
-```
+### 20171001
+- Background auto update
+- Improve terminal messages  and errors handling
+- Fix missing installed status
 
 ### 20170925
 - Press `Enter` in dialogs = click `Ok`
@@ -27,8 +22,6 @@ This file:
 - Normalize install / uninstall / upgrade across addons
 - Normalize commands between **Addons Menu** and ssh terminal
 - Release **Guideline** with templates for addons scripts
-
-### 20170913
 - Improve update messages
 
 ### 20170909

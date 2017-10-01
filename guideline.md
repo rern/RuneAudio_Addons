@@ -1,7 +1,8 @@
 Guideline
 ---
+_revision 20170927_
 
-**Addons Menu Process:**  
+### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
 	- `addonslist.php`
 	- `changelog.md` > `addonsdl.sh` > `addonslog.php`
@@ -12,25 +13,26 @@ Guideline
 	- install/uninstall/update status based on:
 		- `uninstall_<alias>.sh` file - installed marker
 		- `version` from `addonslist.php` vs database - buttons status
-	- user input dialogs
+	- confirm dialog
+	- user input dialogs for options
+	- cancel by dialog `X` button
 - Addons Terminal page: `addonsbash.php`
-	- on-screen messages (stdout/stderr of bash scripts)
+	- on-screen messages, stdout/stderr of bash scripts
 	- nofify on finished
 	- `X` button > `opcache_reset()` and back to Addons page
 ---
 
-**Each addon requires:**  
-1. install and uninstall scripts
-2. an `array(...)` and a request to enlist it in Addons Menu
+### Each addon requires:  
+1. `install.sh` and `uninstall_<alias>.sh` scripts
+2. `array(...)` in `addonslist.php`
   
 
-## 1. install and uninstall scripts:
+### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
 > bash script files stored anywhere reviewable  
 > must use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of on-screen messages and database  
+> default variables and functions will take care most of on-screen messages and database data  
 > use non-invasive modifications so other addons can survive after install / uninstall  
-> `<alias>` as of `array(...)`  
 
 - install script  
 	- use modify over replace files unless necessary
@@ -38,10 +40,12 @@ Guideline
 - uninstall script
 	- restore everything to pre-install state
 	- no need for non-install type
-- no update script required
-	- update will be done by 'uninstall' > 'install'
+	- file path:
+		- the same as `install.sh` for download by `getuninstall` function
+		- destination `/usr/local/bin/` for custom download
+- update will be done by uninstall > install
   
-**install script** - `install.sh`  
+**1.1  `install.sh` template**
 ```sh
 #!/bin/bash
 
@@ -49,17 +53,16 @@ Guideline
 alias=<alias>
 
 ### template - import default variables, functions
-[[ ! -e /srv/http/addonstitle.sh ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
-[[ ! -e /srv/http/addonslist.php ]] && wget -q https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /srv/http
 
 ### template - function - start message, installed check
 installstart $1
+getuninstall # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
 
 # start main script ---------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/master.zip
+wgetnc https://github.com/<name>/<repository>/archive/master.zip # whole repository download
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
@@ -74,14 +77,19 @@ chown -R http:http /tmp/install
 chown -R root:root /tmp/install/usr/local/bin/uninstall*
 chmod -R 755 /tmp/install
 
-cp -rp /tmp/install/* /
+cp -rv /tmp/install/* /
 rm -r /tmp/install
 
 echo -e "$bar Create new files ..."
-echo 'content' > <newfile>
+echo 'content' > /<path>/<newfile>
 
 echo -e "$bar Modify files ..."
-sed 's/existing/new/' /<path>/<file>
+file=<path>/<file>
+echo $file
+if ! grep -q 'check string' $file; then
+	echo 'content' >> $file
+	sed -i 's/existing/new/' $file
+fi
 
 # end main script ------------------------------------------------------------------------------------<<<
 
@@ -92,7 +100,7 @@ installfinish $1
 title -nt "extra info"
 ```
 
-**uninstall script** - `/usr/local/bin/uninstall_<alias>.sh`  
+**1.2  `uninstall_<alias>.sh` template**
 ```sh
 #!/bin/bash
 
@@ -111,8 +119,10 @@ echo -e "$bar Remove files ..."
 rm -v /<path>/<file>
 
 echo -e "$bar Restore files ..."
-sed 's/new/existing/' /<path>/<file>
-mv /<path>/<file>{.backup,}
+file=/<path>/<file>
+echo $file
+sed 's/new/existing/' $file
+mv -v /<path>/<file>{.backup,}
 
 # end main script -----------------------------------------------------------------------------------<<<
 
@@ -121,15 +131,14 @@ uninstallfinish $1
 ```
   
 
-## 2. an `array()` in `/srv/http/addonslist.php`
+### 2. `array(...)` in `addonslist.php`
 
-`'alias'`, `'title'`, `'version'` : must be in sequence for `installstart`  
-`'± ...'` : optional 
+**`array(...)` template**   
 ```php
 array(
 	'alias'         => 'alias',
-	'title'         => 'title',
 	'± version'     => 'version',
+	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
 	'± thumbnail'   => 'https://url/to/image/w100px',
@@ -177,10 +186,12 @@ array(
 
 ),
 ```
-
-**`'alias'`** - addon reference  
-- 4 characters
-- must be unique amomng aliases
+`'± ...'` : optional  
+  
+**`'alias'`** - reference point
+- must be 1st, at index `[0]`
+- must be unique among aliases
+- should be 4 characters
 
 **`'version'`** - buttons enable/disable  
 - `'version'` stored/removed from database > disable/enable buttons
@@ -189,9 +200,6 @@ array(
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
-    
-**`'description'`**
-- detail should be a linked to external source code
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
@@ -207,20 +215,19 @@ array(
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select must be specified
 		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-	- `'checkbox'` - choices > `Ok` = selected `valueN`s
+	- `'checkbox'` - multiple choices > `Ok` = selected `valueN`s
 		- `*` pre-select optional
 	- `'select'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select optional
 		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-- multiple dialogs of the same type must add trailing numbers to make `key`s unique
+- multiple dialogs of the same type must add trailing numbers to make each `key` unique
 ---
 
-**styling** for `description`, `option` dialogs
+**styling** for `description`, `option`
 - text / html
-- only quotes need escape with entities
+- only quotes use html entities
     - `&quot;` = `"`
     - `&#039;` = `'`
 - preset styles:
-	- `<white>...</white>` = white text
-	- `<code>...</code>` = code
-```
+	- `<white>...</white>`
+	- `<code>...</code>`

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="assets/css/addons.css">
     <link rel="stylesheet" href="assets/css/addonsinfo.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
-    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
 </head>
 <body>
 
@@ -48,3 +47,5 @@ if (scrollbarWidth !== 0) {
 	<div id="loaderbg"></div>
 	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
 </div>
+
+<?php require_once( 'addonslist.php' );?>

@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Inconsolata';
+	src: url('../assets/fonts/Inconsolata.woff2') format('woff2'),
+		url('../assets/fonts/Inconsolata.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
 .container {
 	padding : 0 15px 20px;
 }
@@ -9,11 +16,14 @@ h1 {
 	vertical-align: 10px;
 	width: 25px;
 }
+#detail ul {
+	font-size: 14px;
+}
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAG0lEQVQYV2NkwAIYiRd88Pzdf3TVjLQQJNpJAG6eEo+GbOwnAAAAAElFTkSuQmCC);
 }
 #list li::after {
-	content: "\2003\25BC";
+	content: "\2003▼";
 }
 .boxed-group {
 	padding: 10px 20px;
@@ -47,6 +57,8 @@ pre {
 code {
 	font-family: 'Inconsolata', monospace;
 	font-size: 14px;
+	background-color: #333333;
+	border-radius: 3px;
 }
 .btn {
 	text-transform: none;
@@ -54,9 +66,13 @@ code {
 #bottom {
 	height: calc(100vh - 160px);
 }
-
-#close,
 #list,
+#list li {
+	width: fit-content;
+}
+#close,
+#list li,
+.boxed-group legend,
 a {
 	cursor: pointer;
 }

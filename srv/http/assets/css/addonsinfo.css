@@ -42,6 +42,9 @@
 	margin-top: 5px;
 	vertical-align: top;
 }
+#infoIcon i {
+	color: #7795b4;
+}
 #infoX {
 	float: right;
 	width: 40px;
