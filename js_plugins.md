@@ -1,7 +1,7 @@
 JS Plugins used by addons
 ---
 
-**RuneUI default**
+**RuneUI**
 - bootstrap
 - bootstrap-contextmenu
 - bootstrap-select
@@ -18,3 +18,6 @@ JS Plugins used by addons
 - pushstream
 - Sortable
 - ZeroClipboard
+
+**Addons Menu**
+- hammer
