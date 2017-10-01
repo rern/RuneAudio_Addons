@@ -194,8 +194,7 @@ array(
 - must be unique among aliases
 
 **`'version'`** - buttons enable/disable  
-- `'version'` stored/removed from database > disable/enable buttons
-- change `'version'` > show `Update` button
+- `'version'` changed > show `Update` button
 - non-install addons:
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
