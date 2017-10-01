@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20170927_
+_revision 20171001_
 
 ### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
