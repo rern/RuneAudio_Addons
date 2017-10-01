@@ -23,7 +23,7 @@ $addons = array(
 // array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
-	'title'        => '0', // sort > top of the list > replaced with 'Addons Menu'
+	'title'        => 'Addons Menu',
 	'version'      => $addonsversion,
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
