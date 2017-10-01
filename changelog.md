@@ -1,7 +1,7 @@
 ### 20171001
-- Background auto update
-- Improve terminal messages  and errors handling
 - Fix missing installed status
+- Fully auto update
+- Improve terminal messages  and errors handling
 
 ### 20170925
 - Press `Enter` in dialogs = click `Ok`
