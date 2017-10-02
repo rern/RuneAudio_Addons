@@ -10,7 +10,7 @@ array(
 	'title'        => 'Addons Menu',
 	'version'      => $addonsversion,
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
+	'description'  => 'This Addons Menu main page. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -19,7 +19,7 @@ array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
+	'description'  => 'Run BASH commands or scripts like on SSH terminal.  (0.3+0.4b)',
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
 	'installurl'   => '',
@@ -29,6 +29,18 @@ array(
 			'label': 'commands'
 		}
 	}"
+),
+array(
+	'alias'        => 'dual',
+	'title'        => 'Dual Boot: RuneAudio + OSMC',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> (ArchLinux MPD)
+					<br>Best of Video Distro - <white>OSMC</white> (Raspbian Kodi)
+					<br>Best of Dual Boot - <white>NOOBS</white>',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
+	'buttonlabel'  => 'Visit',
+	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
+	'installurl'   => '',
 ),
 array(
 	'alias'        => 'enha',
@@ -75,7 +87,7 @@ array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction. (0.3 - no need for 0.4)',
+	'description'  => 'RuneUI access restriction. (0.3 - no need for 0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
@@ -191,7 +203,7 @@ array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.
-			<br>Add files at anytime then run this addon to refresh Webradio list.
+			<br>Add files at anytime then run this addon to refresh Webradio list (0.3+0.4b).
 			<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
@@ -208,7 +220,7 @@ array(
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting after import for 0.3 only. (no need for 0.4)',
+	'description'  => 'Fix Webradio sorting after import for <white>0.3 only</white>. (no need for 0.4b)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),

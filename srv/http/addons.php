@@ -84,13 +84,13 @@ function addonblock( $addon ) {
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
-	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ].'&ensp;' : '';
+	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>'.$version.'●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
+			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
 				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
@@ -98,9 +98,7 @@ function addonblock( $addon ) {
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
-		<div class="thumbnail" style="float: right; width: 100px;">
-			<a href="'.$addon[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
-		</div>
+		<a href="'.$addon[ 'sourcecode' ].'" target="_blank"><img src="'.$thumbnail.'" class="thumbnail"></a>
 		<div style="clear: both;"></div>';
 	$GLOBALS[ 'blocks' ] .= '
 		</div>';
