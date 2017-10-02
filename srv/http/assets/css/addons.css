@@ -20,13 +20,21 @@ h1 {
 	font-size: 14px;
 }
 li {
-    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAKCAYAAAB8OZQwAAAAG0lEQVQYV2NkwAIYiRd88Pzdf3TVjLQQJNpJAG6eEo+GbOwnAAAAAElFTkSuQmCC);
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
-#revision::after,
-#list li::after {
+#list li:hover {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
+}
+#revision:after,
+#list li:after {
 	content: "\2003▼";
+	color: #0095d8;
 }
-.revisionup::after {
+#revision:hover:after,
+#list li:hover:after {
+	color: #e0e7ee;
+}
+.revisionup:after {
 	content: '\2003▲' !important;
 }
 .boxed-group {
@@ -42,6 +50,9 @@ legend p,
 legend a {
 	display: inline-block;
 	font-size: 14px;
+}
+legend a:hover {
+	color: #e0e7ee;
 }
 legend span {
 	margin-left: 8px;
@@ -73,6 +84,7 @@ code {
 #list,
 #list li {
 	width: fit-content;
+	color: #e0e7ee;
 }
 #close,
 #list li,
@@ -85,7 +97,7 @@ strike {
 }
 #list li:hover,
 a:hover {
-    color: #00608c;
+    color: #0095d8;
     text-decoration: none;
 }
 span,
@@ -96,7 +108,6 @@ code {
 }
 legend i,
 #close,
-#list,
 a {
 	color: #0095d8;
 }
