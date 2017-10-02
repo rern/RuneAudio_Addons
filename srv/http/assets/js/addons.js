@@ -84,7 +84,18 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'confirm':
+		case 'continue':
+			info( {
+				title        : title,
+				message      : option[ oj ],
+				cancel       : 1,
+				ok           : function() {
+					sendcommand();
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
+		case 'yesno':
 			info( {
 				title        : title,
 				message      : option[ oj ],
@@ -101,7 +112,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'prompt':
+		case 'text':
 			var ojson = option[ oj ];
 			info( {
 				title        : title,
@@ -158,7 +169,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			$( '#infoRadio input' ).change( function() {
+			$( '#infoRadio input' ).change( function() { // cutom value
 				if ( $( this ).val() === '?' ) {
 					info( {
 						title       : title,
@@ -219,7 +230,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			$( '#infoSelectbox' ).change( function() {
+			$( '#infoSelectbox' ).change( function() { // cutom value
 				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
 					info( {
 						title        : title,
