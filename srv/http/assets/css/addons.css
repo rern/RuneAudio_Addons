@@ -22,6 +22,9 @@ h1 {
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
+#list {
+	margin-top: 15px;
+}
 #revision:after,
 #list li:after {
 	content: "\2003▼";
@@ -69,6 +72,10 @@ code {
 	font-size: 14px;
 	background-color: #333333;
 	border-radius: 3px;
+}
+.thumbnail {
+	float: right;
+	width: 100px;
 }
 .btn {
 	text-transform: none;
