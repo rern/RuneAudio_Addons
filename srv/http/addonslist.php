@@ -1,9 +1,7 @@
 <?php
 $addonsversion = '20171003';
 $revision = '
-		<li>Fix missing installed status</li>
-		<li>Fully auto update</li>
-		<li>Improve terminal messages and errors handling</li>
+		<li>General improvement</li>
 ';
 $addons = array(
 
