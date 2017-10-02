@@ -98,7 +98,7 @@ function addonblock( $addon ) {
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
-		<a href="'.$addon[ 'sourcecode' ].'" target="_blank"><img src="'.$thumbnail.'" class="thumbnail"></a>
+		<img src="'.$thumbnail.'" class="thumbnail">
 		<div style="clear: both;"></div>';
 	$GLOBALS[ 'blocks' ] .= '
 		</div>';
