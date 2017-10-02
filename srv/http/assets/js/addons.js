@@ -39,7 +39,12 @@ $( '.boxed-group .btn' ).click( function () {
 	opt = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
-	title = gettitle( $( this ) );
+	title = gettitle( $thisbtn );
+	
+	if ( type === 'Visit' ) {
+		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
+		return
+	}
 	info( {
 		title: title,
 		message: type +'?',
