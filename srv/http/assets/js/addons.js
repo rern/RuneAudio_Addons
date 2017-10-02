@@ -41,7 +41,7 @@ $( '.boxed-group .btn' ).click( function () {
 	type = $thisbtn.text().trim();
 	title = gettitle( $thisbtn );
 	
-	if ( type === 'Visit' ) {
+	if ( type === 'Show' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
 		return
 	}
@@ -62,6 +62,9 @@ $( '.boxed-group .btn' ).click( function () {
 		}
 	} );
 	if ( alias === 'bash' ) $( '#infoOk' ).click();
+} );
+$( '.thumbnail' ).click( function() {
+	window.open( $( this ).prev().find('form a').attr( 'href'), '_blank' );
 } );
 
 function gettitle( btn ) {
