@@ -4,7 +4,7 @@ $revision = '
 		<li>General improvement</li>
 ';
 $addons = array(
-
+	
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
@@ -135,7 +135,6 @@ array(
 		}
 	}"
 ),
-
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
@@ -212,5 +211,5 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-
+	
 );
