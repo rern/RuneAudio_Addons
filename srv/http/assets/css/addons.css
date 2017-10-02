@@ -22,17 +22,10 @@ h1 {
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
-#list li:hover {
-    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
-}
 #revision:after,
 #list li:after {
 	content: "\2003▼";
 	color: #0095d8;
-}
-#revision:hover:after,
-#list li:hover:after {
-	color: #e0e7ee;
 }
 .revisionup:after {
 	content: '\2003▲' !important;
@@ -50,9 +43,6 @@ legend p,
 legend a {
 	display: inline-block;
 	font-size: 14px;
-}
-legend a:hover {
-	color: #e0e7ee;
 }
 legend span {
 	margin-left: 8px;
@@ -95,11 +85,6 @@ a {
 strike {
     text-decoration: line-through;
 }
-#list li:hover,
-a:hover {
-    color: #0095d8;
-    text-decoration: none;
-}
 span,
 pre,
 white,
@@ -117,9 +102,6 @@ ul,
 .disabled {
 	color: #7795b4;
 }
-.disabled:hover {
-	cursor: not-allowed;
-}
 .cc {
 	color: #00ffff;
 	background: #00ffff;
@@ -134,4 +116,20 @@ ul,
 .wr {
 	color: #ffffff;
 	background: #ff0000;
+}
+
+#list li:hover,
+a:hover {
+    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
+    color: #0095d8;
+    text-decoration: none;
+}
+legend a:hover,
+a[href^="http"]:hover,
+#revision:hover:after,
+#list li:hover:after {
+	color: #e0e7ee;
+}
+.disabled:hover {
+	cursor: not-allowed;
 }
