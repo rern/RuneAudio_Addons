@@ -36,8 +36,8 @@ rm -r /tmp/install
 echo -e "$bar Modify files ..."
 
 file=/srv/http/app/templates/header.php
+echo $file
 if ! grep -q 'id="addons"' $file; then
-	echo $file
 	sed -i $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 	' $file
@@ -45,8 +45,9 @@ fi
 
 file=/srv/http/app/templates/footer.php
 echo $file
-! grep -q 'addons.js' $file &&
-echo '<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
+if ! grep -q 'addons.js' $file; then
+	echo '<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
+fi
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
