@@ -2,10 +2,10 @@
 $( '#revision' ).click( function() {
 	if ( $( '#detail' ).is( ':visible' ) ) {
 		$( '#detail' ).hide();
-		$( this ).html( $( this ).html().replace( '▲', '▼' ) );
+		$( this ).removeClass( 'up' );
 	} else {
 		$( '#detail' ).show();
-		$( this ).html( $( this ).html().replace( '▼', '▲' ) );
+		$( this ).addClass( 'up' );
 	}
 } );
 
