@@ -1,12 +1,7 @@
 // changelog show/hide
 $( '#revision' ).click( function() {
-	if ( $( '#detail' ).is( ':visible' ) ) {
-		$( '#detail' ).hide();
-		$( this ).removeClass( 'up' );
-	} else {
-		$( '#detail' ).show();
-		$( this ).addClass( 'up' );
-	}
+	$( '#detail' ).toggle();
+	$( this ).toggleClass( 'revisionup' );
 } );
 
 // sroll up click
