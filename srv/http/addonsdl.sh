@@ -23,5 +23,4 @@ if [[ $versionredis != $versionlog ]]; then
 	wget -qN $gitpath/install.sh -P /srv/http
 	chmod 755 /srv/http/install.sh
 	/srv/http/install.sh
-	exit
 fi
