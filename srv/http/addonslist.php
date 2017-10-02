@@ -1,18 +1,13 @@
 <?php
 $addonsversion = '20171001';
-$revision = 
-'		<li>Fix missing installed status</li>
+$revision = '
+		<li>Fix missing installed status</li>
 		<li>Fully auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 ';
 
-// fixed order      : 'alias' must be at 1st of each array
-// non-install type : 'version' line omitted (run once: set version to database on install)
-// optional         : 'buttonlabel', 'option', 'thumbnail'
-// star badge       : '*' after 'title' value
-
 $addons = array(
-// array start ----------------------------------------------------------------------------------------------------
+
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
@@ -219,5 +214,5 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-// array end ----------------------------------------------------------------------------------------------------
+
 );
