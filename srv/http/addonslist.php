@@ -1,10 +1,25 @@
 <?php
-$addonsversion = '20171003';
-$revision = '
-		<li>General improvement</li>
+$addonsversion = '20171001';
+$revision = 
+'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
+<div  id="detail" style="display: none;">
+	<ul>
+		<li>Fix missing installed status</li>
+		<li>Fully auto update</li>
+		<li>Improve terminal messages and errors handling</li>
+	</ul>
+	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
+		changelog &nbsp;<i class="fa fa-external-link"></i>
+	</a><br>
+	<br>
+</div>
 ';
+// fixed order      : 'alias' must be at 1st of each array
+// non-install type : 'version' line omitted (run once: set version to database on install)
+// optional         : 'buttonlabel', 'option', 'thumbnail'
+// star badge       : '*' after 'title' value
 $addons = array(
-	
+// array start ----------------------------------------------------------------------------------------------------
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
@@ -24,7 +39,7 @@ array(
 	'sourcecode'   => '',
 	'installurl'   => '',
 	'option'       => "{
-		'text': {
+		'prompt': {
 			'message': '<white>BASH</white> commands or /full/path/script:',
 			'label': 'commands'
 		}
@@ -59,7 +74,7 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
@@ -75,7 +90,7 @@ array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction. (0.3 - no need for 0.4)',
+	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
@@ -85,13 +100,13 @@ array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.
-			<br>Pre-configured and ready to use.',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
+			.'<br> Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => "{
-		'yesno': 'Start <white>Aria2</white> on system startup?'
+		'confirm': 'Start <white>Aria2</white> on system startup?'
 	}"
 ),
 array(
@@ -99,7 +114,8 @@ array(
 	'title'        => 'Transmission *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
+	'description'  => 'Fast, easy, and free BitTorrent client.'
+			.'<br> Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
@@ -117,7 +133,7 @@ array(
 		}
 	}"
 ),
-array(
+/*array(
 	'alias'        => 'samb',
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
@@ -127,14 +143,12 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
-		'continue': 'Once installed, Samba <white>cannot</white> be downgraded.
-				<br>Continue?',
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
 			'label': 'Password'
 		}
 	}"
-),
+),*/
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
@@ -189,9 +203,9 @@ array(
 	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.
-			<br>Add files at anytime then run this addon to refresh Webradio list.
-			<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
+			.'<br>Add files at anytime then run this addon to refresh Webradio list'
+			.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
@@ -211,5 +225,5 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-	
+// array end ----------------------------------------------------------------------------------------------------
 );
