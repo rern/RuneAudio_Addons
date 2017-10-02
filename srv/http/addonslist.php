@@ -5,7 +5,6 @@ $revision = '
 		<li>Fully auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 ';
-
 $addons = array(
 
 array(
@@ -88,8 +87,8 @@ array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
-			.'<br> Pre-configured and ready to use.',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.
+			<br>Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
@@ -102,8 +101,7 @@ array(
 	'title'        => 'Transmission *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client.'
-			.'<br> Pre-configured and ready to use.',
+	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
@@ -131,6 +129,8 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
+		'confirm': 'Once installed, Samba cannot be downgrade
+				<br>Continue?',
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
 			'label': 'Password'
@@ -192,9 +192,9 @@ array(
 	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
-			.'<br>Add files at anytime then run this addon to refresh Webradio list'
-			.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.
+			<br>Add files at anytime then run this addon to refresh Webradio list.
+			<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
