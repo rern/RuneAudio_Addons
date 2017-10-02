@@ -8,7 +8,7 @@ $revision =
 		<li>Fully auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 	</ul>
-	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
+	<a href="https://github.com/rern/RuneAudio_Addons/blob/master/changelog.md" target="_blank">
 		changelog &nbsp;<i class="fa fa-external-link"></i>
 	</a><br>
 	<br>
