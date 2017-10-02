@@ -4,7 +4,7 @@ require_once( 'addonshead.php' );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend title="Show revision detail">'.$revision.'</legend>
+	<legend>'.$revision.'</legend>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -76,7 +76,7 @@ function addonblock( $addon ) {
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
+				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail&ensp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $addon[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';

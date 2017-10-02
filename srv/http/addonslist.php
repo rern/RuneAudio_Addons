@@ -1,16 +1,14 @@
 <?php
 $addonsversion = '20171001';
 $revision = 
-'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a><br>
+'<a id="revision" title="Show revision detail"><white>'.$addonsversion.'</white>&ensp;revision</a><br>
 <div  id="detail" style="display: none;">
 	<ul>
 		<li>Fix missing installed status</li>
 		<li>Fully auto update</li>
 		<li>Improve terminal messages and errors handling</li>
 	</ul>
-	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
-		changelog &nbsp;<i class="fa fa-external-link"></i>
-	</a><br>
+	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">changelog&ensp;<i class="fa fa-external-link"></i></a><br>
 	<br>
 </div>
 ';
