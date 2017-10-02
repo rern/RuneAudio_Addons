@@ -26,7 +26,7 @@ array(
 	'sourcecode'   => '',
 	'installurl'   => '',
 	'option'       => "{
-		'prompt': {
+		'text': {
 			'message': '<white>BASH</white> commands or /full/path/script:',
 			'label': 'commands'
 		}
@@ -93,7 +93,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => "{
-		'confirm': 'Start <white>Aria2</white> on system startup?'
+		'yesno': 'Start <white>Aria2</white> on system startup?'
 	}"
 ),
 array(
@@ -119,7 +119,7 @@ array(
 		}
 	}"
 ),
-/*array(
+array(
 	'alias'        => 'samb',
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
@@ -129,14 +129,14 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
-		'confirm': 'Once installed, Samba cannot be downgrade
+		'continue': 'Once installed, Samba <white>cannot</white> be downgrade
 				<br>Continue?',
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
 			'label': 'Password'
 		}
 	}"
-),*/
+),
 
 array(
 	'alias'        => 'back',
