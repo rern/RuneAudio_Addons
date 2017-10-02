@@ -6,7 +6,7 @@ echo '
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<legend>
 		<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a>
-		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370.html" target="_blank">
+		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 		</a><br>
 		<div  id="detail" style="display: none;">
