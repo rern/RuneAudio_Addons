@@ -149,36 +149,37 @@ array(
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
 	'± option'        => "{ 
-		'alert': 'message text',
-		'confirm': 'message text',
+		'alert'   : 'message text',
+		'continue': 'message text',
+		'confirm' : 'message text',
 		'confirm1': 'message text 1',
 		'confirm2': 'message text 2',
-		'prompt': {
+		'prompt'  : {
 			'message': 'message text',
-			'label': 'label text'
+			'label'  : 'label text'
 		},
 		'password': {
 			'message': 'message text',
-			'label': 'label text'
+			'label'  : 'label text'
 		},
-		'radio': {
+		'radio'   : {
 			'message': 'message text',
-			'list': {
+			'list'   : {
 				'*item1': 'value1',
-				'item2': 'value2',
+				'item2' : 'value2',
 				'custom': '?'
 			}
 		},
 		'checkbox': {
 			'message': 'message text',
-			'list': {
-				'item1': 'value1',
+			'list'   : {
+				'item1' : 'value1',
 				'*item2': 'value2'
 			}
 		},
-		'select': {
+		'select'  : {
 			'message': 'message text',
-			'label': 'label text',
+			'label'  : 'label text',
 			'list': {
 				'item1': 'value1',
 				'item2': 'value2',
@@ -210,6 +211,7 @@ array(
 - dialog types:
 	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
+	- `'continue'` - wait > `Ok`  = continue : `Cancel` = go back
 	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
 	- `'prompt'` - 1 input > `Ok` = input
 	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
