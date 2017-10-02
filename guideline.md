@@ -151,10 +151,10 @@ array(
 	'± option'        => "{ 
 		'alert'   : 'message text',
 		'continue': 'message text',
-		'confirm' : 'message text',
-		'confirm1': 'message text 1',
-		'confirm2': 'message text 2',
-		'prompt'  : {
+		'yesno'   : 'message text',
+		'yesno1'  : 'message text 1',
+		'yesno2'  : 'message text 2',
+		'text'    : {
 			'message': 'message text',
 			'label'  : 'label text'
 		},
@@ -212,8 +212,8 @@ array(
 	- `X` - cancel and back to main page
 	- `'alert'` - wait > `Ok` = continue (no value)
 	- `'continue'` - wait > `Ok`  = continue : `Cancel` = go back
-	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
-	- `'prompt'` - 1 input > `Ok` = input
+	- `'yesno'` - 1 / 0 > `Yes` = 1 : `No` = 0
+	- `'text'` - 1 input > `Ok` = input
 	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
 	- `'radio'` - 1 choice > `Ok` = selected `valueN`
 		- `*` pre-select must be specified
