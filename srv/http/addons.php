@@ -4,7 +4,21 @@ require_once( 'addonshead.php' );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend>'.$revision.'</legend>
+	<legend>
+		<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a>
+		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370.html" target="_blank">
+			issues&ensp;<i class="fa fa-external-link"></i>
+		</a><br>
+		<div  id="detail" style="display: none;">
+			<ul>'
+				.$revision.'
+			</ul>
+			<a href="https://github.com/rern/RuneAudio_Addons/blob/master/changelog.md" target="_blank">
+				changelog&ensp;<i class="fa fa-external-link"></i>
+			</a><br>
+			<br>
+		</div>
+	</legend>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -76,7 +90,7 @@ function addonblock( $addon ) {
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail&ensp;<i class="fa fa-external-link"></i></a></p>'
+				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( isset( $addon[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';

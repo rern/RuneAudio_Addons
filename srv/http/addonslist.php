@@ -1,17 +1,11 @@
 <?php
 $addonsversion = '20171001';
 $revision = 
-'<a id="revision" title="Show revision detail"><white>'.$addonsversion.'</white>&ensp;revision</a><br>
-<div  id="detail" style="display: none;">
-	<ul>
-		<li>Fix missing installed status</li>
+'		<li>Fix missing installed status</li>
 		<li>Fully auto update</li>
 		<li>Improve terminal messages and errors handling</li>
-	</ul>
-	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">changelog&ensp;<i class="fa fa-external-link"></i></a><br>
-	<br>
-</div>
 ';
+
 // fixed order      : 'alias' must be at 1st of each array
 // non-install type : 'version' line omitted (run once: set version to database on install)
 // optional         : 'buttonlabel', 'option', 'thumbnail'
@@ -89,7 +83,7 @@ array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction.',
+	'description'  => 'RuneUI access restriction. (0.3 - no need for 0.4)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
