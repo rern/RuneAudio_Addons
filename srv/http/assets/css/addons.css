@@ -76,6 +76,7 @@ code {
 .thumbnail {
 	float: right;
 	width: 100px;
+	cursor: pointer;
 }
 .btn {
 	text-transform: none;
