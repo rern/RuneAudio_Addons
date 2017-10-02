@@ -59,7 +59,7 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
