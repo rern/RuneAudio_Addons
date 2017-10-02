@@ -91,9 +91,7 @@ white,
 code {
 	color: #e0e7ee;
 }
-legend i,
-#close,
-a {
+.boxed-group legend i {
 	color: #0095d8;
 }
 p,
@@ -118,17 +116,20 @@ ul,
 	background: #ff0000;
 }
 
+a[href^="http"] {
+	text-decoration: none;
+}
 #list li:hover,
 a:hover {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
     color: #0095d8;
-    text-decoration: none;
 }
 legend a:hover,
 a[href^="http"]:hover,
 #revision:hover:after,
 #list li:hover:after {
 	color: #e0e7ee;
+	text-decoration: none;
 }
 .disabled:hover {
 	cursor: not-allowed;
