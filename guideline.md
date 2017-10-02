@@ -202,6 +202,9 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
+**`'title'`** 
+- star badge - `*` after title
+
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
 - each `'value'` will be appended as `install.sh` arguments / parameters
