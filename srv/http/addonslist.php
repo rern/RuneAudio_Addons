@@ -1,7 +1,7 @@
 <?php
 $addonsversion = '20171001';
 $revision = 
-'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
+'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a><br>
 <div  id="detail" style="display: none;">
 	<ul>
 		<li>Fix missing installed status</li>
