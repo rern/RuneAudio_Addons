@@ -127,7 +127,7 @@ cmd;
 		$command = '/usr/bin/sudo';
 		$cmd = str_replace( '/usr/bin/', '', $option );
 		$cmd = preg_replace( '/;\s*/', "\n", $cmd );
-		$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
+		$cmd .= '<br><br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
 	}
 }
 $cmd = preg_replace( '/\t*/', '', $cmd );
