@@ -1,5 +1,5 @@
 <?php
-$addonsversion = '20171001';
+$addonsversion = '20171003';
 $revision = '
 		<li>Fix missing installed status</li>
 		<li>Fully auto update</li>
