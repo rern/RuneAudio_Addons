@@ -221,7 +221,7 @@ array(
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting after import. (<white>0.3 only</white>) no need for 0.4b',
+	'description'  => 'Fix Webradio sorting after import. (<white>0.3 only</white> no need for 0.4b)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
