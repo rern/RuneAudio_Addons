@@ -88,7 +88,7 @@ array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction. (0.3 - no need for 0.4b)',
+	'description'  => 'RuneUI access restriction. (0.3 only - 0.4b already built-in)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
