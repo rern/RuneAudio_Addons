@@ -213,11 +213,11 @@ array(
 - `*` leading `itemN` = pre-select items
 - dialog types:
 	- `X` - cancel and back to main page
-	- `'wait'` = button modal
+	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
-	- `'confirm'` = buttons modal
+	- `'confirm'` = `Cancel` `Ok`
 		- `Ok`  = continue (no value) / `Cancel` = cancel and back
-	- `'yesno'` = buttons modal
+	- `'yesno'` = `No` `Yes`
 		- `Yes` = 1 / `No` = 0
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
