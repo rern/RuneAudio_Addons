@@ -45,7 +45,7 @@ fi
 
 file=/srv/http/app/templates/footer.php
 echo $file
-! grep -q 'addons.js' $file &&
+! grep -q 'addonsmenu.js' $file &&
 echo '<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
 
 # set sudo no password #######################################
