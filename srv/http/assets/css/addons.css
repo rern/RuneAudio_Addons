@@ -61,6 +61,9 @@ legend > a:nth-of-type(2) {
 	content: '▲';
 	color: #0095d8;
 }
+.hidescrollv {
+	margin-top: 10px;
+}
 pre {
 	width: 100%;
 	max-height: calc(100vh - 170px);
