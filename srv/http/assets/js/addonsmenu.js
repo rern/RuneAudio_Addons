@@ -35,8 +35,11 @@ hammeraddons.on( 'press', function () {
 
 function addonsdl( data ) {
 	if ( data === 'failed' ) {
-		info( 'Addons server cannot be reached.'
-			+'<br>Please try again later.' );
+		info( {
+			icon: '<i class="fa fa-info-circle fa-2x">',
+			message: 'Addons server cannot be reached.'
+				+'<br>Please try again later.' 
+		} );
 		$( '#loader' ).addClass( 'hide' );
 	} else {
 		location.href = path +'addons.php';
