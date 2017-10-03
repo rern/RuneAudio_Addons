@@ -22,7 +22,7 @@ $( '.btnun' ).each( function() {
 	hammerbtn.on( 'press', function () {
 		opt = '';
 		alias = $thisbtn.parent().attr( 'alias' );
-		title = gettitle( $thisbtn );
+		title = $thisbtn.parent().prev().find( 'span' ).text();
 		type = 'Update';
 		info( {
 			title:  title,
@@ -39,7 +39,7 @@ $( '.boxed-group .btn' ).click( function () {
 	opt = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
-	title = gettitle( $thisbtn );
+	title = $thisbtn.parent().prev().find( 'span' ).text();
 	
 	if ( type === 'Show' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
@@ -67,13 +67,6 @@ $( '.thumbnail' ).click( function() {
 	window.open( $( this ).prev().find('form a').attr( 'href'), '_blank' );
 } );
 
-function gettitle( btn ) {
-	return btn.parent().prev()
-					.text() 
-						.replace( /^ */, '' )
-						.replace( /.by.*/, '' );
-	;
-}	
 function getoptions() {
 	okey = Object.keys( option );
 	olength = okey.length;
