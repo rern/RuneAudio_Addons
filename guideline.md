@@ -235,6 +235,7 @@ array(
 		- `*` pre-select optional
 		- `'custom': '?'` > `Ok` = `'text'`
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
+- last `key:value` not allow trailing `,`
 ---
 
 **styling** for `description`, `option`
