@@ -85,7 +85,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'runquit':
+		case 'confirm':
 			info( {
 				title        : title,
 				message      : option[ oj ],
