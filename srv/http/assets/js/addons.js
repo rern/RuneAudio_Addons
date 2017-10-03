@@ -74,7 +74,7 @@ function getoptions() {
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
-		case 'alert':
+		case 'wait':
 			info( {
 				icon         :  '<i class="fa fa-info-circle fa-2x">',
 				title        : title,
@@ -85,7 +85,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'continue':
+		case 'runquit':
 			info( {
 				title        : title,
 				message      : option[ oj ],
