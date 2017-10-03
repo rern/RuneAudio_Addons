@@ -9,7 +9,7 @@ branch=''
 # for testing branch: $1=branchname
 if (( $# != 0 )); then
 	branch=$1
-	gitpath=$( echo $( dirname $gitpath )/$branch )
+	gitpath=$( echo $( dirname $gitpath )/$branch ) # switch 'master' to 'branch'
 	installurl=$gitpath/install.sh
 fi
 
