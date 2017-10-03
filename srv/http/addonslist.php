@@ -99,7 +99,7 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.
-			<br>Pre-configured and ready to use.',
+			<br>Pre-configured and ready to use. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
@@ -112,7 +112,7 @@ array(
 	'title'        => 'Transmission *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
+	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
