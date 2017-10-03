@@ -12,7 +12,7 @@ $( '#addons' ).click( function() {
 	);
 } );
 
-var hammeraddons = new Hammer( $( '#addons' ) );
+var hammeraddons = new Hammer( $( '#addons' )[0] );
 hammeraddons.on( 'press', function () {
 	info( {
 		title : 'Addons Menu Branch Test',
