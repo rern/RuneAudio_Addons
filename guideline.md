@@ -149,8 +149,8 @@ array(
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
 	'± option'        => "{ 
-		'alert'   : 'message text',
-		'continue': 'message text',
+		'wait'   : 'message text',
+		'confirm': 'message text',
 		'yesno'   : 'message text',
 		'yesno1'  : 'message text 1',
 		'yesno2'  : 'message text 2',
@@ -213,19 +213,27 @@ array(
 - `*` leading `itemN` = pre-select items
 - dialog types:
 	- `X` - cancel and back to main page
-	- `'alert'` - wait > `Ok` = continue (no value)
-	- `'continue'` - wait > `Ok`  = continue : `Cancel` = go back
-	- `'yesno'` - 1 / 0 > `Yes` = 1 : `No` = 0
-	- `'text'` - 1 input > `Ok` = input
-	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
-	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+	- `'wait'` = button modal
+		- `Ok` = continue (no value)
+	- `'confirm'` = buttons modal
+		- `Ok`  = continue (no value) / `Cancel` = cancel and back
+	- `'yesno'` = buttons modal
+		- `Yes` = 1 / `No` = 0
+	- `'text'` = `<input type="text">`
+		- `Ok`  = input
+	- `'password'` = `<input type="password">`
+		- `Ok` > verification > `Ok` = input
+	- `'radio'` = `<input type="radio">` - single value
+		- `Ok` = selected value
 		- `*` pre-select must be specified
-		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-	- `'checkbox'` - multiple choices > `Ok` = selected `valueN`s
+		- `'custom': '?'` > `Ok` = `'text'`
+	- `'checkbox'` = `<input type="checkbox">` - multiple values
+		- `Ok` = checked values
 		- `*` pre-select optional
-	- `'select'` - 1 choice > `Ok` = selected `valueN`
+	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
+		- `Ok` = selected value
 		- `*` pre-select optional
-		- `'custom': '?'` - `?` >  `'prompt'` for custom value
+		- `'custom': '?'` > `Ok` = `'text'`
 - multiple dialogs of the same type must add trailing numbers to make each `key` unique
 ---
 
