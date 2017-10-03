@@ -1,6 +1,7 @@
 <?php
 $revision = '
-		<li>General improvement</li>
+	<li>Add branch testing by long-press <white>Addons</white> in menu</li>
+	<li>Styling improvement</li>
 ';
 $addons = array(
 
@@ -74,7 +75,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
-		'alert': 'Get <white>DAC configuration</white> ready:<br>
+		'wait': 'Get <white>DAC configuration</white> ready:<br>
 				<br>
 				For external power: <white>DAC</white> > power on<br>
 				<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>
@@ -138,7 +139,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
-		'continue': 'Once installed, Samba <white>cannot</white> be downgraded.
+		'runquit': 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
@@ -165,7 +166,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'option'       => "{
-		'alert': 'Unmount and remove all <white>USB drives</white> before proceeding.'
+		'wait': 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	}"
 ),
 array(
@@ -208,7 +209,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => "{
-		'alert': 'Get webradio files copied to:<br>
+		'wait': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
 				<code>&emsp;Ok&emsp;</code> to continue'
