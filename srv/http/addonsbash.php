@@ -44,6 +44,10 @@ setTimeout( function() {
 }, 1000 );
 </script>
 
+<!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
+
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
@@ -182,9 +186,6 @@ pclose( $popencmd );                                      // end bash
 	</pre>
 	</div>
 </div>
-
-<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/addonsinfo.js"></script>
 
 <script>
 	setTimeout( function() {
