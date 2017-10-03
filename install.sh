@@ -52,7 +52,7 @@ fi
 file=/srv/http/app/templates/footer.php
 echo $file
 if ! grep -q 'hammer.min.js' $file; then
-	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' $file
+	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
 fi
 if ! grep -q 'addonsmenu.js' $file; then
 	echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
