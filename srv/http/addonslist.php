@@ -134,7 +134,7 @@ array(
 	'alias'        => 'samb',
 	'title'        => 'Samba Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Faster and more customized shares.',
+	'description'  => 'Faster and more customized shares. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
