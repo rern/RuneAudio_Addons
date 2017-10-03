@@ -4,10 +4,12 @@
 addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
 installurl=$( echo "$addonslist" | grep 'installurl.*=>' | cut -d "'" -f 4 )
 gitpath=$( dirname $installurl )
+branch=''
 
 # for testing branch: $1=branchname
 if (( $# != 0 )); then
-	gitpath=$( echo $( dirname $gitpath )/$1 )
+	branch=$1
+	gitpath=$( echo $( dirname $gitpath )/$branch )
 	installurl=$gitpath/install.sh
 fi
 
@@ -36,6 +38,5 @@ if [[ $versionlist != $versionredis ]]; then
 
 	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh
-	exit
+	/srv/http/install.sh $branch
 fi
