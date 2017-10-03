@@ -25,9 +25,6 @@ li {
 #list {
 	margin-top: 15px;
 }
-#list li a {
-	color: #ff0000;
-}
 #revision:after,
 #list li:after {
 	content: "\2003▼";
@@ -45,8 +42,10 @@ img {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
+	color: #7795b4;
 }
-.boxed-group legend {
+legend span {
+	margin-left: 8px;
 	font-size: 21px;
 }
 legend p,
@@ -54,12 +53,13 @@ legend a {
 	display: inline-block;
 	font-size: 14px;
 }
-legend span {
-	margin-left: 8px;
-}
-legend > a:nth-of-type(2),
-legend > a:last-child {
+legend > a:nth-of-type(2) {
 	float: right;
+}
+.boxed-group legend:after {
+	float: right;
+	content: '▲';
+	color: #0095d8;
 }
 pre {
 	width: 100%;
@@ -91,6 +91,10 @@ code {
 #list li {
 	width: fit-content;
 	color: #e0e7ee;
+}
+#list a {
+	color: #ff8888;
+	text-decoration: none;
 }
 #close,
 #list li,
@@ -141,6 +145,7 @@ a:hover {
     color: #0095d8;
 }
 legend a:hover,
+legend:hover:after,
 a[href^="http"]:hover,
 #revision:hover:after,
 #list li:hover:after {
