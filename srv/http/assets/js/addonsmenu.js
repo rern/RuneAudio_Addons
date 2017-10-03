@@ -1,7 +1,7 @@
+// fix path if click in other menu pages
+var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
+
 $( '#addons' ).click( function() {
-	// fix path if click in other menu pages
-	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
-	
 	$( '#loader' ).removeClass( 'hide' );
 	
 	$.get(
@@ -12,6 +12,7 @@ $( '#addons' ).click( function() {
 	);
 } );
 
+// for branch testing
 var hammeraddons = new Hammer( $( '#addons' )[0] );
 hammeraddons.on( 'press', function () {
 	info( {
@@ -19,9 +20,10 @@ hammeraddons.on( 'press', function () {
 		textlabel: 'Branch',
 		cancel: 1,
 		ok: function() {
-			$.post(
-				path +'addonsdl.php',
-				{ branch: $( '#infoTextbox' ).val() },
+			var branch = $( '#infoTextbox' ).val();
+			if ( !branch ) return;
+			$.get(
+				path +'addonsdl.php?branch='+ branch,
 				function( data ) {
 					addonsdl( data );
 				}
