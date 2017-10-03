@@ -7,7 +7,9 @@ alias=addo
 uninstallstart $1
 
 # restore file
-sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
+sed -i -e '/addonsinfo.css/ d
+' -e '/id="addons"/ d
+' /srv/http/app/templates/header.php
 
 sed -i -e '/hammer.min.js/ d
 ' -e '/addonsmenu.js/ d
