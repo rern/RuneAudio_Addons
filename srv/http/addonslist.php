@@ -36,7 +36,7 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> (ArchLinux MPD)
 					<br>Best of Video Distro - <white>OSMC</white> (Raspbian Kodi)
-					<br>Best of Dual Boot - <white>NOOBS</white>',
+					<br>Best of Dual Boot - <white>NOOBS</white> (RPi2+RPi3)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
 	'buttonlabel'  => 'Show',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
