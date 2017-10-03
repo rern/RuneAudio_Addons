@@ -8,7 +8,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171003',
+	'version'      => '20171005',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
