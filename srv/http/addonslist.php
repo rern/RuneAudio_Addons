@@ -138,7 +138,7 @@ array(
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => "{
 		'confirm': 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
