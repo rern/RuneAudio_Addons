@@ -16,6 +16,9 @@ $( '#addons' ).click( function() {
 var hammeraddons = new Hammer( $( '#addons' )[0] );
 hammeraddons.on( 'press', function () {
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
+	
+	$( '#loader' ).removeClass( 'hide' );
+
 	info( {
 		title : 'Addons Menu Branch Test',
 		textlabel: 'Branch',
