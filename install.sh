@@ -42,17 +42,21 @@ echo -e "$bar Modify files ..."
 file=/srv/http/app/templates/header.php
 echo $file
 if ! grep -q 'id="addons"' $file; then
-	sed -i $'/poweroff-modal/ i\
+	sed -i -e $'/runeui.css/ a\
+    <link rel="stylesheet" href="<?=$this->asset(\'/css/addonsinfo.css\')?>">
+' -e $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 	' $file
 fi
 
 file=/srv/http/app/templates/footer.php
 echo $file
-if ! grep -q 'addons.js' $file; then
-	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>
-<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
+if ! grep -q 'addonsmenu.js' $file; then
+	echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
+fi
+if ! grep -q 'hammer.min.js' $file; then
+	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' $file
 fi
 
 # set sudo no password #######################################
