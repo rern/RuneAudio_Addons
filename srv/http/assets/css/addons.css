@@ -25,6 +25,9 @@ li {
 #list {
 	margin-top: 15px;
 }
+#list li a {
+	color: #ff0000;
+}
 #revision:after,
 #list li:after {
 	content: "\2003▼";
