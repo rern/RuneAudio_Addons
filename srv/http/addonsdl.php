@@ -1,6 +1,5 @@
 <?php
-// fill in for testing branch
-$branch = '';
+$branch = ( isset( $_POST[ 'branch' ] ) ) ? $_POST[ 'branch' ] : '';
 
 exec( '/usr/bin/sudo /srv/http/addonsdl.sh '.$branch, $output, $exit );
 
