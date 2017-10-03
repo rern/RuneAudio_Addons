@@ -15,34 +15,6 @@
 </head>
 <body>
 
-<!-- hide vertical scrollbar on desktop -->
-<script>
-var div = document.createElement('div');
-div.style.cssText = 
-	'width: 100px;'
-	+'msOverflowStyle: scrollbar;'
-	+'overflow: scroll;'
-	+'visibility: hidden;'
-	;
-document.body.appendChild(div);
-var scrollbarWidth = div.offsetWidth - div.clientWidth;
-document.body.removeChild(div);
-
-if (scrollbarWidth !== 0) {
-	var css = 
-		'.hidescrollv {\n'
-		+'	width: 100%;\n'
-		+'	overflow: hidden;\n'
-		+'}\n'
-		+'pre {\n'
-		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
-		+'}';
-	var style = document.createElement('style');
-	style.appendChild(document.createTextNode(css));
-	document.head.appendChild(style);
-}
-</script>
-
 <div id="loader" style="display: none;">
 	<div id="loaderbg"></div>
 	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
