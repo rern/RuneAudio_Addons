@@ -7,7 +7,7 @@ $( '#addons' ).click( function() {
 	$.get(
 		path +'addonsdl.php',
 		function( data ) {
-			addonsdl( data );
+			addonsdl( data, path );
 		}
 	);
 } );
@@ -26,14 +26,14 @@ hammeraddons.on( 'press', function () {
 			$.get(
 				path +'addonsdl.php?branch='+ branch,
 				function( data ) {
-					addonsdl( data );
+					addonsdl( data, path );
 				}
 			);
 		}
 	} );
 } );
 
-function addonsdl( data ) {
+function addonsdl( data, path ) {
 	if ( data === 'failed' ) {
 		info( {
 			icon: '<i class="fa fa-info-circle fa-2x">',
