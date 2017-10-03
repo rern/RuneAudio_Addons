@@ -139,7 +139,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
 	'option'       => "{
-		'runquit': 'Once installed, Samba <white>cannot</white> be downgraded.
+		'confirm': 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
