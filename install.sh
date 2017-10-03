@@ -2,35 +2,39 @@
 
 alias=addo
 
+# for testing branch
+branch=master
+(( $# != 0 )) && [[ $1 != u ]] && branch=$1
+
 if [[ ! -e /srv/http/addonslist.php ]]; then
-# for installstart
+# dummy for 'installstart': sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php
 	echo "
 		'alias'   => 'addo',
 		'title'   => 'Addons Menu',
-		'version' => '1',
+),
 	" > /srv/http/addonslist.php
 fi
 
 # import heading function
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
 installstart $1
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
+wgetnc https://github.com/rern/RuneAudio_Addons/archive/$branch.zip
 
 echo -e "$bar Install new files ..."
 rm -rf  /tmp/install
 mkdir -p /tmp/install
-bsdtar --exclude='.*' --exclude='*.md' -xvf master.zip --strip 1 -C /tmp/install
+bsdtar --exclude='.*' --exclude='*.md' -xvf $branch.zip --strip 1 -C /tmp/install
 
-rm master.zip /tmp/install/* &> /dev/null
+rm $branch.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
 chmod -R 755 /tmp/install
 
-cp -rp /tmp/install/* /
-rm -r /tmp/install
+mv -vf /tmp/install/* /
+rm -rf /tmp/install
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
@@ -53,11 +57,10 @@ fi
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 [[ $(stat -c %a /usr/bin/sudo) != 4755 ]] && chmod 4755 /usr/bin/sudo
 
-installfinish $1
+# refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
+addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
-# 'addo' has php variable as 'version' in addonslist.php
-version=$( grep -m 1 '^$addonsversion =' /srv/http/addonslist.php | cut -d "'" -f 2 )
-redis-cli hset addons addo $version &> /dev/null
+installfinish $1
 
 if [[ -t 1 ]]; then # for initial install via ssh terminal
 	title -nt "$info Refresh browser and go to Menu > Addons."
