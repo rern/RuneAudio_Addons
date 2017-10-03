@@ -239,9 +239,12 @@ array(
 
 **styling** for `description`, `option`
 - text / html
-- only quotes use html entities
+	- `&nbsp;` = space
+	- `&ensp;` = medium space
+	- `&emsp;` = wide space
+- quotes use html entities to avoid conflict with php quotes
     - `&quot;` = `"`
     - `&#039;` = `'`
-- preset styles:
+- preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
