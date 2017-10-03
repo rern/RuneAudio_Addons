@@ -92,7 +92,7 @@ function addonblock( $addon ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
+			<legend title="Back to top">'.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
 				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
 				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
