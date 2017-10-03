@@ -1,6 +1,6 @@
 <?php
 $revision = '
-	<li>Add branch testing by long-press <white>Addons</white> in menu</li>
+	<li>Efficiency improvement</li>
 	<li>Styling improvement</li>
 ';
 $addons = array(
