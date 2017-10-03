@@ -234,7 +234,7 @@ array(
 		- `Ok` = selected value
 		- `*` pre-select optional
 		- `'custom': '?'` > `Ok` = `'text'`
-- multiple dialogs of the same type must add trailing numbers to make each `key` unique
+- multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 ---
 
 **styling** for `description`, `option`
