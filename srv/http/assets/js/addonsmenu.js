@@ -1,7 +1,7 @@
-// fix path if click in other menu pages
-var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
-
 $( '#addons' ).click( function() {
+	// fix path if click in other menu pages
+	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
+	
 	$( '#loader' ).removeClass( 'hide' );
 	
 	$.get(
@@ -15,6 +15,7 @@ $( '#addons' ).click( function() {
 // for branch testing
 var hammeraddons = new Hammer( $( '#addons' )[0] );
 hammeraddons.on( 'press', function () {
+	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
 	info( {
 		title : 'Addons Menu Branch Test',
 		textlabel: 'Branch',
