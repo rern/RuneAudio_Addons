@@ -1,5 +1,4 @@
 <?php
-$addonsversion = '20171003';
 $revision = '
 		<li>General improvement</li>
 ';
@@ -8,7 +7,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => $addonsversion,
+	'version'      => '20171003',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -32,7 +31,7 @@ array(
 ),
 array(
 	'alias'        => 'dual',
-	'title'        => 'Dual Boot: RuneAudio + OSMC',
+	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> (ArchLinux MPD)
 					<br>Best of Video Distro - <white>OSMC</white> (Raspbian Kodi)

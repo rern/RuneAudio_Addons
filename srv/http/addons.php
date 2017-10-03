@@ -1,6 +1,8 @@
 <?php
 require_once( 'addonshead.php' );
 // -------------------------------------------------------------------------------------------------
+$indexaddo = array_search( 'addo', array_column( $addons, 'alias' ) );
+$addonsversion = $addons[ $indexaddo ][ 'version' ];
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
