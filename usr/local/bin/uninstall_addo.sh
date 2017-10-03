@@ -9,9 +9,9 @@ uninstallstart $1
 # restore file
 sed -i '/id="addons"/ d' /srv/http/app/templates/header.php
 
-sed -i -e '/addonsinfo.js/ d
+sed -i -e '/hammer.min.js/ d
 ' -e '/addonsmenu.js/ d
-' -e '/hammer.min.js/ d
+' -e '/addonsinfo.js/ d
 ' /srv/http/app/templates/footer.php
 
 # remove files #######################################
