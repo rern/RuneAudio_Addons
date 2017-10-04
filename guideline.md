@@ -16,10 +16,13 @@ _revision 20171005_
 		- `addonslist.php` - `'version'`: current version
 	- confirm dialog
 	- user input dialogs for options
-	- cancel by dialog `X` button
+	- cancel any time by `X` button
 - Addons Terminal page: `addonsbash.php`
-	- on-screen messages, stdout/stderr of bash scripts
-	- `X` button > `opcache_reset()` and back to Addons page
+	- get script url from `addonslist.php`
+	- prepare command and options
+	- run bash script
+	- (almost) line-by-line output of bash scripts on screen
+	- enable `X` button after finished > `opcache_reset()` > back to Addons page
 	
 ---
 
