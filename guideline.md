@@ -216,24 +216,24 @@ array(
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
 	- `'confirm'` = `Cancel` `Ok`
-		- `Ok`  = continue (no value) / `Cancel` = cancel and back
+		- `Ok`  = continue (no value) | `Cancel` = cancel and back
 	- `'yesno'` = `No` `Yes`
-		- `Yes` = 1 / `No` = 0
+		- `Yes` = 1 | `No` = 0
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`
-		- `Ok` > verification > `Ok` = input
+		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
 	- `'radio'` = `<input type="radio">` - single value
-		- `Ok` = selected value
+		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select must be specified
-		- `'custom': '?'` > `Ok` = `'text'`
+		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
 		- `*` pre-select optional
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
-		- `Ok` = selected value
+		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select optional
-		- `'custom': '?'` > `Ok` = `'text'`
+		- `'?'` custom input marker
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - last `key:value` not allow trailing `,`
 ---
