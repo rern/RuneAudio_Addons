@@ -140,28 +140,29 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => "{
-		'confirm' : 'Once installed, Samba <white>cannot</white> be downgraded.
+		'confirm' : 'Once installed, Samba <white>cannot be downgraded</white>.
 				<br>Continue?',
+		'wait'    : 'Connect a <white>USB drive</white> before continue.',
 		'text1'   : {
 			'message': '<white>File Server</white>:',
 			'label'  : 'Name',
 			'value'  : 'RuneAudio'
 		},
 		'text2'   : {
-			'message': '<white>Read-Only</white> share:',
+			'message': '<white>Read-Only</white> directory:',
 			'label'  : 'Name'
 		},
 		'text3'   : {
-			'message': '<white>Read-Write</white> share:',
+			'message': '<white>Read-Write</white> directory:',
 			'label'  : 'Name'
 		},
 		'password': {
-			'message': 'Password for user <white>root</white> (blank = rune):',
+			'message': '(for connecting to <white>USB root share</white>)
+					<br>Password for user <white>root</white> (blank = rune):',
 			'label'  : 'Password'
 		}
 	}"
 ),
-
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
@@ -240,3 +241,4 @@ array(
 ),
 
 );
+?>
