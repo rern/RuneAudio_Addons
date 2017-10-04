@@ -7,6 +7,7 @@ Addons Menu for RuneAudio
 **Addons Menu** for easy addons installation via RuneUI.  
 It's the same as running on SSH terminal.  
 Just much easier.  
+Something like App Store or Play Store.  
 <hr>
 
 Currently available:
