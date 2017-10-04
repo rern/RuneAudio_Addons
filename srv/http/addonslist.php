@@ -144,10 +144,14 @@ array(
 				<br>Continue?',
 		'wait'    : 'Connect a USB drive before continue.',
 		'text'    : {
+			'message': '<white>File Server</white>:',
+			'label'  : 'Name'
+		},
+		'text1'    : {
 			'message': '<white>Read-Only</white> share:',
 			'label'  : 'Name'
 		},
-		'text1'   : {
+		'text2'   : {
 			'message': '<white>Read-Write</white> share:',
 			'label'  : 'Name'
 		},
