@@ -142,8 +142,16 @@ array(
 	'option'       => "{
 		'confirm': 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
+		'text': {
+			'message': '<white>Read-Only</white> share:',
+			'label: 'Name'
+		},
+		'text1': {
+			'message': '<white>Read-Write</white> share:',
+			'label: 'Name'
+		},
 		'password': {
-			'message': 'Password for user <white>root</white> (blank = no password):',
+			'message': 'Password for user <white>root</white> (blank = rune):',
 			'label': 'Password'
 		}
 	}"
