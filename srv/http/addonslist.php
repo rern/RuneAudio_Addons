@@ -142,6 +142,7 @@ array(
 	'option'       => "{
 		'confirm' : 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
+		'wait'    : 'Connect a USB drive before continue.',
 		'text'    : {
 			'message': '<white>Read-Only</white> share:',
 			'label'  : 'Name'
