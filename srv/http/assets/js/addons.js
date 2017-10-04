@@ -119,6 +119,7 @@ function getoptions() {
 				title        : title,
 				message      : ojson[ 'message' ],
 				textlabel    : ojson[ 'label' ],
+				textvalue    : ojson[ 'value' ],
 				ok         : function() {
 					var input = $( '#infoTextbox' ).val();
 					opt += ( input ? input : 0 ) +' ';

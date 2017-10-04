@@ -11,7 +11,7 @@ var infohtml = '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="info"></p>\
 			<div id="infoText" class="info">\
-				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox">\
+				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox" spellcheck="false">\
 			</div>\
 			<div id="infoPassword" class="info">\
 				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">\
