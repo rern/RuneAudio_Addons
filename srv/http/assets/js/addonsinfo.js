@@ -55,6 +55,7 @@ function info( option ) {
 		var title = option[ 'title' ];
 		var message = option[ 'message' ];
 		var textlabel = option[ 'textlabel' ];
+		var textvalue = option[ 'textvalue' ];
 		var passwordlabel = option[ 'passwordlabel' ];
 		var radiohtml = option[ 'radiohtml' ];
 		var checkboxhtml = option[ 'checkboxhtml' ];
@@ -74,6 +75,7 @@ function info( option ) {
 		}
 		if ( textlabel ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
+			$( '#infoTextbox' ).val( textvalue );
 			$( '#infoText' ).show();
 			var $infofocus = $( '#infoTextbox' );
 		}
@@ -117,7 +119,6 @@ function info( option ) {
 		$( '#infoOverlay' ).hide();
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );
-
 }
 
 function setboxwidth( $box, html ) {
