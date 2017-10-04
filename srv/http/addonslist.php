@@ -57,7 +57,7 @@ array(
 			'message': 'Set <white>zoom level</white> for display directly connect to RPi.<br>
 						<br>
 						Local browser screen size:',
-			'list': {
+			'list'   : {
 				'Width less than 800px: 0.7': '0.7',
 				'HD - 1280px: 1.2': '1.2',
 				'*Full HD - 1920px: 1.5': '1.5',
@@ -119,11 +119,11 @@ array(
 	'option'       => "{
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
-			'label': 'Password'
+			'label'  : 'Password'
 		},
 		'checkbox': {
 			'message': '',
-			'list': {
+			'list'   : {
 				'*Install <white>WebUI</white> alternative?': '1',
 				'*Start <white>Transmission</white> on system startup?': '1'
 			}
@@ -140,19 +140,19 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => "{
-		'confirm': 'Once installed, Samba <white>cannot</white> be downgraded.
+		'confirm' : 'Once installed, Samba <white>cannot</white> be downgraded.
 				<br>Continue?',
-		'text': {
+		'text'    : {
 			'message': '<white>Read-Only</white> share:',
-			'label: 'Name'
+			'label'  : 'Name'
 		},
-		'text1': {
+		'text1'   : {
 			'message': '<white>Read-Write</white> share:',
-			'label: 'Name'
+			'label'  : 'Name'
 		},
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = rune):',
-			'label': 'Password'
+			'label'  : 'Password'
 		}
 	}"
 ),
