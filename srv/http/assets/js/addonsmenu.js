@@ -11,6 +11,9 @@ $( '#addons' ).click( function() {
 		}
 	);
 } );
+$( '#infoX' ).click( function() {
+	$( '#infoCancel' ).click();
+} );
 
 // for branch testing
 var hammeraddons = new Hammer( $( '#addons' )[0] );
@@ -18,12 +21,15 @@ hammeraddons.on( 'press', function () {
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
 	
 	$( '#loader' ).removeClass( 'hide' );
-
+	
 	info( {
-		title : 'Addons Menu Branch Test',
+		title    : 'Addons Menu Branch Test',
 		textlabel: 'Branch',
-		cancel: 1,
-		ok: function() {
+		textvalue: 'UPDATE',
+		cancel   : function() {
+			$( '#loader' ).addClass( 'hide' );
+		},
+		ok       : function() {
 			var branch = $( '#infoTextbox' ).val();
 			if ( !branch ) return;
 			$.get(
@@ -39,7 +45,7 @@ hammeraddons.on( 'press', function () {
 function addonsdl( data, path ) {
 	if ( data === 'failed' ) {
 		info( {
-			icon: '<i class="fa fa-info-circle fa-2x">',
+			icon   : '<i class="fa fa-info-circle fa-2x">',
 			message: 'Addons server cannot be reached.'
 				+'<br>Please try again later.' 
 		} );
