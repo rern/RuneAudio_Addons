@@ -45,9 +45,14 @@ hammeraddons.on( 'press', function () {
 
 function addonsdl( data, path ) {
 	if ( data != 0 ) {
+		var error = {
+			11: 'Addons server CA-certficate error.',
+			12: 'Addons server cannot be reached.',
+			13: 'Addons Menu update failed.'
+		}
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
-			message: 'Addons server cannot be reached.'
+			message: error[ data ];
 				+'<br>Please try again later.' 
 		} );
 		$( '#loader' ).addClass( 'hide' );
