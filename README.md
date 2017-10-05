@@ -1,6 +1,6 @@
 Addons Menu for RuneAudio
 ---
-_for RuneAudio 0.3 and 0.4b _
+_for RuneAudio 0.3 and 0.4b_
    
 **Addons Menu** for easy addons installation via RuneUI.  
 It's the same as running on SSH terminal.  
