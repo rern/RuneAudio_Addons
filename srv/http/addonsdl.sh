@@ -36,9 +36,9 @@ if [[ $versionlist != $versionredis ]]; then
 	/usr/local/bin/uninstall_addo.sh
 
 	wget -qN $installurl -P /srv/http
+	[[ $? != 0 ]] && exit 12
 	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh $branch
-	[[ $? != 0 ]] && exit 13 
+	/srv/http/install.sh $branch 
 fi
 
 exit 0
