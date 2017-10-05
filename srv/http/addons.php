@@ -87,6 +87,8 @@ function addonblock( $addon ) {
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
+	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
+	if ( !$addon[ 'sourcecode' ] ) $detail = '';
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
@@ -94,7 +96,7 @@ function addonblock( $addon ) {
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
+				<p>'.$addon[ 'description' ].$detail.'</p>'
 				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';
