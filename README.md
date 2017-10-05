@@ -18,11 +18,11 @@ Currently available:
 - Rank Mirror Package Servers
 - RuneUI Enhancements
 - RuneUI GPIO
-- RuneUI Password (0.4 - already built-in)
+- RuneUI Password (0.4b - already built-in)
 - Samba Upgrade
 - Transmission
 - Webradio Import
-- Webradio Sorting (0.4 - no need)
+- Webradio Sorting (0.4b - no need)
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
