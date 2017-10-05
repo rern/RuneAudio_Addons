@@ -35,6 +35,7 @@ hammeraddons.on( 'press', function () {
 			$.get(
 				path +'addonsdl.php?branch='+ branch,
 				function( data ) {
+					console.log( data )
 					addonsdl( data, path );
 				}
 			);
