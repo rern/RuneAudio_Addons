@@ -64,7 +64,8 @@ $( '.boxed-group .btn' ).click( function () {
 	if ( alias === 'bash' ) $( '#infoOk' ).click();
 } );
 $( '.thumbnail' ).click( function() {
-	window.open( $( this ).prev().find('form a').attr( 'href'), '_blank' );
+	$sourcecode = $( this ).prev().find('form a').attr( 'href');
+	if ( $sourcecode ) window.open( $sourcecode, '_blank' );
 } );
 
 function getoptions() {
