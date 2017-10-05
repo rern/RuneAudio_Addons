@@ -72,6 +72,7 @@
 	word-wrap: break-word;
 	overflow: auto;
 	max-height: 800px;
+	color: #7795b4;
 }
 #infoRadio,
 #infoCheckbox {
@@ -93,6 +94,7 @@
 #infoButtons a {
 	margin: 0 5px;
 	min-width: 70px;
+	text-transform: none;
 }
 input {
 	height: 41px;

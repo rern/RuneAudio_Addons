@@ -1,5 +1,5 @@
 <?php require_once( 'addonshead.php' );?>
-<!-------------------------------------------------------------------------------------------------->
+<!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
 var div = document.createElement('div');
@@ -44,6 +44,10 @@ setTimeout( function() {
 }, 1000 );
 </script>
 
+<!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
+<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="assets/js/addonsinfo.js"></script>
+
 <div class="container">
 	
 	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
@@ -51,7 +55,7 @@ setTimeout( function() {
 
 	<div class="hidescrollv">
 	<pre>
-<!-------------------------------------------------------------------------------------------------->
+<!-- ...................................................................................... -->
 <?php
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
@@ -127,7 +131,7 @@ cmd;
 		$command = '/usr/bin/sudo';
 		$cmd = str_replace( '/usr/bin/', '', $option );
 		$cmd = preg_replace( '/;\s*/', "\n", $cmd );
-		$cmd .= '<br><a class="ck">'.str_repeat( '-', $dash ).'</a>';
+		$cmd .= '<br><br><a class="ck">'.str_repeat( '=', $dash ).'</a>';
 	}
 }
 $cmd = preg_replace( '/\t*/', '', $cmd );
@@ -178,13 +182,10 @@ while ( !feof( $popencmd ) ) {                            // each line
 }
 pclose( $popencmd );                                      // end bash
 ?>
-<!-------------------------------------------------------------------------------------------------->
+<!-- ...................................................................................... -->
 	</pre>
 	</div>
 </div>
-
-<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/addonsinfo.js"></script>
 
 <script>
 	setTimeout( function() {
@@ -206,7 +207,7 @@ pclose( $popencmd );                                      // end bash
 
 </body>
 </html>
-<!-------------------------------------------------------------------------------------------------->
+<!-- ...................................................................................... -->
 <?php
 opcache_reset();
 ?>

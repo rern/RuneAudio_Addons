@@ -1,10 +1,27 @@
 <?php
 require_once( 'addonshead.php' );
 // -------------------------------------------------------------------------------------------------
+$indexaddo = array_search( 'addo', array_column( $addons, 'alias' ) );
+$addonsversion = $addons[ $indexaddo ][ 'version' ];
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend>'.$revision.'</legend>
+	<legend>
+		<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a>
+		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
+			issues&ensp;<i class="fa fa-external-link"></i>
+		</a><br>
+		
+		<div  id="detail" style="display: none;">
+			<ul>'
+				.$revision.'
+			</ul>
+			<a href="https://github.com/rern/RuneAudio_Addons/blob/master/changelog.md" target="_blank">
+				changelog&ensp;<i class="fa fa-external-link"></i>
+			</a><br>
+			<br>
+		</div>
+	</legend>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -65,26 +82,27 @@ function addonblock( $addon ) {
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
-		$listtitle = preg_replace( '/\*$/', ' <white>&star;</white>', $title );
+		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
+	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
+	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
+	if ( !$addon[ 'sourcecode' ] ) $detail = '';
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend title="Back to top">'.$check.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'&emsp;<p>by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p><a>&#x25B2</a></legend>
+			<legend title="Back to top">'.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p></legend>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$addon[ 'description' ].' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a></p>'
-				.$btnin; if ( isset( $addon[ 'version' ] ) ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
+				<p>'.$addon[ 'description' ].$detail.'</p>'
+				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
 	$GLOBALS[ 'blocks' ] .= '
 			</form>';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		</div>
-		<div class="thumbnail" style="float: right; width: 100px;">
-			<a href="'.$addon[ 'sourcecode' ].'"><img src="'.$thumbnail.'"></a>
-		</div>
+		<img src="'.$thumbnail.'" class="thumbnail">
 		<div style="clear: both;"></div>';
 	$GLOBALS[ 'blocks' ] .= '
 		</div>';

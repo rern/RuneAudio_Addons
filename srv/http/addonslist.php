@@ -1,29 +1,17 @@
 <?php
-$addonsversion = '20171001';
-$revision = 
-'<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision&ensp;▼</a><br>
-<div  id="detail" style="display: none;">
-	<ul>
-		<li>Fix missing installed status</li>
-		<li>Fully auto update</li>
-		<li>Improve terminal messages and errors handling</li>
-	</ul>
-	<a href="https://github.com/rern/RuneAudio_Addons/blob/update/changelog.md" target="_blank">
-		changelog &nbsp;<i class="fa fa-external-link"></i>
-	</a><br>
-	<br>
-</div>
+$addonsversion = '1'; // temp: for update before 20171005 - to be removed
+
+$revision = '
+	<li>General improvement</li>
+	<li>Bug fixes</li>
 ';
-// fixed order      : 'alias' must be at 1st of each array
-// non-install type : 'version' line omitted (run once: set version to database on install)
-// optional         : 'buttonlabel', 'option', 'thumbnail'
-// star badge       : '*' after 'title' value
+
 $addons = array(
-// array start ----------------------------------------------------------------------------------------------------
+
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => $addonsversion,
+	'version'      => '20171005',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -35,22 +23,35 @@ array(
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/thumbnail/thumbbash.png',
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
 	'installurl'   => '',
 	'option'       => "{
-		'prompt': {
+		'text': {
 			'message': '<white>BASH</white> commands or /full/path/script:',
 			'label': 'commands'
 		}
 	}"
 ),
 array(
+	'alias'        => 'dual',
+	'title'        => 'Dual Boot: RuneAudio + OSMC *',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> (ArchLinux MPD)
+					<br>Best of Video Distro - <white>OSMC</white> (Raspbian Kodi)
+					<br>Best of Dual Boot - <white>NOOBS</white>',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
+	'buttonlabel'  => 'Show',
+	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
+	'installurl'   => '',
+),
+array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout. (0.3+0.4b)',
+	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
@@ -59,7 +60,7 @@ array(
 			'message': 'Set <white>zoom level</white> for display directly connect to RPi.<br>
 						<br>
 						Local browser screen size:',
-			'list': {
+			'list'   : {
 				'Width less than 800px: 0.7': '0.7',
 				'HD - 1280px: 1.2': '1.2',
 				'*Full HD - 1920px: 1.5': '1.5',
@@ -74,11 +75,11 @@ array(
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/GPIOs/4.jpg',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => "{
-		'alert': 'Get <white>DAC configuration</white> ready:<br>
+		'wait': 'Get <white>DAC configuration</white> ready:<br>
 				<br>
 				For external power: <white>DAC</white> > power on<br>
 				<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>
@@ -90,7 +91,7 @@ array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction.',
+	'description'  => 'RuneUI access restriction. (0.4b - already built-in)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
@@ -100,13 +101,13 @@ array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
-			.'<br> Pre-configured and ready to use.',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.
+			<br>Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => "{
-		'confirm': 'Start <white>Aria2</white> on system startup?'
+		'yesno': 'Start <white>Aria2</white> on system startup?'
 	}"
 ),
 array(
@@ -114,47 +115,64 @@ array(
 	'title'        => 'Transmission *',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client.'
-			.'<br> Pre-configured and ready to use.',
+	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => "{
 		'password': {
 			'message': 'Password for user <white>root</white> (blank = no password):',
-			'label': 'Password'
+			'label'  : 'Password'
 		},
 		'checkbox': {
 			'message': '',
-			'list': {
+			'list'   : {
 				'*Install <white>WebUI</white> alternative?': '1',
 				'*Start <white>Transmission</white> on system startup?': '1'
 			}
 		}
 	}"
 ),
-/*array(
+array(
 	'alias'        => 'samb',
-	'title'        => 'Samba Upgrade',
+	'title'        => 'Samba Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/installurl',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => "{
+		'confirm' : 'Once installed, Samba <white>cannot be downgraded</white>.
+				<br>Continue?',
+		'wait'    : 'Connect a <white>USB drive</white> before continue.
+				<br>1st drive will be used for shared directories.',
+		'text1'   : {
+			'message': '<white>File Server</white>:',
+			'label'  : 'Name',
+			'value'  : 'RuneAudio'
+		},
+		'text2'   : {
+			'message': '<white>Read-Only</white> directory:',
+			'label'  : 'Name'
+		},
+		'text3'   : {
+			'message': '<white>Read-Write</white> directory:',
+			'label'  : 'Name'
+		},
 		'password': {
-			'message': 'Password for user <white>root</white> (blank = no password):',
-			'label': 'Password'
+			'message': '(for connecting to <white>USB root share</white>)
+					<br>Password for user <white>root</white> (blank = rune):',
+			'label'  : 'Password'
 		}
 	}"
-),*/
+),
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Enable backup-restore settings and databases. (0.3+0.4b)',
+	'description'  => 'Enable backup-restore settings and databases.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
@@ -162,12 +180,12 @@ array(
 	'alias'        => 'expa',
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Expand default 2GB partition to full capacity of SD card. (0.3+0.4b)',
+	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'option'       => "{
-		'alert': 'Unmount and remove all <white>USB drives</white> before proceeding.'
+		'wait': 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	}"
 ),
 array(
@@ -175,7 +193,7 @@ array(
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics. (0.3+0.4b)',
+	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
@@ -194,7 +212,7 @@ array(
 	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix package download errors caused by unreachable servers. (0.3+0.4b)',
+	'description'  => 'Fix package download errors caused by unreachable servers.',
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
@@ -203,14 +221,14 @@ array(
 	'alias'        => 'radi',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
-			.'<br>Add files at anytime then run this addon to refresh Webradio list'
-			.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.
+			<br>Add files at anytime then run this addon to refresh Webradio list.
+			<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => "{
-		'alert': 'Get webradio files copied to:<br>
+		'wait': 'Get webradio files copied to:<br>
 				<code>/mnt/MPD/Webradio</code><br>
 				<br>
 				<code>&emsp;Ok&emsp;</code> to continue'
@@ -221,9 +239,10 @@ array(
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting after import for 0.3 only. (no need for 0.4)',
+	'description'  => 'Fix Webradio sorting after import. (0.4b - no need)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-// array end ----------------------------------------------------------------------------------------------------
+
 );
+?>

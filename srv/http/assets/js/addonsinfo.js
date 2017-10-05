@@ -11,7 +11,7 @@ var infohtml = '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="info"></p>\
 			<div id="infoText" class="info">\
-				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox">\
+				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox" spellcheck="false">\
 			</div>\
 			<div id="infoPassword" class="info">\
 				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">\
@@ -55,6 +55,7 @@ function info( option ) {
 		var title = option[ 'title' ];
 		var message = option[ 'message' ];
 		var textlabel = option[ 'textlabel' ];
+		var textvalue = option[ 'textvalue' ];
 		var passwordlabel = option[ 'passwordlabel' ];
 		var radiohtml = option[ 'radiohtml' ];
 		var checkboxhtml = option[ 'checkboxhtml' ];
@@ -74,6 +75,7 @@ function info( option ) {
 		}
 		if ( textlabel ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
+			$( '#infoTextbox' ).val( textvalue );
 			$( '#infoText' ).show();
 			var $infofocus = $( '#infoTextbox' );
 		}
@@ -117,7 +119,6 @@ function info( option ) {
 		$( '#infoOverlay' ).hide();
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );
-
 }
 
 function setboxwidth( $box, html ) {

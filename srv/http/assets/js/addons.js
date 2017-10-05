@@ -1,12 +1,7 @@
 // changelog show/hide
 $( '#revision' ).click( function() {
-	if ( $( '#detail' ).is( ':visible' ) ) {
-		$( '#detail' ).hide();
-		$( this ).html( $( this ).html().replace( '▲', '▼' ) );
-	} else {
-		$( '#detail' ).show();
-		$( this ).html( $( this ).html().replace( '▼', '▲' ) );
-	}
+	$( '#detail' ).toggle();
+	$( this ).toggleClass( 'revisionup' );
 } );
 
 // sroll up click
@@ -27,7 +22,7 @@ $( '.btnun' ).each( function() {
 	hammerbtn.on( 'press', function () {
 		opt = '';
 		alias = $thisbtn.parent().attr( 'alias' );
-		title = gettitle( $thisbtn );
+		title = $thisbtn.parent().prev().find( 'span' ).text();
 		type = 'Update';
 		info( {
 			title:  title,
@@ -44,7 +39,12 @@ $( '.boxed-group .btn' ).click( function () {
 	opt = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
-	title = gettitle( $( this ) );
+	title = $thisbtn.parent().prev().find( 'span' ).text();
+	
+	if ( type === 'Show' ) {
+		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
+		return
+	}
 	info( {
 		title: title,
 		message: type +'?',
@@ -63,14 +63,11 @@ $( '.boxed-group .btn' ).click( function () {
 	} );
 	if ( alias === 'bash' ) $( '#infoOk' ).click();
 } );
+$( '.thumbnail' ).click( function() {
+	$sourcecode = $( this ).prev().find('form a').attr( 'href');
+	if ( $sourcecode ) window.open( $sourcecode, '_blank' );
+} );
 
-function gettitle( btn ) {
-	return btn.parent().prev()
-					.text() 
-						.replace( /^ */, '' )
-						.replace( /.by.*/, '' );
-	;
-}	
 function getoptions() {
 	okey = Object.keys( option );
 	olength = okey.length;
@@ -78,7 +75,7 @@ function getoptions() {
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
-		case 'alert':
+		case 'wait':
 			info( {
 				icon         :  '<i class="fa fa-info-circle fa-2x">',
 				title        : title,
@@ -90,6 +87,17 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'confirm':
+			info( {
+				title        : title,
+				message      : option[ oj ],
+				cancel       : 1,
+				ok           : function() {
+					sendcommand();
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
+		case 'yesno':
 			info( {
 				title        : title,
 				message      : option[ oj ],
@@ -106,12 +114,13 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'prompt':
+		case 'text':
 			var ojson = option[ oj ];
 			info( {
 				title        : title,
 				message      : ojson[ 'message' ],
 				textlabel    : ojson[ 'label' ],
+				textvalue    : ojson[ 'value' ],
 				ok         : function() {
 					var input = $( '#infoTextbox' ).val();
 					opt += ( input ? input : 0 ) +' ';
@@ -163,7 +172,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			$( '#infoRadio input' ).change( function() {
+			$( '#infoRadio input' ).change( function() { // cutom value
 				if ( $( this ).val() === '?' ) {
 					info( {
 						title       : title,
@@ -224,7 +233,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			$( '#infoSelectbox' ).change( function() {
+			$( '#infoSelectbox' ).change( function() { // cutom value
 				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
 					info( {
 						title        : title,

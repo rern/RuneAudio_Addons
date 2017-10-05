@@ -1,6 +1,17 @@
 #!/bin/bash
 
-gitpath=https://github.com/rern/RuneAudio_Addons/raw/master
+# existing 'addonslist.php'
+addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
+installurl=$( echo "$addonslist" | grep 'installurl.*=>' | cut -d "'" -f 4 )
+gitpath=$( dirname $installurl )
+branch=''
+
+# for testing branch: $1=branchname
+if (( $# != 0 )); then
+	branch=$1
+	gitpath=$( echo $( dirname $gitpath )/$branch ) # switch 'master' to 'branch'
+	installurl=$gitpath/install.sh
+fi
 
 dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
 if [[ $? != 0 ]]; then
@@ -15,13 +26,17 @@ if [[ $? != 0 ]]; then
 	fi
 fi
 
+# new 'addonslist.php'
+addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
+installurl=$( echo "$addonslist" | grep 'installurl.*=>' | cut -d "'" -f 4 )
+
+versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
-versionlog=$( grep -m 1 '^$addonsversion =' /srv/http/addonslist.php | cut -d "'" -f 2 )
-if [[ $versionredis != $versionlog ]]; then
+
+if [[ $versionlist != $versionredis ]]; then
 	/usr/local/bin/uninstall_addo.sh
 
-	wget -qN $gitpath/install.sh -P /srv/http
+	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh
-	exit
+	/srv/http/install.sh $branch
 fi

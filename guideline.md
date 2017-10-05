@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171001_
+_revision 20171005_
 
 ### Addons Menu Process:    
 - Menu > Addons > download: `addonsdl.php`
@@ -16,10 +16,13 @@ _revision 20171001_
 		- `addonslist.php` - `'version'`: current version
 	- confirm dialog
 	- user input dialogs for options
-	- cancel by dialog `X` button
+	- cancel any time by `X` button
 - Addons Terminal page: `addonsbash.php`
-	- on-screen messages, stdout/stderr of bash scripts
-	- `X` button > `opcache_reset()` and back to Addons page
+	- get script url from `addonslist.php`
+	- prepare command and options
+	- run bash script
+	- (almost) line-by-line output of bash scripts on screen
+	- enable `X` button after finished > `opcache_reset()` > back to Addons page
 	
 ---
 
@@ -149,36 +152,37 @@ array(
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
 	'± option'        => "{ 
-		'alert': 'message text',
+		'wait'   : 'message text',
 		'confirm': 'message text',
-		'confirm1': 'message text 1',
-		'confirm2': 'message text 2',
-		'prompt': {
+		'yesno'   : 'message text',
+		'yesno1'  : 'message text 1',
+		'yesno2'  : 'message text 2',
+		'text'    : {
 			'message': 'message text',
-			'label': 'label text'
+			'label'  : 'label text'
 		},
 		'password': {
 			'message': 'message text',
-			'label': 'label text'
+			'label'  : 'label text'
 		},
-		'radio': {
+		'radio'   : {
 			'message': 'message text',
-			'list': {
+			'list'   : {
 				'*item1': 'value1',
-				'item2': 'value2',
+				'item2' : 'value2',
 				'custom': '?'
 			}
 		},
 		'checkbox': {
 			'message': 'message text',
-			'list': {
-				'item1': 'value1',
+			'list'   : {
+				'item1' : 'value1',
 				'*item2': 'value2'
 			}
 		},
-		'select': {
+		'select'  : {
 			'message': 'message text',
-			'label': 'label text',
+			'label'  : 'label text',
 			'list': {
 				'item1': 'value1',
 				'item2': 'value2',
@@ -190,6 +194,7 @@ array(
 ),
 ```
 `'± ...'` : optional  
+`'sourcecode'` : 'blank' = no link (only for built-in scripts)  
   
 **`'alias'`** - reference point
 - must be 1st, at index `[0]`
@@ -202,8 +207,8 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'title'`** 
-- star badge - `*` after title
+**`'buttonlabel'`**  
+- `'Show'` - for open `'sourceurl'` in new window
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
@@ -212,26 +217,39 @@ array(
 - `*` leading `itemN` = pre-select items
 - dialog types:
 	- `X` - cancel and back to main page
-	- `'alert'` - wait > `Ok` = continue (no value)
-	- `'confirm'` - 1 / 0 > `Yes` = 1 : `No` = 0
-	- `'prompt'` - 1 input > `Ok` = input
-	- `'password'` - masked input > `Ok` > verify input > `Ok` = input
-	- `'radio'` - 1 choice > `Ok` = selected `valueN`
+	- `'wait'` = `Ok`
+		- `Ok` = continue (no value)
+	- `'confirm'` = `Cancel` `Ok`
+		- `Ok`  = continue (no value) | `Cancel` = cancel and back
+	- `'yesno'` = `No` `Yes`
+		- `Yes` = 1 | `No` = 0
+	- `'text'` = `<input type="text">`
+		- `Ok`  = input
+	- `'password'` = `<input type="password">`
+		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
+	- `'radio'` = `<input type="radio">` - single value
+		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select must be specified
-		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-	- `'checkbox'` - multiple choices > `Ok` = selected `valueN`s
+		- `'?'` custom input marker
+	- `'checkbox'` = `<input type="checkbox">` - multiple values
+		- `Ok` = checked values
 		- `*` pre-select optional
-	- `'select'` - 1 choice > `Ok` = selected `valueN`
+	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
+		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select optional
-		- `'custom': '?'` - `?` >  `'prompt'` for custom value
-- multiple dialogs of the same type must add trailing numbers to make each `key` unique
+		- `'?'` custom input marker
+- multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
+- last `key:value` not allow trailing `,`
 ---
 
 **styling** for `description`, `option`
 - text / html
-- only quotes use html entities
+	- `&nbsp;` = space
+	- `&ensp;` = medium space
+	- `&emsp;` = wide space
+- quotes use html entities to avoid conflict with php quotes
     - `&quot;` = `"`
     - `&#039;` = `'`
-- preset styles:
+- preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
