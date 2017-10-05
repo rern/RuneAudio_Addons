@@ -21,7 +21,7 @@ array(
 	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or scripts like on SSH terminal.  (0.3+0.4b)',
+	'description'  => 'Run BASH commands or scripts like on SSH terminal. (0.3+0.4b)',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/thumbnail/thumbbash.png',
 	'buttonlabel'  => 'Run',
 	'sourcecode'   => '',
