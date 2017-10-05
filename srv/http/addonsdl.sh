@@ -20,9 +20,9 @@ if [[ $? != 0 ]]; then
 		ntpdate pool.ntp.org
 		systemctl start ntpd
 		echo "$dl"
-		[[ $? != 0 ]] && exit 11
+		[[ $? != 0 ]] && exit 5
 	else
-		exit 12
+		exit 1
 	fi
 fi
 
