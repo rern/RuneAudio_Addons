@@ -194,6 +194,7 @@ array(
 ),
 ```
 `'± ...'` : optional  
+`'sourcecode'` : 'blank' = no link (only for built-in scripts)  
   
 **`'alias'`** - reference point
 - must be 1st, at index `[0]`
