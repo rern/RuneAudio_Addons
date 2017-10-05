@@ -28,7 +28,6 @@ fi
 
 # new 'addonslist.php'
 addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
-installurl=$( echo "$addonslist" | grep 'installurl.*=>' | cut -d "'" -f 4 )
 
 versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
