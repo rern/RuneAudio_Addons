@@ -38,5 +38,4 @@ if [[ $versionlist != $versionredis ]]; then
 	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh
 	/srv/http/install.sh $branch
-	[[ $? == 0 ]] && exit 0
 fi
