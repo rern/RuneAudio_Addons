@@ -44,7 +44,7 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( data, path ) {
-	if ( data === 'failed' ) {
+	if ( data != 0 ) {
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
 			message: 'Addons server cannot be reached.'
