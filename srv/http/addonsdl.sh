@@ -20,7 +20,7 @@ if [[ $? != 0 ]]; then
 		ntpdate pool.ntp.org
 		systemctl start ntpd
 		echo "$dl"
-		[[ $? != 0 ]] && exit 1
+		[[ $? != 0 ]] && exit 5
 	else
 		exit 1
 	fi
@@ -36,6 +36,9 @@ if [[ $versionlist != $versionredis ]]; then
 	/usr/local/bin/uninstall_addo.sh
 
 	wget -qN $installurl -P /srv/http
+	[[ $? != 0 ]] && exit 1
 	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh $branch
+	/srv/http/install.sh $branch 
 fi
+
+exit 0
