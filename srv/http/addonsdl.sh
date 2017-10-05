@@ -20,9 +20,9 @@ if [[ $? != 0 ]]; then
 		ntpdate pool.ntp.org
 		systemctl start ntpd
 		echo "$dl"
-		[[ $? != 0 ]] && exit 1
+		[[ $? != 0 ]] && exit 11
 	else
-		exit 1
+		exit 12
 	fi
 fi
 
@@ -38,4 +38,7 @@ if [[ $versionlist != $versionredis ]]; then
 	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh
 	/srv/http/install.sh $branch
+	[[ $? != 0 ]] && exit 13 
 fi
+
+exit 0
