@@ -2,8 +2,8 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>Efficiency improvement</li>
-	<li>Styling improvement</li>
+	<li>General improvement</li>
+	<li>Bug fixes</li>
 ';
 $addons = array(
 
