@@ -1,5 +1,5 @@
 <?php
-$addonsversion = '1'; // for update 20171005 - to be removed
+$addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
 	<li>Efficiency improvement</li>
