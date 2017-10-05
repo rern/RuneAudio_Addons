@@ -144,7 +144,8 @@ array(
 	'option'       => "{
 		'confirm' : 'Once installed, Samba <white>cannot be downgraded</white>.
 				<br>Continue?',
-		'wait'    : 'Connect a <white>USB drive</white> before continue.',
+		'wait'    : 'Connect a <white>USB drive</white> before continue.
+				<br>1st drive will be used for shared directories.',
 		'text1'   : {
 			'message': '<white>File Server</white>:',
 			'label'  : 'Name',
