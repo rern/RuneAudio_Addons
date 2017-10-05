@@ -6,8 +6,8 @@ $( '#addons' ).click( function() {
 	
 	$.get(
 		path +'addonsdl.php',
-		function( data ) {
-			addonsdl( data, path );
+		function( exit ) {
+			addonsdl( exit, path );
 		}
 	);
 } );
@@ -34,25 +34,21 @@ hammeraddons.on( 'press', function () {
 			if ( !branch ) return;
 			$.get(
 				path +'addonsdl.php?branch='+ branch,
-				function( data ) {
-					console.log( data );
-					addonsdl( data, path );
+				function( exit ) {
+					addonsdl( exit, path );
 				}
 			);
 		}
 	} );
 } );
 
-function addonsdl( data, path ) {
-	if ( data != 0 ) {
-		var error = {
-			11: 'Addons server CA-certficate error.',
-			12: 'Addons server cannot be reached.',
-			13: 'Addons Menu update failed.'
-		}
+function addonsdl( exit, path ) {
+	if ( exit != 0 ) {
+		var error = ( exit == 5 ) ? 'Addons server CA-certficate error.' : 'Addons server cannot be reached.';
+		
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
-			message: error[ data ]
+			message: error
 				+'<br>Please try again later.' 
 		} );
 		$( '#loader' ).addClass( 'hide' );
