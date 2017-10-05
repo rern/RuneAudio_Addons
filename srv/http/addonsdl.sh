@@ -39,5 +39,3 @@ if [[ $versionlist != $versionredis ]]; then
 	chmod 755 /srv/http/install.sh
 	/srv/http/install.sh $branch
 fi
-
-systemctl reload php-fpm
