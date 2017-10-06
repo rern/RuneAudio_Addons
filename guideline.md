@@ -3,11 +3,14 @@ Guideline
 _revision 20171005_
 
 ### Addons Menu Process:    
-- Menu > Addons > download: `addonsdl.php`
-	- `addonslist.php`
-	- download update and reinstall if there's an update
-- Addons page: `addons.php`
-	- revision and list from `addonslist.php` (link to each block)
+- **Menu** > **Addons** > download: `addonsdl.php`
+	- compare version
+		- latest version from `addonslist.php`
+		- installed version `red	is-cli hget addons addo`
+	- download and reinstall if update available
+	- `opcache_reset()` > `addons.php`
+- **Addons** page: `addons.php`
+	- revision and list from `addonslist.php`
 	- each addon block from `addonslist.php`
 	- install/uninstall/update status based on:
 		- installed markers:
