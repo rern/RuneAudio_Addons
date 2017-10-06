@@ -1,5 +1,6 @@
-### 20171003
+### 20171005
 - General improvement
+- Bug fixes
 
 ### 20171001
 - Fix missing installed status
