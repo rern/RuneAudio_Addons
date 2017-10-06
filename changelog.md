@@ -34,4 +34,4 @@
 - Custom label for `Install` for non-install addons
 
 ### 20170901
-- initial release
+- Initial release
