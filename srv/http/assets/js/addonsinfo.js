@@ -116,6 +116,7 @@ function info( option ) {
 		if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
 	} );
 	$( '#infoX' ).click( function() {
+		$( '#infoCancel' ).click();
 		$( '#infoOverlay' ).hide();
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );

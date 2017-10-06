@@ -38,7 +38,7 @@ if [[ $versionlist != $versionredis ]]; then
 	wget -qN $installurl -P /srv/http
 	[[ $? != 0 ]] && exit 1
 	chmod 755 /srv/http/install.sh
-	/srv/http/install.sh $branch 
+	/srv/http/install.sh $branch # this line exit code = 1 ???
 fi
 
 exit 0
