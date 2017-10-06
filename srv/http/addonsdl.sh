@@ -32,13 +32,6 @@ addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
 versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
 
-if [[ $versionlist != $versionredis ]]; then
-	wget -qN $installurl -P /srv/http
-	[[ $? != 0 ]] && exit 1
-	chmod 755 /srv/http/install.sh
-	
-	/usr/local/bin/uninstall_addo.sh
-	/srv/http/install.sh $branch # this line exit code = 1 ???
-fi
+[[ $versionlist != $versionredis ]] && exit 10
 
 exit 0
