@@ -21,9 +21,7 @@ hammeraddons.on( 'press', function () {
 		title    : 'Addons Menu Branch Test',
 		textlabel: 'Branch',
 		textvalue: 'UPDATE',
-		cancel   : function() {
-			$( '#loader' ).addClass( 'hide' );
-		},
+		cancel   : 1,
 		ok       : function() {
 			var branch = $( '#infoTextbox' ).val();
 			$( '#loader' ).removeClass( 'hide' );
@@ -40,7 +38,7 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( exit, path ) {
-	if ( exit != 0 ) {
+	if ( exit == 1 || exit == 5 ) {
 		var error = ( exit == 5 ) ? 'Addons server CA-certficate error.' : 'Download from Addons server failed.';
 		
 		info( {
@@ -49,6 +47,19 @@ function addonsdl( exit, path ) {
 				+'<br>Please try again later.' 
 		} );
 		$( '#loader' ).addClass( 'hide' );
+	} else if ( exit == 10 ) {
+		$( 'body' ).append(
+			'<form id="formtemp" action="'+ path +'addonsbash.php" method="post">'
+			+'<input type="hidden" name="alias" value="addo">'
+			+'<input type="hidden" name="type" value="Update">'
+			+'</form>'
+			+'<div class="container">divtemp</div>'
+		);
+		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
+		
+		$( '#formtemp' ).append(
+			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
+		).submit();
 	} else {
 		location.href = path +'addons.php';
 	}
