@@ -54,9 +54,8 @@ function addonblock( $addon ) {
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
 	$alias = $addon[ 'alias' ];
-	$fileuninstall = file_exists( '/usr/local/bin/uninstall_'.$alias.'.sh' );
 	
-	if ( $GLOBALS[ 'redis' ][ $alias ] || $fileuninstall ) {
+	if ( $GLOBALS[ 'redis' ][ $alias ] || file_exists( "/usr/local/bin/uninstall_$alias.sh" ) ) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $GLOBALS[ 'redis' ][ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
