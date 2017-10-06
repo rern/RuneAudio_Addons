@@ -1,4 +1,5 @@
-$( '#addons' ).click( function() {
+var hammeraddons = new Hammer( $( '#addons' )[ 0 ] );
+hammeraddons.on( 'tap', function () {
 	// fix path if click in other menu pages
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
 	
@@ -11,16 +12,10 @@ $( '#addons' ).click( function() {
 		}
 	);
 } );
-$( '#infoX' ).click( function() {
-	$( '#infoCancel' ).click();
-} );
 
 // for branch testing
-var hammeraddons = new Hammer( $( '#addons' )[0] );
 hammeraddons.on( 'press', function () {
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
-	
-	$( '#loader' ).removeClass( 'hide' );
 	
 	info( {
 		title    : 'Addons Menu Branch Test',
@@ -31,13 +26,15 @@ hammeraddons.on( 'press', function () {
 		},
 		ok       : function() {
 			var branch = $( '#infoTextbox' ).val();
-			if ( !branch ) return;
-			$.get(
-				path +'addonsdl.php?branch='+ branch,
-				function( exit ) {
-					addonsdl( exit, path );
-				}
-			);
+			$( '#loader' ).removeClass( 'hide' );
+			if ( branch ) {
+				$.get(
+					path +'addonsdl.php?branch='+ branch,
+					function( exit ) {
+						addonsdl( exit, path );
+					}
+				);
+			}
 		}
 	} );
 } );
