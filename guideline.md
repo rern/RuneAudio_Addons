@@ -154,9 +154,9 @@ array(
 	'± buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'± option'        => "{ 
-		'wait'   : 'message text',
-		'confirm': 'message text',
+	'± option'      => "{ 
+		'wait'    : 'message text',
+		'confirm' : 'message text',
 		'yesno'   : 'message text',
 		'yesno1'  : 'message text 1',
 		'yesno2'  : 'message text 2',
@@ -187,8 +187,8 @@ array(
 			'message': 'message text',
 			'label'  : 'label text',
 			'list': {
-				'item1': 'value1',
-				'item2': 'value2',
+				'item1' : 'value1',
+				'item2' : 'value2',
 				'custom': '?'
 			}
 		}
@@ -196,11 +196,11 @@ array(
 
 ),
 ```
-`'± ...'` : optional  
-`'sourcecode'` : 'blank' = no link (only for built-in scripts)  
+`'± ...'` - optional  
+`'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
   
 **`'alias'`** - reference point
-- must be 1st, at index `[0]`
+- must be 1st in each addon
 - must be unique among aliases
 
 **`'version'`** - buttons enable/disable  
@@ -210,8 +210,7 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'buttonlabel'`**  
-- only for non-install
+**`'buttonlabel'`** - for non-install only
 - `'Show'` - for open `'sourceurl'` in new window
 
 **`'option'`** - user inputs  
@@ -258,7 +257,7 @@ array(
 	- `<white>...</white>`
 	- `<code>...</code>`
 
-**testing**  
+**scripts testing**  
 - get `install.sh`, `uninstall_<alias>.sh` ready
 - open Addons Menu
 - add addon `array(...)` to `addonslist.php`
