@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171005_
+_revision 20171010_
 
 ### Addons Menu Process:    
 - **Menu** > **Addons** > download: `addonsdl.php`
@@ -23,7 +23,7 @@ _revision 20171005_
 	- user input dialogs for options
 	- cancel any time by `X` button
 - **Addons Terminal** page: `addonsbash.php`
-	- get script url from `addonslist.php`
+	- get download url from `addonslist.php`
 	- prepare command and options
 	- run bash script
 	- (almost) line-by-line output of bash scripts on screen
