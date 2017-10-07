@@ -58,8 +58,8 @@ var pushstreamAddons = new PushStream( {
 	port: window.location.port,
 	modes: GUI.mode
 } );
-pushstreamAddons.onmessage = function( update ) { // on receive broadcast
-	if ( update[ 0 ] == 1 ) { // pushstream message is array
+pushstreamAddons.onmessage = function( update ) {
+	if ( update === 1 ) {
 		$( '#loadercontent' ).html( '<i class="fa fa-cog fa-spin"></i>Updating...' );
 	}
 }
