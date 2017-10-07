@@ -20,7 +20,7 @@ _revision 20171005_
 	- confirm dialog
 	- user input dialogs for options
 	- cancel any time by `X` button
-- Addons Terminal page: `addonsbash.php`
+- **Addons Terminal** page: `addonsbash.php`
 	- get script url from `addonslist.php`
 	- prepare command and options
 	- run bash script
@@ -256,3 +256,10 @@ array(
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
+
+**testing**  
+- get `install.sh`, `uninstall_<alias>.sh` ready
+- open Addons Menu
+- add addon `array(...)` to `addonslist.php`
+- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
+- test install / uninstall
