@@ -37,7 +37,7 @@ if [[ $versionlist != $versionredis ]]; then
 	[[ $? != 0 ]] && exit 1
 	chmod 755 /srv/http/install.sh
 	
-	curl -s -v -X POST "http://localhost/pub?id=addons" -d \"1\"
+	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
 	
 	/usr/local/bin/uninstall_addo.sh
 	/srv/http/install.sh $branch
