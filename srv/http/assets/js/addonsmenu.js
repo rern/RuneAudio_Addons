@@ -47,20 +47,21 @@ function addonsdl( exit, path ) {
 				+'<br>Please try again later.' 
 		} );
 		$( '#loader' ).addClass( 'hide' );
-	} else if ( exit == 10 ) {
-		$( 'body' ).append(
-			'<form id="formtemp" action="'+ path +'addonsbash.php" method="post">'
-			+'<input type="hidden" name="alias" value="addo">'
-			+'<input type="hidden" name="type" value="Update">'
-			+'</form>'
-			+'<div class="container">divtemp</div>'
-		);
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
-		
-		$( '#formtemp' ).append(
-			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
-		).submit();
 	} else {
 		location.href = path +'addons.php';
 	}
 }
+
+// nginx pushstream websocket
+var pushstreamAddons = new PushStream( {
+	host: window.location.hostname,
+	port: window.location.port,
+	modes: GUI.mode
+} );
+pushstreamAddons.onmessage = function( update ) { // on receive broadcast
+	if ( update[ 0 ] == 1 ) { // pushstream message is array
+		$( '#loadercontent' ).html( '<i class="fa fa-cog fa-spin"></i>Updating...' );
+	}
+}
+pushstreamAddons.addChannel('addons');
+pushstreamAddons.connect();
