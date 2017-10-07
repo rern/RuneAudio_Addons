@@ -38,7 +38,7 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( exit, path ) {
-	if ( exit == 1 || exit == 5 ) {
+	if ( exit != 0 ) {
 		var error = ( exit == 5 ) ? 'Addons server CA-certficate error.' : 'Download from Addons server failed.';
 		
 		info( {
