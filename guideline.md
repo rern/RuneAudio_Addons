@@ -219,7 +219,6 @@ array(
 - options must be **single quoted** json, `" 'key': 'value' "`
 - `*` leading `itemN` = pre-select items
 - dialog types:
-	- `X` - cancel and back to main page
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
 	- `'confirm'` = `Cancel` `Ok`
@@ -243,6 +242,7 @@ array(
 		- `'?'` custom input marker
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - last `key:value` not allow trailing `,`
+- `X` - cancel and back to main page
 ---
 
 **styling** for `description`, `option`
