@@ -33,11 +33,11 @@ versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
 
 if [[ $versionlist != $versionredis ]]; then
-	curl -s -v -X POST "http://localhost/pub?id=addons" -d \"1\"
-	
 	wget -qN $installurl -P /srv/http
 	[[ $? != 0 ]] && exit 1
 	chmod 755 /srv/http/install.sh
+	
+	curl -s -v -X POST "http://localhost/pub?id=addons" -d \"1\"
 	
 	/usr/local/bin/uninstall_addo.sh
 	/srv/http/install.sh $branch
