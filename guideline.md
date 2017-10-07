@@ -7,12 +7,14 @@ _revision 20171005_
 	- compare version
 		- latest version from `addonslist.php`
 		- installed version `red	is-cli hget addons addo`
-	- download and reinstall if update available
+	- update available
+		- switch spinning refresh 'connecting...' to spinning gear 'updating...'
+		- download and reinstall if update available
 	- `opcache_reset()` > `addons.php`
 - **Addons** page: `addons.php`
-	- revision and list from `addonslist.php`
-	- each addon block from `addonslist.php`
-	- install/uninstall/update status based on:
+	- get revision and list from `addonslist.php`
+	- populate each addon block from `addonslist.php`
+	- install/uninstall/update buttons status based on:
 		- installed markers:
 			- `uninstall_<alias>.sh` - file: installed status
 			- `redis-cli hget addons <alias>` - database: installed version
