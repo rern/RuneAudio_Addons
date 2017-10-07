@@ -1,6 +1,7 @@
 <?php
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
+//$news = '<legend><p>news</p><br></legend><br>';
 $revision = '
 	<li>Improve on-screen status while updating</li>
 ';
