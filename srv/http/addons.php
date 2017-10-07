@@ -5,8 +5,7 @@ $indexaddo = array_search( 'addo', array_column( $addons, 'alias' ) );
 $addonsversion = $addons[ $indexaddo ][ 'version' ];
 echo '
 	<div class="container">
-	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>'.
-	$news.'
+	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<legend>
 		<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a>
 		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
