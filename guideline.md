@@ -211,6 +211,7 @@ array(
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
 **`'buttonlabel'`**  
+- only for non-install
 - `'Show'` - for open `'sourceurl'` in new window
 
 **`'option'`** - user inputs  
