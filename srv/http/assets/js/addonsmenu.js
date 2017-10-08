@@ -59,7 +59,11 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function( update ) {
-	if ( update == 1 && !$( '#loader' ).hasClass( 'hide' ) ) $( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
+	if ( update == 1 ) {
+		if ( !$( '#loader' ).hasClass( 'hide' ) ) $( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
+	} else {
+		if ( $( '#loadercontent' ).text() == 'Updating...' ) $( '#loadercontent' ).html( '<i class="fa fa-refresh fa-spin"></i>Connecting...' );
+	}
 }
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
