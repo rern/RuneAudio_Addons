@@ -208,6 +208,16 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 ),
+/*array(
+	'alias'        => 'spla',
+	'title'        => 'Boot Logo',
+	'version'      => '20171010',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
+),*/
 array(
 	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
