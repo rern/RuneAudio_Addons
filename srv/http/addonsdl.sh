@@ -14,11 +14,17 @@ if (( $# != 0 )); then
 fi
 
 dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
-if [[ $? == 5 ]]; then # github 'certificate error' code
+result=$?
+if [[ $result == 5 ]]; then # github 'certificate error' code
+	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 2
+	
 	systemctl stop ntpd
 	ntpdate pool.ntp.org
 	systemctl start ntpd
+	
 	echo "$dl" || exit 1
+elif [[ $result != 0 ]]; then
+	exit 1
 fi
 
 # new 'addonslist.php'
