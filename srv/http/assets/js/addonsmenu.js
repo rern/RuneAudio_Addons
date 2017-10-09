@@ -44,9 +44,12 @@ function addonsdl( exit, path ) {
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
 			message: error
-				+'<br>Please try again later.' 
+				+'<br>Please try again later.',
+			ok     : function() {
+				$( '#loader' ).addClass( 'hide' );
+				$( '#loadercontent' ).html( '<i class="fa fa-refresh fa-spin"></i>connecting...' );
+			}
 		} );
-		$( '#loader' ).addClass( 'hide' );
 	} else {
 		location.href = path +'addons.php';
 	}
