@@ -14,11 +14,17 @@ if (( $# != 0 )); then
 fi
 
 dl=$( wget -qN $gitpath/srv/http/addonslist.php -P /srv/http )
-if [[ $? == 5 ]]; then # github 'certificate error' code
+result=$?
+if [[ $result == 5 ]]; then # github 'certificate error' code
+	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 2
+	
 	systemctl stop ntpd
 	ntpdate pool.ntp.org
 	systemctl start ntpd
+	
 	echo "$dl" || exit 1
+elif [[ $result != 0 ]]; then
+	exit 1
 fi
 
 # new 'addonslist.php'
@@ -32,8 +38,10 @@ if [[ $versionlist != $versionredis ]]; then
 	[[ $? != 0 ]] && exit 1
 	chmod 755 /srv/http/install.sh
 	
+	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
+	
 	/usr/local/bin/uninstall_addo.sh
-	/srv/http/install.sh $branch # this line exit code = 1 ???
+	/srv/http/install.sh $branch
 fi
 
-exit 0
+exit 0 # force exit code = 0

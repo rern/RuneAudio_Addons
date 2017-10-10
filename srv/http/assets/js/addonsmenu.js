@@ -21,9 +21,7 @@ hammeraddons.on( 'press', function () {
 		title    : 'Addons Menu Branch Test',
 		textlabel: 'Branch',
 		textvalue: 'UPDATE',
-		cancel   : function() {
-			$( '#loader' ).addClass( 'hide' );
-		},
+		cancel   : 1,
 		ok       : function() {
 			var branch = $( '#infoTextbox' ).val();
 			$( '#loader' ).removeClass( 'hide' );
@@ -41,15 +39,34 @@ hammeraddons.on( 'press', function () {
 
 function addonsdl( exit, path ) {
 	if ( exit != 0 ) {
-		var error = ( exit == 5 ) ? 'Addons server CA-certficate error.' : 'Download from Addons server failed.';
+		var error = ( exit == 5 ) ? 'Addons server certficate error.' : 'Download from Addons server failed.';
 		
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
 			message: error
-				+'<br>Please try again later.' 
+				+'<br>Please try again later.',
+			ok     : function() {
+				$( '#loader' ).addClass( 'hide' );
+				$( '#loadercontent' ).html( '<i class="fa fa-refresh fa-spin"></i>connecting...' );
+			}
 		} );
-		$( '#loader' ).addClass( 'hide' );
 	} else {
 		location.href = path +'addons.php';
 	}
 }
+
+// nginx pushstream websocket
+var pushstreamAddons = new PushStream( {
+	host: window.location.hostname,
+	port: window.location.port,
+	modes: GUI.mode
+} );
+pushstreamAddons.onmessage = function( update ) {
+	if ( update == 1 ) {
+		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
+	} else {
+		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Set date...' );
+	}
+}
+pushstreamAddons.addChannel('addons');
+pushstreamAddons.connect();

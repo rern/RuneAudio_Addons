@@ -2,8 +2,7 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>General improvement</li>
-	<li>Bug fixes</li>
+	<li>Improve on-screen status while updating</li>
 ';
 
 $addons = array(
@@ -11,7 +10,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171005',
+	'version'      => '20171010',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',

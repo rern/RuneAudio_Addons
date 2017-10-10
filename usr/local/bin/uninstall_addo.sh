@@ -26,3 +26,5 @@ if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	rm -v /srv/http/assets/js/vendor/hammer.min.js
 fi
 uninstallfinish $1
+
+clearcache
