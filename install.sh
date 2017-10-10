@@ -41,13 +41,13 @@ echo -e "$bar Modify files ..."
 
 file=/srv/http/app/templates/header.php
 echo $file
-if ! grep -q 'id="addons"' $file; then
-	sed -i -e $'/runeui.css/ a\
+sed -i -e '/addonsinfo.css/ d
+' -e '/id="addons"/ d
+' -e $'/runeui.css/ a\
     <link rel="stylesheet" href="<?=$this->asset(\'/css/addonsinfo.css\')?>">
-	' -e $'/poweroff-modal/ i\
+' -e $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
-	' $file
-fi
+' $file
 
 file=/srv/http/app/templates/footer.php
 echo $file

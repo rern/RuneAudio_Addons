@@ -106,21 +106,18 @@ if ( $type === 'Uninstall' ) {
 			echo 'Please try again.'
 			exit
 		fi
+		chmod 755 $installfile
 		
 		$uninstall u
 		
-		if [[ $? != 1 ]]; then
-			echo
-			chmod 755 $installfile
-			/usr/bin/sudo ./$installfile u
-		fi
+		/usr/bin/sudo ./$installfile u
 cmd;
 	$cmd = <<<cmd
 		wget -qN $installurl
+		chmod 755 $installfile
 		
 		uninstall_$alias.sh u
 		
-		chmod 755 $installfile
 		/usr/bin/sudo ./$installfile u
 cmd;
 } else {

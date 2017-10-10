@@ -1,18 +1,20 @@
 Guideline
 ---
-_revision 20171005_
+_revision 20171010_
 
 ### Addons Menu Process:    
 - **Menu** > **Addons** > download: `addonsdl.php`
 	- compare version
 		- latest version from `addonslist.php`
 		- installed version `red	is-cli hget addons addo`
-	- download and reinstall if update available
+	- update available
+		- switch spinning refresh 'connecting...' to spinning gear 'updating...'
+		- download and reinstall if update available
 	- `opcache_reset()` > `addons.php`
 - **Addons** page: `addons.php`
-	- revision and list from `addonslist.php`
-	- each addon block from `addonslist.php`
-	- install/uninstall/update status based on:
+	- get revision and list from `addonslist.php`
+	- populate each addon block from `addonslist.php`
+	- install/uninstall/update buttons status based on:
 		- installed markers:
 			- `uninstall_<alias>.sh` - file: installed status
 			- `redis-cli hget addons <alias>` - database: installed version
@@ -20,8 +22,8 @@ _revision 20171005_
 	- confirm dialog
 	- user input dialogs for options
 	- cancel any time by `X` button
-- Addons Terminal page: `addonsbash.php`
-	- get script url from `addonslist.php`
+- **Addons Terminal** page: `addonsbash.php`
+	- get download url from `addonslist.php`
 	- prepare command and options
 	- run bash script
 	- (almost) line-by-line output of bash scripts on screen
@@ -154,9 +156,9 @@ array(
 	'± buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh'
-	'± option'        => "{ 
-		'wait'   : 'message text',
-		'confirm': 'message text',
+	'± option'      => "{ 
+		'wait'    : 'message text',
+		'confirm' : 'message text',
 		'yesno'   : 'message text',
 		'yesno1'  : 'message text 1',
 		'yesno2'  : 'message text 2',
@@ -187,8 +189,8 @@ array(
 			'message': 'message text',
 			'label'  : 'label text',
 			'list': {
-				'item1': 'value1',
-				'item2': 'value2',
+				'item1' : 'value1',
+				'item2' : 'value2',
 				'custom': '?'
 			}
 		}
@@ -196,11 +198,11 @@ array(
 
 ),
 ```
-`'± ...'` : optional  
-`'sourcecode'` : 'blank' = no link (only for built-in scripts)  
+`'± ...'` - optional  
+`'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
   
 **`'alias'`** - reference point
-- must be 1st, at index `[0]`
+- must be 1st in each addon
 - must be unique among aliases
 
 **`'version'`** - buttons enable/disable  
@@ -210,7 +212,7 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'buttonlabel'`**  
+**`'buttonlabel'`** - for non-install only
 - `'Show'` - for open `'sourceurl'` in new window
 
 **`'option'`** - user inputs  
@@ -219,7 +221,6 @@ array(
 - options must be **single quoted** json, `" 'key': 'value' "`
 - `*` leading `itemN` = pre-select items
 - dialog types:
-	- `X` - cancel and back to main page
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
 	- `'confirm'` = `Cancel` `Ok`
@@ -243,6 +244,7 @@ array(
 		- `'?'` custom input marker
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - last `key:value` not allow trailing `,`
+- `X` - cancel and back to main page
 ---
 
 **styling** for `description`, `option`
@@ -256,3 +258,10 @@ array(
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
+
+**scripts testing**  
+- get `install.sh`, `uninstall_<alias>.sh` ready
+- open Addons Menu
+- add addon `array(...)` to `addonslist.php`
+- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
+- test install / uninstall

@@ -37,9 +37,9 @@ array(
 	'alias'        => 'dual',
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> (ArchLinux MPD)
-					<br>Best of Video Distro - <white>OSMC</white> (Raspbian Kodi)
-					<br>Best of Dual Boot - <white>NOOBS</white>',
+	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)
+					<br>Best of Video Distro - <white>OSMC</white> 2017-07-1 (Raspbian Kodi)
+					<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
 	'buttonlabel'  => 'Show',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
@@ -207,6 +207,16 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 ),
+/*array(
+	'alias'        => 'spla',
+	'title'        => 'Boot Logo',
+	'version'      => '20171010',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Display RuneAudio logo during boot - Splash screen. (0.4b - no need)',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
+),*/
 array(
 	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
