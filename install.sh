@@ -68,7 +68,6 @@ addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
 installfinish $1
 
-if [[ -t 1 ]]; then
-	title -nt "$info Refresh browser and go to Menu > Addons."
-	clearcache
-fi
+clearcache
+
+[[ -t 1 ]] && title -nt "$info Refresh browser and go to Menu > Addons."
