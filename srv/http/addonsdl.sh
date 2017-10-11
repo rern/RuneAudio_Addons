@@ -14,7 +14,7 @@ if (( $# != 0 )); then
 fi
 
 wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
-if [[ $? == 5 ]]; then # github 'certificate error' code
+if [[ $? == 5 ]]; then # 'certificate error' code
 	systemctl stop ntpd
 	ntpdate pool.ntp.org
 	systemctl start ntpd
