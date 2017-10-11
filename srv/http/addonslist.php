@@ -2,7 +2,7 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>Improve on-screen status while updating</li>
+	<li>Improve time sync for incorrect system time that caused failed download</li>
 ';
 
 $addons = array(
@@ -10,7 +10,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171010',
+	'version'      => '20171015',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
