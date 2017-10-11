@@ -1,3 +1,6 @@
+### 20171010
+- Improve on-screen status while updating
+
 ### 20171005
 - General improvement
 - Bug fixes
