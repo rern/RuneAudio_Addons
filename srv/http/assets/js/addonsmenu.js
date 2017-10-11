@@ -8,7 +8,16 @@ hammeraddons.on( 'tap', function () {
 	$.get(
 		path +'addonsdl.php',
 		function( exit ) {
-			addonsdl( exit, path );
+			if ( exit == 5 ) {
+				$.get(
+					path +'addonsdl.php',
+					function( exit ) {
+						addonsdl( exit, path );
+					}
+				);
+			} else {
+				addonsdl( exit, path );
+			}
 		}
 	);
 } );
@@ -59,7 +68,8 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function( update ) {
-	if ( update == 1 ) $( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
+	var txt = ( update == 1 ) ? 'Updating...' : 'Adjust date...';
+	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>'+ txt );
 }
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
