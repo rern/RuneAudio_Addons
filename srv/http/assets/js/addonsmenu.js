@@ -38,7 +38,7 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( exit, path ) {
-	if ( exit == 8 ) { // server error
+	if ( exit == 1 ) {
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
 			message: 'Download from Addons server failed.'
