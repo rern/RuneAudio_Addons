@@ -45,7 +45,6 @@ function addonsdl( exit, path ) {
 				+'<br>Please try again later.',
 			ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
-				$( '#loadercontent' ).html( '<i class="fa fa-refresh fa-spin"></i>connecting...' );
 			}
 		} );
 	} else {
