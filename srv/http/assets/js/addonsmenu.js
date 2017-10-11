@@ -38,12 +38,10 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( exit, path ) {
-	if ( exit == 5 || exit == 1 ) {
-		var error = ( exit == 5 ) ? 'Addons server certficate error.' : 'Download from Addons server failed.';
-		
+	if ( exit == 1 ) {
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
-			message: error
+			message: 'Download from Addons server failed.'
 				+'<br>Please try again later.',
 			ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
