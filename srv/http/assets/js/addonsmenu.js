@@ -63,7 +63,7 @@ pushstreamAddons.onmessage = function( update ) {
 	if ( update == 1 ) {
 		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
 	} else {
-		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Set date...' );
+		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Adjust date...' );
 	}
 }
 pushstreamAddons.addChannel('addons');
