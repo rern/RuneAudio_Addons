@@ -30,8 +30,7 @@ versionredis=$( redis-cli hget addons addo )
 
 if [[ $versionlist != $versionredis ]]; then
 	wget -qN $installurl -P /srv/http
-	chmod 755 /srv/http/install.sh
-	[[ $? != 0 ]] && exit 1
+	chmod 755 /srv/http/install.sh || exit 1
 	
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
 	
