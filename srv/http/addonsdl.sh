@@ -20,6 +20,8 @@ if [[ $? == 5 ]]; then # github 'certificate error' code
 	systemctl start ntpd
 	
 	wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
+else
+	exit 1
 fi
 
 # new 'addonslist.php'
