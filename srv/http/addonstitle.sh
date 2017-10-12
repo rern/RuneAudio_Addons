@@ -125,6 +125,15 @@ getvalue() {
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
+checkversion04() {
+	if [[ $( redis-cli get release ) == '0.4b' ]]; then
+		addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+		version=$( getvalue version )
+		redis-cli hset addons $alias $version &> /dev/null # mark as installed - disable button
+		title -l '=' "$info $1"
+		exit
+	fi
+}
 installstart() {
 	rm $0
 	
