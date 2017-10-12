@@ -146,6 +146,11 @@ array(
 				<br>Continue?',
 		'wait'    : 'Connect a <white>USB drive</white> before continue.
 				<br>1st drive will be used for shared directories.',
+		'password': {
+			'message': '(for connecting to <white>USB root share</white>)
+					<br>Password for user <white>root</white> (blank = rune):',
+			'label'  : 'Password'
+		},
 		'text1'   : {
 			'message': '<white>File Server</white>:',
 			'label'  : 'Name',
@@ -158,11 +163,6 @@ array(
 		'text3'   : {
 			'message': '<white>Read-Write</white> directory:',
 			'label'  : 'Name'
-		},
-		'password': {
-			'message': '(for connecting to <white>USB root share</white>)
-					<br>Password for user <white>root</white> (blank = rune):',
-			'label'  : 'Password'
 		}
 	}"
 ),
