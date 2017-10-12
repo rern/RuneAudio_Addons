@@ -119,13 +119,13 @@ wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
 }
-getvalue() {
+getvalue() { # $1-key
 	echo "$addonslist" |
 		grep $1'.*=>' |
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
-checkversion04() {
+checkversion04() { # $1-message
 	if [[ $( redis-cli get release ) == '0.4b' ]]; then
 		addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 		version=$( getvalue version )
@@ -134,7 +134,7 @@ checkversion04() {
 		exit
 	fi
 }
-installstart() {
+installstart() { # $1-'u'=update
 	rm $0
 	
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
@@ -163,7 +163,7 @@ getuninstall() {
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
-installfinish() {
+installfinish() { # $1-'u'=update
 	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
@@ -176,7 +176,7 @@ installfinish() {
 	fi
 }
 
-uninstallstart() {
+uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title=$( getvalue title )
 	title=$( tcolor "$title" )
@@ -190,7 +190,7 @@ uninstallstart() {
 	[[ $1 != u ]] && type=Uninstall || type=Update
 	title -l '=' "$bar $type $title ..."
 }
-uninstallfinish() {
+uninstallfinish() { # $1-'u'=update
 	rm $0
 	
 	redis-cli hdel addons $alias &> /dev/null
