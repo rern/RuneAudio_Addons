@@ -12,13 +12,14 @@ Currently available:
 - Aria2
 - Backup-Restore Update
 - BASH Commands
+- Boot Logo (0.4b - already built-in)
 - Expand Partition
 - Fonts - Extended Characters
 - Login Logo for SSH Terminal
 - Rank Mirror Package Servers
 - RuneUI Enhancements
 - RuneUI GPIO
-- RuneUI Password (0.4b - already built-in)
+- RuneUI Password (0.4b - already installed)
 - Samba Upgrade
 - Transmission
 - Webradio Import
