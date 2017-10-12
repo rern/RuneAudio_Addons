@@ -67,8 +67,10 @@ alias=<alias>
 . /srv/http/addonstitle.sh
 
 ### template - function - start message, installed check
-installstart $1
-getuninstall # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
+checkversion04 'RuneAudio 0.4b does not need this addon.' # for 0.4b incompatible addon
+installstart $1                                           # heading
+getuninstall                                              # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
+value=$( getvalue <key> )                                 # get value from array(...)
 
 # start main script ---------------------------------------------------------------------------------->>>
 
