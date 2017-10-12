@@ -53,7 +53,7 @@ _revision 20171015_
 		- must be the same as `install.sh`
 		- destination `/usr/local/bin/` for custom download
 		
-- consult with [JS plugin list]() used by othr addons to avoid redundant install or critical uninstall
+- consult with [JS plugin list]() used by other addons to avoid redundant install or critical uninstall
 - update will be done by uninstall > install
   
 **1.1  `install.sh` template**
