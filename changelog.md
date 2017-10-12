@@ -1,10 +1,6 @@
 ### 20171015
 - Improve time sync for incorrect system time that caused failed download
-
-### 20171010
 - Improve on-screen status while updating
-
-### 20171005
 - General improvement
 - Bug fixes
 
