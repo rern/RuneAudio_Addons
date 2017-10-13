@@ -3,32 +3,45 @@ Guideline
 _revision 20171015_
 
 ### Addons Menu Process:    
-- **Menu** > **Addons** > download: `addonsdl.php`
+- **Menu** > **Addons**
+	- download list
+		- `addonsmenu.js` > `addonsdl.php` > `addonsdl.sh` > `addonslist.php`
 	- compare version
-		- latest version from `addonslist.php`
-		- installed version `red	is-cli hget addons addo`
-	- update available
+		- version from `addonslist.php`
+		- installed version `redis-cli hget addons addo`
+	- update if available
 		- switch spinning refresh 'connecting...' to spinning gear 'updating...'
-		- download and reinstall if update available
-	- `opcache_reset()` > `addons.php`
-- **Addons** page: `addons.php`
-	- get revision and list from `addonslist.php`
-	- populate each addon block from `addonslist.php`
+		- download, uninstall and reinstall if update available
+	- clear cache
+		- `opcache_reset()` > `addons.php`
+		
+- **Addons** page
+	- populate list and block
+		- `addonslist.php` > `addons.php`
 	- install/uninstall/update buttons status based on:
 		- installed markers:
 			- `uninstall_<alias>.sh` - file: installed status
 			- `redis-cli hget addons <alias>` - database: installed version
 		- `addonslist.php` - `'version'`: current version
-	- confirm dialog
-	- user input dialogs for options
-	- cancel any time by `X` button
-- **Addons Terminal** page: `addonsbash.php`
-	- get download url from `addonslist.php`
+	- user input options
+		- `addonsinfo.js`
+		- confirm dialog
+		- user input dialogs for options
+		- cancel any time by `X` button
+	- send script
+		- append options
+		- `addons.js` > `addonsbash.php`
+		
+- **Addons Terminal** page
 	- prepare command and options
-	- run bash script
-	- (almost) line-by-line output of bash scripts on screen
-	- enable `X` button after finished > `opcache_reset()` > back to Addons page
-	
+		- get download url from `addonslist.php`
+	- run script
+		- `addonsbash.php`
+	- line-by-line output of bash scripts on screen
+		- `ob_implicit_flush(); ob_end_flush();`
+	- finish
+		- `opcache_reset()`
+		- enable `X` button after finished > back to Addons page
 ---
 
 ### Each addon requires:  
