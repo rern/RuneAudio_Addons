@@ -2,7 +2,7 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>Improve time sync for incorrect system time that caused failed download</li>
+	<li>Improve on-screen status while updating</li>
 ';
 
 $addons = array(
@@ -10,7 +10,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171015',
+	'version'      => '20171010',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -89,8 +89,9 @@ array(
 	'alias'        => 'pass',
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction. (0.4b - already built-in)',
+	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
@@ -211,8 +212,9 @@ array(
 	'alias'        => 'spla',
 	'title'        => 'Boot Logo',
 	'version'      => '20171010',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Display RuneAudio logo during boot - Splash screen. (0.4b - no need)',
+	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
@@ -247,8 +249,9 @@ array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting after import. (0.4b - no need)',
+	'description'  => 'Fix Webradio sorting after import.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
