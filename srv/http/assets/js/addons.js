@@ -41,7 +41,7 @@ $( '.boxed-group .btn' ).click( function () {
 	type = $thisbtn.text().trim();
 	title = $thisbtn.parent().prev().find( 'span' ).text();
 	
-	if ( type === 'Show' ) {
+	if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
 		return
 	}
