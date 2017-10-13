@@ -150,6 +150,7 @@ uninstallfinish $1
 array(
 	'alias'         => 'alias',
 	'± version'     => 'version',
+	'± only03'      => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
@@ -212,6 +213,9 @@ array(
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
+
+**`'only03'`** - hide if 0.4b incompatible
+	- omit for both versions compatible
 
 **`'buttonlabel'`** - for non-install only
 - `'Show'` - for open `'sourceurl'` in new window
