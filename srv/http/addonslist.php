@@ -2,7 +2,8 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>Improve on-screen status while updating</li>
+	<li>Improve time sync for incorrect system time that caused failed download</li>
+	<li>Display only compatible addons for each RuneAudio version</li>
 ';
 
 $addons = array(
