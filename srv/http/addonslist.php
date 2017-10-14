@@ -211,7 +211,7 @@ array(
 ),
 array(
 	'alias'        => 'spla',
-	'title'        => 'Boot Logo',
+	'title'        => 'Boot Logo *',
 	'version'      => '20171010',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
