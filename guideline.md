@@ -278,8 +278,8 @@ array(
 	- `<code>...</code>`
 
 **scripts testing**  
-- get `install.sh`, `uninstall_<alias>.sh` ready
+- get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
 - open Addons Menu
-- add addon `array(...)` to `addonslist.php`
+- add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
