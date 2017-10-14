@@ -78,6 +78,7 @@ function info( option ) {
 			$( '#infoTextbox' ).val( textvalue );
 			$( '#infoText' ).show();
 			var $infofocus = $( '#infoTextbox' );
+			if ( textvalue ) $( '#infoTextbox' ).select();
 		}
 		if ( passwordlabel ) {
 			$( '#infoPasswordLabel' ).html( passwordlabel +' ' );
