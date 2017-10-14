@@ -2,7 +2,8 @@
 $addonsversion = '1'; // temp: for update before 20171005 - to be removed
 
 $revision = '
-	<li>Improve on-screen status while updating</li>
+	<li>Improve time sync for incorrect system time that caused failed download</li>
+	<li>Display only compatible addons for installed RuneAudio version</li>
 ';
 
 $addons = array(
@@ -10,7 +11,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171010',
+	'version'      => '20171015',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -38,10 +39,10 @@ array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)
-					<br>Best of Video Distro - <white>OSMC</white> 2017-07-1 (Raspbian Kodi)
+					<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)
 					<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
-	'buttonlabel'  => 'Show',
+	'buttonlabel'  => 'Link',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 	'installurl'   => '',
 ),
@@ -89,8 +90,9 @@ array(
 	'alias'        => 'pass',
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction. (0.4b - already built-in)',
+	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
 	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
@@ -207,16 +209,17 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 ),
-/*array(
+array(
 	'alias'        => 'spla',
-	'title'        => 'Boot Logo',
+	'title'        => 'Boot Logo *',
 	'version'      => '20171010',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Display RuneAudio logo during boot - Splash screen. (0.4b - no need)',
+	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
-),*/
+),
 array(
 	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
@@ -247,8 +250,9 @@ array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
+	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix Webradio sorting after import. (0.4b - no need)',
+	'description'  => 'Fix Webradio sorting after import.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),

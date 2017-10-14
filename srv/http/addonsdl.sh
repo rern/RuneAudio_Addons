@@ -14,14 +14,14 @@ if (( $# != 0 )); then
 fi
 
 wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
-if [[ $? == 5 ]]; then # github 'certificate error' code
+if [[ $? == 5 ]]; then # 'certificate error' code
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 2
 	
 	systemctl stop ntpd
 	ntpdate pool.ntp.org
 	systemctl start ntpd
 	
-	wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
+	exit 5
 fi
 
 # new 'addonslist.php'
@@ -31,11 +31,9 @@ versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
 
 if [[ $versionlist != $versionredis ]]; then
-	wget -qN $installurl -P /srv/http
-	chmod 755 /srv/http/install.sh
-	[[ $? != 0 ]] && exit 1
-	
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
+	wget -qN $installurl -P /srv/http
+	chmod 755 /srv/http/install.sh || exit 1
 	
 	/usr/local/bin/uninstall_addo.sh
 	/srv/http/install.sh $branch

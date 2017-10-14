@@ -1,8 +1,8 @@
-### 20171010
+### 20171015
+- Improve time sync for incorrect system time that caused failed download
+- Display only compatible addons for installed RuneAudio version
 - Improve on-screen status while updating
-
-### 20171005
-- General improvement
+- General improvements
 - Bug fixes
 
 ### 20171001

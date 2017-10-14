@@ -3,33 +3,46 @@ Guideline
 _revision 20171015_
 
 ### Addons Menu Process:    
-- **Menu** > **Addons** > download: `addonsdl.php`
-	- sync time if system time was incorrect which will cause certificate error
+
+- **Menu** > **Addons**
+	- download list
+		- `addonsmenu.js` > `addonsdl.php` > `addonsdl.sh` > `addonslist.php`
 	- compare version
-		- latest version from `addonslist.php`
+		- version from `addonslist.php`
 		- installed version `redis-cli hget addons addo`
-	- update available
+	- update if available
 		- switch spinning refresh 'connecting...' to spinning gear 'updating...'
-		- download and reinstall
-	- `opcache_reset()` > `addons.php`
-- **Addons** page: `addons.php`
-	- get revision and list from `addonslist.php`
-	- populate each addon block from `addonslist.php`
+		- download, uninstall and reinstall if update available
+	- clear cache
+		- `opcache_reset()` > `addons.php`
+		
+- **Addons** page
+	- populate list and block
+		- `addonslist.php` > `addons.php`
 	- install/uninstall/update buttons status based on:
 		- installed markers:
 			- `uninstall_<alias>.sh` - file: installed status
 			- `redis-cli hget addons <alias>` - database: installed version
 		- `addonslist.php` - `'version'`: current version
-	- confirm dialog
-	- user input dialogs for options
-	- cancel any time by `X` button
-- **Addons Terminal** page: `addonsbash.php`
-	- get download url from `addonslist.php`
+	- user input options
+		- `addonsinfo.js`
+		- confirm dialog
+		- user input dialogs for options
+		- cancel any time by `X` button
+	- send script
+		- append options
+		- `addons.js` > `addonsbash.php`
+		
+- **Addons Terminal** page
 	- prepare command and options
-	- run bash script
-	- (almost) line-by-line output of bash scripts on screen
-	- enable `X` button after finished > `opcache_reset()` > back to Addons page
-	
+		- get download url from `addonslist.php`
+	- run script
+		- `addonsbash.php`
+	- line-by-line output of bash scripts on screen
+		- `ob_implicit_flush(); ob_end_flush();`
+	- finish
+		- `opcache_reset()`
+		- enable `X` button after finished > back to Addons page
 ---
 
 ### Each addon requires:  
@@ -57,7 +70,7 @@ _revision 20171015_
 			- must be the same as `install.sh` to use `getuninstall` function
 			- destination must be `/usr/local/bin/`
 		
-- consult with [JS plugin list]() used by othr addons to avoid redundant install or critical uninstall
+- consult with [JS plugin list]() used by other addons to avoid redundant install or critical uninstall
 - update will be done by uninstall > install
   
 **1.1  `install.sh` template**
@@ -70,9 +83,10 @@ alias=<alias>
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
-### template - function - start message, installed check
-installstart $1
-getuninstall # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
+### template - function
+installstart $1                                           # start message, installed check
+getuninstall                                              # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
+value=$( getvalue <key> )                                 # get value from array(...)
 
 # start main script ---------------------------------------------------------------------------------->>>
 
@@ -153,6 +167,7 @@ uninstallfinish $1
 array(
 	'alias'         => 'alias',
 	'± version'     => 'version',
+	'± only03'      => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
@@ -216,8 +231,11 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
+**`'only03'`** - hide if 0.4b incompatible
+	- omit for both versions compatible
+
 **`'buttonlabel'`** - for non-install only
-- `'Show'` - for open `'sourceurl'` in new window
+- `'Link'` - for information only (open `'sourceurl'`)
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
@@ -264,7 +282,7 @@ array(
 	- `<code>...</code>`
 
 **scripts testing**  
-- get `install.sh`, `uninstall_<alias>.sh` ready
+- get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
 - open Addons Menu
 - add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)

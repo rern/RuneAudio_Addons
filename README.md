@@ -1,6 +1,6 @@
 Addons Menu for RuneAudio
 ---
-_for RuneAudio 0.3 and 0.4b_
+_for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
    
 **Addons Menu** for easy addons installation via RuneUI.  
 It's the same as running on SSH terminal.  
@@ -9,20 +9,21 @@ Something like mini App Store or mini Play Store.
 <hr>
 
 Currently available:
-- Aria2
-- Backup-Restore Update
+- [Aria2](https://github.com/rern/RuneAudio_Addons)
+- [Backup-Restore Update](https://github.com/rern/RuneAudio/tree/master/backup-restore)
 - BASH Commands
-- Expand Partition
-- Fonts - Extended Characters
-- Login Logo for SSH Terminal
-- Rank Mirror Package Servers
-- RuneUI Enhancements
-- RuneUI GPIO
-- RuneUI Password (0.4b - already built-in)
-- Samba Upgrade
-- Transmission
-- Webradio Import
-- Webradio Sorting (0.4b - no need)
+- [Boot Logo](https://github.com/rern/RuneAudio/tree/master/boot_splash)
+- [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
+- [Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
+- [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
+- [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
+- [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
+- [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
+- [RuneUI Password](https://github.com/rern/RuneUI_password)
+- [Samba Upgrade](https://github.com/rern/RuneAudio/tree/master/samba)
+- [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
+- [Webradio Import](https://github.com/rern/RuneAudio/tree/master/webradio)
+- [Webradio Sorting](https://github.com/rern/RuneAudio/tree/master/webradio)
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 

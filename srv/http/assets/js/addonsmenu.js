@@ -8,7 +8,16 @@ hammeraddons.on( 'tap', function () {
 	$.get(
 		path +'addonsdl.php',
 		function( exit ) {
-			addonsdl( exit, path );
+			if ( exit == 5 ) {
+				$.get(
+					path +'addonsdl.php',
+					function( exit ) {
+						addonsdl( exit, path );
+					}
+				);
+			} else {
+				addonsdl( exit, path );
+			}
 		}
 	);
 } );
@@ -38,16 +47,13 @@ hammeraddons.on( 'press', function () {
 } );
 
 function addonsdl( exit, path ) {
-	if ( exit == 5 || exit == 1 ) {
-		var error = ( exit == 5 ) ? 'Addons server certficate error.' : 'Download from Addons server failed.';
-		
+	if ( exit == 1 ) {
 		info( {
 			icon   : '<i class="fa fa-info-circle fa-2x">',
-			message: error
+			message: 'Download from Addons server failed.'
 				+'<br>Please try again later.',
 			ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
-				$( '#loadercontent' ).html( '<i class="fa fa-refresh fa-spin"></i>connecting...' );
 			}
 		} );
 	} else {
@@ -62,11 +68,8 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function( update ) {
-	if ( update == 1 ) {
-		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
-	} else {
-		$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Set date...' );
-	}
+	var txt = ( update == 1 ) ? 'Updating...' : 'Sync Time...';
+	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>'+ txt );
 }
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();

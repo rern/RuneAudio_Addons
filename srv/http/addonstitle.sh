@@ -119,7 +119,7 @@ wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
 	wget -qN $progress $@
 }
-getvalue() {
+getvalue() { # $1-key
 	echo "$addonslist" |
 		grep $1'.*=>' |
 		cut -d '>' -f 2 |
@@ -132,7 +132,7 @@ rankmirrors() {
 	./rankmirrors.sh
 	rm rankmirrors.sh
 }
-installstart() {
+installstart() { # $1-'u'=update
 	rm $0
 	
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
@@ -161,7 +161,7 @@ getuninstall() {
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
-installfinish() {
+installfinish() { # $1-'u'=update
 	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
@@ -174,7 +174,7 @@ installfinish() {
 	fi
 }
 
-uninstallstart() {
+uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title=$( getvalue title )
 	title=$( tcolor "$title" )
@@ -188,7 +188,7 @@ uninstallstart() {
 	[[ $1 != u ]] && type=Uninstall || type=Update
 	title -l '=' "$bar $type $title ..."
 }
-uninstallfinish() {
+uninstallfinish() { # $1-'u'=update
 	rm $0
 	
 	redis-cli hdel addons $alias &> /dev/null
