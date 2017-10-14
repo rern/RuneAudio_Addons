@@ -126,7 +126,7 @@ getvalue() { # $1-key
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
 rankmirrors() {
-	[[ grep -q '^#Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist ]] && return
+	grep -q '^#Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist && return
 	wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 	chmod +x rankmirrors.sh
 	./rankmirrors.sh
