@@ -127,7 +127,7 @@ getvalue() { # $1-key
 }
 rankmirrors() {
 	[[ grep -q '^#Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist ]] && return
-	wgetnc $gitpath/rankmirrors/rankmirrors.sh
+	wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 	chmod +x rankmirrors.sh
 	./rankmirrors.sh
 }
