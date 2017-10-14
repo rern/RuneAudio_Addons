@@ -233,7 +233,7 @@ array(
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
 **`'only03'`** - hide if 0.4b incompatible
-	- omit for both versions compatible
+- omit for both versions compatible
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
