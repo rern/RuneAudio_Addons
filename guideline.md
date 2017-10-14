@@ -87,7 +87,7 @@ alias=<alias>
 installstart $1            # start message, installed check
 getuninstall               # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
 value=$( getvalue <key> )  # get value from array(...)
-rankmirrors                # fix install package slow/errors download
+rankmirrors                # rank miror servers and 'pacman -Sy' before install packages
 
 # start main script ---------------------------------------------------------------------------------->>>
 
