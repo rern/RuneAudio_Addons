@@ -52,9 +52,9 @@ _revision 20171015_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash script files  
-> must use script default `### template` lines except non-install addons
-> default variables and functions will take care most of on-screen messages and database data 
+> bash script  
+> must use script default `### template` lines except non-install addons  
+> default variables and functions will take care most of on-screen messages and addons database  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
 - install script  
