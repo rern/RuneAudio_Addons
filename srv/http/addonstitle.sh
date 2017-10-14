@@ -125,6 +125,12 @@ getvalue() {
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
+rankmirrors() {
+	[[ grep -q '^#Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist ]] && return
+	wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
+	chmod +x rankmirrors.sh
+	./rankmirrors.sh
+}
 installstart() {
 	rm $0
 	
