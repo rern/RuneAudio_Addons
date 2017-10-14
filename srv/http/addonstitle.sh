@@ -126,10 +126,13 @@ getvalue() { # $1-key
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
 rankmirrors() {
-	! grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist && return
-	wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
-	chmod +x rankmirrors.sh
-	./rankmirrors.sh
+	if grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist; then
+		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
+		chmod +x rankmirrors.sh
+		./rankmirrors.sh
+	else
+		pacman -Sy
+	fi
 }
 installstart() { # $1-'u'=update
 	rm $0
