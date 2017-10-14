@@ -125,6 +125,12 @@ getvalue() { # $1-key
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
 }
+rankmirrors() {
+	[[ grep -q '^#Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist ]] && return
+	wgetnc $gitpath/rankmirrors/rankmirrors.sh
+	chmod +x rankmirrors.sh
+	./rankmirrors.sh
+}
 installstart() { # $1-'u'=update
 	rm $0
 	
