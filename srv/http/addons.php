@@ -27,6 +27,7 @@ echo '
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
+$GLOBALS[ 'release' ] = $redis->get( 'release' );
 $GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
@@ -51,6 +52,8 @@ echo '
 echo $blocks;
 // -------------------------------------------------------------------------------------------------
 function addonblock( $addon ) {
+	if ( $GLOBALS[ 'release' ] == '0.4b' && isset( $addon[ 'only03' ] ) ) return;
+	
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
 	$alias = $addon[ 'alias' ];
