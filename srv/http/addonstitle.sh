@@ -15,7 +15,7 @@ tcolor() {
 	echo -e "\e[38;5;${color}m\e[48;5;${back}m${1}\e[0m"
 }
 
-bar=$( tcolor ' . ' 6 6 )   # [   ]     (white on cyan)
+bar=$( tcolor ' . ' 6 6 )   # [   ]     (cyan on cyan)
 info=$( tcolor ' i ' 0 3 )  # [ i ]     (black on yellow)
 yn=$( tcolor ' ? ' 0 3 )  # [ i ]       (black on yellow)
 warn=$( tcolor ' ! ' 7 1 )  # [ ! ]     (white on red)
