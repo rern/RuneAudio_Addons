@@ -231,7 +231,7 @@ array(
 	- omit for both versions compatible
 
 **`'buttonlabel'`** - for non-install only
-- `'Link'` - for open `'sourceurl'` in new window
+- `'Link'` - for information only (open `'sourceurl'`)
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
