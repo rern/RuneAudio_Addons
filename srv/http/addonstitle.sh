@@ -130,7 +130,6 @@ rankmirrors() {
 	wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 	chmod +x rankmirrors.sh
 	./rankmirrors.sh
-	rm rankmirrors.sh
 }
 installstart() { # $1-'u'=update
 	rm $0
