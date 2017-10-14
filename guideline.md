@@ -3,6 +3,7 @@ Guideline
 _revision 20171015_
 
 ### Addons Menu Process:    
+
 - **Menu** > **Addons**
 	- download list
 		- `addonsmenu.js` > `addonsdl.php` > `addonsdl.sh` > `addonslist.php`
@@ -51,7 +52,7 @@ _revision 20171015_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash script files stored anywhere reviewable  
+> bash script files  
 > must use script default `### template` lines except non-install addons
 > default variables and functions will take care most of on-screen messages and database data 
 > use non-invasive modifications so other addons can survive after install / uninstall  
@@ -63,8 +64,11 @@ _revision 20171015_
 	- restore everything to pre-install state
 	- no need for non-install type
 	- file path:
-		- must be the same as `install.sh`
-		- destination `/usr/local/bin/` for custom download
+		- for install with `master.zip`
+			- must be at `/usr/local/bin/`
+		- for install with individual downloads
+			- must be the same as `install.sh` to use `getuninstall` function
+			- destination must be `/usr/local/bin/`
 		
 - consult with [JS plugin list]() used by other addons to avoid redundant install or critical uninstall
 - update will be done by uninstall > install
