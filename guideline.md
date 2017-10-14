@@ -232,7 +232,8 @@ array(
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'only03'`** - hide if 0.4b incompatible
+**`'only03'`** - compatability
+- hide if for RuneAudio 0.3 only
 - omit for both versions compatible
 
 **`'buttonlabel'`** - for non-install only
