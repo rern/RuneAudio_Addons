@@ -39,7 +39,7 @@ array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)
-					<br>Best of Video Distro - <white>OSMC</white> 2017-07-1 (Raspbian Kodi)
+					<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)
 					<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RPi2-3.Dual.Boot-Rune.OSMC/thumbdual.gif',
 	'buttonlabel'  => 'Link',
