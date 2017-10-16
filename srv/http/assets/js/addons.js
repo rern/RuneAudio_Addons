@@ -272,7 +272,7 @@ function formtemp() {
 		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 		
 		$( 'body' ).append(
-			 '<form id="formtemp" action="addonsbash.php" method="post">'
+			   '<form id="formtemp" action="addonsbash.php" method="post">'
 			+'\n<input type="hidden" name="alias" value="'+ alias +'">'
 			+'\n<input type="hidden" name="type" value="'+ type +'">'
 			+'\n<input type="hidden" name="opt" value="'+ opt +'">'
