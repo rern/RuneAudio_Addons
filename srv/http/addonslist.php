@@ -46,7 +46,7 @@ array(
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 	'installurl'   => '',
 ),
-/*array(
+array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20170925',
@@ -68,7 +68,7 @@ array(
 			}
 		}
 	}"
-),*/
+),
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
