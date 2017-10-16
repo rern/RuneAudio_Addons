@@ -11,7 +11,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171015',
+	'version'      => '20171016',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -49,7 +49,7 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171015',
+	'version'      => '20171016',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
