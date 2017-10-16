@@ -273,11 +273,11 @@ function formtemp() {
 		
 		$( 'body' ).append(
 			 '<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="alias" value="'+ alias +'">'
-			+'<input type="hidden" name="type" value="'+ type +'">'
-			+'<input type="hidden" name="opt" value="'+ opt +'">'
-			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
-			+'</form>'
+			+'\n<input type="hidden" name="alias" value="'+ alias +'">'
+			+'\n<input type="hidden" name="type" value="'+ type +'">'
+			+'\n<input type="hidden" name="opt" value="'+ opt +'">'
+			+'\n<input type="hidden" name="prewidth" value="'+ prewidth +'">'
+			+'\n</form>'
 		);
 		$( '#formtemp' ).submit();
 }
