@@ -70,6 +70,6 @@ var pushstreamAddons = new PushStream( {
 pushstreamAddons.onmessage = function( update ) {
 	var txt = ( update == 1 ) ? 'Updating...' : 'Sync Time...';
 	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>'+ txt );
-}
+};
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();

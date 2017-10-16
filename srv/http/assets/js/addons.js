@@ -25,10 +25,10 @@ $( '.btnun' ).each( function() {
 		title = $thisbtn.parent().prev().find( 'span' ).text();
 		type = 'Update';
 		info( {
-			title:  title,
-			message: 'Reinstall?',
-			cancel: 1,
-			ok: function() {
+			  title  :  title
+			, message: 'Reinstall?'
+			, cancel : 1
+			, ok     : function() {
 				formtemp();
 			}
 		} );
@@ -46,10 +46,10 @@ $( '.boxed-group .btn' ).click( function () {
 		return
 	}
 	info( {
-		title: title,
-		message: type +'?',
-		cancel: 1,
-		ok: function () {
+		  title  : title
+		, message: type +'?'
+		, cancel : 1
+		, ok     : function () {
 			option = $thisbtn.attr( 'option' );
 			if ( option ) {
 				j = 0;
@@ -71,16 +71,16 @@ $( '.thumbnail' ).click( function() {
 function getoptions() {
 	okey = Object.keys( option );
 	olength = okey.length;
-	oj = okey[ j ]
+	oj = okey[ j ];
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
 		case 'wait':
 			info( {
-				icon         :  '<i class="fa fa-info-circle fa-2x">',
-				title        : title,
-				message      : option[ oj ],
-				ok           : function() {
+				  icon         : '<i class="fa fa-info-circle fa-2x">'
+				, title        : title
+				, message      : option[ oj ]
+				, ok           : function() {
 					sendcommand();
 				}
 			} );
@@ -88,10 +88,10 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'confirm':
 			info( {
-				title        : title,
-				message      : option[ oj ],
-				cancel       : 1,
-				ok           : function() {
+				  title        : title
+				, message      : option[ oj ]
+				, cancel       : 1
+				, ok           : function() {
 					sendcommand();
 				}
 			} );
@@ -99,15 +99,15 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
 			info( {
-				title        : title,
-				message      : option[ oj ],
-				cancellabel  : 'No',
-				cancel       : function() {
+				  title        : title
+				, message      : option[ oj ]
+				, cancellabel  : 'No'
+				, cancel       : function() {
 					opt += '0 ';
 					sendcommand();
-				},
-				oklabel      : 'Yes',
-				ok           : function() {
+				}
+				, oklabel      : 'Yes'
+				, ok           : function() {
 					opt += '1 ';
 					sendcommand();
 				}
@@ -117,11 +117,11 @@ function getoptions() {
 		case 'text':
 			var ojson = option[ oj ];
 			info( {
-				title        : title,
-				message      : ojson[ 'message' ],
-				textlabel    : ojson[ 'label' ],
-				textvalue    : ojson[ 'value' ],
-				ok         : function() {
+				  title        : title
+				, message      : ojson.message
+				, textlabel    : ojson.label
+				, textvalue    : ojson.value
+				, ok         : function() {
 					var input = $( '#infoTextbox' ).val();
 					opt += ( input ? input : 0 ) +' ';
 					sendcommand();
@@ -130,13 +130,13 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'password':
-			var ojson = option[ oj ];
-			var msg = ojson[ 'message' ];
+			ojson = option[ oj ];
+			var msg = ojson.message;
 			info( {
-				title        : title,
-				message      : msg,
-				passwordlabel: ojson[ 'label' ],
-				ok:          function() {
+				  title        : title
+				, message      : msg
+				, passwordlabel: ojson.label
+				, ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
 						verifypassword( msg, pwd, function() {
@@ -152,21 +152,20 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'radio':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
-				title        : title,
-				message      : ojson[ 'message' ],
-				radiohtml    : function() {
-					var list = ojson[ 'list' ];
+				  title        : title
+				, message      : ojson.message
+				, radiohtml    : function() {
+					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>\
-							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
+						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
-				},
-				ok           : function() {
+				}
+				, ok           : function() {
 					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
 					opt += radiovalue +' ';
 					sendcommand();
@@ -175,10 +174,10 @@ function getoptions() {
 			$( '#infoRadio input' ).change( function() { // cutom value
 				if ( $( this ).val() === '?' ) {
 					info( {
-						title       : title,
-						message     : ojson[ 'message' ],
-						textlabel   : 'Custom',
-						ok          : function() {
+						  title       : title
+						, message     : ojson.message
+						, textlabel   : 'Custom'
+						, ok          : function() {
 							var input = $( '#infoTextbox' ).val();
 							opt += ( input ? input : 0 ) +' ';
 							sendcommand();
@@ -189,12 +188,12 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'checkbox':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
-				title        : title,
-				message      : ojson[ 'message' ],
-				checkboxhtml : function() {
-					var list = ojson[ 'list' ];
+				  title        : title
+				, message      : ojson.message
+				, checkboxhtml : function() {
+					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
@@ -202,8 +201,8 @@ function getoptions() {
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return checkboxhtml
-				},
-				ok:       function() {
+				}
+				, ok:       function() {
 					$( '#infoCheckbox input[type=checkbox]').each( function() {
 						opt += ( $( this ).is( ':checked' ) ? 1 : 0 ) +' ';
 					} );
@@ -213,22 +212,21 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'select':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
-				title        : title,
-				message      : ojson[ 'message' ],
-				selectlabel  : ojson[ 'label' ],
-				selecthtml   : function() {
-					var list = ojson[ 'list' ];
+				  title        : title
+				, message      : ojson.message
+				, selectlabel  : ojson.label
+				, selecthtml   : function() {
+					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
 						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
-						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'
-							+ key.replace( /^\*/, '' ) +'</option>';
+						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
 					return selecthtml
-				},
-				ok           : function() {
+				}
+				, ok           : function() {
 					opt += $( '#infoSelectbox').val() +' ';
 					sendcommand();
 				}
@@ -236,10 +234,10 @@ function getoptions() {
 			$( '#infoSelectbox' ).change( function() { // cutom value
 				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
 					info( {
-						title        : title,
-						message      : ojson[ 'message' ],
-						textlabel    : 'Custom',
-						ok           : function() {
+						  title        : title
+						, message      : ojson.message
+						, textlabel    : 'Custom'
+						, ok           : function() {
 							var input = $( '#infoTextbox' ).val();
 							opt += ( input ? input : 0 ) +' ';
 							sendcommand();
@@ -269,15 +267,15 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-		var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
-		
-		$( 'body' ).append(
-			'<form id="formtemp" action="addonsbash.php" method="post">'
-			+'<input type="hidden" name="alias" value="'+ alias +'">'
-			+'<input type="hidden" name="type" value="'+ type +'">'
-			+'<input type="hidden" name="opt" value="'+ opt +'">'
-			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
-			+'</form>'
-		);
-		$( '#formtemp' ).submit();
+	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
+	
+	$( 'body' ).append( '\
+		<form id="formtemp" action="addonsbash.php" method="post">\
+			<input type="hidden" name="alias" value="'+ alias +'">\
+			<input type="hidden" name="type" value="'+ type +'">\
+			<input type="hidden" name="opt" value="'+ opt +'">\
+			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
+		</form>\
+	' );
+	$( '#formtemp' ).submit();
 }

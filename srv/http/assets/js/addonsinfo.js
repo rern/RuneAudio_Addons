@@ -1,4 +1,4 @@
-var infohtml = '\
+$( 'body' ).prepend( '\
 <div id="infoOverlay">\
 	<div id="infoBox">\
 		<div id="infoTopBg">\
@@ -28,8 +28,7 @@ var infohtml = '\
 		</div>\
 	</div>\
 </div>\
-'
-$( 'body' ).prepend( infohtml );
+' );
 
 function info( option ) {
 	// reset to default
@@ -51,22 +50,22 @@ function info( option ) {
 		$( '#infoMessage' ).html( option ).show();
 	} else {
 		// option use as info({x: 'x', y: 'y'})
-		var icon = option[ 'icon' ];
-		var title = option[ 'title' ];
-		var message = option[ 'message' ];
-		var textlabel = option[ 'textlabel' ];
-		var textvalue = option[ 'textvalue' ];
-		var passwordlabel = option[ 'passwordlabel' ];
-		var radiohtml = option[ 'radiohtml' ];
-		var checkboxhtml = option[ 'checkboxhtml' ];
-		var selectlabel = option[ 'selectlabel' ];
-		var selecthtml = option[ 'selecthtml' ];
-		var boxwidth = option[ 'boxwidth' ];
-		var ok = option[ 'ok' ];
-		var oklabel = option[ 'oklabel' ];
-		var okcolor = option[ 'okcolor' ];
-		var cancel = option[ 'cancel' ];
-		var cancellabel = option[ 'cancellabel' ];
+		var icon = option.icon;
+		var title = option.title;
+		var message = option.message;
+		var textlabel = option.textlabel;
+		var textvalue = option.textvalue;
+		var passwordlabel = option.passwordlabel;
+		var radiohtml = option.radiohtml;
+		var checkboxhtml = option.checkboxhtml;
+		var selectlabel = option.selectlabel;
+		var selecthtml = option.selecthtml;
+		var boxwidth = option.boxwidth;
+		var ok = option.ok;
+		var oklabel = option.oklabel;
+		var okcolor = option.okcolor;
+		var cancel = option.cancel;
+		var cancellabel = option.cancellabel;
 		
 		if ( icon ) $( '#infoIcon' ).html( icon );
 		if ( title ) $( '#infoTitle' ).html( title );
@@ -128,14 +127,14 @@ function setboxwidth( $box, html ) {
 	var maxW = 0;
 	var spanW = 0;
 	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
-	$box.html( html ).show();                    // show to get width
+	$box.html( html ).show();                   // show to get width
 	setTimeout( function() {                    // wait for radiohtml ready
-		$box.find( 'label' ).each( function() {   // get max width
+		$box.find( 'label' ).each( function() { // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
-		$box.css('padding-left', pad +'px');     // set padding-left
+		$box.css('padding-left', pad +'px');    // set padding-left
 		$( '#infoBox' ).css('left', '50%' );    // move back
 	}, 100);
 }
