@@ -47,7 +47,7 @@ $( '.boxed-group .btn' ).click( function () {
 	}
 	info( {
 		  title  : title
-		, message: type +'?',
+		, message: type +'?'
 		, cancel : 1
 		, ok     : function () {
 			option = $thisbtn.attr( 'option' );
