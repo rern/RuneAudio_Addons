@@ -1,4 +1,4 @@
-var infohtml = '\
+$( 'body' ).prepend( '\
 <div id="infoOverlay">\
 	<div id="infoBox">\
 		<div id="infoTopBg">\
@@ -28,8 +28,7 @@ var infohtml = '\
 		</div>\
 	</div>\
 </div>\
-';
-$( 'body' ).prepend( infohtml );
+' );
 
 function info( option ) {
 	// reset to default
@@ -42,7 +41,6 @@ function info( option ) {
 	$( '#infoOk' ).html( 'Ok' );
 	$( '#infoCancel' ).html( 'Cancel' );
 	$( 'body' ).unbind( 'keypress' );
-	var $infofocus = $( '#infoOk' );
 
 	// simple use as info('message')
 	if ( typeof option != 'object' ) {
@@ -78,13 +76,13 @@ function info( option ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
 			$( '#infoTextbox' ).val( textvalue );
 			$( '#infoText' ).show();
-			$infofocus = $( '#infoTextbox' );
+			var $infofocus = $( '#infoTextbox' );
 			if ( textvalue ) $( '#infoTextbox' ).select();
 		}
 		if ( passwordlabel ) {
 			$( '#infoPasswordLabel' ).html( passwordlabel +' ' );
 			$( '#infoPassword' ).show().focus();
-			$infofocus = $( '#infoPasswordbox' );
+			var $infofocus = $( '#infoPasswordbox' );
 		}
 		if ( radiohtml ) setboxwidth( $( '#infoRadio' ), radiohtml );
 		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
@@ -108,7 +106,7 @@ function info( option ) {
 	}
 	
 	$( '#infoOverlay' ).show();
-	$infofocus.focus();
+	if ( $infofocus ) $infofocus.focus();
 	
 	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
 		$('#infoOverlay').hide();
@@ -129,14 +127,14 @@ function setboxwidth( $box, html ) {
 	var maxW = 0;
 	var spanW = 0;
 	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
-	$box.html( html ).show();                    // show to get width
+	$box.html( html ).show();                   // show to get width
 	setTimeout( function() {                    // wait for radiohtml ready
-		$box.find( 'label' ).each( function() {   // get max width
+		$box.find( 'label' ).each( function() { // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
-		$box.css('padding-left', pad +'px');     // set padding-left
+		$box.css('padding-left', pad +'px');    // set padding-left
 		$( '#infoBox' ).css('left', '50%' );    // move back
 	}, 100);
 }
