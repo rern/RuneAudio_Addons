@@ -118,9 +118,9 @@ function getoptions() {
 			var ojson = option[ oj ];
 			info( {
 				title        : title,
-				message      : ojson[ 'message' ],
-				textlabel    : ojson[ 'label' ],
-				textvalue    : ojson[ 'value' ],
+				message      : ojson.message,
+				textlabel    : ojson.label,
+				textvalue    : ojson.value,
 				ok         : function() {
 					var input = $( '#infoTextbox' ).val();
 					opt += ( input ? input : 0 ) +' ';
@@ -130,12 +130,12 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'password':
-			var ojson = option[ oj ];
-			var msg = ojson[ 'message' ];
+			ojson = option[ oj ];
+			var msg = ojson.message;
 			info( {
 				title        : title,
 				message      : msg,
-				passwordlabel: ojson[ 'label' ],
+				passwordlabel: ojson.label,
 				ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
@@ -152,12 +152,12 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'radio':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
 				title        : title,
-				message      : ojson[ 'message' ],
+				message      : ojson.message,
 				radiohtml    : function() {
-					var list = ojson[ 'list' ];
+					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
@@ -176,7 +176,7 @@ function getoptions() {
 				if ( $( this ).val() === '?' ) {
 					info( {
 						title       : title,
-						message     : ojson[ 'message' ],
+						message     : ojson.message,
 						textlabel   : 'Custom',
 						ok          : function() {
 							var input = $( '#infoTextbox' ).val();
@@ -189,12 +189,12 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'checkbox':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
 				title        : title,
-				message      : ojson[ 'message' ],
+				message      : ojson.message,
 				checkboxhtml : function() {
-					var list = ojson[ 'list' ];
+					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
@@ -213,13 +213,13 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'select':
-			var ojson = option[ oj ];
+			ojson = option[ oj ];
 			info( {
 				title        : title,
-				message      : ojson[ 'message' ],
-				selectlabel  : ojson[ 'label' ],
+				message      : ojson.message,
+				selectlabel  : ojson.label,
 				selecthtml   : function() {
-					var list = ojson[ 'list' ];
+					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
 						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
@@ -237,7 +237,7 @@ function getoptions() {
 				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
 					info( {
 						title        : title,
-						message      : ojson[ 'message' ],
+						message      : ojson.message,
 						textlabel    : 'Custom',
 						ok           : function() {
 							var input = $( '#infoTextbox' ).val();
