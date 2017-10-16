@@ -77,7 +77,7 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'wait':
 			info( {
-				  icon         :  '<i class="fa fa-info-circle fa-2x">'
+				  icon         : '<i class="fa fa-info-circle fa-2x">'
 				, title        : title
 				, message      : option[ oj ]
 				, ok           : function() {
@@ -134,7 +134,7 @@ function getoptions() {
 			var msg = ojson.message;
 			info( {
 				  title        : title
-				, message      : msg,
+				, message      : msg
 				, passwordlabel: ojson.label
 				, ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
