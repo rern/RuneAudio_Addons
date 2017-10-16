@@ -28,7 +28,7 @@ var infohtml = '\
 		</div>\
 	</div>\
 </div>\
-'
+';
 $( 'body' ).prepend( infohtml );
 
 function info( option ) {
@@ -42,6 +42,7 @@ function info( option ) {
 	$( '#infoOk' ).html( 'Ok' );
 	$( '#infoCancel' ).html( 'Cancel' );
 	$( 'body' ).unbind( 'keypress' );
+	var $infofocus = $( '#infoOk' );
 
 	// simple use as info('message')
 	if ( typeof option != 'object' ) {
@@ -51,22 +52,22 @@ function info( option ) {
 		$( '#infoMessage' ).html( option ).show();
 	} else {
 		// option use as info({x: 'x', y: 'y'})
-		var icon = option[ 'icon' ];
-		var title = option[ 'title' ];
-		var message = option[ 'message' ];
-		var textlabel = option[ 'textlabel' ];
-		var textvalue = option[ 'textvalue' ];
-		var passwordlabel = option[ 'passwordlabel' ];
-		var radiohtml = option[ 'radiohtml' ];
-		var checkboxhtml = option[ 'checkboxhtml' ];
-		var selectlabel = option[ 'selectlabel' ];
-		var selecthtml = option[ 'selecthtml' ];
-		var boxwidth = option[ 'boxwidth' ];
-		var ok = option[ 'ok' ];
-		var oklabel = option[ 'oklabel' ];
-		var okcolor = option[ 'okcolor' ];
-		var cancel = option[ 'cancel' ];
-		var cancellabel = option[ 'cancellabel' ];
+		var icon = option.icon;
+		var title = option.title;
+		var message = option.message;
+		var textlabel = option.textlabel;
+		var textvalue = option.textvalue;
+		var passwordlabel = option.passwordlabel;
+		var radiohtml = option.radiohtml;
+		var checkboxhtml = option.checkboxhtml;
+		var selectlabel = option.selectlabel;
+		var selecthtml = option.selecthtml;
+		var boxwidth = option.boxwidth;
+		var ok = option.ok;
+		var oklabel = option.oklabel;
+		var okcolor = option.okcolor;
+		var cancel = option.cancel;
+		var cancellabel = option.cancellabel;
 		
 		if ( icon ) $( '#infoIcon' ).html( icon );
 		if ( title ) $( '#infoTitle' ).html( title );
@@ -77,13 +78,13 @@ function info( option ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
 			$( '#infoTextbox' ).val( textvalue );
 			$( '#infoText' ).show();
-			var $infofocus = $( '#infoTextbox' );
+			$infofocus = $( '#infoTextbox' );
 			if ( textvalue ) $( '#infoTextbox' ).select();
 		}
 		if ( passwordlabel ) {
 			$( '#infoPasswordLabel' ).html( passwordlabel +' ' );
 			$( '#infoPassword' ).show().focus();
-			var $infofocus = $( '#infoPasswordbox' );
+			$infofocus = $( '#infoPasswordbox' );
 		}
 		if ( radiohtml ) setboxwidth( $( '#infoRadio' ), radiohtml );
 		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
@@ -107,7 +108,7 @@ function info( option ) {
 	}
 	
 	$( '#infoOverlay' ).show();
-	if ( $infofocus ) $infofocus.focus();
+	$infofocus.focus();
 	
 	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
 		$('#infoOverlay').hide();
