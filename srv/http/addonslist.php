@@ -72,7 +72,7 @@ array(
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20171015',
+	'version'      => '20171016',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
