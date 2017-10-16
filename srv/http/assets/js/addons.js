@@ -71,7 +71,7 @@ $( '.thumbnail' ).click( function() {
 function getoptions() {
 	okey = Object.keys( option );
 	olength = okey.length;
-	oj = okey[ j ]
+	oj = okey[ j ];
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
@@ -99,7 +99,7 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
 			info( {
-				  title        : title,
+				  title        : title
 				, message      : option[ oj ]
 				, cancellabel  : 'No'
 				, cancel       : function() {
@@ -161,8 +161,7 @@ function getoptions() {
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
-						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>\
-							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
+						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
 				}
@@ -223,8 +222,7 @@ function getoptions() {
 					var selecthtml = '';
 					for ( var key in list ) {
 						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
-						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'
-							+ key.replace( /^\*/, '' ) +'</option>';
+						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
 					return selecthtml
 				}
