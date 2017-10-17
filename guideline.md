@@ -89,10 +89,10 @@ getuninstall               # only if uninstall_<alias>.sh not in /usr/local/bin 
 value=$( getvalue <key> )  # get value from array(...)
 rankmirrors                # rank miror servers and 'pacman -Sy' before install packages
 
-# start main script ---------------------------------------------------------------------------------->>>
+# start main script -------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/master.zip # whole repository download
+wgetnc https://github.com/<name>/<repository>/archive/master.zip            # whole repository download
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
@@ -100,8 +100,8 @@ mv /<path>/<file>{,.backup}
 echo -e "$bar Install new files ..."
 rm -rf /tmp/install
 mkdir -p /tmp/install
-bsdtar -xf master.zip --strip 1 --exclude '<directory>/' -C /tmp/install
-rm master.zip /tmp/install/* &> /dev/null
+bsdtar -xf $branch.zip --strip 1 --exclude '<directory>/' -C /tmp/install  # '$branch': default = master or $1
+rm $branch.zip /tmp/install/* &> /dev/null
 
 chown -R http:http /tmp/install
 chown -R root:root /tmp/install/usr/local/bin/uninstall*
@@ -121,7 +121,7 @@ if ! grep -q 'check string' $file; then
 	sed -i 's/existing/new/' $file
 fi
 
-# end main script ------------------------------------------------------------------------------------<<<
+# end main script ----------------------------------------------------------------------------------<<<
 
 ### template - function - save version to database, finish message
 installfinish $1
@@ -143,7 +143,7 @@ alias=<alias>
 ### template - function - start message, installed check
 uninstallstart $1
 
-# start main script ----------------------------------------------------------------------------------->>>
+# start main script -------------------------------------------------------------------------------->>>
 
 echo -e "$bar Remove files ..."
 rm -v /<path>/<file>
@@ -154,7 +154,7 @@ echo $file
 sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
 
-# end main script -----------------------------------------------------------------------------------<<<
+# end main script ---------------------------------------------------------------------------------<<<
 
 ### template - function - remove version from database, finish message
 uninstallfinish $1
