@@ -80,6 +80,8 @@ _revision 20171015_
 # required
 alias=<alias>
 
+branch=master   # change for testing
+
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
@@ -92,7 +94,7 @@ rankmirrors                # rank miror servers and 'pacman -Sy' before install 
 # start main script -------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/master.zip            # whole repository download
+wgetnc https://github.com/<name>/<repository>/archive/$branch.zip           # whole repository download
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
@@ -100,7 +102,7 @@ mv /<path>/<file>{,.backup}
 echo -e "$bar Install new files ..."
 rm -rf /tmp/install
 mkdir -p /tmp/install
-bsdtar -xf $branch.zip --strip 1 --exclude '<directory>/' -C /tmp/install  # '$branch': default = master or $1
+bsdtar -xf $branch.zip --strip 1 --exclude '<directory>/' -C /tmp/install
 rm $branch.zip /tmp/install/* &> /dev/null
 
 chown -R http:http /tmp/install
