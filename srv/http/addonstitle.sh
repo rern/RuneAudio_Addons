@@ -150,6 +150,10 @@ installstart() { # $1-'u'=update
 	
 	timestart
 	
+	# for testing branch
+	branch=master
+	(( $# != 0 )) && [[ $1 != u ]] && branch=$1
+
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 getuninstall() {
