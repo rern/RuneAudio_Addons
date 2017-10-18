@@ -32,11 +32,11 @@ li {
 }
 .revision:after,
 #list li:after {
-	content: "\2003▼";
+	content: "\2002▼";
 	color: #0095d8;
 }
 .revisionup:after {
-	content: '\2003▲' !important;
+	content: '\2002▲' !important;
 }
 .boxed-group {
 	padding: 10px 20px;
