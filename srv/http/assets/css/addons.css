@@ -16,6 +16,11 @@ h1 {
 	vertical-align: 10px;
 	width: 25px;
 }
+.issues {
+	text-align: right;
+	border-bottom: 1px solid #34495e;
+	display: block;
+}
 #detail ul {
 	font-size: 14px;
 }
@@ -25,7 +30,7 @@ li {
 #list {
 	margin-top: 15px;
 }
-#revision:after,
+.revision:after,
 #list li:after {
 	content: "\2003▼";
 	color: #0095d8;
