@@ -1,19 +1,11 @@
 <?php
-$addonsversion = '1'; // temp: for update before 20171005 - to be removed
-
-$revision = '
-	<li>Improve time sync for incorrect system time that caused failed download</li>
-	<li>Display only compatible addons for installed RuneAudio version</li>
-';
-
 $addons = array(
 
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171016',
-	'revision'     => '<li>Improve time sync for incorrect system time that caused failed download</li>
-					<li>Display only compatible addons for installed RuneAudio version</li>',
+	'version'      => '20171020',
+	'revision'     => '<li>Add update revision of each addon</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
