@@ -1,9 +1,9 @@
-// changelog show/hide
-$( '#revision' ).click( function() {
-	$( '#detail' ).toggle();
+// revision show/hide
+$( '.revision' ).click( function(e) {
+	e.stopPropagation();
+	$( this ).parent().parent().next().toggle();
 	$( this ).toggleClass( 'revisionup' );
 } );
-
 // sroll up click
 $( '#list li' ).click( function() {
 	var alias = this.getAttribute( 'alias' );
