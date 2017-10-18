@@ -291,3 +291,4 @@ array(
 - add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
+- for branch test, append argument `branchname` to `installurl`
