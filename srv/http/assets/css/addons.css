@@ -151,6 +151,7 @@ a:hover {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
     color: #0095d8;
 }
+.revision:hover:after,
 legend a:hover,
 legend:hover:after,
 a[href^="http"]:hover,
