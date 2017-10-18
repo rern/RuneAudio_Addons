@@ -6,22 +6,9 @@ $addonsversion = $addons[ $indexaddo ][ 'version' ];
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend>
-		<a id="revision"><white>'.$addonsversion.'</white>&ensp;revision</a>
-		<a href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
+	<a class="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
-		</a><br>
-		
-		<div  id="detail" style="display: none;">
-			<ul>'
-				.$revision.'
-			</ul>
-			<a href="https://github.com/rern/RuneAudio_Addons/blob/master/changelog.md" target="_blank">
-				changelog&ensp;<i class="fa fa-external-link"></i>
-			</a><br>
-			<br>
-		</div>
-	</legend>
+	</a>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -87,7 +74,7 @@ function addonblock( $addon ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
 	}
-	// addon blocks -------------------------------------------------------------
+	// addon blocks -------------------------------------------------------------<a class="revision"><white>'.$version.'</white></a>
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
 	if ( !$addon[ 'sourcecode' ] ) $detail = '';
@@ -96,7 +83,16 @@ function addonblock( $addon ) {
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
-			<legend title="Back to top">'.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>&emsp;<p>'.$version.'&ensp;●&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p></legend>
+			<legend title="Back to top">'
+				.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>
+				&emsp;<p><a class="revision">'.$version.'</a>
+				&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p>
+			</legend>
+			<div class="detail" style="display: none;">
+				<ul>'
+					.$addon[ 'revision' ].'
+				</ul>
+			</div>
 			<form class="form-horizontal" alias="'.$alias.'">
 				<p>'.$addon[ 'description' ].$detail.'</p>'
 				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
