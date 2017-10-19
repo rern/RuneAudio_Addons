@@ -68,11 +68,7 @@ $addon = $addons[ $aliasindex ];
 $installurl = $addon[ 'installurl' ];
 
 $optarray = explode( ' ', $opt );
-$optlast = end( $optarray );
-$opt2ndlast = prev( $optarray ); // move array pointer to previous
-if ( $opt2ndlast === '-b' ) 
-	$installurl = str_replace( 'raw/master', 'raw/'.$optlast, $installurl )
-;
+if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
 
 $installfile = basename( $installurl );
 $title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
