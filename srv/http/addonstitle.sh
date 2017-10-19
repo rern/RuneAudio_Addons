@@ -151,10 +151,8 @@ installstart() { # $1-'u'=update
 	timestart
 	
 	# for testing branch
-	if [[ $1 == '-b' ]]; then
-		branch=$2
-		shift
-		shift
+	if [[ ${@:(-2):1} == '-b' ]]; then
+		branch=${@:$#}
 	else
 		branch=master
 	fi
