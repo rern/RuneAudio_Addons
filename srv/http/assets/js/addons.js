@@ -15,7 +15,7 @@ $( 'legend' ).click( function() {
 	window.scrollTo( 0, 0 );
 } );
 
-// buttons click / click-hold
+// branch test
 $( '.btnin' ).each( function() {
 	var $thisbtn = $( this );
 	var hammerbtn = new Hammer( this );
@@ -32,7 +32,7 @@ $( '.btnin' ).each( function() {
 			, textvalue: 'UPDATE'
 			, cancel   : 1
 			, ok       : function() {
-				branch = '-b '+ $( '#infoTextbox' ).val();
+				branch = $( '#infoTextbox' ).val() +' -b';
 				option = $thisbtn.attr( 'option' );
 				if ( option ) {
 					j = 0;
