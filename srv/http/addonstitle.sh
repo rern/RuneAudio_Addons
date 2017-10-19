@@ -150,6 +150,15 @@ installstart() { # $1-'u'=update
 	
 	timestart
 	
+	# for testing branch
+	if [[ $1 == '-b' ]]; then
+		branch=$2
+		shift
+		shift
+	else
+		branch=master
+	fi
+
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 getuninstall() {
