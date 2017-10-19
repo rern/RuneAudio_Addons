@@ -63,7 +63,7 @@ function addonblock( $addon ) {
 			$option = '';
 		}
 		$check = '';
-		$btnin = '<a class="btn btn-default" '.$option.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$btnin = '<a class="btn btn-default btnin" '.$option.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
