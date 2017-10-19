@@ -31,7 +31,7 @@ $( '.btnin' ).each( function() {
 			, textvalue: 'UPDATE'
 			, cancel   : 1
 			, ok       : function() {
-				branch = $( '#infoTextbox' ).val();
+				opt = '-b '+ $( '#infoTextbox' ).val();
 				formtemp();
 			}
 		} );
@@ -40,7 +40,6 @@ $( '.btnin' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
 	opt = '';
-	branch = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
 	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
@@ -278,7 +277,6 @@ function formtemp() {
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="branch" value="'+ branch +'">\
 			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
 		</form>\
 	' );
