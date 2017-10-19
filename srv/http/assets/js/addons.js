@@ -16,19 +16,22 @@ $( 'legend' ).click( function() {
 } );
 
 // buttons click / click-hold
-$( '.btnun' ).each( function() {
+$( '.btnin' ).each( function() {
 	var $thisbtn = $( this );
+	opt = '';
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function () {
-		opt = '';
 		alias = $thisbtn.parent().attr( 'alias' );
-		title = $thisbtn.parent().prev().find( 'span' ).text();
-		type = 'Update';
+		type = $thisbtn.text().trim();
+		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 		info( {
-			  title  :  title
-			, message: 'Reinstall?'
-			, cancel : 1
-			, ok     : function() {
+			  title    : title
+			, message  : type +' Branch Test?'
+			, textlabel: 'Branch'
+			, textvalue: 'UPDATE'
+			, cancel   : 1
+			, ok       : function() {
+				branch = $( '#infoTextbox' ).val();
 				formtemp();
 			}
 		} );
@@ -37,9 +40,10 @@ $( '.btnun' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
 	opt = '';
+	branch = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
-	title = $thisbtn.parent().prev().find( 'span' ).text();
+	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 	
 	if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
@@ -274,6 +278,7 @@ function formtemp() {
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
+			<input type="hidden" name="branch" value="'+ branch +'">\
 			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
 		</form>\
 	' );
