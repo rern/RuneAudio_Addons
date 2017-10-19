@@ -53,7 +53,7 @@ function addonblock( $addon ) {
 		} else {
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a class="btn btn-default btnun"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		if ( isset( $addon[ 'option' ])) {
 			$addonoption = preg_replace( '/\n|\t/', '', $addon[ 'option' ] );

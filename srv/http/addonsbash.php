@@ -59,13 +59,17 @@ setTimeout( function() {
 <?php
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
+$option = $_POST[ 'opt' ] ? $_POST[ 'opt' ] : '';
+$branch = $_POST[ 'branch' ] ? $_POST[ 'branch' ] : '';
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
 $arrayalias = array_column( $addons, 'alias' );
 $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $installurl = $addon[ 'installurl' ];
+if ( $branch ) $installurl = str_replace( 'raw/master', 'raw/'.$branch, $installurl );
 $installfile = basename( $installurl );
+$installbranch = $branch ? '-b '.$branch : '';
 $title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
 $install = <<<cmd
@@ -81,7 +85,7 @@ $install = <<<cmd
 		fi
 	fi
 	chmod 755 $installfile
-	/usr/bin/sudo ./$installfile
+	/usr/bin/sudo ./$installfile $installbranch
 cmd;
 $uninstall = <<<cmd
 	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
@@ -90,10 +94,8 @@ cmd;
 $cmdinstall = <<<cmd
 	wget -qN $installurl
 	chmod 755 $installfile
-	./$installfile
+	./$installfile $branch
 cmd;
-
-$option = ( isset( $_POST[ 'opt' ] ) ) ? $_POST[ 'opt' ] : '';
 
 if ( $type === 'Uninstall' ) {
 	$command = $uninstall;
