@@ -69,8 +69,8 @@ array(
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20171016',
-	'revision'     => '<li>Switch to online package installation</li>',
+	'version'      => '20171020',
+	'revision'     => '<li>General improvements</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
