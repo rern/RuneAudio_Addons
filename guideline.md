@@ -77,16 +77,14 @@ _revision 20171020_
 ```sh
 #!/bin/bash
 
-# required
+# main reference
 alias=<alias>
-
-branch=master   # change for testing
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
 ### template - function
-installstart $1            # start message, installed check
+installstart $@            # start message, installed check
 getuninstall               # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
 value=$( getvalue <key> )  # get value from array(...)
 rankmirrors                # rank miror servers and 'pacman -Sy' before install packages
@@ -94,7 +92,7 @@ rankmirrors                # rank miror servers and 'pacman -Sy' before install 
 # start main script -------------------------------------------------------------------------------->>>
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/$branch.zip           # whole repository download
+wgetnc https://github.com/<name>/<repository>/archive/$branch.zip   # default: branch=master
 
 echo -e "$bar Backup files ..."
 mv /<path>/<file>{,.backup}
@@ -126,7 +124,7 @@ fi
 # end main script ----------------------------------------------------------------------------------<<<
 
 ### template - function - save version to database, finish message
-installfinish $1
+installfinish $@
 
 # extra info if any
 title -nt "extra info"
@@ -136,14 +134,14 @@ title -nt "extra info"
 ```sh
 #!/bin/bash
 
-# required
+# main reference
 alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
 ### template - function - start message, installed check
-uninstallstart $1
+uninstallstart $@
 
 # start main script -------------------------------------------------------------------------------->>>
 
@@ -159,7 +157,7 @@ mv -v /<path>/<file>{.backup,}
 # end main script ---------------------------------------------------------------------------------<<<
 
 ### template - function - remove version from database, finish message
-uninstallfinish $1
+uninstallfinish $@
 ```
   
 
