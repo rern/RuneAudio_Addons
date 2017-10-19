@@ -18,9 +18,10 @@ $( 'legend' ).click( function() {
 // buttons click / click-hold
 $( '.btnin' ).each( function() {
 	var $thisbtn = $( this );
-	opt = '';
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function () {
+		opt = '';
+		branch = '';
 		alias = $thisbtn.parent().attr( 'alias' );
 		type = $thisbtn.text().trim();
 		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
@@ -31,8 +32,16 @@ $( '.btnin' ).each( function() {
 			, textvalue: 'UPDATE'
 			, cancel   : 1
 			, ok       : function() {
-				opt = '-b '+ $( '#infoTextbox' ).val();
-				formtemp();
+				branch = '-b '+ $( '#infoTextbox' ).val();
+				option = $thisbtn.attr( 'option' );
+				if ( option ) {
+					j = 0;
+					option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
+					option = JSON.parse( option );
+					getoptions();
+				} else {
+					formtemp();
+				}
 			}
 		} );
 	} );
@@ -265,6 +274,7 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
+		opt += branch;
 		formtemp();
 	}
 }
