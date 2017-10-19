@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171015_
+_revision 20171020_
 
 ### Addons Menu Process:    
 
@@ -52,7 +52,7 @@ _revision 20171015_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash script  
+> bash scripts on GitHub  
 > must use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of on-screen messages and addons database  
 > use non-invasive modifications so other addons can survive after install / uninstall  
@@ -285,10 +285,14 @@ array(
 	- `<white>...</white>`
 	- `<code>...</code>`
 
-**scripts testing**  
+**enlist to Addons Menu**
 - get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
 - open Addons Menu
 - add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
-- for branch test, append argument `branchname` to `installurl`
+
+- request to create a repisitory in `https://github.com/RuneAddons`
+- `fork` the repository to add scripts
+- `fork` **Addons Menu** to add `array(...)`
+- `pull request` for both `fork`s
