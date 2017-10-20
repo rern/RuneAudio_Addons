@@ -164,7 +164,7 @@ getinstallzip() {
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
 	
 	echo -e "$bar Get files ..."
-	wgetnc installzip
+	wgetnc $installzip
 
 	echo -e "$bar Install new files ..."
 	rm -rf  /tmp/install
