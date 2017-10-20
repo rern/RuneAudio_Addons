@@ -1,3 +1,8 @@
+### 20171020
+- Add update revision of each addon
+- Add long-press Install for branch testing
+- Remove long-press Uninstall for forced update
+
 ### 20171015
 - Improve time sync for incorrect system time that caused failed download
 - Display only compatible addons for installed RuneAudio version
