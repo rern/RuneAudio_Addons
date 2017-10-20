@@ -14,7 +14,7 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 # import template function
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
 installstart $@
