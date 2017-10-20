@@ -126,7 +126,7 @@ cmd;
 			./$installfile
 cmd;
 	} else {
-		$command = '/usr/bin/sudo';
+		$command = '/usr/bin/sudo '.$opt;
 		$commandtxt = str_replace( '/usr/bin/', '', $opt );
 		$commandtxt = preg_replace( '/;\s*/', "\n", $commandtxt );
 		$commandtxt .= '<br><br><a class="ck">'.str_repeat( '=', $dash ).'</a>';
