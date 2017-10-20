@@ -49,6 +49,7 @@ $( '.btnin' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	var $thisbtn = $( this );
 	opt = '';
+	branch = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
 	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
