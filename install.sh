@@ -27,7 +27,7 @@ rm -rf  /tmp/install
 mkdir -p /tmp/install
 bsdtar -xf master.zip --strip 1 -C /tmp/install
 
-rm $branch.zip /tmp/install/* &> /dev/null
+rm master.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
 chmod -R 755 /tmp/install
 
