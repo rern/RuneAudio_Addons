@@ -2,10 +2,6 @@
 
 alias=addo
 
-# for testing branch
-branch=master
-(( $# != 0 )) && [[ $1 != u ]] && branch=$1
-
 if [[ ! -e /srv/http/addonslist.php ]]; then
 # dummy for 'installstart': sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php
 	echo "
