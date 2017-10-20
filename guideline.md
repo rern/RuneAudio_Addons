@@ -54,12 +54,12 @@ _revision 20171020_
 
 > bash scripts on GitHub  
 > must use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of on-screen messages and addons database  
+> default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
 - install script  
-	- install new files with `getinstallzip`
-		- must be in directories as of target
+	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
+		- extracted to respective directory of target root
 		- files in repository root will be removed
 	- use modify over replace files unless necessary
 	- make backup if replace files
