@@ -1,38 +1,29 @@
 #!/bin/bash
 
-# change version number in RuneAudio_Addons/srv/http/addonslist.php
-
-alias=addo
-
+# for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
-# dummy for 'installstart': sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php
 	echo "
-		'alias'   => 'addo',
-		'title'   => 'Addons Menu',
+		'alias'      => 'addo',
+		'title'      => 'Addons Menu',
+		'installurl' => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 	" > /srv/http/addonslist.php
 fi
 
-# import template function
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitle.sh -P /srv/http
+# for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
+[[ ${@:$#} == '-b' ]] && branch=${@:(-2):1} || branch=master
+wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
+
+
+# change version number in RuneAudio_Addons/srv/http/addonslist.php
+
+alias=addo
+
 . /srv/http/addonstitle.sh
 
 installstart $@
 
-echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
-
-echo -e "$bar Install new files ..."
-rm -rf  /tmp/install
-mkdir -p /tmp/install
-bsdtar -xf master.zip --strip 1 -C /tmp/install
-
-rm master.zip /tmp/install/* &> /dev/null
-chown -R http:http /tmp/install/srv
-chmod -R 755 /tmp/install
-
-cp -rvfp /tmp/install/* /
-rm -rf /tmp/install
+getinstallzip
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
