@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# change version number in RuneAudio_Addons/srv/http/addonslist.php
+
 alias=addo
 
 if [[ ! -e /srv/http/addonslist.php ]]; then
