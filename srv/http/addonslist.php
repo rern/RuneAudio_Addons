@@ -265,6 +265,17 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-
+array(
+	'alias'        => 'brea',
+	'title'        => 'Library Breadcrumb',
+	'version'      => '20171025',
+	'revision'     => '<li>Initial release</li>',
+	'only03'       => '1',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Library browsing breadcrumb.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/breadcrumb',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/breadcrumb/install.sh',
+),
+	
 );
 ?>
