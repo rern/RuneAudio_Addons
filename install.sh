@@ -20,12 +20,12 @@ wget -qN https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonstitl
 installstart $@
 
 echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/$branch.zip
+wgetnc https://github.com/rern/RuneAudio_Addons/archive/master.zip
 
 echo -e "$bar Install new files ..."
 rm -rf  /tmp/install
 mkdir -p /tmp/install
-bsdtar --exclude='.*' --exclude='*.md' -xvf $branch.zip --strip 1 -C /tmp/install
+bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
 
 rm $branch.zip /tmp/install/* &> /dev/null
 chown -R http:http /tmp/install/srv
