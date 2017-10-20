@@ -47,7 +47,7 @@ array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171025',
-	'revision'     => '<li>Split <white>library breadcrumb</white> to separated addon.</li>',
+	'revision'     => '<li>Split <white>library breadcrumb</white> to separated addon to avoid conflict.</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
