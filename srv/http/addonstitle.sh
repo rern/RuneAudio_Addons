@@ -159,6 +159,11 @@ installstart() { # $1-'u'=update
 	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
+getinstall() {
+	installurl=$( getvalue installurl )
+	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
+	wgetnc installzip
+}
 getuninstall() {
 	installurl=$( getvalue installurl )
 	installurl=${installurl/raw\/master/raw\/$branch}
