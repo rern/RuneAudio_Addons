@@ -46,9 +46,8 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171016',
-	'revision'     => '<li>Improve <white>lyrics feature</white></li>
-					<li>Fix <white>Addons Menu font</white> removal conflict</li>',
+	'version'      => '20171020',
+	'revision'     => '<li>Split <white>library breadcrumb</white> to separated addon to avoid conflict.</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -265,6 +264,17 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/install.sh',
 ),
-
+array(
+	'alias'        => 'brea',
+	'title'        => 'Library Breadcrumb',
+	'version'      => '20171020',
+	'revision'     => '<li>Initial release</li>',
+	'only03'       => '1',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Library browsing breadcrumb.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/breadcrumb',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/breadcrumb/install.sh',
+),
+	
 );
 ?>
