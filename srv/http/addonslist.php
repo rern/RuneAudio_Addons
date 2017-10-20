@@ -272,7 +272,7 @@ array(
 	'revision'     => '<li>Initial release</li>',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Library browsing breadcrumb.',
+	'description'  => 'Breadcrumb for navigating directly to each directory in path.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/breadcrumb',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/breadcrumb/install.sh',
 ),
