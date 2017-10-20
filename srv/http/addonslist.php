@@ -7,7 +7,8 @@ array(
 	'version'      => '20171020',
 	'revision'     => '<li>Add <white>update revision</white> of each addon</li>
 					<li>Add long-press Install for <white>branch testing</white></li>
-					<li>Remove long-press Uninstall for <white>forced update</white></li>',
+					<li>Remove long-press Uninstall for <white>forced update</white></li>
+					<li>Improve script templates',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
