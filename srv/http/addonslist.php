@@ -46,9 +46,8 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171016',
-	'revision'     => '<li>Improve <white>lyrics feature</white></li>
-					<li>Fix <white>Addons Menu font</white> removal conflict</li>',
+	'version'      => '20171025',
+	'revision'     => '<li>Split <white>library breadcrumb</white> to separated addon.</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
