@@ -58,6 +58,9 @@ _revision 20171020_
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
 - install script  
+	- install new files with `getinstallzip`
+		- must be in directories as of target
+		- files in repository root will be removed
 	- use modify over replace files unless necessary
 	- make backup if replace files
 - uninstall script
@@ -85,43 +88,27 @@ alias=<alias>
 
 ### template - function
 installstart $@            # start message, installed check
-getuninstall               # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
-value=$( getvalue <key> )  # get value from array(...)
-rankmirrors                # rank miror servers and 'pacman -Sy' before install packages
 
-# start main script -------------------------------------------------------------------------------->>>
+getinstallzip              # get repository zip and extract to system directories
 
-echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/$branch.zip   # default: branch=master
+rankmirrors                # optional - rank miror servers and 'pacman -Sy' before install packages
 
-echo -e "$bar Backup files ..."
-mv /<path>/<file>{,.backup}
+# start custom script -------------------------------------------------------------------------------->>>
 
-echo -e "$bar Install new files ..."
-rm -rf /tmp/install
-mkdir -p /tmp/install
-bsdtar -xf $branch.zip --strip 1 --exclude '<directory>/' -C /tmp/install
-rm $branch.zip /tmp/install/* &> /dev/null
-
-chown -R http:http /tmp/install
-chown -R root:root /tmp/install/usr/local/bin/uninstall*
-chmod -R 755 /tmp/install
-
-cp -rv /tmp/install/* /
-rm -r /tmp/install
-
-echo -e "$bar Create new files ..."
-echo 'content' > /<path>/<newfile>
+echo -e "$bar <package> package ..."
+pacman -S --noconfirm <packages>
 
 echo -e "$bar Modify files ..."
-file=<path>/<file>
+file=/<path>/<file>
 echo $file
 if ! grep -q 'check string' $file; then
 	echo 'content' >> $file
 	sed -i 's/existing/new/' $file
 fi
 
-# end main script ----------------------------------------------------------------------------------<<<
+echo 'content' >> /<path>/<newfile>
+
+# end custom script ----------------------------------------------------------------------------------<<<
 
 ### template - function - save version to database, finish message
 installfinish $@
@@ -143,7 +130,10 @@ alias=<alias>
 ### template - function - start message, installed check
 uninstallstart $@
 
-# start main script -------------------------------------------------------------------------------->>>
+# start custom script -------------------------------------------------------------------------------->>>
+
+echo -e "$bar Remove <package> ..."
+pacman -R noconfirm <packages>
 
 echo -e "$bar Remove files ..."
 rm -v /<path>/<file>
@@ -154,7 +144,7 @@ echo $file
 sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
 
-# end main script ---------------------------------------------------------------------------------<<<
+# end custom script ---------------------------------------------------------------------------------<<<
 
 ### template - function - remove version from database, finish message
 uninstallfinish $@
@@ -168,6 +158,7 @@ uninstallfinish $@
 array(
 	'alias'         => 'alias',
 	'± version'     => 'version',
+	'revision'      => 'revision',
 	'± only03'      => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
@@ -175,7 +166,7 @@ array(
 	'± thumbnail'   => 'https://url/to/image/w100px',
 	'± buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
-	'installurl'    => 'https://url/for/wget/install.sh'
+	'installurl'    => 'https://url/for/wget/install.sh',
 	'± option'      => "{ 
 		'wait'    : 'message text',
 		'confirm' : 'message text',
