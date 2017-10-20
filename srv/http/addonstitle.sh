@@ -159,10 +159,24 @@ installstart() { # $1-'u'=update
 	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
-getinstall() {
+getinstallzip() {
 	installurl=$( getvalue installurl )
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
+	
+	echo -e "$bar Get files ..."
 	wgetnc installzip
+
+	echo -e "$bar Install new files ..."
+	rm -rf  /tmp/install
+	mkdir -p /tmp/install
+	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
+
+	rm $branch.zip /tmp/install/* &> /dev/null
+	chown -R http:http /tmp/install/srv
+	chmod -R 755 /tmp/install
+
+	cp -rfp /tmp/install/* /
+	rm -rf /tmp/install
 }
 getuninstall() {
 	installurl=$( getvalue installurl )
