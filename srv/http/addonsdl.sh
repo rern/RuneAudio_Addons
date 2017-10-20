@@ -36,7 +36,7 @@ if [[ $versionlist != $versionredis ]]; then
 	chmod 755 /srv/http/install.sh || exit 1
 	
 	/usr/local/bin/uninstall_addo.sh
-	/srv/http/install.sh $branch
+	/srv/http/install.sh $branch -b
 fi
 
 exit 0 # force exit code = 0
