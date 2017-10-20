@@ -46,7 +46,7 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171025',
+	'version'      => '20171020',
 	'revision'     => '<li>Split <white>library breadcrumb</white> to separated addon to avoid conflict.</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
@@ -267,7 +267,7 @@ array(
 array(
 	'alias'        => 'brea',
 	'title'        => 'Library Breadcrumb',
-	'version'      => '20171025',
+	'version'      => '20171020',
 	'revision'     => '<li>Initial release</li>',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
