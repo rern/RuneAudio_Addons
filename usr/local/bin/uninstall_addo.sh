@@ -4,7 +4,7 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
-uninstallstart $1
+uninstallstart $@
 
 # restore file
 sed -i -e '/addonsinfo.css/ d
@@ -25,6 +25,6 @@ if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	sed -i -e '/hammer.min.js/ d' /srv/http/app/templates/footer.php
 	rm -v /srv/http/assets/js/vendor/hammer.min.js
 fi
-uninstallfinish $1
+uninstallfinish $@
 
 clearcache

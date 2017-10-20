@@ -1,9 +1,9 @@
-// changelog show/hide
-$( '#revision' ).click( function() {
-	$( '#detail' ).toggle();
+// revision show/hide
+$( '.revision' ).click( function(e) {
+	e.stopPropagation();
+	$( this ).parent().parent().next().toggle();
 	$( this ).toggleClass( 'revisionup' );
 } );
-
 // sroll up click
 $( '#list li' ).click( function() {
 	var alias = this.getAttribute( 'alias' );
@@ -15,21 +15,33 @@ $( 'legend' ).click( function() {
 	window.scrollTo( 0, 0 );
 } );
 
-// buttons click / click-hold
-$( '.btnun' ).each( function() {
+// branch test
+$( '.btnin' ).each( function() {
 	var $thisbtn = $( this );
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function () {
 		opt = '';
+		branch = '';
 		alias = $thisbtn.parent().attr( 'alias' );
-		title = $thisbtn.parent().prev().find( 'span' ).text();
-		type = 'Update';
+		type = $thisbtn.text().trim();
+		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 		info( {
-			  title  :  title
-			, message: 'Reinstall?'
-			, cancel : 1
-			, ok     : function() {
-				formtemp();
+			  title    : title
+			, message  : type +' Branch Test?'
+			, textlabel: 'Branch'
+			, textvalue: 'UPDATE'
+			, cancel   : 1
+			, ok       : function() {
+				branch = $( '#infoTextbox' ).val() +' -b';
+				option = $thisbtn.attr( 'option' );
+				if ( option ) {
+					j = 0;
+					option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
+					option = JSON.parse( option );
+					getoptions();
+				} else {
+					formtemp();
+				}
 			}
 		} );
 	} );
@@ -39,7 +51,7 @@ $( '.boxed-group .btn' ).click( function () {
 	opt = '';
 	alias = $thisbtn.parent().attr( 'alias' );
 	type = $thisbtn.text().trim();
-	title = $thisbtn.parent().prev().find( 'span' ).text();
+	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 	
 	if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
@@ -262,6 +274,7 @@ function sendcommand() {
 			}
 		}
 		$( '#loader' ).show();
+		opt += branch;
 		formtemp();
 	}
 }

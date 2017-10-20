@@ -27,11 +27,11 @@ hammeraddons.on( 'press', function () {
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
 	
 	info( {
-		title    : 'Addons Menu Branch Test',
-		textlabel: 'Branch',
-		textvalue: 'UPDATE',
-		cancel   : 1,
-		ok       : function() {
+		  title    : 'Addons Menu Branch Test'
+		, textlabel: 'Branch'
+		, textvalue: 'UPDATE'
+		, cancel   : 1
+		, ok       : function() {
 			var branch = $( '#infoTextbox' ).val();
 			$( '#loader' ).removeClass( 'hide' );
 			if ( branch ) {
@@ -49,10 +49,10 @@ hammeraddons.on( 'press', function () {
 function addonsdl( exit, path ) {
 	if ( exit == 1 ) {
 		info( {
-			icon   : '<i class="fa fa-info-circle fa-2x">',
-			message: 'Download from Addons server failed.'
-				+'<br>Please try again later.',
-			ok     : function() {
+			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			, message: 'Download from Addons server failed.'
+				+'<br>Please try again later.'
+			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
 			}
 		} );

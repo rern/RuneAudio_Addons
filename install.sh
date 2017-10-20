@@ -1,10 +1,8 @@
 #!/bin/bash
 
-alias=addo
+# change version number in RuneAudio_Addons/srv/http/addonslist.php
 
-# for testing branch
-branch=master
-(( $# != 0 )) && [[ $1 != u ]] && branch=$1
+alias=addo
 
 if [[ ! -e /srv/http/addonslist.php ]]; then
 # dummy for 'installstart': sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php
@@ -15,26 +13,13 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 	" > /srv/http/addonslist.php
 fi
 
-# import heading function
+# import template function
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 . /srv/http/addonstitle.sh
 
-installstart $1
+installstart $@
 
-echo -e "$bar Get files ..."
-wgetnc https://github.com/rern/RuneAudio_Addons/archive/$branch.zip
-
-echo -e "$bar Install new files ..."
-rm -rf  /tmp/install
-mkdir -p /tmp/install
-bsdtar --exclude='.*' --exclude='*.md' -xvf $branch.zip --strip 1 -C /tmp/install
-
-rm $branch.zip /tmp/install/* &> /dev/null
-chown -R http:http /tmp/install/srv
-chmod -R 755 /tmp/install
-
-cp -rfp /tmp/install/* /
-rm -rf /tmp/install
+getinstallzip
 
 # modify files #######################################
 echo -e "$bar Modify files ..."
@@ -51,7 +36,6 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
-
 if ! grep -q 'hammer.min.js' $file; then
 	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
 fi
@@ -66,7 +50,7 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
-installfinish $1
+installfinish $@
 
 if [[ -t 1 ]]; then
 	clearcache

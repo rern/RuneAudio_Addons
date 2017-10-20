@@ -59,12 +59,17 @@ setTimeout( function() {
 <?php
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
+$opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 
 $arrayalias = array_column( $addons, 'alias' );
 $aliasindex = array_search( $alias, $arrayalias );
 $addon = $addons[ $aliasindex ];
 $installurl = $addon[ 'installurl' ];
+
+$optarray = explode( ' ', $opt );
+if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
+
 $installfile = basename( $installurl );
 $title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
@@ -81,23 +86,15 @@ $install = <<<cmd
 		fi
 	fi
 	chmod 755 $installfile
-	/usr/bin/sudo ./$installfile
+	/usr/bin/sudo ./$installfile $opt
 cmd;
 $uninstall = <<<cmd
 	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
 cmd;
-// no html tab
-$cmdinstall = <<<cmd
-	wget -qN $installurl
-	chmod 755 $installfile
-	./$installfile
-cmd;
-
-$option = ( isset( $_POST[ 'opt' ] ) ) ? $_POST[ 'opt' ] : '';
 
 if ( $type === 'Uninstall' ) {
 	$command = $uninstall;
-	$cmd = "uninstall_$alias.sh";
+	$commandtxt = "uninstall_$alias.sh";
 } else if ( $type === 'Update' ) {
 	$command = <<<cmd
 		wget -qN $installurl
@@ -112,7 +109,7 @@ if ( $type === 'Uninstall' ) {
 		
 		/usr/bin/sudo ./$installfile u
 cmd;
-	$cmd = <<<cmd
+	$commandtxt = <<<cmd
 		wget -qN $installurl
 		chmod 755 $installfile
 		
@@ -123,15 +120,19 @@ cmd;
 } else {
 	if ( $alias !== 'bash' ) {
 		$command = $install;
-		$cmd = $cmdinstall;
+		$commandtxt = <<<cmd
+			wget -qN $installurl
+			chmod 755 $installfile
+			./$installfile
+cmd;
 	} else {
 		$command = '/usr/bin/sudo';
-		$cmd = str_replace( '/usr/bin/', '', $option );
-		$cmd = preg_replace( '/;\s*/', "\n", $cmd );
-		$cmd .= '<br><br><a class="ck">'.str_repeat( '=', $dash ).'</a>';
+		$commandtxt = str_replace( '/usr/bin/', '', $opt );
+		$commandtxt = preg_replace( '/;\s*/', "\n", $commandtxt );
+		$commandtxt .= '<br><br><a class="ck">'.str_repeat( '=', $dash ).'</a>';
 	}
 }
-$cmd = preg_replace( '/\t*/', '', $cmd );
+$commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
@@ -144,7 +145,7 @@ if ( $alias === 'addo' && $type !== 'Update' ) {
 	$close = 'addons.php';
 }
 
-echo $cmd.'<br>';
+echo $commandtxt.'<br>';
 
 // for convert bash stdout to html
 $replace = array(
@@ -162,7 +163,7 @@ $skip = array( 'warning:', 'y/n', 'uninstall:' );
 ob_implicit_flush(); // start flush: bypass buffer - output to screen
 ob_end_flush();      // force flush: current buffer (run after flush started)
 	
-$popencmd = popen( "$command $option 2>&1", 'r' );        // start bash
+$popencmd = popen( "$command 2>&1", 'r' );        // start bash
 while ( !feof( $popencmd ) ) {                            // each line
 	$std = fread( $popencmd, 4096 );                      // read
 

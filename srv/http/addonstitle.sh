@@ -151,20 +151,38 @@ installstart() { # $1-'u'=update
 	timestart
 	
 	# for testing branch
-	if [[ $1 == '-b' ]]; then
-		branch=$2
-		shift
-		shift
+	if [[ ${@:$#} == '-b' ]]; then
+		branch=${@:(-2):1}
 	else
 		branch=master
 	fi
-
+	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
+}
+getinstallzip() {
+	installurl=$( getvalue installurl )
+	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
+	
+	echo -e "$bar Get files ..."
+	wgetnc $installzip
+
+	echo -e "$bar Install new files ..."
+	rm -rf  /tmp/install
+	mkdir -p /tmp/install
+	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
+
+	rm $branch.zip /tmp/install/* &> /dev/null
+	chown -R http:http /tmp/install/srv
+	chmod -R 755 /tmp/install
+
+	cp -rfp /tmp/install/* /
+	rm -rf /tmp/install
 }
 getuninstall() {
 	installurl=$( getvalue installurl )
-	uninstallfile=${installurl/install.sh/uninstall_$alias.sh}
-	wgetnc $uninstallfile -P /usr/local/bin
+	installurl=${installurl/raw\/master/raw\/$branch}
+	uninstallurl=${installurl/install.sh/uninstall_$alias.sh}
+	wgetnc $uninstallurl -P /usr/local/bin
 	if [[ $? != 0 ]]; then
 		title -l '=' "$warn Uninstall file download failed."
 		title -nt "Please try install again."

@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171015_
+_revision 20171020_
 
 ### Addons Menu Process:    
 
@@ -52,12 +52,15 @@ _revision 20171015_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash script  
+> bash scripts on GitHub  
 > must use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of on-screen messages and addons database  
+> default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
 - install script  
+	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
+		- extracted to respective directory of target root
+		- files in repository root will be removed
 	- use modify over replace files unless necessary
 	- make backup if replace files
 - uninstall script
@@ -77,56 +80,38 @@ _revision 20171015_
 ```sh
 #!/bin/bash
 
-# required
+# main reference
 alias=<alias>
-
-branch=master   # change for testing
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
 ### template - function
-installstart $1            # start message, installed check
-getuninstall               # only if uninstall_<alias>.sh not in /usr/local/bin of 'master.zip'
-value=$( getvalue <key> )  # get value from array(...)
-rankmirrors                # rank miror servers and 'pacman -Sy' before install packages
+installstart $@            # start message, installed check
 
-# start main script -------------------------------------------------------------------------------->>>
+getinstallzip              # get repository zip and extract to system directories
 
-echo -e "$bar Get files ..."
-wgetnc https://github.com/<name>/<repository>/archive/$branch.zip           # whole repository download
+rankmirrors                # optional - rank miror servers and 'pacman -Sy' before install packages
 
-echo -e "$bar Backup files ..."
-mv /<path>/<file>{,.backup}
+# start custom script -------------------------------------------------------------------------------->>>
 
-echo -e "$bar Install new files ..."
-rm -rf /tmp/install
-mkdir -p /tmp/install
-bsdtar -xf $branch.zip --strip 1 --exclude '<directory>/' -C /tmp/install
-rm $branch.zip /tmp/install/* &> /dev/null
-
-chown -R http:http /tmp/install
-chown -R root:root /tmp/install/usr/local/bin/uninstall*
-chmod -R 755 /tmp/install
-
-cp -rv /tmp/install/* /
-rm -r /tmp/install
-
-echo -e "$bar Create new files ..."
-echo 'content' > /<path>/<newfile>
+echo -e "$bar <package> package ..."
+pacman -S --noconfirm <packages>
 
 echo -e "$bar Modify files ..."
-file=<path>/<file>
+file=/<path>/<file>
 echo $file
 if ! grep -q 'check string' $file; then
 	echo 'content' >> $file
 	sed -i 's/existing/new/' $file
 fi
 
-# end main script ----------------------------------------------------------------------------------<<<
+echo 'content' >> /<path>/<newfile>
+
+# end custom script ----------------------------------------------------------------------------------<<<
 
 ### template - function - save version to database, finish message
-installfinish $1
+installfinish $@
 
 # extra info if any
 title -nt "extra info"
@@ -136,16 +121,19 @@ title -nt "extra info"
 ```sh
 #!/bin/bash
 
-# required
+# main reference
 alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
 ### template - function - start message, installed check
-uninstallstart $1
+uninstallstart $@
 
-# start main script -------------------------------------------------------------------------------->>>
+# start custom script -------------------------------------------------------------------------------->>>
+
+echo -e "$bar Remove <package> ..."
+pacman -R noconfirm <packages>
 
 echo -e "$bar Remove files ..."
 rm -v /<path>/<file>
@@ -156,10 +144,10 @@ echo $file
 sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
 
-# end main script ---------------------------------------------------------------------------------<<<
+# end custom script ---------------------------------------------------------------------------------<<<
 
 ### template - function - remove version from database, finish message
-uninstallfinish $1
+uninstallfinish $@
 ```
   
 
@@ -170,6 +158,7 @@ uninstallfinish $1
 array(
 	'alias'         => 'alias',
 	'± version'     => 'version',
+	'revision'      => 'revision',
 	'± only03'      => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
@@ -177,7 +166,7 @@ array(
 	'± thumbnail'   => 'https://url/to/image/w100px',
 	'± buttonlabel' => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
-	'installurl'    => 'https://url/for/wget/install.sh'
+	'installurl'    => 'https://url/for/wget/install.sh',
 	'± option'      => "{ 
 		'wait'    : 'message text',
 		'confirm' : 'message text',
@@ -285,9 +274,14 @@ array(
 	- `<white>...</white>`
 	- `<code>...</code>`
 
-**scripts testing**  
+**enlist to Addons Menu**
 - get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
 - open Addons Menu
 - add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
+
+- request to create a repisitory in `https://github.com/RuneAddons`
+- `fork` the repository to add scripts
+- `fork` **Addons Menu** to add `array(...)`
+- `pull request` for both `fork`s

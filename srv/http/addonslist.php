@@ -1,17 +1,14 @@
 <?php
-$addonsversion = '1'; // temp: for update before 20171005 - to be removed
-
-$revision = '
-	<li>Improve time sync for incorrect system time that caused failed download</li>
-	<li>Display only compatible addons for installed RuneAudio version</li>
-';
-
 $addons = array(
 
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171016',
+	'version'      => '20171020',
+	'revision'     => '<li>Add <white>update revision</white> of each addon</li>
+					<li>Add long-press Install for <white>branch testing</white></li>
+					<li>Remove long-press Uninstall for <white>forced update</white></li>
+					<li>Improve script templates',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -50,6 +47,8 @@ array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171016',
+	'revision'     => '<li>Improve <white>lyrics feature</white></li>
+					<li>Fix <white>Addons Menu font</white> removal conflict</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -72,7 +71,9 @@ array(
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20171016',
+	'version'      => '20171020',
+	'revision'     => '<li>General improvements</li>
+				<li>Switch to online package installation</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
@@ -90,6 +91,7 @@ array(
 	'alias'        => 'pass',
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
@@ -101,6 +103,7 @@ array(
 	'alias'        => 'aria',
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.
 			<br>Pre-configured and ready to use.',
@@ -115,6 +118,7 @@ array(
 	'alias'        => 'tran',
 	'title'        => 'Transmission *',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
@@ -172,6 +176,7 @@ array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enable backup-restore settings and databases.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
@@ -193,6 +198,7 @@ array(
 	'alias'        => 'font',
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
@@ -203,6 +209,7 @@ array(
 	'alias'        => 'motd',
 	'title'        => 'Login Logo for SSH Terminal',
 	'version'      => '20170901',
+	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
@@ -213,6 +220,7 @@ array(
 	'alias'        => 'spla',
 	'title'        => 'Boot Logo *',
 	'version'      => '20171010',
+	'revision'     => '<li>Initial release</li>',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
@@ -250,6 +258,7 @@ array(
 	'alias'        => 'webr',
 	'title'        => 'Webradio Sorting',
 	'version'      => '20170925',
+	'revision'     => '<li>Initial release</li>',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fix Webradio sorting after import.',
