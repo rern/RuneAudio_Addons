@@ -4,7 +4,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171020',
+	'version'      => '20171015',
 	'revision'     => '<li>Add <white>update revision</white> of each addon</li>
 					<li>Add long-press Install for <white>branch testing</white></li>
 					<li>Remove long-press Uninstall for <white>forced update</white></li>
