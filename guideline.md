@@ -280,8 +280,11 @@ array(
 - add addon `array(...)` to `/srv/http/addonslist.php`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
-
-- request to create a repisitory in `https://github.com/RuneAddons`
-- `fork` the repository to add scripts
-- `fork` **Addons Menu** to add `array(...)`
-- `pull request` for both `fork`s
+- **Pull request**
+	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
+	- add `array(...)` to `/srv/http/addonslist.php`
+	- `pull request`
+	- a new <addon_title> repository created in `https://github.com/RuneAddons`
+	- `fork` the new repository in **RuneAddons** - `https://github.com/RuneAddons/<addon_title>`
+	- add scripts and files
+	- `pull request`
