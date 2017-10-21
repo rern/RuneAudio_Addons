@@ -76,6 +76,7 @@ function addonblock( $addon ) {
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
+	$revisionclass = $version ? 'revision' : 'revisionnone';
 	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
 	if ( !$addon[ 'sourcecode' ] ) $detail = '';
 	$GLOBALS[ 'blocks' ] .= '
@@ -84,9 +85,9 @@ function addonblock( $addon ) {
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'
-				.$check.'<span>'.strip_tags( preg_replace( '/\s*\*$/', '', $title ) ).'</span>
-				&emsp;<p><a class="revision">'.$version.'</a>
-				&ensp;by<white>&ensp;'.strip_tags( $addon[ 'maintainer' ] ).'</white></p>
+				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
+				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
+				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
 			</legend>
 			<div class="detail" style="display: none;">
 				<ul>'
