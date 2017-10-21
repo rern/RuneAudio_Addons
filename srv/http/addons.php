@@ -72,7 +72,7 @@ function addonblock( $addon ) {
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
-		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
+		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
