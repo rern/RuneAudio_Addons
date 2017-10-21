@@ -87,12 +87,14 @@ alias=<alias>
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
-### template - function
-installstart $@            # start message, installed check
+### template - function: start message, installed check
+installstart $@
 
-getinstallzip              # get repository zip and extract to system directories
+### template - function: get repository zip and extract to system directories
+getinstallzip
 
-rankmirrors                # optional - rank miror servers and 'pacman -Sy' before install packages
+### template - function: (optional) rank miror servers and 'pacman -Sy' before install packages
+rankmirrors
 
 # start custom script ------------------------------------------------------------------------------>>>
 
@@ -111,7 +113,7 @@ echo 'content' >> /<path>/<newfile>
 
 # end custom script --------------------------------------------------------------------------------<<<
 
-### template - function - save version to database, finish message
+### template - function: save version to database, finish message
 installfinish $@
 
 # extra info if any
@@ -128,7 +130,7 @@ alias=<alias>
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
-### template - function - start message, installed check
+### template - function: start message, installed check
 uninstallstart $@
 
 # start custom script ------------------------------------------------------------------------------>>>
@@ -147,7 +149,7 @@ mv -v /<path>/<file>{.backup,}
 
 # end custom script --------------------------------------------------------------------------------<<<
 
-### template - function - remove version from database, finish message
+### template - function: remove version from database, finish message
 uninstallfinish $@
 ```
   
