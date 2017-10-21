@@ -74,7 +74,7 @@ function addonblock( $addon ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$listtitle.'</li>';
 	}
-	// addon blocks -------------------------------------------------------------<a class="revision"><white>'.$version.'</white></a>
+	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
 	if ( !$addon[ 'sourcecode' ] ) $detail = '';
