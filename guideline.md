@@ -266,10 +266,6 @@ array(
 ---
 
 **styling** for `description`, `option`
-- text / html
-	- `&nbsp;` = space
-	- `&ensp;` = medium space
-	- `&emsp;` = wide space
 - quotes use html entities to avoid conflict with php quotes
     - `&quot;` = `"`
     - `&#039;` = `'`
