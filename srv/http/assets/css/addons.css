@@ -38,6 +38,10 @@ li {
 .revisionup:after {
 	content: '\2002▲' !important;
 }
+.revisionnone:after {
+	content: "\2002●";
+	color: #e0e7ee;
+}
 .boxed-group {
 	padding: 10px 20px;
 }
