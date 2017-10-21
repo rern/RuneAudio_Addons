@@ -160,17 +160,17 @@ uninstallfinish $@
 ```php
 array(
 	'alias'         => 'alias',
-±	'version'     => 'version',
+±	'version'       => 'version',
 	'revision'      => 'revision',
-±	'only03'      => '1',
+±	'only03'        => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
-±	'thumbnail'   => 'https://url/to/image/w100px',
-±	'buttonlabel' => 'install button label',
+±	'thumbnail'     => 'https://url/to/image/w100px',
+±	'buttonlabel'   => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh',
-±	'option'      => "{ 
+±	'option'        => "{ 
 		'wait'    : 'message text',
 		'confirm' : 'message text',
 		'yesno'   : 'message text',
