@@ -53,6 +53,7 @@ _revision 20171025_
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
 > bash scripts and files on `https://github.com/RuneAddons/<addon_title>`  
+> trusted maintainers may host the scripts on their own repositories `https://github.com/<GitHubID>/<addon_title>`  
 > use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
