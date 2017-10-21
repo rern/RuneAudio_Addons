@@ -94,7 +94,7 @@ getinstallzip              # get repository zip and extract to system directorie
 
 rankmirrors                # optional - rank miror servers and 'pacman -Sy' before install packages
 
-# start custom script -------------------------------------------------------------------------------->>>
+# start custom script ------------------------------------------------------------------------------>>>
 
 echo -e "$bar <package> package ..."
 pacman -S --noconfirm <packages>
@@ -109,7 +109,7 @@ fi
 
 echo 'content' >> /<path>/<newfile>
 
-# end custom script ----------------------------------------------------------------------------------<<<
+# end custom script --------------------------------------------------------------------------------<<<
 
 ### template - function - save version to database, finish message
 installfinish $@
@@ -131,7 +131,7 @@ alias=<alias>
 ### template - function - start message, installed check
 uninstallstart $@
 
-# start custom script -------------------------------------------------------------------------------->>>
+# start custom script ------------------------------------------------------------------------------>>>
 
 echo -e "$bar Remove <package> ..."
 pacman -R noconfirm <packages>
@@ -145,7 +145,7 @@ echo $file
 sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
 
-# end custom script ---------------------------------------------------------------------------------<<<
+# end custom script --------------------------------------------------------------------------------<<<
 
 ### template - function - remove version from database, finish message
 uninstallfinish $@
