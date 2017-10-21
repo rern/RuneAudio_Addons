@@ -284,7 +284,7 @@ array(
 	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
 	- add `array(...)` to `/srv/http/addonslist.php`
 	- `pull request`
-	- a new <addon_title> repository created in `https://github.com/RuneAddons`
+	- a new `<addon_title>` repository created in `https://github.com/RuneAddons`
 	- `fork` the new repository in **RuneAddons** - `https://github.com/RuneAddons/<addon_title>`
 	- add scripts and files
 	- `pull request`
