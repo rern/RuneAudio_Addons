@@ -52,8 +52,8 @@ _revision 20171020_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash scripts on GitHub  
-> must use script default `### template` lines except non-install addons  
+> bash scripts and files on `https://github.com/RuneAddons/<addon_title>`  
+> use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
@@ -283,8 +283,8 @@ array(
 - **Pull request**
 	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
 	- add `array(...)` to `/srv/http/addonslist.php`
-	- `pull request`
+	- 1st `Pull request`
 	- a new `<addon_title>` repository created in `https://github.com/RuneAddons`
 	- `fork` the new repository in **RuneAddons** - `https://github.com/RuneAddons/<addon_title>`
 	- add scripts and files
-	- `pull request`
+	- 2nd `Pull request`
