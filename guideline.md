@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171020_
+_revision 20171025_
 
 ### Addons Menu Process:    
 
@@ -275,11 +275,14 @@ array(
 	- `<code>...</code>`
 
 **enlist to Addons Menu**
-- get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
+- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 - open Addons Menu
-- add addon `array(...)` to `/srv/http/addonslist.php`
+- add addon `array(...)` to `/srv/http/addonslist.php` with:
+	- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
+	- long-press `Install` button
+	- type Github ID to redirect `'installurl'` to `https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh`
 - **Pull request**
 	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
 	- add `array(...)` to `/srv/http/addonslist.php`
