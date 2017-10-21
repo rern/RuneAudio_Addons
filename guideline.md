@@ -161,7 +161,7 @@ uninstallfinish $@
 array(
 	'alias'         => 'alias',
 /**/	'version'       => 'version',
-	'revision'      => 'revision',
+/**/	'revision'      => 'revision',
 /**/	'only03'        => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
