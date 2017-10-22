@@ -117,8 +117,8 @@ array(
 array(
 	'alias'        => 'tran',
 	'title'        => 'Transmission *',
-	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'version'      => '20171022',
+	'revision'     => '<li>Switch from custom package to normal for easy update.</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
