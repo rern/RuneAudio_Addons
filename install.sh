@@ -11,7 +11,12 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 # for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
-[[ ${@:$#} == '-b' ]] && branch=${@:(-2):1} || branch=master
+#[[ ${@:$#} == '-b' ]] && branch=${@:(-2):1} || branch=master
+if [[ $# == 2 && ${@:$#} == '-b' ]]; then
+	branch=${@:(-2):1}
+else
+	branch=master
+fi
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 
 
