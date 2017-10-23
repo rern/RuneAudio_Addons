@@ -12,8 +12,8 @@ fi
 
 # for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
 #[[ ${@:$#} == '-b' ]] && branch=${@:(-2):1} || branch=master
-if [[ $# == 2 && ${@:$#} == '-b' ]]; then
-	branch=${@:(-2):1}
+if [[ $# == 2 && $2 == '-b' ]]; then
+	branch=$1
 else
 	branch=master
 fi
