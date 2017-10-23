@@ -177,12 +177,12 @@ array(
 	'title'        => 'MPD Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version without errors.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbmpdu.png',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => "{
-		'confirm' : 'Once installed, Samba <white>cannot be downgraded</white>.
+		'confirm' : 'Once installed, MPD <white>cannot be downgraded</white>.
 				<br>Continue?'
 	}"
 ),*/
