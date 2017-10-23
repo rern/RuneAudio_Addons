@@ -172,7 +172,7 @@ array(
 		}
 	}"
 ),
-/*array(
+array(
 	'alias'        => 'mpdu',
 	'title'        => 'MPD Upgrade *',
 	'maintainer'   => 'r e r n',
@@ -186,7 +186,7 @@ array(
 		'confirm' : 'Once installed, MPD <white>cannot be downgraded</white>.
 				<br>Continue?'
 	}"
-),*/
+),
 array(
 	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
