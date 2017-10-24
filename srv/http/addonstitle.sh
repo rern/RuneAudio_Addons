@@ -228,7 +228,7 @@ uninstallfinish() { # $1-'u'=update
 }
 clearcache() {
 	[[ -t 1 ]] && systemctl reload php-fpm
-	if pgrep midori > /dev/null; then
+	if pgrep midori; then
 		killall midori
 		sleep 1
 		xinit &> /dev/null &
