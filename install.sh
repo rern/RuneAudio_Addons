@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# $1-branch ; $2-branch flag '-b' (syntax for all addons)
+# $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
 
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
