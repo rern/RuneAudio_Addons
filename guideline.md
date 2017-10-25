@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171020_
+_revision 20171025_
 
 ### Addons Menu Process:    
 
@@ -52,8 +52,9 @@ _revision 20171020_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash scripts on GitHub  
-> must use script default `### template` lines except non-install addons  
+> bash scripts and files on `https://github.com/RuneAddons/<addon_title>`  
+> trusted maintainers may host the scripts on their own repositories `https://github.com/<GitHubID>/<addon_title>`  
+> use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
@@ -86,14 +87,16 @@ alias=<alias>
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
-### template - function
-installstart $@            # start message, installed check
+### template - function: start message, installed check
+installstart $@
 
-getinstallzip              # get repository zip and extract to system directories
+### template - function: get repository zip and extract to system directories
+getinstallzip
 
-rankmirrors                # optional - rank miror servers and 'pacman -Sy' before install packages
+### template - function: (optional) rank miror servers and 'pacman -Sy' before install packages
+rankmirrors
 
-# start custom script -------------------------------------------------------------------------------->>>
+# start custom script ------------------------------------------------------------------------------>>>
 
 echo -e "$bar <package> package ..."
 pacman -S --noconfirm <packages>
@@ -108,9 +111,9 @@ fi
 
 echo 'content' >> /<path>/<newfile>
 
-# end custom script ----------------------------------------------------------------------------------<<<
+# end custom script --------------------------------------------------------------------------------<<<
 
-### template - function - save version to database, finish message
+### template - function: save version to database, finish message
 installfinish $@
 
 # extra info if any
@@ -127,10 +130,10 @@ alias=<alias>
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
 
-### template - function - start message, installed check
+### template - function: start message, installed check
 uninstallstart $@
 
-# start custom script -------------------------------------------------------------------------------->>>
+# start custom script ------------------------------------------------------------------------------>>>
 
 echo -e "$bar Remove <package> ..."
 pacman -R noconfirm <packages>
@@ -144,9 +147,9 @@ echo $file
 sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
 
-# end custom script ---------------------------------------------------------------------------------<<<
+# end custom script --------------------------------------------------------------------------------<<<
 
-### template - function - remove version from database, finish message
+### template - function: remove version from database, finish message
 uninstallfinish $@
 ```
   
@@ -157,17 +160,17 @@ uninstallfinish $@
 ```php
 array(
 	'alias'         => 'alias',
-	'± version'     => 'version',
-	'revision'      => 'revision',
-	'± only03'      => '1',
+/**/	'version'       => 'version',
+/**/	'revision'      => 'revision',
+/**/	'only03'        => '1',
 	'title'         => 'title',
 	'maintainer'    => 'maintainer',
 	'description'   => 'description',
-	'± thumbnail'   => 'https://url/to/image/w100px',
-	'± buttonlabel' => 'install button label',
+/**/	'thumbnail'     => 'https://url/to/image/w100px',
+/**/	'buttonlabel'   => 'install button label',
 	'sourcecode'    => 'https://url/to/sourcecode',
 	'installurl'    => 'https://url/for/wget/install.sh',
-	'± option'      => "{ 
+/**/	'option'        => "{ 
 		'wait'    : 'message text',
 		'confirm' : 'message text',
 		'yesno'   : 'message text',
@@ -209,7 +212,7 @@ array(
 
 ),
 ```
-`'± ...'` - optional  
+`/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
   
 **`'alias'`** - reference point
@@ -263,10 +266,6 @@ array(
 ---
 
 **styling** for `description`, `option`
-- text / html
-	- `&nbsp;` = space
-	- `&ensp;` = medium space
-	- `&emsp;` = wide space
 - quotes use html entities to avoid conflict with php quotes
     - `&quot;` = `"`
     - `&#039;` = `'`
@@ -275,13 +274,19 @@ array(
 	- `<code>...</code>`
 
 **enlist to Addons Menu**
-- get `install.sh`, `uninstall_<alias>.sh` ready for `wget` download
+- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 - open Addons Menu
-- add addon `array(...)` to `/srv/http/addonslist.php`
+- add addon `array(...)` to `/srv/http/addonslist.php` with:
+	- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
-
-- request to create a repisitory in `https://github.com/RuneAddons`
-- `fork` the repository to add scripts
-- `fork` **Addons Menu** to add `array(...)`
-- `pull request` for both `fork`s
+	- long-press `Install` button
+	- type Github ID to redirect `'installurl'` to `https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh`
+- **Pull request**
+	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
+	- add `array(...)` to `/srv/http/addonslist.php`
+	- 1st `Pull request`
+	- a new `<addon_title>` repository created in `https://github.com/RuneAddons`
+	- `fork` the new repository in **RuneAddons** - `https://github.com/RuneAddons/<addon_title>`
+	- add scripts and files
+	- 2nd `Pull request`

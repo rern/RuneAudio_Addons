@@ -4,7 +4,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171020',
+	'version'      => '20171025',
 	'revision'     => '<li>Add <white>update revision</white> of each addon</li>
 					<li>Add long-press Install for <white>branch testing</white></li>
 					<li>Remove long-press Uninstall for <white>forced update</white></li>
@@ -170,6 +170,21 @@ array(
 			'message': '<white>Read-Write</white> directory:',
 			'label'  : 'Name'
 		}
+	}"
+),
+array(
+	'alias'        => 'mpdu',
+	'title'        => 'MPD Upgrade *',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:
+				conflicts, missing libs, missing packages, broken Midori.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
+	'option'       => "{
+		'confirm' : 'Once installed, MPD <white>cannot be downgraded</white>.
+				<br>Continue?'
 	}"
 ),
 array(
