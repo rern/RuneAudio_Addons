@@ -19,6 +19,7 @@ Currently available:
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
+- [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
 - [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
