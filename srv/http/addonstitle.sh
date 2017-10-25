@@ -148,15 +148,6 @@ installstart() { # $1-'u'=update
 	  exit
 	fi
 	
-	devpart=$( mount | grep 'on / type' | awk '{print $1}' )
-	part=${devpart/\/dev\//}
-	disk=/dev/${part::-2}
-	if [[ $( redis-cli hget addons expa ) != 1 ]] && (( $( sfdisk -F | grep $disk | awk '{print $6}' ) > 10000000 )); then
-	  title -l '=' "$info Root partition not yet expanded."
-	  title -nt "Run 'Expand Partition' addon first."
-	  exit
-	fi
-	
 	timestart
 	
 	# for testing branch
@@ -167,6 +158,16 @@ installstart() { # $1-'u'=update
 	fi
 	
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
+}
+getexpand() {
+	devpart=$( mount | grep 'on / type' | awk '{print $1}' )
+	part=${devpart/\/dev\//}
+	disk=/dev/${part::-2}
+	if [[ $( redis-cli hget addons expa ) != 1 ]] && (( $( sfdisk -F | grep $disk | awk '{print $6}' ) > 10000000 )); then
+	  title -l '=' "$info Root partition not yet expanded."
+	  title -nt "Run 'Expand Partition' addon first."
+	  exit
+	fi
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )
