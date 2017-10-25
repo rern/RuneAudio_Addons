@@ -148,6 +148,13 @@ installstart() { # $1-'u'=update
 	  exit
 	fi
 	
+	freekb=$( df | grep '/$' | awk '{print $4}' )
+	if (( $freekb < 500000 )); then
+	  title -l '=' "$info Available disk space not enough."
+	  title -nt "Please 'Expand Partition' first."
+	  exit
+	fi
+	
 	timestart
 	
 	# for testing branch
