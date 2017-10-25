@@ -148,7 +148,10 @@ installstart() { # $1-'u'=update
 	  exit
 	fi
 	
-	if [[ $( redis-cli hget addons expa ) != 1 ]] && (( =$( sfdisk -F | grep $disk | awk '{print $6}' ) > 10000000 )); then
+	devpart=$( mount | grep 'on / type' | awk '{print $1}' )
+	part=${devpart/\/dev\//}
+	disk=/dev/${part::-2}
+	if [[ $( redis-cli hget addons expa ) != 1 ]] && (( $( sfdisk -F | grep $disk | awk '{print $6}' ) > 10000000 )); then
 	  title -l '=' "$info Partition not yet expanded."
 	  title -nt "Run 'Expand Partition' first."
 	  exit
