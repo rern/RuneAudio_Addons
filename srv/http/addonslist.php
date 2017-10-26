@@ -176,7 +176,6 @@ array(
 	'alias'        => 'mpdu',
 	'title'        => 'MPD Upgrade *',
 	'maintainer'   => 'r e r n',
-	'only03'       => '1',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:
 				conflicts, missing libs, missing packages, broken Midori.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
