@@ -173,7 +173,7 @@ getinstallzip() {
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
-	if [[ -L /root ]]; then # fix 0.4b /root as symlink
+	if [[ -e /tmp/install/root && -L /root ]]; then # fix 0.4b /root as symlink
 		mkdir /tmp/install/home
 		mv /tmp/install/{,home/}root
 	fi
