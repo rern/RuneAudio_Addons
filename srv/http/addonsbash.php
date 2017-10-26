@@ -177,7 +177,9 @@ while ( !feof( $popencmd ) ) {                            // each line
 		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
 
-	if ( $std != $stdprev ) echo $std;                    // output
+	if ( $std == $stdprev ) continue;                     // skip line if repetitive
+	
+	echo $std;                                            // stdout to screen
 	$stdprev = $std;
 }
 pclose( $popencmd );                                      // end bash
