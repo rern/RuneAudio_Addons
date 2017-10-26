@@ -179,7 +179,10 @@ getinstallzip() {
 	fi
 	chown -R http:http /tmp/install/srv
 	chmod -R 755 /tmp/install
-	[[ -e /tmp/install/etc/systemd/system ]] && chmod -R 644 /tmp/install/etc/systemd/system
+	if [[ -e /tmp/install/etc/systemd/system ]]; then
+		chown -R root:root /tmp/install/etc/systemd/system
+		chmod -R 644 /tmp/install/etc/systemd/system
+	fi
 	
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
