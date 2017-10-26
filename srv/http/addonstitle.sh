@@ -172,9 +172,18 @@ getinstallzip() {
 	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
 
 	rm $branch.zip /tmp/install/* &> /dev/null
+	
+	if [[ -L /root ]]; then # fix 0.4b /root as symlink
+		mkdir /tmp/install/home
+		mv /tmp/install/{,home/}root
+	fi
 	chown -R http:http /tmp/install/srv
 	chmod -R 755 /tmp/install
-
+	if [[ -e /tmp/install/etc/systemd/system ]]; then
+		chown -R root:root /tmp/install/etc/systemd/system
+		chmod -R 644 /tmp/install/etc/systemd/system
+	fi
+	
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
 }
