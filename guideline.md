@@ -274,16 +274,17 @@ array(
 	- `<code>...</code>`
 
 **enlist to Addons Menu**
-- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
-- open Addons Menu
-- add addon `array(...)` to `/srv/http/addonslist.php` with:
-	- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
-- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
-- test install / uninstall
+- test scripts:
+	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
+	- open Addons Menu
+	- add addon `array(...)` to `/srv/http/addonslist.php`:
+		- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
+	- test install / uninstall scripts
 - add repository to `RuneAddons`:
 	- a request to join with `<GitHubID>` and `'installurl'`
 	- a new repository created as `https://github.com/RuneAddons/<addon_title>` with admin permissions for `<GitHubID>`
 	- add scripts and files to the ropository
-- add addon data to `addonslist.php`
+- add addon data to **Addons Menu**:
 	- add `array(...)` to `/srv/http/addonslist.php`
 	- `Pull request`
