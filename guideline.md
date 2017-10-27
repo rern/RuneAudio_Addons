@@ -90,6 +90,9 @@ alias=<alias>
 ### template - function: start message, installed check
 installstart $@
 
+### template - function: free space check (needed kb for install)
+checkspace <kb>
+
 ### template - function: get repository zip and extract to system directories
 getinstallzip
 
