@@ -273,7 +273,7 @@ array(
 	- `<white>...</white>`
 	- `<code>...</code>`
 
-**enlist to Addons Menu**
+## Enlist to Addons Menu
 - test scripts:
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
