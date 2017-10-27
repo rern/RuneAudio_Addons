@@ -96,8 +96,8 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
-	'sourcecode'   => 'https://github.com/rern/RuneUI_password',
-	'installurl'   => 'https://github.com/rern/RuneUI_password/raw/master/install.sh',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneUI_password',
+	'installurl'   => 'https://github.com/RuneAddons/RuneUI_password/raw/master/install.sh',
 ),
 array(
 	'alias'        => 'aria',
