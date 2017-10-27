@@ -152,31 +152,6 @@ checkspace() { # checkspace <needkb>
 		exit
 	fi
 }
-installstart() { # $1-'u'=update
-	rm $0
-	
-	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
-	title=$( getvalue title )
-	title=$( tcolor "$title" )
-	
-	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
-	  title -l '=' "$info $title already installed."
-	  title -nt "Please try update instead."
-	  redis-cli hset addons $alias 1 &> /dev/null
-	  exit
-	fi
-	
-	timestart
-	
-	# for testing branch
-	if [[ ${@:$#} == '-b' ]]; then
-		branch=${@:(-2):1}
-	else
-		branch=master
-	fi
-	
-	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
-}
 getinstallzip() {
 	installurl=$( getvalue installurl )
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
@@ -216,6 +191,31 @@ getuninstall() {
 		exit
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
+}
+installstart() { # $1-'u'=update
+	rm $0
+	
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
+	title=$( tcolor "$title" )
+	
+	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
+	  title -l '=' "$info $title already installed."
+	  title -nt "Please try update instead."
+	  redis-cli hset addons $alias 1 &> /dev/null
+	  exit
+	fi
+	
+	timestart
+	
+	# for testing branch
+	if [[ ${@:$#} == '-b' ]]; then
+		branch=${@:(-2):1}
+	else
+		branch=master
+	fi
+	
+	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() { # $1-'u'=update
 	version=$( getvalue version )
