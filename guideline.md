@@ -283,8 +283,9 @@ array(
 	- test install / uninstall scripts
 - add repository to `RuneAddons`:
 	- a request to join with `<GitHubID>` and `'installurl'`
-	- a new repository created as `https://github.com/RuneAddons/<addon_title>` with admin permissions for `<GitHubID>`
-	- add scripts and files to the ropository
+	- a new repository created as `https://github.com/RuneAddons/<addon_title>`
+	- `branch` and add scripts and files to the ropository
+	- `Pull request`
 - add addon data to **Addons Menu**:
 	- add `array(...)` to `/srv/http/addonslist.php`
 	- `Pull request`
