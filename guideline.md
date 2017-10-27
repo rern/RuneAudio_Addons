@@ -281,8 +281,8 @@ array(
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
 - add repository to `RuneAddons`:
-	- a request to join with GitHub ID and addon repository link
-	- a new repository created as `https://github.com/RuneAddons/<addon_title>` with admin permissions for your GitHub ID
+	- a request to join with `<GitHubID>` and `'installurl'`
+	- a new repository created as `https://github.com/RuneAddons/<addon_title>` with admin permissions for `<GitHubID>`
 	- add scripts and files to the ropository
 - add addon data to `addonslist.php`
 	- add `array(...)` to `/srv/http/addonslist.php`
