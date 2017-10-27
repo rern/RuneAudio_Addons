@@ -280,13 +280,10 @@ array(
 	- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 - refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 - test install / uninstall
-	- long-press `Install` button
-	- type Github ID to redirect `'installurl'` to `https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh`
-- **Pull request**
-	- `fork` **Addons Menu** - `https://github.com/rern/RuneAudio_Addons`
+- add repository to `RuneAddons`:
+	- a request to join with GitHub ID and addon repository link
+	- a new repository created as `https://github.com/RuneAddons/<addon_title>` with admin permissions for your GitHub ID
+	- add scripts and files to the ropository
+- add addon data to `addonslist.php`
 	- add `array(...)` to `/srv/http/addonslist.php`
-	- 1st `Pull request`
-	- a new `<addon_title>` repository created in `https://github.com/RuneAddons`
-	- `fork` the new repository in **RuneAddons** - `https://github.com/RuneAddons/<addon_title>`
-	- add scripts and files
-	- 2nd `Pull request`
+	- `Pull request`
