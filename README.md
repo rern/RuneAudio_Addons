@@ -30,7 +30,6 @@ Currently available:
 - [Samba Upgrade](https://github.com/rern/RuneAudio/tree/master/samba)
 - [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
 - [Webradio Import](https://github.com/rern/RuneAudio/tree/master/webradio)
-- [Webradio Sorting](https://github.com/rern/RuneAudio/tree/master/webradio)
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
