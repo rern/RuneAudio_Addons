@@ -20,6 +20,7 @@ Currently available:
 - [Boot Logo](https://github.com/rern/RuneAudio/tree/master/boot_splash)
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
+- [Library Breadcrumb](https://github.com/rern/RuneAudio/tree/master/breadcrumb)
 - [Library Sorting](https://github.com/rern/RuneAudio/tree/master/sorting)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
