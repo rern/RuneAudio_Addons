@@ -1,6 +1,6 @@
 Addons Menu for RuneAudio
 ---
-_Tested on RPi3
+_Tested on RPi3_  
 _for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
    
 **Addons Menu** for easy addons installation via RuneUI.  
@@ -19,6 +19,7 @@ Currently available:
 - [Boot Logo](https://github.com/rern/RuneAudio/tree/master/boot_splash)
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
+- [Library Sorting](https://github.com/rern/RuneAudio/tree/master/sorting)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
