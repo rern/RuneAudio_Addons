@@ -269,7 +269,7 @@ array(
 				<code>&emsp;Ok&emsp;</code> to continue'
 	}"
 ),
-array(
+/*array(
 	'alias'        => 'sort',
 	'title'        => 'Library Sorting',
 	'version'      => '20171030',
@@ -278,7 +278,7 @@ array(
 	'description'  => 'Fix library sorting.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/sorting',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/sorting/install.sh',
-),
+),*/
 array(
 	'alias'        => 'brea',
 	'title'        => 'Library Breadcrumb',
