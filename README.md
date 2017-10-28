@@ -1,5 +1,6 @@
 Addons Menu for RuneAudio
 ---
+_Tested on RPi3
 _for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
    
 **Addons Menu** for easy addons installation via RuneUI.  
