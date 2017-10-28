@@ -7,6 +7,7 @@ _for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
 It's the same as running on SSH terminal.  
 Just much easier.  
 Something like mini App Store or mini Play Store.  
+It does nothing using zero CPU cycle unless run it from the menu.
 
 **To do:**
 - A central repository for security control
