@@ -134,30 +134,23 @@ rankmirrors() {
 		pacman -Sy
 	fi
 }
-installstart() { # $1-'u'=update
-	rm $0
+checkspace() { # checkspace <needkb>
+	freekb=$( df | grep '/$' | awk '{print $4}' )
+	devpart=$( mount | grep 'on / type' | awk '{print $1}' )
+	part=${devpart/\/dev\//}
+	disk=/dev/${part::-2}
+	unpartb=$( sfdisk -F | grep $disk | awk '{print $6}' )
+	unpartkb=$( python2 -c "print($unpartb / 1000)" )
 	
-	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
-	title=$( getvalue title )
-	title=$( tcolor "$title" )
-	
-	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
-	  title -l '=' "$info $title already installed."
-	  title -nt "Please try update instead."
-	  redis-cli hset addons $alias 1 &> /dev/null
-	  exit
+	if (( $freekb < $1 )); then
+		if [[ $( redis-cli hget addons expa ) != 1 ]] && (( $(( $freekb + $unpartkb )) > $1 )); then
+			title "$info Partition not yet expanded."
+			title -nt "Run 'Expand Partition' addon first."
+		else
+			title "$info Not enough disk space."
+		fi
+		exit
 	fi
-	
-	timestart
-	
-	# for testing branch
-	if [[ ${@:$#} == '-b' ]]; then
-		branch=${@:(-2):1}
-	else
-		branch=master
-	fi
-	
-	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )
@@ -198,6 +191,31 @@ getuninstall() {
 		exit
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
+}
+installstart() { # $1-'u'=update
+	rm $0
+	
+	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	title=$( getvalue title )
+	title=$( tcolor "$title" )
+	
+	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
+	  title -l '=' "$info $title already installed."
+	  title -nt "Please try update instead."
+	  redis-cli hset addons $alias 1 &> /dev/null
+	  exit
+	fi
+	
+	timestart
+	
+	# for testing branch
+	if [[ ${@:$#} == '-b' ]]; then
+		branch=${@:(-2):1}
+	else
+		branch=master
+	fi
+	
+	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() { # $1-'u'=update
 	version=$( getvalue version )
