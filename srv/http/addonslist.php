@@ -271,7 +271,7 @@ array(
 ),
 /*array(
 	'alias'        => 'libr',
-	'title'        => 'Library Browsing',
+	'title'        => 'Music Library Browsing',
 	'version'      => '20171030',
 	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
