@@ -68,6 +68,16 @@ array(
 		}
 	}"
 ),
+/*array(
+	'alias'        => 'libr',
+	'title'        => 'Library Enhancement *',
+	'version'      => '20171030',
+	'revision'     => '<li>Initial release</li>',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Browse music library with breadcrumb shortcut jump and index bar quick scroll.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
+),*/
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
@@ -270,27 +280,6 @@ array(
 				<code>&emsp;Ok&emsp;</code> to continue'
 	}"
 ),
-/*array(
-	'alias'        => 'libr',
-	'title'        => 'Music Library Browsing',
-	'version'      => '20171030',
-	'revision'     => '<li>Initial release</li>',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Browse music library with breadcrumb shortcut jump and quick scroll index bar.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/music_library',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/music_library/install.sh',
-),*/
-/*array(
-	'alias'        => 'brea',
-	'title'        => 'Library Breadcrumb',
-	'version'      => '20171020',
-	'revision'     => '<li>Initial release</li>',
-	'only03'       => '1',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Breadcrumb for navigating directly to each directory in path.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/breadcrumb',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/breadcrumb/install.sh',
-),*/
 	
 );
 ?>
