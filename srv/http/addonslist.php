@@ -184,6 +184,7 @@ array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => "{
 		'confirm' : 'Once installed, MPD <white>cannot be downgraded</white>.
+				<br>10 minutes upgrade may take 20+ minutes with slow download.
 				<br>Continue?'
 	}"
 ),
