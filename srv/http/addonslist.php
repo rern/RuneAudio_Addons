@@ -75,7 +75,7 @@ array(
 	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enhance music library with:
-				<br>- <white>breadcrumb</white> shortcut jump
+				<br>- <white>breadcrumb</white> path shortcut jump
 				<br>- <white>index bar</white> quick scroll.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
