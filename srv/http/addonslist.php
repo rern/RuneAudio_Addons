@@ -270,16 +270,16 @@ array(
 	}"
 ),
 /*array(
-	'alias'        => 'sort',
-	'title'        => 'Library Sorting',
+	'alias'        => 'libr',
+	'title'        => 'Library Browsing',
 	'version'      => '20171030',
 	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Fix library sorting.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/sorting',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/sorting/install.sh',
+	'description'  => 'Browse music library with breadcrumb shortcut jump and quick scroll index bar.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/music_library',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/music_library/install.sh',
 ),*/
-array(
+/*array(
 	'alias'        => 'brea',
 	'title'        => 'Library Breadcrumb',
 	'version'      => '20171020',
@@ -289,7 +289,7 @@ array(
 	'description'  => 'Breadcrumb for navigating directly to each directory in path.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/breadcrumb',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/breadcrumb/install.sh',
-),
+),*/
 	
 );
 ?>
