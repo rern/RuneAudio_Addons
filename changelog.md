@@ -1,4 +1,4 @@
-### 20171020
+### 20171025
 - Add update revision of each addon
 - Add long-press Install for branch testing
 - Remove long-press Uninstall for forced update
