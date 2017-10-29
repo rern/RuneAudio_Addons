@@ -74,7 +74,9 @@ array(
 	'version'      => '20171030',
 	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Browse music library with breadcrumb shortcut jump and index bar quick scroll.',
+	'description'  => 'Enhance music library with:
+				<br>- <white>breadcrumb</white> shortcut jump
+				<br>- <white>index bar</white> quick scroll.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
 ),*/
