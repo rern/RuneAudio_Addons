@@ -48,6 +48,7 @@ array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171020',
 	'revision'     => '<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
+				<li>Hide top and bottom menu in Library and Queue pages on small screen</li>
 				<li>Move bottom bar buttons to top bar</li>
 				<li>Hide bottom bar and scroll buttons</li>',
 	'maintainer'   => 'r e r n',
