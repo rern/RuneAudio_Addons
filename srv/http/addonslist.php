@@ -76,9 +76,11 @@ array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enhance music library with:
 				<br>- <white>breadcrumb</white> path shortcut jump
-				<br>- <white>index bar</white> quick scroll.',
+				<br>- <white>index bar</white> quick scroll.
+				<br>(<white>RuneUI Enhancement</white> must be installed first.)',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
+	'confirm' : '<white>RuneUI Enhancement</white> already installed ?'
 ),*/
 array(
 	'alias'        => 'gpio',
