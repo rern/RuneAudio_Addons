@@ -47,8 +47,7 @@ array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171020',
-	'revision'     => '<li>Improve <white>lyrics feature</white></li>
-					<li>Split <white>library breadcrumb</white> to separated addon to avoid conflict.</li>',
+	'revision'     => '<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>,
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -68,10 +67,10 @@ array(
 		}
 	}"
 ),
-/*array(
+array(
 	'alias'        => 'libr',
 	'title'        => 'Library Enhancement *',
-	'version'      => '20171030',
+	'version'      => '20171101',
 	'revision'     => '<li>Initial release</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enhance music library with:
@@ -81,7 +80,7 @@ array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
 	'confirm' : '<white>RuneUI Enhancement</white> already installed?'
-),*/
+),
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
