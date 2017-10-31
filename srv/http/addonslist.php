@@ -47,7 +47,9 @@ array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171020',
-	'revision'     => '<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>',
+	'revision'     => '<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
+				<li>Move bottom bar buttons to top bar</li>
+				<li>Hide bottom bar and scroll buttons</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
