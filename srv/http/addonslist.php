@@ -46,9 +46,13 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171020',
-	'revision'     => '<li>Improve <white>lyrics feature</white></li>
-					<li>Split <white>library breadcrumb</white> to separated addon to avoid conflict.</li>',
+	'version'      => '20171101',
+	'revision'     => '<li>Add <white>Index bar</white> in Library</li>
+				<li><white>Breadcrumb links</white> for path shortcut jump</li>
+				<li>Fix <white>Library sorting</white></li>
+				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
+				<li>Hide top and bottom menu in Library and Queue pages on small screen</li>
+				<li>Hide bottom bar</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -68,20 +72,6 @@ array(
 		}
 	}"
 ),
-/*array(
-	'alias'        => 'libr',
-	'title'        => 'Library Enhancement *',
-	'version'      => '20171030',
-	'revision'     => '<li>Initial release</li>',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Enhance music library with:
-				<br>- <white>breadcrumb</white> path shortcut jump
-				<br>- <white>index bar</white> quick scroll.
-				<br>(<white>RuneUI Enhancement</white> must be installed first.)',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/library_enhancement',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/library_enhancement/install.sh',
-	'confirm' : '<white>RuneUI Enhancement</white> already installed?'
-),*/
 array(
 	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
