@@ -255,7 +255,7 @@ uninstallfinish() { # $1-'u'=update
 }
 clearcache() {
 	[[ -t 1 ]] && systemctl reload php-fpm
-	itle -nt "$bar Restart local browser ..."
+	title -nt "$bar Restart local browser ..."
 	if pgrep midori > /dev/null; then
 		killall midori
 		sleep 1
