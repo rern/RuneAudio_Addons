@@ -46,8 +46,9 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171101',
-	'revision'     => '<li>Add <white>Index bar</white> in Library</li>
+	'version'      => '20171105',
+	'revision'     => '<li>Add long-press for <white>show/hide items setting</white> in Playback and Library</li>
+				<li>Add <white>Index bar</white> in Library</li>
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
 				<li>Fix <white>Library sorting</white></li>
 				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
