@@ -51,9 +51,7 @@ array(
 				<li>Add <white>Index bar</white> in Library</li>
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
 				<li>Fix <white>Library sorting</white></li>
-				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
-				<li>Hide top and bottom menu in Library and Queue pages on small screen</li>
-				<li>Hide bottom bar</li>',
+				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
