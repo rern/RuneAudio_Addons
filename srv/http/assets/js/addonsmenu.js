@@ -59,8 +59,8 @@ function addonsdl( exit, path ) {
 	} else if ( exit == 2 ) {
 		info( {
 			  icon   : '<i class="fa fa-info-circle fa-2x">'
-			, message: 'Available disk space less than 1MB.'
-				+'<br>Please make some more free space.'
+			, message: 'Addons Menu cannot be updated.'
+				+'<br>Disk has less than 0.1 MB free space.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
 			}
