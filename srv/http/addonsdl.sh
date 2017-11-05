@@ -32,7 +32,12 @@ versionredis=$( redis-cli hget addons addo )
 
 if [[ $versionlist != $versionredis ]]; then
 	freekb=$( df | grep '/$' | awk '{print $4}' )
-	(( $freekb < 1000 )) && exit 2
+	if (( $freekb < 1000 )); then
+		[[ -n "$(ls -A /var/cache/pacman/pkg)" ]] && exit 2
+		rm /var/cache/pacman/pkg/*
+		freekb=$( df | grep '/$' | awk '{print $4}' )
+		(( $freekb < 1000 )) && exit 2
+	fi
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
 	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh || exit 1
