@@ -56,6 +56,15 @@ function addonsdl( exit, path ) {
 				$( '#loader' ).addClass( 'hide' );
 			}
 		} );
+	} else if ( exit == 2 ) {
+		info( {
+			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			, message: 'Disk space has less than 1MB available.'
+				+'<br>Please make some more free space.'
+			, ok     : function() {
+				$( '#loader' ).addClass( 'hide' );
+			}
+		} );
 	} else {
 		location.href = path +'addons.php';
 	}
