@@ -32,7 +32,7 @@ versionredis=$( redis-cli hget addons addo )
 
 if [[ $versionlist != $versionredis ]]; then
 	freekb=$( df | grep '/$' | awk '{print $4}' )
-	(( $freekb < 500 )) && exit 2
+	(( $freekb < 1000 )) && exit 2
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
 	wget -qN $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh || exit 1
