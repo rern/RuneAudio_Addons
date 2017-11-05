@@ -147,7 +147,7 @@ checkspace() { # checkspace <needkb>
 			title "$info Partition not yet expanded."
 			title -nt "Run 'Expand Partition' addon first."
 		else
-			title "$info Not enough disk space."
+			title "$info Not enough disk space: ${freekb}kB available"
 		fi
 		exit
 	fi
