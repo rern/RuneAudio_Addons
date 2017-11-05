@@ -59,7 +59,7 @@ function addonsdl( exit, path ) {
 	} else if ( exit == 2 ) {
 		info( {
 			  icon   : '<i class="fa fa-info-circle fa-2x">'
-			, message: 'Disk space has less than 1MB available.'
+			, message: 'Available disk space has less than 1MB.'
 				+'<br>Please make some more free space.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
