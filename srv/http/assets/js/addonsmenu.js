@@ -60,7 +60,7 @@ function addonsdl( exit, path ) {
 		info( {
 			  icon   : '<i class="fa fa-info-circle fa-2x">'
 			, message: 'Addons Menu cannot be updated.'
-				+'<br>Disk has less than 0.2 MB free space.'
+				+'<br>Root partition has less than 0.2 MB free space.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
 			}
