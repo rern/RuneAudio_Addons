@@ -21,6 +21,9 @@ h1 {
 	border-bottom: 1px solid #34495e;
 	display: block;
 }
+#diskspace {
+	float: right;
+}
 #detail ul {
 	font-size: 14px;
 }
