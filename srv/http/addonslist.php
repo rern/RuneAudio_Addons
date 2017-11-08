@@ -4,7 +4,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171111',
+	'version'      => '20171108',
 	'revision'     => '<li>Check available disk space before update</li>
 				<li>Show available disk space</li>
 				<li>Notify installation to other clients</li>',
@@ -45,7 +45,7 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171111',
+	'version'      => '20171108',
 	'revision'     => '<li>Add long-press for <white>show/hide items setting</white> (touch gestures still working)</li>
 				<li>Add <white>Index bar</white> in Library</li>
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
