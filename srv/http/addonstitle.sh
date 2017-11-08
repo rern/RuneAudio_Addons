@@ -192,6 +192,15 @@ getuninstall() {
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
+notify() {
+	[[ $3 ]] && false || true
+	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "{\
+		  'icon' : 'fa fa-info-circle fa-lg'\
+		, 'title': $1\
+		, 'text' : $2\
+		, 'hide' : $3\
+	}"
+}
 installstart() { # $1-'u'=update
 	rm $0
 	
@@ -204,8 +213,8 @@ installstart() { # $1-'u'=update
 	  title -nt "Please try update instead."
 	  redis-cli hset addons $alias 1 &> /dev/null
 	  exit
-	fi
-	
+	fi	
+		
 	timestart
 	
 	# for testing branch
