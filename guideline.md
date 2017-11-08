@@ -234,6 +234,9 @@ array(
 - hide if for RuneAudio 0.3 only
 - omit for both versions compatible
 
+**`'diskspace'`**
+- downloaded packages + installed files plus downloaded + decompress files
+
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
 
