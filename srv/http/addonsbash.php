@@ -168,7 +168,7 @@ $pushstream = curl_init( 'http://localhost/pub?id=notify' );
 curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type:application/json' ) );
 curl_setopt( $pushstream, CURLOPT_POSTFIELDS, json_encode(
 	array(
-		  'icon' => 'fa fa-info-circle fa-lg'
+		  'icon'  => 'fa fa-info-circle fa-lg'
 		, 'title' => 'Installing...'
 		, 'text'  => $title
 				.'<br>RuneAudio may not response for a while.'
