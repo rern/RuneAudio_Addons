@@ -164,14 +164,20 @@ ob_implicit_flush(); // start flush: bypass buffer - output to screen
 ob_end_flush();      // force flush: current buffer (run after flush started)
 
 // notify all clients - start
-exec( '/usr/bin/curl -s -v -X POST "http://localhost/pub?id=notify" -d "{ 
-	\"icon\": \"fa fa-info-circle fa-lg\",
-	\"title\": \"Installing...\",
-	\"text\": \"'.$title.'<br>RuneAudio may not response for a while.\",
-	\"hide\": \"false\"
-	}"'
-);
-	
+$pushstream = curl_init( 'http://localhost/pub?id=notify' );
+curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type:application/json' ) );
+curl_setopt( $pushstream, CURLOPT_POSTFIELDS, json_encode(
+	array(
+		  'icon' => 'fa fa-info-circle fa-lg'
+		, 'title' => 'Installing...'
+		, 'text'  => $title
+				.'<br>RuneAudio may not response for a while.'
+		, 'hide'  => 'false'
+	) 
+) );
+curl_exec( $pushstream );
+curl_close( $pushstream );
+
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
 	$std = fread( $popencmd, 4096 );                      // read
@@ -218,9 +224,15 @@ pclose( $popencmd );                                      // end bash
 <?php
 opcache_reset();
 // notify all clients - finished
-exec( '/usr/bin/curl -s -v -X POST "http://localhost/pub?id=notify" -d "{
-	\"title\": \"Done\",
-	\"text\": \"'.$title.'<br>Installation finished.\"
-	}"'
-);
+$pushstream = curl_init( 'http://localhost/pub?id=notify' );
+curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type:application/json' ) );
+curl_setopt( $pushstream, CURLOPT_POSTFIELDS, json_encode(
+	array(
+		  'title' => 'Done'
+		, 'text'  => $title
+				.'<br>Installation finished.'
+	) 
+) );
+curl_exec( $pushstream );
+curl_close( $pushstream );
 ?>
