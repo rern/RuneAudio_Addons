@@ -293,3 +293,10 @@ function formtemp() {
 	' );
 	$( '#formtemp' ).submit();
 }
+
+// remove previous before new notify
+var old_renderMSG = renderMSG;
+renderMSG = function( text ) {
+	PNotify.removeAll();
+	old_renderMSG( text );
+}
