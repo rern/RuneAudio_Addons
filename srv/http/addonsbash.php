@@ -2,29 +2,29 @@
 <!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
-var div = document.createElement('div');
+var div = document.createElement( 'div' );
 div.style.cssText = 
 	'width: 100px;'
 	+'msOverflowStyle: scrollbar;'
 	+'overflow: scroll;'
 	+'visibility: hidden;'
 	;
-document.body.appendChild(div);
+document.body.appendChild( div );
 var scrollbarWidth = div.offsetWidth - div.clientWidth;
-document.body.removeChild(div);
+document.body.removeChild( div );
 
-if (scrollbarWidth !== 0) {
+if ( scrollbarWidth !== 0 ) {
 	var css = 
-		'.hidescrollv {\n'
+		 '.hidescrollv {\n'
 		+'	width: 100%;\n'
 		+'	overflow: hidden;\n'
 		+'}\n'
 		+'pre {\n'
-		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
+		+'	width: calc( 100% + '+ ( scrollbarWidth + 1 ) +'px );\n'
 		+'}';
-	var style = document.createElement('style');
-	style.appendChild(document.createTextNode(css));
-	document.head.appendChild(style);
+	var style = document.createElement( 'style' );
+	style.appendChild( document.createTextNode( css ) );
+	document.head.appendChild( style );
 }
 
 // js for '<pre>' must be here before 'function bash()'.
@@ -165,7 +165,7 @@ ob_end_flush();      // force flush: current buffer (run after flush started)
 
 // notify all clients - start
 $pushstream = curl_init( 'http://localhost/pub?id=notify' );
-curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type:application/json' ) );
+curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' ) );
 curl_setopt( $pushstream, CURLOPT_POSTFIELDS, json_encode(
 	array(
 		  'icon'  => 'fa fa-info-circle fa-lg'
@@ -225,7 +225,7 @@ pclose( $popencmd );                                      // end bash
 opcache_reset();
 // notify all clients - finished
 $pushstream = curl_init( 'http://localhost/pub?id=notify' );
-curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type:application/json' ) );
+curl_setopt( $pushstream, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json' ) );
 curl_setopt( $pushstream, CURLOPT_POSTFIELDS, json_encode(
 	array(
 		  'title' => 'Done'
