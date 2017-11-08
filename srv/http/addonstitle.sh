@@ -193,13 +193,16 @@ getuninstall() {
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
 notify() {
-	[[ $3 ]] && false || true
-	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "{\
-		  'icon' : 'fa fa-info-circle fa-lg'\
-		, 'title': $1\
-		, 'text' : $2\
-		, 'hide' : $3\
-	}"
+	data=$( cat <<EOF
+	{
+		  "icon" : "fa fa-info-circle fa-lg"
+		, "title": "$1"
+		, "text" : "$2"
+		, "hide" : [[ $3 ]] && false || true
+	}
+	EOF
+	)
+	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "$data"
 }
 installstart() { # $1-'u'=update
 	rm $0
