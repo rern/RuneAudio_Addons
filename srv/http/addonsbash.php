@@ -162,6 +162,15 @@ $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
 ob_implicit_flush(); // start flush: bypass buffer - output to screen
 ob_end_flush();      // force flush: current buffer (run after flush started)
+
+// notify all clients - start
+exec( '/usr/bin/curl -s -v -X POST "http://localhost/pub?id=notify" -d "{ 
+	\"icon\": \"fa fa-info-circle fa-lg\",
+	\"title\": \"Installing...\",
+	\"text\": \"'.$title.'<br>RuneAudio may not response for a while.\",
+	\"hide\": \"false\"
+	}"'
+);
 	
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
@@ -208,4 +217,10 @@ pclose( $popencmd );                                      // end bash
 <!-- ...................................................................................... -->
 <?php
 opcache_reset();
+// notify all clients - finished
+exec( '/usr/bin/curl -s -v -X POST "http://localhost/pub?id=notify" -d "{
+	\"title\": \"Done\",
+	\"text\": \"'.$title.'<br>Installation finished.\"
+	}"'
+);
 ?>
