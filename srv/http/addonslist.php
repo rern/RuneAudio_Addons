@@ -51,7 +51,7 @@ array(
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
 				<li>Fix <white>Library sorting</white></li>
 				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
-				<li>Click anywhere on an items in manage playlist also shows context menu</li>',
+				<li>Click anywhere on items in manage playlist also shows context menu</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
