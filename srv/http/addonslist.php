@@ -50,7 +50,7 @@ array(
 				<li>Add <white>Index bar</white> in Library</li>
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
 				<li>Fix <white>Library sorting</white></li>
-				<li>Add <white>swipe L/R</white> to switch between Library - Playback - Queue</li>
+				<li>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue</li>
 				<li>Click anywhere on items in manage playlist also shows context menu</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
