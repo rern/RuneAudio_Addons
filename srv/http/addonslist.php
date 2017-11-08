@@ -6,7 +6,8 @@ array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171111',
 	'revision'     => '<li>Check available disk space before update</li>
-				<li>Show available disk space</li>',
+				<li>Show available disk space</li>
+				<li>Notify installation to other clients</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
