@@ -73,7 +73,7 @@ function addonblock( $addon ) {
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
-		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
+		$listtitle = str_replace( '*', ' <a>●</a>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
@@ -87,7 +87,7 @@ function addonblock( $addon ) {
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'
-				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
+				.$check.'<span>'.str_replace( '*', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
 				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
 			</legend>
