@@ -27,9 +27,9 @@ $addons = array(
 	'option'       => array(
 		'text' => array(
 			'message' => '<white>BASH</white> commands or /full/path/script:',
-			'label'   => 'commands'
-		)
-	)
+			'label'   => 'commands',
+		),
+	),
 ),
 'dual' => array(
 	'alias'        => 'dual',
@@ -68,9 +68,9 @@ $addons = array(
 				'HD - 1280px: 1.2'           => '1.2',
 				'*Full HD - 1920px: 1.5'     => '1.5',
 				'Custom'                     => '?'
-			)
-		)
-	)
+			),
+		),
+	),
 ),
 'gpio' => array(
 	'alias'        => 'gpio',
@@ -89,7 +89,7 @@ $addons = array(
 				.'For external power: <white>DAC</white> > power on<br>'
 				.'<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>'
 				.'Ensure <white>DAC</white> works properly before continue.'
-	)
+	),
 ),
 'pass' => array(
 	'alias'        => 'pass',
@@ -116,7 +116,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => array(
 		'yesno' => 'Start <white>Aria2</white> on system startup?'
-	)
+	),
 ),
 'tran' => array(
 	'alias'        => 'tran',
@@ -138,9 +138,9 @@ $addons = array(
 			'list'    => array(
 				'*Install <white>WebUI</white> alternative?'            => '1',
 				'*Start <white>Transmission</white> on system startup?' => '1'
-			)
-		)
-	)
+			),
+		),
+	),
 ),
 'samb' => array(
 	'alias'        => 'samb',
@@ -173,8 +173,8 @@ $addons = array(
 		'text3'   => array(
 			'message' => '<white>Read-Write</white> directory:',
 			'label'   => 'Name'
-		)
-	)
+		),
+	),
 ),
 'mpdu' => array(
 	'alias'        => 'mpdu',
@@ -191,7 +191,7 @@ $addons = array(
 				.'<br>10 minutes upgrade may take 20+ minutes'
 				.'<br>with slow download.'
 				.'<br>Continue?'
-	)
+	),
 ),
 'back' => array(
 	'alias'        => 'back',
@@ -213,7 +213,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'option'       => array(
 		'wait' => 'Unmount and remove all <white>USB drives</white> before proceeding.'
-	)
+	),
 ),
 'font' => array(
 	'alias'        => 'font',
@@ -273,7 +273,7 @@ $addons = array(
 				.'<code>/mnt/MPD/Webradio</code><br>'
 				.'<br>'
 				.'<code>&emsp;Ok&emsp;</code> to continue'
-	)
-)
+	),
+),
 	
 );
