@@ -1,16 +1,12 @@
 <?php
 require_once( 'addonshead.php' );
 // -------------------------------------------------------------------------------------------------
-$indexaddo = array_search( 'addo', array_column( $addons, 'alias' ) );
-$addonsversion = $addons[ $indexaddo ][ 'version' ];
-$diskspace = number_format( round( disk_free_space('/') / 1024 / 1024 ) );
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<a class="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
-	<p id="diskspace"> available disk space: '.$diskspace.' MB</p>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -26,10 +22,10 @@ $arraytitle = array_column( $addons, 'title' );
 $arraytitle[ 0 ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arraytitle[ 0 ] = 'Addons Menu';
+$arrayalias = array_keys( $addons );
 
-$length = count( $addons );
-for ( $i = 0; $i < $length; $i++ ) {
-	addonblock( $addons[ $i ] );
+foreach( $arrayalias as $alias ) {
+	addonblock( $addons[ $alias ] );
 }
 // -------------------------------------------------------------------------------------------------
 echo '
@@ -57,15 +53,8 @@ function addonblock( $addon ) {
 		}
 		$btnun = '<a class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
-		if ( isset( $addon[ 'option' ])) {
-			$addonoption = preg_replace( '/\n|\t/', '', $addon[ 'option' ] );
-			$addonoption = htmlspecialchars( $addonoption );
-			$option = 'option="'.$addonoption.'"';
-		} else {
-			$option = '';
-		}
 		$check = '';
-		$btnin = '<a class="btn btn-default btnin" '.$option.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$btnin = '<a class="btn btn-default btnin"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
@@ -73,7 +62,7 @@ function addonblock( $addon ) {
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
-		$listtitle = str_replace( '*', ' <a>●</a>', $title );
+		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
@@ -87,7 +76,7 @@ function addonblock( $addon ) {
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$GLOBALS[ 'blocks' ] .= '
 			<legend title="Back to top">'
-				.$check.'<span>'.str_replace( '*', '', $title ).'</span>
+				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
 				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
 			</legend>
@@ -113,6 +102,9 @@ function addonblock( $addon ) {
 </div>
 <div id="bottom"></div>
 
+<script>
+addons = JSON.parse( '<?php echo json_encode( $addons );?>' );
+</script>
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>
 <script src="assets/js/addonsinfo.js"></script>

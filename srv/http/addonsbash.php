@@ -61,10 +61,7 @@ $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
-
-$arrayalias = array_column( $addons, 'alias' );
-$aliasindex = array_search( $alias, $arrayalias );
-$addon = $addons[ $aliasindex ];
+$addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 
 $optarray = explode( ' ', $opt );
