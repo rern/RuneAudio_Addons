@@ -4,7 +4,7 @@ $addons = array(
 array(
 	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
-	'version'      => '20171108',
+	'version'      => '20171111',
 	'revision'     => '<li>Check available disk space before update</li>
 				<li>Show available disk space</li>
 				<li>Notify installation to other clients</li>',
