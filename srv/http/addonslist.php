@@ -25,9 +25,9 @@ $addons = array(
 	'sourcecode'   => '',
 	'installurl'   => '',
 	'option'       => array(
-		'text' => array(
-			'message' => '<white>BASH</white> commands or /full/path/script:',
-			'label'   => 'commands',
+		'text'       => array(
+			'message'  => '<white>BASH</white> commands or /full/path/script:',
+			'label'    => 'commands',
 		),
 	),
 ),
@@ -59,11 +59,11 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'       => array(
-		'radio' => array(
-			'message' => 'Set <white>zoom level</white> for display directly connect to RPi.<br>'
+		'radio'      => array(
+			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.<br>'
 						.'<br>'
 						.'Local browser screen size:',
-			'list'   => array(
+			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.2'           => '1.2',
 				'*Full HD - 1920px: 1.5'     => '1.5',
@@ -84,7 +84,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => array(
-		'wait' => 'Get <white>DAC configuration</white> ready:<br>'
+		'wait'       => 'Get <white>DAC configuration</white> ready:<br>'
 				.'<br>'
 				.'For external power: <white>DAC</white> > power on<br>'
 				.'<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>'
@@ -115,7 +115,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => array(
-		'yesno' => 'Start <white>Aria2</white> on system startup?'
+		'yesno'      => 'Start <white>Aria2</white> on system startup?'
 	),
 ),
 'tran' => array(
@@ -129,13 +129,13 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => array(
-		'password' => array(
-			'message' => 'Password for user <white>root</white> (blank = no password):',
-			'label'   => 'Password'
+		'password'   => array(
+			'message'  => 'Password for user <white>root</white> (blank = no password):',
+			'label'    => 'Password'
 		),
-		'checkbox' => array(
-			'message' => '',
-			'list'    => array(
+		'checkbox'   => array(
+			'message'  => '',
+			'list'     => array(
 				'*Install <white>WebUI</white> alternative?'            => '1',
 				'*Start <white>Transmission</white> on system startup?' => '1'
 			),
@@ -152,27 +152,27 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => array(
-		'confirm' => 'Once installed, Samba <white>cannot be downgraded</white>.'
+		'confirm'    => 'Once installed, Samba <white>cannot be downgraded</white>.'
 				.'<br>Continue?',
-		'wait'    => 'Connect a <white>USB drive</white> before continue.'
+		'wait'       => 'Connect a <white>USB drive</white> before continue.'
 				.'<br>1st drive will be used for shared directories.',
-		'password'=> array(
-			'message' => '(for connecting to <white>USB root share</white>)'
+		'password'   => array(
+			'message'  => '(for connecting to <white>USB root share</white>)'
 					.'<br>Password for user <white>root</white> (blank = rune):',
-			'label'   => 'Password'
+			'label'    => 'Password'
 		),
-		'text1'   => array(
-			'message' => '<white>File Server</white>:',
-			'label'   => 'Name',
-			'value'   => 'RuneAudio'
+		'text1'      => array(
+			'message'  => '<white>File Server</white>:',
+			'label'    => 'Name',
+			'value'    => 'RuneAudio'
 		),
-		'text2'   => array(
-			'message' => '<white>Read-Only</white> directory:',
-			'label'   => 'Name'
+		'text2'      => array(
+			'message'  => '<white>Read-Only</white> directory:',
+			'label'    => 'Name'
 		),
-		'text3'   => array(
-			'message' => '<white>Read-Write</white> directory:',
-			'label'   => 'Name'
+		'text3'      => array(
+			'message'  => '<white>Read-Write</white> directory:',
+			'label'    => 'Name'
 		),
 	),
 ),
@@ -187,7 +187,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
-		'confirm' => 'Once installed, MPD <white>cannot be downgraded</white>.'
+		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
 				.'<br>10 minutes upgrade may take 20+ minutes'
 				.'<br>with slow download.'
 				.'<br>Continue?'
@@ -212,7 +212,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'option'       => array(
-		'wait' => 'Unmount and remove all <white>USB drives</white> before proceeding.'
+		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),
 ),
 'font' => array(
@@ -269,7 +269,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => array(
-		'wait' => 'Get webradio files copied to:<br>'
+		'wait'       => 'Get webradio files copied to:<br>'
 				.'<code>/mnt/MPD/Webradio</code><br>'
 				.'<br>'
 				.'<code>&emsp;Ok&emsp;</code> to continue'
