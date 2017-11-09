@@ -33,11 +33,9 @@ $( '.btnin' ).each( function() {
 			, cancel   : 1
 			, ok       : function() {
 				branch = $( '#infoTextbox' ).val() +' -b';
-				option = $thisbtn.attr( 'option' );
+				option = addons[ alias ].option;
 				if ( option ) {
 					j = 0;
-					option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
-					option = JSON.parse( option );
 					getoptions();
 				} else {
 					formtemp();
@@ -63,11 +61,10 @@ $( '.boxed-group .btn' ).click( function () {
 		, message: type +'?'
 		, cancel : 1
 		, ok     : function () {
-			option = $thisbtn.attr( 'option' );
+			option = addons[ alias ].option;
+			console.log( option );
 			if ( option ) {
 				j = 0;
-				option = option.replace( /'/g, '"' ); // double quote only for JSON.parse()
-				option = JSON.parse( option );
 				getoptions();
 			} else {
 				formtemp();
