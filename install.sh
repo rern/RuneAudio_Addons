@@ -2,6 +2,13 @@
 
 # $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
 
+hwrevision=$( cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' )
+hwrev=${hwrevision:0:2}
+if [[ $hwrev == 00 || $hwrev == 90 ]];then
+	echo 'Addons Menu cannot be used with this RPi hardware.'
+	exit
+fi
+
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
 	echo "
