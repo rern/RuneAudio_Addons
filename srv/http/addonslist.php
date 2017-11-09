@@ -45,7 +45,7 @@ array(
 array(
 	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171108',
+	'version'      => '20171109',
 	'revision'     => '<li>Add long-press for <white>show/hide items setting</white> (touch gestures still working)</li>
 				<li>Add <white>Index bar</white> in Library</li>
 				<li><white>Breadcrumb links</white> for path shortcut jump</li>
