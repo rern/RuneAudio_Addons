@@ -105,6 +105,12 @@ rankmirrors
 
 # start custom script ------------------------------------------------------------------------------>>>
 
+echo -e "$bar Restore options ..."
+if [[ $1 == u ]]; then
+	option1=$( redis-cli get option1 &> /dev/null )
+	redis-cli del option1 &> /dev/null
+fi
+
 echo -e "$bar <package> package ..."
 pacman -S --noconfirm <packages>
 
@@ -141,6 +147,12 @@ alias=<alias>
 uninstallstart $@
 
 # start custom script ------------------------------------------------------------------------------>>>
+
+echo -e "$bar Save options ..."
+if [[ $1 == u ]]; then
+	value1=$( <get value1> )
+	redis-cli set option1 $value1 &> /dev/null
+fi
 
 echo -e "$bar Remove <package> ..."
 pacman -R noconfirm <packages>
