@@ -4,10 +4,10 @@ $GLOBALS[ 'addons' ] = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171111',
-	'revision'     => '<li>Check available disk space before update</li>'
-  				.'<li>Show available disk space</li>'
-  				.'<li>Notify installation to other clients</li>'
-				.'<li>Change options format to PHP array</li>',
+	'revision'     => '<br>Check available disk space before update'
+  				.'<br>Show available disk space'
+  				.'<br>Notify installation to other clients'
+				.'<br>Change options format to PHP array',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -43,12 +43,12 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171109',
-	'revision'     => '<li>Add long-press for <white>show/hide items setting</white> (touch gestures still working)</li>'
-				.'<li>Add <white>Index bar</white> in Library</li>'
-				.'<li><white>Breadcrumb links</white> for path shortcut jump</li>'
-				.'<li>Fix <white>Library sorting</white></li>'
-				.'<li>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue</li>'
-				.'<li>Click anywhere on items in manage playlist also shows context menu</li>',
+	'revision'     => '<br>Add long-press for <white>show/hide items setting</white> (touch gestures still working)'
+				.'<br>Add <white>Index bar</white> in Library'
+				.'<br><white>Breadcrumb links</white> for path shortcut jump'
+				.'<br>Fix <white>Library sorting</white>'
+				.'<br>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue'
+				.'<br>Click anywhere on items in manage playlist also shows context menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -71,8 +71,8 @@ $GLOBALS[ 'addons' ] = array(
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20171020',
-	'revision'     => '<li>General improvements</li>'
-				.'<li>Switch to online package installation</li>',
+	'revision'     => '<br>General improvements'
+				.'<br>Switch to online package installation',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
@@ -89,7 +89,7 @@ $GLOBALS[ 'addons' ] = array(
 'pass' => array(
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
@@ -100,7 +100,7 @@ $GLOBALS[ 'addons' ] = array(
 'aria' =>array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
 			.'<br>Pre-configured and ready to use.',
@@ -114,7 +114,7 @@ $GLOBALS[ 'addons' ] = array(
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20171022',
-	'revision'     => '<li>Switch from custom package to normal for easy update.</li>',
+	'revision'     => '<br>Switch from custom package to normal for easy update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
@@ -186,7 +186,7 @@ $GLOBALS[ 'addons' ] = array(
 'back' => array(
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enable backup-restore settings and databases.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
@@ -206,7 +206,7 @@ $GLOBALS[ 'addons' ] = array(
 'font' => array(
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
@@ -216,7 +216,7 @@ $GLOBALS[ 'addons' ] = array(
 'motd' => array(
 	'title'        => 'Login Logo for SSH Terminal',
 	'version'      => '20170901',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
@@ -226,7 +226,7 @@ $GLOBALS[ 'addons' ] = array(
 'spla' => array(
 	'title'        => 'Boot Logo *',
 	'version'      => '20171010',
-	'revision'     => '<li>Initial release</li>',
+	'revision'     => '<br>Initial release',
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Display RuneAudio logo during boot - Splash screen.',

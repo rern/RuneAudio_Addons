@@ -1,12 +1,15 @@
 <?php
 require_once( 'addonshead.php' );
+
+$diskspace = number_format( round( disk_free_space('/') / 1024 / 1024 ) );
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<a class="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
+	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
+	<p id="diskspace"> available space: '.$diskspace.' MB</p>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
@@ -31,7 +34,7 @@ foreach( $arrayalias as $alias ) {
 // -------------------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
-	$list.'
+		$list.'
 	</ul>
 	<br>
 ';
@@ -69,8 +72,14 @@ function addonblock( $alias ) {
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$detail = ' <a href="'.$addon[ 'sourcecode' ].'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
-	if ( !$addon[ 'sourcecode' ] ) $detail = '';
+	$revision = '<ul id="list"><li>';
+	$revision = preg_replace( '<br>', '</li><li>', $addon[ 'revision' ] ).'</li></ul><br>';
+	$sourcecode = $addon[ 'sourcecode' ];
+	if ( $sourcecode ) {
+		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
+	} else {
+		$detail = '';
+	}
 	$GLOBALS[ 'blocks' ] .= '
 		<div id="'.$alias.'" class="boxed-group">';
 	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
@@ -83,7 +92,7 @@ function addonblock( $alias ) {
 			</legend>
 			<div class="detail" style="display: none;">
 				<ul>'
-					.$addon[ 'revision' ].'
+					.$revision.'
 				</ul>
 			</div>
 			<form class="form-horizontal" alias="'.$alias.'">
