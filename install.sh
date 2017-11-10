@@ -1,6 +1,12 @@
 #!/bin/bash
 
 # $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
+# for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
+if [[ $# == 2 && $2 == '-b' ]]; then
+	branch=$1
+else
+	branch=master
+fi
 
 hwrevision=$( cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | cut -b 1-2 )
 if [[ $hwrevision == 00 || $hwrevision == 90 ]];then
@@ -29,12 +35,8 @@ alias=addo
 
 installstart $@
 
-# for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
-if [[ $# == 2 && $2 == '-b' ]]; then
-	branch=$1
-else
-	branch=master
-fi
+# temp fix - missing 'branch=master' in addonsdl.sh
+[[ $1 == '-b' ]] && branch=master
 
 getinstallzip
 
