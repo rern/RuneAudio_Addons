@@ -47,7 +47,7 @@ _revision 20171025_
 
 ### Each addon requires:  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
-2. `array(...)` in `addonslist.php`
+2. `<alias> => array(...)` in `addonslist.php`
   
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
@@ -161,8 +161,7 @@ uninstallfinish $@
 
 **`array(...)` template**   
 ```php
-array(
-	'alias'         => 'alias',
+'<alias> => array(
 /**/	'version'       => 'version',
 /**/	'revision'      => 'revision',
 /**/	'only03'        => '1',
@@ -174,54 +173,53 @@ array(
 	'installurl'    => 'https://url/for/wget/install.sh',
 /**/	'thumbnail'     => 'https://url/to/image/w100px',
 /**/	'buttonlabel'   => 'install button label',
-/**/	'option'        => "{ 
-		'wait'    : 'message text',
-		'confirm' : 'message text',
-		'yesno'   : 'message text',
-		'yesno1'  : 'message text 1',
-		'yesno2'  : 'message text 2',
-		'text'    : {
-			'message': 'message text',
-			'label'  : 'label text'
-		},
-		'password': {
-			'message': 'message text',
-			'label'  : 'label text'
-		},
-		'radio'   : {
-			'message': 'message text',
-			'list'   : {
-				'*item1': 'value1',
-				'item2' : 'value2',
-				'custom': '?'
-			}
-		},
-		'checkbox': {
-			'message': 'message text',
-			'list'   : {
-				'item1' : 'value1',
-				'*item2': 'value2'
-			}
-		},
-		'select'  : {
-			'message': 'message text',
-			'label'  : 'label text',
-			'list': {
-				'item1' : 'value1',
-				'item2' : 'value2',
-				'custom': '?'
-			}
-		}
-	}"
+/**/	'option'        => array(
+		'wait'     => 'message text',
+		'confirm'  => 'message text',
+		'yesno'    => 'message text',
+		'yesno1'   => 'message text 1',
+		'yesno2'   => 'message text 2',
+		'text'     => array(
+			'message' => 'message text',
+			'label'   => 'label text'
+		),
+		'password' => array(
+			'message' => 'message text',
+			'label'   => 'label text'
+		),
+		'radio'    => array(
+			'message' => 'message text',
+			'list'    => array(
+				'*item1' => 'value1',
+				'item2'  => 'value2',
+				'custom' => '?'
+			),
+		),
+		'checkbox' => array(
+			'message' => 'message text',
+			'list'    => array(
+				'item1'  => 'value1',
+				'*item2' => 'value2'
+			),
+		),
+		'select'   => array(
+			'message' => 'message text',
+			'label'   => 'label text',
+			'list'    => array(
+				'item1'  => 'value1',
+				'item2'  => 'value2',
+				'custom' => '?'
+			),
+		),
+	),
 
 ),
 ```
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
   
-**`'alias'`** - reference point
-- must be 1st in each addon
-- must be unique among aliases
+**`'<alias>'`**
+- must be unique among addons
 
 **`'version'`** - buttons enable/disable  
 - `'version'` changed > show `Update` button
@@ -294,5 +292,5 @@ array(
 	- `branch` and add scripts and files to the ropository
 	- `Pull request`
 - add addon data to **Addons Menu**:
-	- add `array(...)` to `/srv/http/addonslist.php`
+	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
 	- `Pull request`
