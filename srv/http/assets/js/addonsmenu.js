@@ -56,6 +56,16 @@ function addonsdl( exit, path ) {
 				$( '#loader' ).addClass( 'hide' );
 			}
 		} );
+	} else if ( exit == 2 ) {
+		info( {
+			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			, message: 'Addons Menu cannot be updated.'
+				+'<br>Root partition has <white>less than 1 MB free space</white>.'
+			, ok     : function() {
+				$( '#loader' ).addClass( 'hide' );
+				location.href = path +'addons.php';
+			}
+		} );
 	} else {
 		PNotify.removeAll();
 		location.href = path +'addons.php';
