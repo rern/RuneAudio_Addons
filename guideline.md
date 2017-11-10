@@ -107,8 +107,8 @@ rankmirrors
 
 echo -e "$bar Restore options ..."
 if [[ $1 == u ]]; then
-	option1=$( redis-cli get option1 &> /dev/null )
-	redis-cli del option1 &> /dev/null
+	<option>=$( redis-cli get <option> &> /dev/null )
+	redis-cli del <option> &> /dev/null
 fi
 
 echo -e "$bar <package> package ..."
@@ -150,8 +150,8 @@ uninstallstart $@
 
 echo -e "$bar Save options ..."
 if [[ $1 == u ]]; then
-	value1=$( <get value1> )
-	redis-cli set option1 $value1 &> /dev/null
+	<value>=$( <get value1> )
+	redis-cli set <option> $<value> &> /dev/null
 fi
 
 echo -e "$bar Remove <package> ..."
