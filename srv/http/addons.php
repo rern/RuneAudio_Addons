@@ -1,15 +1,16 @@
 <?php
 require_once( 'addonshead.php' );
 
-$diskspace = number_format( round( disk_free_space('/') / 1024 / 1024 ) );
+$rpiversion = fgets( fopen( '/proc/device-tree/model', 'r' ) );
+$diskspace = number_format( round( disk_free_space( '/' ) / 1024 / 1024 ) );
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
+	<legend class="bl">'.$rpiversion.'<p style="float:right;"> available space: '.$diskspace.' MB</p></legend>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
-	<p id="diskspace"> available space: '.$diskspace.' MB</p>
 ';
 // -------------------------------------------------------------------------------------------------
 $redis = new Redis(); 
