@@ -16,19 +16,15 @@ h1 {
 	vertical-align: 10px;
 	width: 25px;
 }
-.issues {
-	text-align: right;
-	border-bottom: 1px solid #34495e;
-	display: block;
+#issues {
+	clear: both;
+	float: right;
 }
-#detail ul {
-	font-size: 14px;
+#list {
+	margin: 10px 0;
 }
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
-}
-#list {
-	margin-top: 15px;
 }
 .revision:after,
 #list li:after {
