@@ -54,7 +54,7 @@ echo $file
 echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
 
-sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js
+sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
