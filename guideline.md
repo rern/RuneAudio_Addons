@@ -157,9 +157,9 @@ uninstallfinish $@
 ```
   
 
-### 2. `array(...)` in `addonslist.php`
+### 2. `<alias> => array(...)` in `addonslist.php`
 
-**`array(...)` template**   
+**`<alias> => array(...)` template**   
 ```php
 '<alias> => array(
 /**/	'version'       => 'version',
