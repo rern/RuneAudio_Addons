@@ -162,52 +162,52 @@ uninstallfinish $@
 **`<alias> => array(...)` template**   
 ```php
 <alias> => array(
-/**/	'version'       => 'version',
-/**/	'revision'      => 'revision',
+/**/	'version'       => '<yyyymmdd>',
+/**/	'revision'      => '<revision summary>',
 /**/	'only03'        => '1',
-	'diskspace'     => 'kb',
-	'title'         => 'title',
-	'maintainer'    => 'maintainer',
-	'description'   => 'description',
-	'sourcecode'    => 'https://url/to/sourcecode',
-	'installurl'    => 'https://url/for/wget/install.sh',
-/**/	'thumbnail'     => 'https://url/to/image/w100px',
-/**/	'buttonlabel'   => 'install button label',
+	'diskspace'     => '<kb>',
+	'title'         => '<display name>',
+	'maintainer'    => '<maintainer>',
+	'description'   => '<description>',
+	'sourcecode'    => '<https://url/to/sourcecode>',
+	'installurl'    => '<https://url/for/wget/install.sh>',
+/**/	'thumbnail'     => '<https://url/to/image/w100px>',
+/**/	'buttonlabel'   => '<install button label>',
 /**/	'option'        => array(
-		'wait'     => 'message text',
-		'confirm'  => 'message text',
-		'yesno'    => 'message text',
-		'yesno1'   => 'message text 1',
-		'yesno2'   => 'message text 2',
+		'wait'     => '<message text>',
+		'confirm'  => '<message text>',
+		'yesno'    => '<message text>',
+		'yesno1'   => '<message text 1>',
+		'yesno2'   => '<message text 2>',
 		'text'     => array(
-			'message' => 'message text',
-			'label'   => 'label text'
+			'message' => '<message text>',
+			'label'   => '<label text>'
 		),
 		'password' => array(
-			'message' => 'message text',
-			'label'   => 'label text'
+			'message' => '<message text>',
+			'label'   => '<label text>'
 		),
 		'radio'    => array(
-			'message' => 'message text',
+			'message' => '<message text>',
 			'list'    => array(
-				'*item1' => 'value1',
-				'item2'  => 'value2',
+				'*item1' => '<value1>',
+				'item2'  => '<value2>',
 				'custom' => '?'
 			),
 		),
 		'checkbox' => array(
-			'message' => 'message text',
+			'message' => '<message text>',
 			'list'    => array(
-				'item1'  => 'value1',
-				'*item2' => 'value2'
+				'item1'  => '<value1>',
+				'*item2' => '<value2>'
 			),
 		),
 		'select'   => array(
-			'message' => 'message text',
-			'label'   => 'label text',
+			'message' => '<message text>',
+			'label'   => '<label text>',
 			'list'    => array(
-				'item1'  => 'value1',
-				'item2'  => 'value2',
+				'item1'  => '<value1>',
+				'item2'  => '<value2>',
 				'custom' => '?'
 			),
 		),
