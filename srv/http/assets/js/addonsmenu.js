@@ -67,6 +67,7 @@ function addonsdl( exit, path ) {
 			}
 		} );
 	} else {
+		PNotify.removeAll();
 		location.href = path +'addons.php';
 	}
 }
@@ -83,10 +84,3 @@ pushstreamAddons.onmessage = function( update ) {
 };
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
-
-// remove previous before new notify
-var old_renderMSG = renderMSG;
-renderMSG = function( text ) {
-	PNotify.removeAll();
-	old_renderMSG( text );
-}
