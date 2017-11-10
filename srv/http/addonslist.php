@@ -3,11 +3,11 @@ $GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171025',
-	'revision'     => '<li>Add <white>update revision</white> of each addon</li>'
-					.'<li>Add long-press Install for <white>branch testing</white></li>'
-					.'<li>Remove long-press Uninstall for <white>forced update</white></li>'
-					.'<li>Improve script templates</li>',
+	'version'      => '20171111',
+	'revision'     => '<li>Check available disk space before update</li>'
+  				.'<li>Show available disk space</li>'
+  				.'<li>Notify installation to other clients</li>'
+				.'<li>Change options format to PHP array</li>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
