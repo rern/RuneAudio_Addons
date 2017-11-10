@@ -24,9 +24,6 @@ h1 {
 #diskspace {
 	float: right;
 }
-#detail ul {
-	font-size: 14px;
-}
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
