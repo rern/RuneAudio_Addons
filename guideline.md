@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171025_
+_revision 20171111_
 
 ### Addons Menu Process:    
 
@@ -47,7 +47,7 @@ _revision 20171025_
 
 ### Each addon requires:  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
-2. `array(...)` in `addonslist.php`
+2. `<alias> => array(...)` in `addonslist.php`
   
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
@@ -58,13 +58,17 @@ _revision 20171025_
 > default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
-- install script  
+- install script 
+	- for update, get saved options as install parameters / arguments
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
 	- use modify over replace files unless necessary
 	- make backup if replace files
+	- update:
+		- get options from previously saved to database
 - uninstall script
+	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
 	- no need for non-install type
 	- file path:
@@ -73,9 +77,9 @@ _revision 20171025_
 		- for install with individual downloads
 			- must be the same as `install.sh` to use `getuninstall` function
 			- destination must be `/usr/local/bin/`
-		
-- consult with [JS plugin list]() used by other addons to avoid redundant install or critical uninstall
-- update will be done by uninstall > install
+	- consult with [JS plugin list](https://github.com/rern/RuneAudio_Addons/blob/master/js_plugins.md) used by other addons to avoid critical uninstall
+- update:
+	- will be done by uninstall > install
   
 **1.1  `install.sh` template**
 ```sh
@@ -100,6 +104,12 @@ getinstallzip
 rankmirrors
 
 # start custom script ------------------------------------------------------------------------------>>>
+
+echo -e "$bar Restore options ..."
+if [[ $1 == u ]]; then
+	<option>=$( redis-cli get <option> &> /dev/null )
+	redis-cli del <option> &> /dev/null
+fi
 
 echo -e "$bar <package> package ..."
 pacman -S --noconfirm <packages>
@@ -138,6 +148,12 @@ uninstallstart $@
 
 # start custom script ------------------------------------------------------------------------------>>>
 
+echo -e "$bar Save options ..."
+if [[ $1 == u ]]; then
+	<value>=$( <get value1> )
+	redis-cli set <option> $<value> &> /dev/null
+fi
+
 echo -e "$bar Remove <package> ..."
 pacman -R noconfirm <packages>
 
@@ -157,70 +173,66 @@ uninstallfinish $@
 ```
   
 
-### 2. `array(...)` in `addonslist.php`
+### 2. `<alias> => array(...)` in `addonslist.php`
 
-**`array(...)` template**   
+**`<alias> => array(...)` template**   
 ```php
-array(
-	'alias'         => 'alias',
-/**/	'version'       => 'version',
-/**/	'revision'      => 'revision',
+<alias> => array(
+/**/	'version'       => '<yyyymmdd>',
+/**/	'revision'      => '<revision summary>',
 /**/	'only03'        => '1',
-	'title'         => 'title',
-	'maintainer'    => 'maintainer',
-	'description'   => 'description',
-/**/	'thumbnail'     => 'https://url/to/image/w100px',
-/**/	'buttonlabel'   => 'install button label',
-	'sourcecode'    => 'https://url/to/sourcecode',
-	'installurl'    => 'https://url/for/wget/install.sh',
-/**/	'option'        => "{ 
-		'wait'    : 'message text',
-		'confirm' : 'message text',
-		'yesno'   : 'message text',
-		'yesno1'  : 'message text 1',
-		'yesno2'  : 'message text 2',
-		'text'    : {
-			'message': 'message text',
-			'label'  : 'label text'
-		},
-		'password': {
-			'message': 'message text',
-			'label'  : 'label text'
-		},
-		'radio'   : {
-			'message': 'message text',
-			'list'   : {
-				'*item1': 'value1',
-				'item2' : 'value2',
-				'custom': '?'
-			}
-		},
-		'checkbox': {
-			'message': 'message text',
-			'list'   : {
-				'item1' : 'value1',
-				'*item2': 'value2'
-			}
-		},
-		'select'  : {
-			'message': 'message text',
-			'label'  : 'label text',
-			'list': {
-				'item1' : 'value1',
-				'item2' : 'value2',
-				'custom': '?'
-			}
-		}
-	}"
+	'diskspace'     => '<kb>',
+	'title'         => '<display name>',
+	'maintainer'    => '<maintainer>',
+	'description'   => '<description>',
+	'sourcecode'    => '<https://url/to/sourcecode>',
+	'installurl'    => '<https://url/for/wget/install.sh>',
+/**/	'thumbnail'     => '<https://url/to/image/w100px>',
+/**/	'buttonlabel'   => '<install button label>',
+/**/	'option'        => array(
+		'wait'     => '<message text>',
+		'confirm'  => '<message text>',
+		'yesno'    => '<message text>',
+		'yesno1'   => '<message text 1>',
+		'yesno2'   => '<message text 2>',
+		'text'     => array(
+			'message' => '<message text>',
+			'label'   => '<label text>'
+		),
+		'password' => array(
+			'message' => '<message text>',
+			'label'   => '<label text>'
+		),
+		'radio'    => array(
+			'message' => '<message text>',
+			'list'    => array(
+				'*item1' => '<value1>',
+				'item2'  => '<value2>',
+				'custom' => '?'
+			),
+		),
+		'checkbox' => array(
+			'message' => '<message text>',
+			'list'    => array(
+				'item1'  => '<value1>',
+				'*item2' => '<value2>'
+			),
+		),
+		'select'   => array(
+			'message' => '<message text>',
+			'label'   => '<label text>',
+			'list'    => array(
+				'item1'  => '<value1>',
+				'item2'  => '<value2>',
+				'custom' => '?'
+			),
+		),
+	),
 
 ),
 ```
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
-  
-**`'alias'`** - reference point
-- must be 1st in each addon
-- must be unique among aliases
 
 **`'version'`** - buttons enable/disable  
 - `'version'` changed > show `Update` button
@@ -232,6 +244,9 @@ array(
 **`'only03'`** - compatability
 - hide if for RuneAudio 0.3 only
 - omit for both versions compatible
+
+**`'diskspace'`**
+- downloaded packages + installed files plus downloaded + decompress files
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
@@ -290,5 +305,5 @@ array(
 	- `branch` and add scripts and files to the ropository
 	- `Pull request`
 - add addon data to **Addons Menu**:
-	- add `array(...)` to `/srv/http/addonslist.php`
+	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
 	- `Pull request`
