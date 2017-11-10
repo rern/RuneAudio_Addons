@@ -16,6 +16,7 @@ $GLOBALS[ 'release' ] = $redis->get( 'release' );
 $GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
+//$GLOBALS[ 'addons' ] = $addons;
 
 // sort
 $arraytitle = array_column( $addons, 'title' );
@@ -25,7 +26,7 @@ $arraytitle[ 0 ] = 'Addons Menu';
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
-	addonblock( $addons[ $alias ] );
+	addonblock( $alias );
 }
 // -------------------------------------------------------------------------------------------------
 echo '
@@ -36,12 +37,12 @@ echo '
 ';
 echo $blocks;
 // -------------------------------------------------------------------------------------------------
-function addonblock( $addon ) {
+function addonblock( $alias ) {
+	$addon = $GLOBALS[ 'addons' ][ $alias ];
 	if ( $GLOBALS[ 'release' ] == '0.4b' && isset( $addon[ 'only03' ] ) ) return;
 	
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
-	$alias = $addon[ 'alias' ];
 	
 	if ( $GLOBALS[ 'redis' ][ $alias ] || file_exists( "/usr/local/bin/uninstall_$alias.sh" ) ) {
 		$check = '<i class="fa fa-check"></i> ';
@@ -103,7 +104,7 @@ function addonblock( $addon ) {
 <div id="bottom"></div>
 
 <script>
-addons = JSON.parse( '<?php echo json_encode( $addons );?>' );
+addons = JSON.parse( '<?php echo json_encode( $GLOBALS[ 'addons' ] );?>' );
 </script>
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>

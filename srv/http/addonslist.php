@@ -1,8 +1,7 @@
 <?php
-$addons = array(
+$GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
-	'alias'        => 'addo',
 	'title'        => 'Addons Menu',
 	'version'      => '20171025',
 	'revision'     => '<li>Add <white>update revision</white> of each addon</li>'
@@ -16,7 +15,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'bash' => array(
-	'alias'        => 'bash',
 	'title'        => 'BASH Command',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
@@ -32,7 +30,6 @@ $addons = array(
 	),
 ),
 'dual' => array(
-	'alias'        => 'dual',
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)'
@@ -44,7 +41,6 @@ $addons = array(
 	'installurl'   => '',
 ),
 'enha' => array(
-	'alias'        => 'enha',
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171109',
 	'revision'     => '<li>Add long-press for <white>show/hide items setting</white> (touch gestures still working)</li>'
@@ -73,7 +69,6 @@ $addons = array(
 	),
 ),
 'gpio' => array(
-	'alias'        => 'gpio',
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20171020',
 	'revision'     => '<li>General improvements</li>'
@@ -92,7 +87,6 @@ $addons = array(
 	),
 ),
 'pass' => array(
-	'alias'        => 'pass',
 	'title'        => 'RuneUI Password *',
 	'version'      => '20170901',
 	'revision'     => '<li>Initial release</li>',
@@ -104,7 +98,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/RuneAddons/RuneUI_password/raw/master/install.sh',
 ),
 'aria' =>array(
-	'alias'        => 'aria',
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
 	'revision'     => '<li>Initial release</li>',
@@ -119,7 +112,6 @@ $addons = array(
 	),
 ),
 'tran' => array(
-	'alias'        => 'tran',
 	'title'        => 'Transmission *',
 	'version'      => '20171022',
 	'revision'     => '<li>Switch from custom package to normal for easy update.</li>',
@@ -143,7 +135,6 @@ $addons = array(
 	),
 ),
 'samb' => array(
-	'alias'        => 'samb',
 	'title'        => 'Samba Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
@@ -177,7 +168,6 @@ $addons = array(
 	),
 ),
 'mpdu' => array(
-	'alias'        => 'mpdu',
 	'title'        => 'MPD Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
@@ -194,7 +184,6 @@ $addons = array(
 	),
 ),
 'back' => array(
-	'alias'        => 'back',
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
 	'revision'     => '<li>Initial release</li>',
@@ -204,7 +193,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
 'expa' => array(
-	'alias'        => 'expa',
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
@@ -216,7 +204,6 @@ $addons = array(
 	),
 ),
 'font' => array(
-	'alias'        => 'font',
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
 	'revision'     => '<li>Initial release</li>',
@@ -227,7 +214,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 ),
 'motd' => array(
-	'alias'        => 'motd',
 	'title'        => 'Login Logo for SSH Terminal',
 	'version'      => '20170901',
 	'revision'     => '<li>Initial release</li>',
@@ -238,7 +224,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 ),
 'spla' => array(
-	'alias'        => 'spla',
 	'title'        => 'Boot Logo *',
 	'version'      => '20171010',
 	'revision'     => '<li>Initial release</li>',
@@ -250,7 +235,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
 ),
 'rank' => array(
-	'alias'        => 'rank',
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fix package download errors caused by unreachable servers.',
@@ -259,7 +243,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 ),
 'webr' => array(
-	'alias'        => 'webr',
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
