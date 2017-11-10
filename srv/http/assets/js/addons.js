@@ -52,26 +52,30 @@ $( '.boxed-group .btn' ).click( function () {
 	type = $thisbtn.text().trim();
 	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 	
-	if ( type === 'Link' ) {
+	if ( alias === 'bash' ) {
+		option = addons[ alias ].option;
+		j = 0;
+		getoptions();
+	} else if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
-		return
-	}
-	info( {
-		  title  : title
-		, message: type +'?'
-		, cancel : 1
-		, ok     : function () {
-			option = addons[ alias ].option;
-			console.log( option );
-			if ( option ) {
-				j = 0;
-				getoptions();
-			} else {
-				formtemp();
+	} else if ( type === 'Update' ) {
+		formtemp();
+	} else {
+		info( {
+			  title  : title
+			, message: type +'?'
+			, cancel : 1
+			, ok     : function () {
+				option = addons[ alias ].option;
+				if ( option ) {
+					j = 0;
+					getoptions();
+				} else {
+					formtemp();
+				}
 			}
-		}
-	} );
-	if ( alias === 'bash' ) $( '#infoOk' ).click();
+		} );
+	}
 } );
 $( '.thumbnail' ).click( function() {
 	$sourcecode = $( this ).prev().find('form a').attr( 'href');
