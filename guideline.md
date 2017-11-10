@@ -161,7 +161,7 @@ uninstallfinish $@
 
 **`<alias> => array(...)` template**   
 ```php
-'<alias> => array(
+<alias> => array(
 /**/	'version'       => 'version',
 /**/	'revision'      => 'revision',
 /**/	'only03'        => '1',
