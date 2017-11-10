@@ -2,6 +2,7 @@
 - Check available disk space before update
 - Show available disk space
 - Notify installation to other clients
+- Change options format to PHP array
 
 ### 20171025
 - Add update revision of each addon
