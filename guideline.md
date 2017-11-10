@@ -58,13 +58,17 @@ _revision 20171111_
 > default variables and functions will take care most of install activities  
 > use non-invasive modifications so other addons can survive after install / uninstall  
 
-- install script  
+- install script 
+	- for update, get saved options as install parameters / arguments
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
 	- use modify over replace files unless necessary
 	- make backup if replace files
+	- update:
+		- get options from previously saved to database
 - uninstall script
+	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
 	- no need for non-install type
 	- file path:
@@ -73,9 +77,9 @@ _revision 20171111_
 		- for install with individual downloads
 			- must be the same as `install.sh` to use `getuninstall` function
 			- destination must be `/usr/local/bin/`
-		
-- consult with [JS plugin list]() used by other addons to avoid redundant install or critical uninstall
-- update will be done by uninstall > install
+	- consult with [JS plugin list](https://github.com/rern/RuneAudio_Addons/blob/master/js_plugins.md) used by other addons to avoid critical uninstall
+- update:
+	- will be done by uninstall > install
   
 **1.1  `install.sh` template**
 ```sh
