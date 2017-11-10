@@ -5,9 +5,9 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171111',
 	'revision'     => 'Check available disk space before update'
-  				.'<br>Show available disk space'
-  				.'<br>Notify installation to other clients'
-				.'<br>Change options format to PHP array',
+					.'<br>Show available disk space'
+					.'<br>Notify installation to other clients'
+					.'<br>Change options format to PHP array',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -44,11 +44,11 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171109',
 	'revision'     => 'Add long-press for <white>show/hide items setting</white> (touch gestures still working)'
-				.'<br>Add <white>Index bar</white> in Library'
-				.'<br><white>Breadcrumb links</white> for path shortcut jump'
-				.'<br>Fix <white>Library sorting</white>'
-				.'<br>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue'
-				.'<br>Click anywhere on items in manage playlist also shows context menu',
+					.'<br>Add <white>Index bar</white> in Library'
+					.'<br><white>Breadcrumb links</white> for path shortcut jump'
+					.'<br>Fix <white>Library sorting</white>'
+					.'<br>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue'
+					.'<br>Click anywhere on items in manage playlist also shows context menu',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -72,18 +72,18 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20171020',
 	'revision'     => 'General improvements'
-				.'<br>Switch to online package installation',
+					.'<br>Switch to online package installation',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 	'option'       => array(
-		'wait'       => 'Get <white>DAC configuration</white> ready:<br>'
-				.'<br>'
-				.'For external power: <white>DAC</white> > power on<br>'
-				.'<code>Menu</code> > <code>MPD</code> > <code>setup</code><br>'
-				.'Ensure <white>DAC</white> works properly before continue.'
+		'wait'       => 'Get <white>DAC configuration</white> ready:'
+					.'<br>'
+					.'<br>For external power: <white>DAC</white> > power on'
+					.'<br><code>Menu</code> > <code>MPD</code> > <code>setup</code>'
+					.'<br>Ensure <white>DAC</white> works properly before continue.'
 	),
 ),
 'pass' => array(
@@ -103,7 +103,7 @@ $GLOBALS[ 'addons' ] = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
-			.'<br>Pre-configured and ready to use.',
+					.'<br>Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
@@ -144,12 +144,12 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, Samba <white>cannot be downgraded</white>.'
-				.'<br>Continue?',
+					.'<br>Continue?',
 		'wait'       => 'Connect a <white>USB drive</white> before continue.'
-				.'<br>1st drive will be used for shared directories.',
+					.'<br>1st drive will be used for shared directories.',
 		'password'   => array(
 			'message'  => '(for connecting to <white>USB root share</white>)'
-					.'<br>Password for user <white>root</white> (blank = rune):',
+						.'<br>Password for user <white>root</white> (blank = rune):',
 			'label'    => 'Password'
 		),
 		'text1'      => array(
@@ -171,16 +171,16 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'MPD Upgrade *',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
-				.'<br>conflicts, missing libs, missing packages, broken Midori.',
+					.'<br>conflicts, missing libs, missing packages, broken Midori.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-				.'<br>10 minutes upgrade may take 20+ minutes'
-				.'<br>with slow download.'
-				.'<br>Continue?'
+					.'<br>10 minutes upgrade may take 20+ minutes'
+					.'<br>with slow download.'
+					.'<br>Continue?'
 	),
 ),
 'back' => array(
@@ -246,16 +246,16 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
-			.'<br>Add files at anytime then run this addon to refresh Webradio list.'
-			.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
+					.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => array(
-		'wait'       => 'Get webradio files copied to:<br>'
-				.'<code>/mnt/MPD/Webradio</code><br>'
-				.'<br>'
-				.'<code>&emsp;Ok&emsp;</code> to continue'
+		'wait'       => 'Get webradio files copied to:'
+					.'<br><code>/mnt/MPD/Webradio</code>'
+					.'<br>'
+					.'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
 ),
 	
