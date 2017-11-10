@@ -72,8 +72,7 @@ function addonblock( $alias ) {
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$revision = '<ul id="list"><li>';
-	$revision = preg_replace( '<br>', '</li><li>', $addon[ 'revision' ] ).'</li></ul><br>';
+	$revision = '<li>'.str_replace( '<br>', '</li><li>', $addon[ 'revision' ] ).'</li>';
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode ) {
 		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
@@ -90,11 +89,9 @@ function addonblock( $alias ) {
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
 				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
 			</legend>
-			<div class="detail" style="display: none;">
-				<ul>'
-					.$revision.'
-				</ul>
-			</div>
+			<ul style="display: none;">'
+				.$revision.'
+			</ul>
 			<form class="form-horizontal" alias="'.$alias.'">
 				<p>'.$addon[ 'description' ].$detail.'</p>'
 				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
