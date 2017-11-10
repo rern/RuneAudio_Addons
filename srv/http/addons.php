@@ -24,9 +24,9 @@ $GLOBALS[ 'blocks' ] = '';
 
 // sort
 $arraytitle = array_column( $addons, 'title' );
-$arraytitle[ 0 ] = 0;
+$addoindex = array_search( 'Addons Menu', $arraytitle );
+$arraytitle[ $addoindex ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
-$arraytitle[ 0 ] = 'Addons Menu';
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
