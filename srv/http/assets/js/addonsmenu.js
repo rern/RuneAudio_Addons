@@ -57,6 +57,7 @@ function addonsdl( exit, path ) {
 			}
 		} );
 	} else {
+		PNotify.removeAll();
 		location.href = path +'addons.php';
 	}
 }

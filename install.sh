@@ -1,6 +1,12 @@
 #!/bin/bash
 
 # $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
+# for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
+if [[ $# == 2 && $2 == '-b' ]]; then
+	branch=$1
+else
+	branch=master
+fi
 
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
@@ -12,12 +18,6 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 	" > /srv/http/addonslist.php
 fi
 
-# for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
-if [[ $# == 2 && $2 == '-b' ]]; then
-	branch=$1
-else
-	branch=master
-fi
 wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 
 
@@ -28,6 +28,9 @@ alias=addo
 . /srv/http/addonstitle.sh
 
 installstart $@
+
+# temp fix - missing 'branch=master' in addonsdl.sh
+[[ $1 == '-b' ]] && branch=master
 
 getinstallzip
 

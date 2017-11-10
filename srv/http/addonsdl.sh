@@ -4,7 +4,7 @@
 addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
 installurl=$( echo "$addonslist" | grep 'installurl.*=>' | cut -d "'" -f 4 )
 gitpath=$( dirname $installurl )
-branch=''
+branch=master
 
 # for testing branch: $1=branchname
 if (( $# != 0 )); then
