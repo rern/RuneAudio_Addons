@@ -2,12 +2,6 @@
 
 # $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
 
-hwrevision=$( cat /proc/cpuinfo | grep 'Revision' | awk '{print $3}' | cut -b 1-2 )
-if [[ $hwrevision == 00 || $hwrevision == 90 ]];then
-	echo 'Addons Menu cannot be used with this RPi hardware.'
-	exit
-fi
-
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
 	echo "
@@ -52,9 +46,10 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
-! grep -q 'hammer.min.js' $file &&
-echo '
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+if ! grep -q 'hammer.min.js' $file; then
+	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+fi
+sed -i '/addonsmenu.js\|addonsinfo.js/ d' $file
 echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
 

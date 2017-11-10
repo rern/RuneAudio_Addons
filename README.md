@@ -4,10 +4,13 @@ _Tested on RPi3_
 _for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
    
 **Addons Menu** for easy addons installation via RuneUI.  
-- It's the same as running on SSH terminal.  
-- Just much easier.  
-- Something like mini App Store or mini Play Store.  
-- It does nothing using zero CPU cycle unless run it from the menu.
+It's the same as running on SSH terminal.  
+Just much easier.  
+Something like mini App Store or mini Play Store.  
+It does nothing using zero CPU cycle unless run it from the menu.
+
+**To do:**
+- A central repository for security control
 <hr>
 
 Currently available:

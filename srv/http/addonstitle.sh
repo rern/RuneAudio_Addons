@@ -192,37 +192,12 @@ getuninstall() {
 	fi
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
-notify() { # $1-i=install $2-s=start
-	[[ $2 == i ]] && type='Install' || type='Uninstall'
-	if [[ $3 == s ]]; then
-		data=$( cat <<EOF
-			{
-				  "icon" : "fa fa-info-circle fa-lg"
-				, "title": "${type}ing ..."
-				, "text" : "$1 \nRuneAudio may not response until finished."
-				, "hide" : false
-			}
-EOF
-		)
-	else
-		data=$( cat <<EOF
-			{
-				  "icon" : "fa fa-check"
-				, "title": "Done"
-				, "text" : "$1 \n${type}ation."
-			}
-EOF
-		)
-	fi
-
-	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "$data" &> /dev/null
-}
 installstart() { # $1-'u'=update
 	rm $0
 	
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
-	title0=$( getvalue title )
-	title=$( tcolor "$title0" )
+	title=$( getvalue title )
+	title=$( tcolor "$title" )
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
 	  title -l '=' "$info $title already installed."
@@ -232,7 +207,6 @@ installstart() { # $1-'u'=update
 	fi
 	
 	timestart
-	notify "$title0" i s
 	
 	# for testing branch
 	if [[ ${@:$#} == '-b' ]]; then
@@ -248,7 +222,6 @@ installfinish() { # $1-'u'=update
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	timestop
-	notify "$title0" i
 	
 	if [[ $1 != u ]]; then
 		title -l '=' "$bar $title installed successfully."
@@ -259,8 +232,8 @@ installfinish() { # $1-'u'=update
 
 uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
-	title0=$( getvalue title )
-	title=$( tcolor "$title0" )
+	title=$( getvalue title )
+	title=$( tcolor "$title" )
 	
 	if [[ ! -e /usr/local/bin/uninstall_$alias.sh ]]; then
 	  echo -e "$info $title not found."
@@ -268,8 +241,6 @@ uninstallstart() { # $1-'u'=update
 	  exit 1
 	fi
 	
-	notify "$title0" u s
-
 	[[ $1 != u ]] && type=Uninstall || type=Update
 	title -l '=' "$bar $type $title ..."
 }
@@ -277,8 +248,6 @@ uninstallfinish() { # $1-'u'=update
 	rm $0
 	
 	redis-cli hdel addons $alias &> /dev/null
-
-	notify "$title0" u
 
 	[[ $1 == u ]] && exit
 	
