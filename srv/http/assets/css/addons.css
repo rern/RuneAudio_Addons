@@ -16,7 +16,7 @@ h1 {
 	vertical-align: 10px;
 	width: 25px;
 }
-.issues {
+#issues {
 	text-align: right;
 	border-bottom: 1px solid #34495e;
 	display: block;
