@@ -56,9 +56,9 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'       => array(
 		'radio'      => array(
-			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.<br>'
+			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
 						.'<br>'
-						.'Local browser screen size:',
+						.'<br>Local browser screen size:',
 			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.2'           => '1.2',
