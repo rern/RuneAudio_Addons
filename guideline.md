@@ -217,9 +217,6 @@ uninstallfinish $@
 ```
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
-  
-**`'<alias>'`**
-- must be unique among addons
 
 **`'version'`** - buttons enable/disable  
 - `'version'` changed > show `Update` button
