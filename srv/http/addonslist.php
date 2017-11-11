@@ -71,6 +71,7 @@ $GLOBALS[ 'addons' ] = array(
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20171020',
+	'needspace'    => 10,
 	'revision'     => 'General improvements'
 					.'<br>Switch to online package installation',
 	'maintainer'   => 'r e r n',
@@ -100,6 +101,7 @@ $GLOBALS[ 'addons' ] = array(
 'aria' =>array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
+	'needspace'    => 10,
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
@@ -114,6 +116,7 @@ $GLOBALS[ 'addons' ] = array(
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20171022',
+	'needspace'    => 10,
 	'revision'     => 'Switch from custom package to normal for easy update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
@@ -136,6 +139,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
+	'needspace'    => 50,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
@@ -169,7 +173,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
-	'diskspace'    => 250000,
+	'needspace'    => 250,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
 					.'<br>conflicts, missing libs, missing packages, broken Midori.',
