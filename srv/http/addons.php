@@ -1,9 +1,9 @@
 <?php
 require_once( 'addonshead.php' );
 
-$available = round( disk_free_space( '/' ) / 1024 / 1024 );
+$GLOBALS[ 'available' ] = round( disk_free_space( '/' ) / 1024 / 1024 );
 $expandable = round( shell_exec( '/usr/bin/sfdisk -F | grep mmc | cut -d "" -f6' ) / 1024 / 1024 );
-$expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
+$GLOBALS[ 'expandable' ] = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
@@ -23,13 +23,13 @@ $GLOBALS[ 'release' ] = $redis->get( 'release' );
 $GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
 $GLOBALS[ 'blocks' ] = '';
-//$GLOBALS[ 'addons' ] = $addons;
 
 // sort
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
+//$arraytitle[ $addoindex ] = 'Addons Menu';
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
@@ -53,7 +53,8 @@ function addonblock( $alias ) {
 	
 	if ( $GLOBALS[ 'redis' ][ $alias ] || file_exists( "/usr/local/bin/uninstall_$alias.sh" ) ) {
 		$check = '<i class="fa fa-check"></i> ';
-		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $GLOBALS[ 'redis' ][ $alias ] ) {
+		if ( !isset( $addon[ 'version' ] ) 
+			|| $addon[ 'version' ] == $GLOBALS[ 'redis' ][ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
@@ -63,7 +64,16 @@ function addonblock( $alias ) {
 		$btnun = '<a class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		$check = '';
-		$btnin = '<a class="btn btn-default btnin"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
+		if ( $needspace < $GLOBALS[ 'available' ] ) {
+			$btninclass =  'btnin';
+			$btninattr = '';
+		} else {
+			$btninclass = 'btnneedspace';
+			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.number_format( $GLOBALS[ 'available' ] ).' MB<br>'
+				.$GLOBALS[ 'expandable' ].'"';
+		}
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
 	}
 	
