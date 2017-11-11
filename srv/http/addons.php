@@ -17,6 +17,8 @@ echo '
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
+if ( !$expandable ) $redis->hSet( 'addons', 'expa', '1' );
+
 $GLOBALS[ 'release' ] = $redis->get( 'release' );
 $GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
 $GLOBALS[ 'list' ] = '';
