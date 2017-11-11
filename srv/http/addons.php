@@ -3,7 +3,7 @@ require_once( 'addonshead.php' );
 
 $available = round( disk_free_space( '/' ) / 1024 / 1024 );
 $expandable = round( shell_exec( '/usr/bin/sfdisk -F | grep mmc | cut -d "" -f6' ) / 1024 / 1024 );
-$expandable = $expandable ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
+$expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
