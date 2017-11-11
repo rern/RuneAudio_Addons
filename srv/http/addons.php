@@ -1,13 +1,14 @@
 <?php
 require_once( 'addonshead.php' );
 
-$rpiversion = fgets( fopen( '/proc/device-tree/model', 'r' ) );
-$diskspace = number_format( round( disk_free_space( '/' ) / 1024 / 1024 ) );
+$available = round( disk_free_space( '/' ) / 1024 / 1024 );
+$expandable = round( shell_exec( '/usr/bin/sfdisk -F | grep mmc | cut -d "" -f6' ) / 1024 / 1024 );
+$expandable = $expandable ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
 	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<legend class="bl">'.$rpiversion.'<p style="float:right;"> available space: '.$diskspace.' MB</p></legend>
+	<legend class="bl">available: '.number_format( $available ).' MB'.$expandable.'</legend>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
