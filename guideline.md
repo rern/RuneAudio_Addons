@@ -63,6 +63,8 @@ _revision 20171115_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
+	- **css**: append modified css with the same selector to override
+	- **js**: append modified function with the same name to override
 	- use modify over replace files unless necessary
 	- make backup if replace files
 	- update:
