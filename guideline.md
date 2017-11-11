@@ -52,7 +52,7 @@ _revision 20171115_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash scripts and files on `https://github.com/RuneAddons/<addon_title>`  
+> bash scripts and files hosted on `https://github.com/RuneAddons/<addon_title>`  
 > trusted maintainers may host the scripts on their own repositories `https://github.com/<GitHubID>/<addon_title>`  
 > use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of install activities  
