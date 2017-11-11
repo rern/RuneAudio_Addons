@@ -181,7 +181,7 @@ uninstallfinish $@
 /**/	'version'       => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
 /**/	'only03'        => '1',
-	'diskspace'     => '<kb>',
+	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
 	'description'   => '<description>',
@@ -245,7 +245,7 @@ uninstallfinish $@
 - hide if for RuneAudio 0.3 only
 - omit for both versions compatible
 
-**`'diskspace'`**
+**`'needspace'`**
 - downloaded packages + installed files plus downloaded + decompress files
 
 **`'buttonlabel'`** - for non-install only
