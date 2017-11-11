@@ -94,9 +94,6 @@ alias=<alias>
 ### template - function: start message, installed check
 installstart $@
 
-### template - function: free space check (needed kb for install)
-checkspace <kb>
-
 ### template - function: get repository zip and extract to system directories
 getinstallzip
 
@@ -181,7 +178,7 @@ uninstallfinish $@
 /**/	'version'       => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
 /**/	'only03'        => '1',
-	'needspace'     =>  <MB>,
+/**/	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
 	'description'   => '<description>',
@@ -246,7 +243,8 @@ uninstallfinish $@
 - omit for both versions compatible
 
 **`'needspace'`**
-- downloaded packages + installed files plus downloaded + decompress files
+- MB: downloaded packages files + installed files + downloaded files + decompress files
+- omit for 1 MB or less
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
