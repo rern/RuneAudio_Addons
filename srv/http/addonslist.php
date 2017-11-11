@@ -42,7 +42,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171109',
+	'version'      => '20171111',
 	'revision'     => 'Add long-press for <white>show/hide items setting</white> (touch gestures still working)'
 					.'<br>Add <white>Index bar</white> in Library'
 					.'<br><white>Breadcrumb links</white> for path shortcut jump'
