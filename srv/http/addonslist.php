@@ -169,6 +169,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
+	'diskspace'    => 250000,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
 					.'<br>conflicts, missing libs, missing packages, broken Midori.',
