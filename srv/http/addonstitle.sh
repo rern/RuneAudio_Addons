@@ -193,6 +193,7 @@ getuninstall() {
 	chmod +x /usr/local/bin/uninstall_$alias.sh
 }
 notify() { # $1-i=install $2-s=start
+	[[ $alias == addo ]] && return
 	[[ $2 == i ]] && type='Install' || type='Uninstall'
 	if [[ $3 == s ]]; then
 		data=$( cat <<EOF

@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20171111_
+_revision 20171115_
 
 ### Addons Menu Process:    
 
@@ -52,7 +52,7 @@ _revision 20171111_
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
 
-> bash scripts and files on `https://github.com/RuneAddons/<addon_title>`  
+> bash scripts and files hosted on `https://github.com/RuneAddons/<addon_title>`  
 > trusted maintainers may host the scripts on their own repositories `https://github.com/<GitHubID>/<addon_title>`  
 > use script default `### template` lines except non-install addons  
 > default variables and functions will take care most of install activities  
@@ -63,10 +63,12 @@ _revision 20171111_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
+	- use override over modify:
+		- `runeui.css`: append modified css with the same selector
+		- `runeui.js`: append modified function with the same name
 	- use modify over replace files unless necessary
 	- make backup if replace files
-	- update:
-		- get options from previously saved to database
+
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
@@ -78,6 +80,7 @@ _revision 20171111_
 			- must be the same as `install.sh` to use `getuninstall` function
 			- destination must be `/usr/local/bin/`
 	- consult with [JS plugin list](https://github.com/rern/RuneAudio_Addons/blob/master/js_plugins.md) used by other addons to avoid critical uninstall
+	
 - update:
 	- will be done by uninstall > install
   
@@ -93,9 +96,6 @@ alias=<alias>
 
 ### template - function: start message, installed check
 installstart $@
-
-### template - function: free space check (needed kb for install)
-checkspace <kb>
 
 ### template - function: get repository zip and extract to system directories
 getinstallzip
@@ -181,7 +181,7 @@ uninstallfinish $@
 /**/	'version'       => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
 /**/	'only03'        => '1',
-	'diskspace'     => '<kb>',
+/**/	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
 	'description'   => '<description>',
@@ -245,8 +245,9 @@ uninstallfinish $@
 - hide if for RuneAudio 0.3 only
 - omit for both versions compatible
 
-**`'diskspace'`**
-- downloaded packages + installed files plus downloaded + decompress files
+**`'needspace'`**
+- MB: downloaded packages files + installed files + downloaded files + decompress files
+- omit for 1 MB or less
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
