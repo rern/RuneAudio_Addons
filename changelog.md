@@ -1,6 +1,7 @@
 ### 20171113
 - Check available disk space before update
 - Show available / expandable disk space
+- Notify if disk space not enough without going to terminal page
 - Notify installation to other clients
 - Change options format to PHP array
 					
