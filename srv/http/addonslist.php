@@ -3,7 +3,7 @@ $GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171112',
+	'version'      => '20171113',
 	'revision'     => 'Check available disk space before update'
 					.'<br>Show available / expandable disk space'
 					.'<br>Notify installation to other clients'
