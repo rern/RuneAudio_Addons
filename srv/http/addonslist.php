@@ -72,7 +72,7 @@ $GLOBALS[ 'addons' ] = array(
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20171020',
-	'needspace'    => 10,
+	'needspace'    => 15,
 	'revision'     => 'General improvements'
 					.'<br>Switch to online package installation',
 	'maintainer'   => 'r e r n',
@@ -117,7 +117,7 @@ $GLOBALS[ 'addons' ] = array(
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20171022',
-	'needspace'    => 10,
+	'needspace'    => 7,
 	'revision'     => 'Switch from custom package to normal for easy update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
@@ -140,7 +140,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
-	'needspace'    => 50,
+	'needspace'    => 43,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/samba/thumbsamb.png',
@@ -174,7 +174,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
-	'needspace'    => 250,
+	'needspace'    => 192,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
 					.'<br>conflicts, missing libs, missing packages, broken Midori.',
@@ -212,6 +212,7 @@ $GLOBALS[ 'addons' ] = array(
 'font' => array(
 	'title'        => 'Fonts - Extended Characters',
 	'version'      => '20170901',
+	'needspace'    => 9,
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
