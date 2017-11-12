@@ -6,6 +6,7 @@ $GLOBALS[ 'addons' ] = array(
 	'version'      => '20171113',
 	'revision'     => 'Check available disk space before update'
 					.'<br>Show available / expandable disk space'
+					.'<br>Notify if disk space not enough without going to terminal page'
 					.'<br>Notify installation to other clients'
 					.'<br>Change options format to PHP array',
 	'maintainer'   => 'r e r n',
