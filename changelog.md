@@ -1,3 +1,9 @@
+### 20171113
+- Check available disk space before update
+- Show available / expandable disk space
+- Notify installation to other clients
+- Change options format to PHP array
+					
 ### 20171025
 - Add update revision of each addon
 - Add long-press Install for branch testing
