@@ -298,7 +298,7 @@ uninstallfinish $@
 	- open Addons Menu
 	- add addon `<alias> => array(...)` to `/srv/http/addonslist.php`:
 		- edit values according to the **template**
-		- installurl: `'installurl' => 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
+		- test url: `'installurl' => 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
 	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 	- test install / uninstall scripts
 - add repository to **RuneAddons**:
@@ -312,7 +312,7 @@ uninstallfinish $@
 - add addon data to **Addons Menu**:
 	- `Fork` Addons Menu
 	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
-		- installurl: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+		- actual url: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 		- (change `<GitHubID>` to `RuneAddons`)
 	- `Pull request`
 	- ---the `Fork` merged and officially is online
