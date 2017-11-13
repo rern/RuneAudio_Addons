@@ -320,17 +320,17 @@ uninstallfinish $@
 	- ---the `Fork` merged and officially is online
 	
 ### Update an addon
-	- **update scripts:**
-		- `https://github.com/RuneAddons/<addon_title>` - update / modify your `Branch`
-		- test the update in **Addons Menu**
-			- `Uninstall` the addon
-			- long-press `Install` button and type the branch name, your `<GitHubID>`
-		- `Pull request`
-	- **update the list**
-		- `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
-			- change `'version'` to enable `Update` button
-			- change `'revision'` for this update
-		- refresh browser to show the changes
-		- `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
-		- `Pull request` 
-		
+- **update scripts:**
+	- `https://github.com/RuneAddons/<addon_title>` - update / modify your `Branch`
+	- test the update in **Addons Menu**
+		- `Uninstall` the addon
+		- long-press `Install` button and type the branch name, your `<GitHubID>`
+	- `Pull request`
+- **update the list**
+	- `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
+		- change `'version'` to enable `Update` button
+		- change `'revision'` to describe this update
+	- refresh browser to show the changes
+	- `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
+	- `Pull request` 
+
