@@ -1,6 +1,19 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
+'RuneYoutube' => array(
+	'title'        => 'Rune Youtube',
+	'version'      => '20171113',
+	'needspace'    => 15,
+	'revision'     => 'Initial release',
+	'maintainer'   => 'tuna',
+	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
+					.'simply paste a youtube video URL or a youtube playlist URL, '
+					.'wait for them to download, and these songs will be added to your playlist.',
+	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
+	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
+),
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171113',
