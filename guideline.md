@@ -312,7 +312,7 @@ uninstallfinish $@
 	- ---the `Branch` merged and ready for **Addons Menu**
 
 - add addon data to **Addons Menu**:
-	- `Fork` Addons Menu
+	- `Fork` Addons Menu - `https://github.com/rern/RuneAudio_Addons`
 	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
 		- change `<GitHubID>` to `RuneAddons`
 			- actual url: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
