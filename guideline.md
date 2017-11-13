@@ -321,7 +321,7 @@ uninstallfinish $@
 	
 ### Update an addon
 - **update scripts:**
-	- `https://github.com/RuneAddons/<addon_title>` - update / modify your `Branch`
+	- your `Branch` - `https://github.com/RuneAddons/<addon_title>` - update / modify
 	- test the update in **Addons Menu**
 		- `Uninstall` the addon
 		- long-press `Install` button and type the branch name, your `<GitHubID>`
@@ -331,6 +331,6 @@ uninstallfinish $@
 		- change `'version'` to enable `Update` button
 		- change `'revision'` to describe this update
 	- refresh browser to show the changes
-	- `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
+	- your `Fork` - `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
 	- `Pull request` 
 
