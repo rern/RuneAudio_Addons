@@ -328,8 +328,8 @@ uninstallfinish $@
 	- `Pull request`
 - **update the list**
 	- `SSH` - `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
-		- change `'version'` to enable `Update` button
-		- change `'revision'` to describe this update
+		- change `'version'` - enable `Update` button
+		- change `'revision'` - summary list of this update
 	- refresh browser to show the changes
 	- your `Fork` - `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
 	- `Pull request` 
