@@ -327,10 +327,13 @@ uninstallfinish $@
 		- long-press `Install` button and type the branch name, your `<GitHubID>`
 	- `Pull request`
 - **update the list**
-	- `SSH` - `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
+	- test updating as a user
+		- `SSH` - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
+		- (next `Menu` > `Addons` will overwrite this edit)
 		- change `'version'` - enable `Update` button
 		- change `'revision'` - summary list of this update
-	- refresh browser to show the changes
+		- refresh browser to show the changes
+		- long-press `Update` button
 	- your `Fork` - `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
 	- `Pull request` 
 
