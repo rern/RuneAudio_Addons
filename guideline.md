@@ -296,15 +296,23 @@ uninstallfinish $@
 - test scripts:
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
-	- add addon `array(...)` to `/srv/http/addonslist.php`:
-		- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+	- add addon `<alias> => array(...)` to `/srv/http/addonslist.php`:
+		- edit values according to the **template**
+		- installurl: `'installurl' => 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
 	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 	- test install / uninstall scripts
-- add repository to `RuneAddons`:
-	- a request to join with `<GitHubID>` and `'installurl'`
-	- a new repository created as `https://github.com/RuneAddons/<addon_title>`
-	- `branch` and add scripts and files to the ropository
+- add repository to **RuneAddons**:
+	- a request to join with your `<GitHubID>` and `'installurl'`
+	- ---a new repository created as `https://github.com/RuneAddons/<addon_title>`
+	- ---a `Branch` named your `<GitHubID>` created
+	- add scripts and files to the ropository
 	- `Pull request`
+	- ---the `Branch` merged and ready for **Addons Menu**
+	- modify this `Branch` and `Pull request` whenever an update of your addon needed
 - add addon data to **Addons Menu**:
+	- `Fork` Addons Menu
 	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
+		- installurl: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+		- (change `<GitHubID>` to `RuneAddons`)
 	- `Pull request`
+	- ---the `Fork` merged and officially is online
