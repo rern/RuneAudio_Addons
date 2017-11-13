@@ -293,7 +293,7 @@ uninstallfinish $@
 	- `<code>...</code>`
 
 ## Enlist to Addons Menu
-- test scripts:
+- **test scripts:**
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
 	- add addon `<alias> => array(...)` to `/srv/http/addonslist.php`:
@@ -303,7 +303,7 @@ uninstallfinish $@
 	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 	- test install / uninstall scripts
 	
-- add repository to **RuneAddons**:
+- **add repository to `RuneAddons`**:
 	- a request to join with your `<GitHubID>` and `'installurl'`
 	- ---a new repository created as `https://github.com/RuneAddons/<addon_title>`
 	- ---a `Branch` named your `<GitHubID>` created
@@ -311,7 +311,7 @@ uninstallfinish $@
 	- `Pull request`
 	- ---the `Branch` merged and ready for **Addons Menu**
 
-- add addon data to **Addons Menu**:
+- **add addon data to `Addons Menu`**:
 	- `Fork` Addons Menu - `https://github.com/rern/RuneAudio_Addons`
 	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
 		- change `<GitHubID>` to `RuneAddons`
@@ -320,7 +320,7 @@ uninstallfinish $@
 	- ---the `Fork` merged and officially is online
 	
 ### Update an addon
-- **update scripts:**
+- **update the scripts and files:**
 	- your `Branch` - `https://github.com/RuneAddons/<addon_title>` - update / modify
 	- test the update in **Addons Menu**
 		- `Uninstall` the addon
