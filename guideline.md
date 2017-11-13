@@ -185,9 +185,9 @@ uninstallfinish $@
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
 	'description'   => '<description>',
-	'sourcecode'    => '<https://url/to/sourcecode>',
-	'installurl'    => '<https://url/for/wget/install.sh>',
-/**/	'thumbnail'     => '<https://url/to/image/w100px>',
+	'sourcecode'    => 'https://github.com/RuneAddons/<addon_title>',
+	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
+/**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
 /**/	'option'        => array(
 		'wait'     => '<message text>',
@@ -293,18 +293,47 @@ uninstallfinish $@
 	- `<code>...</code>`
 
 ## Enlist to Addons Menu
-- test scripts:
+- **test scripts:**
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
-	- add addon `array(...)` to `/srv/http/addonslist.php`:
-		- `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+	- add addon `<alias> => array(...)` to `/srv/http/addonslist.php`:
+		- change values according to the **template**
+		- change `RuneAddons` to your `<GitHubID>`
+			- test url: `'installurl' => 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
 	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 	- test install / uninstall scripts
-- add repository to `RuneAddons`:
-	- a request to join with `<GitHubID>` and `'installurl'`
-	- a new repository created as `https://github.com/RuneAddons/<addon_title>`
-	- `branch` and add scripts and files to the ropository
+	
+- **add a repository to `RuneAddons`**:
+	- a request to join with your `<GitHubID>` and `'installurl'`
+	- ---a new repository created as `https://github.com/RuneAddons/<addon_title>`
+	- ---a `Branch` named your `<GitHubID>` created
+	- add scripts and files to the ropository
 	- `Pull request`
-- add addon data to **Addons Menu**:
+	- ---the `Branch` merged and ready for **Addons Menu**
+
+- **add addon data to Addons Menu**:
+	- `Fork` Addons Menu - `https://github.com/rern/RuneAudio_Addons`
 	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
+		- change `<GitHubID>` to `RuneAddons`
+			- actual url: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 	- `Pull request`
+	- ---the `Fork` merged and officially is online
+	
+### Update an addon
+- **update the scripts and files in `RuneAddons`:**
+	- your **`Branch`** - `https://github.com/RuneAddons/<addon_title>` - update / modify
+	- test the update in **Addons Menu**
+		- `Uninstall` the addon
+		- long-press `Install` button and type the branch name, your `<GitHubID>`
+	- `Pull request`
+- **update the list in Addons Menu:**
+	- test updating as a user
+		- **`SSH`** - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
+		- (next `Menu` > `Addons` will overwrite this edit)
+		- change `'version'` - enable `Update` button
+		- change `'revision'` - summary list of this update
+		- refresh browser to show the changes
+		- long-press `Update` button
+	- your **`Fork`** - `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
+	- `Pull request` 
+

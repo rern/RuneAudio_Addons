@@ -134,24 +134,6 @@ rankmirrors() {
 		pacman -Sy
 	fi
 }
-checkspace() { # checkspace <needkb>
-	freekb=$( df | grep '/$' | awk '{print $4}' )
-	devpart=$( mount | grep 'on / type' | awk '{print $1}' )
-	part=${devpart/\/dev\//}
-	disk=/dev/${part::-2}
-	unpartb=$( sfdisk -F | grep $disk | awk '{print $6}' )
-	unpartkb=$( python2 -c "print($unpartb / 1000)" )
-	
-	if (( $freekb < $1 )); then
-		if [[ $( redis-cli hget addons expa ) != 1 ]] && (( $(( $freekb + $unpartkb )) > $1 )); then
-			title "$info Partition not yet expanded."
-			title -nt "Run 'Expand Partition' addon first."
-		else
-			title "$info Not enough disk space."
-		fi
-		exit
-	fi
-}
 getinstallzip() {
 	installurl=$( getvalue installurl )
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
@@ -162,7 +144,7 @@ getinstallzip() {
 	echo -e "$bar Install new files ..."
 	rm -rf  /tmp/install
 	mkdir -p /tmp/install
-	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
+	bsdtar -xvf $branch.zip --strip 1 --exclude '.*' --exclude '*.md' --exclude 'install.sh' -C /tmp/install
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
