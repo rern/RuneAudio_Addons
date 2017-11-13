@@ -320,15 +320,15 @@ uninstallfinish $@
 	- ---the `Fork` merged and officially is online
 	
 ### Update an addon
-- **update the scripts and files:**
+- **update the scripts and files in `RuneAddons`:**
 	- your **`Branch`** - `https://github.com/RuneAddons/<addon_title>` - update / modify
 	- test the update in **Addons Menu**
 		- `Uninstall` the addon
 		- long-press `Install` button and type the branch name, your `<GitHubID>`
 	- `Pull request`
-- **update the list**
+- **update the list in `Addons Menu`:**
 	- test updating as a user
-		- `SSH` - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
+		- **`SSH`** - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
 		- (next `Menu` > `Addons` will overwrite this edit)
 		- change `'version'` - enable `Update` button
 		- change `'revision'` - summary list of this update
