@@ -327,7 +327,7 @@ uninstallfinish $@
 		- long-press `Install` button and type the branch name, your `<GitHubID>`
 	- `Pull request`
 - **update the list**
-	- `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
+	- `SSH` - `/srv/http/addonslist.php` - edit `<alias> => array(...)` (`Menu` > `Addons` will overwrite this edit)
 		- change `'version'` to enable `Update` button
 		- change `'revision'` to describe this update
 	- refresh browser to show the changes
