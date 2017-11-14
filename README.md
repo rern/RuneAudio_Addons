@@ -25,6 +25,7 @@ Currently available:
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
 - [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
 - [RuneUI Password](https://github.com/rern/RuneUI_password)
+- [Rune Youtube](https://github.com/RuneAddons/RuneYoutube/tree/master)
 - [Samba Upgrade](https://github.com/rern/RuneAudio/tree/master/samba)
 - [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
 - [Webradio Import](https://github.com/rern/RuneAudio/tree/master/webradio)
