@@ -3,9 +3,9 @@ Guideline
 _revision 20171115_
 
 - [Addons Menu Process](#addons-menu-process)
-- Requirement for each addon
-- Enlist to Addons Menu
-- Update an addon
+- [Requirement For Each Addon](#requirement-for-each-addon)
+- [Enlist To Addons Menu](#enlist-to-addons-menu)
+- [Update An Addon](#update-an-addon)
 
 
 ### Addons Menu Process  
@@ -51,7 +51,7 @@ _revision 20171115_
 		- enable `X` button after finished > back to Addons page
 ---
 
-### Requirement for each addon:  
+### Requirement for each addon  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
 2. `<alias> => array(...)` in `addonslist.php`
   
@@ -298,7 +298,7 @@ uninstallfinish $@
 	- `<white>...</white>`
 	- `<code>...</code>`
 
-## Enlist to Addons Menu
+## Enlist To Addons Menu
 - **test scripts:**
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
@@ -325,7 +325,7 @@ uninstallfinish $@
 	- `Pull request`
 	- ---the `Fork` merged and officially is online
 	
-### Update an addon
+### Update An Addon
 - **update the scripts and files in `RuneAddons`:**
 	- your **`Branch`** - `https://github.com/RuneAddons/<addon_title>` - update / modify
 	- test the update in **Addons Menu**
