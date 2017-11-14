@@ -2,7 +2,13 @@ Guideline
 ---
 _revision 20171115_
 
-### Addons Menu Process:    
+- [Addons Menu Process](#addons-menu-process)
+- Requirement for each addon
+- Enlist to Addons Menu
+- Update an addon
+
+
+### Addons Menu Process  
 
 - **Menu** > **Addons**
 	- download list
@@ -45,7 +51,7 @@ _revision 20171115_
 		- enable `X` button after finished > back to Addons page
 ---
 
-### Each addon requires:  
+### Requirement for each addon:  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
 2. `<alias> => array(...)` in `addonslist.php`
   
