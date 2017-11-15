@@ -1,3 +1,6 @@
+### 20171117
+- Fix bugs: Uninstall, test update branch
+
 ### 20171113
 - Check available disk space before update
 - Show available / expandable disk space
