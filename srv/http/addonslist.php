@@ -16,7 +16,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171117',
+	'version'      => '20171116',
 	'revision'     => 'Fix Uninstall bug'
 					.'<br>Add Long-press Uninstall: test update branch',
 	'maintainer'   => 'r e r n',
