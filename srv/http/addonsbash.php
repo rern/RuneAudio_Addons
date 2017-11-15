@@ -104,7 +104,7 @@ if ( $type === 'Uninstall' ) {
 		
 		$uninstall u
 		
-		/usr/bin/sudo ./$installfile u
+		/usr/bin/sudo ./$installfile u $opt
 cmd;
 	$commandtxt = <<<cmd
 		wget -qN $installurl
@@ -112,7 +112,7 @@ cmd;
 		
 		uninstall_$alias.sh u
 		
-		/usr/bin/sudo ./$installfile u
+		/usr/bin/sudo ./$installfile u $opt
 cmd;
 } else {
 	if ( $alias !== 'bash' ) {

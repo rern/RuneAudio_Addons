@@ -65,12 +65,12 @@ function addonblock( $alias ) {
 			$check = '<i class="fa fa-refresh"></i> ';
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a class="btn btn-default"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a class="btn btn-default btnbranch"><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
 		if ( $needspace < $GLOBALS[ 'available' ] ) {
-			$btninclass =  'btnin';
+			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {
 			$btninclass = 'btnneedspace';
