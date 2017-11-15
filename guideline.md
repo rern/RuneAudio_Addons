@@ -328,9 +328,14 @@ uninstallfinish $@
 ### Update An Addon
 - **update the scripts and files in `RuneAddons`:**
 	- your **`Branch`** - `https://github.com/RuneAddons/<addon_title>` - update / modify
-	- test the update in **Addons Menu**
-		- `Uninstall` the addon
+	- test `Install` `Uninstall` from branch
+		- `Uninstall` existing version
 		- long-press `Install` button and type the branch name, your `<GitHubID>`
+		- test the updated addon functions
+		- `Uninstall`
+	- test `Update` from branch
+		- `Install` existing version
+		- long-press `Uninstall` button and type the branch name, your `<GitHubID>`
 	- `Pull request`
 - **update the list in Addons Menu:**
 	- test updating as a user
