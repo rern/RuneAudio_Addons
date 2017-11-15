@@ -16,12 +16,9 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171113',
-	'revision'     => 'Check available disk space before update'
-					.'<br>Show available / expandable disk space'
-					.'<br>Notify if disk space not enough without going to terminal page'
-					.'<br>Notify installation to other clients'
-					.'<br>Change options format to PHP array',
+	'version'      => '20171117',
+	'revision'     => 'Fix Uninstall bug'
+					.'<br>Add Long-press Uninstall: test update branch',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
