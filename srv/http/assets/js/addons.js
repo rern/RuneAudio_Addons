@@ -16,14 +16,14 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
-$( '.btnin' ).each( function() {
+$( '.btnbranch' ).each( function() {
 	var $thisbtn = $( this );
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function () {
 		opt = '';
 		branch = '';
 		alias = $thisbtn.parent().attr( 'alias' );
-		type = $thisbtn.text().trim();
+		type = $thisbtn.text().trim() === 'Install' ? 'Install' : 'Update';
 		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 		info( {
 			  title    : title
@@ -34,10 +34,11 @@ $( '.btnin' ).each( function() {
 			, ok       : function() {
 				branch = $( '#infoTextbox' ).val() +' -b';
 				option = addons[ alias ].option;
-				if ( option ) {
+				if ( type === 'Install' && option ) {
 					j = 0;
 					getoptions();
 				} else {
+					opt += branch;
 					formtemp();
 				}
 			}
@@ -68,8 +69,6 @@ $( '.boxed-group .btn' ).click( function () {
 		getoptions();
 	} else if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
-	} else if ( type === 'Update' ) {
-		formtemp();
 	} else {
 		info( {
 			  title  : title
@@ -77,11 +76,11 @@ $( '.boxed-group .btn' ).click( function () {
 			, cancel : 1
 			, ok     : function () {
 				option = addons[ alias ].option;
-				if ( option ) {
+				if ( type === 'Update' || type === 'Uninstall' || !option ) {
+					formtemp();
+				} else {
 					j = 0;
 					getoptions();
-				} else {
-					formtemp();
 				}
 			}
 		} );
