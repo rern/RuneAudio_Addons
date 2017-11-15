@@ -1,5 +1,6 @@
 ### 20171117
-- Fix bugs: Uninstall, test update branch
+- Fix Uninstall bug
+- Add Long-press Uninstall: test update branch
 
 ### 20171113
 - Check available disk space before update
