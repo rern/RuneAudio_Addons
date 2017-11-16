@@ -53,8 +53,9 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171114',
-	'revision'     => 'Improve lyrics search with <white>LyricsCore</white> and prefetching'
+	'version'      => '20171117',
+	'revision'     => 'Fix lyrics popup bug'
+					.'<br>Improve lyrics search with <white>LyricsCore</white> and prefetching'	
 					.'<br>Add long-press for <white>show/hide items setting</white> (touch gestures still working)'
 					.'<br>Add <white>Index bar</white> in Library'
 					.'<br><white>Breadcrumb links</white> for path shortcut jump'
