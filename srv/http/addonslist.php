@@ -53,14 +53,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171118',
-	'revision'     => 'Fix lyrics popup bug'
-					.'<br>Improve lyrics search with <white>LyricsCore</white> and prefetching'	
-					.'<br>Add long-press for <white>show/hide items setting</white> (touch gestures still working)'
-					.'<br>Add <white>Index bar</white> in Library'
-					.'<br><white>Breadcrumb links</white> for path shortcut jump'
-					.'<br>Fix <white>Library sorting</white>'
-					.'<br>Add <white>swipe L/R</white> to switch(carousel) between Library - Playback - Queue',
+	'version'      => '20171119',
+	'revision'     => 'Move lyrics feature to a separated addon',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
