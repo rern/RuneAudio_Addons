@@ -70,8 +70,8 @@ _revision 20171115_
 		- extracted to respective directory of target root
 		- files in repository root will be removed
 	- use override over modify:
-		- `runeui.css`: append modified css with the same selector
-		- `runeui.js`: append modified function with the same name
+		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
+		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.js`}
 	- use modify over replace files unless necessary
 	- make backup if replace files
 
