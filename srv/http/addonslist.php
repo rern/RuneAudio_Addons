@@ -20,8 +20,8 @@ $GLOBALS[ 'addons' ] = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
-	'sourcecode'   => 'https://github.com/RuneAddons/RuneUI_lyrics',
-	'installurl'   => 'https://github.com/RuneAddons/RuneUI_lyrics/raw/master/install.sh',
+	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
+	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
