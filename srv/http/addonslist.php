@@ -14,6 +14,15 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
+	'lyri' => array(
+	'title'        => 'Lyrics',
+	'version'      => '20171120',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneUI_lyrics',
+	'installurl'   => 'https://github.com/RuneAddons/RuneUI_lyrics/raw/master/install.sh',
+),
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171116',
