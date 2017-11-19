@@ -61,8 +61,7 @@ _revision 20171115_
 > bash scripts and files hosted on `https://github.com/RuneAddons/<addon_title>`  
 > trusted maintainers may host the scripts on their own repositories `https://github.com/<GitHubID>/<addon_title>`  
 > use script default `### template` lines except non-install addons  
-> default variables and functions will take care most of install activities  
-> use non-invasive modifications so other addons can survive after install / uninstall  
+> default variables and functions will take care most of install activities    
 
 - install script 
 	- for update, get saved options as install parameters / arguments
@@ -72,8 +71,8 @@ _revision 20171115_
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
-	- use modify over replace files unless necessary
-	- make backup if replace files
+	- use modify over replace files unless necessary and always backup
+	- use non-invasive modifications so other addons can survive after install / uninstall
 
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
