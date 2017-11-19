@@ -14,7 +14,7 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
-	'lyri' => array(
+'lyri' => array(
 	'title'        => 'Lyrics',
 	'version'      => '20171120',
 	'revision'     => 'Initial release',
