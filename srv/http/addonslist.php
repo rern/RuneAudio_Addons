@@ -3,7 +3,7 @@ $GLOBALS[ 'addons' ] = array(
 
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
-	'version'      => '20171113',
+	'version'      => '20171120',
 	'needspace'    => 15,
 	'revision'     => 'Initial release',
 	'maintainer'   => 'tuna',
