@@ -5,7 +5,7 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'Rune Youtube',
 	'version'      => '20171120',
 	'needspace'    => 15,
-	'revision'     => 'Initial release',
+	'revision'     => 'Fix bugs',
 	'maintainer'   => 'tuna',
 	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
 					.'simply paste a youtube video URL or a youtube playlist URL, '
