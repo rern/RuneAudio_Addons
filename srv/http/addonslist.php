@@ -100,7 +100,7 @@ $GLOBALS[ 'addons' ] = array(
 	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/Password/thumbpass.gif',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
 ),
