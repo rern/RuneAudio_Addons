@@ -16,7 +16,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171120',
+	'version'      => '20171123',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
