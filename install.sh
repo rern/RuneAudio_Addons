@@ -50,7 +50,8 @@ sed -i -e '/addonsinfo.css/ d
 file=/srv/http/app/templates/footer.php
 echo $file
 ! grep -q 'hammer.min.js' $file &&
-	echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+	echo '
+	<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
 echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
 
