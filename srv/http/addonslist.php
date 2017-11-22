@@ -25,9 +25,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171116',
-	'revision'     => 'Fix Uninstall bug'
-					.'<br>Add Long-press Uninstall: test update branch',
+	'version'      => '20171123',
+	'revision'     => 'Minor improvement',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
