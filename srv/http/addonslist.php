@@ -61,7 +61,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171119',
+	'version'      => '20171123',
 	'revision'     => 'Move lyrics feature to a separated addon',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
@@ -102,7 +102,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'pass' => array(
-	'title'        => 'RuneUI Password *',
+	'title'        => 'Password *',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
 	'only03'       => '1',
