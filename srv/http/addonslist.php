@@ -14,11 +14,19 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
+'lyri' => array(
+	'title'        => 'Lyrics',
+	'version'      => '20171123',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
+	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
+	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
+),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171116',
-	'revision'     => 'Fix Uninstall bug'
-					.'<br>Add Long-press Uninstall: test update branch',
+	'version'      => '20171123',
+	'revision'     => 'Fix bugs',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -53,7 +61,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171119',
+	'version'      => '20171123',
 	'revision'     => 'Move lyrics feature to a separated addon',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
