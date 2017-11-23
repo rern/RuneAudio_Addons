@@ -62,7 +62,7 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171123',
-	'revision'     => 'Fix coverart update on play-pause in the same song'
+	'revision'     => '0.4b - Fix coverart update on play-pause in the same song'
 					.'<br>Minor improvements',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
