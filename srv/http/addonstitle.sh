@@ -209,8 +209,10 @@ installstart() { # $1-'u'=update
 	
 	if [[ -e /usr/local/bin/uninstall_$alias.sh ]]; then
 	  title -l '=' "$info $title already installed."
-	  title -nt "Please try update instead."
-	  redis-cli hset addons $alias 1 &> /dev/null
+	  if [[ ! -t 1 ]]; then
+		  title -nt "Please try update instead."
+		  redis-cli hset addons $alias 1 &> /dev/null
+	  fi
 	  exit
 	fi
 	
