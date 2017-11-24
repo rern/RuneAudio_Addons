@@ -55,8 +55,8 @@ sed -i -e '/hammer.min.js/ d
 ' -e '/addonsinfo.js/ d
 ' -e '/addonsmenu.js/ d
 ' -e '/openwebapp.js/ \a
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>
-<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
+<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>\
+<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
 ' $file
 
