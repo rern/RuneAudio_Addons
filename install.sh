@@ -53,9 +53,11 @@ file=/srv/http/app/templates/footer.php
 echo $file
 # remove trailing blank lines
 sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $file
+# add new line if not exist
+sed -i -e '$a\' $file
 
 if ! grep -q 'hammer.min.js' $file; then
-    echo '\n<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+    echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
 fi
 echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' $file
