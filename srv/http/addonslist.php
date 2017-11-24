@@ -25,7 +25,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171123',
+	'version'      => '20171124',
 	'revision'     => 'Fix bugs',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
