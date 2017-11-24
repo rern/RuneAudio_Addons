@@ -8,16 +8,7 @@ hammeraddons.on( 'tap', function () {
 	$.get(
 		path +'addonsdl.php',
 		function( exit ) {
-			if ( exit == 5 ) {
-				$.get(
-					path +'addonsdl.php',
-					function( exit ) {
-						addonsdl( exit, path );
-					}
-				);
-			} else {
-				addonsdl( exit, path );
-			}
+			addonsdl( exit, path );
 		}
 	);
 } );
