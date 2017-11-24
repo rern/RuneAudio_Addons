@@ -51,6 +51,9 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
+# remove trailing blank lines
+sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $file
+
 if ! grep -q 'hammer.min.js' $file; then
     echo '\n<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
 fi
