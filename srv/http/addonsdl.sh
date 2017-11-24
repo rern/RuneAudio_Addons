@@ -21,7 +21,8 @@ if [[ $? == 5 ]]; then # 'certificate error' code
 	ntpdate pool.ntp.org
 	systemctl start ntpd
 	
-	exit 5
+	wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
+	[[ $? != 0 ]] && exit 1
 fi
 
 # new 'addonslist.php'
