@@ -51,15 +51,11 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
-sed -i -e '/hammer.min.js/ d
-' -e '/addonsinfo.js/ d
-' -e '/addonsmenu.js/ d
-' $file
-sed -i -e '/openwebapp.js/ a\
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>\
-<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
-<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
-' $file
+if ! grep -q 'hammer.min.js' $file; then
+    echo '\n<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+fi
+echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
+<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' $file
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
