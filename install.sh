@@ -31,6 +31,8 @@ installstart $@
 
 # temp fix - missing 'branch=master' in addonsdl.sh
 [[ $1 == '-b' ]] && branch=master
+# temp fix
+sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
 
 getinstallzip
 
@@ -41,22 +43,22 @@ file=/srv/http/app/templates/header.php
 echo $file
 sed -i -e '/addonsinfo.css/ d
 ' -e '/id="addons"/ d
-' -e $'/runeui.css/ a\
-    <link rel="stylesheet" href="<?=$this->asset(\'/css/addonsinfo.css\')?>">
+' -e '/runeui.css/ a\
+    <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
 ' -e $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $file
 
 file=/srv/http/app/templates/footer.php
 echo $file
-! grep -q 'hammer.min.js' $file &&
-	echo '
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
-echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
-<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
-
-# temp fix
-sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
+sed -i -e '/hammer.min.js/ d
+' -e '/addonsinfo.js/ d
+' -e '/addonsmenu.js/ d
+' -e '/openwebapp.js/ \a
+<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>
+<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
+<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
+' $file
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
