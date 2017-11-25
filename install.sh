@@ -57,10 +57,15 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $file
 sed -i -e '$a\' $file
 
 if ! grep -q 'hammer.min.js' $file; then
-    echo '<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
+	cat << 'EOF' >> $file
+<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
+EOF
 fi
-echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
-<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' $file
+cat << 'EOF' >> $file
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+EOF
+
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
