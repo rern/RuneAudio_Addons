@@ -31,6 +31,8 @@ installstart $@
 
 # temp fix - missing 'branch=master' in addonsdl.sh
 [[ $1 == '-b' ]] && branch=master
+# temp fix
+sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
 
 getinstallzip
 
@@ -41,22 +43,29 @@ file=/srv/http/app/templates/header.php
 echo $file
 sed -i -e '/addonsinfo.css/ d
 ' -e '/id="addons"/ d
-' -e $'/runeui.css/ a\
-    <link rel="stylesheet" href="<?=$this->asset(\'/css/addonsinfo.css\')?>">
+' -e '/runeui.css/ a\
+    <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
 ' -e $'/poweroff-modal/ i\
             <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $file
 
 file=/srv/http/app/templates/footer.php
 echo $file
-! grep -q 'hammer.min.js' $file &&
-	echo '
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>' >> $file
-echo '<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>
-<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>' >> $file
+# remove trailing blank lines
+sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $file
+# add new line if not exist
+sed -i -e '$a\' $file
 
-# temp fix
-sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
+if ! grep -q 'hammer.min.js' $file; then
+	cat << 'EOF' >> $file
+<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
+EOF
+fi
+cat << 'EOF' >> $file
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+EOF
+
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
