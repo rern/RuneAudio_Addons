@@ -51,7 +51,7 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
-# remove trailing blank lines
+# remove trailing blank lines, use 'sed' instead of 'echo' for no trailing newline
 sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 ' -e '$ a\
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>\
