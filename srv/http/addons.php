@@ -1,6 +1,9 @@
 <?php
 require_once( 'addonshead.php' );
 
+$GLOBALS[ 'available' ] = round( disk_free_space( '/' ) / 1024 / 1024 );
+$expandable = round( shell_exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d " " -f6' ) / 1024 / 1024 );
+$GLOBALS[ 'expandable' ] = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
@@ -12,10 +15,6 @@ if ( $expandable ) {
 
 $GLOBALS[ 'release' ] = $redis->get( 'release' );
 $GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
-
-$GLOBALS[ 'available' ] = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = round( shell_exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d " " -f6' ) / 1024 / 1024 );
-$GLOBALS[ 'expandable' ] = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 
 $runeversion = $release == '0.4b' ? '0.4b' : '0.3';
 // -------------------------------------------------------------------------------------------------
