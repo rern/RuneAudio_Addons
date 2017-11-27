@@ -16,8 +16,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171123',
-	'revision'     => 'Initial release',
+	'version'      => '20171126',
+	'revision'     => 'Fix install and uninstall bugs',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
