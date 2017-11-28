@@ -1,4 +1,6 @@
-var hammeraddons = new Hammer( $( '#addons' )[ 0 ] );
+$(function() { // $( document ).ready(function() {
+	
+var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	// fix path if click in other menu pages
 	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
@@ -82,3 +84,5 @@ renderMSG = function( text ) {
 	PNotify.removeAll();
 	old_renderMSG( text );
 }
+
+} );

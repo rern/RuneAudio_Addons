@@ -17,14 +17,13 @@ Currently available:
 - [Boot Logo](https://github.com/rern/RuneAudio/tree/master/boot_splash)
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
-- [Library Breadcrumb](https://github.com/rern/RuneAudio/tree/master/breadcrumb)
-- [Library Sorting](https://github.com/rern/RuneAudio/tree/master/sorting)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
+- [Lyrics](https://github.com/RuneAddons/Lyrics)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
+- [Password](https://github.com/rern/RuneUI_password)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
 - [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
-- [RuneUI Password](https://github.com/rern/RuneUI_password)
 - [Rune Youtube](https://github.com/RuneAddons/RuneYoutube/tree/master)
 - [Samba Upgrade](https://github.com/rern/RuneAudio/tree/master/samba)
 - [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
@@ -48,12 +47,9 @@ Install
 wget -qN --show-progress https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
 
-**get stuck?**
-```sh
-rm /usr/local/bin/uninstall_addo.sh
-redis-cli hdel addons addo
-```
-then reinstall.
+### Get stuck?
+Restore default RuneUI:  
+Browser URL: `< RuneAudio_IP >/restoreui.php`
 
 ---
   

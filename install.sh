@@ -52,24 +52,16 @@ sed -i -e '/addonsinfo.css/ d
 file=/srv/http/app/templates/footer.php
 echo $file
 # remove trailing blank lines
-sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba' $file
-# add new line if not exist
-sed -i -e '$a\' $file
-
-if ! grep -q 'hammer.min.js' $file; then
-	cat << 'EOF' >> $file
-<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
-EOF
-fi
-cat << 'EOF' >> $file
-<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
+' -e '$ a\
+<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>\
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>\
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-EOF
-
+' $file
 
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
-[[ $(stat -c %a /usr/bin/sudo) != 4755 ]] && chmod 4755 /usr/bin/sudo
+chmod 4755 /usr/bin/sudo
 
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
