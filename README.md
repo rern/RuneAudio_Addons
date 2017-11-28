@@ -20,6 +20,7 @@ Currently available:
 - [Library Breadcrumb](https://github.com/rern/RuneAudio/tree/master/breadcrumb)
 - [Library Sorting](https://github.com/rern/RuneAudio/tree/master/sorting)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
+- [Lyrics](https://github.com/RuneAddons/Lyrics)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
