@@ -36,6 +36,13 @@ sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
 
 getinstallzip
 
+if [[ $( redis-cli get release ) == 0.4b ]]; then
+    rm -r /srv/http/assets/default
+	mv /srv/http/assets/default{04,}
+else
+    rm -r /srv/http/assets/default04
+fi
+
 # modify files #######################################
 echo -e "$bar Modify files ..."
 
