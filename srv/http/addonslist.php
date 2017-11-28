@@ -23,18 +23,6 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
-/*'rest' => array(
-	'title'        => 'Restore Default RuneUI',
-	'version'      => '20171128',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Restore RuneUI to default if some addons not behave correctly instead of restoring the entire SD card',
-	'sourcecode'   => '',
-	'installurl'   => '',
-	'option'       => array(
-		'yesno'      => 'Restore <white>RuneUI</white> to default?'
-	),
-),*/
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20171128',
