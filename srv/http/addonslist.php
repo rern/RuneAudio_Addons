@@ -61,8 +61,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171124',
-	'revision'     => 'Fix show/hide items bug',
+	'version'      => '20171130',
+	'revision'     => 'Fix <white>missing context menu</white> after Library search',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
