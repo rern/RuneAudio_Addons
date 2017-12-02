@@ -61,8 +61,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171130',
-	'revision'     => 'Fix <white>missing context menu</white> after Library search',
+	'version'      => '20171203',
+	'revision'     => 'Fix left and right of the screen not response after swipe to playback'
+					.'<br>Keep library list position after db search'
+					.'<br>Fix <white>missing context menu</white> after Library search',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
