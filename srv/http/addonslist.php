@@ -27,7 +27,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171128',
+	'version'      => '20171203',
 	'revision'     => 'Add a silver bullet to fix unresponsive RuneUI, <white>browser URL</white>: <code>< RuneAudio_IP >/restoreui.php</code>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
