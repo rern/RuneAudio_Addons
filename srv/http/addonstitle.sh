@@ -274,7 +274,7 @@ clearcache() {
 	title -nt "$bar Restart local browser ..."
 	if pgrep midori > /dev/null; then
 		killall midori
-		sleep 1
+		sleep 3
 		xinit &> /dev/null &
 	fi
 }
