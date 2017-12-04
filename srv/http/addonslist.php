@@ -19,7 +19,7 @@ $GLOBALS[ 'addons' ] = array(
 	'version'      => '20171204',
 	'revision'     => 'Fix non movable cursor in editing box on touch device'
 					.'<br>Switch <white>long-press lyrics</white> to <white>edit button<white> for editing'
-					.'<br>Kepp position between view and edit',
+					.'<br>Keep position between view and edit',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
