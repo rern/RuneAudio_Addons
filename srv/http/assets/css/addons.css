@@ -97,6 +97,7 @@ code {
 #list,
 #list li {
 	width: fit-content;
+	width: -moz-fit-content;
 	color: #e0e7ee;
 }
 #list a {
