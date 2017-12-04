@@ -63,8 +63,9 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171203',
-	'revision'     => 'Fix left and right of the screen not response after swipe to playback'
+	'version'      => '20171204',
+	'revision'     => 'Fix RuneUI stuck at spinning icon <white>if disable local browser</white>'
+					.'<br>Fix left and right of the screen not response after swipe to playback'
 					.'<br>Keep library list position after db search'
 					.'<br>Fix <white>missing context menu</white> after Library search',
 	'maintainer'   => 'r e r n',
