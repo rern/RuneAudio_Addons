@@ -183,7 +183,6 @@ notify() { # $1-i=install $2-s=start
 				  "icon" : "fa fa-info-circle fa-lg"
 				, "title": "${type}ing ..."
 				, "text" : "$1 \nRuneAudio may not response until finished."
-				, "hide" : false
 			}
 EOF
 		)
