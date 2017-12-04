@@ -183,7 +183,6 @@ notify() { # $1-i=install $2-s=start
 				  "icon" : "fa fa-info-circle fa-lg"
 				, "title": "${type}ing ..."
 				, "text" : "$1 \nRuneAudio may not response until finished."
-				, "hide" : false
 			}
 EOF
 		)
@@ -274,7 +273,7 @@ clearcache() {
 	title -nt "$bar Restart local browser ..."
 	if pgrep midori > /dev/null; then
 		killall midori
-		sleep 1
+		sleep 3
 		xinit &> /dev/null &
 	fi
 }

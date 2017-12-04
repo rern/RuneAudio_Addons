@@ -16,8 +16,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171128',
-	'revision'     => 'Add lyrics <white>edit / add / delete</white> feature',
+	'version'      => '20171204',
+	'revision'     => 'Fix non movable cursor in editing box on touch device'
+					.'<br>Switch <white>long-press lyrics</white> to <white>edit button<white> for editing'
+					.'<br>Keep position between view and edit',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
@@ -25,8 +27,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171128',
-	'revision'     => 'Add a silver bullet to fix unresponsive RuneUI, URL: <code>< RuneAudio_IP >/restoreui.php</code>',
+	'version'      => '20171203',
+	'revision'     => 'Add a silver bullet to fix unresponsive RuneUI, <white>browser URL</white>: <code>< RuneAudio_IP >/restoreui.php</code>',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
