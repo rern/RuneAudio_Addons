@@ -89,10 +89,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20171020',
+	'version'      => '20171207',
 	'needspace'    => 15,
-	'revision'     => 'General improvements'
-					.'<br>Switch to online package installation',
+	'revision'     => 'Fix uninstall breaks runeui.css'
+					.'<br>Remove pnotify3.js for addonsinfo.js',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
