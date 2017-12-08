@@ -70,9 +70,7 @@ function info( option ) {
 		
 		if ( icon ) $( '#infoIcon' ).html( icon );
 		if ( title ) $( '#infoTitle' ).html( title );
-		if ( message ) {
-			$( '#infoMessage' ).html( message ).show();
-		}
+		if ( message ) $( '#infoMessage' ).html( message ).show();
 		if ( textlabel ) {
 			$( '#infoTextLabel' ).html( textlabel +' ' );
 			$( '#infoTextbox' ).val( textvalue );
