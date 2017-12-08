@@ -66,6 +66,7 @@ function info( option ) {
 		var okcolor = option.okcolor;
 		var cancel = option.cancel;
 		var cancellabel = option.cancellabel;
+		var nox = option.nox;
 		
 		if ( icon ) $( '#infoIcon' ).html( icon );
 		if ( title ) $( '#infoTitle' ).html( title );
@@ -101,8 +102,9 @@ function info( option ) {
 				$( '#infoOverlay' ).hide();
 				if ( typeof cancel === 'function' ) cancel();
 			});
+			if ( cancellabel ) $( '#infoCancel' ).html( cancellabel );
 		}
-		if ( cancellabel ) $( '#infoCancel' ).html( cancellabel );
+		if ( nox ) $( '#infoX' ).hide();
 	}
 	
 	$( '#infoOverlay' ).show();
