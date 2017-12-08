@@ -35,7 +35,7 @@
 	padding: 0 20px;
 	text-align: left;
 }
-#infoTop a {
+#infoTop a, white {
     color: #e0e7ee;
 }
 #infoTop i {
@@ -61,7 +61,7 @@
     margin-right: 5px;
 }
 #infoTitle {
-	font-size: 1.1em;
+	font-size: 1.4em;
 	vertical-align: text-bottom;
 }
 #infoContent {
