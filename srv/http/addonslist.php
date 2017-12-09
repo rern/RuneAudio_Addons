@@ -132,7 +132,7 @@ $GLOBALS[ 'addons' ] = array(
 		'yesno'      => 'Start <white>Aria2</white> on system startup?'
 	),
 ),
-'tran' => array(
+/*'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20171022',
 	'needspace'    => 9,
@@ -155,7 +155,7 @@ $GLOBALS[ 'addons' ] = array(
 			),
 		),
 	),
-),
+),*/
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
