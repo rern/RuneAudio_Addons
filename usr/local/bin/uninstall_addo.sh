@@ -17,7 +17,7 @@ sed -i -e '/addonsmenu.js/ d
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -rv /srv/http/addons*
+rm -rv /srv/http/{addons*,restoreui.php}
 rm -rv /srv/http/assets/css/addons*
 rm -rv /srv/http/assets/js/addons*
 
