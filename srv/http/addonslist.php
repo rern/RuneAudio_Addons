@@ -132,11 +132,11 @@ $GLOBALS[ 'addons' ] = array(
 		'yesno'      => 'Start <white>Aria2</white> on system startup?'
 	),
 ),
-/*'tran' => array(
+'tran' => array(
 	'title'        => 'Transmission *',
-	'version'      => '20171022',
+	'version'      => '20171210',
 	'needspace'    => 9,
-	'revision'     => 'Switch from custom package to normal for easy update.',
+	'revision'     => 'Fix bugs by reverting back to custom package.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
@@ -155,7 +155,7 @@ $GLOBALS[ 'addons' ] = array(
 			),
 		),
 	),
-),*/
+),
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
