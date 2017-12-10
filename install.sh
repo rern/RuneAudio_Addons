@@ -58,9 +58,9 @@ sed -i -e '/addonsinfo.css/ d
 
 file=/srv/http/app/templates/footer.php
 echo $file
-# for menu ready install
-grep -q 'addonsinfo.js' $file && sed -i '/addonsinfo.js\|addonsmenu.js/ d' $file
-# remove trailing blank lines, remove silver bullet lines
+# remove lines for menu ready install, silver bullet
+sed -i '/addonsinfo.js\|addonsmenu.js/ d' $file
+# remove trailing blank lines
 sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 ' -e '$ a\
 <script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>\
