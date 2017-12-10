@@ -27,7 +27,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171203',
+	'version'      => '20171209',
 	'revision'     => 'Fix bugs',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
@@ -239,7 +239,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 ),
 'motd' => array(
-	'title'        => 'Login Logo for SSH Terminal',
+	'title'        => 'Login Logo for Terminal',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',

@@ -1,14 +1,10 @@
 <?php
 exec( '/usr/bin/sudo /usr/bin/cp -r /srv/http/assets/default/* /srv/http' );
-
 exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_addo.sh' );
-
 exec( '/usr/bin/sudo /usr/bin/redis-cli del addons' );
 
-// clear cache must be before echo
 opcache_reset();
-
-echo '
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,17 +19,16 @@ echo '
 <script>
 $(function() {
 	info( {
-		  title    : "RuneUI Restore"
-		, message  : "RuneUI restored to default."
-		, cancel   : function() {
-			location.href = "/";
-		}
-		, ok       : function() {
-			location.href = "/";
-		}
+		  icon    : '<i class="fa fa-info-circle fa-2x"></i>'
+		, title   : 'RuneUI Restore'
+		, message : 'RuneUI restored to default.'
+		, ok      : function() {
+			location.href = '/';
+		  }
+		, nox     : 1
 	} );
 } );
 </script>
 
 </body>
-</html>';
+</html>

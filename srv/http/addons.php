@@ -88,6 +88,7 @@ function addonblock( $alias ) {
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
+		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
 		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------

@@ -120,7 +120,8 @@ code {
 	color: #e0e7ee;
 }
 li i,
-.boxed-group legend i {
+.boxed-group legend i,
+blue {
 	color: #0095d8;
 }
 p,
