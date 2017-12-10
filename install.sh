@@ -48,6 +48,8 @@ echo -e "$bar Modify files ..."
 
 file=/srv/http/app/templates/header.php
 echo $file
+# remove lines for menu ready install, silver bullet
+sed -i '/addonsinfo.css/ d' $file
 sed -i -e '/addonsinfo.css/ d
 ' -e '/id="addons"/ d
 ' -e '/runeui.css/ a\
