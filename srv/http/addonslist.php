@@ -1,6 +1,13 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
+'ngin' => array(
+	'title'        => 'NGINX Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade from default NGINX 1.4.7 to 1.13.7 with pushstream support.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
+),
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
 	'version'      => '20171120',
