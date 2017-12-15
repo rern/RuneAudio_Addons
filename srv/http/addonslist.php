@@ -4,7 +4,8 @@ $GLOBALS[ 'addons' ] = array(
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default NGINX 1.4.7 to 1.13.7 with pushstream support.',
+	'description'  => 'Upgrade from default **NGINX** 1.4.7 to 1.13.7 <white>without errors</white>:'
+					.'<br>RuneAudio needs NGINx with pushstream',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
