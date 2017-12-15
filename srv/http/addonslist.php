@@ -6,6 +6,7 @@ $GLOBALS[ 'addons' ] = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade from default NGINX 1.4.7 to <white>1.13.7</white> <white>without errors</white>:'
 					.'<br>preserve configuration and pushstream support',
+	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
