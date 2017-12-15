@@ -12,7 +12,7 @@ $GLOBALS[ 'addons' ] = array(
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default NGINX 1.4.7 to 1.13.7 <white>without errors</white>:'
+	'description'  => 'Upgrade from default NGINX 0.3:1.4.7 / 0.4b:1.11.3 to 1.13.7 <white>without errors</white>:'
 					.'<br>preserve configuration and pushstream support',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/nginx/thumbnginx.png',
 	'buttonlabel'  => 'Upgrade',
