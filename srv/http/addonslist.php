@@ -16,10 +16,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171204',
-	'revision'     => 'Fix non movable cursor in editing box on touch device'
-					.'<br>Switch <white>long-press lyrics</white> to <white>edit button<white> for editing'
-					.'<br>Keep position between view and edit',
+	'version'      => '20171215',
+	'revision'     => 'Improve unavailable lyrics editing',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
