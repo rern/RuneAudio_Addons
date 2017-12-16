@@ -26,7 +26,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171204',
+	'version'      => '20171215',
 	'revision'     => 'Fix non movable cursor in editing box on touch device'
 					.'<br>Switch <white>long-press lyrics</white> to <white>edit button<white> for editing'
 					.'<br>Keep position between view and edit',
