@@ -1,14 +1,6 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-'mido' => array(
-	'title'        => 'Midori Upgrade',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default Midori to latest version <white>without errors</white>',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
-),
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
