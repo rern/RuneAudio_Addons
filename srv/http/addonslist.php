@@ -200,7 +200,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-					.'<br>Local browser will stop to function'
+					.'<br>Midori, local browser, will <white>not</white> work anymore'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
 					.'<br>Continue?'
