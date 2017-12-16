@@ -188,6 +188,7 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
+/*
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
@@ -206,6 +207,7 @@ $GLOBALS[ 'addons' ] = array(
 					.'<br>Continue?'
 	),
 ),
+*/
 'back' => array(
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
