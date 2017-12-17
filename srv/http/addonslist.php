@@ -267,6 +267,11 @@ $GLOBALS[ 'addons' ] = array(
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'option'       => array(
+		'confirm'    => 'Lately, mirror servers have been not as well as before.'
+					.'<br>Ranked servers may not work as well as it should.'
+					.'<br>Continue?'
+	),
 ),
 'webr' => array(
 	'title'        => 'Webradio Import',
