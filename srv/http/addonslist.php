@@ -188,26 +188,25 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
-/*
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
-					.'<br>conflicts, missing libs, missing packages, broken Midori.',
+	'description'  => 'Upgrade MPD to latest version, 0.20.13 as of 20171219:'
+					.'<br>Fix conflicts, missing lib symlinks, missing packages'
+					.'<br>But <white>broken Midori</white>.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-					.'<br>Midori, local browser, will <white>not</white> work anymore'
+					.'<br>Midori, local browser, will <white>NOT</white> work anymore'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
 					.'<br>Continue?'
 	),
 ),
-*/
 'back' => array(
 	'title'        => 'Backup-Restore Update',
 	'version'      => '20170901',
