@@ -206,7 +206,7 @@ $GLOBALS[ 'addons' ] = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version, 0.20.13 as of 20171219:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But <white>broken Midori</white>.',
+					.'<br>But <white>broken Midori</white>, local browser.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
