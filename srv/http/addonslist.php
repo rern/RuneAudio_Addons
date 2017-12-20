@@ -202,15 +202,16 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade MPD to latest version <white>without errors</white>:'
-					.'<br>conflicts, missing libs, missing packages, broken Midori.'
-					.'<br>Midori, RPi local browser, will <white>not work anymore</white>.',
+	'description'  => 'Upgrade MPD to latest version, 0.20.13 as of 20171219:'
+					.'<br>Fix conflicts, missing lib symlinks, missing packages'
+					.'<br>But <white>broken Midori</white>.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
+					.'<br>Midori, local browser, will <white>NOT</white> work anymore'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
 					.'<br>Continue?'
@@ -275,6 +276,11 @@ $GLOBALS[ 'addons' ] = array(
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'option'       => array(
+		'confirm'    => 'Lately, mirror servers have been not so well as before.'
+					.'<br>Ranked servers may not work as well as it should.'
+					.'<br>Continue?'
+	),
 ),
 'webr' => array(
 	'title'        => 'Webradio Import',
