@@ -12,10 +12,8 @@
 #infoBox {
 	position: relative;
 	left: 50%;
-	top: 40%;
 	width: 400px;
 	margin-left: -200px;
-	margin-top: -100px;
 	background: #19232d;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
@@ -109,4 +107,11 @@ input[type=checkbox] {
 	height: 15px;
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
+}
+
+@media(max-width: 400px) {
+	#infoBox {
+		width: 100%;
+		margin-left: -50%;
+	}
 }

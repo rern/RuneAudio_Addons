@@ -121,9 +121,14 @@ function info( option ) {
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );
 }
+window.addEventListener( 'orientationchange', function() {
+	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
+} );
 
 function setboxwidth( $box, html ) {
-	var contentW = $( '#infoBox' ).width();
+	var windowW = window.innerWidth;
+	var windowH = window.innerHeight;
+	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
 	var maxW = 0;
 	var spanW = 0;
 	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
@@ -135,7 +140,7 @@ function setboxwidth( $box, html ) {
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
 		$box.css('padding-left', pad +'px');    // set padding-left
-		$( '#infoBox' ).css('left', '50%' );    // move back
+		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } );    // move back
 	}, 100);
 }
 function verifypassword( msg, pwd, fn ) {
