@@ -106,6 +106,7 @@ function info( option ) {
 	}
 	
 	$( '#infoOverlay' ).show();
+	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
 	if ( $infofocus ) $infofocus.focus();
 	
 	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
