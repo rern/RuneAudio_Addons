@@ -271,7 +271,7 @@ uninstallfinish() { # $1-'u'=update
 clearcache() {
 	[[ -t 1 ]] && systemctl reload php-fpm
 	title -nt "$bar Restart local browser ..."
-	if pgrep midori > /dev/null; then
+	if pgrep Xorg > /dev/null; then
 		killall Xorg
 		sleep 3
 		xinit &> /dev/null &
