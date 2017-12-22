@@ -12,6 +12,7 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 ),
+/*
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
@@ -22,6 +23,7 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
+*/
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
 	'version'      => '20171120',
