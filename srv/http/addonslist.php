@@ -74,9 +74,8 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20171222',
-	'revision'     => 'Fix bugs:'
-					.'<br>show/hide menu bars, buttons'
-					.'<br>index bar',
+	'revision'     => 'Fix show/hide menu bars, buttons'
+					.'<br>Fix index bar height',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
