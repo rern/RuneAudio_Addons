@@ -3,7 +3,7 @@ $GLOBALS[ 'addons' ] = array(
 
 'chro' => array(
 	'title'        => 'Chromium Browser',
-	'needspace'    => 270,
+	'needspace'    => 300,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
