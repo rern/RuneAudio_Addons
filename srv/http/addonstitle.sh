@@ -272,7 +272,7 @@ clearcache() {
 	[[ -t 1 ]] && systemctl reload php-fpm
 	title -nt "$bar Restart local browser ..."
 	if pgrep midori > /dev/null; then
-		killall midori
+		killall Xorg
 		sleep 3
 		xinit &> /dev/null &
 	fi
