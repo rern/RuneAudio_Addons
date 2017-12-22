@@ -73,11 +73,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20171204',
-	'revision'     => 'Fix RuneUI stuck at spinning icon <white>if disable local browser</white>'
-					.'<br>Fix left and right of the screen not response after swipe to playback'
-					.'<br>Keep library list position after db search'
-					.'<br>Fix <white>missing context menu</white> after Library search',
+	'version'      => '20171222',
+	'revision'     => 'Fix bugs:'
+					.'<br>show/hide menu bars, buttons'
+					.'<br>index bar',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
