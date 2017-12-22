@@ -1,7 +1,16 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-	/*
+/*
+'chro' => array(
+	'title'        => 'Chromium Browser',
+	'needspace'    => 270,
+	'maintainer'   => 'r e r n',
+	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+),
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
