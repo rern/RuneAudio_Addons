@@ -1,7 +1,6 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-/*
 'chro' => array(
 	'title'        => 'Chromium Browser',
 	'needspace'    => 270,
@@ -21,7 +20,6 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
-*/
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
 	'version'      => '20171120',
