@@ -3,6 +3,7 @@ $GLOBALS[ 'addons' ] = array(
 
 'chro' => array(
 	'title'        => 'Chromium Browser',
+	'version'      => '20171222',
 	'needspace'    => 300,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
