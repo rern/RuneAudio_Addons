@@ -117,7 +117,7 @@ timestop() { # timelapse: any argument
 
 wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
-	wget -qN $progress $@
+	wget -qN --no-check-certificate $progress $@
 }
 getvalue() { # $1-key
 	echo "$addonslist" |
