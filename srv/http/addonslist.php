@@ -1,16 +1,18 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-/*
 'chro' => array(
 	'title'        => 'Chromium Browser',
-	'needspace'    => 270,
+	'version'      => '20171222',
+	'needspace'    => 300,
+	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 ),
+/*
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
@@ -46,7 +48,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171221',
+	'version'      => '20171222',
 	'revision'     => 'Minor improvements',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
@@ -220,7 +222,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-					.'<br>Midori, local browser, will <white>NOT</white> work anymore'
+					.'<br>Local browser must be switched to <white>Chromium</white>'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
 					.'<br>Continue?'

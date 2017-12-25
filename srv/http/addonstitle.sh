@@ -117,7 +117,7 @@ timestop() { # timelapse: any argument
 
 wgetnc() {
 	[[ -t 1 ]] && progress='--show-progress'
-	wget -qN $progress $@
+	wget -qN --no-check-certificate $progress $@
 }
 getvalue() { # $1-key
 	echo "$addonslist" |
@@ -271,8 +271,8 @@ uninstallfinish() { # $1-'u'=update
 clearcache() {
 	[[ -t 1 ]] && systemctl reload php-fpm
 	title -nt "$bar Restart local browser ..."
-	if pgrep midori > /dev/null; then
-		killall midori
+	if pgrep Xorg > /dev/null; then
+		killall Xorg
 		sleep 3
 		xinit &> /dev/null &
 	fi
