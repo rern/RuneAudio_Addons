@@ -1,18 +1,17 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-'chro' => array(
-	'title'        => 'Chromium Browser',
-	'version'      => '20171222',
-	'needspace'    => 300,
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-),
 /*
+'redi' => array(
+	'title'        => 'Redis Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade Redis to latest version <white>without errors</white>:'
+					.'<br>Update <code>redis.service</code>',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/nginx/thumbredis.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/redis',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/redis/install.sh',
+),
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
@@ -24,6 +23,17 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 */
+'chro' => array(
+	'title'        => 'Chromium Browser',
+	'version'      => '20171222',
+	'needspace'    => 300,
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+),
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
 	'version'      => '20171120',
