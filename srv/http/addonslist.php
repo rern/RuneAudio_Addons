@@ -25,11 +25,11 @@ $GLOBALS[ 'addons' ] = array(
 */
 'chro' => array(
 	'title'        => 'Chromium Browser',
-	'version'      => '20171222',
+	'version'      => '20171227',
 	'needspace'    => 300,
-	'revision'     => 'Initial release',
+	'revision'     => 'Fix scaling and ipv6 probing errors.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Replace <white>Midori</white>, local browser with <white>Chromium</white>',
+	'description'  => 'Replace <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
