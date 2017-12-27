@@ -33,6 +33,10 @@ $GLOBALS[ 'addons' ] = array(
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+	'option'       => array(
+		'confirm'    => 'After installed, Chromium needs a <white>reboot</white>.'
+					.'<br>Continue?'
+	),
 ),
 'RuneYoutube' => array(
 	'title'        => 'Rune Youtube',
