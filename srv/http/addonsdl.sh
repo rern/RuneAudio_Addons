@@ -14,16 +14,7 @@ if (( $# != 0 )); then
 fi
 
 wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
-if [[ $? == 5 ]]; then # 'certificate error' code
-	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 2
-	
-	systemctl stop ntpd
-	ntpdate pool.ntp.org
-	systemctl start ntpd
-	
-	wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
-	[[ $? != 0 ]] && exit 1
-fi
+[[ $? != 0 ]] && exit 1
 
 # new 'addonslist.php'
 addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
