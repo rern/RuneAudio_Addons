@@ -210,6 +210,7 @@ $GLOBALS[ 'addons' ] = array(
 	'option'       => array(
 		'confirm'    => 'Once installed, Samba <white>cannot be downgraded</white>.'
 					.'<br>Continue?',
+		'skip'       => 'Keep current Samba settings and shares?',
 		'wait'       => 'Connect a <white>USB drive</white> before continue.'
 					.'<br>1st drive will be used for shared directories.',
 		'password'   => array(
