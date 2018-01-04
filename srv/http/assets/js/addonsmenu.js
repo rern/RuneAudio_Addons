@@ -71,9 +71,8 @@ var pushstreamAddons = new PushStream( {
 	port: window.location.port,
 	modes: GUI.mode
 } );
-pushstreamAddons.onmessage = function( update ) {
-	var txt = ( update == 1 ) ? 'Updating...' : 'Sync Time...';
-	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>'+ txt );
+pushstreamAddons.onmessage = function() {
+	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
 };
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
