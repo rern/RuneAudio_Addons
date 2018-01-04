@@ -73,8 +73,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20171222',
-	'revision'     => 'Minor improvements',
+	'version'      => '20180101',
+	'revision'     => 'Bypass unsync system time error.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
