@@ -142,7 +142,9 @@ function getoptions() {
 				  title        : title
 				, message      : option[ oj ]
 				, cancellabel  : 'No'
-				, cancel       : 1
+				, cancel       : function() {
+					sendcommand();
+				}
 				, oklabel      : 'Yes'
 				, ok           : function() {
 					$( '#loader' ).show();
