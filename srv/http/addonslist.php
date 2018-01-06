@@ -25,9 +25,9 @@ $GLOBALS[ 'addons' ] = array(
 */
 'chro' => array(
 	'title'        => 'Chromium Browser',
-	'version'      => '20171227',
+	'version'      => '20180106',
 	'needspace'    => 300,
-	'revision'     => 'Fix scaling and ipv6 probing errors.',
+	'revision'     => 'Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Replace broken <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchromium.png',
@@ -73,8 +73,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180101',
-	'revision'     => 'Bypass unsync system time error.',
+	'version'      => '20180106',
+	'revision'     => 'Minor update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
