@@ -210,13 +210,14 @@ $GLOBALS[ 'addons' ] = array(
 	'option'       => array(
 		'confirm'    => 'Once installed, Samba <white>cannot be downgraded</white>.'
 					.'<br>Continue?',
-		'wait'       => 'Connect a <white>USB drive</white> before continue.'
-					.'<br>1st drive will be used for shared directories.',
 		'password'   => array(
 			'message'  => '(for connecting to <white>USB root share</white>)'
 						.'<br>Password for user <white>root</white> (blank = rune):',
 			'label'    => 'Password'
 		),
+		'skip'       => 'Keep current Samba settings and shares?',
+		'wait'       => 'Connect a <white>USB drive</white> before continue.'
+					.'<br>1st drive will be used for shared directories.',
 		'text1'      => array(
 			'message'  => '<white>File Server</white>:',
 			'label'    => 'Name',
@@ -224,11 +225,13 @@ $GLOBALS[ 'addons' ] = array(
 		),
 		'text2'      => array(
 			'message'  => '<white>Read-Only</white> directory:',
-			'label'    => 'Name'
+			'label'    => 'Name',
+			'value'    => 'ro'
 		),
 		'text3'      => array(
 			'message'  => '<white>Read-Write</white> directory:',
-			'label'    => 'Name'
+			'label'    => 'Name',
+			'value'    => 'rw'
 		),
 	),
 ),

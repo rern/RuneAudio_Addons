@@ -137,6 +137,23 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
+		case 'skip':
+			info( {
+				  title        : title
+				, message      : option[ oj ]
+				, cancellabel  : 'No'
+				, cancel       : function() {
+					sendcommand();
+				}
+				, oklabel      : 'Yes'
+				, ok           : function() {
+					$( '#loader' ).show();
+					opt += branch;
+					formtemp();
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
 		case 'text':
 			var ojson = option[ oj ];
 			info( {
