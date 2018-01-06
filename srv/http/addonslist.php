@@ -43,7 +43,7 @@ $GLOBALS[ 'addons' ] = array(
 			'list'     => array(
 				'Width less than 800px: 1.0' => '1',
 				'HD - 1280px: 1.5'           => '1.5',
-				'*Full HD - 1920px: 2.0'     => '2',
+				'*Full HD - 1920px: 1.8'     => '1.8',
 				'Custom'                     => '?'
 			),
 		),
