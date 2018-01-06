@@ -225,11 +225,13 @@ $GLOBALS[ 'addons' ] = array(
 		),
 		'text2'      => array(
 			'message'  => '<white>Read-Only</white> directory:',
-			'label'    => 'Name'
+			'label'    => 'Name',
+			'value'    => 'ro'
 		),
 		'text3'      => array(
 			'message'  => '<white>Read-Write</white> directory:',
-			'label'    => 'Name'
+			'label'    => 'Name',
+			'value'    => 'rw'
 		),
 	),
 ),
