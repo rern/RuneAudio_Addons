@@ -41,7 +41,7 @@ $GLOBALS[ 'addons' ] = array(
 						.'<br>'
 						.'<br>Local screen size:',
 			'list'     => array(
-				'Width less than 800px: 1.0' => '1',
+				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.5'           => '1.5',
 				'*Full HD - 1920px: 1.8'     => '1.8',
 				'Custom'                     => '?'
@@ -123,8 +123,8 @@ $GLOBALS[ 'addons' ] = array(
 						.'<br>Local screen size:',
 			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.2'           => '1.2',
-				'*Full HD - 1920px: 1.5'     => '1.5',
+				'HD - 1280px: 1.5'           => '1.5',
+				'*Full HD - 1920px: 1.8'     => '1.8',
 				'Custom'                     => '?'
 			),
 		),
