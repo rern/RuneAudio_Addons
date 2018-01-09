@@ -71,7 +71,7 @@ $installfile = basename( $installurl );
 $title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
 $install = <<<cmd
-	wget -qN $installurl 
+	wget -qN --no-check-certificate $installurl 
 	if [[ $? != 0 ]]; then
 		systemctl stop ntpd
 		ntpdate pool.ntp.org
@@ -94,7 +94,7 @@ if ( $type === 'Uninstall' ) {
 	$commandtxt = "uninstall_$alias.sh";
 } else if ( $type === 'Update' ) {
 	$command = <<<cmd
-		wget -qN $installurl
+		wget -qN --no-check-certificate $installurl
 		if [[ $? != 0 ]]; then 
 			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
 			echo 'Please try again.'
@@ -107,7 +107,7 @@ if ( $type === 'Uninstall' ) {
 		/usr/bin/sudo ./$installfile u $opt
 cmd;
 	$commandtxt = <<<cmd
-		wget -qN $installurl
+		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
 		
 		uninstall_$alias.sh u
@@ -118,7 +118,7 @@ cmd;
 	if ( $alias !== 'bash' ) {
 		$command = $install;
 		$commandtxt = <<<cmd
-			wget -qN $installurl
+			wget -qN --no-check-certificate $installurl
 			chmod 755 $installfile
 			./$installfile
 cmd;
