@@ -13,7 +13,7 @@ if (( $# != 0 )); then
 	installurl=$gitpath/install.sh
 fi
 
-wget -qN $gitpath/srv/http/addonslist.php -P /srv/http
+wget -qN --no-check-certificate $gitpath/srv/http/addonslist.php -P /srv/http
 [[ $? != 0 ]] && exit 1
 
 # new 'addonslist.php'
@@ -30,7 +30,7 @@ if [[ $versionlist != $versionredis ]]; then
 		(( $( df | grep '/$' | awk '{print $4}' ) < 1000 )) && exit 2
 	fi
 	curl -s -v -X POST 'http://localhost/pub?id=addons' -d 1
-	wget -qN $installurl -P /srv/http
+	wget -qN --no-check-certificate $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh || exit 1
 	
 	/usr/local/bin/uninstall_addo.sh

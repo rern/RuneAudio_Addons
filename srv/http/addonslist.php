@@ -73,7 +73,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180106',
+	'version'      => '20180109',
 	'revision'     => 'Minor update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
