@@ -18,7 +18,7 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 	" > /srv/http/addonslist.php
 fi
 
-wget -qN https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
+wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 
 
 # change version number in RuneAudio_Addons/srv/http/addonslist.php
