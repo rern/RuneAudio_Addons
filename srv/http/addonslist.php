@@ -288,13 +288,28 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'motd' => array(
 	'title'        => 'Login Logo for Terminal',
-	'version'      => '20170901',
-	'revision'     => 'Initial release',
+	'version'      => '20180115',
+	'revision'     => 'Select color on install',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set logo color:',
+			'list'     => array(
+				'*Rune blue' => '',
+				'Red'        => 1,
+				'Green'      => 2,
+				'Yellow'     => 3,
+				'Blue'       => 4,
+				'Magenta'    => 5,
+				'Cyan'       => 6,
+				'White'      => 7,
+			),
+		),
+	),
 ),
 'spla' => array(
 	'title'        => 'Boot Logo *',
