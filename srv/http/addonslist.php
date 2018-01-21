@@ -109,9 +109,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180109',
-	'revision'     => 'Add hover: show/hide top/bottom menu'
-					.'<br>General improvement',
+	'version'      => '20180121',
+	'revision'     => 'Fix sorting tracks in each album',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
