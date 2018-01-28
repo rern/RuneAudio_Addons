@@ -2,13 +2,10 @@ $(function() { // $( document ).ready(function() {
 	
 var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
-	// fix path if click in other menu pages
-	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
-	
 	$( '#loader' ).removeClass( 'hide' );
 	
 	$.get(
-		path +'addonsdl.php',
+		'/addonsdl.php',
 		function( exit ) {
 			addonsdl( exit, path );
 		}
@@ -17,8 +14,6 @@ hammeraddons.on( 'tap', function () {
 
 // for branch testing
 hammeraddons.on( 'press', function () {
-	var path = /\/.*\//.test( location.pathname ) ? '../../' : '';
-	
 	info( {
 		  title    : 'Addons Menu Branch Test'
 		, textlabel: 'Branch'
@@ -29,7 +24,7 @@ hammeraddons.on( 'press', function () {
 			$( '#loader' ).removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
-					path +'addonsdl.php?branch='+ branch,
+					'/addonsdl.php?branch='+ branch,
 					function( exit ) {
 						addonsdl( exit, path );
 					}
