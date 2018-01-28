@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# allow consecutive upgrade - remove upgrade data: mpd, samba
-redis-cli hdel addons mpdu &> /dev/null
-redis-cli hdel addons samb &> /dev/null
-
 # $1-branch ; $2-branch flag '-b' (syntax for all addons in addonsdl.sh)
 # for '$branch' before 'addonstitle.sh' exist ( ./install UPDATE -b : branch=UPADTE )
 if [[ $# == 2 && $2 == '-b' ]]; then
