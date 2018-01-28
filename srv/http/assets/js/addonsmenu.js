@@ -7,7 +7,7 @@ hammeraddons.on( 'tap', function () {
 	$.get(
 		'/addonsdl.php',
 		function( exit ) {
-			addonsdl( exit, path );
+			addonsdl( exit );
 		}
 	);
 } );
@@ -26,7 +26,7 @@ hammeraddons.on( 'press', function () {
 				$.get(
 					'/addonsdl.php?branch='+ branch,
 					function( exit ) {
-						addonsdl( exit, path );
+						addonsdl( exit );
 					}
 				);
 			}
@@ -34,7 +34,7 @@ hammeraddons.on( 'press', function () {
 	} );
 } );
 
-function addonsdl( exit, path ) {
+function addonsdl( exit ) {
 	if ( exit == 1 ) {
 		info( {
 			  icon   : '<i class="fa fa-info-circle fa-2x">'
@@ -51,12 +51,12 @@ function addonsdl( exit, path ) {
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
-				location.href = path +'addons.php';
+				location.href = '/addons.php';
 			}
 		} );
 	} else {
 		PNotify.removeAll();
-		location.href = path +'addons.php';
+		location.href = '/addons.php';
 	}
 }
 
