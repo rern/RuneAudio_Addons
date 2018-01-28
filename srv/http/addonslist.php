@@ -23,6 +23,16 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 */
+'xdac' => array(
+	'title'        => 'External DAC Reloader',
+	'version'      => '20180128',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Reload configuration of power-off-to-on external DAC without reboot.'
+					.'<br>1 click and ready to play.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader/install.sh',
+),
 'chro' => array(
 	'title'        => 'Chromium Browser',
 	'version'      => '20180106',
