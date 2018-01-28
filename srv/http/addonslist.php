@@ -159,7 +159,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'pass' => array(
-	'title'        => 'Password *',
+	'title'        => 'Password',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
 	'only03'       => '1',
