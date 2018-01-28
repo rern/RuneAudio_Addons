@@ -321,7 +321,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'spla' => array(
-	'title'        => 'Boot Logo *',
+	'title'        => 'Boot Logo',
 	'version'      => '20171010',
 	'revision'     => 'Initial release',
 	'only03'       => '1',
