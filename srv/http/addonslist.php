@@ -74,8 +74,8 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'lyri' => array(
 	'title'        => 'Lyrics',
-	'version'      => '20171215',
-	'revision'     => 'Improve unavailable lyrics editing',
+	'version'      => '20180128',
+	'revision'     => 'Disable in WebRadio',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
