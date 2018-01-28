@@ -142,21 +142,15 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20171226',
+	'version'      => '20180128',
 	'needspace'    => 15,
-	'revision'     => 'Fix GPIO button state',
+	'revision'     => 'Major update - use runeaudio.php to switch audio output'
+					.'<br>MPD Audio output can be reconfigured without reinstallation.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-	'option'       => array(
-		'wait'       => 'Get <white>DAC configuration</white> ready:'
-					.'<br>'
-					.'<br>For external power: <white>DAC</white> > power on'
-					.'<br><code>Menu</code> > <code>MPD</code> > <code>setup</code>'
-					.'<br>Ensure <white>DAC</white> works properly before continue.'
-	),
 ),
 'pass' => array(
 	'title'        => 'Password',
