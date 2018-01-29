@@ -121,7 +121,7 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180129',
 	'revision'     => 'Fix display list of Artists and Genres in Library'
-					.'<br>Hide toolips of bottom menu'
+					.'<br>Hide bottom menu toolips'
 					.'<br>Hide Index Bar in each album track list'
 					.'<br>Fix show/hide top-bottom menu on load/refresh (desktop browsers)'
 					.'<br>...'
