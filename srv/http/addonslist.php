@@ -122,6 +122,7 @@ $GLOBALS[ 'addons' ] = array(
 	'version'      => '20180129',
 	'revision'     => 'Fix display list of Artists and Genres in Library'
 					.'<br>Hide toolips of bottom menu'
+					.'<br>Hide Index Bar in each album track list'
 					.'<br>Fix show/hide top-bottom menu on load/refresh (desktop browsers)'
 					.'<br>...'
 					.'<br>Fix sorting tracks in each album',
