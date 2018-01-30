@@ -119,11 +119,12 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180129',
+	'version'      => '20180130',
 	'revision'     => 'Fix display list of Artists and Genres in Library'
 					.'<br>Hide bottom menu toolips'
 					.'<br>Hide Index Bar in each album track list'
 					.'<br>Fix show/hide top-bottom menu on load/refresh (desktop browsers)'
+					.'<br>Fix missing local browser zoom-level on update'
 					.'<br>...'
 					.'<br>Fix sorting tracks in each album',
 	'maintainer'   => 'r e r n',
