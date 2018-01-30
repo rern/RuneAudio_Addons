@@ -148,9 +148,11 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180128',
+	'version'      => '20180130',
 	'needspace'    => 15,
-	'revision'     => 'Major update - use runeaudio.php to switch audio output'
+	'revision'     => 'Fix bugs'
+					.'<br>...'
+					.'<br>Major update - use runeaudio.php to switch audio output'
 					.'<br>MPD Audio output can be reconfigured without reinstallation.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
