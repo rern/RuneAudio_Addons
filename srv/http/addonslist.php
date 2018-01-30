@@ -146,6 +146,7 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
+/*
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180130',
@@ -159,7 +160,7 @@ $GLOBALS[ 'addons' ] = array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-),
+),*/
 'pass' => array(
 	'title'        => 'Password',
 	'version'      => '20170901',
