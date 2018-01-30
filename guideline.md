@@ -112,7 +112,7 @@ rankmirrors
 
 echo -e "$bar Restore options ..."
 if [[ $1 == u ]]; then
-	<option>=$( redis-cli get <option> &> /dev/null )
+	<option>=$( redis-cli get <option> )
 	redis-cli del <option> &> /dev/null
 fi
 
