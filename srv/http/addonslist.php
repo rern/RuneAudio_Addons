@@ -28,7 +28,7 @@ $GLOBALS[ 'addons' ] = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Reload configuration of power-off-to-on external DAC without reboot.'
-					.'<br>1 click and ready to play.',
+					.'<br><white>Menu > DAC Reloader</white> and ready to play.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader/install.sh',
 ),
@@ -120,11 +120,11 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180130',
-	'revision'     => 'Fix display list of Artists and Genres in Library'
-					.'<br>Hide bottom menu toolips'
-					.'<br>Hide Index Bar in each album track list'
-					.'<br>Fix show/hide top-bottom menu on load/refresh (desktop browsers)'
-					.'<br>Fix missing local browser zoom-level on update'
+	'revision'     => 'Fix <white>display list of Artists and Genres</white> in Library'
+					.'<br>Hide <white>bottom menu toolips</white>'
+					.'<br>Hide <white>Index Bar</white> in each album track list'
+					.'<br>Fix show/hide <white>top-bottom menu</white> on load/refresh (desktop browsers)'
+					.'<br>Fix missing <white>local browser zoom-level</white> on update'
 					.'<br>...'
 					.'<br>Fix sorting tracks in each album',
 	'maintainer'   => 'r e r n',
