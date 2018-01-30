@@ -28,7 +28,7 @@ $GLOBALS[ 'addons' ] = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Reload configuration of power-off-to-on external DAC without reboot.'
-					.'<br>1 click and ready to play.',
+					.'<br><white>Menu > DAC Reloader</white> and ready to play.',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader/install.sh',
 ),
@@ -119,8 +119,14 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180121',
-	'revision'     => 'Fix sorting tracks in each album',
+	'version'      => '20180130',
+	'revision'     => 'Fix <white>display list of Artists and Genres</white> in Library'
+					.'<br>Hide <white>bottom menu toolips</white>'
+					.'<br>Hide <white>Index Bar</white> in each album track list'
+					.'<br>Fix show/hide <white>top-bottom menu</white> on load/refresh (desktop browsers)'
+					.'<br>Fix missing <white>local browser zoom-level</white> on update'
+					.'<br>...'
+					.'<br>Fix sorting tracks in each album',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -142,9 +148,11 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180128',
+	'version'      => '20180130',
 	'needspace'    => 15,
-	'revision'     => 'Major update - use runeaudio.php to switch audio output'
+	'revision'     => 'Fix bugs'
+					.'<br>...'
+					.'<br>Major update - use runeaudio.php to switch audio output'
 					.'<br>MPD Audio output can be reconfigured without reinstallation.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
