@@ -112,8 +112,8 @@ rankmirrors
 
 echo -e "$bar Restore options ..."
 if [[ $1 == u ]]; then
-	<option>=$( redis-cli get <option> )
-	redis-cli del <option> &> /dev/null
+	<option>=$( redis-cli get <option> )  # no '&> /dev/null' for 'get's
+	redis-cli del <option> &> /dev/null   # with '&> /dev/null' for others
 fi
 
 echo -e "$bar <package> package ..."
