@@ -23,7 +23,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 'xdac' => array(
-	'title'        => 'External DAC Reloader',
+	'title'        => 'DAC Reloader',
 	'version'      => '20180201',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
