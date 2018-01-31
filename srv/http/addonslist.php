@@ -24,13 +24,13 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'xdac' => array(
 	'title'        => 'External DAC Reloader',
-	'version'      => '20180128',
+	'version'      => '20180201',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Reload configuration of power-off-to-on external DAC without reboot.'
 					.'<br><white>Menu > DAC Reloader</white> and ready to play.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/external_DAC_reloader/install.sh',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/DAC_reloader',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/DAC_reloader/install.sh',
 ),
 */
 'chro' => array(
