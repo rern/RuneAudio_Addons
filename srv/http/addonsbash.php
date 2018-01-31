@@ -2,18 +2,18 @@
 <!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
-var div = document.createElement('div');
+var div = document.createElement( 'div' );
 div.style.cssText = 
 	'width: 100px;'
 	+'msOverflowStyle: scrollbar;'
 	+'overflow: scroll;'
 	+'visibility: hidden;'
 	;
-document.body.appendChild(div);
+document.body.appendChild( div );
 var scrollbarWidth = div.offsetWidth - div.clientWidth;
-document.body.removeChild(div);
+document.body.removeChild( div );
 
-if (scrollbarWidth !== 0) {
+if ( scrollbarWidth !== 0 ) {
 	var css = 
 		'.hidescrollv {\n'
 		+'	width: 100%;\n'
@@ -22,9 +22,9 @@ if (scrollbarWidth !== 0) {
 		+'pre {\n'
 		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
 		+'}';
-	var style = document.createElement('style');
-	style.appendChild(document.createTextNode(css));
-	document.head.appendChild(style);
+	var style = document.createElement( 'style' );
+	style.appendChild( document.createTextNode( css ) );
+	document.head.appendChild( style );
 }
 
 // js for '<pre>' must be here before 'function bash()'.
