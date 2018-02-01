@@ -22,15 +22,15 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
-'xdac' => array(
-	'title'        => 'External DAC Reloader',
+'udac' => array(
+	'title'        => 'USB DAC Reloader',
 	'version'      => '20180201',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Reload configuration of power-off-to-on external DAC without reboot.'
+	'description'  => 'Reload configuration of power-off-to-on USB DAC without reboot.'
 					.'<br><white>Menu > DAC Reloader</white> and ready to play.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/DAC_reloader',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/DAC_reloader/install.sh',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader/install.sh',
 ),
 */
 'chro' => array(
