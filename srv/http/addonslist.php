@@ -73,7 +73,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
 'lyri' => array(
-	'title'        => 'Lyrics',
+	'title'        => 'RuneUI Lyrics',
 	'version'      => '20180128',
 	'revision'     => 'Disable in WebRadio',
 	'maintainer'   => 'r e r n',
@@ -163,7 +163,7 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ),
 'pass' => array(
-	'title'        => 'Password',
+	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
 	'only03'       => '1',
@@ -269,7 +269,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'back' => array(
-	'title'        => 'Backup-Restore Update',
+	'title'        => 'RuneUI Backup-Restore Enable',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
@@ -289,7 +289,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'font' => array(
-	'title'        => 'Fonts - Extended Characters',
+	'title'        => 'RuneUI Fonts - Extended Characters',
 	'version'      => '20170901',
 	'needspace'    => 9,
 	'revision'     => 'Initial release',
@@ -349,7 +349,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'webr' => array(
-	'title'        => 'Webradio Import',
+	'title'        => 'RuneUI Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
