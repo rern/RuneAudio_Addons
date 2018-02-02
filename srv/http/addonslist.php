@@ -24,7 +24,7 @@ $GLOBALS[ 'addons' ] = array(
 ),
 */
 'udac' => array(
-	'title'        => 'USB DAC Reloader',
+	'title'        => 'RuneUI USB DAC Reloader',
 	'version'      => '20180201',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
