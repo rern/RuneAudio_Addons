@@ -60,7 +60,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'RuneYoutube' => array(
-	'title'        => 'Rune Youtube',
+	'title'        => 'RuneUI Youtube',
 	'version'      => '20171120',
 	'needspace'    => 15,
 	'revision'     => 'Fix bugs',
