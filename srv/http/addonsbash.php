@@ -168,19 +168,20 @@ $descriptorspec = array(
 
 $process = proc_open( $command, $descriptorspec, $pipes );
 
-if ( is_resource( $process ) ) {
-	while ( $std = fgets( $pipes[ 1 ] ) ) {
-		$std = preg_replace(                              // convert to html
-			array_keys( $replace ),
-			array_values( $replace ),
-			$std
-		);
-		foreach( $skip as $find ) {                       // skip line
-			if ( stripos( $std, $find ) !== false ) continue 2;
-		}
-		echo $std;
+while ( $std = fgets( $pipes[ 1 ] ) ) {
+	$std = preg_replace(                              // convert to html
+		array_keys( $replace ),
+		array_values( $replace ),
+		$std
+	);
+	foreach( $skip as $find ) {                       // skip line
+		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
+	echo $std;
+	ob_flush(); // high level - flush to low level
+	flush();    // low level  - flush to client
 }
+
 proc_close( $process );
 ?>
 <!-- ...................................................................................... -->
