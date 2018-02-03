@@ -157,14 +157,14 @@ $replace = array(
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-ob_implicit_flush(); // start flush: bypass buffer - output to screen
-ob_end_flush();      // force flush: current buffer (run after flush started)
-	
 $descriptorspec = array(
 	  0 => array( 'pipe', 'r' )   // stdin
 	, 1 => array( 'pipe', 'w' )   // stdout
 	, 2 => array( 'pipe', 'w' )   // stderr
 );
+
+//ob_implicit_flush(); // start flush: bypass buffer - output to screen
+//ob_end_flush();      // force flush: current buffer (run after flush started)
 
 $process = proc_open( $command, $descriptorspec, $pipes );
 
