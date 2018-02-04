@@ -1,5 +1,5 @@
 $( 'body' ).prepend( '\
-<div id="infoOverlay" style="display: none;">\
+<div id="infoOverlay">\
 	<div id="infoBox">\
 		<div id="infoTopBg">\
 			<div id="infoTop">\
