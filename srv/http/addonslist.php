@@ -152,9 +152,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180130',
+	'version'      => '20180204',
 	'needspace'    => 15,
-	'revision'     => 'Fix bugs'
+	'revision'     => 'Separate GPIO and MPD settings for more flexible'
+					.'<br>Skip restart MPD if MPD settings not changed'
 					.'<br>...'
 					.'<br>Major update - use runeaudio.php to switch audio output'
 					.'<br>MPD Audio output can be reconfigured without reinstallation.',
