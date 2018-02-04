@@ -119,8 +119,10 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180131',
-	'revision'     => 'Fix 2 <white>Menu icons</white> bug'
+	'version'      => '20180204',
+	'revision'     => 'Fix missing show/hide menu in Library'
+					.'<br>...'
+					.'<br>Fix 2 <white>Menu icons</white> bug'
 					.'<br>...'
 					.'<br>Fix <white>display list of Artists and Genres</white> in Library'
 					.'<br>Hide <white>Volume</white> if disabled in MPD setting'
