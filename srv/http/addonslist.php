@@ -120,7 +120,7 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180204',
-	'revision'     => 'Fix missing show/hide menu in Library'
+	'revision'     => 'Fix missing <white>show/hide menu</white> in Library'
 					.'<br>...'
 					.'<br>Fix 2 <white>Menu icons</white> bug'
 					.'<br>...'
