@@ -152,9 +152,9 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180207',
+	'version'      => '20180209',
 	'needspace'    => 15,
-	'revision'     => 'Fix bugs'
+	'revision'     => 'Switch to <white>high trigger</white> relay module'
 					.'<br>...'
 					.'<br>Separate GPIO and MPD settings for more flexible'
 					.'<br>Skip restart MPD if MPD settings not changed'
