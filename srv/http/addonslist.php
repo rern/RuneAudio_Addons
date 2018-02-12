@@ -29,7 +29,7 @@ $GLOBALS[ 'addons' ] = array(
 	'revision'     => 'Use modified udev rules to auto reload/unload'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Automatically switch MPD Audio output:'
+	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
 					.'<br>- USB DAC power on - switch to USB DAC'
 					.'<br>- USB DAC power off - switch to RaspberryPi Analog Out',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader',
