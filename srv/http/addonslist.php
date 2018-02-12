@@ -22,17 +22,19 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
+*/
 'udac' => array(
 	'title'        => 'RuneUI USB DAC Reloader',
-	'version'      => '20180201',
-	'revision'     => 'Initial release',
+	'version'      => '201802013',
+	'revision'     => 'Use modified udev rules to auto reload/unload'
+					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Reload configuration of power-off-to-on USB DAC without reboot.'
-					.'<br><white>Menu > DAC Reloader</white> and ready to play.',
+	'description'  => 'Automatically switch MPD Audio output:'
+					.'<br>- USB DAC power on - switch to USB DAC'
+					.'<br>- USB DAC power off - switch to RaspberryPi Analog Out',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader/install.sh',
 ),
-*/
 'chro' => array(
 	'title'        => 'Chromium Browser',
 	'version'      => '20180106',
