@@ -4,12 +4,9 @@ var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	$( '#loader' ).removeClass( 'hide' );
 	
-	$.get(
-		'/addonsdl.php',
-		function( exit ) {
+	$.get( '/addonsdl.php', function( exit ) {
 			addonsdl( exit );
-		}
-	);
+	} );
 } );
 
 // for branch testing
