@@ -157,13 +157,12 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180209',
 	'needspace'    => 15,
-	'revision'     => 'Switch to <white>high trigger</white> relay module'
+	'revision'     => 'Split MPD configuration loading to <white>RuneUI USB DAC Reloader</white>'
+					.'<br>...'
+					.'<br>Switch to <white>high trigger</white> relay module'
 					.'<br>...'
 					.'<br>Separate GPIO and MPD settings for more flexible'
-					.'<br>Skip restart MPD if MPD settings not changed'
-					.'<br>...'
-					.'<br>Major update - use runeaudio.php to switch audio output'
-					.'<br>MPD Audio output can be reconfigured without reinstallation.',
+					.'<br>Skip restart MPD if MPD settings not changed',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO connected relay module control.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
