@@ -47,7 +47,6 @@ $( '.btnbranch' ).each( function() {
 } );	
 $( '.boxed-group .btn' ).click( function () {
 	if ( $( this ).hasClass( 'btnneedspace' ) ) {
-		
 		info( {
 			  icon   : '<i class="fa fa-info-circle fa-2x"></i>'
 			, title  : 'Warning'

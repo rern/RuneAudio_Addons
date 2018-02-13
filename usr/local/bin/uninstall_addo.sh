@@ -7,12 +7,10 @@ alias=addo
 uninstallstart $@
 
 # restore file
-sed -i -e '/addonsinfo.css/ d
-' -e '/id="addons"/ d
+sed -i -e '/addonsinfo.css\|id="addons"/ d
 ' /srv/http/app/templates/header.php
 
-sed -i -e '/addonsmenu.js/ d
-' -e '/addonsinfo.js/ d
+sed -i -e '/addonsmenu.js\|addonsinfo.js/ d
 ' /srv/http/app/templates/footer.php
 
 # remove files #######################################

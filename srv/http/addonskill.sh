@@ -1,4 +1,5 @@
 #!/bin/bash
 
-kill $( ps -o pgid -C install.sh | tail -1 )
+pgid=$( ps -o pgid -C install.sh | grep -o "[0-9]*" )
+kill $pgid
 rm /var/lib/pacman/db.lck
