@@ -355,7 +355,7 @@ $GLOBALS[ 'addons' ] = array(
 	),
 ),
 'webr' => array(
-	'title'        => 'RuneUI Webradio Import',
+	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
