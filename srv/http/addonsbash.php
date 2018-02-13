@@ -184,7 +184,9 @@ pclose( $popencmd );
 
 $process = proc_open( $command, $descriptorspec, $pipes );
 
-while ( $std = fgets( $pipes[ 1 ] ) ) {
+while ( !feof( $popencmd ) ) ) {
+	$std = fgets( $pipes[ 1 ]
+	
 	$std = preg_replace(                              // convert to html
 		array_keys( $replace ),
 		array_values( $replace ),
