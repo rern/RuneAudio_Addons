@@ -42,8 +42,8 @@ $GLOBALS[ 'addons' ] = array(
 	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
 					.'<br>- USB DAC power on - switch to USB DAC'
 					.'<br>- USB DAC power off - switch to RaspberryPi Analog Out',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_reloader/install.sh',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
