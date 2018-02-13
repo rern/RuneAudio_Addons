@@ -157,7 +157,7 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180209',
 	'needspace'    => 15,
-	'revision'     => 'Split MPD configuration loading to <white>RuneUI USB DAC Reloader</white>'
+	'revision'     => 'Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
 					.'<br>...'
 					.'<br>Switch to <white>high trigger</white> relay module'
 					.'<br>...'
