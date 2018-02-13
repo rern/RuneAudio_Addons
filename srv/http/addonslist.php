@@ -1,6 +1,16 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
+'addo' => array(
+	'title'        => 'Addons Menu',
+	'version'      => '20180213',
+	'revision'     => 'General improvements.',
+	'maintainer'   => 'r e r n',
+	'description'  => 'This Addons Menu main page.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
+	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+),
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -82,16 +92,6 @@ $GLOBALS[ 'addons' ] = array(
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
-),
-'addo' => array(
-	'title'        => 'Addons Menu',
-	'version'      => '20180213',
-	'revision'     => 'General improvements.',
-	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
-	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'bash' => array(
 	'title'        => 'BASH Command',
