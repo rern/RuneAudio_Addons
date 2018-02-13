@@ -157,7 +157,26 @@ $replace = array(
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-$descriptorspec = array(
+ob_implicit_flush(); // start flush: bypass buffer - output to screen
+ob_end_flush();      // force flush: current buffer (run after flush started)
+
+$popencmd = popen( "$command 2>&1", 'r' );                // start bash
+while ( !feof( $popencmd ) ) {                            // each line
+	$std = fread( $popencmd, 4096 );                      // read
+
+	$std = preg_replace(                                  // convert to html
+		array_keys( $replace ),
+		array_values( $replace ),
+		$std
+	);
+	foreach( $skip as $find ) {                           // skip line
+		if ( stripos( $std, $find ) !== false ) continue 2;
+	}
+
+	echo $std;                                            // stdout to screen
+}
+pclose( $popencmd );
+/*$descriptorspec = array(
 	  0 => array( 'pipe', 'r' )   // stdin
 	, 1 => array( 'pipe', 'w' )   // stdout
 	, 2 => array( 'pipe', 'w' )   // stderr
@@ -179,7 +198,7 @@ while ( $std = fgets( $pipes[ 1 ] ) ) {
 	flush();    // low level  - flush to client
 }
 
-proc_close( $process );
+proc_close( $process );*/
 ?>
 <!-- ...................................................................................... -->
 	</pre>
