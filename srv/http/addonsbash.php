@@ -72,15 +72,10 @@ $title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
 
 $install = <<<cmd
 	wget -qN --no-check-certificate $installurl 
-	if [[ $? != 0 ]]; then
-		systemctl stop ntpd
-		ntpdate pool.ntp.org
-		systemctl start ntpd
-		if [[ $? != 0 ]]; then 
-			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
-			echo 'Please try again.'
-			exit
-		fi
+	if [[ $? != 0 ]]; then 
+		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
+		echo 'Please try again.'
+		exit
 	fi
 	chmod 755 $installfile
 	/usr/bin/sudo ./$installfile $opt
