@@ -24,9 +24,9 @@ $GLOBALS[ 'addons' ] = array(
 ),
 */
 'udac' => array(
-	'title'        => 'RuneUI USB DAC Reloader',
+	'title'        => 'USB DAC Auto Switch',
 	'version'      => '201802013',
-	'revision'     => 'Use modified udev rules to auto reload/unload'
+	'revision'     => 'Use modified udev rules to auto switch'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
@@ -164,7 +164,7 @@ $GLOBALS[ 'addons' ] = array(
 					.'<br>Separate GPIO and MPD settings for more flexible'
 					.'<br>Skip restart MPD if MPD settings not changed',
 	'maintainer'   => 'r e r n',
-	'description'  => 'GPIO connected relay module control.',
+	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
