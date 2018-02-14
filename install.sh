@@ -29,11 +29,6 @@ alias=addo
 
 installstart $@
 
-# temp fix - missing 'branch=master' in addonsdl.sh
-[[ $1 == '-b' ]] && branch=master
-# temp fix
-sed -i '/old_renderMSG/,/}/ d' /srv/http/assets/js/custom.js &> /dev/null
-
 getinstallzip
 
 if [[ $( redis-cli get release ) == 0.4b ]]; then
