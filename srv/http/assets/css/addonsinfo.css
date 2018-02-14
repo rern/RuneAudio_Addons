@@ -109,6 +109,7 @@ input[type=checkbox] {
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
 code {
+	border-radius: 4px;
 	color: #e0e7ee;
 }
 
