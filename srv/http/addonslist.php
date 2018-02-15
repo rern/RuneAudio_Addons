@@ -3,13 +3,26 @@ $GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180214',
-	'revision'     => 'General improvements.',
+	'version'      => '201802145',
+	'revision'     => 'Minor improvements.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+),
+'RuneYoutube' => array(
+	'title'        => 'RuneUI Youtube',
+	'version'      => '20171120',
+	'needspace'    => 15,
+	'revision'     => 'Fix bugs',
+	'maintainer'   => 'tuna',
+	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
+					.'simply paste a youtube video URL or a youtube playlist URL, '
+					.'wait for them to download, and these songs will be added to your playlist.',
+	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
+	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
 /*
 'redi' => array(
@@ -71,19 +84,6 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
-'RuneYoutube' => array(
-	'title'        => 'RuneUI Youtube',
-	'version'      => '20171120',
-	'needspace'    => 15,
-	'revision'     => 'Fix bugs',
-	'maintainer'   => 'tuna',
-	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
-					.'simply paste a youtube video URL or a youtube playlist URL, '
-					.'wait for them to download, and these songs will be added to your playlist.',
-	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
-	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
-	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
-),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
 	'version'      => '20180128',
@@ -121,10 +121,13 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180204',
-	'revision'     => 'Fix missing <white>show/hide menu</white> in Library'
+	'version'      => '20180215',
+	'revision'     => 'Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons'
+					.'<br>Fix hide <white>top-bottom bars</white> on phones'
+					.'<br>Fix <white>long-press</white> bugs on some area'
+					.'<br>Fix <code>MPD</code> button not working'
 					.'<br>...'
-					.'<br>Fix 2 <white>Menu icons</white> bug'
+					.'<br>Fix missing <white>show/hide menu</white> in Library'
 					.'<br>...'
 					.'<br>Fix <white>display list of Artists and Genres</white> in Library'
 					.'<br>Hide <white>Volume</white> if disabled in MPD setting'

@@ -108,9 +108,12 @@ input[type=checkbox] {
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
+white,
+code {
+	color: #e0e7ee;
+}
 code {
 	border-radius: 4px;
-	color: #e0e7ee;
 }
 
 @media(max-width: 400px) {

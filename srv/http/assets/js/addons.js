@@ -295,6 +295,7 @@ function sendcommand() {
 		getoptions();
 	} else {
 		if ( alias === 'bash' ) {
+			if ( opt[ 0 ] == 0 ) return;
 			if ( opt[ 0 ] !== '/' ) {
 				opt = '/usr/bin/'+ opt;
 				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );

@@ -132,7 +132,7 @@ function addonblock( $alias ) {
 <div id="bottom"></div>
 
 <script>
-addons = JSON.parse( '<?php echo json_encode( $GLOBALS[ 'addons' ] );?>' );
+	addons = JSON.parse( '<?php echo json_encode( $GLOBALS[ 'addons' ] );?>' );
 </script>
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>

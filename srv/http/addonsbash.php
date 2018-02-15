@@ -171,16 +171,12 @@ while ( !feof( $popencmd ) ) {                            // each line
 	echo $std;                                            // stdout to screen
 }
 pclose( $popencmd );
-/*$descriptorspec = array(
-	  0 => array( 'pipe', 'r' )   // stdin
-	, 1 => array( 'pipe', 'w' )   // stdout
-	, 2 => array( 'pipe', 'w' )   // stderr
-);
+/*$std = array( 1 => array( 'pipe', 'w' ) );   // '1' = stdout only
 
-$process = proc_open( $command, $descriptorspec, $pipes );
+$process = proc_open( $command, $std, $pipes );
 
-while ( !feof( $popencmd ) ) ) {
-	$std = fgets( $pipes[ 1 ]
+while ( !feof( $process ) ) ) {
+	$std = fgets( $pipes[ 1 ] );
 	
 	$std = preg_replace(                              // convert to html
 		array_keys( $replace ),
