@@ -122,9 +122,9 @@ $GLOBALS[ 'addons' ] = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180215',
-	'revision'     => 'Add show/hide option to split <code>play</code> <code>pause</code> buttons'
-					.'<br>Fix hide top-bottom bars on phones'
-					.'<br>Fix long-press bugs on some area'
+	'revision'     => 'Add show/hide option to split <code><i class="fa fa-play"></i></code> <code><i class="fa fa-pause"></i></code> buttons'
+					.'<br>Fix hide <white>top-bottom bars</white> on phones'
+					.'<br>Fix <white>long-press</white> bugs on some area'
 					.'<br>Fix <code>MPD</code> button not working'
 					.'<br>...'
 					.'<br>Fix missing <white>show/hide menu</white> in Library'
