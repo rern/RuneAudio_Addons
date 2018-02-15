@@ -119,16 +119,17 @@ a {
 strike {
     text-decoration: line-through;
 }
-span,
-pre,
-white,
-code {
-	color: #e0e7ee;
-}
 li i,
 .boxed-group legend i,
 blue {
 	color: #0095d8;
+}
+span,
+pre,
+white,
+code,
+code i {
+	color: #e0e7ee;
 }
 p,
 ul,
