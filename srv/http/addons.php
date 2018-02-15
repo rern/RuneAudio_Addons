@@ -94,7 +94,8 @@ function addonblock( $alias ) {
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$revision = '<li>'.str_replace( '<br>', '</li><li>', $addon[ 'revision' ] ).'</li>';
+	$revision = str_replace( '\\', '', $addon[ 'revision' ] );
+	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode ) {
 		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
