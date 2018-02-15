@@ -94,7 +94,7 @@ function addonblock( $alias ) {
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$revision = str_replace( '\\', '', $addon[ 'revision' ] );
+	$revision = str_replace( '\\', '', $addon[ 'revision' ] ); // remove escaped [ \" ] to [ " ]
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode ) {
