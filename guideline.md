@@ -290,9 +290,9 @@ uninstallfinish $@
 ---
 
 **styling** for `revision`, `description`, `option`
-- double quotes in strings must be escaped:
-    - `\"` = `"`
-    - **no** single quote string
+- quotes in strings:
+    - `\"` or `&#034;` = `"`
+    - `&#039;` = `'` (no escape for single quote)
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
