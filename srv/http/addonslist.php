@@ -3,8 +3,8 @@ $GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180214',
-	'revision'     => 'General improvements.',
+	'version'      => '201802145',
+	'revision'     => 'Minor improvements.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
