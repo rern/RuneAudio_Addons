@@ -5,6 +5,5 @@ JS Plugins used by addons
 - Addons Menu
 - RuneUI Enhancement
 
-**`pnotify3.min.js, pnotify.css`**
-- RuneUI Enhancement
+**`bootstrap-select-1.12.1.min.js`**
 - RuneUI GPIO
