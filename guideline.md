@@ -289,10 +289,10 @@ uninstallfinish $@
 - `X` - cancel and back to main page
 ---
 
-**styling** for `description`, `option`
-- quotes use html entities to avoid conflict with php quotes
-    - `&quot;` = `"`
-    - `&#039;` = `'`
+**styling** for `revision`, `description`, `option`
+- string quotes must be escaped:
+    - `\"` = `"`
+    - `\'` = `'`
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
