@@ -296,6 +296,8 @@ uninstallfinish $@
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
+- FontAwesome:
+	- `<i class="fa fa-<name>"></i>`
 
 ## Enlist To Addons Menu
 - **test scripts:**
