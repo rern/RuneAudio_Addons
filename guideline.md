@@ -290,14 +290,14 @@ uninstallfinish $@
 ---
 
 **styling** for `revision`, `description`, `option`
-- quotes in strings:
-    - `\"` or `&#034;` = `"`
-    - `&#039;` = `'` (no escape for single quote)
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
-- FontAwesome - escape double quotes
-	- `<i class=\"fa fa-<name>\"></i>`
+- quotes in strings:
+    - `\"` or `&#034;` = `"`
+    - `&#039;` = `'` (no escape for single quote)
+- FontAwesome:
+	- `<i class=\"fa fa-<icon>\"></i>` (escape double quotes)
 
 ## Enlist To Addons Menu
 - **test scripts:**
