@@ -11,6 +11,19 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
+'RuneYoutube' => array(
+	'title'        => 'RuneUI Youtube',
+	'version'      => '20171120',
+	'needspace'    => 15,
+	'revision'     => 'Fix bugs',
+	'maintainer'   => 'tuna',
+	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
+					.'simply paste a youtube video URL or a youtube playlist URL, '
+					.'wait for them to download, and these songs will be added to your playlist.',
+	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
+	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
+),
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -71,19 +84,6 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
-'RuneYoutube' => array(
-	'title'        => 'RuneUI Youtube',
-	'version'      => '20171120',
-	'needspace'    => 15,
-	'revision'     => 'Fix bugs',
-	'maintainer'   => 'tuna',
-	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
-					.'simply paste a youtube video URL or a youtube playlist URL, '
-					.'wait for them to download, and these songs will be added to your playlist.',
-	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
-	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
-	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
-),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
 	'version'      => '20180128',
@@ -121,10 +121,11 @@ $GLOBALS[ 'addons' ] = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180204',
-	'revision'     => 'Fix missing <white>show/hide menu</white> in Library'
+	'version'      => '20180215',
+	'revision'     => 'Add show/hide option to split <code>play</code> <code>pause</code> buttons'
+					.'<br>Fix <code>MPD</code> button not working'
 					.'<br>...'
-					.'<br>Fix 2 <white>Menu icons</white> bug'
+					.'<br>Fix missing <white>show/hide menu</white> in Library'
 					.'<br>...'
 					.'<br>Fix <white>display list of Artists and Genres</white> in Library'
 					.'<br>Hide <white>Volume</white> if disabled in MPD setting'
