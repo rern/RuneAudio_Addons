@@ -48,13 +48,16 @@ $GLOBALS[ 'addons' ] = array(
 */
 'udac' => array(
 	'title'        => 'USB DAC Auto Switch',
-	'version'      => '201802013',
-	'revision'     => 'Use modified udev rules to auto switch'
+	'version'      => '201802016',
+	'revision'     => 'Switch back to I2S / HDMI when power off USB DAC'
+					.'<br>...'
+					.'<br>Use modified udev rules to auto switch'
+					.'<br>...'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
 					.'<br>- USB DAC power on - switch to USB DAC'
-					.'<br>- USB DAC power off - switch to RaspberryPi Analog Out',
+					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
 ),
