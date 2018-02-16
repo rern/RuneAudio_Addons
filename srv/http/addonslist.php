@@ -1,29 +1,6 @@
 <?php
 $GLOBALS[ 'addons' ] = array(
 
-'addo' => array(
-	'title'        => 'Addons Menu',
-	'version'      => '201802145',
-	'revision'     => 'Minor improvements.',
-	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
-	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
-),
-'RuneYoutube' => array(
-	'title'        => 'RuneUI Youtube',
-	'version'      => '20171120',
-	'needspace'    => 15,
-	'revision'     => 'Fix bugs',
-	'maintainer'   => 'tuna',
-	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
-					.'simply paste a youtube video URL or a youtube playlist URL, '
-					.'wait for them to download, and these songs will be added to your playlist.',
-	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
-	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
-	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
-),
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -46,20 +23,57 @@ $GLOBALS[ 'addons' ] = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 */
-'udac' => array(
-	'title'        => 'USB DAC Auto Switch',
-	'version'      => '201802016',
-	'revision'     => 'Switch back to I2S / HDMI when power off USB DAC'
-					.'<br>...'
-					.'<br>Use modified udev rules to auto switch'
-					.'<br>...'
-					.'<br>Remove manual refresh/reload',
+
+'addo' => array(
+	'title'        => 'Addons Menu',
+	'version'      => '201802145',
+	'revision'     => 'Minor improvements.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
-					.'<br>- USB DAC power on - switch to USB DAC'
-					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
+	'description'  => 'This Addons Menu main page.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
+	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+),
+'aria' =>array(
+	'title'        => 'Aria2 *',
+	'version'      => '20170901',
+	'needspace'    => 15,
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
+					.'<br>Pre-configured and ready to use.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
+	'option'       => array(
+		'yesno'      => 'Start <white>Aria2</white> on system startup?'
+	),
+),
+'bash' => array(
+	'title'        => 'BASH Command',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/thumbnail/thumbbash.png',
+	'buttonlabel'  => 'Run',
+	'sourcecode'   => '',
+	'installurl'   => '',
+	'option'       => array(
+		'text'       => array(
+			'message'  => '<white>BASH</white> commands or /full/path/script:',
+			'label'    => 'commands',
+		),
+	),
+),
+'spla' => array(
+	'title'        => 'Boot Logo',
+	'version'      => '20171010',
+	'revision'     => 'Initial release',
+	'only03'       => '1',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
@@ -87,30 +101,6 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
-'lyri' => array(
-	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180128',
-	'revision'     => 'Disable in WebRadio',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
-	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
-	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
-),
-'bash' => array(
-	'title'        => 'BASH Command',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or scripts like on SSH terminal.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/thumbnail/thumbbash.png',
-	'buttonlabel'  => 'Run',
-	'sourcecode'   => '',
-	'installurl'   => '',
-	'option'       => array(
-		'text'       => array(
-			'message'  => '<white>BASH</white> commands or /full/path/script:',
-			'label'    => 'commands',
-		),
-	),
-),
 'dual' => array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
@@ -121,6 +111,83 @@ $GLOBALS[ 'addons' ] = array(
 	'buttonlabel'  => 'Link',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 	'installurl'   => '',
+),
+'expa' => array(
+	'title'        => 'Expand Partition',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
+	'buttonlabel'  => 'Expand',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'option'       => array(
+		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
+	),
+),
+'motd' => array(
+	'title'        => 'Login Logo for Terminal',
+	'version'      => '20180115',
+	'revision'     => 'Select color on install',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set logo color:',
+			'list'     => array(
+				'*Rune blue' => '',
+				'Red'        => 1,
+				'Green'      => 2,
+				'Yellow'     => 3,
+				'Blue'       => 4,
+				'Magenta'    => 5,
+				'Cyan'       => 6,
+				'White'      => 7,
+			),
+		),
+	),
+),
+'mpdu' => array(
+	'title'        => 'MPD Upgrade *',
+	'needspace'    => 192,
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade MPD to latest version, 0.20.14 as of 20180102:'
+					.'<br>Fix conflicts, missing lib symlinks, missing packages'
+					.'<br>But <white>broken Midori</white>, local browser.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
+					.'<br>Local browser must be switched to <white>Chromium</white>'
+					.'<br>10 minutes upgrade may take 20+ minutes'
+					.'<br>with slow download.'
+					.'<br>Continue?'
+	),
+),
+'rank' => array(
+	'title'        => 'Rank Mirror Package Servers',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Fix package download errors caused by unreachable servers.',
+	'buttonlabel'  => 'Rank',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'option'       => array(
+		'confirm'    => 'Lately, mirror servers have been not so well as before.'
+					.'<br>Ranked servers may not work as well as it should.'
+					.'<br>Continue?'
+	),
+),
+'back' => array(
+	'title'        => 'RuneUI Backup-Restore Enable',
+	'version'      => '20170901',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Enable backup-restore settings and databases.',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
@@ -158,6 +225,17 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
+'font' => array(
+	'title'        => 'RuneUI Fonts - Extended Characters',
+	'version'      => '20170901',
+	'needspace'    => 9,
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
+),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180214',
@@ -174,6 +252,15 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ),
+'lyri' => array(
+	'title'        => 'RuneUI Lyrics',
+	'version'      => '20180128',
+	'revision'     => 'Disable in WebRadio',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
+	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
+	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
+),
 'pass' => array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
@@ -185,44 +272,18 @@ $GLOBALS[ 'addons' ] = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
 ),
-'aria' =>array(
-	'title'        => 'Aria2 *',
-	'version'      => '20170901',
+'RuneYoutube' => array(
+	'title'        => 'RuneUI Youtube',
+	'version'      => '20171120',
 	'needspace'    => 15,
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
-					.'<br>Pre-configured and ready to use.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/aria2/thumbaria.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'       => array(
-		'yesno'      => 'Start <white>Aria2</white> on system startup?'
-	),
-),
-'tran' => array(
-	'title'        => 'Transmission *',
-	'version'      => '20171210',
-	'needspace'    => 9,
-	'revision'     => 'Fix bugs by reverting back to custom package.',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'       => array(
-		'password'   => array(
-			'message'  => 'Password for user <white>root</white> (blank = no password):',
-			'label'    => 'Password'
-		),
-		'checkbox'   => array(
-			'message'  => '',
-			'list'     => array(
-				'*Install <white>WebUI</white> alternative?'            => '1',
-				'*Start <white>Transmission</white> on system startup?' => '1'
-			),
-		),
-	),
+	'revision'     => 'Fix bugs',
+	'maintainer'   => 'tuna',
+	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
+					.'simply paste a youtube video URL or a youtube playlist URL, '
+					.'wait for them to download, and these songs will be added to your playlist.',
+	'thumbnail'    => 'https://github.com/RuneAddons/RuneYoutube/raw/master/cover.png',
+	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
+	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
@@ -261,104 +322,44 @@ $GLOBALS[ 'addons' ] = array(
 		),
 	),
 ),
-'mpdu' => array(
-	'title'        => 'MPD Upgrade *',
-	'needspace'    => 192,
-	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade MPD to latest version, 0.20.14 as of 20180102:'
-					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But <white>broken Midori</white>, local browser.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
-	'option'       => array(
-		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-					.'<br>Local browser must be switched to <white>Chromium</white>'
-					.'<br>10 minutes upgrade may take 20+ minutes'
-					.'<br>with slow download.'
-					.'<br>Continue?'
-	),
-),
-'back' => array(
-	'title'        => 'RuneUI Backup-Restore Enable',
-	'version'      => '20170901',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Enable backup-restore settings and databases.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
-),
-'expa' => array(
-	'title'        => 'Expand Partition',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
-	'buttonlabel'  => 'Expand',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'option'       => array(
-		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
-	),
-),
-'font' => array(
-	'title'        => 'RuneUI Fonts - Extended Characters',
-	'version'      => '20170901',
+'tran' => array(
+	'title'        => 'Transmission *',
+	'version'      => '20171210',
 	'needspace'    => 9,
-	'revision'     => 'Initial release',
+	'revision'     => 'Fix bugs by reverting back to custom package.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/font_extended/thumbfont.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
-),
-'motd' => array(
-	'title'        => 'Login Logo for Terminal',
-	'version'      => '20180115',
-	'revision'     => 'Select color on install',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/motd/thumbmotd.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
+	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => array(
-		'radio'      => array(
-			'message'  => 'Set logo color:',
+		'password'   => array(
+			'message'  => 'Password for user <white>root</white> (blank = no password):',
+			'label'    => 'Password'
+		),
+		'checkbox'   => array(
+			'message'  => '',
 			'list'     => array(
-				'*Rune blue' => '',
-				'Red'        => 1,
-				'Green'      => 2,
-				'Yellow'     => 3,
-				'Blue'       => 4,
-				'Magenta'    => 5,
-				'Cyan'       => 6,
-				'White'      => 7,
+				'*Install <white>WebUI</white> alternative?'            => '1',
+				'*Start <white>Transmission</white> on system startup?' => '1'
 			),
 		),
 	),
 ),
-'spla' => array(
-	'title'        => 'Boot Logo',
-	'version'      => '20171010',
-	'revision'     => 'Initial release',
-	'only03'       => '1',
+'udac' => array(
+	'title'        => 'USB DAC Auto Switch',
+	'version'      => '201802016',
+	'revision'     => 'Switch back to I2S / HDMI when power off USB DAC'
+					.'<br>...'
+					.'<br>Use modified udev rules to auto switch'
+					.'<br>...'
+					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
-	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
-),
-'rank' => array(
-	'title'        => 'Rank Mirror Package Servers',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Fix package download errors caused by unreachable servers.',
-	'buttonlabel'  => 'Rank',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'       => array(
-		'confirm'    => 'Lately, mirror servers have been not so well as before.'
-					.'<br>Ranked servers may not work as well as it should.'
-					.'<br>Continue?'
-	),
+	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
+					.'<br>- USB DAC power on - switch to USB DAC'
+					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
 ),
 'webr' => array(
 	'title'        => 'Webradio Import',
