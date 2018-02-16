@@ -2,6 +2,14 @@
 $GLOBALS[ 'addons' ] = array(
 
 /*
+'paus' => array(
+	'title'        => 'Pause button',
+	'version'      => '20180217',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Add a separate <white>pause</white> button',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
+),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
