@@ -23,11 +23,12 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 */
-
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '201802145',
-	'revision'     => 'Minor improvements.',
+	'version'      => '20180217',
+	'revision'     => 'Support uninstall conflict addons'
+					.'<br>Support hide redundant features addons'
+					.'<br>Support FontAwesome in revisions and descriptions',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
