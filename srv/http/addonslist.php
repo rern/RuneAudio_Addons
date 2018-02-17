@@ -29,7 +29,7 @@ $addons = array(
 	'version'      => '20180217',
 	'revision'     => 'Support <white>uninstall conflict</white> addons'
 					.'<br>Support <white>hide redundant features addons</white>'
-					.'<br>Support <white>hide by retrived system data</white>'
+					.'<br>Support <white>hide by condition scripts</white>'
 					.'<br>Support <white>FontAwesome</white> in revisions and descriptions',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
