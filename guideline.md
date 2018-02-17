@@ -293,9 +293,9 @@ uninstallfinish $@
 - preset css:
 	- `<white>...</white>`
 	- `<code>...</code>`
-- quotes in strings:
+- quotes in strings: (otherwise json errors)
     - `\"` or `&#034;` = `"`
-    - `&#039;` = `'` (no escape for single quote)
+    - `&#039;` = `'` (no `\` escape for single quote)
 - FontAwesome:
 	- `<i class=\"fa fa-<icon>\"></i>` (escape double quotes)
 
