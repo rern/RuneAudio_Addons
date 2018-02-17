@@ -193,11 +193,11 @@ uninstallfinish $@
 	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
+/**/	'conflict'      => '<alias>',
 /**/	'hide'          => array(
 		'only03'    => '1',
 		'installed' => '<alias>',
 		),
-/**/	'conflict'      => '<alias>',
 /**/	'option'        => array(
 		'wait'      => '<message text>',
 		'confirm'   => '<message text>',
