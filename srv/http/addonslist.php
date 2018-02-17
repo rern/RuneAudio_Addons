@@ -27,7 +27,10 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180217',
-	'revision'     => 'Minor improvements.',
+	'revision'     => 'Support uninstall conflict addons'
+					.'<br>Support hide redundant features addons'
+					.'<br>Support hide by retrived conditions'
+					.'<br>Support FontAwesome in revisions and descriptions',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
