@@ -35,29 +35,31 @@ $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
 	
+	// hide by conditions
 	$hide = $addon[ 'hide' ];
 	if ( $hide ) {
+		$hidden = 0;
 		foreach ( $hide as $key => $val ) {
-			if ( $key == 'only03' && $val == 1 ) $hidden = 1;
-			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) ) $hidden = 1;
+			if ( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) $hidden = 1;
+			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) $hidden = 1;
 			if ( $key == 'exec' ) {
 				$hiddenexec = 1;
 				foreach ( $val as $cmd ) {
 					$command = str_replace( '\\', '', $cmd );
-					$hiddenexec = ( $hiddenexec && exec( $command ) );
+					$hiddenexec = ( $hiddenexec && exec( $command ) ) ? 1 : 0;
 				}
-				$hidden = ( $hidden && $hiddenexec );
+				$hidden = ( $hiddenexec || $hidden );
 			}
 			if ( $key == 'php' ) {
 				$hiddenphp = 1;
 				foreach ( $val as $cmd ) {
 					$command = str_replace( '\\', '', $cmd );
-					$hiddenphp = ( $hiddenphp && $command );
+					$hiddenphp = ( $hiddenphp && $command ) ? 1 : 0;
 				}
-				$hidden = ( $hidden && $hiddenphp );
+				$hidden = ( $hiddenphp || $hidden );
 			}
 		}
-		if ( $hidden ) continue;
+		if ( $hidden == 1 ) continue;
 	}
 
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
