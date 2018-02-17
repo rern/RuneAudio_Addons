@@ -213,6 +213,7 @@ $addons = array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
+	'conflict'     => 'paus',
 	'option'       => array(
 		'radio'      => array(
 			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
