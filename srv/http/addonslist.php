@@ -3,7 +3,7 @@ $GLOBALS[ 'addons' ] = array(
 
 /*
 'paus' => array(
-	'title'        => 'Pause button',
+	'title'        => 'RuneUI Pause button',
 	'version'      => '20180217',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Add a separate <white>pause</white> button',
