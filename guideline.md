@@ -197,6 +197,14 @@ uninstallfinish $@
 /**/	'hide'          => array(
 		'only03'    => '1',
 		'installed' => '<alias>',
+		'exec'      => array(
+			'<bash script1> && echo 1',
+			'<bash script2> && echo 1',
+			),
+		'php'      => array(
+			'<php script1>',
+			'<php script2>',
+			),
 		),
 /**/	'option'        => array(
 		'wait'      => '<message text>',
@@ -258,8 +266,10 @@ uninstallfinish $@
 - `'Link'` - for information only (open `'sourceurl'`)
 
 **`'hide'`** - for compatability and redundant
-- `'only03'` hide if for RuneAudio 0.3 only - omit for both versions compatible
-- `'installed'` hide if redundant addon already installed
+- `'only03'` if for RuneAudio 0.3 only - omit for both versions compatible
+- `'installed'` if redundant addon already installed
+- `'exec'` if bash script result = true
+- `'php'` if php script result = true
 
 **`'conflict'`** 
 - for installed conflict addon which must be uninstalled  
