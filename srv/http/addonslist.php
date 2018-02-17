@@ -1,16 +1,7 @@
 <?php
-$GLOBALS[ 'addons' ] = array(
+$addons = array(
 
 /*
-'paus' => array(
-	'title'        => 'RuneUI Pause button',
-	'version'      => '20180217',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button.',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -35,8 +26,11 @@ $GLOBALS[ 'addons' ] = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '201802145',
-	'revision'     => 'Minor improvements.',
+	'version'      => '20180217',
+	'revision'     => 'Support <white>uninstall conflict addons</white>'
+					.'<br>Support <white>hide redundant features addons</white>'
+					.'<br>Support <white>hide addons by condition scripts</white>'
+					.'<br>Support <white>FontAwesome</white> in revisions and descriptions',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -77,12 +71,14 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'Boot Logo',
 	'version'      => '20171010',
 	'revision'     => 'Initial release',
-	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
+	'hide'         => array(
+		'only03'     => '1',
+	),
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
@@ -128,6 +124,12 @@ $GLOBALS[ 'addons' ] = array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'hide'         => array(
+		'exec'       => array(
+			'[[ $( /usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d\" \" -f6 ) < 5000000 ]] && echo 1',
+			'[[ $( redis-cli hget addons expa ) != 1 ]] && echo 1',
+		),
+	),
 	'option'       => array(
 		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),
@@ -220,6 +222,7 @@ $GLOBALS[ 'addons' ] = array(
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
+	'conflict'     => 'paus',
 	'option'       => array(
 		'radio'      => array(
 			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
@@ -274,12 +277,26 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
-	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
+	'hide'         => array(
+		'only03'     => '1',
+	),
+),
+'paus' => array(
+	'title'        => 'RuneUI Pause button',
+	'version'      => '20180217',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
+	'hide'         => array(
+		'installed'  => 'enha',
+	),
 ),
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',

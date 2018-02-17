@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180215_
+_revision 20180217_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -185,7 +185,6 @@ uninstallfinish $@
 <alias> => array(
 /**/	'version'       => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
-/**/	'only03'        => '1',
 /**/	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
@@ -194,21 +193,34 @@ uninstallfinish $@
 	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
+/**/	'conflict'      => '<alias>',
+/**/	'hide'          => array(
+		'only03'    => '1',
+		'installed' => '<alias>',
+		'exec'      => array(
+			'<bash script1> && echo 1',
+			'<bash script2> && echo 1',
+			),
+		'php'      => array(
+			'<php script1>',
+			'<php script2>',
+			),
+		),
 /**/	'option'        => array(
-		'wait'     => '<message text>',
-		'confirm'  => '<message text>',
-		'yesno'    => '<message text>',
-		'yesno1'   => '<message text 1>',
-		'yesno2'   => '<message text 2>',
-		'text'     => array(
+		'wait'      => '<message text>',
+		'confirm'   => '<message text>',
+		'yesno'     => '<message text>',
+		'yesno1'    => '<message text 1>',
+		'yesno2'    => '<message text 2>',
+		'text'      => array(
 			'message' => '<message text>',
 			'label'   => '<label text>'
 		),
-		'password' => array(
+		'password'  => array(
 			'message' => '<message text>',
 			'label'   => '<label text>'
 		),
-		'radio'    => array(
+		'radio'     => array(
 			'message' => '<message text>',
 			'list'    => array(
 				'*item1' => '<value1>',
@@ -216,14 +228,14 @@ uninstallfinish $@
 				'custom' => '?'
 			),
 		),
-		'checkbox' => array(
+		'checkbox'  => array(
 			'message' => '<message text>',
 			'list'    => array(
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
 		),
-		'select'   => array(
+		'select'    => array(
 			'message' => '<message text>',
 			'label'   => '<label text>',
 			'list'    => array(
@@ -246,16 +258,21 @@ uninstallfinish $@
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'only03'`** - compatability
-- hide if for RuneAudio 0.3 only
-- omit for both versions compatible
-
 **`'needspace'`**
 - MB: downloaded packages files + installed files + downloaded files + decompress files
 - omit for 1 MB or less
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
+
+**`'hide'`** - for compatability and redundant
+- `'only03'` if for RuneAudio 0.3 only - omit for both versions compatible
+- `'installed'` if redundant addon already installed
+- `'exec'` if bash script result = true
+- `'php'` if php script result = true
+
+**`'conflict'`** 
+- for installed conflict addon which must be uninstalled  
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog

@@ -61,8 +61,15 @@ $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
-$addon = $GLOBALS[ 'addons' ][ $alias ];
+$addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
+$conflict = $addon[ 'conflict' ];
+$conflictcommandtxt = '';
+$conflictcommand = '';
+if ( $conflict && file_exists( '/usr/local/bin/uninstall_'.$conflict.'.sh' ) ) {
+	$conflictcommandtxt = 'uninstall_'.$conflict.'.sh';
+	$conflictcommand = '/usr/bin/sudo /usr/local/bin/'.$conflictcommandtxt;
+}
 
 $optarray = explode( ' ', $opt );
 if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
@@ -78,6 +85,7 @@ $install = <<<cmd
 		exit
 	fi
 	chmod 755 $installfile
+	$conflictcommand
 	/usr/bin/sudo ./$installfile $opt
 cmd;
 $uninstall = <<<cmd
@@ -115,6 +123,7 @@ cmd;
 		$commandtxt = <<<cmd
 			wget -qN --no-check-certificate $installurl
 			chmod 755 $installfile
+			$conflictcommandtxt
 			./$installfile
 cmd;
 	} else {

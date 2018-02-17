@@ -2,16 +2,21 @@
 require_once( 'addonshead.php' );
 
 $available = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = round( exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d" " -f6' ) / 1024 / 1024 );
+$expandable = round( shell_exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d " " -f6' ) / 1024 / 1024 );
 $expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
-
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
+
+if ( $expandable ) {
+	$redis->hDel( 'addons', 'expa' );
+}else {
+	$redis->hSet( 'addons', 'expa', '1' );
+}
 
 $release = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
 
-$runeversion = ( $release == '0.4b' ) ? '0.4b' : '0.3';
+$runeversion = $release == '0.4b' ? '0.4b' : '0.3';
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
@@ -33,31 +38,15 @@ array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
+	if ( $alias == 'addo' ) continue;
+	
 	$addon = $addons[ $alias ];
 	
 	$hide = $addon[ 'hide' ];
 	if ( $hide ) {
-		foreach ( $hide as $key => $val ) {
-			if ( $key == 'only03' && $val == 1 ) $hidden = 1;
-			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) ) $hidden = 1;
-			if ( $key == 'exec' ) {
-				$hiddenexec = 1;
-				foreach ( $val as $cmd ) {
-					$command = str_replace( '\\', '', $cmd );
-					$hiddenexec = ( $hiddenexec && exec( $command ) );
-				}
-				$hidden = ( $hidden && $hiddenexec );
-			}
-			if ( $key == 'php' ) {
-				$hiddenphp = 1;
-				foreach ( $val as $cmd ) {
-					$command = str_replace( '\\', '', $cmd );
-					$hiddenphp = ( $hiddenphp && $command );
-				}
-				$hidden = ( $hidden && $hiddenphp );
-			}
-		}
-		if ( $hidden ) continue;
+		if ( ( $release == '0.4b' && isset( $hide[ 'only03' ] ) )
+			|| $redis->hGet( 'addons', $hide[ 'installed' ] )
+		) continue;
 	}
 
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
@@ -91,12 +80,10 @@ foreach( $arrayalias as $alias ) {
 	
 	// addon list ---------------------------------------------------------------
 	$title = $addon[ 'title' ];
-	// hide Addons Menu in list
-	if ( $alias !== 'addo' ) {
-		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
-		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
-	}
+	$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
+	if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
+	$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
+
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
