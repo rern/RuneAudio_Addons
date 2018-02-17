@@ -286,6 +286,7 @@ $addons = array(
 		'only03'     => '1',
 	),
 ),
+/*
 'paus' => array(
 	'title'        => 'RuneUI Pause button',
 	'version'      => '20180217',
@@ -297,7 +298,7 @@ $addons = array(
 	'hide'         => array(
 		'installed'  => 'enha',
 	),
-),
+),*/
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',
 	'version'      => '20171120',
