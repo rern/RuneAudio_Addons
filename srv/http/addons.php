@@ -38,8 +38,6 @@ array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
-	if ( $alias == 'addo' ) continue;
-	
 	$addon = $addons[ $alias ];
 	
 	$hide = $addon[ 'hide' ];
@@ -81,21 +79,17 @@ foreach( $arrayalias as $alias ) {
 	// addon list ---------------------------------------------------------------
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
-//	if ( $alias !== 'addo' ) {
+	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
 		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
-//	}
-	// 'hide' condition
-//	if ( $addon[ 'hide' ] ) {
-//		$hide = $redis->hGet( 'addons', $addon[ 'hide' ] ) ? ' hide' : '';
-//	}
+	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$description = str_replace( '\\', '', $addon[ 'description' ] ); // remove escaped [ \" ] to [ " ]
-	$revision = str_replace( '\\', '', $addon[ 'revision' ] );
+	$revision = str_replace( '\\', '', $addon[ 'revision' ] ); // remove escaped [ \" ] to [ " ]
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
+	$description = str_replace( '\\', '', $addon[ 'description' ] );
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode ) {
 		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
