@@ -194,25 +194,25 @@ uninstallfinish $@
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
 /**/	'hide'          => array(
-		'only03'        => '1',
-		'installed'     => '<alias>',
+		'only03'    => '1',
+		'installed' => '<alias>',
 		),
 /**/	'conflict'      => '<alias>',
 /**/	'option'        => array(
-		'wait'     => '<message text>',
-		'confirm'  => '<message text>',
-		'yesno'    => '<message text>',
-		'yesno1'   => '<message text 1>',
-		'yesno2'   => '<message text 2>',
-		'text'     => array(
+		'wait'      => '<message text>',
+		'confirm'   => '<message text>',
+		'yesno'     => '<message text>',
+		'yesno1'    => '<message text 1>',
+		'yesno2'    => '<message text 2>',
+		'text'      => array(
 			'message' => '<message text>',
 			'label'   => '<label text>'
 		),
-		'password' => array(
+		'password'  => array(
 			'message' => '<message text>',
 			'label'   => '<label text>'
 		),
-		'radio'    => array(
+		'radio'     => array(
 			'message' => '<message text>',
 			'list'    => array(
 				'*item1' => '<value1>',
@@ -220,14 +220,14 @@ uninstallfinish $@
 				'custom' => '?'
 			),
 		),
-		'checkbox' => array(
+		'checkbox'  => array(
 			'message' => '<message text>',
 			'list'    => array(
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
 		),
-		'select'   => array(
+		'select'    => array(
 			'message' => '<message text>',
 			'label'   => '<label text>',
 			'list'    => array(
