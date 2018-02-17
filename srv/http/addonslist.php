@@ -1,18 +1,6 @@
 <?php
 $addons = array(
 
-'paus' => array(
-	'title'        => 'RuneUI Pause button',
-	'version'      => '20180217',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-	'hide'         => array(
-		'installed'       => 'enha',
-	),
-),
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -286,6 +274,18 @@ $addons = array(
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
 	'hide'         => array(
 		'only03'     => '1',
+	),
+),
+'paus' => array(
+	'title'        => 'RuneUI Pause button',
+	'version'      => '20180217',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
+	'hide'         => array(
+		'installed'       => 'enha',
 	),
 ),
 'RuneYoutube' => array(
