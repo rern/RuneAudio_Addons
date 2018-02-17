@@ -28,8 +28,9 @@ Currently available:
 - [RuneUI Youtube](https://github.com/RuneAddons/RuneYoutube/tree/master)
 - [Samba Upgrade](https://github.com/rern/RuneAudio/tree/master/samba)
 - [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
-- [Webradio Import](https://github.com/rern/RuneAudio/tree/master/webradio)
 - [USB DAC Auto Switch](https://github.com/rern/RuneAudio/tree/master/USB_DAC_switch)
+- [Webradio Import](https://github.com/rern/RuneAudio/tree/master/webradio)
+
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
