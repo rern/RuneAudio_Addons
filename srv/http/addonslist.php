@@ -26,7 +26,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180217',
+	'version'      => '20180218',
 	'revision'     => 'Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
 					.'<br>Support <white>hide addons by condition scripts</white>'
