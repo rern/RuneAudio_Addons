@@ -287,7 +287,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'         => array(
-		'installed'       => 'enha',
+		'installed'  => 'enha',
 	),
 ),
 'RuneYoutube' => array(
