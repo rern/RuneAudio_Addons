@@ -23,12 +23,11 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
 */
+
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180217',
-	'revision'     => 'Support uninstall conflict addons'
-					.'<br>Support hide redundant features addons'
-					.'<br>Support FontAwesome in revisions and descriptions',
+	'revision'     => 'Minor improvements.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -122,6 +121,12 @@ $addons = array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'hide'         => array(
+		'exec'       => array(
+			'[[ $( /usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d\" \" -f6 ) < 5000000 ]] && echo 1',
+			'[[ $( redis-cli hget addons expa ) != 1 ]] && echo 1',
+		),
+	),
 	'option'       => array(
 		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),

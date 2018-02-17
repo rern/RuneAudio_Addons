@@ -2,21 +2,16 @@
 require_once( 'addonshead.php' );
 
 $available = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = round( shell_exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d " " -f6' ) / 1024 / 1024 );
+$expandable = round( exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d" " -f6' ) / 1024 / 1024 );
 $expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
+
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
-
-if ( $expandable ) {
-	$redis->hDel( 'addons', 'expa' );
-}else {
-	$redis->hSet( 'addons', 'expa', '1' );
-}
 
 $release = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
 
-$runeversion = $release == '0.4b' ? '0.4b' : '0.3';
+$runeversion = ( $release == '0.4b' ) ? '0.4b' : '0.3';
 // -------------------------------------------------------------------------------------------------
 echo '
 	<div class="container">
@@ -42,9 +37,27 @@ foreach( $arrayalias as $alias ) {
 	
 	$hide = $addon[ 'hide' ];
 	if ( $hide ) {
-		if ( ( $release == '0.4b' && isset( $hide[ 'only03' ] ) )
-			|| $redis->hGet( 'addons', $hide[ 'installed' ] )
-		) continue;
+		foreach ( $hide as $key => $val ) {
+			if ( $key == 'only03' && $val == 1 ) $hidden = 1;
+			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) ) $hidden = 1;
+			if ( $key == 'exec' ) {
+				$hiddenexec = 1;
+				foreach ( $val as $cmd ) {
+					$command = str_replace( '\\', '', $cmd );
+					$hiddenexec = ( $hiddenexec && exec( $command ) );
+				}
+				$hidden = ( $hidden && $hiddenexec );
+			}
+			if ( $key == 'php' ) {
+				$hiddenphp = 1;
+				foreach ( $val as $cmd ) {
+					$command = str_replace( '\\', '', $cmd );
+					$hiddenphp = ( $hiddenphp && $command );
+				}
+				$hidden = ( $hidden && $hiddenphp );
+			}
+		}
+		if ( $hidden ) continue;
 	}
 
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
