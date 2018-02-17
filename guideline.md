@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180215_
+_revision 20180217_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -185,7 +185,6 @@ uninstallfinish $@
 <alias> => array(
 /**/	'version'       => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
-/**/	'only03'        => '1',
 /**/	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
 	'maintainer'    => '<maintainer>',
@@ -194,6 +193,11 @@ uninstallfinish $@
 	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
+/**/	'hide'          => array(
+		'only03'        => '1',
+		'installed'     => '<alias>',
+		),
+/**/	'conflict'      => '<alias>',
 /**/	'option'        => array(
 		'wait'     => '<message text>',
 		'confirm'  => '<message text>',
@@ -246,16 +250,19 @@ uninstallfinish $@
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
 
-**`'only03'`** - compatability
-- hide if for RuneAudio 0.3 only
-- omit for both versions compatible
-
 **`'needspace'`**
 - MB: downloaded packages files + installed files + downloaded files + decompress files
 - omit for 1 MB or less
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
+
+**`'hide'`** - for compatability and redundant
+- `'only03'` hide if for RuneAudio 0.3 only - omit for both versions compatible
+- `'installed'` hide if redundant addon already installed
+
+**`'conflict'`** 
+- for installed conflict addon which must be uninstalled  
 
 **`'option'`** - user inputs  
 - each `'key': ...` open a dialog
