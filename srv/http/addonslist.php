@@ -1,16 +1,19 @@
 <?php
-$GLOBALS[ 'addons' ] = array(
+$addons = array(
 
-/*
 'paus' => array(
 	'title'        => 'RuneUI Pause button',
 	'version'      => '20180217',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button.',
+	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
+	'hide'         => array(
+		'installed'       => 'enha',
+	),
 ),
+/*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -77,12 +80,14 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'Boot Logo',
 	'version'      => '20171010',
 	'revision'     => 'Initial release',
-	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
+	'hide'         => array(
+		'only03'     => '1',
+	),
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
@@ -274,12 +279,14 @@ $GLOBALS[ 'addons' ] = array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
 	'revision'     => 'Initial release',
-	'only03'       => '1',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_password/thumbpass.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
+	'hide'         => array(
+		'only03'     => '1',
+	),
 ),
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',

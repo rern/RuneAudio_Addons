@@ -1,9 +1,9 @@
 <?php
 require_once( 'addonshead.php' );
 
-$GLOBALS[ 'available' ] = round( disk_free_space( '/' ) / 1024 / 1024 );
+$available = round( disk_free_space( '/' ) / 1024 / 1024 );
 $expandable = round( shell_exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d " " -f6' ) / 1024 / 1024 );
-$GLOBALS[ 'expandable' ] = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
+$expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
@@ -13,8 +13,8 @@ if ( $expandable ) {
 	$redis->hSet( 'addons', 'expa', '1' );
 }
 
-$GLOBALS[ 'release' ] = $redis->get( 'release' );
-$GLOBALS[ 'redis' ] = $redis->hGetAll( 'addons' );
+$release = $redis->get( 'release' );
+$redisaddons = $redis->hGetAll( 'addons' );
 
 $runeversion = $release == '0.4b' ? '0.4b' : '0.3';
 // -------------------------------------------------------------------------------------------------
@@ -27,40 +27,35 @@ echo '
 	</a>
 ';
 // -------------------------------------------------------------------------------------------------
-$GLOBALS[ 'list' ] = '';
-$GLOBALS[ 'blocks' ] = '';
+$list = '';
+$blocks = '';
 
 // sort
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
-//$arraytitle[ $addoindex ] = 'Addons Menu';
 $arrayalias = array_keys( $addons );
 
 foreach( $arrayalias as $alias ) {
-	addonblock( $alias );
-}
-// -------------------------------------------------------------------------------------------------
-echo '
-	<ul id="list">'.
-		$list.'
-	</ul>
-	<br>
-';
-echo $blocks;
-// -------------------------------------------------------------------------------------------------
-function addonblock( $alias ) {
-	$addon = $GLOBALS[ 'addons' ][ $alias ];
-	if ( $GLOBALS[ 'release' ] == '0.4b' && isset( $addon[ 'only03' ] ) ) return;
+	if ( $alias == 'addo' ) continue;
 	
+	$addon = $addons[ $alias ];
+	
+	$hide = $addon[ 'hide' ];
+	if ( $hide ) {
+		if ( ( $release == '0.4b' && isset( $hide[ 'only03' ] ) )
+			|| $redis->hGet( 'addons', $hide[ 'installed' ] )
+		) continue;
+	}
+
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
 	
-	if ( $GLOBALS[ 'redis' ][ $alias ] || file_exists( "/usr/local/bin/uninstall_$alias.sh" ) ) {
+	if ( $redisaddons[ $alias ] || $redis->hGet( 'addons', $alias ) ) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $addon[ 'version' ] ) 
-			|| $addon[ 'version' ] == $GLOBALS[ 'redis' ][ $alias ] ) {
+			|| $addon[ 'version' ] == $redisaddons[ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		} else {
@@ -71,13 +66,13 @@ function addonblock( $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $GLOBALS[ 'available' ] ) {
+		if ( $needspace < $available ) {
 			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {
 			$btninclass = 'btnneedspace';
-			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.number_format( $GLOBALS[ 'available' ] ).' MB<br>'
-				.$GLOBALS[ 'expandable' ].'"';
+			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.number_format( $available ).' MB<br>'
+				.$expandable.'"';
 		}
 		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
@@ -86,15 +81,20 @@ function addonblock( $alias ) {
 	// addon list ---------------------------------------------------------------
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
-	if ( $alias !== 'addo' ) {
+//	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$GLOBALS[ 'list' ] .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
-	}
+		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
+//	}
+	// 'hide' condition
+//	if ( $addon[ 'hide' ] ) {
+//		$hide = $redis->hGet( 'addons', $addon[ 'hide' ] ) ? ' hide' : '';
+//	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
-	$revision = str_replace( '\\', '', $addon[ 'revision' ] ); // remove escaped [ \" ] to [ " ]
+	$description = str_replace( '\\', '', $addon[ 'description' ] ); // remove escaped [ \" ] to [ " ]
+	$revision = str_replace( '\\', '', $addon[ 'revision' ] );
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode ) {
@@ -102,11 +102,11 @@ function addonblock( $alias ) {
 	} else {
 		$detail = '';
 	}
-	$GLOBALS[ 'blocks' ] .= '
+	$blocks .= '
 		<div id="'.$alias.'" class="boxed-group">';
-	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
+	if ( $thumbnail ) $blocks .= '
 		<div style="float: left; width: calc( 100% - 110px);">';
-	$GLOBALS[ 'blocks' ] .= '
+	$blocks .= '
 			<legend title="Back to top">'
 				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
@@ -116,24 +116,31 @@ function addonblock( $alias ) {
 				.$revision.'
 			</ul>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$addon[ 'description' ].$detail.'</p>'
-				.$btnin; if ( $version ) $GLOBALS[ 'blocks' ] .= ' &nbsp; '.$btnun;
-	$GLOBALS[ 'blocks' ] .= '
+				<p>'.$description.$detail.'</p>'
+				.$btnin; if ( $version ) $blocks .= ' &nbsp; '.$btnun;
+	$blocks .= '
 			</form>';
-	if ( $thumbnail ) $GLOBALS[ 'blocks' ] .= '
+	if ( $thumbnail ) $blocks .= '
 		</div>
 		<img src="'.$thumbnail.'" class="thumbnail">
 		<div style="clear: both;"></div>';
-	$GLOBALS[ 'blocks' ] .= '
+	$blocks .= '
 		</div>';
 }
 // -------------------------------------------------------------------------------------------------
+echo '
+	<ul id="list">'.
+		$list.'
+	</ul>
+	<br>
+';
+echo $blocks;
 ?>
 </div>
 <div id="bottom"></div>
 
 <script>
-	addons = JSON.parse( '<?php echo json_encode( $GLOBALS[ 'addons' ] );?>' );
+	addons = JSON.parse( '<?php echo json_encode( $addons );?>' );
 </script>
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/hammer.min.js"></script>
