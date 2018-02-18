@@ -68,7 +68,7 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
 
 # use wget for pacman to improve download
-sed -i '\|^#XferCommand = /usr/bin/wget| s|^#||' /etc/pacman.conf
+sed -i 's|^#\(XferCommand = /usr/bin/wget\)|\1 -q --show-progress|' /etc/pacman.conf
 
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
