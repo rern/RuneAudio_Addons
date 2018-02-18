@@ -266,8 +266,10 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180128',
-	'revision'     => 'Disable in WebRadio',
+	'version'      => '20180218',
+	'revision'     => 'Fix <white>long-press on song title</white> to not also open lyrics editor'
+					.'<br>...'
+					.'<br>Disable in WebRadio',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
