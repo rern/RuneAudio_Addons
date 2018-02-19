@@ -1,4 +1,17 @@
 <?php
+$redis = new Redis(); 
+$redis->pconnect( '127.0.0.1' );
+$acards = $redis->hGetAll( 'acards' );
+
+$ilength = count( $acards );
+$i = 0;
+foreach ( $acards as $key => $val ) {
+	$default = ( $i == $ilength ) ? '' : '*';
+	$i++;	
+	$card = json_decode( $val, true );
+	$acardsarray[ $default.$card[ 'extlabel' ] ] = $key;
+}
+
 $addons = array(
 
 /*
@@ -376,18 +389,24 @@ $addons = array(
 ),
 'udac' => array(
 	'title'        => 'USB DAC Auto Switch',
-	'version'      => '201802016',
-	'revision'     => 'Switch back to I2S / HDMI when power off USB DAC'
+	'version'      => '201802019',
+	'revision'     => '<white>Audio output</white> can be set when power off USB DAC'
 					.'<br>...'
-					.'<br>Use modified udev rules to auto switch'
+					.'<br>Use <white>udev rules</white> to auto switch'
 					.'<br>...'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
-					.'<br>- USB DAC power on - switch to USB DAC'
-					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
+					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
+					.'<br>- USB DAC <white>power off</white> - switch to selected <white>Audio output</white>',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => '<white>Audio output</white> when power off USB DAC:',
+			'list'     => $acardsarray
+		),
+	),
 ),
 'webr' => array(
 	'title'        => 'Webradio Import',
