@@ -2,18 +2,20 @@
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
-// data retrieval script ///////////////////////////////////// 
+// system data retrieval script ///////////////////////////////
+// udac //
 $acards = $redis->hGetAll( 'acards' );
-
 $ilength = count( $acards );
 $i = 0;
 foreach ( $acards as $key => $val ) {
 	$default = ( $i == $ilength ) ? '' : '*';
 	$i++;	
 	$card = json_decode( $val, true );
-	$udaclist[ $default.$card[ 'extlabel' ] ] = $key;
+	$extlabel = $card[ 'extlabel' ];
+	$udaclist[ $default.$extlabel ] = $key.'@'.$extlabel;
 }
 ///////////////////////////////////////////////////////////////
+
 $addons = array(
 
 /*
