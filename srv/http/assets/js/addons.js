@@ -162,7 +162,7 @@ function getoptions() {
 				, textvalue    : ojson.value
 				, ok         : function() {
 					var input = $( '#infoTextbox' ).val();
-					opt += ( input ? input : 0 ) +' ';
+					opt += input ? "'"+ input +"' " : 0;
 					sendcommand();
 				}
 			} );
@@ -179,7 +179,7 @@ function getoptions() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
 						verifypassword( msg, pwd, function() {
-							opt += pwd +' ';
+							opt += "'"+ pwd +"' ";
 							sendcommand();
 						} );
 					} else {
@@ -206,7 +206,7 @@ function getoptions() {
 				}
 				, ok           : function() {
 					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
-					opt += radiovalue +' ';
+					opt += "'"+ radiovalue +"' ";
 					sendcommand();
 				}
 			} );
@@ -217,8 +217,7 @@ function getoptions() {
 						, message     : ojson.message
 						, textlabel   : 'Custom'
 						, ok          : function() {
-							var input = $( '#infoTextbox' ).val();
-							opt += ( input ? input : 0 ) +' ';
+							opt += "'"+ $( '#infoTextbox' ).val() +"' ";
 							sendcommand();
 						}
 					} );
@@ -242,8 +241,8 @@ function getoptions() {
 					return checkboxhtml
 				}
 				, ok:       function() {
-					$( '#infoCheckbox input[type=checkbox]').each( function() {
-						opt += ( $( this ).is( ':checked' ) ? 1 : 0 ) +' ';
+					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
+						opt += "'"+ $( this ).val() +"' ";
 					} );
 					sendcommand();
 				}
@@ -266,7 +265,7 @@ function getoptions() {
 					return selecthtml
 				}
 				, ok           : function() {
-					opt += $( '#infoSelectbox').val() +' ';
+					opt += "'"+ $( '#infoSelectbox').val() +"' ";
 					sendcommand();
 				}
 			} );
@@ -278,7 +277,7 @@ function getoptions() {
 						, textlabel    : 'Custom'
 						, ok           : function() {
 							var input = $( '#infoTextbox' ).val();
-							opt += ( input ? input : 0 ) +' ';
+							opt += input ? "'"+ input +"' " : 0;
 							sendcommand();
 						}
 					} );
