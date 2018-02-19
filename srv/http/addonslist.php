@@ -392,10 +392,10 @@ $addons = array(
 ),
 'udac' => array(
 	'title'        => 'USB DAC Auto Switch',
-	'version'      => '201802016',
-	'revision'     => 'Switch back to I2S / HDMI when power off USB DAC'
+	'version'      => '201802019',
+	'revision'     => '<white>Audio output</white> can be set when power off USB DAC'
 					.'<br>...'
-					.'<br>Use modified udev rules to auto switch'
+					.'<br>Use <white>udev rules</white> to auto switch'
 					.'<br>...'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
