@@ -1,4 +1,20 @@
 <?php
+$redis = new Redis(); 
+$redis->pconnect( '127.0.0.1' );
+// system data retrieval script ///////////////////////////////
+// udac //
+$acards = $redis->hGetAll( 'acards' );
+$ilength = count( $acards );
+$i = 0;
+foreach ( $acards as $key => $val ) {
+	$default = ( $i == $ilength ) ? '' : '*';
+	$i++;	
+	$card = json_decode( $val, true );
+	$extlabel = $card[ 'extlabel' ];
+	$udaclist[ $default.$extlabel ] = $key.'@'.$extlabel;
+}
+///////////////////////////////////////////////////////////////
+
 $addons = array(
 
 /*
@@ -388,6 +404,12 @@ $addons = array(
 					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => '<white>Audio output</white> when power off USB DAC:',
+			'list'     => $udaclist
+		),
+	),
 ),
 'webr' => array(
 	'title'        => 'Webradio Import',
