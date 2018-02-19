@@ -1,6 +1,8 @@
 <?php
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
+
+// data retrieval script ///////////////////////////////////// 
 $acards = $redis->hGetAll( 'acards' );
 
 $ilength = count( $acards );
@@ -9,9 +11,9 @@ foreach ( $acards as $key => $val ) {
 	$default = ( $i == $ilength ) ? '' : '*';
 	$i++;	
 	$card = json_decode( $val, true );
-	$acardsarray[ $default.$card[ 'extlabel' ] ] = $key;
+	$udaclist[ $default.$card[ 'extlabel' ] ] = $key;
 }
-
+///////////////////////////////////////////////////////////////
 $addons = array(
 
 /*
@@ -404,7 +406,7 @@ $addons = array(
 	'option'       => array(
 		'radio'      => array(
 			'message'  => '<white>Audio output</white> when power off USB DAC:',
-			'list'     => $acardsarray
+			'list'     => $udaclist
 		),
 	),
 ),
