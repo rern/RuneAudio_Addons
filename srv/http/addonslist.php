@@ -393,7 +393,7 @@ $addons = array(
 'udac' => array(
 	'title'        => 'USB DAC Auto Switch',
 	'version'      => '201802019',
-	'revision'     => '<white>Audio output</white> can be set when power off USB DAC'
+	'revision'     => '<white>Audio output</white> can be preset when power off USB DAC'
 					.'<br>...'
 					.'<br>Use <white>udev rules</white> to auto switch'
 					.'<br>...'
