@@ -13,8 +13,6 @@ sed -i -e '/addonsinfo.css\|id="addons"/ d
 sed -i -e '/addonsmenu.js\|addonsinfo.js/ d
 ' /srv/http/app/templates/footer.php
 
-sed -i 's|^\(XferCommand = /usr/bin/wget\) -q --show-progress|#\1|' /etc/pacman.conf
-
 # remove files #######################################
 echo -e "$bar Remove files ..."
 rm -rv /srv/http/{addons*,restoreui.php}
