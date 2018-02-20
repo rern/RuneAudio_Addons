@@ -1,6 +1,7 @@
 <?php
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
+
 // system data retrieval script ///////////////////////////////
 // udac //
 $acards = $redis->hGetAll( 'acards' );
@@ -400,8 +401,8 @@ $addons = array(
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
-					.'<br>- USB DAC power on - switch to USB DAC'
-					.'<br>- USB DAC power off - switch to I2S if installed or RaspberryPi HDMI Out',
+					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
+					.'<br>- USB DAC <white>power off</white> - switch to selected <white>Audio output</white>',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
 	'option'       => array(
