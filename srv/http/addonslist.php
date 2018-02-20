@@ -283,7 +283,7 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180218',
+	'version'      => '20180219',
 	'revision'     => 'Fix <white>long-press on song title</white> to not also open lyrics editor'
 					.'<br>...'
 					.'<br>Disable in WebRadio',
@@ -394,7 +394,7 @@ $addons = array(
 'udac' => array(
 	'title'        => 'USB DAC Auto Switch',
 	'version'      => '201802019',
-	'revision'     => '<white>Audio output</white> can be set when power off USB DAC'
+	'revision'     => '<white>Audio output</white> can be preset when power off USB DAC'
 					.'<br>...'
 					.'<br>Use <white>udev rules</white> to auto switch'
 					.'<br>...'
