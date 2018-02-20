@@ -43,8 +43,10 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180218',
-	'revision'     => 'Support <white>uninstall conflict addons</white>'
+	'version'      => '20180220',
+	'revision'     => 'General improvements'
+					.'<br>...'
+					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
 					.'<br>Support <white>hide addons by condition scripts</white>'
 					.'<br>Support <white>FontAwesome</white> in revisions and descriptions',
