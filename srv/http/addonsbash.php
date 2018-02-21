@@ -181,12 +181,12 @@ while ( !feof( $popencmd ) ) {                            // each line
 	echo $std;                                            // stdout to screen
 	
 	if ( connection_status() !== 0 ) {
-		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile );
-		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
-		exec( '/usr/bin/sudo /usr/bin/killall pacman &> /dev/null' );
-		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &> /dev/null' );
-		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.'.sh &> /dev/null' );
-		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias );
+		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile.' &' );
+		exec( '/usr/bin/sudo /usr/bin/killall wget &' );
+		exec( '/usr/bin/sudo /usr/bin/killall pacman &' );
+		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &' );
+		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.'.sh &' );
+		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias.' &' );
 		pclose( $popencmd );
 		die();
 	}
