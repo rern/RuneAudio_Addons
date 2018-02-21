@@ -44,8 +44,8 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180222',
-	'revision'     => 'Enable abort install by browser &ensp;<i class=\"fa fa-times-circle\"></i>&ensp;'
-					.' or &ensp;<i class=\"fa fa-arrow-circle-left\"></i>&ensp; buttons'
+	'revision'     => 'Enable abort install by browser &ensp;<white><i class=\"fa fa-times-circle\"></i></white>&ensp;'
+					.' or &ensp;<white><i class=\"fa fa-arrow-circle-left\"></i></white>&ensp; buttons'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
