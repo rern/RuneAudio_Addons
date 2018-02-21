@@ -185,6 +185,8 @@ while ( !feof( $popencmd ) ) {                            // each line
 		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/killall pacman &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &> /dev/null' );
+		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.' &> /dev/null' );
+		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias );
 		pclose( $popencmd );
 		die();
 	}
