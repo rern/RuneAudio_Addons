@@ -178,6 +178,15 @@ while ( !feof( $popencmd ) ) {                            // each line
 	}
 
 	echo $std;                                            // stdout to screen
+	
+	if ( connection_aborted() == 1 ) {
+		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile );
+		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
+		exec( '/usr/bin/sudo /usr/bin/killall pacman &> /dev/null' );
+		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &> /dev/null' );
+		pclose( $popencmd );
+		die();
+	}
 }
 pclose( $popencmd );
 /*$std = array( 1 => array( 'pipe', 'w' ) );   // '1' = stdout only
