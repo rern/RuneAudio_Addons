@@ -180,7 +180,7 @@ while ( !feof( $popencmd ) ) {                            // each line
 
 	echo $std;                                            // stdout to screen
 	
-	if ( connection_aborted() == 1 ) {
+	if ( connection_status() !== 0 ) {
 		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile );
 		exec( '/usr/bin/sudo /usr/bin/touch /srv/http/addonskill' );
 		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
