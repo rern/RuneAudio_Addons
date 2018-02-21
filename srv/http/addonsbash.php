@@ -182,7 +182,6 @@ while ( !feof( $popencmd ) ) {                            // each line
 	
 	if ( connection_status() !== 0 ) {
 		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile );
-		exec( '/usr/bin/sudo /usr/bin/touch /srv/http/addonskill' );
 		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/killall pacman &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &> /dev/null' );
