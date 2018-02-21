@@ -44,8 +44,8 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180222',
-	'revision'     => 'Enable <white>abort install</white>, but should not do it, by <i class=\"fa fa-times\"></i>'
-					.' or browser <i class=\"fa fa-times-circle\"></i> <i class=\"fa fa-arrow-circle-left\"></i> buttons'
+	'revision'     => 'Enable <white>abort install</white> but should not do it unless necessary. ( <i class=\"fa fa-times\"></i>'
+					.' or browser <i class=\"fa fa-times-circle\"></i> <i class=\"fa fa-arrow-circle-left\"></i> buttons)'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
