@@ -50,7 +50,7 @@ setTimeout( function() {
 
 <div class="container">
 	
-	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x"></i></a>
+	<h1>ADDONS TERMINAL</h1><a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
 	<legend class="bl">Please wait until finished...</legend>
 
 	<div class="hidescrollv">
@@ -204,6 +204,7 @@ pclose( $popencmd );
 		pre.scrollTop = pre.scrollHeight;
 		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
 		var close = document.getElementById( 'close' );
+		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
 		if ( '<?=$alias;?>' === 'bash' ) return;
