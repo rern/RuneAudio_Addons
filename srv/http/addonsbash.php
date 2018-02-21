@@ -161,8 +161,9 @@ $replace = array(
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-ob_implicit_flush(); // start flush: bypass buffer - output to screen
-ob_end_flush();      // force flush: current buffer (run after flush started)
+ob_implicit_flush();       // start flush: bypass buffer - output to screen
+ob_end_flush();            // force flush: current buffer (run after flush started)
+ignore_user_abort( true ); // for 'connection_status()' to work
 
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
@@ -181,6 +182,7 @@ while ( !feof( $popencmd ) ) {                            // each line
 	
 	if ( connection_aborted() == 1 ) {
 		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile );
+		exec( '/usr/bin/sudo /usr/bin/touch /srv/http/addonskill' );
 		exec( '/usr/bin/sudo /usr/bin/killall wget &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/killall pacman &> /dev/null' );
 		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &> /dev/null' );
