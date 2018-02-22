@@ -370,9 +370,9 @@ uninstallfinish $@
 ### Aborting from browser  
 (Should not do unless necessary)  
 **By:**
-- Stop loading button
+- Stop button
 - Back button
-- Close / exit
+- Close / Exit
 
 **Process:**
 - Running script killed
