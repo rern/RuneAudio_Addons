@@ -394,17 +394,17 @@ $addons = array(
 	),
 ),
 'udac' => array(
-	'title'        => 'USB DAC Auto Switch',
+	'title'        => 'USB DAC Plug and Play',
 	'version'      => '201802019',
-	'revision'     => '<white>Audio output</white> can be preset when power off USB DAC'
+	'revision'     => '<white>Audio output</white> can be selected for preset when power off USB DAC'
 					.'<br>...'
 					.'<br>Use <white>udev rules</white> to auto switch'
 					.'<br>...'
 					.'<br>Remove manual refresh/reload',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Automatically switch MPD Audio output and reload configuration:'
+	'description'  => 'Automatically switch to/from MPD Audio output and reload configuration:'
 					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
-					.'<br>- USB DAC <white>power off</white> - switch to selected <white>Audio output</white>',
+					.'<br>- USB DAC <white>power off</white> - switch to <white>preset Audio output</white>',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
 	'option'       => array(
