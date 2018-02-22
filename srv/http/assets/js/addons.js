@@ -162,7 +162,12 @@ function getoptions() {
 				, textvalue    : ojson.value
 				, ok         : function() {
 					var input = $( '#infoTextbox' ).val();
-					opt += input ? "'"+ input +"' " : 0;
+					if ( alias !== 'bash' ) {
+						opt += input ? "'"+ input +"' " : 0;
+					} else {
+						if ( input == '' ) return;
+						opt += input;
+					}
 					sendcommand();
 				}
 			} );
@@ -294,7 +299,6 @@ function sendcommand() {
 		getoptions();
 	} else {
 		if ( alias === 'bash' ) {
-			if ( opt[ 0 ] == 0 ) return;
 			if ( opt[ 0 ] !== '/' ) {
 				opt = '/usr/bin/'+ opt;
 				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
