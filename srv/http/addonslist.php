@@ -423,6 +423,7 @@ $addons = array(
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
 					.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/webradio/thumbwebr.png',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
