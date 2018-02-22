@@ -292,6 +292,7 @@ $addons = array(
 					.'<br>Disable in WebRadio',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
+	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/Lyrics/lyricsS.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
