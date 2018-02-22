@@ -367,3 +367,15 @@ uninstallfinish $@
 	- your **`Fork`** - `https://github.com/<GitHubID>/AddonsMenu` - copy the changes to `.../srv/http/addonslist.php`
 	- `Pull request` 
 
+### Aborting from browser  
+(Should not do unless necessary)  
+By:
+- Stop loading button
+- Back button
+- Close / exit
+Process:
+- Running script killed
+- `wget` killed and `*.zip` deleted
+- `pacman` killed and `db.lck` lock file deleted
+- `uninstall_<alias>.sh` deleted
+- redis install data deleted
