@@ -405,8 +405,9 @@ $addons = array(
 	'description'  => 'Automatically switch to/from MPD Audio output and reload configuration:'
 					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
 					.'<br>- USB DAC <white>power off</white> - switch to <white>preset Audio output</white>',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC_switch/install.sh',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC/thumbudac.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC/install.sh',
 	'option'       => array(
 		'radio'      => array(
 			'message'  => '<white>Audio output</white> when power off USB DAC:',
