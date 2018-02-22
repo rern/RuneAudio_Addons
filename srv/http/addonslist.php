@@ -222,21 +222,15 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180215',
-	'revision'     => 'Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons'
+	'version'      => '20180222',
+	'revision'     => 'General improvement'
+					.'<br>Omit screen saver elements when disabled'
+					.'<br>...'
+					.'<br>Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons'
+					.'<br>...'
 					.'<br>Fix hide <white>top-bottom bars</white> on phones'
 					.'<br>Fix <white>long-press</white> bugs on some area'
-					.'<br>Fix <code>MPD</code> button not working'
-					.'<br>...'
-					.'<br>Fix missing <white>show/hide menu</white> in Library'
-					.'<br>...'
-					.'<br>Fix <white>display list of Artists and Genres</white> in Library'
-					.'<br>Hide <white>Volume</white> if disabled in MPD setting'
-					.'<br>Hide <white>Index Bar</white> in each album track list'
-					.'<br>Hide <white>bottom menu toolips</white>'
-					.'<br>Fix show/hide <white>top-bottom menu</white> on load/refresh (desktop browsers)'
-					.'<br>Fix missing <white>local browser zoom-level</white> on update'
-					.'<br>Fix sorting tracks in each album',
+					.'<br>Fix <code>MPD</code> button not working',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
