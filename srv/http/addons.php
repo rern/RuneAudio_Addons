@@ -116,11 +116,11 @@ foreach( $arrayalias as $alias ) {
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
 				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
 			</legend>
-			<ul style="display: none;">'
+			<ul class="detailtext" style="display: none;">'
 				.$revision.'
 			</ul>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p>'.$description.$detail.'</p>'
+				<p class="detailtext">'.$description.$detail.'</p>'
 				.$btnin; if ( $version ) $blocks .= ' &nbsp; '.$btnun;
 	$blocks .= '
 			</form>';

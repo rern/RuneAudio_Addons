@@ -161,8 +161,9 @@ $replace = array(
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
-ob_implicit_flush(); // start flush: bypass buffer - output to screen
-ob_end_flush();      // force flush: current buffer (run after flush started)
+ob_implicit_flush();       // start flush: bypass buffer - output to screen
+ob_end_flush();            // force flush: current buffer (run after flush started)
+ignore_user_abort( true ); // for 'connection_status()' to work
 
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
@@ -178,29 +179,20 @@ while ( !feof( $popencmd ) ) {                            // each line
 	}
 
 	echo $std;                                            // stdout to screen
+	
+	if ( connection_status() !== 0 ) {
+		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile.' &' );
+		exec( '/usr/bin/sudo /usr/bin/killall wget &' );
+		exec( '/usr/bin/sudo /usr/bin/killall pacman &' );
+		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &' );
+		exec( '/usr/bin/sudo /usr/bin/rm /srv/http/*.zip &' );
+		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.'.sh &' );
+		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias.' &' );
+		pclose( $popencmd );
+		die();
+	}
 }
 pclose( $popencmd );
-/*$std = array( 1 => array( 'pipe', 'w' ) );   // '1' = stdout only
-
-$process = proc_open( $command, $std, $pipes );
-
-while ( !feof( $process ) ) ) {
-	$std = fgets( $pipes[ 1 ] );
-	
-	$std = preg_replace(                              // convert to html
-		array_keys( $replace ),
-		array_values( $replace ),
-		$std
-	);
-	foreach( $skip as $find ) {                       // skip line
-		if ( stripos( $std, $find ) !== false ) continue 2;
-	}
-	echo $std;
-	ob_flush(); // high level - flush to low level
-	flush();    // low level  - flush to client
-}
-
-proc_close( $process );*/
 ?>
 <!-- ...................................................................................... -->
 	</pre>
