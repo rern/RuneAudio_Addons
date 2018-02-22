@@ -369,11 +369,12 @@ uninstallfinish $@
 
 ### Aborting from browser  
 (Should not do unless necessary)  
-By:
+**By:**
 - Stop loading button
 - Back button
 - Close / exit
-Process:
+
+**Process:**
 - Running script killed
 - `wget` killed and `*.zip` deleted
 - `pacman` killed and `db.lck` lock file deleted
