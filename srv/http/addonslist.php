@@ -2,7 +2,7 @@
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
-// system data retrieval script ///////////////////////////////
+// system data to be used in array ////////////////////////////
 // udac //
 $acards = $redis->hGetAll( 'acards' );
 $ilength = count( $acards );
