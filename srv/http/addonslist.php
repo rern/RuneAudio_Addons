@@ -201,6 +201,7 @@ $addons = array(
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fix package download errors caused by unreachable servers.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/thumbrank.png',
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
