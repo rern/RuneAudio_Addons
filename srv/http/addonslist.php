@@ -223,7 +223,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180224',
-	'revision'     => 'Redo responsive layout'
+	'revision'     => 'Redo responsive code'
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
 					.'<br>Fix hide buttons bug'
 					.'<br>...'
