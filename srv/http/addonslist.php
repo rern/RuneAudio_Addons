@@ -145,7 +145,11 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'hide'         => array(
 		'exec'       => array(
-			'[[ $( /usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d\" \" -f6 ) < 5000000 ]] && echo 1',
+			'fd=$( fdisk -l /dev/mmcblk0 );'
+				.'sectorbytes=$( echo \"$fd\" | grep \"^Units\" | awk \"{print $(NF-1)}\" );'
+				.'sectorall=$( echo \"$fd\" | grep \"sectors$\" | awk \"{print $(NF-1)}\" );'
+				.'sectorused=$( echo \"$fd\" | tail -n1 | awk \"{print $3}\" );'
+				.'(( $(( ( sectorall - sectorused ) * sectorbytes )) < 10000000 )) && echo 1',
 			'[[ $( redis-cli hget addons expa ) != 1 ]] && echo 1',
 		),
 	),
