@@ -3,8 +3,7 @@ require_once( 'addonshead.php' );
 
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 $available = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = round( exec( '/usr/bin/sudo /usr/bin/sfdisk -F | grep mmc | cut -d" " -f6' ) / 1024 / 1024 );
-$expandable = $expandable > 10 ? ' (expandable: '.number_format( $expandable ).' MB)' : '';
+$expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)' : '';
 
 $redisaddons = $redis->hGetAll( 'addons' );
 // -------------------------------------------------------------------------------------------------
@@ -38,18 +37,18 @@ foreach( $arrayalias as $alias ) {
 			if ( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) $hidden = 1;
 			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) $hidden = 1;
 			if ( $key == 'exec' ) {
-				$hiddenexec = 1;
+				$hiddenexec = 0;
 				foreach ( $val as $cmd ) {
 					$command = str_replace( '\\', '', $cmd );
-					$hiddenexec = ( $hiddenexec && exec( $command ) ) ? 1 : 0;
+					$hiddenexec = ( $hiddenexec || exec( $command ) ) ? 1 : 0;
 				}
 				$hidden = ( $hiddenexec || $hidden );
 			}
 			if ( $key == 'php' ) {
-				$hiddenphp = 1;
+				$hiddenphp = 0;
 				foreach ( $val as $cmd ) {
 					$command = str_replace( '\\', '', $cmd );
-					$hiddenphp = ( $hiddenphp && $command ) ? 1 : 0;
+					$hiddenphp = ( $hiddenphp || $command ) ? 1 : 0;
 				}
 				$hidden = ( $hiddenphp || $hidden );
 			}
