@@ -5,7 +5,7 @@ $fdisk = array_values( $fdisk );
 $sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
 $sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
 $sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1048576 );
+$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
 
 // data to be used in array ///////////////////////////////////
 $redis = new Redis(); 
