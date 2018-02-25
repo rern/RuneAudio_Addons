@@ -50,7 +50,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180222',
+	'version'      => '20180225',
 	'revision'     => 'General improvements'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
