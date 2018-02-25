@@ -229,11 +229,8 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180224',
-	'revision'     => 'Redo responsive code'
-					.'<br>Add long-press left/right of screen toggle top-bottom menu'
-					.'<br>Fix hide buttons bug'
-					.'<br>...'
+	'version'      => '20180222',
+	'revision'     => 'General improvement'
 					.'<br>Omit screen saver elements when disabled'
 					.'<br>...'
 					.'<br>Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons'
