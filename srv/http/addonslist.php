@@ -217,6 +217,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enable backup-restore settings and databases.',
+	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/thumbback.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
