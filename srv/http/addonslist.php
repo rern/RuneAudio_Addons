@@ -1,6 +1,7 @@
 <?php
 // system data ////////////////////////////////////////////////
-exec( 'fdisk -l /dev/mmcblk0', $fdisk );
+exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
+
 $fdisk = array_values( $fdisk );
 $sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
 $sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
