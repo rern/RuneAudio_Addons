@@ -153,7 +153,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'hide'         => array(
 		'exec'       => array(
-			'[[ $( redis-cli hget addons expa ) == 1 && '.$unpartmb.' < 10 ]] && echo 1',
+			'[[ $( redis-cli hget addons expa ) != 1 && '.$unpartmb.' < 10 ]] && echo 1',
 		),
 	),
 	'option'       => array(
