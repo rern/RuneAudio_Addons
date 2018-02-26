@@ -237,15 +237,12 @@ $addons = array(
 	'version'      => '20180226',
 	'revision'     => 'Rewrite responsive code'
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
+					.'<br>Remember scroll position in Library and Queue'
 					.'<br>Fix hide buttons bug'
 					.'<br>...'
 					.'<br>Omit screen saver elements when disabled'
 					.'<br>...'
-					.'<br>Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons'
-					.'<br>...'
-					.'<br>Fix hide <white>top-bottom bars</white> on phones'
-					.'<br>Fix <white>long-press</white> bugs on some area'
-					.'<br>Fix <code>MPD</code> button not working',
+					.'<br>Add show/hide option to split <code><i class=\"fa fa-play\"></i></code> <code><i class=\"fa fa-pause\"></i></code> buttons',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
