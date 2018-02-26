@@ -369,7 +369,7 @@ uninstallfinish $@
 
 ### Aborting from browser  
 (Should not do unless necessary)  
-**By:**
+**`connection_status() !== 0` :**
 - Stop button
 - Back button
 - Close / Exit
