@@ -237,7 +237,7 @@ $addons = array(
 	'version'      => '20180226',
 	'revision'     => 'Rewrite responsive code'
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
-					.'<br>Remember scroll position in Library and Queue'
+					.'<br>Preserve scroll position in Library and Queue'
 					.'<br>Fix hide buttons bug'
 					.'<br>...'
 					.'<br>Omit screen saver elements when disabled'
