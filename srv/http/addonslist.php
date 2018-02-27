@@ -234,10 +234,11 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180226',
+	'version'      => '20180227',
 	'revision'     => 'Rewrite responsive code'
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
 					.'<br>Preserve scroll position in Library and Queue'
+					.'<br>Fix Info button not working'
 					.'<br>Fix hide buttons bug'
 					.'<br>...'
 					.'<br>Omit screen saver elements when disabled'
