@@ -272,14 +272,13 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180214',
+	'version'      => '20180301',
 	'needspace'    => 15,
-	'revision'     => 'Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
+	'revision'     => 'Fix bugs'
 					.'<br>...'
-					.'<br>Switch to <white>high trigger</white> relay module'
+					.'<br>Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
 					.'<br>...'
-					.'<br>Separate GPIO and MPD settings for more flexible'
-					.'<br>Skip restart MPD if MPD settings not changed',
+					.'<br>Switch to <white>high trigger</white> relay module',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_GPIO/thumbgpio.gif',
