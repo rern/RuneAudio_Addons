@@ -231,7 +231,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180301',
 	'revision'     => 'Fix sampling info bug'
-					.'<br>Improve bio page (artist name / info button)'
+					.'<br>Improve bio page (click artist name / info button)'
 					.'<br>...'
 					.'<br>Rewrite responsive code'
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
