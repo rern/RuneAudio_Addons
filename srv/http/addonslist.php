@@ -231,6 +231,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180303',
 	'revision'     => 'Rewrite touch gestures to use coverart as main control'
+					.'<br>Remove gestures on left/right of screen'
 					.'<br>Improve bio page'
 					.'<br>Fix hide-by-touch/click elements reappeared on play/pause or track changed'
 					.'<br>Fix Browse Library button'
