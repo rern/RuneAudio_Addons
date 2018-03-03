@@ -232,6 +232,7 @@ $addons = array(
 	'version'      => '20180303',
 	'revision'     => 'Rewrite touch gestures to use coverart as main control'
 					.'<br>Improve bio page'
+					.'<br>Fix hide-by-touch/click elements reappeared on play/pause or track changed'
 					.'<br>Fix Browse Library button'
 					.'<br>...'
 					.'<br>Fix sampling info bug'
