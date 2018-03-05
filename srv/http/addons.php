@@ -8,7 +8,7 @@ $expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)
 $redisaddons = $redis->hGetAll( 'addons' );
 // -------------------------------------------------------------------------------------------------
 echo '
-	<div class="container">
+<div class="container">
 	<a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<h1>ADDONS</h1>
 	<legend class="bl">RuneAudio '.$runeversion.' ● available: '.number_format( $available ).' MB'.$expandable.'</legend>
