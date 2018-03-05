@@ -204,7 +204,7 @@ pclose( $popencmd );
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
-		var close = document.getElementById( 'close' );
+		var close = document.getElementsByClassName( 'close-root' )[ 0 ];
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
