@@ -116,6 +116,12 @@ code {
 	border-radius: 4px;
 }
 
+@media(max-height: 360px) {
+	#infoBox {
+		transform: scale(0.9, 0.9);
+		transform-origin: center center;
+	}
+}
 @media(max-width: 400px) {
 	#infoBox {
 		width: 100%;

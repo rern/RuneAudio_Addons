@@ -48,7 +48,7 @@ sed -i '/addonsinfo.css\|id="addons"/ d' $file
 sed -i -e '/runeui.css/ a\
     <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
 ' -e '/poweroff-modal/ i\
-            <li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+            <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $file
 
 file=/srv/http/app/templates/footer.php

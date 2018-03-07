@@ -8,8 +8,9 @@ $expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)
 $redisaddons = $redis->hGetAll( 'addons' );
 // -------------------------------------------------------------------------------------------------
 echo '
-	<div class="container">
-	<h1>ADDONS</h1><a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
+<div class="container">
+	<a id="close" href="/"><i class="fa fa-times fa-2x"></i></a>
+	<h1>ADDONS</h1>
 	<legend class="bl">RuneAudio '.$runeversion.' ● available: '.number_format( $available ).' MB'.$expandable.'</legend>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
