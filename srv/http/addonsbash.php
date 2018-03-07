@@ -49,7 +49,7 @@ setTimeout( function() {
 <script src="assets/js/addonsinfo.js"></script>
 
 <div class="container">
-	<a id="close"><i class="fa fa-times fa-2x disabled"></i></a>
+	<a id="close" class="close-root"><i class="fa fa-times fa-2x disabled"></i></a>
 	<h1>ADDONS TERMINAL</h1>
 	<legend class="bl">Please wait until finished...</legend>
 
