@@ -243,7 +243,9 @@ $addons = array(
 					.'<br>Add long-press left/right of screen toggle top-bottom menu'
 					.'<br>Preserve scroll position in Library and Queue'
 					.'<br>Fix Info button not working'
-					.'<br>Fix hide buttons bug',
+					.'<br>Fix hide buttons bug'
+					.'<br>...'
+					.'<br>Omit screen saver elements when disabled',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
