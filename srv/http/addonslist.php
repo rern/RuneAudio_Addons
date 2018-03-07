@@ -229,7 +229,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180303',
+	'version'      => '20180307',
 	'revision'     => 'Rewrite touch gestures to use coverart as main control'
 					.'<br>Remove gestures on left/right of screen'
 					.'<br>Improve bio page'
