@@ -230,22 +230,17 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180307',
-	'revision'     => 'Rewrite touch gestures to use coverart as main control'
+	'revision'     => 'Fix: click back from setting pages'
+					.'<br>Volume up/down now work without having to move knob first'
+					.'<br>...'
+					.'<br>Rewrite touch gestures to use coverart as main control'
 					.'<br>Remove gestures on left/right of screen'
 					.'<br>Improve bio page'
-					.'<br>Fix hide-by-touch/click elements reappeared on play/pause or track changed'
-					.'<br>Fix Browse Library button'
+					.'<br>Fix: hide-by-touch/click elements reappeared on play/pause or track changed'
+					.'<br>Fix: Browse Library button'
 					.'<br>...'
-					.'<br>Fix sampling info bug'
-					.'<br>Improve bio page (click artist name / info button)'
-					.'<br>...'
-					.'<br>Rewrite responsive code'
-					.'<br>Add long-press left/right of screen toggle top-bottom menu'
-					.'<br>Preserve scroll position in Library and Queue'
-					.'<br>Fix Info button not working'
-					.'<br>Fix hide buttons bug'
-					.'<br>...'
-					.'<br>Omit screen saver elements when disabled',
+					.'<br>Fix: sampling info bug'
+					.'<br>Improve bio page (click artist name / info button)',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
