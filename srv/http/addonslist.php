@@ -233,7 +233,7 @@ $addons = array(
 	'revision'     => 'Fix: click back from setting pages'
 					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Improve volume buttons tap/long-press'
-					.'<br>Disable scroll wheel on volume knob'
+					.'<br>Disable scroll wheel on time and volume knob'
 					.'<br>...'
 					.'<br>Rewrite touch gestures to use coverart as main control'
 					.'<br>Remove gestures on left/right of screen'
