@@ -231,6 +231,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180307',
 	'revision'     => 'Fix: click back from setting pages'
+					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Improve volume buttons tap/long-press'
 					.'<br>Disable scroll wheel on volume knob'
 					.'<br>...'
