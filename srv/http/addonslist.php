@@ -231,7 +231,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180307',
 	'revision'     => 'Fix: click back from setting pages'
-					.'<br>Volume up/down now work without having to move knob first'
+					.'<br>Improve volume buttons performance'
 					.'<br>Disable scroll wheel on volume knob'
 					.'<br>...'
 					.'<br>Rewrite touch gestures to use coverart as main control'
