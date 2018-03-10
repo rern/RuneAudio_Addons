@@ -233,6 +233,8 @@ $addons = array(
 	'revision'     => 'Fix: click back from setting pages'
 					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Preserve mute volume position on refresh/reload'
+					.'<br>Volume number = mute button'
+					.'<br>Time number = cover art center (play|pause|long-press stop)'
 					.'<br>Disable scroll wheel on time and volume knob'
 					.'<br>...'
 					.'<br>Rewrite touch gestures to use coverart as main control'
