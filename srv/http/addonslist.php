@@ -279,9 +279,9 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180301',
-	'needspace'    => 15,
-	'revision'     => 'Fix bugs'
+	'version'      => '20180310',
+	'needspace'    => 5,
+	'revision'     => 'Now use only plain BASH and Python - no PIP install needed'
 					.'<br>...'
 					.'<br>Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
 					.'<br>...'
