@@ -49,6 +49,7 @@ echo $file
 sed -i '/addonsinfo.css\|id="addons"/ d' $file
 sed -i -e '/runeui.css/ a\
     <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
+' -e 's|<span id="badge"></span>||
 ' -e '/menu-settings/ s|/i>|/i><span id="badge"></span>|
 ' -e '/poweroff-modal/ i\
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
