@@ -24,7 +24,7 @@ if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	rm -v /srv/http/assets/js/vendor/hammer.min.js
 fi
 
-crontab -l &> /dev/null | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
+crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
 
 uninstallfinish $@
 
