@@ -31,6 +31,6 @@ for KEY in "${!current[@]}"; do
 	[[ $KEY != update &&${current[$KEY]} != ${download[$KEY]} ]] && (( update++ ))
 done
 
-redis-cli hset display update $update &> /dev/null
+redis-cli hset addons update $update &> /dev/null
 
 echo $update
