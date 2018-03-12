@@ -31,8 +31,6 @@ installstart $@
 
 getinstallzip
 
-wgetnc https://github.com/rern/RuneUI_enhancement/raw/master/srv/http/enhanceredis.php -P /srv/http
-
 if [[ $( redis-cli get release ) == 0.4b ]]; then
     rm -r /srv/http/assets/default
 	mv /srv/http/assets/default{04,}
