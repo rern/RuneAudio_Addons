@@ -30,6 +30,8 @@ installstart $@
 
 getinstallzip
 
+wgetnc https://github.com/rern/RuneUI_enhancement/raw/master/srv/http/enhanceredis.php -P /srv/http
+
 if [[ $( redis-cli get release ) == 0.4b ]]; then
     rm -r /srv/http/assets/default
 	mv /srv/http/assets/default{04,}
@@ -61,10 +63,30 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 <script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
 ' $file
-
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
+
+# update check
+file=/etc/systemd/system/addons.service
+echo $file
+echo '[Unit]
+Description=Addons Menu update check
+After=network-online.target
+[Service]
+Type=idle
+ExecStart=/srv/http/addonsupdate.sh &
+[Install]
+WantedBy=multi-user.target
+' > $file
+
+crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &
+00 13 * * * /srv/http/addonsupdate.sh &'; } | crontab -
+systemctl enable addons cronie
+systemctl daemon-reload
+systemctl start addons cronie
+
+redis-cli hset addons update 0 &>/dev/null
 
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )

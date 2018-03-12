@@ -1,5 +1,5 @@
-$( function() { //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	
+$(function() { // $( document ).ready(function() {
+
 var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	$( '#loader' ).removeClass( 'hide' );
@@ -76,4 +76,15 @@ renderMSG = function( text ) {
 	old_renderMSG( text );
 }
 
-} ); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+if ( $( '#bartop' ).length ) return;
+var redis = { update: [ 'hGet', 'addons', 'update' ] };
+$.post( '/enhanceredis.php', { json: JSON.stringify( redis ) }, function( data ) {
+	var data = JSON.parse( data );
+	if ( data.update != 0 ) {
+		$( '#menu-settings' ).append( '<span id="badge">'+ data.update +'</span>' );
+	} else {
+		$( '#badge' ).remove();
+	}
+} );
+
+} );
