@@ -82,7 +82,7 @@ if ( $( '#bartop' ).length ) return;
 var redis = { update: [ 'hGet', 'addons', 'update' ] };
 $.post( '/enhanceredis.php', { json: JSON.stringify( redis ) }, function( data ) {
 	var update = JSON.parse( data ).update
-	$( '#badge' ).text( update ).toggle( update != 0 );
+	if ( update ) $( '#badge' ).text( update ).toggle( update != 0 );
 } );
 
 } ); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
