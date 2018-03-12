@@ -20,7 +20,6 @@ fi
 
 wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
 
-
 # change version number in RuneAudio_Addons/srv/http/addonslist.php
 
 alias=addo
