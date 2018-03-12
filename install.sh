@@ -47,6 +47,7 @@ echo $file
 sed -i '/addonsinfo.css\|id="addons"/ d' $file
 sed -i -e '/runeui.css/ a\
     <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
+' 
 ' -e '/poweroff-modal/ i\
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $file
@@ -62,7 +63,7 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 <script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
 ' $file
-
+' -e 's|\(menu-settings.*</i>\)|\1<span id="badge"></span>|
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
