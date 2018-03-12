@@ -69,7 +69,8 @@ echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
 
 # daily update check
-crontab -l | { cat; echo "00 20 * * * /srv/http/addonsupdate.sh"; } | crontab -
+crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &
+00 13 * * * /srv/http/addonsupdate.sh &'; } | crontab -
 systemctl enable cronie
 systemctl start cronie
 
