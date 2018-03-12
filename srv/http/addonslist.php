@@ -405,7 +405,7 @@ $addons = array(
 ),
 'udac' => array(
 	'title'        => 'USB DAC Plug and Play',
-	'version'      => '201802019',
+	'version'      => '20180219',
 	'revision'     => '<white>Audio output</white> can be selected for preset when power off USB DAC'
 					.'<br>...'
 					.'<br>Use <white>udev rules</white> to auto switch'
