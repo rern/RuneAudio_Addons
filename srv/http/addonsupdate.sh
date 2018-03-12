@@ -1,6 +1,12 @@
 #!/bin/bash
 
-wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /tmp
+if (( $# == 0 )); then
+	wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addonslist.php -P /tmp
+	file=/tmp/addonslist.php
+else
+	file=/srv/http/addonslist.php
+fi
+
 list=( $( sed -n "/^'/ {
 N;N;
 s/=>/ /g
@@ -8,9 +14,9 @@ s/\s*\|'\|,//g
 s/array.*version/ /
 /array/ d
 p}
-" /tmp/addonslist.php ) )
+" $file ) )
 	
-rm /tmp/addonslist.php
+(( $# == 0 )) && rm /tmp/addonslist.php
 
 declare -A download
 ilength=${#list[@]}
@@ -32,5 +38,3 @@ for KEY in "${!current[@]}"; do
 done
 
 redis-cli hset addons update $update &> /dev/null
-
-echo $update

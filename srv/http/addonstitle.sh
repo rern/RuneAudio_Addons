@@ -231,6 +231,8 @@ installfinish() { # $1-'u'=update
 	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
+	. /srv/http/addonsupdate.sh 1
+	
 	timestop
 	notify "$title0" i
 	
