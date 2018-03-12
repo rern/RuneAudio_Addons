@@ -64,7 +64,6 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 <script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
 ' $file
-' -e 's|\(menu-settings.*</i>\)|\1<span id="badge"></span>|
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
