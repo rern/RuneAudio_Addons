@@ -1,5 +1,7 @@
 $( function() { //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-	
+
+//$( '#badge' ).text( 5 ).show();
+
 var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	$( '#loader' ).removeClass( 'hide' );
@@ -75,5 +77,12 @@ renderMSG = function( text ) {
 	PNotify.removeAll();
 	old_renderMSG( text );
 }
+
+if ( $( '#bartop' ).length ) return;
+var redis = { diff: [ 'hGet', 'display', 'diff' ] };
+$.post( '/enhanceredis.php', { json: JSON.stringify( redis ) }, function( data ) {
+	var diff = JSON.parse( data ).diff
+	$( '#badge' ).text( diff ).toggle( diff != 0 );
+} );
 
 } ); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
