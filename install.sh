@@ -68,11 +68,23 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
 
-# daily update check
+# update check
+file=/etc/systemd/system/addons.service
+echo $file
+echo '[Unit]
+Description=Addons Menu update check
+After=network-online.target
+[Service]
+Type=idle
+ExecStart=/srv/http/addonsupdate.sh &
+[Install]
+WantedBy=multi-user.target
+' > $file
+
 crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &
 00 13 * * * /srv/http/addonsupdate.sh &'; } | crontab -
-systemctl enable cronie
-systemctl start cronie
+systemctl enable addons cronie
+systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
 
