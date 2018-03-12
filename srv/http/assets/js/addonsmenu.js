@@ -79,10 +79,10 @@ renderMSG = function( text ) {
 }
 
 if ( $( '#bartop' ).length ) return;
-var redis = { addonsupdate: [ 'get', 'addonsupdate' ] };
+var redis = { update: [ 'hGet', 'addons', 'update' ] };
 $.post( '/enhanceredis.php', { json: JSON.stringify( redis ) }, function( data ) {
-	var addonsupdate = JSON.parse( data ).addonsupdate
-	$( '#badge' ).text( addonsupdate ).toggle( addonsupdate != 0 );
+	var update = JSON.parse( data ).update
+	$( '#badge' ).text( update ).toggle( update != 0 );
 } );
 
 } ); //<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
