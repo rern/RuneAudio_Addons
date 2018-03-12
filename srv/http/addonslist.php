@@ -230,7 +230,9 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180311',
-	'revision'     => 'Fix: click back from setting pages'
+	'revision'     => 'Lighter time knob, consistent volume color, shadow border coverart'
+					.'<br>...'
+					.'<br>Fix: click back from setting pages'
 					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Preserve mute volume position on refresh/reload'
 					.'<br>Volume number = mute button'
@@ -241,10 +243,7 @@ $addons = array(
 					.'<br>Remove gestures on left/right of screen'
 					.'<br>Improve bio page'
 					.'<br>Fix: hide-by-touch/click elements reappeared on play/pause or track changed'
-					.'<br>Fix: Browse Library button'
-					.'<br>...'
-					.'<br>Fix: sampling info bug'
-					.'<br>Improve bio page (click artist name / info button)',
+					.'<br>Fix: Browse Library button',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
