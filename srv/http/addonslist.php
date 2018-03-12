@@ -51,7 +51,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180313',
+	'version'      => '20180312',
 	'revision'     => 'Auto check for updates and display a badge if any'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
@@ -229,7 +229,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180311',
+	'version'      => '20180312',
 	'revision'     => 'Lighter time knob, consistent volume color, shadow border coverart'
 					.'<br>...'
 					.'<br>Fix: click back from setting pages'
