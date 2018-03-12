@@ -26,16 +26,11 @@ for (( i = 0; i < $ilength; i+= 2 )); do
 	current[${list[i]}]=${list[i+1]}
 done
 
-diff=0;
+update=0;
 for KEY in "${!current[@]}"; do
-	if [[ $KEY == diff ]]; then
-		diffcurrent=${current[$KEY]}
-	else
-		[[ ${current[$KEY]} != ${download[$KEY]} ]] && (( diff++ ))
-	fi
+	[[ $KEY != update &&${current[$KEY]} != ${download[$KEY]} ]] && (( update++ ))
 done
 
-redis-cli hset addons diff $diff &> /dev/null
+redis-cli hset display update $update &> /dev/null
 
-echo $diffcurrent
-echo $diff
+echo $update
