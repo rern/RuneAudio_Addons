@@ -8,6 +8,7 @@ uninstallstart $@
 
 # restore file
 sed -i -e '/addonsinfo.css\|id="addons"/ d
+' -e 's|<span id="badge"></span>||
 ' /srv/http/app/templates/header.php
 
 sed -i -e '/addonsmenu.js\|addonsinfo.js/ d
