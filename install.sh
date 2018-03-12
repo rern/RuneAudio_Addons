@@ -68,6 +68,9 @@ sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
 
+# daily update check
+crontab -l &> /dev/null | { cat; echo "00 12 * * * /srv/http/addonsupdate.sh"; } | crontab -
+
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
