@@ -80,8 +80,7 @@ ExecStart=/srv/http/addonsupdate.sh &
 WantedBy=multi-user.target
 ' > $file
 
-crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &
-00 13 * * * /srv/http/addonsupdate.sh &'; } | crontab -
+crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab -
 systemctl enable addons cronie
 systemctl daemon-reload
 systemctl start addons cronie
