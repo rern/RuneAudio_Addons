@@ -1,9 +1,8 @@
 #badge {
     position: absolute;
-    display: none;
     height: 2rem;
     top: 1.5rem;
-    left: 2.5rem;
+    left: -0.5rem;
     width: 2rem;
     text-align: center;
     line-height: 2rem;
