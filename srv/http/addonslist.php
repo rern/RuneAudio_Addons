@@ -437,7 +437,6 @@ $addons = array(
 	'option'       => array(
 		'wait'       => 'Get webradio <code>*.pls</code> or <code>folders</code> copied to:'
 					.'<br><code>/mnt/MPD/Webradio</code>'
-					.'<br>(<code>*.pls</code> moved to <code>./Webradio/</code> - <code>folders</code> removed)'
 					.'<br>'
 					.'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
