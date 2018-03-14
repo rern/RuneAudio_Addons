@@ -251,7 +251,8 @@ uninstallfinish $@
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
 
-**`'version'`** - buttons enable/disable  
+**`'version'`** - buttons enable/disable 
+- should be `'yyyymmdd'` format (`'1'` reserved for non-install addons)
 - `'version'` changed > show `Update` button
 - non-install addons:
 	- omit > `Install` button always enable, no `Uninstall` button
