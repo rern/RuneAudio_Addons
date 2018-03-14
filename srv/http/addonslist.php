@@ -51,7 +51,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180312',
+	'version'      => '20180314',
 	'revision'     => 'Auto check for updates and display a badge if any'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
