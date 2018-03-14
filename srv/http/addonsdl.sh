@@ -37,4 +37,6 @@ if [[ $versionlist != $versionredis ]]; then
 	/srv/http/install.sh $branch -b
 fi
 
+. /srv/http/addonsupdate.sh 1
+
 exit 0 # force exit code = 0
