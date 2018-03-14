@@ -34,7 +34,7 @@ done
 
 update=0;
 for KEY in "${!current[@]}"; do
-	[[ $KEY != update &&${current[$KEY]} != ${download[$KEY]} ]] && (( update++ ))
+	[[ $KEY != update && ${current[$KEY]} != 1 && ${current[$KEY]} != ${download[$KEY]} ]] && (( update++ ))
 done
 
 redis-cli hset addons update $update &> /dev/null
