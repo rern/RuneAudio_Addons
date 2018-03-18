@@ -27,6 +27,14 @@ foreach ( $acards as $key => $val ) {
 $addons = array(
 
 /*
+'kern' => array(
+	'title'        => 'Arch Linux Arm Kernel Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade kernel to latest release.',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/kernel',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/kernel/install.sh',
+),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
