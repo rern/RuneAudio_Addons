@@ -229,21 +229,18 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180312',
-	'revision'     => 'Lighter time knob, consistent volume color, shadow border coverart'
+	'version'      => '20180319',
+	'revision'     => 'Major improvement to glossy knobs and buttons'
+					.'<br>Volume tap changed to: number = mute, over number = volume+, under number = volume-'
+					.'<br>...'
+					.'<br>Lighter time knob, consistent volume color, shadow border coverart'
 					.'<br>...'
 					.'<br>Fix: click back from setting pages'
 					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Preserve mute volume position on refresh/reload'
 					.'<br>Volume number = mute button'
 					.'<br>Time number = cover art center (play|pause|long-press stop)'
-					.'<br>Disable scroll wheel on time and volume knob'
-					.'<br>...'
-					.'<br>Rewrite touch gestures to use coverart as main control'
-					.'<br>Remove gestures on left/right of screen'
-					.'<br>Improve bio page'
-					.'<br>Fix: hide-by-touch/click elements reappeared on play/pause or track changed'
-					.'<br>Fix: Browse Library button',
+					.'<br>Disable scroll wheel on time and volume knob',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
