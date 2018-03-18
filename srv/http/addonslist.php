@@ -29,6 +29,7 @@ $addons = array(
 /*
 'kern' => array(
 	'title'        => 'Arch Linux Arm Kernel Upgrade',
+	'needspace'    => 140,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade kernel to latest release for supporting more devices or enable more features.',
 	'buttonlabel'  => 'Upgrade',
