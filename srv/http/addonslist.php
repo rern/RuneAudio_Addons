@@ -240,7 +240,8 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180319',
 	'revision'     => 'Major improvement to glossy knobs and buttons'
-					.'<br>Volume tap changed to: number = mute, over number = volume+, under number = volume-'
+					.'<br>Enable mute button light on all scrrens'
+					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
 					.'<br>...'
 					.'<br>Lighter time knob, consistent volume color, shadow border coverart'
 					.'<br>...'
