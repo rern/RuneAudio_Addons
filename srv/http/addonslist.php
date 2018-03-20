@@ -238,9 +238,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180319',
-	'revision'     => 'Major improvement to glossy knobs and buttons'
-					.'<br>Enable mute button light on all scrrens'
+	'version'      => '20180320',
+	'revision'     => 'Major improvement - <white>knobs and buttons</white>'
+					.'<br>Enable <white>mute button light</white> on all screens'
 					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
 					.'<br>...'
 					.'<br>Lighter time knob, consistent volume color, shadow border coverart'
@@ -299,8 +299,10 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180219',
-	'revision'     => 'Fix <white>long-press on song title</white> to not also open lyrics editor'
+	'version'      => '20180320',
+	'revision'     => 'Update with RuneUI Enhancement 20180320'
+					.'<br>...'
+					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
 					.'<br>...'
 					.'<br>Disable in WebRadio',
 	'maintainer'   => 'r e r n',
