@@ -238,7 +238,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180320',
+	'version'      => '20180321',
 	'revision'     => 'Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
 					.'<br>Enable <white>mute button light</white> on all screens'
 					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
@@ -299,8 +299,8 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180320',
-	'revision'     => 'Update with RuneUI Enhancement 20180320'
+	'version'      => '20180321',
+	'revision'     => 'Update with RuneUI Enhancement 20180321'
 					.'<br>...'
 					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
 					.'<br>...'
