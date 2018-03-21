@@ -27,6 +27,15 @@ foreach ( $acards as $key => $val ) {
 $addons = array(
 
 /*
+'kern' => array(
+	'title'        => 'Arch Linux Arm Kernel Upgrade',
+	'needspace'    => 140,
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade kernel to latest release for supporting more devices or enable more features.',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/kernel',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/kernel/install.sh',
+),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -231,21 +240,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180312',
-	'revision'     => 'Lighter time knob, consistent volume color, shadow border coverart'
+	'version'      => '20180321',
+	'revision'     => 'Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
+					.'<br>Enable <white>mute button light</white> on all screens'
+					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
+					.'<br>...'
+					.'<br>Lighter time knob, consistent volume color, shadow border coverart'
 					.'<br>...'
 					.'<br>Fix: click back from setting pages'
 					.'<br>Fix: auto hide buttons hidden on click'
 					.'<br>Preserve mute volume position on refresh/reload'
 					.'<br>Volume number = mute button'
 					.'<br>Time number = cover art center (play|pause|long-press stop)'
-					.'<br>Disable scroll wheel on time and volume knob'
-					.'<br>...'
-					.'<br>Rewrite touch gestures to use coverart as main control'
-					.'<br>Remove gestures on left/right of screen'
-					.'<br>Improve bio page'
-					.'<br>Fix: hide-by-touch/click elements reappeared on play/pause or track changed'
-					.'<br>Fix: Browse Library button',
+					.'<br>Disable scroll wheel on time and volume knob',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -295,8 +302,10 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180219',
-	'revision'     => 'Fix <white>long-press on song title</white> to not also open lyrics editor'
+	'version'      => '20180321',
+	'revision'     => 'Update with RuneUI Enhancement 20180321'
+					.'<br>...'
+					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
 					.'<br>...'
 					.'<br>Disable in WebRadio',
 	'maintainer'   => 'r e r n',

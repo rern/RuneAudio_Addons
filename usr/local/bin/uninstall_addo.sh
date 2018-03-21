@@ -21,6 +21,7 @@ rm -rv /srv/http/assets/js/addons*
 
 if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	sed -i '/hammer.min.js/ d' /srv/http/app/templates/footer.php
+	rm -rv /srv/http/enhanceredis.php
 	rm -v /srv/http/assets/js/vendor/hammer.min.js
 fi
 
