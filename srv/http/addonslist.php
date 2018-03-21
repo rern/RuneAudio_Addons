@@ -277,12 +277,13 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180310',
+	'version'      => '20180320',
 	'needspace'    => 5,
-	'revision'     => 'Now use only plain BASH and Python - no PIP install needed'
+	'revision'     => 'Fix bugs'
+					.'<br>...'
+					.'<br>Now use only plain BASH and Python - no PIP install needed'
 					.'<br>...'
 					.'<br>Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
-					.'<br>...'
 					.'<br>Switch to <white>high trigger</white> relay module',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
