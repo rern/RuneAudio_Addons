@@ -109,9 +109,11 @@ $addons = array(
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
-	'version'      => '20180106',
+	'version'      => '20180321',
 	'needspace'    => 300,
-	'revision'     => 'Fix symbol lookup errors in new update.',
+	'revision'     => 'Fix missing packages - Chromium 65.0.3325.181-1'
+					.'<br>...'
+					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Replace broken <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/chromium/thumbchro.png',
