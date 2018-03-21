@@ -240,7 +240,6 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180320',
 	'revision'     => 'Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
-					.'<br>Improve cover art loading speed'
 					.'<br>Enable <white>mute button light</white> on all screens'
 					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
 					.'<br>...'
