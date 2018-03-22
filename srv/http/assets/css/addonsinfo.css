@@ -1,16 +1,19 @@
 #badge {
-    position: absolute;
-    height: 2rem;
-    top: 1.5rem;
-    left: -0.5rem;
-    width: 2rem;
-    text-align: center;
-    line-height: 2rem;
-    font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 1.25rem;
-    border-radius: 50%;
-    color: #e0e7ee;
-    background: red;
+	position: absolute;
+	height: 2rem;
+	top: 0;
+	left: 1rem;
+	width: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 1.25rem;
+	border-radius: 50%;
+	color: #e0e7ee;
+	background: red;
+}
+.dropdown-menu {
+	cursor: pointer;
 }
 #infoOverlay {
 	display: none;
