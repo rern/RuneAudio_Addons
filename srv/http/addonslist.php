@@ -241,7 +241,8 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180324',
-	'revision'     => 'Fix <white>realtime volume</white> drag'
+	'revision'     => 'Fix realtime volume drag'
+					.'<br>Improve time knob refresh'
 					.'<br>...'
 					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
 					.'<br>Enable <white>mute button light</white> on all screens'
