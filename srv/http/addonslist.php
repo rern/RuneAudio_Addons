@@ -244,6 +244,7 @@ $addons = array(
 	'revision'     => 'Fix lagging volume drag and long-press buttons'
 					.'<br>Improve time knob refresh position'
 					.'<br>Time knob shows time change while drag'
+					.'<br>Switch from countdown.js to normal setInterval()'
 					.'<br>...'
 					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
 					.'<br>Enable <white>mute button light</white> on all screens'
