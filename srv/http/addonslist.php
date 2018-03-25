@@ -241,7 +241,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180324',
-	'revision'     => 'Fix realtime volume drag'
+	'revision'     => 'Fix lagging volume drag and long-press buttons'
 					.'<br>Improve time knob refresh position'
 					.'<br>Time knob shows time change while drag'
 					.'<br>...'
