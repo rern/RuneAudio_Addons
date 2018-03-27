@@ -241,9 +241,10 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180324',
-	'revision'     => 'Fix lagging volume drag and long-press buttons'
+	'revision'     => 'Fix long-press volume up/down'
 					.'<br>Improve time knob refresh position'
 					.'<br>Time knob shows time change while drag'
+					.'<br>Lower time knob refresh rate on local browser to keep low CPU clycle'
 					.'<br>Switch from countdown.js to normal setInterval()'
 					.'<br>...'
 					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
