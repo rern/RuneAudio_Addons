@@ -241,12 +241,12 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180324',
-	'revision'     => 'Fix long-press volume up/down'
-					.'<br>Improve time knob refresh position'
-					.'<br>Time knob shows duration while stop (except DSD) and time change along while drag'
-					.'<br>Previous and Next now work while stop as well'
+	'revision'     => 'Now show while stop: sampling info and duration (except DSD)'
+					.'<br>Now work while stop: previous and next'
+					.'<br>Time change along with time knob drag'
 					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
 					.'<br>Switch from countdown.js to normal setInterval()'
+					.'<br>Fix long-press volume up/down'
 					.'<br>...'
 					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
 					.'<br>Enable <white>mute button light</white> on all screens'
