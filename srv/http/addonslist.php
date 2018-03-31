@@ -244,6 +244,7 @@ $addons = array(
 	'revision'     => 'Fix long-press volume up/down'
 					.'<br>Improve time knob refresh position'
 					.'<br>Time knob shows duration while stop and time change along while drag'
+					.'<br>Previous and Next now work while stop as well'
 					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
 					.'<br>Switch from countdown.js to normal setInterval()'
 					.'<br>...'
