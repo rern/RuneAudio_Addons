@@ -243,6 +243,7 @@ $addons = array(
 	'version'      => '20180407',
 	'revision'     => 'Fix time elapse while updating library'
 					.'<br>Fix sampling info of files with diacritics'
+					.'<br>Fix previous/next bug'
 					.'<br>...'
 					.'<br>Show sampling info, duration (for DSD as well) while stop'
 					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
