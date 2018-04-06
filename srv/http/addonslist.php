@@ -241,7 +241,8 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180407',
-	'revision'     => 'Fix time elapse while updating library'
+	'revision'     => 'Always refresh to current state everytime page return to visible'
+					.'<br>Fix time elapse while updating library'
 					.'<br>Fix sampling info of files with diacritics'
 					.'<br>Fix previous/next bug'
 					.'<br>...'
