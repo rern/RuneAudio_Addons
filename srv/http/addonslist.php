@@ -240,12 +240,12 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180324',
-	'revision'     => 'Now show while stop: sampling info, duration (for DSD as well)'
-					.'<br>Now hide: leading 00:0 time and hide time while stop or streaming'
-					.'<br>Now work while stop: previous/next song, tab/drag time knob'
-					.'<br>Previous/next at fist/last goes to last/first'
-					.'<br>Time change along with time knob drag'
+	'version'      => '20180406',
+	'revision'     => 'Show sampling info, duration (for DSD as well) while stop'
+					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
+					.'<br>Elapsed time changes along with time knob drag'
+					.'<br>Enable tab/drag time knob while stop'
+					.'<br>Enable previous/next song whilestop, at fist/last goes to last/first'
 					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
 					.'<br>Switch from countdown.js to normal setInterval()'
 					.'<br>Fix long-press volume up/down'
