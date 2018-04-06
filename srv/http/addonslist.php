@@ -243,7 +243,7 @@ $addons = array(
 	'version'      => '20180406',
 	'revision'     => 'Show sampling info, duration (for DSD as well) while stop'
 					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
-					.'<br>Elapsed time changes along with time knob drag'
+					.'<br>Elapsed time changed along with time knob drag'
 					.'<br>Enable tab/drag time knob while stop'
 					.'<br>Enable previous/next song whilestop, at fist/last goes to last/first'
 					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
