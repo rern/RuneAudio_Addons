@@ -81,7 +81,7 @@ var redis = { update: [ 'hGet', 'addons', 'update' ] };
 $.post( '/enhanceredis.php', { json: JSON.stringify( redis ) }, function( data ) {
 	var data = JSON.parse( data );
 	if ( data.update != 0 ) {
-		$( '#menu-settings' ).append( '<span id="badge">'+ data.update +'</span>' );
+		$( '#menu-settings').find( 'i' ).append( '<span id="badge">'+ data.update +'</span>' );
 	} else {
 		$( '#badge' ).remove();
 	}

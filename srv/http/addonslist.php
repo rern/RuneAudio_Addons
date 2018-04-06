@@ -240,19 +240,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180321',
-	'revision'     => 'Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
+	'version'      => '20180406',
+	'revision'     => 'Show sampling info, duration (for DSD as well) while stop'
+					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
+					.'<br>Elapsed time changes along with time knob drag'
+					.'<br>Enable tab/drag time knob while stop'
+					.'<br>Enable previous/next song whilestop, at fist/last goes to last/first'
+					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
+					.'<br>Switch from countdown.js to normal setInterval()'
+					.'<br>Fix long-press volume up/down'
+					.'<br>...'
+					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
 					.'<br>Enable <white>mute button light</white> on all screens'
-					.'<br>Volume: number = mute, over number = volume+, under number = volume-'
-					.'<br>...'
-					.'<br>Lighter time knob, consistent volume color, shadow border coverart'
-					.'<br>...'
-					.'<br>Fix: click back from setting pages'
-					.'<br>Fix: auto hide buttons hidden on click'
-					.'<br>Preserve mute volume position on refresh/reload'
-					.'<br>Volume number = mute button'
-					.'<br>Time number = cover art center (play|pause|long-press stop)'
-					.'<br>Disable scroll wheel on time and volume knob',
+					.'<br>Volume: number = mute, over number = volume+, under number = volume-',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
