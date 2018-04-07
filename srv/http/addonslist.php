@@ -243,7 +243,7 @@ $addons = array(
 	'version'      => '20180407',
 	'revision'     => 'Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
-					.'<br>Fix sampling info of files with diacritics'
+					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
 					.'<br>Fix previous/next bug'
 					.'<br>...'
 					.'<br>Show sampling info, duration (for DSD as well) while stop'
