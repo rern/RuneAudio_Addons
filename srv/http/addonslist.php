@@ -240,8 +240,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180406',
-	'revision'     => 'Show sampling info, duration (for DSD as well) while stop'
+	'version'      => '20180407',
+	'revision'     => 'Always refresh to current state everytime page return to visible'
+					.'<br>Fix time elapse while updating library'
+					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
+					.'<br>Fix previous/next bug'
+					.'<br>...'
+					.'<br>Show sampling info, duration (for DSD as well) while stop'
 					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
 					.'<br>Elapsed time changed along with time knob drag'
 					.'<br>Enable tab/drag time knob while stop'
