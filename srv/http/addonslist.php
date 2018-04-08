@@ -199,7 +199,7 @@ $addons = array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade MPD to latest version, 0.20.14 as of 20180102:'
+	'description'  => 'Upgrade MPD to latest version, 0.20.18 as of 20180404:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
 					.'<br>But <white>broken Midori</white>, local browser.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/mpd/thumbmpdu.png',
