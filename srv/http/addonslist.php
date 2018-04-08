@@ -240,8 +240,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180407',
+	'version'      => '20180408',
 	'revision'     => 'Always refresh to current state everytime page return to visible'
+					.'<br>Long-press toggle cover art controls overlay'
 					.'<br>Fix time elapse while updating library'
 					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
 					.'<br>Fix previous/next bug'
