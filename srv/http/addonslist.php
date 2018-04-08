@@ -241,7 +241,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180409',
-	'revision'     => 'Tap top corners of cover art toggle controls overlay'
+	'revision'     => 'Tap either top corners of cover art = toggle controls overlay'
 					.'<br>...'
 					.'<br>Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
