@@ -240,9 +240,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180408',
-	'revision'     => 'Always refresh to current state everytime page return to visible'
-					.'<br>Long-press toggle cover art controls overlay'
+	'version'      => '20180409',
+	'revision'     => 'Tap either top corners of cover art = toggle controls overlay'
+					.'<br>...'
+					.'<br>Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
 					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
 					.'<br>Fix previous/next bug'
@@ -254,11 +255,7 @@ $addons = array(
 					.'<br>Enable previous/next song whilestop, at fist/last goes to last/first'
 					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
 					.'<br>Switch from countdown.js to normal setInterval()'
-					.'<br>Fix long-press volume up/down'
-					.'<br>...'
-					.'<br>Major improvement - <white>knobs and buttons</white> (switched from knob.js to roundSlider.js)'
-					.'<br>Enable <white>mute button light</white> on all screens'
-					.'<br>Volume: number = mute, over number = volume+, under number = volume-',
+					.'<br>Fix long-press volume up/down',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
