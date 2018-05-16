@@ -398,9 +398,11 @@ $addons = array(
 ),
 'tran' => array(
 	'title'        => 'Transmission *',
-	'version'      => '20171210',
+	'version'      => '20180516',
 	'needspace'    => 9,
-	'revision'     => 'Fix bugs by reverting back to custom package.',
+	'revision'     => 'Update alternateive WebUI source'
+					.'<br>...'
+					.'<br>Fix bugs by reverting back to custom package.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/transmission/thumbtran.png',
