@@ -60,8 +60,10 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180314',
-	'revision'     => 'Auto check for updates and display a badge if any'
+	'version'      => '20180516',
+	'revision'     => 'Fix uninstall bug'
+					.'<br>...'
+					.'<br>Auto check for updates and display a badge if any'
 					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
@@ -240,9 +242,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180409',
-	'revision'     => 'Tap either top corners of cover art = toggle controls overlay'
+	'version'      => '20180516',
+	'revision'     => 'Fix bugs'
 					.'<br>...'
+					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
 					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
