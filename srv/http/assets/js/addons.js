@@ -147,7 +147,6 @@ function getoptions() {
 				, oklabel      : 'Yes'
 				, ok           : function() {
 					$( '#loader' ).show();
-					opt += branch;
 					formtemp();
 				}
 			} );
