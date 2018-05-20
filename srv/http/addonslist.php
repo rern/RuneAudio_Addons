@@ -398,9 +398,11 @@ $addons = array(
 ),
 'tran' => array(
 	'title'        => 'Transmission *',
-	'version'      => '20180516',
+	'version'      => '20180520',
 	'needspace'    => 9,
-	'revision'     => 'Update alternateive WebUI source'
+	'revision'     => 'Use standard package instead of customized one.'
+					.'<br>...'
+					.'<br>Update alternateive WebUI source'
 					.'<br>...'
 					.'<br>Fix bugs by reverting back to custom package.',
 	'maintainer'   => 'r e r n',
