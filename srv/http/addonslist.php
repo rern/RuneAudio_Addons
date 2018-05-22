@@ -27,15 +27,6 @@ foreach ( $acards as $key => $val ) {
 $addons = array(
 
 /*
-'kern' => array(
-	'title'        => 'Arch Linux Arm Kernel Upgrade',
-	'needspace'    => 140,
-	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade kernel to latest release for supporting more devices or enable more features.',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/kernel',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/kernel/install.sh',
-),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -60,11 +51,12 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180516',
-	'revision'     => 'Fix uninstall bug'
+	'version'      => '20180522',
+	'revision'     => 'Remove <white>Bash Commands</white> which may has a security issue'
+					.'<br>...'
+					.'<br>Fix uninstall bug'
 					.'<br>...'
 					.'<br>Auto check for updates and display a badge if any'
-					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
 					.'<br>Support <white>hide addons by condition scripts</white>'
@@ -88,21 +80,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => array(
 		'yesno'      => 'Start <white>Aria2</white> on system startup?'
-	),
-),
-'bash' => array(
-	'title'        => 'BASH Command',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Run BASH commands or scripts like on SSH terminal. For non-interactive only or use pipe to make input.',
-	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/thumbnail/thumbbash.png',
-	'buttonlabel'  => 'Run',
-	'sourcecode'   => '',
-	'installurl'   => '',
-	'option'       => array(
-		'text'       => array(
-			'message'  => '<white>BASH</white> commands or /full/path/script:',
-			'label'    => 'commands',
-		),
 	),
 ),
 'spla' => array(

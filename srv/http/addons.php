@@ -2,8 +2,14 @@
 require_once( 'addonshead.php' );
 
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
-$available = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)' : '';
+$freemb = round( disk_free_space( '/' ) / 1000000 );
+$available = $freemb < 1000 ? $freemb.' MB' : round( $freemb / 1000, 2 ).' GB';
+if ( $unpartmb < 10 ) {
+	$expandable = '';
+} else {
+	$expandable = ' (expandable: ';
+	$expandable.= $unpartmb < 1000 ? $unpartmb.' MB' : round( $unpartmb / 1000, 2 ).' GB';
+}
 
 $redisaddons = $redis->hGetAll( 'addons' );
 // -------------------------------------------------------------------------------------------------
@@ -11,7 +17,7 @@ echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<h1>ADDONS</h1>
-	<legend class="bl">RuneAudio '.$runeversion.' ● available: '.number_format( $available ).' MB'.$expandable.'</legend>
+	<legend class="bl">RuneAudio '.$runeversion.' <white>●</white> available: '.$available.$expandable.'</legend>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
@@ -74,7 +80,7 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $available ) {
+		if ( $needspace < $freemb ) {
 			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {

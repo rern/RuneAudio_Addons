@@ -118,20 +118,13 @@ cmd;
 		/usr/bin/sudo ./$installfile u $opt
 cmd;
 } else {
-	if ( $alias !== 'bash' ) {
-		$command = $install;
-		$commandtxt = <<<cmd
-			wget -qN --no-check-certificate $installurl
-			chmod 755 $installfile
-			$conflictcommandtxt
-			./$installfile
+	$command = $install;
+	$commandtxt = <<<cmd
+		wget -qN --no-check-certificate $installurl
+		chmod 755 $installfile
+		$conflictcommandtxt
+		./$installfile
 cmd;
-	} else {
-		$command = '/usr/bin/sudo '.$opt;
-		$commandtxt = str_replace( '/usr/bin/', '', $opt );
-		$commandtxt = preg_replace( '/;\s*/', "\n", $commandtxt );
-		$commandtxt .= '<br><br><a class="ck">'.str_repeat( '=', $dash ).'</a>';
-	}
 }
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
