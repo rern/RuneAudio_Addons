@@ -62,11 +62,7 @@ $( '.boxed-group .btn' ).click( function () {
 	type = $thisbtn.text().trim();
 	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 	
-	if ( alias === 'bash' ) {
-		option = addons[ alias ].option;
-		j = 0;
-		getoptions();
-	} else if ( type === 'Link' ) {
+	if ( type === 'Link' ) {
 		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
 	} else {
 		info( {
@@ -297,12 +293,6 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
-		if ( alias === 'bash' ) {
-			if ( opt[ 0 ] !== '/' ) {
-				opt = '/usr/bin/'+ opt;
-				opt = opt.replace( /\s*;\s*/g, '; /usr/bin/' );
-			}
-		}
 		$( '#loader' ).show();
 		opt += branch;
 		formtemp();
