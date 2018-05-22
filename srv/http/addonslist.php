@@ -51,11 +51,12 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180516',
-	'revision'     => 'Fix uninstall bug'
+	'version'      => '20180522',
+	'revision'     => 'Remove <white>Bash Commands</white> which may has a security risk'
+					.'<br>...'
+					.'<br>Fix uninstall bug'
 					.'<br>...'
 					.'<br>Auto check for updates and display a badge if any'
-					.'<br>...'
 					.'<br>Support <white>uninstall conflict addons</white>'
 					.'<br>Support <white>hide redundant features addons</white>'
 					.'<br>Support <white>hide addons by condition scripts</white>'
