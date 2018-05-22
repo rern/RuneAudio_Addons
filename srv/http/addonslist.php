@@ -52,7 +52,7 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180522',
-	'revision'     => 'Remove <white>Bash Commands</white> which may has a security risk'
+	'revision'     => 'Remove <white>Bash Commands</white> which may has a security issue'
 					.'<br>...'
 					.'<br>Fix uninstall bug'
 					.'<br>...'
