@@ -220,7 +220,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180516',
-	'revision'     => 'Show Webradio sampling info while stop'
+	'revision'     => 'Show Webradio sampling info while stop and previous/next while stop as well'
 					.'<br>Show Webradio name in initial adding to playlist'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
