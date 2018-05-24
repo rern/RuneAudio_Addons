@@ -222,6 +222,7 @@ $addons = array(
 	'version'      => '20180516',
 	'revision'     => 'Show Webradio sampling info while stop and previous/next while stop as well'
 					.'<br>Show Webradio name in initial adding to playlist'
+					.'<br>Minimalize Playback on empty playlist'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
@@ -278,11 +279,11 @@ $addons = array(
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
 	'version'      => '20180321',
-	'revision'     => 'Update with RuneUI Enhancement 20180321'
+	'revision'     => 'Fix bugs'
 					.'<br>...'
-					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
+					.'<br>Update with RuneUI Enhancement 20180321'
 					.'<br>...'
-					.'<br>Disable in WebRadio',
+					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/Lyrics/lyricsS.gif',
