@@ -52,15 +52,11 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180522',
-	'revision'     => 'Remove <white>Bash Commands</white> which may has a security issue'
+	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback</white> to previous version'
 					.'<br>...'
-					.'<br>Fix uninstall bug'
+					.'<br>Remove <white>Bash Commands</white> which may has a security issue'
 					.'<br>...'
-					.'<br>Auto check for updates and display a badge if any'
-					.'<br>Support <white>uninstall conflict addons</white>'
-					.'<br>Support <white>hide redundant features addons</white>'
-					.'<br>Support <white>hide addons by condition scripts</white>'
-					.'<br>Support <white>FontAwesome</white> in revisions and descriptions',
+					.'<br>Fix uninstall bug',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
