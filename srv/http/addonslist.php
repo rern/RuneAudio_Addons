@@ -53,7 +53,7 @@ $addons = array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180522',
 	'rollback'     => 'a0bc314af303f245c7a1b9014933597515184deb',
-	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback</white> to previous version'
+	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback</white> to previous version (for some addons only)'
 					.'<br>...'
 					.'<br>Remove <white>Bash Commands</white> which may has a security issue'
 					.'<br>...'
@@ -217,6 +217,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180516',
+	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Show Webradio sampling info while stop and previous/next while stop as well'
 					.'<br>Show Webradio name in initial adding to playlist'
 					.'<br>Webradio pause = stop'
@@ -261,6 +262,7 @@ $addons = array(
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180320',
+	'rollback'     => 'f5c0bf9e54253e5f6261644e0021f4e8dcfa407b',
 	'needspace'    => 5,
 	'revision'     => 'Fix bugs'
 					.'<br>...'
@@ -277,6 +279,7 @@ $addons = array(
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
 	'version'      => '20180321',
+	'rollback'     => 'fb3de20151f9fdf866de9ea51d6f03d678211428',
 	'revision'     => 'Fix bugs'
 					.'<br>...'
 					.'<br>Update with RuneUI Enhancement 20180321'
@@ -291,6 +294,7 @@ $addons = array(
 'pass' => array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
+	'rollback'     => 'e0bf023ec38ff5d9802654b82455c20c64079af6',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
