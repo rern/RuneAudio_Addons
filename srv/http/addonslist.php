@@ -222,6 +222,7 @@ $addons = array(
 					.'<br>Show Webradio name in initial adding to playlist'
 					.'<br>Webradio pause = stop'
 					.'<br>Minimalize Playback on empty playlist'
+					.'<br>Fix random song bug'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
