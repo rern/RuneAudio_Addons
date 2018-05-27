@@ -219,9 +219,10 @@ $addons = array(
 	'version'      => '20180516',
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Show Webradio sampling info while stop and previous/next while stop as well'
+					.'<br>Hide playtime if playlist contains Webradio'
 					.'<br>Show Webradio name in initial adding to playlist'
-					.'<br>Webradio pause = stop'
 					.'<br>Minimalize Playback on empty playlist'
+					.'<br>Webradio pause = stop'
 					.'<br>Fix random song bug'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
