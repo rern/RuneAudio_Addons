@@ -16,11 +16,11 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
-function branchtest( title ) {
+function branchtest( title, message ) {
 	info( {
 		  title    : title
-		, message  : 'Branch Test?'
-		, textlabel: 'Branch'
+		, message  : message ? message : 'Rollback/Install specific version?'
+		, textlabel: 'Tree/Branch'
 		, textvalue: 'UPDATE'
 		, cancel   : 1
 		, ok       : function() {
@@ -41,15 +41,15 @@ $( '.btnbranch' ).each( function() {
 		type = $thisbtn.text().trim() === 'Install' ? 'Install' : 'Update';
 		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 		
-		if ( type === 'Install' ) {
-			branchtest( title );
+		if ( type === 'Install' || !rollback ) {
+			branchtest( title, 'Install/Update to Branch?' );
 			return 1;
 		}
 		info( {
 			  title    : title
 			, message  : 'Rollback to previous version?'
-			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback</label><br>'
-					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Branch Test</label>'
+			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;1 version</label><br>'
+					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Specific version</label>'
 			, cancel   : 1
 			, ok       : function() {
 				var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
