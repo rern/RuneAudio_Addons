@@ -78,6 +78,11 @@
 #infoTitle {
 	font-size: 18px;
 	vertical-align: text-bottom;
+	display: inline-block;
+	width: 280px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 #infoContent {
 	padding: 25px 10px 10px 10px;
