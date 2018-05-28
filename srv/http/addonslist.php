@@ -223,7 +223,7 @@ $addons = array(
 					.'<br>Better random song with previous / next button'
 					.'<br>Minimalize Playback on empty playlist'
 					.'<br>Hide duration if Playlist contains Webradio'
-					.'<br>Show Webradio icon in Playlist icon column'
+					.'<br>Consistent Webradio icon, name and url in Library and Playlist'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
