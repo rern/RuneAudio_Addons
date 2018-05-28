@@ -51,7 +51,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180522',
+	'version'      => '20180528',
 	'rollback'     => 'a0bc314af303f245c7a1b9014933597515184deb',
 	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback</white> to previous version (for some addons only)'
 					.'<br>...'
