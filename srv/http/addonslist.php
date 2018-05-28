@@ -220,8 +220,9 @@ $addons = array(
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent Webradio icon, name and url in Library and Playlist'
+					.'<br>Show Webradio name on initial load of saved playlist'
 					.'<br>Hide duration if Playlist contains Webradio'
-					.'<br>Minimalize Playback on empty playlist'
+					.'<br>Minimalize Playback on empty Playlist'
 					.'<br>Webradio pause = stop'
 					.'<br>Fix and improve random with previous/next button'
 					.'<br>...'
