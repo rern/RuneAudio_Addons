@@ -218,12 +218,12 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180516',
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
-	'revision'     => 'Always show Webradio name and sampling info in Playback and Playlist'
-					.'<br>Webradio pause = stop'
-					.'<br>Better random song with previous / next button'
-					.'<br>Minimalize Playback on empty playlist'
+	'revision'     => 'Show Webradio sampling info in Playback while stop'
+					.'<br>Show consistent Webradio icon, name and url in Library and Playlist'
 					.'<br>Hide duration if Playlist contains Webradio'
-					.'<br>Consistent Webradio icon, name and url in Library and Playlist'
+					.'<br>Minimalize Playback on empty playlist'
+					.'<br>Webradio pause = stop'
+					.'<br>Fix and improve random with previous/next button'
 					.'<br>...'
 					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
