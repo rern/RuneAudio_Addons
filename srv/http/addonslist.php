@@ -228,7 +228,7 @@ $addons = array(
 					.'<br>Fix and improve random with <code>previous</code> <code>next</code>'
 					.'<br>Add <white>below countdown</white> = <code>stop</code>'
 					.'<br>Add show/hide <code>Playsource</code> in display setting'
-					.'<br>Change <code>top right corner</code> of cover art => Playsource'
+					.'<br>Change <code>top right corner</code> of cover art => <code>Playsource</code>'
 					.'<br>Change <code>bottom</code> of cover art => <code>stop</code>'
 					.'<br>Add <white>bottom corners</white> of cover art = toggle <code>buttons</code>'
 					.'<br>...'
