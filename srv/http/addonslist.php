@@ -35,16 +35,24 @@ $addons = array(
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/redis',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/redis/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, Redis <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
 ),
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default NGINX 0.3:1.4.7 / 0.4b:1.11.3 to 1.14.0 <white>without errors</white>:'
+	'description'  => 'Upgrade NGINX to 1.14.0 <white>without errors</white>:'
 					.'<br>preserve configuration and pushstream support',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/nginx/thumbnginx.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, NGINX <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
 ),
 
 'addo' => array(
