@@ -19,7 +19,7 @@ $( 'legend' ).click( function() {
 function branchtest( title, message ) {
 	info( {
 		  title    : title
-		, message  : message ? message : 'Update / Downgrade to ?'
+		, message  : message ? message : 'Update / Downgrade ?'
 		, textlabel: 'Tree #/Branch'
 		, textvalue: 'UPDATE'
 		, cancel   : 1
