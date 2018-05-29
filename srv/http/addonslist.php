@@ -26,7 +26,6 @@ foreach ( $acards as $key => $val ) {
 
 $addons = array(
 
-/*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -40,14 +39,13 @@ $addons = array(
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default NGINX 0.3:1.4.7 / 0.4b:1.11.3 to 1.13.7 <white>without errors</white>:'
+	'description'  => 'Upgrade from default NGINX 0.3:1.4.7 / 0.4b:1.11.3 to 1.14.0 <white>without errors</white>:'
 					.'<br>preserve configuration and pushstream support',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/nginx/thumbnginx.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
 ),
-*/
 
 'addo' => array(
 	'title'        => 'Addons Menu',
