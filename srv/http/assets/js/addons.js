@@ -19,7 +19,7 @@ $( 'legend' ).click( function() {
 function branchtest( title, message ) {
 	info( {
 		  title    : title
-		, message  : message ? message : 'Update / Downgrade ?'
+		, message  : message ? message : 'Upgrade / Downgrade ?'
 		, textlabel: 'Tree #/Branch'
 		, textvalue: 'UPDATE'
 		, cancel   : 1
@@ -47,7 +47,7 @@ $( '.btnbranch' ).each( function() {
 		}
 		info( {
 			  title    : title
-			, message  : 'Rollback / Update / Downgrade ?'
+			, message  : 'Rollback / Upgrade / Downgrade ?'
 			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Previous version</label><br>'
 					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
 			, cancel   : 1
