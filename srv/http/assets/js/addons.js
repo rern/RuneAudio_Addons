@@ -53,7 +53,7 @@ $( '.btnbranch' ).each( function() {
 			, cancel   : 1
 			, ok       : function() {
 				var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
-				if ( radiovalue === 1 ) {
+				if ( radiovalue == 1 ) {
 					opt += rollback +' -b';
 					formtemp();
 				} else {
