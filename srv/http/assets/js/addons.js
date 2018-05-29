@@ -48,7 +48,7 @@ $( '.btnbranch' ).each( function() {
 		info( {
 			  title    : title
 			, message  : 'Rollback to previous version?'
-			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;1 version</label><br>'
+			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;-1 version</label><br>'
 					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Specific version</label>'
 			, cancel   : 1
 			, ok       : function() {
