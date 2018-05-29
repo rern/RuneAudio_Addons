@@ -285,11 +285,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180321',
-	'revision'     => 'Update with RuneUI Enhancement 20180321'
+	'version'      => '20180529',
+	'revision'     => 'Minor improvement'
+					.'<br>...'
+					.'<br>Update with RuneUI Enhancement 20180321'
 					.'<br>...'
 					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
-					.'<br>...'
 					.'<br>Disable in WebRadio',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
