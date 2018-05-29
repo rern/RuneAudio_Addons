@@ -19,7 +19,7 @@ $( 'legend' ).click( function() {
 function branchtest( title, message ) {
 	info( {
 		  title    : title
-		, message  : message ? message : 'Upgrade / Downgrade to ?'
+		, message  : message
 		, textlabel: 'Tree #/Branch'
 		, textvalue: 'UPDATE'
 		, cancel   : 1
@@ -42,7 +42,7 @@ $( '.btnbranch' ).each( function() {
 		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
 		
 		if ( type === 'Install' || !rollback ) {
-			branchtest( title );
+			branchtest( title, 'Install version?' );
 			return 1;
 		}
 		info( {
@@ -57,7 +57,7 @@ $( '.btnbranch' ).each( function() {
 					opt += rollback +' -b';
 					formtemp();
 				} else {
-					branchtest( title );
+					branchtest( title, 'Upgrade / Downgrade to ?' );
 				}
 			}
 		} );
