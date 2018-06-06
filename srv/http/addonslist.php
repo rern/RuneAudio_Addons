@@ -238,6 +238,8 @@ $addons = array(
 					.'<br>Change <code>bottom</code> of cover art => <code>stop</code>'
 					.'<br>Add <white>bottom corners</white> of cover art = toggle <code>buttons</code>'
 					.'<br>Play unsupport format show notification and set state to stop'
+					.'<br>Fix <code>Composer</code> in <white>Library</white>'
+					.'<br>Sort without leading articles, A / An / The'
 					.'<br>...'
 					.'<br>Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
