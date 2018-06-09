@@ -243,14 +243,14 @@ installfinish() { # $1-'u'=update
 	fi
 }
 
-lineremove() {
-	sed -i -e '/<!--0name-->/, /<!--name0-->/ d
-	' -e '/<!--name\|name-->/ d
-	' -e '/<?PHP \/\*0name\*\/ ?>/, /<?PHP \/\*0name\*\/ ?>/ d
-	' -e '/<?PHP \/\*name\|name\*\/ ?>/ d
-	' -e '/\/\*0name/, /name0\*\// d
-	' -e '/\/\*name\|name\*\// d
-	' $1
+filerestore() {
+	sed -i -e "/<!--${alias}0-->\s*$/, /<!--${alias}1-->\s*$/ d
+	" -e "/<!--${alias}\s*$\|${alias}-->\s*$/ d
+	" -e "/${alias}0 ?>\s*$/, /${alias}1 ?>\s*$/ d
+	" -e "/${alias} ?>\s*$/ d
+	" -e "/${alias}0\s*$/, /${alias}1\s*$/ d
+	" -e "/${alias}\s*$/ d
+	" $1
 }
 uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
