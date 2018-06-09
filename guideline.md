@@ -87,11 +87,11 @@ _revision 20180217_
 	
 	PHP + HTML
 	---------------------------
-	<?PHP //alias0 ?>
+	<?php //alias0 ?>
 	++ new lines
-	<?PHP //alias1 ?>
+	<?php //alias1 ?>
 	
-	<?php if(false){//alias ?>
+	<?php if(0){//alias ?>
 	-- comment out lines
 	<?php }//alias ?>
 	
