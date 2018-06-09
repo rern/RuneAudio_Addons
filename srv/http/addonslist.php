@@ -237,7 +237,7 @@ $addons = array(
 					.'<br>Change <code>top left corner</code> of cover art => <code>Playsource</code>'
 					.'<br>Change <code>bottom</code> of cover art => <code>stop</code>'
 					.'<br>Add <white>bottom corners</white> of cover art = toggle <code>buttons</code>'
-					.'<br>Play unsupport format show notification and set state to stop'
+					.'<br>Fix Library <code>back button</code> in Artists, Albums, Genres, Composers'
 					.'<br>Fix <code>Composer</code> in <white>Library</white>'
 					.'<br>Sort without leading articles, A / An / The'
 					.'<br>...'
