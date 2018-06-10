@@ -25,7 +25,6 @@ foreach ( $acards as $key => $val ) {
 ///////////////////////////////////////////////////////////////
 
 $addons = array(
-
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -36,31 +35,35 @@ $addons = array(
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/redis',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/redis/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, Redis <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
 ),
 'ngin' => array(
 	'title'        => 'NGINX Upgrade',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade from default NGINX 0.3:1.4.7 / 0.4b:1.11.3 to 1.13.7 <white>without errors</white>:'
+	'description'  => 'Upgrade NGINX to 1.14.0 <white>without errors</white>:'
 					.'<br>preserve configuration and pushstream support',
 	'thumbnail'    => 'https://github.com/rern/RuneAudio/raw/master/nginx/thumbnginx.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/nginx',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/nginx/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, NGINX <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
 ),
 */
-
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180522',
-	'revision'     => 'Remove <white>Bash Commands</white> which may has a security issue'
+	'version'      => '20180528',
+	'rollback'     => 'a0bc314af303f245c7a1b9014933597515184deb',
+	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>...'
-					.'<br>Fix uninstall bug'
+					.'<br>Remove <white>Bash Commands</white> which may has a security issue'
 					.'<br>...'
-					.'<br>Auto check for updates and display a badge if any'
-					.'<br>Support <white>uninstall conflict addons</white>'
-					.'<br>Support <white>hide redundant features addons</white>'
-					.'<br>Support <white>hide addons by condition scripts</white>'
-					.'<br>Support <white>FontAwesome</white> in revisions and descriptions',
+					.'<br>Fix uninstall bug',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
@@ -219,23 +222,28 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180516',
-	'revision'     => 'Fix bugs'
+	'version'      => '20180610',
+	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
+	'revision'     => 'Show Webradio sampling info in Playback while stop'
+					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
+					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
+					.'<br>Show <white>Webradio name</white> on initial load of <white>saved playlist</white>'
+					.'<br>Hide duration if Playlist contains Webradio'
+					.'<br>Minimalize Playback on <white>empty Playlist</white>'
+					.'<br>Webradio pause = <code>stop</code>'
+					.'<br>Fix and improve random with <code>previous</code> <code>next</code>'
+					.'<br>Add show/hide <code>MPD</code> in display setting'
+					.'<br>Add <white>above countdown</white> = <code>MPD</code> button'
+					.'<br>Add <white>below countdown</white> = <code>stop</code>'
+					.'<br>Change cover art gestures (tap top shows overlay guide)'
+					.'<br>Fix Library <code>back button</code> in Artists, Albums, Genres, Composers'
+					.'<br>Fix <code>Composer</code> in <white>Library</white>'
+					.'<br>Sort without leading articles, A / An / The'
 					.'<br>...'
-					.'<br>Tap either top corners of cover art = toggle controls overlay'
 					.'<br>Always refresh to current state everytime page return to visible'
 					.'<br>Fix time elapse while updating library'
 					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
-					.'<br>Fix previous/next bug'
-					.'<br>...'
-					.'<br>Show sampling info, duration (for DSD as well) while stop'
-					.'<br>Hide elapsed time while stop, leading 00:0 while play/pause'
-					.'<br>Elapsed time changed along with time knob drag'
-					.'<br>Enable tab/drag time knob while stop'
-					.'<br>Enable previous/next song whilestop, at fist/last goes to last/first'
-					.'<br>Lower time knob refresh rate on local browser to lower CPU load'
-					.'<br>Switch from countdown.js to normal setInterval()'
-					.'<br>Fix long-press volume up/down',
+					.'<br>Fix previous/next bug',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
@@ -270,6 +278,7 @@ $addons = array(
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
 	'version'      => '20180320',
+	'rollback'     => 'f5c0bf9e54253e5f6261644e0021f4e8dcfa407b',
 	'needspace'    => 5,
 	'revision'     => 'Fix bugs'
 					.'<br>...'
@@ -285,13 +294,13 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180529',
-	'revision'     => 'Minor improvement'
+	'version'      => '20180321',
+	'rollback'     => 'fb3de20151f9fdf866de9ea51d6f03d678211428',
+	'revision'     => 'Fix bugs'
 					.'<br>...'
 					.'<br>Update with RuneUI Enhancement 20180321'
 					.'<br>...'
-					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor'
-					.'<br>Disable in WebRadio',
+					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/Lyrics/lyricsS.gif',
@@ -301,6 +310,7 @@ $addons = array(
 'pass' => array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
+	'rollback'     => 'e0bf023ec38ff5d9802654b82455c20c64079af6',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',

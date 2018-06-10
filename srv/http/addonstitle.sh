@@ -242,7 +242,6 @@ installfinish() { # $1-'u'=update
 		title -l '=' "$bar $title updated successfully."
 	fi
 }
-
 uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title0=$( getvalue title )

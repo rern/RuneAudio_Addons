@@ -102,6 +102,7 @@ foreach( $arrayalias as $alias ) {
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
+	$rollback = isset( $addon[ 'rollback' ] ) ? $addon[ 'rollback' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
 	$revision = str_replace( '\\', '', $addon[ 'revision' ] ); // remove escaped [ \" ] to [ " ]
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
@@ -125,7 +126,7 @@ foreach( $arrayalias as $alias ) {
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'
 			</ul>
-			<form class="form-horizontal" alias="'.$alias.'">
+			<form class="form-horizontal" alias="'.$alias.'" rollback="'.$rollback.'">
 				<p class="detailtext">'.$description.$detail.'</p>'
 				.$btnin; if ( $version ) $blocks .= ' &nbsp; '.$btnun;
 	$blocks .= '

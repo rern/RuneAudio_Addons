@@ -71,8 +71,30 @@ _revision 20180217_
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
-	- use modify over replace files unless necessary and always backup
 	- use non-invasive modifications so other addons can survive after install / uninstall
+	- use modify over replace files unless necessary and always backup
+	- modify by lines only so `restorefile /path/file` can restore correctly
+		```
+		PHP + HTML
+		---------------------------
+		<?php //alias0 ?>
+		++ new lines
+		<?php //alias1 ?>
+
+		<?php if(0){//alias ?>
+		-- comment out lines
+		<?php }//alias ?>
+
+		PHP, JS
+		---------------------------
+		/*//alias0
+		++ new lines
+		*///alias1
+
+		if(0){//alias
+		-- comment out lines
+		}//alias
+		```
 
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore

@@ -16,6 +16,20 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
+function branchtest( title, message ) {
+	info( {
+		  title    : title
+		, message  : message
+		, textlabel: 'Tree #/Branch'
+		, textvalue: 'UPDATE'
+		, cancel   : 1
+		, ok       : function() {
+			branch = $( '#infoTextbox' ).val();
+			opt += branch +' -b';
+			formtemp();
+		}
+	} );
+}
 $( '.btnbranch' ).each( function() {
 	var $thisbtn = $( this );
 	var hammerbtn = new Hammer( this );
@@ -23,23 +37,27 @@ $( '.btnbranch' ).each( function() {
 		opt = '';
 		branch = '';
 		alias = $thisbtn.parent().attr( 'alias' );
+		rollback = $thisbtn.parent().attr( 'rollback' );
 		type = $thisbtn.text().trim() === 'Install' ? 'Install' : 'Update';
 		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
+		
+		if ( type === 'Install' || !rollback ) {
+			branchtest( title, 'Install version?' );
+			return 1;
+		}
 		info( {
 			  title    : title
-			, message  : type +' Branch Test?'
-			, textlabel: 'Branch'
-			, textvalue: 'UPDATE'
+			, message  : 'Upgrade / Downgrade ?'
+			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
+					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
 			, cancel   : 1
 			, ok       : function() {
-				branch = $( '#infoTextbox' ).val() +' -b';
-				option = addons[ alias ].option;
-				if ( type === 'Install' && option ) {
-					j = 0;
-					getoptions();
-				} else {
-					opt += branch;
+				var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
+				if ( radiovalue == 1 ) {
+					opt += rollback +' -b';
 					formtemp();
+				} else {
+					branchtest( title, 'Upgrade / Downgrade to ?' );
 				}
 			}
 		} );
