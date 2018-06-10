@@ -3,14 +3,16 @@
 # usage:   comment 'pattern' ['pattern2'] file
 #          commentphp (use '<?php' comment)
 #
-#          insert 'pattern' 'string' file
+#          insert 'pattern' "$string" file
 #          insertphp (use '<?php' comment)
-#          append 'pattern' 'string' file
+#          append 'pattern' "$string" file
 #          appendphp (use '<?php' comment)
+#
+#          restorefile file
 #
 # pattern  sed search regex pattern (escaped + inside single quoted)
 # pattern2 bottom line of range (comment only)
-# string   string to add: insert - above, append - below
+# $string  string to add: insert - above, append - below
 
 # string - singleline: DO escape \ and "
 
@@ -27,7 +29,7 @@
 #    DON'T put spaces or any characters in closing heredoc tag
 #    DON'T end last line with \ backslash
 
-exsample=$( cat <<'EOF'
+example=$( cat <<'EOF'
 @#$&*()'"%-+=/;:!?€£¥_^[]{}§|~\\<>\n\
 DO end every lines with \\n\\\n\
 DO escape \\ backslash\n\
@@ -38,12 +40,12 @@ EOF
 
 comment() {
 	if [[ $1 == -p ]]; then
-		upper='<?php if(0){//enha ?>'
-		lower='<?php }//enha ?>'
+		upper='<?php if(0){//'$alias' ?>'
+		lower='<?php }//'$alias' ?>'
 		shift
 	else
-		upper='if(0){//alias'
-		lower='}//alias'
+		upper='if(0){//'$alias
+		lower='}//'$alias
 	fi
 	if (( $# == 2 )); then
 		sed -i -e "/$1/ i$upper" -e "/$1/ a$lower" "$2"
@@ -54,12 +56,12 @@ comment() {
 
 add() {
 	if [[ $1 == -p ]]; then
-		upper='<?php if(0){//enha ?>\n\'
-		lower='\n<?php }//enha ?>'
+		upper='<?php if(0){//'$alias' ?>\n\'
+		lower='\n<?php }//'$alias' ?>'
 		shift
 	else
-		upper='if(0){//alias\n\'
-		lower='\n}//alias'
+		upper='if(0){//'$alias'\n\'
+		lower='\n}//'$alias
 	fi
 	
 	if [[ $1 == -i ]]; then
@@ -86,7 +88,7 @@ appendphp() {
 	add -p "$@"
 }
 
-restorefile() { $1 = file
+restorefile() {
 	sed -i -e "/${alias}0 ?>\s*$/, /${alias}1 ?>\s*$/ d
 	" -e "/${alias} ?>\s*$/ d
 	" -e "/${alias}0\s*$/, /${alias}1\s*$/ d
