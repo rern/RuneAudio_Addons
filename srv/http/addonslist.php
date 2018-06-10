@@ -25,7 +25,7 @@ foreach ( $acards as $key => $val ) {
 ///////////////////////////////////////////////////////////////
 
 $addons = array(
-
+/*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
@@ -54,7 +54,7 @@ $addons = array(
 					.'<br>Continue?'
 	),
 ),
-
+*/
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180528',
