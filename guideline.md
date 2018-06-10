@@ -91,7 +91,7 @@ _revision 20180217_
 		++ new lines
 		*///alias1
 
-		if(false){//alias
+		if(0){//alias
 		-- comment out lines
 		}//alias
 		```
