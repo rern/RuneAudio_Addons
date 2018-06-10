@@ -222,8 +222,8 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180516',
-	'rollback'     => '7d3a065c91d603da7e62d0a0b46ca235f2a1ef62',
+	'version'      => '20180610',
+	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
 					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
