@@ -242,16 +242,6 @@ installfinish() { # $1-'u'=update
 		title -l '=' "$bar $title updated successfully."
 	fi
 }
-
-filerestore() {
-	sed -i -e "/<!--${alias}0-->\s*$/, /<!--${alias}1-->\s*$/ d
-	" -e "/<!--${alias}\s*$\|${alias}-->\s*$/ d
-	" -e "/${alias}0 ?>\s*$/, /${alias}1 ?>\s*$/ d
-	" -e "/${alias} ?>\s*$/ d
-	" -e "/${alias}0\s*$/, /${alias}1\s*$/ d
-	" -e "/${alias}\s*$/ d
-	" $1
-}
 uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title0=$( getvalue title )
