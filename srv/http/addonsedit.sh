@@ -1,97 +1,88 @@
 #!/bin/bash
 
-# usage:   comment 'pattern' ['pattern2'] file
-#          commentphp (use '<?php' comment)
-#
-#          insert 'pattern' "$string" file
-#          insertphp (use '<?php' comment)
-#          append 'pattern' "$string" file
-#          appendphp (use '<?php' comment)
-#
-#          restorefile file
-#
-# pattern  sed search regex pattern (escaped + inside single quoted)
-# pattern2 bottom line of range (comment only)
-# $string  string to add: insert - above, append - below
+# usage:
+#     pre-defined variables:
+#         alias=name                      # already in install.sh
+#         file=/path/file                 # before all commands of each file
+#         string=( cat <<'EOF'            # before each insert and append
+#         DO escape \ backslash\n\
+#         DO end every lines with \\n\\ \n\
+#         DON'T put spaces or any characters in closing heredoc\n\
+#         DON'T end last line with \ backslash
+#         EOF
+#         )
+#    command:
+#         insert 'regex'                  # //alias lines onclose $string
+#         insertphp 'regex'               # <?php /* and */ ?> lines onclose $string
+#         append 'regex'                  # same as insert
+#         appendphp 'regex'               # same as insertphp
+#             comment after insert/append for the same line (avoid $string with 'regex')
+#         comment 'regex' ['regex2']      # /* existing */
+#         commentphp 'regex' ['regex2']   # <?php /* existing */ ?>
+#             /* other comment */ CAN'T be inside 'regex' 'regex2'
+#         restorefile $file               # specify each $file
+#    'regex':
+#         search pattern must be single quoted and escaped properly
+#         default delimiter = |
 
-# string - singleline: DO escape \ and "
-
-# string - heredoc: all characters and symbols can be used
-#
-# string=$( cat <<'EOF'
-# aaa\n\
-# bbb
-# EOF
-# )
-#
-#    DO end every lines with \n\
-#    DO escape \ backslash
-#    DON'T put spaces or any characters in closing heredoc tag
-#    DON'T end last line with \ backslash
-
-example=$( cat <<'EOF'
-@#$&*()'"%-+=/;:!?€£¥_^[]{}§|~\\<>\n\
-DO end every lines with \\n\\\n\
-DO escape \\ backslash\n\
-DON'T put spaces or any characters in closing heredoc tag\n\
-DON'T end last line with \ backslash
-EOF
-)
 
 comment() {
 	if [[ $1 == -p ]]; then
-		upper='<?php if(0){//'$alias' ?>'
-		lower='<?php }//'$alias' ?>'
+		front='<?php /*'$alias
+		back=$alias'*/ ?>'
 		shift
 	else
-		upper='if(0){//'$alias
-		lower='}//'$alias
+		front='/*'$alias
+		back=$alias'*/'
 	fi
-	if (( $# == 2 )); then
-		sed -i -e "/$1/ i$upper" -e "/$1/ a$lower" "$2"
+	if (( $# == 1 )); then
+		sed -i -e "\|$1| { s|^|$front|; s|$|$back| }" "$file"
 	else
-		sed -i -e "/$1/ i$upper" -e "/$2/ a$lower" "$3"
+		sed -i -e "\|$1| s|^|$front|" -e "\|$2| s|$|$back|" "$file"
 	fi
 }
 
 add() {
 	if [[ $1 == -p ]]; then
-		upper='<?php if(0){//'$alias' ?>\n\'
-		lower='\n<?php }//'$alias' ?>'
+		upper='<?php //'$alias'0 ?>\n\'
+		lower='\n<?php //'$alias'1 ?>'
 		shift
 	else
-		upper='if(0){//'$alias'\n\'
-		lower='\n}//'$alias
+		upper='//'$alias'0\n\'
+		lower='\n//'$alias'1'
 	fi
 	
 	if [[ $1 == -i ]]; then
 		shift
-		sed -i "/$1/ i$upper$2$lower" "$3"
+		sed -i "\|$1| i$upper$string$lower" "$file"
 	else
-		sed -i "/$1/ a$upper$2$lower" "$3"
+		sed -i "\|$1| a$upper$string$lower" "$file"
 	fi
 }
 
 commentphp() {
-	comment -p "$@"
+	if (( $# == 1 )); then
+		comment -p "$1"
+	else
+		comment -p "$1" "$2"
+	fi
 }
 insert() {
-	add -i "$@"
+	add -i "$1"
 }
 insertphp() {
-	add -p -i "$@"
+	add -p -i "$1"
 }
 append() {
-	add "$@"
+	add "$1"
 }
 appendphp() {
-	add -p "$@"
+	add -p "$1"
 }
 
 restorefile() {
-	sed -i -e "/${alias}0 ?>\s*$/, /${alias}1 ?>\s*$/ d
-	" -e "/${alias} ?>\s*$/ d
-	" -e "/${alias}0\s*$/, /${alias}1\s*$/ d
-	" -e "/${alias}\s*$/ d
+	sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$\|^\/\*$alias\|$alias\*\/$//
+	" -e "/${alias}0 ?>$/, /${alias}1 ?>$/ d
+	" -e "/${alias}0$/, /${alias}1$/ d
 	" $1
 }
