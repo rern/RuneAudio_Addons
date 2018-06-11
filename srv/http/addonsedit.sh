@@ -2,7 +2,7 @@
 
 # usage:
 #     pre-defined variables:
-#         alias=name                      # already in install.sh / uninstall_alias.sh
+#             alias=name                  # already in install.sh / uninstall_alias.sh
 #         file=/path/file                 # before all commands of each file
 #         string=( cat <<'EOF'            # before each insert and append
 #         DO escape \ backslash\n\
@@ -20,7 +20,8 @@
 #         comment 'regex' ['regex2']      # /* existing */
 #         commentphp 'regex' ['regex2']   # <?php /* existing */ ?>
 #             /* other comment */ CAN'T be inside 'regex' 'regex2'
-#         restorefile $file               # specify each $file
+#
+#         restorefile file [file2 ...]    # remove all insert / append / comment
 #    'regex':
 #         search pattern must be single quoted and escaped properly
 #         default delimiter = |
@@ -61,11 +62,7 @@ add() {
 }
 
 commentphp() {
-	if (( $# == 1 )); then
-		comment -p "$1"
-	else
-		comment -p "$1" "$2"
-	fi
+	comment -p "$@"
 }
 insert() {
 	add -i "$1"
@@ -81,8 +78,10 @@ appendphp() {
 }
 
 restorefile() {
-	sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$\|^\/\*$alias\|$alias\*\/$//
-	" -e "/${alias}0 ?>$/, /${alias}1 ?>$/ d
-	" -e "/${alias}0$/, /${alias}1$/ d
-	" $1
+	for file in "$@"; do
+		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$\|^\/\*$alias\|$alias\*\/$//g
+		" -e "/${alias}0 ?>$/, /${alias}1 ?>$/ d
+		" -e "/${alias}0$/, /${alias}1$/ d
+		" $file
+	done
 }
