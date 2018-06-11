@@ -2,7 +2,7 @@
 
 # usage:
 #     pre-defined variables:
-#         alias=name                      # already in install.sh
+#         alias=name                      # already in install.sh / uninstall_alias.sh
 #         file=/path/file                 # before all commands of each file
 #         string=( cat <<'EOF'            # before each insert and append
 #         DO escape \ backslash\n\
