@@ -224,7 +224,10 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180610',
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
-	'revision'     => 'Show Webradio sampling info in Playback while stop'
+	'revision'     => 'Fix sorting in file mode'
+					.'<br>Add all overlay controls guide'
+					.'<br>...'
+					.'<br>Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
 					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
 					.'<br>Show <white>Webradio name</white> on initial load of <white>saved playlist</white>'
@@ -238,12 +241,7 @@ $addons = array(
 					.'<br>Change cover art gestures (tap top shows overlay guide)'
 					.'<br>Fix Library <code>back button</code> in Artists, Albums, Genres, Composers'
 					.'<br>Fix <code>Composer</code> in <white>Library</white>'
-					.'<br>Sort without leading articles, A / An / The'
-					.'<br>...'
-					.'<br>Always refresh to current state everytime page return to visible'
-					.'<br>Fix time elapse while updating library'
-					.'<br>Fix sampling info: *.aac, *.alac, files with diacritics name, average bitrate'
-					.'<br>Fix previous/next bug',
+					.'<br>Sort without leading articles, A / An / The',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneUI_enhancement/thumbenha.gif',
