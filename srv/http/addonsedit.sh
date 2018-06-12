@@ -13,7 +13,7 @@
 #    command:
 #         comment 'regex' ['regex2']      # /*alias line(s) alias*/
 #         commentP 'regex' ['regex2']     # <?php /*alias line(s) alias*/ ?>
-#             # /* existing comment */ can be between 'regex' 'regex2'
+#             # /* existing */ will be escaped to /* existing *alias/
 #         insert 'regex'                  # //alias0
 #                                         # string
 #                                         # //alias1
@@ -22,8 +22,9 @@
 #                                         # <?php //alias1 ?>
 #         append 'regex'                  # same as insert
 #         appendP 'regex'                 # same as insertP
-#             # 'regex' pattern must be single quoted and escaped properly
-#             # sed default delimiter = |
+#             # 'regex' pattern must be single quoted
+#             # ' . ^ $ * + ? ( ) [ { \ | litteral in 'regex'  need \ escape
+#             # | is sed default delimiter
 #             # insert/append with 'regex' itself in $string
 #                   must be after comment to the same 'regex' (avoid commented)
 #                   must be combined with insert/append to the same 'regex' (avoid redundance)
@@ -39,11 +40,13 @@ comment() {
 		back=$alias'*/'
 	fi
 	
+	regex=$( echo $1 | sed 's/"/\\"/g' )
 	if (( $# == 1 )); then
-		sed -i "\|$1| { s|^|$front|; s|$|$back| }" "$file"
+		sed -i "\|$regex| { s|\*/|\*$alias/|; s|^|$front|; s|$|$back| }" "$file"
 	else
-		sed -i "\|$1|, \|$2| s|\*/|\*${alias}/|" "$file"
-		sed -i -e "\|$1| s|^|$front|" -e "\|$2| s|$|$back|" "$file"
+		regex2=$( echo $2 | sed 's/"/\\"/g' )
+		sed -i "\|$regex|, \|$regex2| s|\*/|\*$alias/|" "$file"
+		sed -i -e "\|$regex| s|^|$front|" -e "\|$regex2| s|$|$back|" "$file"
 	fi
 }
 
@@ -57,18 +60,15 @@ insert() {
 		lower='n//'$alias'1'
 	fi
 	
+	ia=i
+	[[ $1 == -a ]] && ia=a && shift
 	# escape \ and close eol with \ before passing to sed
 	string=$( cat <<EOF
 $( echo "$string" | sed 's/\\/\\\\/g; s/$/\\/' )
 EOF
 )
-	
-	if [[ $1 == -a ]]; then
-		shift
-		sed -i "\|$1| a$upper$string$lower" "$file"
-	else
-		sed -i "\|$1| i$upper$string$lower" "$file"
-	fi
+	regex=$( echo $1 | sed 's/"/\\"/g' )
+	sed -i "\|$regex| $( echo $ia )$upper$string$lower" "$file"
 }
 
 commentP() {
