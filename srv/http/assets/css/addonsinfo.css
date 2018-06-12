@@ -79,7 +79,7 @@
 	font-size: 18px;
 	vertical-align: text-bottom;
 	display: inline-block;
-	width: 280px;
+	width: calc( 100% - 64px );
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
