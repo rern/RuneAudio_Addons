@@ -68,7 +68,7 @@ _revision 20180613_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
-	- modify and restore `*.js *.php *.html *.css` with provided commands
+	- modify and restore `*.js *.php *.html *.css` with [provided edit commands](#provided-edit-commands)
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
@@ -186,6 +186,37 @@ restorefile $file
 
 ### template - function: remove version from database, finish message
 uninstallfinish $@
+```
+
+**provided edit commands
+```
+# pre-defined variables:
+#     alias=name                      # already in install.sh / uninstall_alias.sh
+#     file=/path/file                 # before all commands of each file
+#     string=( cat <<'EOF'            # before each insert and append
+#     place code inside this heredoc literally
+#     last line
+#     EOF
+#     )
+# usage:
+#     comment SEARCH [SEARCH2]        # /*alias line(s) alias*/
+#     commentP SEARCH [SEARCH2]       # <?php /*alias line(s) alias*/ ?>
+#     insert SEARCH                   # //alias0
+#                                     # string
+#                                     # //alias1
+#     insertP SEARCH                  # <?php //alias0 ?>
+#                                     # string
+#                                     # <?php //alias1 ?>
+#     append SEARCH                   # same as insert
+#     appendP SEARCH                  # same as insertP
+#     restorefile FILE [FILE2 ...]    # remove all insert / append / comment
+# options:
+#     SEARCH pattern must be quoted and escaped
+#           " $ ` \ inside "..." use \" \$ \` \\
+#           ' inside '...' use "'"
+#     insert/append with SEARCH itself in $string
+#          must be after comment to the same SEARCH (avoid commented after insert)
+#          must be combined with insert/append to the same SEARCH (avoid double insert)
 ```
   
 
