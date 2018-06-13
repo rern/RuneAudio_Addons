@@ -188,7 +188,7 @@ restorefile $file
 uninstallfinish $@
 ```
 
-### Provided edit commands
+#### Provided edit commands
 ```
 # pre-defined variables:
 #     alias=name                      # already in install.sh / uninstall_alias.sh
