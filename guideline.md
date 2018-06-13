@@ -205,14 +205,19 @@ usage:
 ----------------------------------------------------------------------------------------
 comment SEARCH [SEARCH2]        /*alias line(s) alias*/
 commentP SEARCH [SEARCH2]       <?php /*alias line(s) alias*/ ?>
+commentS SEARCH [SEARCH2]       # #alias (each line)
 insert SEARCH                   //alias0
 								string
 								//alias1
 insertP SEARCH                  <?php //alias0 ?>
 								string
 								<?php //alias1 ?>
+insertS SEARCH                  # #0alias
+                                # string
+                                # #1alias
 append SEARCH                   same as insert
 appendP SEARCH                  same as insertP
+appendS SEARCH                  # same as insertS
 restorefile FILE [FILE2 ...]    remove all insert / append / comment
 	
 options:
