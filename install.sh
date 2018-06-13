@@ -30,7 +30,7 @@ installstart $@
 
 getinstallzip
 
-wgetnc https://github.com/rern/RuneUI_enhancement/raw/master/srv/http/enhanceredis.php -P /srv/http
+wgetnc https://github.com/rern/RuneUI_enhancement/raw/master/srv/http/enhance.php -P /srv/http
 
 if [[ $( redis-cli get release ) == 0.4b ]]; then
     rm -r /srv/http/assets/default
