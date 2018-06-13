@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180217_
+_revision 20180613_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
