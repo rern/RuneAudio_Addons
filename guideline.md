@@ -190,33 +190,39 @@ uninstallfinish $@
 
 #### Provided edit commands
 ```
-# pre-defined variables:
-#     alias=name                      # already in install.sh / uninstall_alias.sh
-#     file=/path/file                 # before all commands of each file
-#     string=( cat <<'EOF'            # before each insert and append
-#     place code inside this heredoc literally
-#     last line
-#     EOF
-#     )
-# usage:
-#     comment SEARCH [SEARCH2]        # /*alias line(s) alias*/
-#     commentP SEARCH [SEARCH2]       # <?php /*alias line(s) alias*/ ?>
-#     insert SEARCH                   # //alias0
-#                                     # string
-#                                     # //alias1
-#     insertP SEARCH                  # <?php //alias0 ?>
-#                                     # string
-#                                     # <?php //alias1 ?>
-#     append SEARCH                   # same as insert
-#     appendP SEARCH                  # same as insertP
-#     restorefile FILE [FILE2 ...]    # remove all insert / append / comment
-# options:
-#     SEARCH pattern must be quoted and escaped
-#           " $ ` \ inside "..." use \" \$ \` \\
-#           ' inside '...' use "'"
-#     insert/append with SEARCH itself in $string
-#          must be after comment to the same SEARCH (avoid commented after insert)
-#          must be combined with insert/append to the same SEARCH (avoid double insert)
+pre-defined variables:
+----------------------------------------------------------------------------------------
+alias=name                      already in install.sh / uninstall_alias.sh
+file=/path/file                 before all commands of each file
+string=( cat <<'EOF'            before each insert and append
+single line or 1st line
+place code inside this heredoc literally
+last line
+EOF
+)
+
+usage:
+----------------------------------------------------------------------------------------
+comment SEARCH [SEARCH2]        /*alias line(s) alias*/
+commentP SEARCH [SEARCH2]       <?php /*alias line(s) alias*/ ?>
+insert SEARCH                   //alias0
+								string
+								//alias1
+insertP SEARCH                  <?php //alias0 ?>
+								string
+								<?php //alias1 ?>
+append SEARCH                   same as insert
+appendP SEARCH                  same as insertP
+restorefile FILE [FILE2 ...]    remove all insert / append / comment
+	
+options:
+----------------------------------------------------------------------------------------
+SEARCH pattern must be quoted and escaped
+	  "  $  `  \  inside "..."  use  \"  \$  \`  \\
+	  '  inside '...'           use  "'"
+insert/append with SEARCH itself in $string
+	 must be after comment to the same SEARCH (avoid commented after insert)
+	 must be combined with insert/append to the same SEARCH (avoid double insert)
 ```
   
 
