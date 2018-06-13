@@ -68,33 +68,12 @@ _revision 20180217_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
+	- modify and restore `*.js *.php *.html *.css` with provided commands
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
 	- use non-invasive modifications so other addons can survive after install / uninstall
 	- use modify over replace files unless necessary and always backup
-	- modify by lines only so `restorefile /path/file` can restore correctly
-		```
-		PHP + HTML
-		---------------------------
-		<?php //alias0 ?>
-		++ new lines
-		<?php //alias1 ?>
-
-		<?php if(0){//alias ?>
-		-- comment out lines
-		<?php }//alias ?>
-
-		PHP, JS
-		---------------------------
-		/*//alias0
-		++ new lines
-		*///alias1
-
-		if(0){//alias
-		-- comment out lines
-		}//alias
-		```
 
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
@@ -120,6 +99,7 @@ alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 ### template - function: start message, installed check
 installstart $@
@@ -145,8 +125,13 @@ echo -e "$bar Modify files ..."
 file=/<path>/<file>
 echo $file
 if ! grep -q 'check string' $file; then
-	echo 'content' >> $file
-	sed -i 's/existing/new/' $file
+	comment 'search'
+	string=$( cat <<'EOF'
+place code inside this heredoc literally
+last line
+EOF
+)
+	insert 'search'
 fi
 
 echo 'content' >> /<path>/<newfile>
@@ -169,6 +154,7 @@ alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 ### template - function: start message, installed check
 uninstallstart $@
@@ -190,8 +176,11 @@ rm -v /<path>/<file>
 echo -e "$bar Restore files ..."
 file=/<path>/<file>
 echo $file
-sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
+
+file=/<path>/<file>
+echo $file
+restorefile $file
 
 # end custom script --------------------------------------------------------------------------------<<<
 
@@ -273,6 +262,8 @@ uninstallfinish $@
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
 
+**`'alias'`**  
+- should be 4 charaters
 **`'version'`** - buttons enable/disable 
 - `'version'` changed > show `Update` button
 - non-install addons:
@@ -308,6 +299,8 @@ uninstallfinish $@
 		- `Ok`  = continue (no value) | `Cancel` = cancel and back
 	- `'yesno'` = `No` `Yes`
 		- `Yes` = 1 | `No` = 0
+	- `'skip'` = `No` `Yes`
+		- `Yes` = no more options | `No` = continue options
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`
