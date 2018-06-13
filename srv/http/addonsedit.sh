@@ -1,95 +1,97 @@
 #!/bin/bash
 
-# usage:
-#     pre-defined variables:
-#         alias=name                      # already in install.sh / uninstall_alias.sh
-#         file=/path/file                 # before all commands of each file
-#         string=( cat <<'EOF'            # before each insert and append
-#         1st line
-#         code inside this heredoc need no escape
-#         last line
-#         EOF
-#         )
-#    command:
-#         comment 'regex' ['regex2']      # /*alias line(s) alias*/
-#         commentP 'regex' ['regex2']     # <?php /*alias line(s) alias*/ ?>
-#             # /* existing */ will be escaped to /* existing *alias/
-#         insert 'regex'                  # //alias0
-#                                         # string
-#                                         # //alias1
-#         insertP 'regex'                 # <?php //alias0 ?>
-#                                         # string
-#                                         # <?php //alias1 ?>
-#         append 'regex'                  # same as insert
-#         appendP 'regex'                 # same as insertP
-#             # 'regex' pattern must be single quoted
-#             # ' . ^ $ * + ? ( ) [ { \ | litteral in 'regex'  need \ escape
-#             # | is sed default delimiter
-#             # insert/append with 'regex' itself in $string
-#                   must be after comment to the same 'regex' (avoid commented)
-#                   must be combined with insert/append to the same 'regex' (avoid redundance)
-#         restorefile file [file2 ...]    # remove all insert / append / comment
+# usage:   comment 'pattern' ['pattern2'] file
+#          commentphp (use '<?php' comment)
+#
+#          insert 'pattern' "$string" file
+#          insertphp (use '<?php' comment)
+#          append 'pattern' "$string" file
+#          appendphp (use '<?php' comment)
+#
+#          restorefile file
+#
+# pattern  sed search regex pattern (escaped + inside single quoted)
+# pattern2 bottom line of range (comment only)
+# $string  string to add: insert - above, append - below
+
+# string - singleline: DO escape \ and "
+
+# string - heredoc: all characters and symbols can be used
+#
+# string=$( cat <<'EOF'
+# aaa\n\
+# bbb
+# EOF
+# )
+#
+#    DO end every lines with \n\
+#    DO escape \ backslash
+#    DON'T put spaces or any characters in closing heredoc tag
+#    DON'T end last line with \ backslash
+
+example=$( cat <<'EOF'
+@#$&*()'"%-+=/;:!?€£¥_^[]{}§|~\\<>\n\
+DO end every lines with \\n\\\n\
+DO escape \\ backslash\n\
+DON'T put spaces or any characters in closing heredoc tag\n\
+DON'T end last line with \ backslash
+EOF
+)
 
 comment() {
 	if [[ $1 == -p ]]; then
-		front='<?php /*'$alias
-		back=$alias'*/ ?>'
+		upper='<?php if(0){//'$alias' ?>'
+		lower='<?php }//'$alias' ?>'
 		shift
 	else
-		front='/*'$alias
-		back=$alias'*/'
+		upper='if(0){//'$alias
+		lower='}//'$alias
 	fi
-	
-	regex=$( echo $1 | sed 's/"/\\"/g' )
-	if (( $# == 1 )); then
-		sed -i "\|$regex| { s|\*/|\*$alias/|; s|^|$front|; s|$|$back| }" "$file"
+	if (( $# == 2 )); then
+		sed -i -e "/$1/ i$upper" -e "/$1/ a$lower" "$2"
 	else
-		regex2=$( echo $2 | sed 's/"/\\"/g' )
-		sed -i "\|$regex|, \|$regex2| s|\*/|\*$alias/|" "$file"
-		sed -i -e "\|$regex| s|^|$front|" -e "\|$regex2| s|$|$back|" "$file"
+		sed -i -e "/$1/ i$upper" -e "/$2/ a$lower" "$3"
 	fi
 }
 
-insert() {
+add() {
 	if [[ $1 == -p ]]; then
-		upper='<?php //'$alias'0 ?>\n'
-		lower='n<?php //'$alias'1 ?>'
+		upper='<?php if(0){//'$alias' ?>\n\'
+		lower='\n<?php }//'$alias' ?>'
 		shift
 	else
-		upper='//'$alias'0\n'
-		lower='n//'$alias'1'
+		upper='if(0){//'$alias'\n\'
+		lower='\n}//'$alias
 	fi
 	
-	ia=i
-	[[ $1 == -a ]] && ia=a && shift
-	# escape \ and close eol with \ before passing to sed
-	string=$( cat <<EOF
-$( echo "$string" | sed 's/\\/\\\\/g; s/$/\\/' )
-EOF
-)
-	regex=$( echo $1 | sed 's/"/\\"/g' )
-	sed -i "\|$regex| $( echo $ia )$upper$string$lower" "$file"
+	if [[ $1 == -i ]]; then
+		shift
+		sed -i "/$1/ i$upper$2$lower" "$3"
+	else
+		sed -i "/$1/ a$upper$2$lower" "$3"
+	fi
 }
 
-commentP() {
+commentphp() {
 	comment -p "$@"
 }
-insertP() {
-	insert -p "$1"
+insert() {
+	add -i "$@"
+}
+insertphp() {
+	add -p -i "$@"
 }
 append() {
-	insert -a "$1"
+	add "$@"
 }
-appendP() {
-	insert -p -a "$1"
+appendphp() {
+	add -p "$@"
 }
 
 restorefile() {
-	for file in "$@"; do
-		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$\|^\/\*$alias\|$alias\*\/$//g
-		" -e "/${alias}0 ?>$/, /${alias}1 ?>$/ d
-		" -e "/${alias}0$/, /${alias}1$/ d
-		" -e "s|\*${alias}/|\*/|
-		" $file
-	done
+	sed -i -e "/${alias}0 ?>\s*$/, /${alias}1 ?>\s*$/ d
+	" -e "/${alias} ?>\s*$/ d
+	" -e "/${alias}0\s*$/, /${alias}1\s*$/ d
+	" -e "/${alias}\s*$/ d
+	" $1
 }
