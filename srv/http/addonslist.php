@@ -226,6 +226,8 @@ $addons = array(
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Fix sorting in file mode'
 					.'<br>Add all overlay controls guide'
+					.'<br>Improve sorting'
+					.'<br>Improve some icons'
 					.'<br>...'
 					.'<br>Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
