@@ -1,4 +1,7 @@
-<?php require_once( 'addonshead.php' );?>
+<?php
+ignore_user_abort( TRUE ); // for 'connection_status()' to work
+include 'addonshead.php';
+?>
 <!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
@@ -156,7 +159,6 @@ $skip = array( 'warning:', 'y/n', 'uninstall:' );
 
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
-ignore_user_abort( true ); // for 'connection_status()' to work
 
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
@@ -173,7 +175,7 @@ while ( !feof( $popencmd ) ) {                            // each line
 
 	echo $std;                                            // stdout to screen
 	
-	if ( connection_status() !== 0 ) {
+	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile.' &' );
 		exec( '/usr/bin/sudo /usr/bin/killall wget &' );
 		exec( '/usr/bin/sudo /usr/bin/killall pacman &' );
