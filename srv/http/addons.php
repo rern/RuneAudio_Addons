@@ -1,5 +1,5 @@
 <?php
-require_once( 'addonshead.php' );
+include 'addonshead.php';
 
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 $freemb = round( disk_free_space( '/' ) / 1000000 );
