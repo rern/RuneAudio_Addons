@@ -20,4 +20,4 @@
 	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
 </div>
 
-<?php require_once( 'addonslist.php' );?>
+<?php include 'addonslist.php';?>
