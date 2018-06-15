@@ -134,8 +134,8 @@ $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
-	require_once( 'assets/css/addons.css' );
-	require_once( 'assets/css/addonsinfo.css' );
+	include 'assets/css/addons.css';
+	include 'assets/css/addonsinfo.css';
 	echo '</style>';
 	$close = '/';
 } else {
@@ -176,13 +176,10 @@ while ( !feof( $popencmd ) ) {                            // each line
 	echo $std;                                            // stdout to screen
 	
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
-		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile.' &' );
-		exec( '/usr/bin/sudo /usr/bin/killall wget &' );
-		exec( '/usr/bin/sudo /usr/bin/killall pacman &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /srv/http/*.zip &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.'.sh &' );
-		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias.' &' );
+		$path = '/usr/bin/sudo /usr/bin/';
+		exec( $path.'killall '.$installfile.' wget pacman &' );
+		exec( $path.'rm /var/lib/pacman/db.lck /srv/http/*.zip /usr/local/bin/uninstall_'.$alias.'.sh &' );
+		exec( $path.'redis-cli hdel addons '.$alias.' &' );
 		pclose( $popencmd );
 		die();
 	}
