@@ -155,8 +155,8 @@ function verifypassword( msg, pwd, fn ) {
 		ok:          function() {
 			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
 				info( {
-					message      : 'Passwords not matched. Please try again.',
-					ok           : function() {
+					message : 'Passwords not matched. Please try again.',
+					ok      : function() {
 						verifypassword( msg, pwd, fn )
 					}
 				} );
