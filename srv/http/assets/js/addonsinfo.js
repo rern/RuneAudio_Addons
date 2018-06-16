@@ -29,64 +29,7 @@ $( 'body' ).prepend( '\
 	</div>\
 </div>\
 ' );
-
-function info( option ) {
-	// reset to default
-	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
-	$( '#infoTitle' ).html( 'Information' );
-	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
-	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
-	$( '.infoBox' ).width( 200 ).val('');
-	$( '.info, #infoCancel' ).hide();
-	$( '#infoOk' ).html( 'Ok' );
-	$( '#infoCancel' ).html( 'Cancel' );
-	$( 'body' ).unbind( 'keypress' );
-
-	// simple use as info('message')
-	if ( typeof option != 'object' ) {
-		$( '#infoOk' ).off( 'click' ).on( 'click', function () {
-			$( '#infoOverlay' ).hide();
-		});
-		$( '#infoMessage' ).html( option ).show();
-	} else {
-		// option use as info({x: 'x', y: 'y'})
-		var icon = option.icon;
-		var title = option.title;
-		var message = option.message;
-		var textlabel = option.textlabel;
-		var textvalue = option.textvalue;
-		var passwordlabel = option.passwordlabel;
-		var radiohtml = option.radiohtml;
-		var checkboxhtml = option.checkboxhtml;
-		var selectlabel = option.selectlabel;
-		var selecthtml = option.selecthtml;
-		var boxwidth = option.boxwidth;
-		var ok = option.ok;
-		var oklabel = option.oklabel;
-		var okcolor = option.okcolor;
-		var cancel = option.cancel;
-		var cancellabel = option.cancellabel;
-		var nox = option.nox;
 		
-		if ( icon ) $( '#infoIcon' ).html( icon );
-		if ( title ) $( '#infoTitle' ).html( title );
-		if ( message ) $( '#infoMessage' ).html( message ).show();
-		if ( textlabel ) {
-			$( '#infoTextLabel' ).html( textlabel +' ' );
-			$( '#infoTextbox' ).val( textvalue );
-			$( '#infoText' ).show();
-			var $infofocus = $( '#infoTextbox' );
-			if ( textvalue ) $( '#infoTextbox' ).select();
-		}
-		if ( passwordlabel ) {
-			$( '#infoPasswordLabel' ).html( passwordlabel +' ' );
-			$( '#infoPassword' ).show().focus();
-			var $infofocus = $( '#infoPasswordbox' );
-		}
-		if ( radiohtml ) setboxwidth( $( '#infoRadio' ), radiohtml );
-		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
-		if ( selecthtml ) {
-			$( '#infoSelectLabel' ).html( selectlabel +' ' );
 function info( O ) {
 	// reset to default
 	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
