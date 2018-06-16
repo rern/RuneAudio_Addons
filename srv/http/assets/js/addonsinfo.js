@@ -87,22 +87,61 @@ function info( option ) {
 		if ( checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), checkboxhtml );
 		if ( selecthtml ) {
 			$( '#infoSelectLabel' ).html( selectlabel +' ' );
-			$( '#infoSelectbox' ).html( selecthtml );
+function info( O ) {
+	// reset to default
+	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
+	$( '#infoTitle' ).html( 'Information' );
+	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
+	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
+	$( '.infoBox' ).width( 200 ).val('');
+	$( '.info, #infoCancel' ).hide();
+	$( '#infoOk' ).html( 'Ok' );
+	$( '#infoCancel' ).html( 'Cancel' );
+	$( 'body' ).unbind( 'keypress' );
+
+	// simple use as info('message')
+	if ( typeof O != 'object' ) {
+		$( '#infoOk' ).off( 'click' ).on( 'click', function () {
+			$( '#infoOverlay' ).hide();
+		});
+		$( '#infoMessage' ).html( O ).show();
+	} else {
+		// O use as info({x: 'x', y: 'y'})
+		if ( O.icon ) $( '#infoIcon' ).html( O.icon );
+		if ( O.title ) $( '#infoTitle' ).html( O.title );
+		if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
+		if ( O.textlabel ) {
+			$( '#infoTextLabel' ).html( O.textlabel +' ' );
+			$( '#infoTextbox' ).val( O.textvalue );
+			$( '#infoText' ).show();
+			var $infofocus = $( '#infoTextbox' );
+			if ( O.textvalue ) $( '#infoTextbox' ).select();
+		}
+		if ( O.passwordlabel ) {
+			$( '#infoPasswordLabel' ).html( O.passwordlabel +' ' );
+			$( '#infoPassword' ).show().focus();
+			var $infofocus = $( '#infoPasswordbox' );
+		}
+		if ( O.radiohtml ) setboxwidth( $( '#infoRadio' ), O.radiohtml );
+		if ( O.checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml );
+		if ( O.selecthtml ) {
+			$( '#infoSelectLabel' ).html( O.selectlabel +' ' );
+			$( '#infoSelectbox' ).html( O.selecthtml );
 			$( '#infoSelect' ).show();
 		}
-		if ( boxwidth ) $( '.infoBox' ).width( boxwidth );
+		if ( O.boxwidth ) $( '.infoBox' ).width( O.boxwidth );
 		
-		if ( oklabel ) $( '#infoOk' ).html( oklabel );
-		if ( okcolor ) $( '#infoOk' ).css( 'background', okcolor );
-		if ( cancel ) {
+		if ( O.oklabel ) $( '#infoOk' ).html( O.oklabel );
+		if ( O.okcolor ) $( '#infoOk' ).css( 'background', O.okcolor );
+		if ( O.cancel ) {
 			$( '#infoCancel' ).show();
 			$( '#infoCancel' ).off( 'click' ).on( 'click', function() {
 				$( '#infoOverlay' ).hide();
-				if ( typeof cancel === 'function' ) cancel();
+				if ( typeof O.cancel === 'function' ) O.cancel();
 			});
-			if ( cancellabel ) $( '#infoCancel' ).html( cancellabel );
+			if ( O.cancellabel ) $( '#infoCancel' ).html( O.cancellabel );
 		}
-		if ( nox ) $( '#infoX' ).hide();
+		if ( O.nox ) $( '#infoX' ).hide();
 	}
 	
 	$( '#infoOverlay' ).show();
@@ -110,8 +149,8 @@ function info( option ) {
 	if ( $infofocus ) $infofocus.focus();
 	
 	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
-		$('#infoOverlay').hide();
-		if (ok && typeof ok === 'function') ok();
+		$( '#infoOverlay' ).hide();
+		if ( O.ok && typeof O.ok === 'function' ) O.ok();
 	} );
 	$( 'body' ).keypress( function( e ) {
 		if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
