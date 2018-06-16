@@ -121,6 +121,9 @@ function info( option ) {
 		$( '#infoOverlay' ).hide();
 		$( '#infoTextbox, #infoPasswordbox' ).val( '' );
 	} );
+	$( '#infoOverlay' ).click( function( e ) {
+		if ( e.target === this ) $( '#infoX' ).click();
+	} );
 }
 window.addEventListener( 'orientationchange', function() {
 	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
