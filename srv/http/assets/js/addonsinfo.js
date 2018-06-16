@@ -3,7 +3,7 @@ $( 'body' ).prepend( '\
 	<div id="infoBox">\
 		<div id="infoTopBg">\
 			<div id="infoTop">\
-				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>\
+				<a id="infoIcon"></a><a id="infoTitle"></a>\
 			</div>\
 			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>\
 			<div style="clear: both"></div>\
@@ -29,11 +29,9 @@ $( 'body' ).prepend( '\
 	</div>\
 </div>\
 ' );
-		
+
 function info( O ) {
 	// reset to default
-	$( '#infoIcon' ).html( '<i class="fa fa-question-circle fa-2x">' );
-	$( '#infoTitle' ).html( 'Information' );
 	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
 	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
 	$( '.infoBox' ).width( 200 ).val('');
@@ -50,8 +48,8 @@ function info( O ) {
 		$( '#infoMessage' ).html( O ).show();
 	} else {
 		// O use as info({x: 'x', y: 'y'})
-		if ( O.icon ) $( '#infoIcon' ).html( O.icon );
-		if ( O.title ) $( '#infoTitle' ).html( O.title );
+		$( '#infoIcon' ).html( O.icon ? O.icon : '<i class="fa fa-question-circle fa-2x">' );
+		$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 		if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 		if ( O.textlabel ) {
 			$( '#infoTextLabel' ).html( O.textlabel +' ' );
@@ -119,7 +117,7 @@ function setboxwidth( $box, html ) {
 	var spanW = 0;
 	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
 	$box.html( html ).show();                   // show to get width
-	setTimeout( function() {                    // wait for radiohtml ready
+	setTimeout( function() {                    // wait for O.radiohtml ready
 		$box.find( 'label' ).each( function() { // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
@@ -132,9 +130,9 @@ function setboxwidth( $box, html ) {
 function verifypassword( msg, pwd, fn ) {
 	$( '#infoPasswordbox' ).val( '' );
 	info( {
-		message:     msg,
+		message      : msg,
 		passwordlabel: 'Retype password',
-		ok:          function() {
+		ok           : function() {
 			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
 				info( {
 					message : 'Passwords not matched. Please try again.',
