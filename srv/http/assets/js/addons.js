@@ -188,24 +188,11 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'password':
 			ojson = option[ oj ];
-			var msg = ojson.message;
-			info( {
-				  title        : title
-				, message      : msg
-				, passwordlabel: ojson.label
-				, ok:          function() {
-					var pwd = $( '#infoPasswordbox' ).val();
-					if ( pwd ) {
-						verifypassword( msg, pwd, function() {
-							opt += "'"+ pwd +"' ";
-							sendcommand();
-						} );
-					} else {
-						opt += '0 ';
-						sendcommand();
-					}
-				}
-			} );
+			var fn = function( pwd ) {
+				opt += "'"+ pwd +"' ";
+				sendcommand();
+			}
+			infopassword( title, ojson.message, ojson.label, fn, ojson.required );
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'radio':

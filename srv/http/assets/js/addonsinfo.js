@@ -9,21 +9,8 @@ $( 'body' ).prepend( '\
 			<div style="clear: both"></div>\
 		</div>\
 		<div id="infoContent">\
-			<p id="infoMessage" class="info"></p>\
-			<div id="infoText" class="info">\
-				<a id="infoTextLabel"></a><input type="text" class="infoBox" id="infoTextbox" spellcheck="false">\
-			</div>\
-			<div id="infoPassword" class="info">\
-				<a id="infoPasswordLabel"></a> <input type="password" class="infoBox" id="infoPasswordbox">\
-			</div>\
-			<div id="infoRadio" class="info"></div>\
-			<div id="infoCheckbox" class="info"></div>\
-			<div id="infoSelect" class="info">\
-				<a id="infoSelectLabel"></a><select class="infoBox" id="infoSelectbox"></select>\
-			</div>\
 		</div>\
 		<div id="infoButtons">\
-			<a id="infoCancel" class="btn btn-default"></a>\
 			<a id="infoOk" class="btn btn-primary"></a>\
 		</div>\
 	</div>\
@@ -32,57 +19,88 @@ $( 'body' ).prepend( '\
 
 function info( O ) {
 	// reset to default
-	$( '#infoTextLabel, #infoPasswordLabel, #infoSelectLabel' ).empty();
-	$( '#infoRadio, #infoCheckbox, #infoSelectbox' ).empty();
-	$( '.infoBox' ).width( 200 ).val('');
-	$( '.info, #infoCancel' ).hide();
-	$( '#infoOk' ).html( 'Ok' );
-	$( '#infoCancel' ).html( 'Cancel' );
+	$( '.infoBox' ).width( 200 ).empty();
+	$( '#infoContent' ).empty();
+	$( '#infoCancel, #infoBtn' ).remove();
 	$( 'body' ).unbind( 'keypress' );
 
 	// simple use as info('message')
-	if ( typeof O != 'object' ) {
+	if ( typeof O !== 'object' ) {
 		$( '#infoOk' ).off( 'click' ).on( 'click', function () {
 			$( '#infoOverlay' ).hide();
 		});
-		$( '#infoMessage' ).html( O ).show();
+		$( '#infoContent' ).html(
+			'<p id="infoMessage" class="info">'+ O +'</p>'
+		);
 	} else {
 		// O use as info({x: 'x', y: 'y'})
+		// title and message
+		if ( O.boxwidth ) $( '.infoBox' ).width( O.boxwidth );
 		$( '#infoIcon' ).html( O.icon ? O.icon : '<i class="fa fa-question-circle fa-2x">' );
 		$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
-		if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
-		if ( O.textlabel ) {
-			$( '#infoTextLabel' ).html( O.textlabel +' ' );
-			$( '#infoTextbox' ).val( O.textvalue );
-			$( '#infoText' ).show();
-			var $infofocus = $( '#infoTextbox' );
-			if ( O.textvalue ) $( '#infoTextbox' ).select();
+		if ( O.nox ) $( '#infoX' ).hide();
+		// content
+		var msg = O.message ? '<p id="infoMessage" class="info">'+ O.message +'</p>' : '';
+		if ( O.message ) {
+			$( '#infoContent' ).html( msg );
 		}
-		if ( O.passwordlabel ) {
-			$( '#infoPasswordLabel' ).html( O.passwordlabel +' ' );
-			$( '#infoPassword' ).show().focus();
-			var $infofocus = $( '#infoPasswordbox' );
-		}
-		if ( O.radiohtml ) setboxwidth( $( '#infoRadio' ), O.radiohtml );
-		if ( O.checkboxhtml ) setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml );
-		if ( O.selecthtml ) {
-			$( '#infoSelectLabel' ).html( O.selectlabel +' ' );
-			$( '#infoSelectbox' ).html( O.selecthtml );
-			$( '#infoSelect' ).show();
-		}
-		if ( O.boxwidth ) $( '.infoBox' ).width( O.boxwidth );
 		
-		if ( O.oklabel ) $( '#infoOk' ).html( O.oklabel );
+		if ( O.textlabel ) {
+			$( '#infoContent' ).html(
+				msg
+				+'<div id="infoText" class="info">'
+				+'<a id="infoTextLabel">'+ O.textlabel +'</a> <input type="text" class="infoBox" id="infoTextbox" spellcheck="false" value="'+ O.textvalue +'">'
+				+'</div>'
+			);
+			var $infofocus = $( '#infoTextbox' );
+		} else if ( O.passwordlabel ) {
+			$( '#infoContent' ).html(
+				msg
+				+'<div id="infoPassword" class="info">'
+					+'<a id="infoPasswordLabel">'+ O.passwordlabel +'</a> <input type="password" class="infoBox" id="infoPasswordbox">'
+				+'</div>'
+			);
+			var $infofocus = $( '#infoPasswordbox' );
+		} else if ( O.radiohtml ) {
+			$( '#infoContent' ).html(
+				msg
+				+'<div id="infoRadio" class="info">'+ O.radiohtml() +'</div>'
+			).promise().done( function() {
+				setboxwidth( $( '#infoRadio' ) );
+			} );
+		} else if ( O.checkboxhtml ) {
+			$( '#infoContent' ).html(
+				msg
+				+'<div id="infoCheckbox" class="info">'+ O.checkboxhtml() +'</div>'
+			).promise().done( function() {
+				setboxwidth( $( '#infoCheckbox' ) );
+			} );
+		} else if ( O.selecthtml ) {
+			$( '#infoContent' ).html(
+				msg
+				+'<div id="infoSelect" class="info">'+
+					+'<a id="infoSelectLabel">'+ O.selectlabel +'</a>'
+					+'<select class="infoBox" id="infoSelectbox">'+ O.selecthtml() +'</select>'
+				+'</div>'
+			);
+		}
+		// buttons
+		$( '#infoOk' ).html( O.oklabel ? O.oklabel : 'Ok' );
 		if ( O.okcolor ) $( '#infoOk' ).css( 'background', O.okcolor );
 		if ( O.cancel ) {
-			$( '#infoCancel' ).show();
-			$( '#infoCancel' ).off( 'click' ).on( 'click', function() {
+			$( '#infoButtons' ).prepend( '<a id="infoCancel" class="btn btn-default">Cancel</a>' );
+			$( '#infoCancel' ).on( 'click', function() {
 				$( '#infoOverlay' ).hide();
 				if ( typeof O.cancel === 'function' ) O.cancel();
 			});
 			if ( O.cancellabel ) $( '#infoCancel' ).html( O.cancellabel );
 		}
-		if ( O.nox ) $( '#infoX' ).hide();
+		if ( O.button ) {
+			$( '#infoButtons' ).append( '<a id="infoBtn" class="btn btn-default">'+ O.buttonlabel +'</a>' );
+			$( '#infoBtn' ).click( function() {
+				O.button();
+			} );
+		}
 	}
 	
 	$( '#infoOverlay' ).show();
@@ -109,26 +127,25 @@ window.addEventListener( 'orientationchange', function() {
 	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
 } );
 
-function setboxwidth( $box, html ) {
+function setboxwidth( $box ) {
 	var windowW = window.innerWidth;
 	var windowH = window.innerHeight;
 	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
 	var maxW = 0;
 	var spanW = 0;
-	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
-	$box.html( html ).show();                   // show to get width
-	setTimeout( function() {                    // wait for O.radiohtml ready
-		$box.find( 'label' ).each( function() { // get max width
+	$( '#infoBox' ).css('left', '-100%' );       // move out of screen
+	setTimeout( function() {                     // delay for new html ready
+		$box.find( 'label' ).each( function() {  // get max width
 				spanW = $( this ).width();
 				maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
 		$box.css('padding-left', pad +'px');    // set padding-left
 		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } );    // move back
-	}, 100);
+	}, 100 );
 }
+// for loop multiple verifications
 function verifypassword( msg, pwd, fn ) {
-	$( '#infoPasswordbox' ).val( '' );
 	info( {
 		message      : msg,
 		passwordlabel: 'Retype password',
@@ -142,6 +159,34 @@ function verifypassword( msg, pwd, fn ) {
 				} );
 			} else {
 				fn()
+			}
+		}
+	} );
+}
+// for loop multiple blank passwords
+function infopassword( title, msg, label, fn, required ) {
+	info( {
+		  title        : title
+		, message      : msg
+		, passwordlabel: label
+		, ok:          function() {
+			var pwd = $( '#infoPasswordbox' ).val();
+			$( '#infoPasswordbox' ).val( '' );
+
+			if ( pwd ) {
+				verifypassword( msg, pwd, fn );
+			} else {
+				if ( !required ) {
+					opt += '0 ';
+					sendcommand();							
+				} else {
+					info( {
+						message : 'Blank password not allowed.',
+						ok      : function() {
+							infopassword( title, msg, label, fn, required )
+						}
+					} );
+				}
 			}
 		}
 	} );
