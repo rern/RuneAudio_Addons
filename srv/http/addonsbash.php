@@ -202,7 +202,7 @@ pclose( $popencmd );
 		
 		if ( '<?=$alias;?>' === 'bash' ) return;
 		info( {
-			icon:    '<i class="fa fa-info-circle fa-2x">',
+			icon:    'info-circle',
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
