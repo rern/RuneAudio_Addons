@@ -110,7 +110,7 @@ function getoptions() {
 	oj = okey[ j ];
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'wait':
 			info( {
 				  icon         : 'info-circle'
@@ -121,7 +121,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'confirm':
 			info( {
 				  title        : title
@@ -132,7 +132,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'yesno':
 			info( {
 				  title        : title
@@ -149,7 +149,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'skip':
 			info( {
 				  title        : title
@@ -165,7 +165,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'text':
 			var ojson = option[ oj ];
 			info( {
@@ -185,7 +185,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'password':
 			ojson = option[ oj ];
 			var fn = function( pwd ) {
@@ -194,7 +194,7 @@ function getoptions() {
 			}
 			infopassword( title, ojson.message, ojson.label, fn, ojson.required );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'radio':
 			ojson = option[ oj ];
 			info( {
@@ -229,7 +229,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'checkbox':
 			ojson = option[ oj ];
 			info( {
@@ -253,7 +253,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 		case 'select':
 			ojson = option[ oj ];
 			info( {
@@ -289,7 +289,7 @@ function getoptions() {
 				}
 			} );
 		break;
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 	}
 }
 
@@ -307,13 +307,13 @@ function sendcommand() {
 function formtemp() {
 	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 	
-	$( 'body' ).append( '\
-		<form id="formtemp" action="addonsbash.php" method="post">\
-			<input type="hidden" name="alias" value="'+ alias +'">\
-			<input type="hidden" name="type" value="'+ type +'">\
-			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
-		</form>\
-	' );
+	$( 'body' ).append(
+		'<form id="formtemp" action="addonsbash.php" method="post">'
+			+'<input type="hidden" name="alias" value="'+ alias +'">'
+			+'<input type="hidden" name="type" value="'+ type +'">'
+			+'<input type="hidden" name="opt" value="'+ opt +'">'
+			+'<input type="hidden" name="prewidth" value="'+ prewidth +'">'
+		+'</form>'
+	);
 	$( '#formtemp' ).submit();
 }
