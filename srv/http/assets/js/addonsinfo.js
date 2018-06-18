@@ -105,10 +105,11 @@ function info( O ) {
 	}
 	
 	$( '#infoOverlay' ).show();
+	
 	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
 	if ( $infofocus ) $infofocus.focus();
 	
-	$( '#infoOk' ).off( 'click' ).on( 'click', function() {
+	$( '#infoOk' ).on( 'click', function() {
 		$( '#infoOverlay' ).hide();
 		if ( O.ok && typeof O.ok === 'function' ) O.ok();
 	} );
