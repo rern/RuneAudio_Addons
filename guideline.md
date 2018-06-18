@@ -270,8 +270,9 @@ insert/append with SEARCH itself in $string
 			'label'   => '<label text>'
 		),
 		'password'  => array(
-			'message' => '<message text>',
-			'label'   => '<label text>'
+			'message'  => '<message text>',
+			'label'    => '<label text>',
+			'required' => '1'
 		),
 		'radio'     => array(
 			'message' => '<message text>',
@@ -347,6 +348,7 @@ insert/append with SEARCH itself in $string
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`
 		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
+		- `required` = blank pasword not allowed
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select must be specified
