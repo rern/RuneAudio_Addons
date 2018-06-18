@@ -120,7 +120,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'confirm':
 			info( {
@@ -131,7 +131,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
 			info( {
@@ -148,7 +148,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'skip':
 			info( {
@@ -164,7 +164,7 @@ function getoptions() {
 					formtemp();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'text':
 			var ojson = option[ oj ];
@@ -184,7 +184,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'password':
 			ojson = option[ oj ];
@@ -193,7 +193,7 @@ function getoptions() {
 				sendcommand();
 			}
 			infopassword( title, ojson.message, ojson.label, fn, ojson.required );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'radio':
 			ojson = option[ oj ];
@@ -228,7 +228,7 @@ function getoptions() {
 					} );
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'checkbox':
 			ojson = option[ oj ];
@@ -252,7 +252,7 @@ function getoptions() {
 					sendcommand();
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 		case 'select':
 			ojson = option[ oj ];
@@ -288,7 +288,7 @@ function getoptions() {
 					} );
 				}
 			} );
-			break;
+		break;
 // -------------------------------------------------------------------------------------------------
 	}
 }
