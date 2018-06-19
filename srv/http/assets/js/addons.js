@@ -210,14 +210,14 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, radiohtml    : return function() {
+				, radiohtml    : ( function() {
 					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
 						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
-				}
+				} )()
 				, ok           : function() {
 					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
 					opt += "'"+ radiovalue +"' ";
@@ -244,7 +244,7 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, checkboxhtml : return function() {
+				, checkboxhtml : ( function() {
 					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
@@ -252,7 +252,7 @@ function getoptions() {
 						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
-				}
+				} )()
 				, ok:       function() {
 					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
 						opt += "'"+ $( this ).val() +"' ";
@@ -268,14 +268,15 @@ function getoptions() {
 				  title        : title
 				, message      : ojson.message
 				, selectlabel  : ojson.label
-				, selecthtml   : return function() {
+				, selecthtml   : ( function() {
 					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
 						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
 						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
-				}
+					return selecthtml;
+				} )()
 				, ok           : function() {
 					opt += "'"+ $( '#infoSelectbox').val() +"' ";
 					sendcommand();
