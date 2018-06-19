@@ -59,11 +59,11 @@ $addons = array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180528',
 	'rollback'     => 'a0bc314af303f245c7a1b9014933597515184deb',
-	'revision'     => 'Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
+	'revision'     => 'General improvements'
 					.'<br>...'
-					.'<br>Remove <white>Bash Commands</white> which may has a security issue'
+					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>...'
-					.'<br>Fix uninstall bug',
+					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
 	'thumbnail'    => 'https://github.com/rern/_assets/raw/master/RuneAudio_Addons/addonsthumb.png',
