@@ -188,11 +188,21 @@ function getoptions() {
 // ------------------------------------------------------------------------------------
 		case 'password':
 			ojson = option[ oj ];
-			var fn = function( pwd ) {
+/*			var fn = function( pwd ) {
 				opt += "'"+ pwd +"' ";
 				sendcommand();
 			}
-			infopassword( title, ojson.message, ojson.label, fn, ojson.required );
+			infopassword( title, ojson.message, ojson.label, fn, ojson.required );*/
+			info( {
+				  title         : title
+				, message       : ojson.message
+				, passwordlabel : ojson.label
+				, required      : ojson.required
+				, ok            : function() {
+					opt += "'"+ pwd +"' ";
+					sendcommand();
+				}
+			} );
 		break;
 // ------------------------------------------------------------------------------------
 		case 'radio':
@@ -200,14 +210,13 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, radiohtml    : function() {
+				, radiohtml    : return function() {
 					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
 						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
 						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
-					return radiohtml
 				}
 				, ok           : function() {
 					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
@@ -235,7 +244,7 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, checkboxhtml : function() {
+				, checkboxhtml : return function() {
 					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
@@ -243,7 +252,6 @@ function getoptions() {
 						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
-					return checkboxhtml
 				}
 				, ok:       function() {
 					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
@@ -260,14 +268,13 @@ function getoptions() {
 				  title        : title
 				, message      : ojson.message
 				, selectlabel  : ojson.label
-				, selecthtml   : function() {
+				, selecthtml   : return function() {
 					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
 						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
 						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
-					return selecthtml
 				}
 				, ok           : function() {
 					opt += "'"+ $( '#infoSelectbox').val() +"' ";

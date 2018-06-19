@@ -1,18 +1,37 @@
+// simple usage: info( 'message' );
+// normal usage: info( {
+// 		icon          : 'fa-NAME'      // fa-question-circle / NAME (FontAwesome name for top icon)
+// 		title         : 'TITLE'        // Information / TITLE (top title)
+// 		nox           : '1'            // 0 / 1 (no top 'X' close button)
+// 		boxwidth      : 'N'            // 400 / N (pixel)
+// 		message       : 'MESSAGE'      // (blank) / MESSAGE (message under title)
+// 		textlabel     : 'LABEL'        // (blank) / LABEL (text input label)
+// 		passwordlabel : 'LABEL'        // (blank) / LABEL (password input label)
+// 		radiohtml     : 'HTML'         // required HTML
+// 		checkboxhtml  : 'HTML'         // required HTML
+// 		selecthtml    : 'HTML'         // required HTML
+// 		oklabel       : 'LABEL'        // Ok / LABEL (ok button label)
+// 		okcolor       : 'COLOR'        // #0095d8 / COLOR (ok button color)
+// 		ok            : 'FUNCTION'     // (hide) / FUNCTION (ok click function)
+// 		cancellabel   : 'LABEL'        // Cancel / LABEL (cancel button label)
+// 		cancelcolor   : 'COLOR'        // #34495e / COLOR (cancel button color)
+// 		cancel        : 'FUNCTION'     // (hide) / FUNCTION (cancel click function)
+// 		buttonlabel   : 'LABEL'        // required LABEL (button button label)
+// 		buttoncolor   : 'COLOR'        // #34495e / COLOR (button button color)
+// 		button        : 'FUNCTION'     // required FUNCTION (button click function)
+// } );
+
 function info( O ) {
 	$( 'body' ).prepend( 
 		'<div id="infoOverlay">'
 			+'<div id="infoBox">'
 				+'<div id="infoTopBg">'
-					+'<div id="infoTop">'
-						+'<a id="infoIcon"></a><a id="infoTitle"></a>'
-					+'</div>'
+					+'<div id="infoTop"><a id="infoIcon"></a><a id="infoTitle"></a></div>'
 					+'<div id="infoX"><i class="fa fa-times fa-2x"></i></div>'
 					+'<div style="clear: both"></div>'
 				+'</div>'
 				+'<div id="infoContent"></div>'
-				+'<div id="infoButtons">'
-					+'<a id="infoOk" class="btn btn-primary"></a>'
-				+'</div>'
+				+'<div id="infoButtons"><a id="infoOk" class="btn btn-primary"></a></div>'
 			+'</div>'
 		+'</div>'
 	);
@@ -31,7 +50,6 @@ function info( O ) {
 		if ( e.target === this ) $( '#infoX' ).click();
 	} );
 	
-// simple use: info( 'message' );
 	if ( typeof O !== 'object' ) {
 		$( '#infoIcon' ).html( '<i class="fa fa-info-circle fa-2x">' );
 		$( '#infoContent' ).html( '<p id="infoMessage" class="info">'+ O +'</p>' );
@@ -39,7 +57,6 @@ function info( O ) {
 			$( '#infoOverlay' ).remove();
 		});
 	} else {
-// normal use: info( { x: 'x', y: 'y' } );
 // content
 		var message = O.message ? '<p id="infoMessage" class="info">'+ O.message +'</p>' : '';
 		if ( O.message ) {
@@ -65,14 +82,14 @@ function info( O ) {
 		} else if ( O.radiohtml ) {
 			$( '#infoContent' ).html(
 				message
-				+'<div id="infoRadio" class="info">'+ O.radiohtml() +'</div>'
+				+'<div id="infoRadio" class="info">'+ O.radiohtml +'</div>'
 			).promise().done( function() {
 				setboxwidth( $( '#infoRadio' ) );
 			} );
 		} else if ( O.checkboxhtml ) {
 			$( '#infoContent' ).html(
 				message
-				+'<div id="infoCheckbox" class="info">'+ O.checkboxhtml() +'</div>'
+				+'<div id="infoCheckbox" class="info">'+ O.checkboxhtml +'</div>'
 			).promise().done( function() {
 				setboxwidth( $( '#infoCheckbox' ) );
 			} );
@@ -81,7 +98,7 @@ function info( O ) {
 				message
 				+'<div id="infoSelect" class="info">'+
 					+'<a id="infoSelectLabel">'+ O.selectlabel +'</a>'
-					+'<select class="infoBox" id="infoSelectbox">'+ O.selecthtml() +'</select>'
+					+'<select class="infoBox" id="infoSelectbox">'+ O.selecthtml +'</select>'
 				+'</div>'
 			);
 		}
@@ -95,9 +112,11 @@ function info( O ) {
 				if ( typeof O.cancel === 'function' ) O.cancel();
 			});
 			if ( O.cancellabel ) $( '#infoCancel' ).html( O.cancellabel );
+			if ( O.cancelcolor ) $( '#infoCancel' ).css( 'background', O.cancelcolor );
 		}
 		if ( O.button ) {
 			$( '#infoButtons' ).append( '<a id="infoBtn" class="btn btn-default">'+ O.buttonlabel +'</a>' );
+			if ( O.buttoncolor ) $( '#infoBtn' ).css( 'background', O.buttoncolor );
 			$( '#infoBtn' ).click( function() {
 				O.button();
 			} );
@@ -111,7 +130,11 @@ function info( O ) {
 	
 	$( '#infoOk' ).on( 'click', function() {
 		$( '#infoOverlay' ).hide();
-		if ( O.ok && typeof O.ok === 'function' ) O.ok();
+		if ( O.passwordlabel ) {
+			infopassword( O.title, O.message, O.label, O.ok, O.required );
+		} else if ( O.ok && typeof O.ok === 'function' ) {
+			O.ok();
+		}
 	} );
 	$( 'body' ).keypress( function( e ) {
 		if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
@@ -130,20 +153,23 @@ function setboxwidth( $box ) {
 	$( '#infoBox' ).css('left', '-100%' );       // move out of screen
 	setTimeout( function() {                     // delay for new html ready
 		$box.find( 'label' ).each( function() {  // get max width
-				spanW = $( this ).width();
-				maxW = ( spanW > maxW ) ? spanW : maxW;
+			spanW = $( this ).width();
+			maxW = ( spanW > maxW ) ? spanW : maxW;
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
 		$box.css('padding-left', pad +'px');    // set padding-left
-		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } );    // move back
+		$( '#infoBox' ).css( {
+			  left : '50%'
+			, top  : ( windowH - $( '#infoBox' ).height() ) / 2 +'px'
+		} );    // move back
 	}, 100 );
 }
 // for loop multiple verifications
 function verifypassword( message, pwd, fn ) {
 	info( {
-		  message      : message
-		, passwordlabel: 'Retype password'
-		, ok           : function() {
+		  message       : message
+		, passwordlabel : 'Retype password'
+		, ok            : function() {
 			if ( $( '#infoPasswordbox' ).val() !== pwd ) {
 				info( {
 					  message : 'Passwords not matched. Please try again.'
@@ -159,29 +185,22 @@ function verifypassword( message, pwd, fn ) {
 }
 // for loop multiple blank passwords
 function infopassword( title, message, label, fn, required ) {
-	info( {
-		  title        : title
-		, message      : message
-		, passwordlabel: label
-		, ok:          function() {
-			var pwd = $( '#infoPasswordbox' ).val();
-			$( '#infoPasswordbox' ).val( '' );
+	var pwd = $( '#infoPasswordbox' ).val();
+	$( '#infoPasswordbox' ).val( '' );
 
-			if ( pwd ) {
-				verifypassword( message, pwd, fn );
-			} else {
-				if ( !required ) {
-					opt += '0 ';
-					sendcommand();
-				} else {
-					info( {
-						  message : 'Blank password not allowed.'
-						, ok      : function() {
-							infopassword( title, message, label, fn, required );
-						}
-					} );
+	if ( pwd ) {
+		verifypassword( message, pwd, fn );
+	} else {
+		if ( !required ) {
+			opt += '0 ';
+			sendcommand();
+		} else {
+			info( {
+				  message : 'Blank password not allowed.'
+				, ok      : function() {
+					infopassword( title, message, label, fn, required );
 				}
-			}
+			} );
 		}
-	} );
+	}
 }
