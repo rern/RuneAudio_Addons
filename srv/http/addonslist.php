@@ -2,17 +2,27 @@
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
-$redisaddons = $redis->hGetAll( 'addons' );
-
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 
-exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
-$fdisk = array_values( $fdisk );
-$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
-$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
-$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+$redisaddons = $redis->hGetAll( 'addons' );
 
+if ( $redisaddons[ 'expa' ] ) {
+	$expandable = '';
+} else {
+	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
+	$fdisk = array_values( $fdisk );
+	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
+	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
+	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
+	$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+	if ( $unpartmb < 10 ) {
+		$expandable = '';
+		$redis->hSet( 'addons', 'expa', 1 );
+	} else {
+		$expandable = ' (expandable: ';
+		$expandable.= $unpartmb < 1000 ? $unpartmb.' MB' : round( $unpartmb / 1000, 2 ).' GB';
+	}
+}
 $freemb = round( disk_free_space( '/' ) / 1000000 );
 $available = $freemb < 1000 ? $freemb.' MB' : round( $freemb / 1000, 2 ).' GB';
 if ( $unpartmb < 10 ) {
