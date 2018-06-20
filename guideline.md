@@ -248,7 +248,7 @@ insert/append with SEARCH itself in $string
 /**/	, 'buttonlabel'   => '<install button label>'
 /**/	, 'conflict'      => '<alias>'
 /**/	, 'hide'          => array(
-		, 'only03'    => 1
+		  'only03'    => 1
 		, 'installed' => '<alias>'
 		, 'exec'      => array(
 			  '<bash script1> && echo 1'
