@@ -21,20 +21,9 @@ array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
-	
 	// hide by conditions
-	$hide = $addon[ 'hide' ];
-	if ( $hide ) {
-		$hidden = 0;
-		foreach ( $hide as $key => $val ) {
-			if (
-				( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) ||
-				( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) ||
-				( $key == 'condition' && $val == 1 ) 
-			) $hidden = 1;
-		}
-		if ( $hidden === 1 ) continue;
-	}
+	if ( $addon[ 'hide' ] === 1 ) continue;
+	
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
 	
