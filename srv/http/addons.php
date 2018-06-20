@@ -57,7 +57,7 @@ foreach( $arrayalias as $alias ) {
 			$btninattr = '';
 		} else {
 			$btninclass = 'btnneedspace';
-			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.number_format( $available ).' MB<br>'
+			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.$available.'<br>'
 				.$expandable.'"';
 		}
 		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
