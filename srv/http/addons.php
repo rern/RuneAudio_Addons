@@ -52,7 +52,7 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $available ) {
+		if ( $needspace < $freemb ) {
 			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {
