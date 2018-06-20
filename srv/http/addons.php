@@ -1,26 +1,28 @@
 <?php
-include 'addonshead.php';
-
+require_once( 'addonshead.php' );
+$runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
+$available = round( disk_free_space( '/' ) / 1024 / 1024 );
+$expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)' : '';
+$redisaddons = $redis->hGetAll( 'addons' );
+// -------------------------------------------------------------------------------------------------
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<h1>ADDONS</h1>
-	<legend class="bl">RuneAudio '.$runeversion.' <white>●</white> available: '.$available.$expandable.'</legend>
+	<legend class="bl">RuneAudio '.$runeversion.' ● available: '.number_format( $available ).' MB'.$expandable.'</legend>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 ';
-// ------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
 $list = '';
 $blocks = '';
-
 // sort
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
-
 foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
 	
@@ -28,10 +30,6 @@ foreach( $arrayalias as $alias ) {
 	$hide = $addon[ 'hide' ];
 	if ( $hide ) {
 		$hidden = 0;
-		if ( !is_array( $hide ) ){
-			$hidden = $hide;
-			continue;
-		}
 		foreach ( $hide as $key => $val ) {
 			if ( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) $hidden = 1;
 			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) $hidden = 1;
@@ -54,7 +52,6 @@ foreach( $arrayalias as $alias ) {
 		}
 		if ( $hidden == 1 ) continue;
 	}
-
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
 	
@@ -72,7 +69,7 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $freemb ) {
+		if ( $needspace < $available ) {
 			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {
@@ -94,7 +91,6 @@ foreach( $arrayalias as $alias ) {
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
-	$rollback = isset( $addon[ 'rollback' ] ) ? $addon[ 'rollback' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
 	$revision = str_replace( '\\', '', $addon[ 'revision' ] ); // remove escaped [ \" ] to [ " ]
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
@@ -118,7 +114,7 @@ foreach( $arrayalias as $alias ) {
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'
 			</ul>
-			<form class="form-horizontal" alias="'.$alias.'" rollback="'.$rollback.'">
+			<form class="form-horizontal" alias="'.$alias.'">
 				<p class="detailtext">'.$description.$detail.'</p>'
 				.$btnin; if ( $version ) $blocks .= ' &nbsp; '.$btnun;
 	$blocks .= '
@@ -130,7 +126,7 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 		</div>';
 }
-// ------------------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
 		$list.'
