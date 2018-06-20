@@ -1,28 +1,39 @@
 <?php
 // system data ////////////////////////////////////////////////
-exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
-
-$fdisk = array_values( $fdisk );
-$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
-$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
-$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
-
-// data to be used in array ///////////////////////////////////
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
-// udac //
-$acards = $redis->hGetAll( 'acards' );
-$ilength = count( $acards );
-$i = 0;
-foreach ( $acards as $key => $val ) {
-	$default = ( $i == $ilength ) ? '' : '*';
-	$i++;	
-	$card = json_decode( $val, true );
-	$extlabel = $card[ 'extlabel' ];
-	$udaclist[ $default.$extlabel ] = $key.'@'.$extlabel;
+
+$unpartmb = $redis->get( 'unpartmb' );
+if ( !$unpartmb ) {
+	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
+	
+	$fdisk = array_values( $fdisk );
+	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
+	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
+	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
+	$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+	$redis->set( 'unpartmb', $unpartmb );
 }
-$notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9"' );
+
+$udaclist = $redis->hGetAll( 'udaclist' );
+if ( !$udaclist ) {
+	$acards = $redis->hGetAll( 'acards' );
+	$default = '*';
+	foreach ( $acards as $key => $val ) {
+		$card = json_decode( $val, true );
+		$extlabel = $card[ 'extlabel' ];
+		$udaclist[ $default.$extlabel ] = $key.'@'.$extlabel;
+		$redis->hSet( 'udaclist', $default.$extlabel, $key.'@'.$extlabel );
+		$default = '';
+	}
+}
+
+$notifysec = $redis->get( 'notifysec' );
+if ( !$notifysec ) {
+	$notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9"' );
+	$redis->set( 'notifysec', $notifysec );
+}
+
 ///////////////////////////////////////////////////////////////
 
 $addons = array(
