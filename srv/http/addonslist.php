@@ -27,32 +27,6 @@ $notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-
 
 $addons = array(
 
-'noti' => array(
-	'title'        => 'RuneUI Notification Duration',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Change RuneUI notification duration',
-	'thumbnail'    => '/assets/addons/thumbnoti.gif',
-	'buttonlabel'  => 'Change',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration/notify_duration.sh',
-	'option'       => array(
-		'radio'      => array(
-			'message'  => 'Set notification duration(second):',
-			'list'     => array(
-				'1'        => 1,
-				'2'        => 2,
-				'3'        => 3,
-				'4'        => 4,
-				'5'        => 5,
-				'6'        => 6,
-				'7'        => 7,
-				'8'        => 8,
-				'Custom'   => '?'
-			),
-			'checked'      => $notifysec
-		),
-	),
-),
 /*
 'redi' => array(
 	'title'        => 'Redis Upgrade',
@@ -334,6 +308,32 @@ $addons = array(
 	'thumbnail'    => '/assets/addons/thumblyri.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
+),
+'noti' => array(
+	'title'        => 'RuneUI Notification Duration',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Change RuneUI notification duration',
+	'thumbnail'    => '/assets/addons/thumbnoti.gif',
+	'buttonlabel'  => 'Change',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration/notify_duration.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set notification duration(second):',
+			'list'     => array(
+				'1'           => 1,
+				'2'           => 2,
+				'3'           => 3,
+				'4'           => 4,
+				'5'           => 5,
+				'6'           => 6,
+				'7'           => 7,
+				'8 (default)' => 8,
+				'Custom'   => '?'
+			),
+			'checked'      => $notifysec
+		),
+	),
 ),
 'pass' => array(
 	'title'        => 'RuneUI Password',
