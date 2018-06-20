@@ -156,6 +156,7 @@ $replace = array(
 	'/.\[0m/'                => '</a>',                   // reset color
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
+$skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
 
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
@@ -171,6 +172,9 @@ while ( !feof( $popencmd ) ) {                            // each line
 	);
 	foreach( $skip as $find ) {                           // skip line
 		if ( stripos( $std, $find ) !== false ) continue 2;
+	}
+	foreach( $skippacman as $findp ) {                    // skip pacman line after output once
+		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
 
 	echo $std;                                            // stdout to screen
