@@ -1,5 +1,4 @@
 <?php
-// system data ////////////////////////////////////////////////
 $redis = new Redis(); 
 $redis->pconnect( '127.0.0.1' );
 
@@ -77,7 +76,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180619',
+	'version'      => '20180620',
 	'revision'     => 'Use local thumbnails to improve loading speed'
 					.'<br>Standardize code editing template'
 					.'<br>...'
@@ -160,11 +159,13 @@ $addons = array(
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
-//	'thumbnail'    => '/assets/addons/thumbpart.png',
+	'thumbnail'    => '/assets/addons/thumbpart.png',
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'         => ( $expandable ? 0 : 1 ),
+	'hide'         => array(
+		'condition'    => $expandable ? 0 : 1
+	),
 	'option'       => array(
 		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),
