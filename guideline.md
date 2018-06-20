@@ -250,9 +250,7 @@ insert/append with SEARCH itself in $string
 /**/	'hide'          => array(
 		'only03'    => '1',
 		'installed' => '<alias>',
-		'condition' => array(
-			'<php condition>',
-			),
+		'condition' => '<php condition>',
 		),
 /**/	'option'        => array(
 		'wait'      => '<message text>',
