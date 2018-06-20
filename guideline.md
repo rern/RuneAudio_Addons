@@ -236,70 +236,68 @@ insert/append with SEARCH itself in $string
 **`<alias> => array(...)` template**   
 ```php
 <alias> => array(
-/**/	'version'       => '<yyyymmdd>',
-/**/	'revision'      => '<revision summary>',
-/**/	'needspace'     =>  <MB>,
-	'title'         => '<display name>',
-	'maintainer'    => '<maintainer>',
-	'description'   => '<description>',
-	'sourcecode'    => 'https://github.com/RuneAddons/<addon_title>',
-	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
-/**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
-/**/	'buttonlabel'   => '<install button label>',
-/**/	'conflict'      => '<alias>',
-/**/	'hide'          => array(
-		'only03'    => '1',
-		'installed' => '<alias>',
-		'exec'      => array(
-			'<bash script1> && echo 1',
-			'<bash script2> && echo 1',
-			),
-		'php'      => array(
-			'<php script1>',
-			'<php script2>',
-			),
-		),
-/**/	'option'        => array(
-		'wait'      => '<message text>',
-		'confirm'   => '<message text>',
-		'yesno'     => '<message text>',
-		'yesno1'    => '<message text 1>',
-		'yesno2'    => '<message text 2>',
-		'text'      => array(
-			'message' => '<message text>',
-			'label'   => '<label text>'
-		),
-		'password'  => array(
-			'message'  => '<message text>',
-			'label'    => '<label text>',
-			'required' => '1'
-		),
-		'radio'     => array(
-			'message' => '<message text>',
-			'list'    => array(
-				'*item1' => '<value1>',
-				'item2'  => '<value2>',
-				'custom' => '?'
-			),
-		),
-		'checkbox'  => array(
-			'message' => '<message text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'*item2' => '<value2>'
-			),
-		),
-		'select'    => array(
-			'message' => '<message text>',
-			'label'   => '<label text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'item2'  => '<value2>',
-				'custom' => '?'
-			),
-		),
-	),
-
+/**/	  'version'       => '<yyyymmdd>'
+/**/	, 'revision'      => '<revision summary>'
+/**/	, 'needspace'     =>  <MB>
+	, 'title'         => '<display name>'
+	, 'maintainer'    => '<maintainer>'
+	, 'description'   => '<description>'
+	, 'sourcecode'    => 'https://github.com/RuneAddons/<addon_title>'
+	, 'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'
+/**/	, 'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>'
+/**/	, 'buttonlabel'   => '<install button label>'
+/**/	, 'conflict'      => '<alias>'
+/**/	, 'hide'          => array(
+		, 'only03'    => 1
+		, 'installed' => '<alias>'
+		, 'exec'      => array(
+			  '<bash script1> && echo 1'
+			, '<bash script2> && echo 1'
+		  )
+		, 'php'      => array(
+			  '<php script1>'
+			, '<php script2>'
+		  )
+/**/	, 'option'        => array(
+		  'wait'      => '<message text>'
+		, 'confirm'   => '<message text>'
+		, 'yesno'     => '<message text>'
+		, 'yesno1'    => '<message text 1>'
+		, 'yesno2'    => '<message text 2>'
+		, 'text'      => array(
+			  'message' => '<message text>'
+			, 'label'   => '<label text>'
+		  )
+		, 'password'  => array(
+			  'message'  => '<message text>'
+			, 'label'    => '<label text>'
+			, 'required' => 1
+		  )
+		, 'radio'     => array(
+			  'message' => '<message text>'
+			, 'list'    => array(
+				  '*item1' => '<value1>'
+				, 'item2'  => '<value2>'
+				, 'custom' => '?'
+			  )
+		  )
+		, 'checkbox'  => array(
+			  'message' => '<message text>'
+			, 'list'    => array(
+				  'item1'  => '<value1>'
+				, '*item2' => '<value2>'
+			  )
+		  )
+		, 'select'    => array(
+			  'message' => '<message text>'
+			, 'label'   => '<label text>'
+			, 'list'    => array(
+				  'item1'  => '<value1>'
+				, 'item2'  => '<value2>'
+				, 'custom' => '?'
+			  )
+		  )
+	  )
 ),
 ```
 `/**/` - optional  
