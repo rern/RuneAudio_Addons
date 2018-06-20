@@ -1,18 +1,6 @@
 <?php
 include 'addonshead.php';
 
-$runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
-$freemb = round( disk_free_space( '/' ) / 1000000 );
-$available = $freemb < 1000 ? $freemb.' MB' : round( $freemb / 1000, 2 ).' GB';
-if ( $unpartmb < 10 ) {
-	$expandable = '';
-} else {
-	$expandable = ' (expandable: ';
-	$expandable.= $unpartmb < 1000 ? $unpartmb.' MB' : round( $unpartmb / 1000, 2 ).' GB';
-}
-
-$redisaddons = $redis->hGetAll( 'addons' );
-// -------------------------------------------------------------------------------------------------
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
@@ -22,7 +10,7 @@ echo '
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 ';
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 $list = '';
 $blocks = '';
 
@@ -40,6 +28,10 @@ foreach( $arrayalias as $alias ) {
 	$hide = $addon[ 'hide' ];
 	if ( $hide ) {
 		$hidden = 0;
+		if ( !is_array( $hide ) ){
+			$hidden = $hide;
+			continue;
+		}
 		foreach ( $hide as $key => $val ) {
 			if ( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) $hidden = 1;
 			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) $hidden = 1;
@@ -138,7 +130,7 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 		</div>';
 }
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
 		$list.'
