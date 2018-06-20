@@ -89,7 +89,7 @@ $addons = array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180620',
 	'revision'     => 'Use local thumbnails to improve loading speed'
-					.'<br>Standardize code editing template'
+					.'<br>Normalize code editing template'
 					.'<br>...'
 					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>...'
