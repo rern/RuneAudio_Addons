@@ -1,3 +1,21 @@
+.infobtn {
+	display: inline-block;
+    border: none;
+    border-radius: 6px;
+    white-space: nowrap;
+    padding: 7px 15px;
+    font-size: 14px;
+    text-align: center;
+    color: #e0e7ee;
+    cursor: pointer;
+    user-select: none;
+}
+.infobtn-primary {
+    background: #0095d8;
+}
+.infobtn-default {
+    background: #34495e;
+}
 #badge {
 	position: absolute;
 	height: 2rem;
@@ -12,9 +30,6 @@
 	color: #e0e7ee;
 	background: red;
 }
-.dropdown-menu {
-	cursor: pointer;
-}
 #infoOverlay {
 	display: none;
 	top: 0;
@@ -25,6 +40,12 @@
 	background: rgba(250, 250, 250, 0.85);
 	z-index: 100000;
 	text-align: center;
+}
+#infoOverlay a {
+	text-decoration: none;
+}
+#infoOverlay a:hover {
+    color: #e0e7ee;
 }
 #infoBox {
 	position: relative;
@@ -44,13 +65,14 @@
 }
 #infoTop {
 	float: left;
+	width: calc( 100% - 40px );
 	color: #e0e7ee;
 	line-height: 40px;
 	padding: 0 20px;
 	text-align: left;
 }
 #infoTop a, white {
-    color: #e0e7ee;
+	color: #e0e7ee;
 }
 #infoTop i {
 	margin-top: 5px;
@@ -70,22 +92,22 @@
 	cursor: pointer;
 }
 .info a {
-    color: #7795b4;
-    margin-right: 5px;
+	color: #7795b4;
+	margin-right: 5px;
 }
 #infoTitle {
 	font-size: 18px;
 	vertical-align: text-bottom;
 	display: inline-block;
-	width: width: calc( 100% - 100px );
-	margin-left: 10px;
+	width: calc( 100% - 40px );
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
 #infoContent {
+	
 	padding: 25px 10px 10px 10px;
-    font-size: 16px;
+	font-size: 16px;
 }
 #infoMessage {
 	word-wrap: break-word;
@@ -115,7 +137,7 @@
 	min-width: 70px;
 	text-transform: none;
 }
-input {
+#infoOverlay input {
 	height: 41px;
 	padding: 0 10px;
 	border-radius: 6px;
@@ -123,17 +145,17 @@ input {
 	color: #e0e7ee;
 	background-color: #10161c;
 }
-input[type=radio],
-input[type=checkbox] {
+#infoOverlay input[type=radio],
+#infoOverlay input[type=checkbox] {
 	height: 15px;
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
-white,
-code {
+#infoOverlay white,
+#infoOverlay code {
 	color: #e0e7ee;
 }
-code {
+#infoOverlay code {
 	border-radius: 4px;
 }
 
@@ -145,7 +167,7 @@ code {
 }
 @media(max-width: 400px) {
 	#infoBox {
-		width: 100%;
-		margin-left: -50%;
+		width: 98%;
+		margin-left: -49%;
 	}
 }
