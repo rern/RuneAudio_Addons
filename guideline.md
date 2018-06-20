@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180217_
+_revision 20180620_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -68,33 +68,12 @@ _revision 20180217_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
+	- modify and restore `*.js *.php *.html *.css` with [provided edit commands](#provided-edit-commands)
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
 	- use non-invasive modifications so other addons can survive after install / uninstall
 	- use modify over replace files unless necessary and always backup
-	- modify by lines only so `restorefile /path/file` can restore correctly
-		```
-		PHP + HTML
-		---------------------------
-		<?php //alias0 ?>
-		++ new lines
-		<?php //alias1 ?>
-
-		<?php if(0){//alias ?>
-		-- comment out lines
-		<?php }//alias ?>
-
-		PHP, JS
-		---------------------------
-		/*//alias0
-		++ new lines
-		*///alias1
-
-		if(0){//alias
-		-- comment out lines
-		}//alias
-		```
 
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
@@ -120,6 +99,7 @@ alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 ### template - function: start message, installed check
 installstart $@
@@ -145,8 +125,13 @@ echo -e "$bar Modify files ..."
 file=/<path>/<file>
 echo $file
 if ! grep -q 'check string' $file; then
-	echo 'content' >> $file
-	sed -i 's/existing/new/' $file
+	comment 'search'
+	string=$( cat <<'EOF'
+place code inside this heredoc literally
+last line
+EOF
+)
+	insert 'search'
 fi
 
 echo 'content' >> /<path>/<newfile>
@@ -169,6 +154,7 @@ alias=<alias>
 
 ### template - import default variables, functions
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 ### template - function: start message, installed check
 uninstallstart $@
@@ -190,13 +176,58 @@ rm -v /<path>/<file>
 echo -e "$bar Restore files ..."
 file=/<path>/<file>
 echo $file
-sed 's/new/existing/' $file
 mv -v /<path>/<file>{.backup,}
+
+file=/<path>/<file>
+echo $file
+restorefile $file
 
 # end custom script --------------------------------------------------------------------------------<<<
 
 ### template - function: remove version from database, finish message
 uninstallfinish $@
+```
+
+#### Provided edit commands
+```
+pre-defined variables:
+----------------------------------------------------------------------------------------
+alias=name                      already in install.sh / uninstall_alias.sh
+file=/path/file                 before all commands of each file
+string=( cat <<'EOF'            before each insert and append
+single line or 1st line
+place code inside this heredoc literally
+last line
+EOF
+)
+
+usage:
+----------------------------------------------------------------------------------------
+comment SEARCH [SEARCH2]        /*alias line(s) alias*/
+commentP SEARCH [SEARCH2]       <?php /*alias line(s) alias*/ ?>
+commentS SEARCH [SEARCH2]       #alias (each line)
+insert SEARCH                   //alias0
+								string
+								//alias1
+insertP SEARCH                  <?php //alias0 ?>
+								string
+								<?php //alias1 ?>
+insertS SEARCH                  #0alias
+                                string
+                                #1alias
+append SEARCH                   same as insert
+appendP SEARCH                  same as insertP
+appendS SEARCH                  same as insertS
+restorefile FILE [FILE2 ...]    remove all insert / append / comment
+	
+options:
+----------------------------------------------------------------------------------------
+SEARCH pattern must be quoted and escaped
+	  "  $  `  \  inside "..."  use  \"  \$  \`  \\
+	  '  inside '...'           use  "'"
+insert/append with SEARCH itself in $string
+	 must be after comment to the same SEARCH (avoid commented after insert)
+	 must be combined with insert/append to the same SEARCH (avoid double insert)
 ```
   
 
@@ -219,14 +250,7 @@ uninstallfinish $@
 /**/	'hide'          => array(
 		'only03'    => '1',
 		'installed' => '<alias>',
-		'exec'      => array(
-			'<bash script1> && echo 1',
-			'<bash script2> && echo 1',
-			),
-		'php'      => array(
-			'<php script1>',
-			'<php script2>',
-			),
+		'condition' => '<php condition>',
 		),
 /**/	'option'        => array(
 		'wait'      => '<message text>',
@@ -239,8 +263,9 @@ uninstallfinish $@
 			'label'   => '<label text>'
 		),
 		'password'  => array(
-			'message' => '<message text>',
-			'label'   => '<label text>'
+			'message'  => '<message text>',
+			'label'    => '<label text>',
+			'required' => '1'
 		),
 		'radio'     => array(
 			'message' => '<message text>',
@@ -249,6 +274,7 @@ uninstallfinish $@
 				'item2'  => '<value2>',
 				'custom' => '?'
 			),
+			'ckecked' => '<item1>'
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
@@ -256,6 +282,7 @@ uninstallfinish $@
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
+			'ckecked' => '<item1>'
 		),
 		'select'    => array(
 			'message' => '<message text>',
@@ -265,6 +292,7 @@ uninstallfinish $@
 				'item2'  => '<value2>',
 				'custom' => '?'
 			),
+			'ckecked' => '<item1>'
 		),
 	),
 
@@ -273,6 +301,8 @@ uninstallfinish $@
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
 
+**`'alias'`**  
+- should be 4 charaters
 **`'version'`** - buttons enable/disable 
 - `'version'` changed > show `Update` button
 - non-install addons:
@@ -308,20 +338,26 @@ uninstallfinish $@
 		- `Ok`  = continue (no value) | `Cancel` = cancel and back
 	- `'yesno'` = `No` `Yes`
 		- `Yes` = 1 | `No` = 0
+	- `'skip'` = `No` `Yes`
+		- `Yes` = no more options | `No` = continue options
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`
 		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
+		- `required` = blank pasword not allowed
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select must be specified
+		- `ckecked` = alternative for pre-select
 		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
 		- `*` pre-select optional
+		- `ckecked` = alternative for pre-select
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
 		- `*` pre-select optional
+		- `ckecked` = alternative for pre-select
 		- `'?'` custom input marker
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - blank value get passed as 1 bash argument and must be process as `''`

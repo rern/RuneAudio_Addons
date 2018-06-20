@@ -1,4 +1,7 @@
-<?php require_once( 'addonshead.php' );?>
+<?php
+ignore_user_abort( TRUE ); // for 'connection_status()' to work
+include 'addonshead.php';
+?>
 <!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
@@ -131,8 +134,8 @@ $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
-	require_once( 'assets/css/addons.css' );
-	require_once( 'assets/css/addonsinfo.css' );
+	include 'assets/css/addons.css';
+	include 'assets/css/addonsinfo.css';
 	echo '</style>';
 	$close = '/';
 } else {
@@ -153,10 +156,10 @@ $replace = array(
 	'/.\[0m/'                => '</a>',                   // reset color
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
+$skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
 
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
-ignore_user_abort( true ); // for 'connection_status()' to work
 
 $popencmd = popen( "$command 2>&1", 'r' );                // start bash
 while ( !feof( $popencmd ) ) {                            // each line
@@ -170,17 +173,17 @@ while ( !feof( $popencmd ) ) {                            // each line
 	foreach( $skip as $find ) {                           // skip line
 		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
+	foreach( $skippacman as $findp ) {                    // skip pacman line after output once
+		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
+	}
 
 	echo $std;                                            // stdout to screen
 	
-	if ( connection_status() !== 0 ) {
-		exec( '/usr/bin/sudo /usr/bin/killall '.$installfile.' &' );
-		exec( '/usr/bin/sudo /usr/bin/killall wget &' );
-		exec( '/usr/bin/sudo /usr/bin/killall pacman &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /var/lib/pacman/db.lck &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /srv/http/*.zip &' );
-		exec( '/usr/bin/sudo /usr/bin/rm /usr/local/bin/uninstall_'.$alias.'.sh &' );
-		exec( '/usr/bin/sudo /usr/bin/redis-cli hdel addons '.$alias.' &' );
+	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
+		$path = '/usr/bin/sudo /usr/bin/';
+		exec( $path.'killall '.$installfile.' wget pacman &' );
+		exec( $path.'rm /var/lib/pacman/db.lck /srv/http/*.zip /usr/local/bin/uninstall_'.$alias.'.sh &' );
+		exec( $path.'redis-cli hdel addons '.$alias.' &' );
 		pclose( $popencmd );
 		die();
 	}
@@ -203,7 +206,7 @@ pclose( $popencmd );
 		
 		if ( '<?=$alias;?>' === 'bash' ) return;
 		info( {
-			icon:    '<i class="fa fa-info-circle fa-2x">',
+			icon:    'info-circle',
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );

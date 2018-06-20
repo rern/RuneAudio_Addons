@@ -66,7 +66,7 @@ $( '.btnbranch' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	if ( $( this ).hasClass( 'btnneedspace' ) ) {
 		info( {
-			  icon   : '<i class="fa fa-info-circle fa-2x"></i>'
+			  icon   : 'fa-info-circle'
 			, title  : 'Warning'
 			, message: 'Disk space not enough.<br>'
 					+ $( this ).attr( 'diskspace' )
@@ -113,7 +113,7 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'wait':
 			info( {
-				  icon         : '<i class="fa fa-info-circle fa-2x">'
+				  icon         : 'fa-info-circle'
 				, title        : title
 				, message      : option[ oj ]
 				, ok           : function() {
@@ -188,21 +188,27 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'password':
 			ojson = option[ oj ];
-			var msg = ojson.message;
 			info( {
 				  title        : title
-				, message      : msg
+				, message      : ojson.message
 				, passwordlabel: ojson.label
 				, ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
-						verifypassword( msg, pwd, function() {
+						verifypassword( title, pwd, function() {
 							opt += "'"+ pwd +"' ";
 							sendcommand();
 						} );
 					} else {
-						opt += '0 ';
-						sendcommand();
+						if ( !ojson.required ) {
+							opt += '0 ';
+							sendcommand();
+						} else {
+							blankpassword( title, ojson.message, ojson.label, function() {
+								opt += "'"+ pwd +"' ";
+								sendcommand();
+							} );
+						}
 					}
 				}
 			} );
@@ -217,7 +223,7 @@ function getoptions() {
 					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
 						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
@@ -252,7 +258,7 @@ function getoptions() {
 					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
 						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
@@ -277,7 +283,7 @@ function getoptions() {
 					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
-						var selected = ( key[ 0 ] === '*' ) ? ' selected' : '';
+						var selected = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' selected' : '';
 						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
 					return selecthtml

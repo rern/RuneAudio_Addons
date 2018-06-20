@@ -1,10 +1,6 @@
 <?php
-require_once( 'addonshead.php' );
-$runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
-$available = round( disk_free_space( '/' ) / 1024 / 1024 );
-$expandable = $unpartmb > 10 ? ' (expandable: '.number_format( $unpartmb ).' MB)' : '';
-$redisaddons = $redis->hGetAll( 'addons' );
-// -------------------------------------------------------------------------------------------------
+include 'addonshead.php';
+
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
@@ -14,7 +10,7 @@ echo '
 			issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 ';
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 $list = '';
 $blocks = '';
 // sort
@@ -31,26 +27,13 @@ foreach( $arrayalias as $alias ) {
 	if ( $hide ) {
 		$hidden = 0;
 		foreach ( $hide as $key => $val ) {
-			if ( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) $hidden = 1;
-			if ( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) $hidden = 1;
-			if ( $key == 'exec' ) {
-				$hiddenexec = 0;
-				foreach ( $val as $cmd ) {
-					$command = str_replace( '\\', '', $cmd );
-					$hiddenexec = ( $hiddenexec || exec( $command ) ) ? 1 : 0;
-				}
-				$hidden = ( $hiddenexec || $hidden );
-			}
-			if ( $key == 'php' ) {
-				$hiddenphp = 0;
-				foreach ( $val as $cmd ) {
-					$command = str_replace( '\\', '', $cmd );
-					$hiddenphp = ( $hiddenphp || $command ) ? 1 : 0;
-				}
-				$hidden = ( $hiddenphp || $hidden );
-			}
+			if (
+				( $key == 'only03' && $redis->get( 'release' ) == '0.4b' ) ||
+				( $key == 'installed' && $redis->hGet( 'addons', $val ) != '' ) ||
+				( $key == 'condition' && $val == 1 ) 
+			) $hidden = 1;
 		}
-		if ( $hidden == 1 ) continue;
+		if ( $hidden === 1 ) continue;
 	}
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
 	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
@@ -126,7 +109,7 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 		</div>';
 }
-// -------------------------------------------------------------------------------------------------
+// ------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
 		$list.'
