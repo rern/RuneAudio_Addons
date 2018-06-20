@@ -124,9 +124,7 @@ $addons = array(
 	'thumbnail'    => '/assets/addons/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
-	'hide'         => array(
-		'only03'     => '1',
-	),
+	'hide'         => $runeversion === '0.3' ? 0 : 1,
 ),
 'chro' => array(
 	'title'        => 'Chromium Browser',
@@ -174,9 +172,7 @@ $addons = array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'         => array(
-		'condition'    => $expandable ? 0 : 1
-	),
+	'hide'         => $expandable ? 0 : 1,
 	'option'       => array(
 		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),
@@ -372,9 +368,7 @@ $addons = array(
 //	'thumbnail'    => '/assets/addons/thumbpass.png',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
-	'hide'         => array(
-		'only03'     => '1',
-	),
+	'hide'         => $runeversion === '0.3' ? 0 : 1,
 ),
 'paus' => array(
 	'title'        => 'RuneUI Pause button',
@@ -385,9 +379,7 @@ $addons = array(
 //	'thumbnail'    => '/assets/addons/thumbpaus.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-	'hide'         => array(
-		'installed'  => 'enha',
-	),
+	'hide'         => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',

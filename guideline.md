@@ -247,11 +247,7 @@ insert/append with SEARCH itself in $string
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
 /**/	'conflict'      => '<alias>',
-/**/	'hide'          => array(
-		'only03'    => '1',
-		'installed' => '<alias>',
-		'condition' => '<php condition>',
-		),
+/**/	'hide'          => '<php condition>',
 /**/	'option'        => array(
 		'wait'      => '<message text>',
 		'confirm'   => '<message text>',
