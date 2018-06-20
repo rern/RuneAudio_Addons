@@ -250,13 +250,8 @@ insert/append with SEARCH itself in $string
 /**/	'hide'          => array(
 		'only03'    => '1',
 		'installed' => '<alias>',
-		'exec'      => array(
-			'<bash script1> && echo 1',
-			'<bash script2> && echo 1',
-			),
-		'php'      => array(
-			'<php script1>',
-			'<php script2>',
+		'condition' => array(
+			'<php condition>',
 			),
 		),
 /**/	'option'        => array(
