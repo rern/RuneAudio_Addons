@@ -23,7 +23,7 @@ rm -rv /srv/http/assets/addons
 if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	sed -i '/hammer.min.js\|propagating.js/ d' /srv/http/app/templates/footer.php
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
-	rm -v /srv/http/enhanceredis.php
+	rm -v /srv/http/enhance.php
 fi
 
 crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
