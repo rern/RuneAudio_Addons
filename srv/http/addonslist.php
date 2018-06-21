@@ -69,7 +69,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180620',
+	'version'      => '20180622',
 	'revision'     => 'Use local thumbnails to improve loading speed'
 					.'<br>Normalize code editing template'
 					.'<br>...'
