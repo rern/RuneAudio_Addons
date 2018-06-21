@@ -15,9 +15,10 @@ sed -i -e '/addonsmenu.js\|addonsinfo.js/ d
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -rv /srv/http/{addons*,restoreui.php}
-rm -rv /srv/http/assets/css/addons*
-rm -rv /srv/http/assets/js/addons*
+rm -v /srv/http/{addons*,restoreui.php}
+rm -v /srv/http/assets/css/addons*
+rm -v /srv/http/assets/js/addons*
+rm -rv /srv/http/assets/addons
 
 if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	sed -i '/hammer.min.js\|propagating.js/ d' /srv/http/app/templates/footer.php
