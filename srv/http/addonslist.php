@@ -156,9 +156,9 @@ $addons = array(
 'dual' => array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)'
-					.'<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)'
-					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
+	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.4b + Addons Menu ready (ArchLinux MPD)'
+					.'<br>Best of Video Distro - <white>OSMC</white> 2018-048-1 (Raspbian Kodi)'
+					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.8',
 	'thumbnail'    => '/assets/addons/thumbdual.gif',
 	'buttonlabel'  => 'Link',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
