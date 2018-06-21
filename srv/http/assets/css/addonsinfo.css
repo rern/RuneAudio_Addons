@@ -99,7 +99,6 @@
 	font-size: 18px;
 	vertical-align: text-bottom;
 	display: inline-block;
-	width: calc( 100% - 40px );
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
