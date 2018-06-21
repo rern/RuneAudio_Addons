@@ -87,7 +87,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons Menu',
-	'version'      => '20180621',
+	'version'      => '20180620',
 	'revision'     => 'Use local thumbnails to improve loading speed'
 					.'<br>Normalize code editing template'
 					.'<br>...'
@@ -156,9 +156,9 @@ $addons = array(
 'dual' => array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.4b + Addons Menu ready (ArchLinux MPD)'
-					.'<br>Best of Video Distro - <white>OSMC</white> 2018-048-1 (Raspbian Kodi)'
-					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.8',
+	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)'
+					.'<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)'
+					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
 	'thumbnail'    => '/assets/addons/thumbdual.gif',
 	'buttonlabel'  => 'Link',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
@@ -365,7 +365,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
-//	'thumbnail'    => '/assets/addons/thumbpass.png',
+	'thumbnail'    => '/assets/addons/thumbpass.png',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
 	'hide'         => $runeversion === '0.3' ? 0 : 1,
@@ -376,7 +376,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
-//	'thumbnail'    => '/assets/addons/thumbpaus.png',
+	'thumbnail'    => '/assets/addons/thumbpaus.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'         => $redisaddons[ 'enha' ] ? 1 : 0,
