@@ -6,18 +6,12 @@ $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 
 $redisaddons = $redis->hGetAll( 'addons' );
 
-if ( $redisaddons[ 'expa' ] ) {
+if ( !$redisaddons[ 'expa' ] ) {
 	$mbunpart = 0;
-	$expandable = '';
 } else {
 	$unpart = exec( 'sfdisk -F /dev/mmcblk0 | grep Unpartition | cut -d" " -f6' );
 	$mbunpart = round( $sectorbyte / 1000000 );
-	if ( $mbunpart < 10 ) {
-		$expandable = '';
-		$redis->hSet( 'addons', 'expa', 1 );
-	} else {
-		$expandable = '  ● <white>'.$mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB'.'</white> expandable';
-	}
+	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
 }
 
 $udaclist = $redis->hGetAll( 'udaclist' );
@@ -160,7 +154,7 @@ $addons = array(
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'         => $expandable ? 0 : 1,
+	'hide'         => $redisaddons[ 'expa' ] ? 1 : 0,
 	'option'       => array(
 		'wait'       => 'Unmount and remove all <white>USB drives</white> before proceeding.'
 	),
