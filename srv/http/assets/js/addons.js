@@ -66,7 +66,7 @@ $( '.btnbranch' ).each( function() {
 $( '.boxed-group .btn' ).click( function () {
 	if ( $( this ).hasClass( 'btnneedspace' ) ) {
 		info( {
-			  icon   : 'fa-info-circle'
+			  icon   : 'info-circle'
 			, title  : 'Warning'
 			, message: 'Disk space not enough.<br>'
 					+ $( this ).attr( 'diskspace' )
@@ -113,7 +113,7 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'wait':
 			info( {
-				  icon         : 'fa-info-circle'
+				  icon         : 'info-circle'
 				, title        : title
 				, message      : option[ oj ]
 				, ok           : function() {

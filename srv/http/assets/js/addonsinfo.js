@@ -1,7 +1,7 @@
 /*
 simple usage: info( 'message' );
 normal usage: info( {
-	icon          : 'NAME'         // fa-question-circle / NAME (FontAwesome name for top icon)
+	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE (top title)
 	nox           : 1..            // 0 / 1 (no top 'X' close button)
 	boxwidth      : N              // 400 / N (pixel)
