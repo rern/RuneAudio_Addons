@@ -28,8 +28,8 @@
 #     appendS SEARCH                  # same as insertS
 #     restorefile FILE [FILE2 ...]    # remove all insert / append / comment
 # options:
-#     SEARCH pattern must be quoted and escaped
-#          "  $  `  \  inside "..."  use  \"  \$  \`  \\  or use  .  as wildcard
+#     SEARCH pattern must be quoted, literal characters must be escaped
+#          ^  $  \  `  inside "..."  use  \^  \$  \\  \`  or use  .  as wildcard
 #          '  inside '...'           use  "'"             or use  .  as wildcard
 #     insert/append with SEARCH itself in $string
 #          must be after comment to the same SEARCH (avoid commented after insert)
@@ -48,8 +48,8 @@ comment() {
 		front='/*'$alias
 		back=$alias'*/'
 	fi
-	# escape regex: reserved characters
-	regex=$( echo "$1" | sed -e 's|[]"\|$*.^[]|\\&|g' )
+	# escape " in sed "..."
+	regex=$( echo "$1" | sed -e 's|"|\\"|g' )
 	if (( $# == 1 )); then
 		if [[ $front != '#'$alias ]]; then
 			sed -i "\|$regex| { s|\*/|\*$alias/|; s|^|$front|; s|$|$back| }" "$file"
@@ -57,7 +57,7 @@ comment() {
 			sed -i "\|$regex| s|^|$front|" "$file"
 		fi
 	else
-		regex2=$( echo "$2" | sed -e 's|[]"\|$*.^[]|\\&|g' )
+		regex2=$( echo "$2" | sed -e 's|"|\\"|g' )
 		if [[ $front != '#'$alias ]]; then
 			# escape existing /* comment */
 			sed -i "\|$regex|, \|$regex2| s|\*/|\*$alias/|" "$file"
@@ -93,7 +93,7 @@ EOF
 	if [[ $1 =~ [0-9]+$ || $1 == '$' ]]; then
 		sed -i "$1 $ia$upper$string$lower" "$file"
 	else
-		regex=$( echo "$1" | sed -e 's|[]"\|$*.^[]|\\&|g' )
+		regex=$( echo "$1" | sed -e 's|"|\\"|g' )
 		sed -i "\|$regex| $ia$upper$string$lower" "$file"
 	fi
 }
