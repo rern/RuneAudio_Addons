@@ -7,6 +7,7 @@ $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 $redisaddons = $redis->hGetAll( 'addons' );
 
 if ( $redisaddons[ 'expa' ] ) {
+	$mbunpart = 0;
 	$expandable = '';
 } else {
 	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
@@ -14,22 +15,13 @@ if ( $redisaddons[ 'expa' ] ) {
 	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
 	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
 	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-	$unpartmb = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
-	if ( $unpartmb < 10 ) {
+	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+	if ( $mbunpart < 10 ) {
 		$expandable = '';
 		$redis->hSet( 'addons', 'expa', 1 );
 	} else {
-		$expandable = ' (expandable: ';
-		$expandable.= $unpartmb < 1000 ? $unpartmb.' MB' : round( $unpartmb / 1000, 2 ).' GB';
+		$expandable = '  ● <white>'.$mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB'.'</white> expandable';
 	}
-}
-$freemb = round( disk_free_space( '/' ) / 1000000 );
-$available = $freemb < 1000 ? $freemb.' MB' : round( $freemb / 1000, 2 ).' GB';
-if ( $unpartmb < 10 ) {
-	$expandable = '';
-} else {
-	$expandable = ' (expandable: ';
-	$expandable.= $unpartmb < 1000 ? $unpartmb.' MB' : round( $unpartmb / 1000, 2 ).' GB';
 }
 
 $udaclist = $redis->hGetAll( 'udaclist' );
