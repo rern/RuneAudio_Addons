@@ -29,15 +29,6 @@ h1 {
 #diskunpart {
 	background: #0095d8;
 }
-#disk a:after {
-	content: ' expandable';
-	color: #7795b4;
-}
-@media(max-width: 400px) {
-	#disk a:after {
-		content: ' expnd';
-	}
-}
 #issues {
 	clear: both;
 	float: right;
