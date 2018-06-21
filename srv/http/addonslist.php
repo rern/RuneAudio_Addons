@@ -10,12 +10,8 @@ if ( $redisaddons[ 'expa' ] ) {
 	$mbunpart = 0;
 	$expandable = '';
 } else {
-	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
-	$fdisk = array_values( $fdisk );
-	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
-	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
-	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+	$unpart = exec( 'sfdisk -F /dev/mmcblk0 | grep Unpartition | cut -d" " -f6' );
+	$mbunpart = round( $sectorbyte / 1000000 );
 	if ( $mbunpart < 10 ) {
 		$expandable = '';
 		$redis->hSet( 'addons', 'expa', 1 );
