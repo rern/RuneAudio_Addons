@@ -1,8 +1,6 @@
 <?php
 include 'addonshead.php';
 
-$mbunpart = 300;
-
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
 $available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
 $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a>' );
