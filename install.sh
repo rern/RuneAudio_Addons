@@ -60,6 +60,7 @@ sed -i '/addonsinfo.js\|addonsmenu.js/ d' $file
 sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
 ' -e '$ a\
 <script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>\
+<script src="<?=$this->asset('"'"'/js/vendor/propagating.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
 <script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
 ' $file
