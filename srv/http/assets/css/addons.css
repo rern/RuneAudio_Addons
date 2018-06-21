@@ -16,6 +16,19 @@ h1 {
 	float: right;
 	margin-top: 20px;
 }
+#diskused, #diskfree, #diskunpart {
+	display: inline-block;
+	height: 10px;
+}
+#diskused {
+	background: #0095d8;
+}
+#diskfree {
+	background: #e0e7ee;
+}
+#diskunpart {
+	background: #7795b4;
+}
 #issues {
 	clear: both;
 	float: right;
