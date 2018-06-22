@@ -78,7 +78,7 @@ _revision 20180620_
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
-		- restore files modified by [provided edit commands](#provided-edit-commands) with `restorefile FILE... FILE2 ...`
+		- restore files modified by [provided edit commands](#provided-edit-commands) with `restorefile FILE1 FILE2 ...`
 	- no need for non-install type
 	- file path:
 		- for install with `master.zip`
