@@ -62,18 +62,11 @@ insertH 'poweroff-modal'
 file=/srv/http/app/templates/footer.php
 echo $file
 
-restorefile $file
-
-if ! grep -q hammer.min.js $file; then
-	string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
-<script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
-EOF
-)
-	appendH '$'
-fi
+restorefile $file  # reset from previous uninstall
 
 string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
+<script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
