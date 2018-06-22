@@ -49,8 +49,8 @@ sed -i '/poweroff-modal/ i\
 ' $file
 # if RuneUIe installed, comment out - use RuneUIe's
 if grep -q 'class="fa fa-addons"' $file; then
-	sed -i '/class="fa fa-cubes"/ {s|^|<?php /*enha|; s|$|enha*/ ?>|}' $file
-	sed -i '/class="fa fa-addons" {s|^<?php /*enha||; s|enha*/ ?>$||}' $file
+	sed -i '/class="fa fa-cubes"/ {s|^|<?php /\*enha|; s|$|enha\*/ ?>|}' $file
+	sed -i '/class="fa fa-addons" {s|^<?php /\*enha||; s|enha\*/ ?>$||}' $file
 fi
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
