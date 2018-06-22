@@ -68,7 +68,7 @@ _revision 20180620_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
-	- modify and restore `*.js *.php *.html *.css` with [provided edit commands](#provided-edit-commands)
+	- modify `*.js *.php *.html *.css` with [provided edit commands](#provided-edit-commands) for easy restore
 	- use override over modify:
 		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
 		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
@@ -78,6 +78,7 @@ _revision 20180620_
 - uninstall script
 	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
+		- restore files modified by [provided edit commands](#provided-edit-commands) with `restorefile FILE... FILE2 ...`
 	- no need for non-install type
 	- file path:
 		- for install with `master.zip`
