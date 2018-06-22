@@ -21,6 +21,7 @@ if [[ -e /usr/local/bin/uninstall_enha.sh ]]; then
 	string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
 <script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 EOF
 )
 	appendH '$'
