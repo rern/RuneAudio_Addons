@@ -77,8 +77,7 @@ comment() {
 			sed -i "$linenum s|^|$front|" "$file"
 		fi
 	else
-		if [[ $1 == -n ]]; then lines2=$2; shift; shift; else lines2=0; fi
-		
+		if [[ $2 == -n ]]; then lines2=$3; shift; shift; else lines2=0; fi
 		regex2=$( echo "$2" | sed -e 's|"|\\"|g' )
 		
 		linenum2=$(( $( sed -n "\|$regex2|=" $file ) + $lines2 ))
@@ -94,20 +93,20 @@ comment() {
 
 insert() {
 	if [[ $1 == -h ]]; then
-		upper='<?php //0'$alias' ?>\n'  # <?php //0alias ?>
-		lower='n<?php //1'$alias' ?>'   # <?php //1alias ?>
+		upper='<?php //0'$alias'0 ?>\n'  # <?php //0alias ?>
+		lower='n<?php //1'$alias'1 ?>'   # <?php //1alias ?>
 		shift
 	elif [[ $1 == -p ]]; then
-		upper='<?php //0'$alias'\n'     # <?php //0alias
-		lower='n//1'$alias' ?>'         # //1alias ?>
+		upper='<?php //0'$alias'0\n'     # <?php //0alias
+		lower='n//1'$alias'1 ?>'         # //1alias ?>
 		shift
 	elif [[ $1 == -s ]]; then
-		upper='#0'$alias'\n'            # #0alias
-		lower='n#1'$alias               # #1alias
+		upper='#0'$alias'0\n'            # #0alias
+		lower='n#1'$alias'1'             # #1alias
 		shift
 	else
-		upper='/*0'$alias'*/\n'         # /*0alias*/
-		lower='n/*1'$alias'*/'          # /*1alias*/
+		upper='/*0'$alias'0*/\n'         # /*0alias*/
+		lower='n/*1'$alias'1*/'          # /*1alias*/
 	fi
 	
 	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi               # append / insert
@@ -165,10 +164,10 @@ restorefile() {
 		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//
 		" -e "s/^#$alias//
 		" -e "s/^\/\*$alias\|$alias\*\/$//g
-		" -e "\|^<?php //0$alias ?>$|, \|^<?php //1$alias ?>$| d
-		" -e "\|^<?php //0$alias$|, \|^//1$alias ?>$| d
-		" -e "\|^#0$alias$|, \|^#1$alias$| d
-		" -e "\|^/\*0$alias\*/$|, \|^/\*1$alias\*/$| d
+		" -e "\|^<?php //0${alias}0 ?>$|, \|^<?php //1${alias}1 ?>$| d
+		" -e "\|^<?php //0${alias}0$|, \|^//1${alias}1 ?>$| d
+		" -e "\|^#0${alias}0$|, \|^#1${alias}1$| d
+		" -e "\|^/\*0${alias}0\*/$|, \|^/\*1${alias}1\*/$| d
 		" -e "s|\*${alias}/|\*/|g
 		" "$file"
 	done
