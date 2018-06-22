@@ -15,7 +15,7 @@ if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
 	rm /srv/http/assets/js/addons*
 else
-	sed -i '/class="fa fa-addons"/ {s|^|<?php /*enha; s|$|enha*/ ?>|}' /srv/http/app/templates/header.php
+	sed -i '/class="fa fa-addons"/ {s|^|<?php /\*enha; s|$|enha\*/ ?>|}' /srv/http/app/templates/header.php
 	sed -i '/class="fa fa-cubes"/d' /srv/http/app/templates/header.php
 	sed -i '/addonsmenu.js/ d' /srv/http/app/templates/footer.php
 	rm -v /srv/http/assets/css/addons.css
