@@ -48,7 +48,7 @@ sed -i '/poweroff-modal/ i\
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 ' $file
 
-if ! grep -q 'class="fa fa-addons"' $file; then
+if grep -q 'class="fa fa-addons"' $file; then
 	sed -i '/class="fa fa-cubes"/ {s|^|<?php /*enha; s|$|enha*/ ?>|}' $file
 fi
 #----------------------------------------------------------------------------------
