@@ -40,37 +40,45 @@ if [[ $( redis-cli get release ) == 0.4b ]]; then
 else
     rm -r /srv/http/assets/default04
 fi
+
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
 
-if ! grep -q addonsinfo.css $file; then
-	string=$( cat <<'EOF'
+restorefile $file
+
+string=$( cat <<'EOF'
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
 EOF
 )
-	appendH 'runeui.css'
+appendH 'runeui.css'
 
-	string=$( cat <<'EOF'
+string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 EOF
 )
-	insertH 'poweroff-modal'
-fi
+insertH 'poweroff-modal'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
 
-if ! grep -q addonsinfo.js $file; then
+restorefile $file
+
+if ! grep -q hammer.min.js $file; then
 	string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
 <script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
-<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
-<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
 	appendH '$'
 fi
+
+string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+EOF
+)
+appendH '$'
 #----------------------------------------------------------------------------------
 
 # set sudo no password #######################################
