@@ -11,28 +11,28 @@
 #     EOF
 #     )
 # usage:
-#     comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js/php alias*/
+#     comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js,php,css alias*/
 
-#     commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html/php alias*/ ?>
+#     commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html,php alias*/ ?>
 #     commentP [-n N] SEARCH [-n N] [SEARCH2]
 
 #     commentS [-n N] SEARCH [-n N] [SEARCH2]   #alias ...
 
-#     insert [-n N] SEARCH                      //0alias
-#     append [-n N] SEARCH                      js/php
-#                                               //1alias
+#     insert [-n N] SEARCH                      //0alias0
+#     append [-n N] SEARCH                      js,php,css
+#                                               //1alias1
 
-#     insertH [-n N] SEARCH                     <?php //0alias ?>
+#     insertH [-n N] SEARCH                     <?php //0alias0 ?>
 #     appendH [-n N] SEARCH                     html
-#                                               <?php //1alias ?>
+#                                               <?php //1alias1 ?>
        
-#     insertP [-n N] SEARCH                     <?php //0alias
+#     insertP [-n N] SEARCH                     <?php //0alias0
 #     appendP [-n N] SEARCH                     php
-#                                               <?php //1alias
+#                                               <?php //1alias1
 
-#     insertS [-n N] SEARCH                     #0alias
+#     insertS [-n N] SEARCH                     #0alias0
 #     appendS [-n N] SEARCH                     ...
-#                                               #1alias
+#                                               #1alias1
 
 #     restorefile FILE [FILE2 ...]              remove all insert / append / comment
 
@@ -40,7 +40,8 @@
 #     -n N                                      -n -N    N lines above SEARCH
 #                                               -n +N    N lines below SEARCH
 #     SEARCH                                    normal sed regex syntax
-#                                               literal  . ^ $ * + ? ( ) [ { \ |  need \ escape
+#                                               |  as delimiter - no need to escape  /
+#                                               literal  ^ $ . * [ ] \  need  \  escape
 #                                               ' "'" '  escape single quote inside itself
 #                                               " \" "   escape double quote inside itself
 #                                               or use  .  as placeholder instead of escape
@@ -93,20 +94,20 @@ comment() {
 
 insert() {
 	if [[ $1 == -h ]]; then
-		upper='<?php //0'$alias'0 ?>\n'  # <?php //0alias ?>
-		lower='n<?php //1'$alias'1 ?>'   # <?php //1alias ?>
+		upper='<?php //0'$alias'0 ?>\n'  # <?php //0alias0 ?>
+		lower='n<?php //1'$alias'1 ?>'   # <?php //1alias1 ?>
 		shift
 	elif [[ $1 == -p ]]; then
-		upper='<?php //0'$alias'0\n'     # <?php //0alias
-		lower='n//1'$alias'1 ?>'         # //1alias ?>
+		upper='<?php //0'$alias'0\n'     # <?php //0alias0
+		lower='n//1'$alias'1 ?>'         # //1alias1 ?>
 		shift
 	elif [[ $1 == -s ]]; then
-		upper='#0'$alias'0\n'            # #0alias
-		lower='n#1'$alias'1'             # #1alias
+		upper='#0'$alias'0\n'            # #0alias0
+		lower='n#1'$alias'1'             # #1alias1
 		shift
 	else
-		upper='/*0'$alias'0*/\n'         # /*0alias*/
-		lower='n/*1'$alias'1*/'          # /*1alias*/
+		upper='/*0'$alias'0*/\n'         # /*0alias0*/
+		lower='n/*1'$alias'1*/'          # /*1alias1*/
 	fi
 	
 	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi               # append / insert
