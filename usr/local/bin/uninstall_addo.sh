@@ -7,12 +7,12 @@ alias=addo
 uninstallstart $@
 
 # restore file
-if [[ -e /usr/local/bin/uninstall_enha.sh ]]; then
-	sed -i '/id="addons"/d' /srv/http/app/templates/header.php
-	sed -i '/addonsmenu.js/ d' /srv/http/app/templates/footer.php
-else
+if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
 	restorefile /srv/http/app/templates/header.php /srv/http/app/templates/footer.php
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
+else
+	sed -i '/id="addons"/d' /srv/http/app/templates/header.php
+	sed -i '/addonsmenu.js/ d' /srv/http/app/templates/footer.php
 fi
 
 # remove files #######################################
