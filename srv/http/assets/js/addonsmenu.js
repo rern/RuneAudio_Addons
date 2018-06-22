@@ -78,11 +78,9 @@ renderMSG = function( text ) {
 
 if ( $( '#bartop' ).length ) return;
 	
-var redis = { update: [ 'hGet', 'addons', 'update' ] };
-$.post( '/enhance.php', { redis: JSON.stringify( redis ) }, function( data ) {
-	var data = JSON.parse( data );
-	if ( data.update != 0 ) {
-		$( '#menu-settings').find( 'i' ).append( '<span id="badge">'+ data.update +'</span>' );
+$.post( '/addonsdl.php', { redis: 'update' }, function( data ) {
+	if ( data != 0 ) {
+		$( '#menu-settings').find( 'i' ).append( '<span id="badge">'+ data +'</span>' );
 	} else {
 		$( '#badge' ).remove();
 	}
