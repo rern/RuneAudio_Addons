@@ -53,11 +53,13 @@ EOF
 )
 appendH 'runeui.css'
 
-string=$( cat <<'EOF'
+if ! grep -q 'id="addons"' $file; then
+	string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 EOF
 )
-insertH 'poweroff-modal'
+	insertH 'poweroff-modal'
+fi
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
