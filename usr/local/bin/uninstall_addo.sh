@@ -3,6 +3,7 @@
 alias=addo
 
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 uninstallstart $@
 
