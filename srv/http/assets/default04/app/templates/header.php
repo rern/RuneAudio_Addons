@@ -7,7 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no" />
     <link rel="stylesheet" href="<?=$this->asset('/css/runeui.css')?>">
+<?php //0addo0 ?>
 	<link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
+<?php //1addo1 ?>
     <?php if (is_localhost()): ?>
         <link rel="stylesheet" href="<?=$this->asset('/css/onScreenKeyboard.css')?>">
     <?php endif ?>
