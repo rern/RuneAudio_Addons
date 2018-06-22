@@ -162,7 +162,7 @@ appendS() {
 
 restorefile() {
 	for file in "$@"; do
-		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//
+		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//g
 		" -e "s/^#$alias//
 		" -e "s/^\/\*$alias\|$alias\*\/$//g
 		" -e "\|^<?php //0${alias}0 ?>$|, \|^<?php //1${alias}1 ?>$| d
