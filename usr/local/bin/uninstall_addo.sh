@@ -28,7 +28,6 @@ EOF
 	alias=addo
 else
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
-	rm -v /srv/http/enhanceredis.php
 fi
 
 crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
