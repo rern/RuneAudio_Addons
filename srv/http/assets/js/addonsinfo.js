@@ -58,8 +58,6 @@ $( 'body' ).prepend( '\
 
 $( '#infoOverlay' ).keypress( function( e ) {
 	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
-} ).click( function( e ) {
-	if ( e.target.id === this.id ) $( '#infoX' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
