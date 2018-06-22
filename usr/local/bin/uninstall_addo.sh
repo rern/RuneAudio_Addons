@@ -17,7 +17,6 @@ rm -v /srv/http/assets/js/addons*
 rm -rv /srv/http/assets/addons
 
 if [[ -e /usr/local/bin/uninstall_enha.sh ]]; then
-	alias=enha
 	file=/srv/http/app/templates/footer.php
 	string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
@@ -25,7 +24,6 @@ if [[ -e /usr/local/bin/uninstall_enha.sh ]]; then
 EOF
 )
 	appendH '$'
-	alias=addo
 else
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
 fi
