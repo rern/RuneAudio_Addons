@@ -11,7 +11,7 @@ restorefile /srv/http/app/templates/header.php /srv/http/app/templates/footer.ph
 
 # remove files #######################################
 echo -e "$bar Remove files ..."
-rm -v /srv/http/{addons*,restoreui.php}
+rm -v /srv/http/addons*
 rm -v /srv/http/assets/css/addons*
 rm -v /srv/http/assets/js/addons*
 rm -rv /srv/http/assets/addons
