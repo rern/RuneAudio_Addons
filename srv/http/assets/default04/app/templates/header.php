@@ -84,7 +84,9 @@
             <li class="<?=$this->uri(1, 'network', 'active')?>"><a href="/network/"><i class="fa fa-sitemap"></i> Network</a></li>
             <li class="<?=$this->uri(1, 'debug', 'active')?>"><a href="/debug/"><i class="fa fa-bug"></i> Debug</a></li>
             <li class="<?=$this->uri(1, 'credits', 'active')?>"><a href="/credits/"><i class="fa fa-trophy"></i> Credits</a></li>
+<?php //0addo0 ?>
 			<li style="cursor: pointer;"><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+<?php //1addo1 ?>
             <li><a href="#poweroff-modal" data-toggle="modal"><i class="fa fa-power-off"></i> Turn off</a></li>
             <?php if ($this->pwd_protection):?>
               <li><a href="/logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
