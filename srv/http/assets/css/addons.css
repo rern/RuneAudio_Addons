@@ -1,7 +1,6 @@
 @font-face {
-	font-family: 'Inconsolata';
-	src: url('../assets/fonts/Inconsolata.woff2') format('woff2'),
-		url('../assets/fonts/Inconsolata.woff') format('woff');
+	font-family: Inconsolata;
+	src: url('../assets/fonts/Inconsolata.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -15,6 +14,19 @@ h1 {
 .close-root {
 	float: right;
 	margin-top: 20px;
+}
+#diskused, #diskfree, #diskunpart {
+	display: inline-block;
+	height: 10px;
+}
+#diskused {
+	background: #7795b4;
+}
+#diskfree {
+	background: #e0e7ee;
+}
+#diskunpart {
+	background: #0095d8;
 }
 #issues {
 	clear: both;
@@ -62,6 +74,9 @@ legend {
 	margin-bottom: 5px;
 	font-size: 14px;
 	color: #7795b4;
+}
+legend i {
+	vertical-align: 15%;
 }
 legend span {
 	font-size: 21px;

@@ -49,11 +49,7 @@ Install
 ```sh
 wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
 ```
-`--no-check-certificate` - for not-up-to-date RuneAudio system date which causes failed download
-
-### Get stuck?
-Restore default RuneUI:  
-Browser URL: `< RuneAudio_IP >/restoreui.php`
+`--no-check-certificate` - for RuneAudio out-of-sync system date which causes failed download
 
 ---
   

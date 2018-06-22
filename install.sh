@@ -19,12 +19,14 @@ if [[ ! -e /srv/http/addonslist.php ]]; then
 fi
 
 wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
+wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonsedit.sh -P /srv/http
 
 # change version number in RuneAudio_Addons/srv/http/addonslist.php
 
 alias=addo
 
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 installstart $@
 
@@ -39,30 +41,46 @@ else
     rm -r /srv/http/assets/default04
 fi
 
-# modify files #######################################
-echo -e "$bar Modify files ..."
-
+#----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
-# remove lines for menu ready install, silver bullet
-sed -i '/addonsinfo.css\|id="addons"/ d' $file
-sed -i -e '/runeui.css/ a\
-    <link rel="stylesheet" href="<?=$this->asset('"'"'/css/addonsinfo.css'"'"')?>">
-' -e '/poweroff-modal/ i\
-            <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
-' $file
 
+restorefile $file
+
+string=$( cat <<'EOF'
+    <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
+EOF
+)
+appendH 'runeui.css'
+
+string=$( cat <<'EOF'
+            <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+EOF
+)
+insertH 'poweroff-modal'
+#----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
-# remove lines for menu ready install, silver bullet
-sed -i '/addonsinfo.js\|addonsmenu.js/ d' $file
-# remove trailing blank lines
-sed -i -e :a -e '/^\n*$/{$d;N;};/\n$/ba
-' -e '$ a\
-<script src="<?=$this->asset('"'"'/js/vendor/hammer.min.js'"'"')?>"></script>\
-<script src="<?=$this->asset('"'"'/js/addonsinfo.js'"'"')?>"></script>\
-<script src="<?=$this->asset('"'"'/js/addonsmenu.js'"'"')?>"></script>
-' $file
+
+restorefile $file
+
+if ! grep -q hammer.min.js $file; then
+	string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
+<script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
+EOF
+)
+	appendH '$'
+fi
+
+string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+EOF
+)
+appendH '$'
+#----------------------------------------------------------------------------------
+
 # set sudo no password #######################################
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
@@ -96,4 +114,3 @@ if [[ -t 1 ]]; then
 	clearcache
 	title -nt "$info Refresh browser and go to Menu > Addons."
 fi
-

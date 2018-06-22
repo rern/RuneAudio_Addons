@@ -1,13 +1,23 @@
 <?php
 include 'addonshead.php';
 
+$mbfree = round( disk_free_space( '/' ) / 1000000 );
+$available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
+$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
+
+$mbtotal = round( disk_total_space( '/' ) / 1000000 );
+$wfree = round( ( $mbfree / $mbtotal ) * 150 );
+$wunpart = round( ( $mbunpart / $mbtotal ) * 150 );
+$wused = 150 - $wfree - $wunpart;
+
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
 	<h1>ADDONS</h1>
-	<legend class="bl">RuneAudio '.$runeversion.' ● available: '.$available.$expandable.'</legend>
-	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">
-			issues&ensp;<i class="fa fa-external-link"></i>
+	<legend class="bl">
+		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
+	</legend>
+	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 ';
 // ------------------------------------------------------------------------------------
@@ -41,13 +51,12 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $freemb ) {
+		if ( $needspace < $mbfree ) {
 			$btninclass =  'btnbranch';
 			$btninattr = '';
 		} else {
 			$btninclass = 'btnneedspace';
-			$btninattr = ' diskspace="Need: '.number_format( $needspace ).' MB - Available: '.$available.'<br>'
-				.$expandable.'"';
+			$btninattr = ' diskspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		}
 		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
