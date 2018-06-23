@@ -51,7 +51,7 @@ string=$( cat <<'EOF'
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
 EOF
 )
-appendH 'runeui.css'
+sed -i "/runeui.css/ a$string" $file  # no enclosure tags for sharing with RuneUIe
 
 string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
@@ -68,7 +68,7 @@ string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 EOF
 )
-sed -i '$ a$string' $file  # no enclosure tags for sharing with RuneUIe
+sed -i "$ a$string" $file  # no enclosure tags for sharing with RuneUIe
 
 restorefile $file  # reset from previous uninstall which left some for RuneUIe
 
