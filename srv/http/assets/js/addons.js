@@ -30,16 +30,16 @@ function branchtest( title, message ) {
 		}
 	} );
 }
-$( '.btnbranch' ).each( function() {
-	var $thisbtn = $( this );
+$( '.boxed-group .btn' ).each( function() {
 	var hammerbtn = new Hammer( this );
-	hammerbtn.on( 'press', function () {
+	hammerbtn.on( 'press', function ( e ) {
+		$this = $( e.target );
 		opt = '';
 		branch = '';
-		alias = $thisbtn.parent().attr( 'alias' );
-		rollback = $thisbtn.parent().attr( 'rollback' );
-		type = $thisbtn.text().trim() === 'Install' ? 'Install' : 'Update';
-		title = $thisbtn.parent().prev().prev().find( 'span' ).text();
+		alias = $this.parent().attr( 'alias' );
+		rollback = $this.attr( 'rollback' );
+		type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
+		title = $this.parent().prev().prev().find( 'span' ).text();
 		
 		if ( type === 'Install' || !rollback ) {
 			branchtest( title, 'Install version?' );
@@ -61,43 +61,42 @@ $( '.btnbranch' ).each( function() {
 				}
 			}
 		} );
-	} );
-} );	
-$( '.boxed-group .btn' ).click( function () {
-	if ( $( this ).hasClass( 'btnneedspace' ) ) {
-		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Disk space not enough.<br>'
-					+ $( this ).attr( 'diskspace' )
-		} );
-		return
-	}
-	var $thisbtn = $( this );
-	opt = '';
-	branch = '';
-	alias = $thisbtn.parent().attr( 'alias' );
-	type = $thisbtn.text().trim();
-	title = $thisbtn.parent().prev().prev().find( 'span' ).text();
-	
-	if ( type === 'Link' ) {
-		window.open( $thisbtn.prev().find( 'a' ).attr( 'href' ), '_blank' );
-	} else {
-		info( {
-			  title  : title
-			, message: type +'?'
-			, cancel : 1
-			, ok     : function () {
-				option = addons[ alias ].option;
-				if ( type === 'Update' || type === 'Uninstall' || !option ) {
-					formtemp();
-				} else {
-					j = 0;
-					getoptions();
+	} ).on( 'tap', function ( e ) {
+		$this = $( e.target );
+		if ( $this.hasClass( 'btnneedspace' ) ) {
+			info( {
+				  icon   : 'info-circle'
+				, title  : 'Warning'
+				, message: 'Disk space not enough.<br>'
+						+ $this.attr( 'needspace' )
+			} );
+			return
+		}
+		opt = '';
+		branch = '';
+		alias = $this.parent().attr( 'alias' );
+		type = $this.text().trim();
+		title = $this.parent().prev().prev().find( 'span' ).text();
+		
+		if ( type === 'Link' ) {
+			window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
+		} else {
+			info( {
+				  title  : title
+				, message: type +'?'
+				, cancel : 1
+				, ok     : function () {
+					option = addons[ alias ].option;
+					if ( type === 'Update' || type === 'Uninstall' || !option ) {
+						formtemp();
+					} else {
+						j = 0;
+						getoptions();
+					}
 				}
-			}
-		} );
-	}
+			} );
+		}
+	} );
 } );
 $( '.thumbnail' ).click( function() {
 	$sourcecode = $( this ).prev().find('form a').attr( 'href');
