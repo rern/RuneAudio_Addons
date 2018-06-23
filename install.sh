@@ -48,7 +48,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 EOF
 )
-insertH 'poweroff-modal'
+appendH 'poweroff-modal'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
