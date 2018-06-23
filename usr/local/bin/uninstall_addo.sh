@@ -23,7 +23,7 @@ fi
 
 # remove files #######################################
 rm -v /srv/http/addons*
-rm -rv /srv/http/assets/addons
+rm -r /srv/http/assets/addons
 
 crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
 
