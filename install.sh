@@ -68,7 +68,7 @@ string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 EOF
 )
-sed -i '$ a$string' $file
+sed -i '$ a$string' $file  # no enclosure tags for sharing with RuneUIe
 
 restorefile $file  # reset from previous uninstall which left some for RuneUIe
 
