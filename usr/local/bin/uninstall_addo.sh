@@ -10,7 +10,11 @@ uninstallstart $@
 # restore file
 echo -e "$bar Restore and remove files ..."
 if [[ ! -e /usr/local/bin/uninstall_enha.sh ]]; then
+	sed -i '/addonsinfo.css/ d' /srv/http/app/templates/header.php
+	sed -i '/hammer.min.js\|propagating.js\|addonsinfo.js/ d' /srv/http/app/templates/footer.php
+	
 	restorefile /srv/http/app/templates/header.php /srv/http/app/templates/footer.php
+	
 	rm -v /srv/http/assets/css/addons*
 	rm -v /srv/http/assets/js/addons*
 	rm -v /srv/http/assets/js/vendor/{hammer.min.js,propagating.js}
