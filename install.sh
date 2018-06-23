@@ -62,12 +62,17 @@ insertH 'poweroff-modal'
 file=/srv/http/app/templates/footer.php
 echo $file
 
-restorefile $file  # reset from previous uninstall which left some for RuneUIe
-
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
 <script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+EOF
+)
+sed -i '$ a$string' $file
+
+restorefile $file  # reset from previous uninstall which left some for RuneUIe
+
+string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
