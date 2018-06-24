@@ -8,6 +8,10 @@ else
 	branch=master
 fi
 
+# temp
+sed -i '/addonsinfo.css\|class="fa fa-addons"\|class="fa fa-cubes"/d' /srv/http/app/templates/header.php
+sed -i '/hammer.min.js\|propagating.js\|addonsinfo.js\|addonsmenu.js/ d'  /srv/http/app/templates/footer.php
+
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
 	echo "
