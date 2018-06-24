@@ -70,11 +70,12 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180624',
-	'revision'     => 'Use local thumbnails to improve loading speed'
+	'revision'     => 'Fix bugs'
+					.'<br>...'
+					.'<br>Use local thumbnails to improve loading speed'
 					.'<br>Normalize code editing template'
 					.'<br>...'
 					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
-					.'<br>...'
 					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons Menu main page.',
