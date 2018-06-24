@@ -235,8 +235,8 @@ $addons = array(
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
 	'revision'     => 'Improve main icons and overlay controls guide'
 					.'<br>Change Webradio cover art'
-					.'<br>Fix: omit A/An/The sorting in file mode'
 					.'<br>Add show/hide Webradio elapsed time'
+					.'<br>Fix: omit A/An/The sorting in file mode'
 					.'<br>Improve boot splash image'
 					.'<br>...'
 					.'<br>Show Webradio sampling info in Playback while stop'
