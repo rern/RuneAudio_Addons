@@ -57,6 +57,8 @@ appendH 'poweroff-modal'
 file=/srv/http/app/templates/footer.php
 echo $file
 
+restorefile $file
+
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
 <script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
@@ -64,7 +66,7 @@ string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
-appendH '$'
+appendH 'openwebapp.js'
 #----------------------------------------------------------------------------------
 
 # set sudo no password
