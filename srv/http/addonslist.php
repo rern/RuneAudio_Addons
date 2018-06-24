@@ -79,7 +79,7 @@ $addons = array(
 					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
+	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/assets/addons/thumbaddo.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
