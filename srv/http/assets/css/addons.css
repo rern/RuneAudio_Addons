@@ -11,9 +11,10 @@
 	font-weight: normal;
 	font-style: normal;
 }
-.container i.fa-addons:before { 
+.container h1:before,
+#addo span:before { 
 	font-family: enhance;
-	content: "\f506";
+	content: "\00a0\f506\00a0";
 	color: #7795b4;
 }
 
