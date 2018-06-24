@@ -48,7 +48,7 @@ EOF
 )
 appendH 'runeui.css'
 
-sed -i '/poweroff-modal/ i\
+string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 EOF
 )
