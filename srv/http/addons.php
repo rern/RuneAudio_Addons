@@ -47,7 +47,8 @@ foreach( $arrayalias as $alias ) {
 			$check = '<i class="fa fa-refresh"></i> ';
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
-		$btnun = '<a class="btn btn-default btnbranch"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
+		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-close"></i> Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
@@ -56,7 +57,7 @@ foreach( $arrayalias as $alias ) {
 			$btninattr = '';
 		} else {
 			$btninclass = 'btnneedspace';
-			$btninattr = ' diskspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
+			$btninattr = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		}
 		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';

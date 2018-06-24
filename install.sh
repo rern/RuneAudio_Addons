@@ -8,6 +8,10 @@ else
 	branch=master
 fi
 
+# temp
+sed -i '/addonsinfo.css\|class="fa fa-addons"\|class="fa fa-cubes"/d' /srv/http/app/templates/header.php
+sed -i '/hammer.min.js\|propagating.js\|addonsinfo.js\|addonsmenu.js/ d'  /srv/http/app/templates/footer.php
+
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
 	echo "
@@ -46,17 +50,12 @@ appendH 'runeui.css'
 
 sed -i '/poweroff-modal/ i\
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
-' $file
-# if RuneUIe installed, comment out - use RuneUIe's
-if grep -q 'class="fa fa-addons"' $file; then
-	sed -i '/class="fa fa-cubes"/ {s|^|<?php /\*enha|; s|$|enha\*/ ?>|}' $file
-	sed -i '/class="fa fa-addons"/ {s|^<?php /\*enha||; s|enha\*/ ?>$||}' $file
-fi
+EOF
+)
+appendH 'poweroff-modal'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
-
-restorefile $file  # reset from previous uninstall which left some for RuneUIe
 
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
@@ -68,7 +67,7 @@ EOF
 appendH '$'
 #----------------------------------------------------------------------------------
 
-# set sudo no password #######################################
+# set sudo no password
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
 chmod 4755 /usr/bin/sudo
 
