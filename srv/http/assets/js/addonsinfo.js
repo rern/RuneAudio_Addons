@@ -2,25 +2,27 @@
 simple usage: info( 'message' );
 normal usage: info( {
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
-	title         : 'TITLE'        // Information / TITLE (top title)
-	nox           : 1..            // 0 / 1 (no top 'X' close button)
-	boxwidth      : N              // 400 / N (pixel)
-	message       : 'MESSAGE'      // (blank) / MESSAGE (message under title)
-	textlabel     : 'LABEL'        // (blank) / LABEL (text input label)
-	passwordlabel : 'LABEL'        // (blank) / LABEL (password input label)
-	required      : 1............  // 0 / 1 (blank password not allowed)
+	title         : 'TITLE'        // Information / TITLE    (top title)
+	nox           : 1..            // 0 / 1                  (no top 'X' close button)
+	boxwidth      : N              // 400 / N                (pixel)
+	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
+	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
+	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
+	required      : 1              // 0 / 1                  (password required)
 	radiohtml     : 'HTML'         // required HTML
+	checked       : N              // (none) / N             (pre-select input)
 	checkboxhtml  : 'HTML'         // required HTML
+	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select multiple)
 	selecthtml    : 'HTML'         // required HTML
-	oklabel       : 'LABEL'        // OK / LABEL (ok button label)
-	okcolor       : 'COLOR'        // #0095d8 / COLOR (ok button color)
-	ok            : 'FUNCTION'     // (hide) / FUNCTION (ok click function)
-	cancellabel   : 'LABEL'        // Cancel / LABEL (cancel button label)
-	cancelcolor   : 'COLOR'        // #34495e / COLOR (cancel button color)
-	cancel        : 'FUNCTION'     // (hide) / FUNCTION (cancel click function)
-	buttonlabel   : 'LABEL'        // required LABEL (button button label)
-	buttoncolor   : 'COLOR'        // #34495e / COLOR (button button color)
-	button        : 'FUNCTION'     // required FUNCTION (button click function)
+	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
+	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
+	ok            : 'FUNCTION'     // (hide) / FUNCTION      (ok click function)
+	cancellabel   : 'LABEL'        // Cancel / LABEL         (cancel button label)
+	cancelcolor   : 'COLOR'        // #34495e / COLOR        (cancel button color)
+	cancel        : 'FUNCTION'     // (hide) / FUNCTION      (cancel click function)
+	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
+	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
+	button        : 'FUNCTION'     // required FUNCTION      (button click function)
 } );
 */
 $( 'body' ).prepend( '\
@@ -58,8 +60,8 @@ $( 'body' ).prepend( '\
 
 $( '#infoOverlay' ).keypress( function( e ) {
 	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
-} ).click( function( e ) {
-	if ( e.target.id === this.id && $( this ).is( ':visible' ) ) $( '#infoX' ).click();
+//} ).click( function( e ) {
+//	if ( e.target.id === this.id && $( this ).is( ':visible' ) ) $( '#infoX' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
@@ -109,9 +111,11 @@ function info( O ) {
 		$( '#infoPassword' ).show().focus();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
-		setboxwidth( $( '#infoRadio' ), O.radiohtml );
+		var checked = [ O.checked ];
+		setboxwidth( $( '#infoRadio' ), O.radiohtml, checked );
 	} else if ( O.checkboxhtml ) {
-		setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml );
+		var checked = typeof O.checked === 'array' ? O.checked : [ O.checked ];
+		setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml, checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectbox' ).html( O.selecthtml );
@@ -159,22 +163,23 @@ window.addEventListener( 'orientationchange', function() {
 	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
 } );
 
-function setboxwidth( $box, html ) {
+function setboxwidth( $box, html, checked ) {
 	var windowW = window.innerWidth;
 	var windowH = window.innerHeight;
 	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
 	var maxW = 0;
 	var spanW = 0;
-	$( '#infoBox' ).css('left', '-100%' );      // move out of screen
-	$box.html( html ).show();                   // show to get width
-	setTimeout( function() {                    // wait for radiohtml ready
-		$box.find( 'label' ).each( function() { // get max width
+	$( '#infoBox' ).css('left', '-100%' );           // move out of screen
+	$box.html( html ).show();                        // show to get width
+	setTimeout( function() {                         // wait for radiohtml ready
+		$box.find( 'label' ).each( function( i ) {   // get max width
 			spanW = $( this ).width();
 			maxW = ( spanW > maxW ) ? spanW : maxW;
+			if ( checked && checked.indexOf( i ) !== -1 ) $( this ).find( 'input' ).prop( 'checked', true );
 		} );
-		var pad = ( contentW - 20 - maxW ) / 2; // 15 = button width
-		$box.css('padding-left', pad +'px');    // set padding-left
-		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } );    // move back
+		var pad = ( contentW - 20 - maxW ) / 2;      // 15 = button width
+		$box.css('padding-left', pad +'px');         // set padding-left
+		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
 	}, 100 );
 }
 function verifypassword( title, pwd, fn ) {
