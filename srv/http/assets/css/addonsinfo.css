@@ -1,20 +1,20 @@
 .infobtn {
 	display: inline-block;
-    border: none;
-    border-radius: 6px;
-    white-space: nowrap;
-    padding: 7px 15px;
-    font-size: 14px;
-    text-align: center;
-    color: #e0e7ee;
-    cursor: pointer;
-    user-select: none;
+	border: none;
+	border-radius: 6px;
+	white-space: nowrap;
+	padding: 7px 15px;
+	font-size: 14px;
+	text-align: center;
+	color: #e0e7ee;
+	cursor: pointer;
+	user-select: none;
 }
 .infobtn-primary {
-    background: #0095d8;
+	background: #0095d8;
 }
 .infobtn-default {
-    background: #34495e;
+	background: #34495e;
 }
 #badge {
 	position: absolute;
@@ -45,7 +45,7 @@
 	text-decoration: none;
 }
 #infoOverlay a:hover {
-    color: #e0e7ee;
+	color: #e0e7ee;
 }
 #infoBox {
 	position: relative;
