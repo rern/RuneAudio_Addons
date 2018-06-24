@@ -71,6 +71,7 @@ $addons = array(
 	'title'        => 'Addons Menu',
 	'version'      => '20180624',
 	'revision'     => 'Fix bugs'
+					.'<br>Add disk bar for | used | free | expandable |'
 					.'<br>...'
 					.'<br>Use local thumbnails to improve loading speed'
 					.'<br>Normalize code editing template'
