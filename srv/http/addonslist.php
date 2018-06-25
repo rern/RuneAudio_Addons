@@ -68,7 +68,7 @@ $addons = array(
 ),
 */
 'addo' => array(
-	'title'        => 'Addons Menu',
+	'title'        => 'Addons',
 	'version'      => '20180624',
 	'revision'     => 'Fix bugs'
 					.'<br>Add disk bar for | used | free | expandable |'
@@ -79,7 +79,7 @@ $addons = array(
 					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
 	'maintainer'   => 'r e r n',
-	'description'  => 'This Addons Menu main page.',
+	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/assets/addons/thumbaddo.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
@@ -233,7 +233,13 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180610',
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
-	'revision'     => 'Show Webradio sampling info in Playback while stop'
+	'revision'     => 'Improve main icons and overlay controls guide'
+					.'<br>Change Webradio cover art'
+					.'<br>Add show/hide Webradio elapsed time'
+					.'<br>Fix: omit A/An/The sorting in file mode'
+					.'<br>Improve boot splash image'
+					.'<br>...'
+					.'<br>Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
 					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
 					.'<br>Show <white>Webradio name</white> on initial load of <white>saved playlist</white>'

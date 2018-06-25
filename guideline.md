@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180620_
+_revision 20180625_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -191,44 +191,62 @@ uninstallfinish $@
 
 #### Provided edit commands
 ```
-pre-defined variables:
-----------------------------------------------------------------------------------------
-alias=name                      already in install.sh / uninstall_alias.sh
-file=/path/file                 before all commands of each file
-string=( cat <<'EOF'            before each insert and append
-single line or 1st line
-place code inside this heredoc literally
+insert / append / comment : for /*...*/  <?php /*...*/ ?>  #...
+====================================================================================
+
+pre-defined variable:
+------------------------------------------------------------------------------------
+alias=name                                already in install.sh / uninstall_alias.sh
+file=/path/file                           before all commands of each file
+string=( cat <<'EOF'                      before each insert and append
+place code without escapes
 last line
 EOF
 )
-
+    
 usage:
-----------------------------------------------------------------------------------------
-comment SEARCH [SEARCH2]        /*alias line(s) alias*/
-commentP SEARCH [SEARCH2]       <?php /*alias line(s) alias*/ ?>
-commentS SEARCH [SEARCH2]       #alias (each line)
-insert SEARCH                   //alias0
-								string
-								//alias1
-insertP SEARCH                  <?php //alias0 ?>
-								string
-								<?php //alias1 ?>
-insertS SEARCH                  #0alias
-                                string
-                                #1alias
-append SEARCH                   same as insert
-appendP SEARCH                  same as insertP
-appendS SEARCH                  same as insertS
-restorefile FILE [FILE2 ...]    remove all insert / append / comment
-	
-options:
-----------------------------------------------------------------------------------------
-SEARCH pattern must be quoted and escaped
-	  "  $  `  \  inside "..."  use  \"  \$  \`  \\
-	  '  inside '...'           use  "'"
+------------------------------------------------------------------------------------
+comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js,php,css alias*/
+
+commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html,php alias*/ ?>
+commentP [-n N] SEARCH [-n N] [SEARCH2]
+
+commentS [-n N] SEARCH [-n N] [SEARCH2]   #alias ...
+
+insert [-n N] SEARCH                      //0alias0
+append [-n N] SEARCH                      js,php,css
+                                          //1alias1
+
+insertH [-n N] SEARCH                     <?php //0alias0 ?>
+appendH [-n N] SEARCH                     html
+                                          <?php //1alias1 ?>
+   
+insertP [-n N] SEARCH                     <?php //0alias0
+appendP [-n N] SEARCH                     php
+                                          <?php //1alias1
+
+insertS [-n N] SEARCH                     #0alias0
+appendS [-n N] SEARCH                     ...
+                                          #1alias1
+
+restorefile FILE [FILE2 ...]              remove all insert / append / comment
+
+argument:
+------------------------------------------------------------------------------------
+-n N                                      -n -N    N lines above SEARCH
+                                          -n +N    N lines below SEARCH
+SEARCH                                    normal sed regex syntax inside quotes
+                                          '..."'"...'  escape single quote inside itself
+                                          "...\"..."   escape double quote inside itself
+                                          |  as delimiter - no need to escape  /
+                                          literal  | ^ $ . * [ ] \  need  \  escape
+                                          or use  .  as placeholder instead of escape
+
+tips:
+------------------------------------------------------------------------------------
 insert/append with SEARCH itself in $string
-	 must be after comment to the same SEARCH (avoid commented after insert)
-	 must be combined with insert/append to the same SEARCH (avoid double insert)
+    must be after comment to the same SEARCH (avoid commented after insert)
+    must be combined with insert/append to the same SEARCH (avoid double insert)
 ```
   
 

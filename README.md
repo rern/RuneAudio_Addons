@@ -23,6 +23,7 @@ Currently available:
 - [RuneUI Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
 - [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
 - [RuneUI Lyrics](https://github.com/RuneAddons/Lyrics)
+- [RuneUI Notification Duration](https://github.com/rern/RuneAudio/tree/master/notify_duration)
 - [RuneUI Password](https://github.com/rern/RuneUI_password)
 - [RuneUI Pause Button](https://github.com/rern/RuneAudio/tree/master/pause_button)
 - [RuneUI Youtube](https://github.com/RuneAddons/RuneYoutube/tree/master)

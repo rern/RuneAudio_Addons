@@ -1,5 +1,30 @@
 $(function() { // $( document ).ready(function() {
 
+// append style for addons icon
+function heredoc( fn ) {
+  return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
+}
+if ( $( '#bartop' ).length ) {
+	var style = heredoc(function () {/*
+<style>
+	@font-face {
+		font-family: enhance;
+		src: url('../fonts/enhance.woff') format('woff'),
+			url('../fonts/enhance.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+	.container h1:before,
+	#addo span:before { 
+		font-family: enhance;
+		content: "\00a0\f506\00a0";
+		color: #7795b4;
+	}
+</style>
+	*/});
+	$( 'head' ).append( style );
+}
+
 var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	$( '#loader' ).removeClass( 'hide' );

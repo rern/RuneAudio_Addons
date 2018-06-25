@@ -39,11 +39,11 @@
 # argument:
 #     -n N                                      -n -N    N lines above SEARCH
 #                                               -n +N    N lines below SEARCH
-#     SEARCH                                    normal sed regex syntax
+#     SEARCH                                    normal sed regex syntax inside quotes
+#                                               '..."'"...'  escape single quote inside itself
+#                                               "...\"..."   escape double quote inside itself
 #                                               |  as delimiter - no need to escape  /
-#                                               literal  ^ $ . * [ ] \  need  \  escape
-#                                               ' "'" '  escape single quote inside itself
-#                                               " \" "   escape double quote inside itself
+#                                               literal  | ^ $ . * [ ] \  need  \  escape
 #                                               or use  .  as placeholder instead of escape
 
 # tips:
@@ -162,6 +162,7 @@ appendS() {
 
 restorefile() {
 	for file in "$@"; do
+		echo "$file"
 		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//g
 		" -e "s/^#$alias//
 		" -e "s/^\/\*$alias\|$alias\*\/$//g
