@@ -41,7 +41,7 @@
 #                                               -n +N    N lines below SEARCH
 #     SEARCH                                    normal sed regex syntax
 #                                               |  as delimiter - no need to escape  /
-#                                               literal  ^ $ . * [ ] \  need  \  escape
+#                                               literal  | ^ $ . * [ ] \  need escape(with \ )
 #                                               ' "'" '  escape single quote inside itself
 #                                               " \" "   escape double quote inside itself
 #                                               or use  .  as placeholder instead of escape
