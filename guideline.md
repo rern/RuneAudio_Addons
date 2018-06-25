@@ -235,11 +235,11 @@ argument:
 ------------------------------------------------------------------------------------
 -n N                                      -n -N    N lines above SEARCH
                                           -n +N    N lines below SEARCH
-SEARCH                                    normal sed regex syntax
+SEARCH                                    normal sed regex syntax inside quotes
+                                          '..."'"...'  escape single quote inside itself
+                                          "...\"..."   escape double quote inside itself
                                           |  as delimiter - no need to escape  /
                                           literal  | ^ $ . * [ ] \  need  \  escape
-                                          ' "'" '  escape single quote inside itself
-                                          " \" "   escape double quote inside itself
                                           or use  .  as placeholder instead of escape
 
 tips:
