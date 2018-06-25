@@ -52,7 +52,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
 EOF
 )
-insertH -n -1 'class="playback-controls"'
+insertH -n -2 'class="playback-controls"'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
