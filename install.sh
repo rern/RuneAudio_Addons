@@ -88,8 +88,8 @@ WantedBy=multi-user.target
 ' > $file
 
 crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab - &> /dev/null
-systemctl enable addons cronie
 systemctl daemon-reload
+systemctl enable addons cronie
 systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
