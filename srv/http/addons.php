@@ -17,7 +17,7 @@ if ( $redisaddons[ 'expa' ] ) {
 
 $mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
-$wtotal = 150;
+$wtotal = 200;
 $wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
 $wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
 $wused = $wtotal- $wfree - $wunpart;
