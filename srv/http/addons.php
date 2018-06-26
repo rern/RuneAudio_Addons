@@ -15,14 +15,15 @@ if ( $redisaddons[ 'expa' ] ) {
 	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
 }
 
+$mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
-$available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
-$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
-
 $wtotal = 150;
 $wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
 $wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
 $wused = $wtotal- $wfree - $wunpart;
+
+$available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
+$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 
 echo '
 <div class="container">
