@@ -1,14 +1,28 @@
 <?php
 include 'addonshead.php';
 
+if ( $redisaddons[ 'expa' ] ) {
+	$mbunpart = 0;
+} else {
+	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
+	$fdisk = array_values( $fdisk );
+	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
+	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
+	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
+	$mbtotal = round( $sectorall * $sectorbyte / 1024 / 1024 );
+	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
+	
+	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
+}
+
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
 $available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
 $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 
-$mbtotal = round( disk_total_space( '/' ) / 1000000 );
-$wfree = round( ( $mbfree / $mbtotal ) * 150 );
-$wunpart = round( ( $mbunpart / $mbtotal ) * 150 );
-$wused = 150 - $wfree - $wunpart;
+$wtotal = 150;
+$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
+$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
+$wused = $wtotal- $wfree - $wunpart;
 
 echo '
 <div class="container">
