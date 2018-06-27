@@ -60,6 +60,10 @@ comment() {
 		front='#'$alias         # #alias
 		back=                   # (none)
 		shift
+	elif [[ $1 == -t ]]; then
+		[[ -z $file ]] && echo 'No file=' && return
+		test=1
+		shift
 	else
 		front='/*'$alias        # /*
 		back=$alias'*/'         # */
@@ -77,6 +81,17 @@ comment() {
 		done
 	fi
 	if (( $# == 1 )); then
+		if [[ $test == 1 ]]; then
+			echo
+			echo 'sed -n "\|'$regex'| p" "'$file'"'
+			echo
+			for (( i=0; i < ilength; i++ )); do
+				echo ${linenum[$i]}'- '$( sed -n "${linenum[$i]} p" "$file" )
+			done
+			echo
+			return
+		fi
+
 		for (( i=0; i < ilength; i++ )); do
 			if [[ $front != '#'$alias ]]; then
 				sed -i "${linenum[i]} { s|\*/|\*$alias/|g; s|^|$front|; s|$|$back| }" "$file"
@@ -101,6 +116,17 @@ comment() {
 			done
 		fi
 	
+		if [[ $test == 1 ]]; then
+			echo
+			echo 'sed -n "\|'$regex'|, \|'$regex2'| p" "'$file'"'
+			echo
+			for (( i=0; i < ilength; i++ )); do
+				echo ${linenum[i]}' - '${linenum2[i]}
+				sed -n "${linenum[i]}, ${linenum2[i]} p" "$file"
+			done
+			echo
+			return
+		fi
 		
 		for (( i=0; i < ilength; i++ )); do
 			if [[ $front != '#'$alias ]]; then
