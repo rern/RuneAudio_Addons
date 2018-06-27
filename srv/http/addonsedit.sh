@@ -206,11 +206,8 @@ restorefile() {
 		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//g
 		" -e "s/^#$alias//
 		" -e "s/^\/\*$alias\|$alias\*\/$//g
-		" -e "\|^<?php //0${alias}0 ?>$|, \|^<?php //1${alias}1 ?>$| d
-		" -e "\|^<?php //0${alias}0$|, \|^//1${alias}1 ?>$| d
-		" -e "\|^#0${alias}0$|, \|^#1${alias}1$| d
-		" -e "\|^/\*0${alias}0\*/$|, \|^/\*1${alias}1\*/$| d
 		" -e "s|\*${alias}/|\*/|g
+		" -e "/0${alias}0/, /1${alias}1/ d
 		" "$file"
 	done
 }
