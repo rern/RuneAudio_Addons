@@ -11,6 +11,8 @@
 #     EOF
 #     )
 # usage:
+#     match [-n N] SEARCH [-n N] [SEARCH2]      test sed search pattern
+
 #     comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js,php,css alias*/
 
 #     commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html,php alias*/ ?>
@@ -42,7 +44,7 @@
 #     SEARCH                                    normal sed regex syntax inside quotes
 #                                               '..."'"...'  escape single quote inside itself
 #                                               "...\"..."   escape double quote inside itself
-#                                               |  as delimiter - no need to escape  /
+#                                               |  as delimiter for no escape  /
 #                                               literal  | ^ $ . * [ ] \  need  \  escape
 #                                               or use  .  as placeholder instead of escape
 
@@ -60,6 +62,10 @@ comment() {
 		front='#'$alias         # #alias
 		back=                   # (none)
 		shift
+	elif [[ $1 == -t ]]; then
+		[[ -z $file ]] && echo 'file=(undefined)' && return
+		test=1
+		shift
 	else
 		front='/*'$alias        # /*
 		back=$alias'*/'         # */
@@ -68,28 +74,73 @@ comment() {
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi # line +-
 
 	regex=$( echo "$1" | sed -e 's|"|\\"|g' )                        # escape " in sed "..."
+	linenum=( $( sed -n "\|$regex|=" $file ) )                       # array of all line(s)
+	ilength=${#linenum[*]}
 
-	linenum=$(( $( sed -n "\|$regex|=" $file ) + $lines ))           # get line number
-
+	if (( $lines != 0 )); then                                        # add line +- to array
+		for (( i=0; i < ilength; i++ )); do
+			linenum[$i]=$(( ${linenum[$i]} + $lines ))
+		done
+	fi
 	if (( $# == 1 )); then
-		if [[ $front != '#'$alias ]]; then
-			sed -i "$linenum { s|\*/|\*$alias/|g; s|^|$front|; s|$|$back| }" "$file"
-		else
-			sed -i "$linenum s|^|$front|" "$file"
+		if [[ $test == 1 ]]; then
+			echo
+			echo 'sed -n "\|'$regex'| p" "'$file'"'
+			echo
+			for (( i=0; i < ilength; i++ )); do
+				echo ${linenum[$i]}'- '$( sed -n "${linenum[$i]} p" "$file" )
+			done
+			echo
+			return
 		fi
+
+		for (( i=0; i < ilength; i++ )); do
+			if [[ $front != '#'$alias ]]; then
+				sed -i "${linenum[i]} { s|\*/|\*$alias/|g; s|^|$front|; s|$|$back| }" "$file"
+			else
+				sed -i "${linenum[i]} s|^|$front|" "$file"
+			fi
+		done
 	else
 		if [[ $2 == -n ]]; then lines2=$3; shift; shift; else lines2=0; fi
 		regex2=$( echo "$2" | sed -e 's|"|\\"|g' )
+		linenum2=( $( sed -n "\|$regex2|=" $file ) )
+		ilength2=${#linenum2[*]}
 		
-		linenum2=$(( $( sed -n "\|$regex2|=" $file ) + $lines2 ))
-		
-		if [[ $front != '#'$alias ]]; then
-			sed -i "$linenum, $linenum2 s|\*/|\*$alias/|g" "$file"  # escape existing /* comment */
-			sed -i -e "$linenum s|^|$front|" -e "$linenum2 s|$|$back|" "$file"
-		else
-			sed -i "$linenum, $linenum2 s|^|$front|" "$file"
+		if (( $ilength != $ilength2 )); then
+			echo "Range pairs not matched: $ilength x $regex <-> $ilength2 x $regex2"
+			return
 		fi
+
+		if (( $lines2 != 0 )); then
+			for (( i=0; i < ilength2; i++ )); do
+				linenum2[$i]=$(( ${linenum2[$i]} + $lines2 ))
+			done
+		fi
+	
+		if [[ $test == 1 ]]; then
+			echo
+			echo 'sed -n "\|'$regex'|, \|'$regex2'| p" "'$file'"'
+			echo
+			for (( i=0; i < ilength; i++ )); do
+				echo ${linenum[i]}' - '${linenum2[i]}
+				sed -n "${linenum[i]}, ${linenum2[i]} p" "$file"
+			done
+			echo
+			return
+		fi
+		
+		for (( i=0; i < ilength; i++ )); do
+			if [[ $front != '#'$alias ]]; then
+				# escape existing /* comment */
+				sed -i "${linenum[i]}, ${linenum2[i]} s|\*/|\*$alias/|g" "$file"
+				sed -i -e "${linenum[i]} s|^|$front|" -e "${linenum2[i]} s|$|$back|" "$file"
+			else
+				sed -i "${linenum[i]}, ${linenum2[i]} s|^|$front|" "$file"
+			fi
+		done
 	fi
+
 }
 
 insert() {
@@ -110,23 +161,44 @@ insert() {
 		lower='n/*1'$alias'1*/'          # /*1alias1*/
 	fi
 	
-	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi               # append / insert
+	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi      # append / insert
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi
+	
+	stringcount=$( echo "$string" | wc -l )                 # count insert lines
+	insertcount=$(( stringcount + 2 ))                      # add 2 for upper-lower lines
+	
 	# escape \ and close each line with \ 
 	string=$( cat <<EOF
 $( echo "$string" | sed 's|\\|\\\\|g; s|$|\\|' )
 EOF
 )
 	# if 1st or $ last line
-	if [[ $1 =~ [0-9]+$ ]]; then                        # line number specified
-		linenum=$(( $1 + $lines ))
-	elif [[ $1 == '$' ]]; then                          # last line specified
-		linenum=$(( $( sed -n "$ =" $file ) + $lines ))
+	if [[ $1 =~ [0-9]+$ ]]; then                            # line number specified
+		linenum=( $(( $1 + $lines )) )                      # array of single line
+	elif [[ $1 == '$' ]]; then                              # last line specified
+		linenum=( $(( $( sed -n "$ =" $file ) + $lines )) ) # array of single line
 	else
 		regex=$( echo "$1" | sed -e 's|"|\\"|g' )
-		linenum=$(( $( sed -n "\|$regex|=" $file ) + $lines ))
+		linenum=( $( sed -n "\|$regex|=" $file ) )          # array of all line(s)
+		ilength=${#linenum[*]}
+		
+		if (( $lines != 0 )); then                           # add line +- to array
+			for (( i=0; i < ilength; i++ )); do
+				linenum[$i]=$(( ${linenum[$i]} + $lines ))
+			done
+		fi
 	fi
-	sed -i "$linenum $ia$upper$string$lower" "$file"
+
+	increment=0
+	for (( i=0; i < ilength; i++ )); do
+		lineins=$(( ${linenum[i]} + $increment ))           # increment line number after each insert
+		sed -i "$lineins $ia$upper$string$lower" "$file"
+		increment=$(( $increment + $insertcount ))          # number of line to move
+	done
+}
+
+match() {
+	comment -t "$@"
 }
 
 commentH() {
