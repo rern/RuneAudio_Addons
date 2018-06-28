@@ -6,14 +6,6 @@ $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 
 $redisaddons = $redis->hGetAll( 'addons' );
 
-if ( !$redisaddons[ 'expa' ] ) {
-	$mbunpart = 0;
-} else {
-	$unpart = exec( 'sfdisk -F /dev/mmcblk0 | grep Unpartition | cut -d" " -f6' );
-	$mbunpart = round( $sectorbyte / 1000000 );
-	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
-}
-
 $udaclist = $redis->hGetAll( 'udaclist' );
 if ( !$udaclist ) {
 	$acards = $redis->hGetAll( 'acards' );
@@ -69,7 +61,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180625',
+	'version'      => '20180626',
 	'revision'     => 'Fix bugs'
 					.'<br>Add disk bar for | used | free | expandable |'
 					.'<br>...'

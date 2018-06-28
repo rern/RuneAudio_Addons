@@ -11,6 +11,7 @@ fi
 # temp
 sed -i '/addonsinfo.css\|class="fa fa-addons"\|class="fa fa-cubes"/d' /srv/http/app/templates/header.php
 sed -i '/hammer.min.js\|propagating.js\|addonsinfo.js\|addonsmenu.js/ d'  /srv/http/app/templates/footer.php
+redis-cli hdel addons expa
 
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
@@ -86,9 +87,9 @@ ExecStart=/srv/http/addonsupdate.sh &
 WantedBy=multi-user.target
 ' > $file
 
-crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab -
-systemctl enable addons cronie
+crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab - &> /dev/null
 systemctl daemon-reload
+systemctl enable addons cronie
 systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
