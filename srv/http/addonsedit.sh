@@ -11,6 +11,8 @@
 #     EOF
 #     )
 # usage:
+#     match [-n N] SEARCH [-n N] [SEARCH2]      test sed search pattern
+
 #     comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js,php,css alias*/
 
 #     commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html,php alias*/ ?>
@@ -42,7 +44,7 @@
 #     SEARCH                                    normal sed regex syntax inside quotes
 #                                               '..."'"...'  escape single quote inside itself
 #                                               "...\"..."   escape double quote inside itself
-#                                               |  as delimiter - no need to escape  /
+#                                               |  as delimiter for no escape  /
 #                                               literal  | ^ $ . * [ ] \  need  \  escape
 #                                               or use  .  as placeholder instead of escape
 
@@ -61,7 +63,7 @@ comment() {
 		back=                   # (none)
 		shift
 	elif [[ $1 == -t ]]; then
-		[[ -z $file ]] && echo 'No file=' && return
+		[[ -z $file ]] && echo 'file=(undefined)' && return
 		test=1
 		shift
 	else
@@ -106,8 +108,8 @@ comment() {
 		ilength2=${#linenum2[*]}
 		
 		if (( $ilength != $ilength2 )); then
-			echo "Range pairs not matched: $ilength x $regex <-to-> $ilength2 x $regex2"
-			exit
+			echo "Range pairs not matched: $ilength x $regex <-> $ilength2 x $regex2"
+			return
 		fi
 
 		if (( $lines2 != 0 )); then
@@ -193,6 +195,10 @@ EOF
 		sed -i "$lineins $ia$upper$string$lower" "$file"
 		increment=$(( $increment + $insertcount ))          # number of line to move
 	done
+}
+
+match() {
+	comment -t "$@"
 }
 
 commentH() {
