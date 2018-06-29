@@ -225,10 +225,10 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180629',
 	'rollback'     => '20180610',
-	'revision'     => 'Improve main icons and overlay controls guide'
+	'revision'     => 'Improve most icons and overlay controls guide'
 					.'<br>Change Webradio cover art'
 					.'<br>Add show/hide Webradio elapsed time'
-					.'<br>Fix: omit A/An/The sorting in file mode'
+					.'<br>Fix: omit A/An/The sorting in file mode and (/[/. are omitted as well'
 					.'<br>Improve boot splash image'
 					.'<br>...'
 					.'<br>Show Webradio sampling info in Playback while stop'
