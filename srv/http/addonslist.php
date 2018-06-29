@@ -296,13 +296,13 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180321',
+	'version'      => '20180629',
 	'rollback'     => 'fb3de20151f9fdf866de9ea51d6f03d678211428',
-	'revision'     => 'Fix bugs'
+	'revision'     => 'Fix missing edit snd close buttons'
+					.'<br>General improvements'
+					.'<br>'
 					.'<br>...'
-					.'<br>Update with RuneUI Enhancement 20180321'
-					.'<br>...'
-					.'<br>Fix <white>long-press on song title</white> to not also open lyrics editor',
+					.'<br>Update with RuneUI Enhancement 20180321',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => '/assets/addons/thumblyri.gif',
