@@ -225,13 +225,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancements *',
 	'version'      => '20180610',
 	'rollback'     => '7931d40ea43742ba9e0abaf37c0cb1803313b737',
-	'revision'     => 'Improve main icons and overlay controls guide'
-					.'<br>Change Webradio cover art'
-					.'<br>Add show/hide Webradio elapsed time'
-					.'<br>Fix: omit A/An/The sorting in file mode'
-					.'<br>Improve boot splash image'
-					.'<br>...'
-					.'<br>Show Webradio sampling info in Playback while stop'
+	'revision'     => 'Show Webradio sampling info in Playback while stop'
 					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
 					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
 					.'<br>Show <white>Webradio name</white> on initial load of <white>saved playlist</white>'
