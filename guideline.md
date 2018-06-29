@@ -256,6 +256,7 @@ insert/append with SEARCH itself in $string
 ```php
 <alias> => array(
 /**/	'version'       => '<yyyymmdd>',
+/**/	'rollback'      => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
 /**/	'needspace'     =>  <MB>,
 	'title'         => '<display name>',
@@ -318,12 +319,17 @@ insert/append with SEARCH itself in $string
 
 **`'alias'`**  
 - should be 4 charaters
+
 **`'version'`** - buttons enable/disable 
 - `'version'` changed > show `Update` button
 - non-install addons:
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
+
+**`'rollback'`** - for rollback to previous version
+- before merge to master brance, create a branch and name as current `'version'`
+- edit `'rollback'` to this branch name and will be the rollback version
 
 **`'needspace'`**
 - MB: downloaded packages files + installed files + downloaded files + decompress files
