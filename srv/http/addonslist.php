@@ -150,7 +150,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'hide'         => $redisaddons[ 'expa' ] ? 1 : 0,
 	'option'       => array(
-		'wait'       => '<white>USB drives</white> should be unmount and remove before proceeding.'
+		'wait'       => '<white>USB drives</white> should be unmount and removed before proceeding.'
 	),
 ),
 'motd' => array(
