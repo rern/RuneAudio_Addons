@@ -296,7 +296,7 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180629',
+	'version'      => '20180630',
 	'rollback'     => 'fb3de20151f9fdf866de9ea51d6f03d678211428',
 	'revision'     => 'Fix missing edit snd close buttons'
 					.'<br>General improvements'
