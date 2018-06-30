@@ -34,7 +34,7 @@ hammeraddons.on( 'press', function () {
 function addonsdl( exit ) {
 	if ( exit == 1 ) {
 		info( {
-			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			  icon   : 'info-circle'
 			, message: 'Download from Addons server failed.'
 				+'<br>Please try again later.'
 			, ok     : function() {
@@ -43,7 +43,7 @@ function addonsdl( exit ) {
 		} );
 	} else if ( exit == 2 ) {
 		info( {
-			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			  icon   : 'info-circle'
 			, message: 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
