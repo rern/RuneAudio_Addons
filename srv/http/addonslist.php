@@ -223,7 +223,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements *',
-	'version'      => '20180629',
+	'version'      => '20180630',
 	'rollback'     => '20180610',
 	'revision'     => 'Improve most icons and overlay controls guide'
 					.'<br>Change Webradio cover art'
