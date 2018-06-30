@@ -279,8 +279,7 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180320',
-	'rollback'     => 'f5c0bf9e54253e5f6261644e0021f4e8dcfa407b',
+	'version'      => '20180630',
 	'needspace'    => 5,
 	'revision'     => 'Fix bugs'
 					.'<br>...'
