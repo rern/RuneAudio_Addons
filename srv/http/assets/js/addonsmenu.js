@@ -1,30 +1,5 @@
 $(function() { // $( document ).ready(function() {
 
-// append style for addons icon
-function heredoc( fn ) {
-  return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
-}
-if ( $( '#bartop' ).length ) {
-	var style = heredoc(function () {/*
-<style>
-	@font-face {
-		font-family: enhance;
-		src: url('../fonts/enhance.woff') format('woff'),
-			url('../fonts/enhance.ttf') format('truetype');
-		font-weight: normal;
-		font-style: normal;
-	}
-	.container h1:before,
-	#addo span:before { 
-		font-family: enhance;
-		content: "\00a0\f506\00a0";
-		color: #7795b4;
-	}
-</style>
-	*/});
-	$( 'head' ).append( style );
-}
-
 var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
 hammeraddons.on( 'tap', function () {
 	$( '#loader' ).removeClass( 'hide' );
@@ -59,7 +34,7 @@ hammeraddons.on( 'press', function () {
 function addonsdl( exit ) {
 	if ( exit == 1 ) {
 		info( {
-			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			  icon   : 'info-circle'
 			, message: 'Download from Addons server failed.'
 				+'<br>Please try again later.'
 			, ok     : function() {
@@ -68,7 +43,7 @@ function addonsdl( exit ) {
 		} );
 	} else if ( exit == 2 ) {
 		info( {
-			  icon   : '<i class="fa fa-info-circle fa-2x">'
+			  icon   : 'info-circle'
 			, message: 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
