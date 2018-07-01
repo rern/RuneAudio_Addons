@@ -21,6 +21,17 @@ if ( $( '#list li[alias=enha] i' ).length ) {
 	content: "\00a0\f520\00a0";
 	color: #7795b4;
 }
+.fa-plus:before { content: "\f519" }
+.fa-minus:before { content: "\f516" }
+.fa-times:before { content: "\f51A" }
+
+.fa-plus-circle:before { content: "\f51C" }
+.fa-minus-circle:before { content: "\f51B" }
+.fa-times-circle:before { content: "\f51D" }
+
+.fa-info-circle:before { content: "\f560" }
+.fa-question-circle:before { content: "\f561" }
+
 </style>
 	*/});
 	$( 'head' ).append( style );
