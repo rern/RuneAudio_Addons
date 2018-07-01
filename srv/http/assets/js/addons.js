@@ -17,7 +17,7 @@ if ( $( '#list li[alias=enha] i' ).length ) {
 }
 .container h1:before,
 #addo span:before { 
-	font-family: FontAwesome;
+	font-family: enhance;
 	content: "\00a0\f520\00a0";
 	color: #7795b4;
 }
