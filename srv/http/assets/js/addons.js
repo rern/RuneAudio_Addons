@@ -29,8 +29,12 @@ if ( $( '#list li[alias=enha] i' ).length ) {
 .fa-minus-circle:before { content: "\f51C" }
 .fa-times-circle:before { content: "\f51E" }
 
-.fa-tick:before { content: "\f51B" }
+.fa-check:before { content: "\f51B" }
 .fa-refresh:before { content: "\f563" }
+.fa-arrow-up:before { content: "\f566" }
+.fa-arrow-down:before { content: "\f567" }
+.fa-chevron-down:before { content: "\f568" }
+.fa-external-link:before { content: "\f569" }
 
 .fa-info-circle:before { content: "\f560" }
 .fa-question-circle:before { content: "\f561" }
