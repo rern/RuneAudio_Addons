@@ -21,13 +21,16 @@ if ( $( '#list li[alias=enha] i' ).length ) {
 	content: "\00a0\f520\00a0";
 	color: #7795b4;
 }
-.fa-plus:before { content: "\f519" }
-.fa-minus:before { content: "\f516" }
+.fa-plus:before { content: "\f518" }
+.fa-minus:before { content: "\f519" }
 .fa-times:before { content: "\f51A" }
 
-.fa-plus-circle:before { content: "\f51C" }
-.fa-minus-circle:before { content: "\f51B" }
-.fa-times-circle:before { content: "\f51D" }
+.fa-plus-circle:before { content: "\f51D" }
+.fa-minus-circle:before { content: "\f51C" }
+.fa-times-circle:before { content: "\f51E" }
+
+.fa-tick:before { content: "\f51B" }
+.fa-refresh:before { content: "\f563" }
 
 .fa-info-circle:before { content: "\f560" }
 .fa-question-circle:before { content: "\f561" }
