@@ -38,34 +38,23 @@ h1 {
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
-#list li:after {
-	font-family: FontAwesome;
-	content: "\2002\f0ab";
-	color: #0095d8;
-}
+#issues i,
 .detailtext i {
 	color: #7795b4;
 }
-.revision:after {
-	font-family: FontAwesome;
-	content: '\2002\f13a';
-}
-.revisionup:after {
-	font-family: FontAwesome;
-	content: '\2002\f139' !important;
+legend i:last-child {
+	float: right;
 }
 .revisionnone:after {
 	content: "\2002●";
 	color: #e0e7ee;
 }
-.boxed-group legend:after {
-	font-family: FontAwesome;
-	float: right;
-	content: '\f0aa';
-	color: #0095d8;
-}
 .boxed-group {
 	padding: 10px 20px;
+}
+legend .fa-check {
+	font-size: 24px;
+	vertical-align: -5%;
 }
 img {
 	max-width: 100px;
