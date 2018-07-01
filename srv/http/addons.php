@@ -50,20 +50,24 @@ foreach( $arrayalias as $alias ) {
 	if ( $addon[ 'hide' ] === 1 ) continue;
 	
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
-	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
+	if ( isset( $addon[ 'buttonlabel' ] ) ) {
+		$buttonlabel = $addon[ 'buttonlabel' ];
+	} else {
+		$buttonlabel = '<i class="fa fa-plus-circle"></i> Install';
+	}
 	
 	if ( $redisaddons[ $alias ] || $redis->hGet( 'addons', $alias ) ) {
 		$check = '<i class="fa fa-check"></i> ';
 		if ( !isset( $addon[ 'version' ] ) 
 			|| $addon[ 'version' ] == $redisaddons[ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
-			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-default disabled">'.$buttonlabel.'</a>';
 		} else {
 			$check = '<i class="fa fa-refresh"></i> ';
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-minus-circle"></i> Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
@@ -74,8 +78,8 @@ foreach( $arrayalias as $alias ) {
 			$btninclass = 'btnneedspace';
 			$btninattr = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		}
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
-		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'>'.$buttonlabel.'</a>';
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i> Uninstall</a>';
 	}
 	
 	// addon list ---------------------------------------------------------------
