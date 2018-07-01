@@ -5,22 +5,19 @@ function heredoc( fn ) {
 if ( $( '#list li[alias=enha] i' ).length ) {
 	var style = heredoc(function () {/*
 <style>
-@font-face {
-	font-family: enhance;
-	src: url('../fonts/enhance.woff') format('woff'),
-		url('../fonts/enhance.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-.fa {
-	font-family: FontAwesome, enhance;
-}
-.container h1:before,
-#addo span:before { 
-	font-family: FontAwesome;
-	content: "\00a0\f520\00a0";
-	color: #7795b4;
-}
+	@font-face {
+		font-family: FontAwesome;
+		src: url('../fonts/fontawesome-webfont.woff') format('woff'),
+			url('../fonts/fontawesome-webfont.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+	}
+	.container h1:before,
+	#addo span:before { 
+		font-family: FontAwesome;
+		content: "\00a0\f520\00a0";
+		color: #7795b4;
+	}
 </style>
 	*/});
 	$( 'head' ).append( style );
