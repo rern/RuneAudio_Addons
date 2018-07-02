@@ -42,19 +42,12 @@ li {
 .detailtext i {
 	color: #7795b4;
 }
-legend i:last-child {
-	float: right;
-}
 .revisionnone:after {
 	content: "\2002●";
 	color: #e0e7ee;
 }
 .boxed-group {
 	padding: 10px 20px;
-}
-legend .fa-check {
-	font-size: 24px;
-	vertical-align: -5%;
 }
 img {
 	max-width: 100px;
@@ -64,19 +57,23 @@ legend {
 	font-size: 14px;
 	color: #7795b4;
 }
-legend i {
-	vertical-align: 15%;
-}
 legend span {
 	font-size: 21px;
 }
 legend p,
 legend a {
 	display: inline-block;
-	font-size: 14px;
+	line-height: 1em;
 }
 legend > a:nth-of-type(2) {
 	float: right;
+}
+legend .status {
+	font-size: 24px;
+}
+legend .fa-arrow-up {
+	float: right;
+	margin-top: 10px;
 }
 .hidescrollv {
 	margin-top: 10px;
