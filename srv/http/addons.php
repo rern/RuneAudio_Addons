@@ -28,7 +28,7 @@ $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunp
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<h1><img src="/img/+Rlogo-blue.svg" style="width: 30px;margin: -10px 10px 0 0;">ADDONS</h1>
+	<h1><img src="/img/+Rlogo-blue.svg" style="width: 35px;margin: -10px 10px 0 0;">ADDONS</h1>
 	<legend class="bl">
 		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
 	</legend>
