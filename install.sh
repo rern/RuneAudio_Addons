@@ -50,7 +50,7 @@ EOF
 appendH 'runeui.css'
 
 string=$( cat <<'EOF'
-            <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+            <li><a id="addons"><img src="/img/+Rlogo.svg" style="width: 20px;margin: 0 10px 0 5px;"> Addons</a></li>
 EOF
 )
 insertH -n -2 'class="playback-controls"'
