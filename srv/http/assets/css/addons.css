@@ -75,6 +75,11 @@ legend .fa-arrow-up {
 	float: right;
 	margin-top: 10px;
 }
+@media(max-width: 480px) {
+	legend .fa-arrow-up {
+		display: none;
+	}
+}
 .hidescrollv {
 	margin-top: 10px;
 }
