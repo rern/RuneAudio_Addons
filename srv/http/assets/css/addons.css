@@ -104,6 +104,7 @@ code {
 }
 .btn {
 	text-transform: none;
+	min-width: 100px;
 }
 #bottom {
 	height: calc(100vh - 160px);
