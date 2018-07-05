@@ -1,35 +1,4 @@
-// append style for addons icon
-function heredoc( fn ) {
-  return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
-}
-if ( $( '#enha a.revision' ).text() > 20180630 && $( '#enha a.btn:eq(0)' ).is( '.disabled, .btn-primary' ) ) {
-	var style = heredoc(function () {/*
-<style>
-@font-face {
-	font-family: enhance;
-	src: url('../fonts/enhance.woff') format('woff'),
-		url('../fonts/enhance.ttf') format('truetype');
-	font-weight: normal;
-	font-style: normal;
-}
-.fa {
-	font-family: FontAwesome, enhance;
-}
-.fa-times:before { content: "\f51A" }
-.fa-plus-circle:before { content: "\f51D" }
-.fa-minus-circle:before { content: "\f51C" }
-.fa-check:before { content: "\f51B" }
-.fa-refresh:before { content: "\f563" }
-.fa-arrow-up:before { content: "\f566" }
-.fa-arrow-down:before { content: "\f567" }
-.fa-chevron-down:before { content: "\f568" }
-.fa-external-link:before { content: "\f569" }
-.fa-info-circle:before { content: "\f560" }
-.fa-question-circle:before { content: "\f561" }
-</style>
-	*/});
-	$( 'head' ).append( style );
-}// revision show/hide
+// revision show/hide
 $( '.revision' ).click( function(e) {
 	e.stopPropagation();
 	$( this ).parent().parent().next().toggle();
