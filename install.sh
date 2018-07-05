@@ -37,6 +37,7 @@ installstart $@
 
 getinstallzip
 
+echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
@@ -50,7 +51,7 @@ EOF
 appendH 'runeui.css'
 
 string=$( cat <<'EOF'
-            <li><a id="addons"><i class="fa fa-cubes"></i> Addons</a></li>
+            <li><a id="addons"><img src="/img/+Rlogo.svg" style="width: 20px;margin: 0 10px 0 5px;"> Addons</a></li>
 EOF
 )
 insertH -n -2 'class="playback-controls"'
@@ -69,6 +70,20 @@ EOF
 )
 appendH 'openwebapp.js'
 #----------------------------------------------------------------------------------
+file=/etc/nginx/nginx.conf
+if ! grep -q 'ico|svg' $file; then
+	echo $file
+	commentS 'gif\|ico'
+	string=$( cat <<'EOF'
+        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+EOF
+)
+	appendS 'gif\|ico'
+	
+	svg=0
+else
+	svg=1
+fi
 
 # set sudo no password
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
@@ -100,3 +115,5 @@ addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 installfinish $@
 
 clearcache
+
+[[ $svg == 0 ]] && systemctl restart nginx

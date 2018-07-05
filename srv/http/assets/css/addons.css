@@ -4,6 +4,28 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: enhance;
+	src: url( '../fonts/enhance.woff' ) format( 'woff' ),
+		url( '../fonts/enhance.ttf' ) format( 'truetype' );
+	font-weight: normal;
+	font-style: normal;
+}
+.fa {
+	font-family: FontAwesome, enhance;
+}
+.fa-times:before { content: "\f51A" }
+.fa-plus-circle:before { content: "\f51D" }
+.fa-minus-circle:before { content: "\f51C" }
+.fa-check:before { content: "\f51B" }
+.fa-refresh:before { content: "\f563" }
+.fa-arrow-up:before { content: "\f566" }
+.fa-arrow-down:before { content: "\f567" }
+.fa-chevron-down:before { content: "\f568" }
+.fa-external-link:before { content: "\f569" }
+.fa-info-circle:before { content: "\f560" }
+.fa-question-circle:before { content: "\f561" }
+
 .container {
 	padding : 0 15px 20px;
 }
@@ -38,31 +60,13 @@ h1 {
 li {
     list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
 }
-#list li:after {
-	font-family: FontAwesome;
-	content: "\2002\f0ab";
-	color: #0095d8;
-}
+#issues i,
 .detailtext i {
 	color: #7795b4;
-}
-.revision:after {
-	font-family: FontAwesome;
-	content: '\2002\f13a';
-}
-.revisionup:after {
-	font-family: FontAwesome;
-	content: '\2002\f139' !important;
 }
 .revisionnone:after {
 	content: "\2002●";
 	color: #e0e7ee;
-}
-.boxed-group legend:after {
-	font-family: FontAwesome;
-	float: right;
-	content: '\f0aa';
-	color: #0095d8;
 }
 .boxed-group {
 	padding: 10px 20px;
@@ -75,19 +79,27 @@ legend {
 	font-size: 14px;
 	color: #7795b4;
 }
-legend i {
-	vertical-align: 15%;
-}
 legend span {
 	font-size: 21px;
 }
 legend p,
 legend a {
 	display: inline-block;
-	font-size: 14px;
+	line-height: 1em;
 }
 legend > a:nth-of-type(2) {
 	float: right;
+}
+legend .status {
+	font-size: 24px;
+}
+legend .fa-arrow-up {
+	float: right;
+}
+@media(max-width: 480px) {
+	legend .fa-arrow-up {
+		display: none;
+	}
 }
 .hidescrollv {
 	margin-top: 10px;
@@ -114,6 +126,7 @@ code {
 }
 .btn {
 	text-transform: none;
+	min-width: 100px;
 }
 #bottom {
 	height: calc(100vh - 160px);

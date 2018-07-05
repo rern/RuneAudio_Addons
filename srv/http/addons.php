@@ -28,7 +28,7 @@ $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunp
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<h1>ADDONS</h1>
+	<h1><img src="/img/+Rlogo-blue.svg" style="width: 35px;margin: -10px 10px 0 0;">ADDONS</h1>
 	<legend class="bl">
 		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
 	</legend>
@@ -50,20 +50,24 @@ foreach( $arrayalias as $alias ) {
 	if ( $addon[ 'hide' ] === 1 ) continue;
 	
 	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
-	$buttonlabel = isset( $addon[ 'buttonlabel' ]) ? $addon[ 'buttonlabel' ] : 'Install';
+	if ( isset( $addon[ 'buttonlabel' ] ) ) {
+		$buttonlabel = $addon[ 'buttonlabel' ];
+	} else {
+		$buttonlabel = '<i class="fa fa-plus-circle"></i>&ensp;Install';
+	}
 	
 	if ( $redisaddons[ $alias ] || $redis->hGet( 'addons', $alias ) ) {
-		$check = '<i class="fa fa-check"></i> ';
+		$check = '<i class="fa fa-check status"></i> ';
 		if ( !isset( $addon[ 'version' ] ) 
 			|| $addon[ 'version' ] == $redisaddons[ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
-			$btnin = '<a class="btn btn-default disabled"><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
 		} else {
-			$check = '<i class="fa fa-refresh"></i> ';
-			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i> Update</a>';
+			$check = '<i class="fa fa-refresh status"></i> ';
+			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-close"></i> Uninstall</a>';
+		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
@@ -74,8 +78,8 @@ foreach( $arrayalias as $alias ) {
 			$btninclass = 'btnneedspace';
 			$btninattr = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		}
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'><i class="fa fa-check"></i> '.$buttonlabel.'</a>';
-		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-close"></i> Uninstall</a>';
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'>'.$buttonlabel.'</a>';
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	}
 	
 	// addon list ---------------------------------------------------------------
@@ -84,7 +88,7 @@ foreach( $arrayalias as $alias ) {
 	if ( $alias !== 'addo' ) {
 		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'</li>';
+		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'&ensp;<i class="fa fa-arrow-down"></i></li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
@@ -105,8 +109,8 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 			<legend title="Back to top">'
 				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
-				&emsp;<p><a class="'.$revisionclass.'">'.$version.'</a>
-				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p>
+				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? '&ensp;<i class="fa fa-chevron-down"></i>' : '' ).'</a>
+				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><i class="fa fa-arrow-up"></i>
 			</legend>
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'

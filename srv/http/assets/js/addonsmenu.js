@@ -76,14 +76,4 @@ renderMSG = function( text ) {
 	old_renderMSG( text );
 }
 
-if ( $( '#bartop' ).length ) return;
-	
-$.post( '/addonsdl.php', { redis: 'update' }, function( data ) {
-	if ( data != 0 ) {
-		$( '#menu-settings').find( 'i' ).append( '<span id="badge">'+ data +'</span>' );
-	} else {
-		$( '#badge' ).remove();
-	}
-} );
-
 } );

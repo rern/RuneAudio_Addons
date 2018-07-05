@@ -61,7 +61,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180630',
+	'version'      => '20180706',
 	'revision'     => 'Fix bugs'
 					.'<br>Add disk bar for | used | free | expandable |'
 					.'<br>...'
@@ -356,6 +356,19 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'         => $redisaddons[ 'enha' ] ? 1 : 0,
+),
+'uire' => array(
+	'title'        => 'RuneUI Reset',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Reset RuneUI to default and reinstall Addons',
+	'buttonlabel'  => 'Reset',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/install.sh',
+	'option'       => array(
+		'confirm'    => 'All addons and custom UI modifications'
+					.'<br><white>will be removed</white>.'
+					.'<br>Continue?'
+	),
 ),
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',

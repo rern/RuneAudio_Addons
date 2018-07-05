@@ -1,9 +1,9 @@
-Addons Menu for RuneAudio
+Addons for RuneAudio
 ---
 _Tested on RPi3_  
 _for RuneAudio **0.3 and 0.4b** (0n 0.4b - incompatible addons will be hidden)_
    
-**Addons Menu** for easy addons installation via RuneUI.  
+**Addons** for easy addons installation via RuneUI.  
 - It's the same as running on SSH terminal.  
 - Just much easier.  
 - Something like mini App Store or mini Play Store.  
@@ -44,7 +44,7 @@ Currently available:
 
 Install
 ---
-**for beginners:**  [Addons Menu Installation](https://github.com/rern/RuneAudio/blob/master/Addons_install/README.md) `<< click`
+**for beginners:**  [Addons Installation](https://github.com/rern/RuneAudio/blob/master/Addons_install/README.md) `<< click`
 
 **for ssh terminal:**
 ```sh
