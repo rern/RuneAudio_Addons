@@ -365,7 +365,8 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/install.sh',
 	'option'       => array(
-		'confirm'    => 'All addons and custom UI modifications <white>will be removed</white>.'
+		'confirm'    => 'All addons and custom UI modifications'
+					.'<br><white>will be removed</white>.'
 					.'<br>Continue?'
 	),
 ),
