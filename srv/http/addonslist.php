@@ -62,12 +62,11 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons',
 	'version'      => '20180706',
-	'revision'     => 'Fix bugs'
-					.'<br>Add disk bar for | used | free | expandable |'
+	'revision'     => 'UI improvement'
 					.'<br>...'
+					.'<br>Add disk bar for | used | free | expandable |'
 					.'<br>Use local thumbnails to improve loading speed'
 					.'<br>Normalize code editing template'
-					.'<br>...'
 					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
 					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
 	'maintainer'   => 'r e r n',
