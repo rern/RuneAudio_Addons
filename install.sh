@@ -37,6 +37,7 @@ installstart $@
 
 getinstallzip
 
+echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
