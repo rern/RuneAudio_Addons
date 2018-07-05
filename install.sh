@@ -113,6 +113,7 @@ redis-cli hset addons update 0 &>/dev/null
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
 installfinish $@
+title -nt "$info Please clear browser cache."
 
 clearcache
 
