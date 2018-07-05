@@ -2,7 +2,7 @@
 function heredoc( fn ) {
   return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
 }
-if ( $( '#list li[alias=enha] i' ).length ) {
+if ( $( '#list li[alias=enha] i:not(.fa-arrow-down)' ).length ) {
 	var style = heredoc(function () {/*
 <style>
 @font-face {
