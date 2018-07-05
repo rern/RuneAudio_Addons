@@ -2,7 +2,7 @@
 function heredoc( fn ) {
   return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
 }
-if ( $( '#enha a.revision' ).text() > '20180630' && $( '#enha a.btn:eq(0)' ).hasClass( 'disabled' ) ) {
+if ( $( '#enha a.revision' ).text() > 20180630 && $( '#enha a.btn:eq(0)' ).hasClass( 'disabled' ) ) {
 	var style = heredoc(function () {/*
 <style>
 @font-face {
