@@ -16,20 +16,6 @@
 .infobtn-default {
 	background: #34495e;
 }
-#badge {
-	position: absolute;
-	height: 2rem;
-	top: 15px;
-	right: 40px;
-	width: 2rem;
-	text-align: center;
-	line-height: 2rem;
-	font-family: "Lato";
-	font-size: 1.25rem;
-	border-radius: 50%;
-	color: #e0e7ee;
-	background: red;
-}
 #infoOverlay {
 	display: none;
 	top: 0;
