@@ -88,9 +88,16 @@ foreach( $arrayalias as $alias ) {
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
-		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
+		if ( substr( $title, -1 ) === '*' ) {
+			$last = array_pop( explode( ' ', $title ) );
+			$listtitle = preg_replace( '/\**$/', '', $title );
+			$star = '&nbsp;<a>'.str_replace( '*', '★', $last ).'</a>';
+		} else {
+			$listtitle = $title;
+			$star = '';
+		}
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'&ensp;<i class="fa fa-arrow-down"></i></li>';
+		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'&ensp;<i class="fa fa-arrow-down"></i></li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
