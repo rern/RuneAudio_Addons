@@ -68,10 +68,6 @@ li {
 .detailtext i {
 	color: #7795b4;
 }
-.revisionnone:after {
-	content: "\2002●";
-	color: #e0e7ee;
-}
 .boxed-group {
 	padding: 10px 20px;
 }
