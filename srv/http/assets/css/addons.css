@@ -5,14 +5,18 @@
 	font-style: normal;
 }
 @font-face {
-	font-family: enhance;
-	src: url( '../fonts/enhance.woff' ) format( 'woff' ),
-		url( '../fonts/enhance.ttf' ) format( 'truetype' );
+	font-family: addons;
+	src: url( '../fonts/addons.woff' ) format( 'woff' ),
+		url( '../fonts/addons.ttf' ) format( 'truetype' );
 	font-weight: normal;
 	font-style: normal;
 }
 .fa {
-	font-family: FontAwesome, enhance;
+	font-family: FontAwesome, addons;
+}
+.fa-addons:before {
+	content: "\f520";
+	color: #7795b4;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
