@@ -42,6 +42,7 @@ $blocks = '';
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
+$updatecount = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
@@ -63,6 +64,7 @@ foreach( $arrayalias as $alias ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
 		} else {
+			$updatecount++;
 			$check = '<i class="fa fa-refresh status"></i> ';
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
 		}
@@ -127,6 +129,7 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 		</div>';
 }
+$redis->hSet( 'addons', 'update', $updatecount );
 // ------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
