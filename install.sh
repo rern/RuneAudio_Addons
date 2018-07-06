@@ -117,4 +117,4 @@ title -nt "$info Please clear browser cache."
 
 clearcache
 
-[[ $svg == 0 ]] && systemctl restart nginx
+[[ $svg == 0 ]] && restartnginx
