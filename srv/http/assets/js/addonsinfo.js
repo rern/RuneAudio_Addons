@@ -78,7 +78,16 @@ function inforeset() {
 function info( O ) {
 	// common
 	inforeset();
-	$( '#infoIcon' ).html( O.icon ? '<i class="fa fa-'+ O.icon +' fa-2x">' : '<i class="fa fa-question-circle fa-2x">' );
+	if ( !O.icon ) {
+		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
+	} else {
+		if ( O.icon.charAt( 0 ) !== '<' ) {
+			var iconhtml = '<i class="fa fa-'+ O.icon +' fa-2x">';
+		} else {
+			var iconhtml = O.icon;
+		}
+	}
+	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	$( '.infocontent, #infoButtons a' ).hide();
 	// simple use as info('message')
