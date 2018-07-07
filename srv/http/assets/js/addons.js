@@ -222,7 +222,7 @@ function getoptions() {
 					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
 						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
@@ -257,7 +257,7 @@ function getoptions() {
 					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
 						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
@@ -282,7 +282,7 @@ function getoptions() {
 					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
-						var selected = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' selected' : '';
+						var selected = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' selected' : '';
 						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
 					return selecthtml
