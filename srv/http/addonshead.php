@@ -36,7 +36,7 @@
 
 <div id="loader" style="display: none;">
 	<div id="loaderbg"></div>
-	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
+	<div id="loadercontent"><i class="fa fa-addons"></i>connecting...</div>
 </div>
 
 <?php include 'addonslist.php';?>
