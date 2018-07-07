@@ -221,7 +221,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
 'enha' => array(
-	'title'        => 'RuneUI Enhancements *',
+	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180630',
 	'rollback'     => '20180610',
 	'revision'     => 'Improve most icons and overlay controls guide'
