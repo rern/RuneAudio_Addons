@@ -31,16 +31,18 @@ function branchtest( title, message ) {
 	} );
 }
 $( '.boxed-group .btn' ).each( function() {
+	var alias = $( this ).parent().attr( 'alias' );
+	var title = $( this ).parent().prev().prev().find( 'span' ).text();
+	var rollback = $( this ).attr( 'rollback' );
+	var btntxt = $( this ).text().trim()
+	var type = btntxt === 'Install' ? 'Install' : 'Update';
+	var needspace = $( this ).hasClass( 'btnneedspace' ) ? $this.attr( 'needspace' ) : '';
+	var link = btntxt === 'Link' ? $( this ).prev().find( 'a' ).attr( 'href' ) : '';
+	
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function ( e ) {
-		$this = $( e.target );
 		opt = '';
 		branch = '';
-		alias = $this.parent().attr( 'alias' );
-		rollback = $this.attr( 'rollback' );
-		type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
-		title = $this.parent().prev().prev().find( 'span' ).text();
-		
 		if ( type === 'Install' || !rollback ) {
 			branchtest( title, 'Install version?' );
 			return 1;
@@ -62,32 +64,27 @@ $( '.boxed-group .btn' ).each( function() {
 			}
 		} );
 	} ).on( 'tap', function ( e ) {
-		$this = $( e.target );
-		if ( $this.hasClass( 'btnneedspace' ) ) {
+		if ( needspace ) {
 			info( {
 				  icon   : 'info-circle'
 				, title  : 'Warning'
 				, message: 'Disk space not enough.<br>'
-						+ $this.attr( 'needspace' )
+						+ needspace
 			} );
 			return
 		}
 		opt = '';
 		branch = '';
-		alias = $this.parent().attr( 'alias' );
-		type = $this.text().trim();
-		title = $this.parent().prev().prev().find( 'span' ).text();
-		
-		if ( type === 'Link' ) {
-			window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
+		if ( btntxt === 'Link' ) {
+			window.open( link, '_self' );
 		} else {
 			info( {
 				  title  : title
-				, message: type +'?'
+				, message: btntxt +'?'
 				, cancel : 1
 				, ok     : function () {
 					option = addons[ alias ].option;
-					if ( type === 'Update' || type === 'Uninstall' || !option ) {
+					if ( btntxt === 'Update' || type === 'Uninstall' || !option ) {
 						formtemp();
 					} else {
 						j = 0;
@@ -100,7 +97,7 @@ $( '.boxed-group .btn' ).each( function() {
 } );
 $( '.thumbnail' ).click( function() {
 	$sourcecode = $( this ).prev().find('form a').attr( 'href');
-	if ( $sourcecode ) window.open( $sourcecode, '_blank' );
+	if ( $sourcecode ) window.open( $sourcecode, '_self' );
 } );
 
 function getoptions() {
