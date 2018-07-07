@@ -1,3 +1,14 @@
+@font-face {
+	font-family: addons;
+	src: url( '../fonts/addons.woff' ) format( 'woff' ),
+		url( '../fonts/addons.ttf' ) format( 'truetype' );
+	font-weight: normal;
+	font-style: normal;
+}
+#addons i:before {
+	font-family: addons;
+	content: "\f520";
+}
 .infobtn {
 	display: inline-block;
 	border: none;
