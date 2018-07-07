@@ -29,6 +29,18 @@
 .fa-external-link:before { content: "\f569" }
 .fa-info-circle:before { content: "\f560" }
 .fa-question-circle:before { content: "\f561" }
+.fa-stopwatch-o:before {
+	font-family: addons;
+	content: "\f54E";
+}
+.fa-stopwatch-i:before {
+	font-family: addons;
+	content: "\f54F";
+}
+#stopwatch {
+	margin: -35px -20px 0 -15px;
+	padding: 0;
+}
 
 .container {
 	padding : 0 15px 20px;
