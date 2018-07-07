@@ -327,9 +327,9 @@ $addons = array(
 				'6'           => 6,
 				'7'           => 7,
 				'8 (default)' => 8,
-				'Custom'   => '?'
+				'Custom'      => '?'
 			),
-			'checked'      => $notifysec
+			'checked'  => $notifysec
 		),
 	),
 ),
