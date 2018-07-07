@@ -61,7 +61,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180706',
+	'version'      => '20180707',
 	'revision'     => 'UI improvement'
 					.'<br>...'
 					.'<br>Add disk bar for | used | free | expandable |'
