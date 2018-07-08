@@ -92,7 +92,7 @@ foreach( $arrayalias as $alias ) {
 			$listtitle = $title;
 			$star = '';
 		}
-		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
+		if ( $check === '<i class="fa fa-refresh status"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
 		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
