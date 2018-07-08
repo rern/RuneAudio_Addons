@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>RuneAddons</title>
+    <title>Addons</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -36,7 +36,7 @@
 
 <div id="loader" style="display: none;">
 	<div id="loaderbg"></div>
-	<div id="loadercontent"><i class="fa fa-refresh fa-spin"></i>connecting...</div>
+	<div id="loadercontent"><i class="fa fa-addons"></i>connecting...</div>
 </div>
 
 <?php include 'addonslist.php';?>

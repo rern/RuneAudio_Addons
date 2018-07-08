@@ -11,6 +11,7 @@ fi
 # temp
 sed -i '/addonsinfo.css\|class="fa fa-addons"\|class="fa fa-cubes"/d' /srv/http/app/templates/header.php
 sed -i '/hammer.min.js\|propagating.js\|addonsinfo.js\|addonsmenu.js/ d'  /srv/http/app/templates/footer.php
+rm -f /srv/http/assets/img/+R*
 redis-cli hdel addons expa &> /dev/null
 
 # for 'installstart' before 'addonslist.php' exist
@@ -51,7 +52,7 @@ EOF
 appendH 'runeui.css'
 
 string=$( cat <<'EOF'
-            <li><a id="addons"><img src="/img/+Rlogo.svg" style="width: 20px;margin: 0 10px 0 5px;"> Addons</a></li>
+            <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
 insertH -n -2 'class="playback-controls"'
@@ -117,4 +118,4 @@ title -nt "$info Please clear browser cache."
 
 clearcache
 
-[[ $svg == 0 ]] && systemctl restart nginx
+[[ $svg == 0 ]] && restartnginx

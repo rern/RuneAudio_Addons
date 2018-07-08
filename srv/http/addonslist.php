@@ -61,7 +61,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180706',
+	'version'      => '20180707',
 	'revision'     => 'UI improvement'
 					.'<br>...'
 					.'<br>Add disk bar for | used | free | expandable |'
@@ -221,7 +221,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
 'enha' => array(
-	'title'        => 'RuneUI Enhancements *',
+	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180630',
 	'rollback'     => '20180610',
 	'revision'     => 'Improve most icons and overlay controls guide'
@@ -327,9 +327,9 @@ $addons = array(
 				'6'           => 6,
 				'7'           => 7,
 				'8 (default)' => 8,
-				'Custom'   => '?'
+				'Custom'      => '?'
 			),
-			'checked'      => $notifysec
+			'checked'  => $notifysec
 		),
 	),
 ),

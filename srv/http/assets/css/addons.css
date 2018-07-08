@@ -5,22 +5,24 @@
 	font-style: normal;
 }
 @font-face {
-	font-family: enhance;
-	src: url( '../fonts/enhance.woff' ) format( 'woff' ),
-		url( '../fonts/enhance.ttf' ) format( 'truetype' );
+	font-family: addons;
+	src: url( '../fonts/addons.woff' ) format( 'woff' ),
+		url( '../fonts/addons.ttf' ) format( 'truetype' );
 	font-weight: normal;
 	font-style: normal;
 }
 .fa {
-	font-family: FontAwesome, enhance;
+	font-family: FontAwesome, addons;
+}
+.fa-addons:before {
+	content: "\f520";
+	color: #7795b4;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
 .fa-minus-circle:before { content: "\f51C" }
 .fa-check:before { content: "\f51B" }
 .fa-refresh:before { content: "\f563" }
-.fa-arrow-up:before { content: "\f566" }
-.fa-arrow-down:before { content: "\f567" }
 .fa-chevron-down:before { content: "\f568" }
 .fa-external-link:before { content: "\f569" }
 .fa-info-circle:before { content: "\f560" }
@@ -56,17 +58,16 @@ h1 {
 }
 #list {
 	margin: 10px 0;
+	list-style: none;
 }
-li {
-    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa6wfOqW/9g0dWb7gNUMT4WEgonocAQAfvYYC/vfJDEAAAAASUVORK5CYII=);
+li:before {
+	margin-right: 5px;
+	content: '\1f86B';
+	color: #0095d8;
 }
 #issues i,
 .detailtext i {
 	color: #7795b4;
-}
-.revisionnone:after {
-	content: "\2002●";
-	color: #e0e7ee;
 }
 .boxed-group {
 	padding: 10px 20px;
@@ -87,7 +88,7 @@ legend a {
 	display: inline-block;
 	line-height: 1em;
 }
-legend > a:nth-of-type(2) {
+legend > a:last-child {
 	float: right;
 }
 legend .status {
@@ -147,7 +148,7 @@ a {
 	cursor: pointer;
 }
 strike {
-    text-decoration: line-through;
+	text-decoration: line-through;
 }
 li i,
 .boxed-group legend i,
@@ -188,8 +189,7 @@ a[href^="http"] {
 }
 #list li:hover,
 a:hover {
-    list-style-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAJklEQVQoU2NkIBIwEqmOAa7wwfN3/7FpUpAUAqsZngoJBRPR4QgACNUYC4AR+bcAAAAASUVORK5CYII=);
-    color: #0095d8;
+	color: #0095d8;
 }
 .revision:hover:after,
 legend a:hover,
@@ -202,4 +202,10 @@ a[href^="http"]:hover,
 }
 .disabled:hover {
 	cursor: not-allowed;
+}
+#loadercontent i {
+	animation: blinker 1.5s linear infinite;
+}
+@keyframes blinker {
+	50% { opacity: 0; }
 }
