@@ -33,13 +33,14 @@ function branchtest( title, message ) {
 $( '.boxed-group .btn' ).each( function() {
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function ( e ) {
-		$this = $( e.target );
-		opt = '';
-		branch = '';
+		$target = $( e.target );
+		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
 		alias = $this.parent().attr( 'alias' );
 		rollback = $this.attr( 'rollback' );
 		type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
 		title = $this.parent().prev().prev().find( 'span' ).text();
+		opt = '';
+		branch = '';
 		
 		if ( type === 'Install' || !rollback ) {
 			branchtest( title, 'Install version?' );
@@ -52,8 +53,7 @@ $( '.boxed-group .btn' ).each( function() {
 					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
 			, cancel   : 1
 			, ok       : function() {
-				var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
-				if ( radiovalue == 1 ) {
+				if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
 					opt += rollback +' -b';
 					formtemp();
 				} else {
@@ -62,7 +62,8 @@ $( '.boxed-group .btn' ).each( function() {
 			}
 		} );
 	} ).on( 'tap', function ( e ) {
-		$this = $( e.target );
+		$target = $( e.target );
+		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
 		if ( $this.hasClass( 'btnneedspace' ) ) {
 			info( {
 				  icon   : 'info-circle'
@@ -72,11 +73,11 @@ $( '.boxed-group .btn' ).each( function() {
 			} );
 			return
 		}
-		opt = '';
-		branch = '';
 		alias = $this.parent().attr( 'alias' );
 		type = $this.text().trim();
 		title = $this.parent().prev().prev().find( 'span' ).text();
+		opt = '';
+		branch = '';
 		
 		if ( type === 'Link' ) {
 			window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
@@ -100,7 +101,7 @@ $( '.boxed-group .btn' ).each( function() {
 } );
 $( '.thumbnail' ).click( function() {
 	$sourcecode = $( this ).prev().find('form a').attr( 'href');
-	if ( $sourcecode ) window.open( $sourcecode, '_blank' );
+	if ( $sourcecode ) window.open( $sourcecode, '_self' );
 } );
 
 function getoptions() {
@@ -222,7 +223,7 @@ function getoptions() {
 					var list = ojson.list;
 					var radiohtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
 						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
 					return radiohtml
@@ -257,7 +258,7 @@ function getoptions() {
 					var list = ojson.list;
 					var checkboxhtml = '';
 					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' checked' : '';
+						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
 						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
 							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
 					}
@@ -282,7 +283,7 @@ function getoptions() {
 					var list = ojson.list;
 					var selecthtml = '';
 					for ( var key in list ) {
-						var selected = ( key[ 0 ] === '*' || key == ojson.checked ) ? ' selected' : '';
+						var selected = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' selected' : '';
 						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
 					}
 					return selecthtml
