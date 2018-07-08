@@ -55,7 +55,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
-insertH -n -2 'class="playback-controls"'
+appendH -n +1 'logout.php'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
