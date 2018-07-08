@@ -115,7 +115,7 @@ foreach( $arrayalias as $alias ) {
 			<legend title="Back to top">'
 				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? '&ensp;<i class="fa fa-chevron-down"></i>' : '' ).'</a>
-				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><a>&#129129</a>
+				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><i class="fa fa-arrow-up"></i>
 			</legend>
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'
