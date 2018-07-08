@@ -62,7 +62,7 @@ h1 {
 	margin: 10px 0;
 	list-style: none;
 }
-li:before {
+#list li:before {
 	margin-right: 5px;
 	font-family: addons;
 	content: '\f567';
