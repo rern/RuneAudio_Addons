@@ -54,6 +54,7 @@
 #         must be combined with insert/append to the same SEARCH (avoid double insert)
 
 comment() {
+	test=0 # reset for running from terminal
 	if [[ $1 == -h || $1 == -p ]]; then
 		front='<?php /*'$alias  # <?php /*alias
 		back=$alias'*/ ?>'      # alias*/ ?>
@@ -88,8 +89,11 @@ comment() {
 			echo 'sed -n "\|'$regex'| p" "'$file'"'
 			echo
 			for (( i=0; i < ilength; i++ )); do
-				echo ${linenum[$i]}'- '$( sed -n "${linenum[$i]} p" "$file" )
+				echo -e "\e[38;5;6mline#${linenum[$i]}:\e[0m"
+				echo $( sed -n "${linenum[$i]} p" "$file" )
+				echo
 			done
+			echo -e "\e[38;5;6m$ilength matched\e[0m"
 			echo
 			return
 		fi
@@ -123,9 +127,11 @@ comment() {
 			echo 'sed -n "\|'$regex'|, \|'$regex2'| p" "'$file'"'
 			echo
 			for (( i=0; i < ilength; i++ )); do
-				echo ${linenum[i]}' - '${linenum2[i]}
+				echo -e "\e[38;5;6mline#${linenum[i]} - ${linenum2[i]}:\e[0m"
 				sed -n "${linenum[i]}, ${linenum2[i]} p" "$file"
+				echo
 			done
+			echo -e "\e[38;5;6m$ilength matched\e[0m"
 			echo
 			return
 		fi
