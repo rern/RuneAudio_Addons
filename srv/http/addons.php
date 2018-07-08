@@ -1,6 +1,5 @@
 <?php
 include 'addonshead.php';
-
 if ( $redisaddons[ 'expa' ] ) {
 	$mbunpart = 0;
 } else {
@@ -14,21 +13,18 @@ if ( $redisaddons[ 'expa' ] ) {
 	
 	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
 }
-
 $mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
 $wtotal = 200;
 $wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
 $wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
 $wused = $wtotal- $wfree - $wunpart;
-
 $available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
 $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
-
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<h1><i class="fa fa-addons"></i> ADDONS</h1>
+	<h1><img src="/img/+Rlogo-blue.svg" style="width: 35px;margin: -10px 10px 0 0;">ADDONS</h1>
 	<legend class="bl">
 		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
 	</legend>
@@ -42,7 +38,6 @@ $blocks = '';
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
-$updatecount = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
@@ -64,7 +59,6 @@ foreach( $arrayalias as $alias ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
 		} else {
-			$updatecount++;
 			$check = '<i class="fa fa-refresh status"></i> ';
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
 		}
@@ -88,16 +82,9 @@ foreach( $arrayalias as $alias ) {
 	$title = $addon[ 'title' ];
 	// hide Addons Menu in list
 	if ( $alias !== 'addo' ) {
-		if ( substr( $title, -1 ) === '*' ) {
-			$last = array_pop( explode( ' ', $title ) );
-			$listtitle = preg_replace( '/\**$/', '', $title );
-			$star = '&nbsp;<a>'.str_replace( '*', '★', $last ).'</a>';
-		} else {
-			$listtitle = $title;
-			$star = '';
-		}
+		$listtitle = preg_replace( '/\*$/', ' <a>●</a>', $title );
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
+		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.'&ensp;<i class="fa fa-arrow-down"></i></li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
@@ -118,8 +105,8 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 			<legend title="Back to top">'
 				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
-				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? ' <i class="fa fa-chevron-down"></i>' : '' ).'</a>
-				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><a>&#129129</a>
+				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? '&ensp;<i class="fa fa-chevron-down"></i>' : '' ).'</a>
+				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><i class="fa fa-arrow-up"></i>
 			</legend>
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'
@@ -136,7 +123,6 @@ foreach( $arrayalias as $alias ) {
 	$blocks .= '
 		</div>';
 }
-$redis->hSet( 'addons', 'update', $updatecount );
 // ------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.
