@@ -31,18 +31,17 @@ function branchtest( title, message ) {
 	} );
 }
 $( '.boxed-group .btn' ).each( function() {
-	var alias = $( this ).parent().attr( 'alias' );
-	var title = $( this ).parent().prev().prev().find( 'span' ).text();
-	var rollback = $( this ).attr( 'rollback' );
-	var btntxt = $( this ).text().trim()
-	var type = btntxt === 'Install' ? 'Install' : 'Update';
-	var needspace = $( this ).hasClass( 'btnneedspace' ) ? $this.attr( 'needspace' ) : '';
-	var link = btntxt === 'Link' ? $( this ).prev().find( 'a' ).attr( 'href' ) : '';
-	
 	var hammerbtn = new Hammer( this );
 	hammerbtn.on( 'press', function ( e ) {
+		$target = $( e.target );
+		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
+		alias = $this.parent().attr( 'alias' );
+		rollback = $this.attr( 'rollback' );
+		type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
+		title = $this.parent().prev().prev().find( 'span' ).text();
 		opt = '';
 		branch = '';
+		
 		if ( type === 'Install' || !rollback ) {
 			branchtest( title, 'Install version?' );
 			return 1;
@@ -54,8 +53,7 @@ $( '.boxed-group .btn' ).each( function() {
 					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
 			, cancel   : 1
 			, ok       : function() {
-				var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
-				if ( radiovalue == 1 ) {
+				if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
 					opt += rollback +' -b';
 					formtemp();
 				} else {
@@ -64,27 +62,33 @@ $( '.boxed-group .btn' ).each( function() {
 			}
 		} );
 	} ).on( 'tap', function ( e ) {
-		if ( needspace ) {
+		$target = $( e.target );
+		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
+		if ( $this.hasClass( 'btnneedspace' ) ) {
 			info( {
 				  icon   : 'info-circle'
 				, title  : 'Warning'
 				, message: 'Disk space not enough.<br>'
-						+ needspace
+						+ $this.attr( 'needspace' )
 			} );
 			return
 		}
+		alias = $this.parent().attr( 'alias' );
+		type = $this.text().trim();
+		title = $this.parent().prev().prev().find( 'span' ).text();
 		opt = '';
 		branch = '';
-		if ( btntxt === 'Link' ) {
-			window.open( link, '_self' );
+		
+		if ( type === 'Link' ) {
+			window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
 		} else {
 			info( {
 				  title  : title
-				, message: btntxt +'?'
+				, message: type +'?'
 				, cancel : 1
 				, ok     : function () {
 					option = addons[ alias ].option;
-					if ( btntxt === 'Update' || type === 'Uninstall' || !option ) {
+					if ( type === 'Update' || type === 'Uninstall' || !option ) {
 						formtemp();
 					} else {
 						j = 0;
