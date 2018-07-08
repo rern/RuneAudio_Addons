@@ -93,7 +93,7 @@ foreach( $arrayalias as $alias ) {
 			$star = '';
 		}
 		if ( $check === '<i class="fa fa-refresh"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'&ensp;<i class="fa fa-arrow-down"></i></li>';
+		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
@@ -115,7 +115,7 @@ foreach( $arrayalias as $alias ) {
 			<legend title="Back to top">'
 				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? '&ensp;<i class="fa fa-chevron-down"></i>' : '' ).'</a>
-				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><i class="fa fa-arrow-up"></i>
+				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><a>&#129129</a>
 			</legend>
 			<ul class="detailtext" style="display: none;">'
 				.$revision.'
