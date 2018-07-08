@@ -278,9 +278,11 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180630',
+	'version'      => '20180709',
 	'needspace'    => 5,
-	'revision'     => 'Fix bugs'
+	'revision'     => 'Improve UI'
+					.'<br>On / Off: from Menu > GPIO'
+					.'<br>Settings: from Menu > long-press GPIO'
 					.'<br>...'
 					.'<br>Now use only plain BASH and Python - no PIP install needed'
 					.'<br>...'
