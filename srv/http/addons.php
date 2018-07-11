@@ -113,7 +113,7 @@ foreach( $arrayalias as $alias ) {
 		<div style="float: left; width: calc( 100% - 110px);">';
 	$blocks .= '
 			<legend title="Back to top">'
-				.$check.'<span>'.preg_replace( '/\s*\*$/', '', $title ).'</span>
+				.$check.'<span>'.preg_replace( '/\**$/', '', $title ).'</span>
 				&emsp;<p><a class="'.$revisionclass.'">'.$version.( $version ? '&ensp;<i class="fa fa-chevron-down"></i>' : '' ).'</a>
 				&ensp;by<white>&ensp;'.$addon[ 'maintainer' ].'</white></p><i class="fa fa-arrow-up"></i>
 			</legend>
