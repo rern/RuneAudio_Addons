@@ -123,7 +123,7 @@ getvalue() { # $1-key
 	echo "$addonslist" |
 		grep $1'.*=>' |
 		cut -d '>' -f 2 |
-		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\*$//'
+		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\**$//'
 }
 rankmirrors() {
 	if grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist; then
