@@ -78,7 +78,7 @@ $optarray = explode( ' ', $opt );
 if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
 
 $installfile = basename( $installurl );
-$title = preg_replace( '/\s*\*$/', '', $addon[ 'title' ] );
+$title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 
 $install = <<<cmd
 	wget -qN --no-check-certificate $installurl 
