@@ -206,6 +206,8 @@ EOF
     
 usage:
 ------------------------------------------------------------------------------------
+match [-n N] SEARCH [-n N] [SEARCH2]      test sed search pattern
+
 comment [-n N] SEARCH [-n N] [SEARCH2]    /*alias js,php,css alias*/
 
 commentH [-n N] SEARCH [-n N] [SEARCH2]   <?php /*alias html,php alias*/ ?>
@@ -244,7 +246,11 @@ SEARCH                                    normal sed regex syntax inside quotes
 
 tips:
 ------------------------------------------------------------------------------------
-insert/append with SEARCH itself in $string
+test run SEARCH:
+    # . /srv/http/addonsedit.sh
+    # file=/path/file
+	# match [-n N] SEARCH [-n N] [SEARCH2]
+insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
 ```
