@@ -9,13 +9,11 @@ $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = $redis->hGetAll( 'udaclist' );
 if ( !$udaclist ) {
 	$acards = $redis->hGetAll( 'acards' );
-	$default = '*';
 	foreach ( $acards as $key => $val ) {
 		$card = json_decode( $val, true );
 		$extlabel = $card[ 'extlabel' ];
-		$udaclist[ $default.$extlabel ] = $key.'@'.$extlabel;
-		$redis->hSet( 'udaclist', $default.$extlabel, $key.'@'.$extlabel );
-		$default = '';
+		$udaclist[ $extlabel ] = $key.'@'.$extlabel;
+		$redis->hSet( 'udaclist', $extlabel, $key.'@'.$extlabel );
 	}
 }
 
@@ -471,7 +469,9 @@ $addons = array(
 	'option'       => array(
 		'radio'      => array(
 			'message'  => '<white>Audio output</white> when power off USB DAC:',
-			'list'     => $udaclist
+			'list'     => $udaclist,
+			'checked'  => 'bcm2835 ALSA_1@RaspberryPi Analog Out'
+
 		),
 	),
 ),
