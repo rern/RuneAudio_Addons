@@ -222,9 +222,12 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180630',
-	'rollback'     => '20180610',
-	'revision'     => 'Improve most icons and overlay controls guide'
+	'version'      => '20180713',
+	'rollback'     => '20180630',
+	'revision'     => 'Rearrange overlay controls(tap cover art top for guide)'
+					.'<br>Overlay repeat = toggle: repeat | repeat single | off'
+					.'<br>...'
+					.'<br>Improve most icons and overlay controls guide'
 					.'<br>Change Webradio cover art'
 					.'<br>Add show/hide Webradio elapsed time'
 					.'<br>Fix: omit A/An/The sorting in file mode and (/[/. are omitted as well'
