@@ -366,7 +366,8 @@ $addons = array(
 'uire' => array(
 	'title'        => 'RuneUI Reset',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Reset RuneUI to default and reinstall Addons',
+	'description'  => 'Remove all installed addons and reset RuneUI to default with Addons reinstalled.'
+					.'It can be used as an alternative to reflashing the SD card.',
 	'buttonlabel'  => 'Reset',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/install.sh',
