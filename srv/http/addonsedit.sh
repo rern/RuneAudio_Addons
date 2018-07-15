@@ -179,7 +179,7 @@ $( echo "$string" | sed 's|\\|\\\\|g; s|$|\\|' )
 EOF
 )
 	# if 1st or $ last line
-	if [[ $1 =~ [0-9]+$ ]]; then                            # line number specified
+	if [[ $1 =~ ^[0-9]+$ ]]; then                            # line number specified
 		linenum=( $(( $1 + $lines )) )                      # array of single line
 	elif [[ $1 == '$' ]]; then                              # last line specified
 		linenum=( $(( $( sed -n "$ =" $file ) + $lines )) ) # array of single line
