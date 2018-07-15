@@ -283,7 +283,7 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180709',
+	'version'      => '20180715',
 	'needspace'    => 5,
 	'revision'     => 'Improve UI'
 					.'<br>On / Off: from Menu > GPIO'
