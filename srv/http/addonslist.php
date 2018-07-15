@@ -429,13 +429,11 @@ $addons = array(
 ),
 'tran' => array(
 	'title'        => 'Transmission *',
-	'version'      => '20180520',
+	'version'      => '20180715',
 	'needspace'    => 9,
-	'revision'     => 'Use standard package instead of customized one.'
+	'revision'     => 'Fix bugs by reverting back to custom compiled package.'
 					.'<br>...'
-					.'<br>Update alternateive WebUI source'
-					.'<br>...'
-					.'<br>Fix bugs by reverting back to custom package.',
+					.'<br>Update alternateive WebUI source',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
 	'thumbnail'    => '/assets/addons/thumbtran.png',
