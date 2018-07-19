@@ -107,7 +107,7 @@
 }
 #infoMessage {
 	word-wrap: break-word;
-	overflow: auto;
+	overflow: hidden;
 	max-height: 800px;
 	color: #7795b4;
 }
