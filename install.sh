@@ -37,8 +37,6 @@ echo -e "$bar Modify files ..."
 file=/srv/http/app/templates/header.php
 echo $file
 
-restorefile $file
-
 string=$( cat <<'EOF'
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
 EOF
@@ -54,8 +52,6 @@ appendH -n +1 'logout.php'
 file=/srv/http/app/templates/footer.php
 echo $file
 
-restorefile $file
-
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
 <script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
@@ -63,7 +59,7 @@ string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
-appendH 'openwebapp.js'
+appendH 'code.jquery.com'
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
 if ! grep -q 'ico|svg' $file; then
