@@ -33,7 +33,7 @@ $addons = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade Redis to latest version <white>without errors</white>:'
 					.'<br>Update <code>redis.service</code>',
-	'thumbnail'    => '/assets/addons/thumbredis.png',
+	'thumbnail'    => '/assets/addons/thumbredi.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/redis',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/redis/install.sh',
@@ -74,6 +74,20 @@ $addons = array(
 	'thumbnail'    => '/assets/addons/thumbaddo.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
+),
+'mido' => array(
+	'title'        => 'Midori Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
+					.'<br>MPD Upgrade also needs this upgrade',
+	'thumbnail'    => '/assets/addons/thumbmido.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
 ),
 'aria' =>array(
 	'title'        => 'Aria2 *',
@@ -183,14 +197,14 @@ $addons = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version, 0.20.20 as of 20180711:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But <white>broken Midori</white>, local browser.',
+					.'<br>But <white>broken Midori</white>, local browser which needs upgrade as well.',
 	'thumbnail'    => '/assets/addons/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'       => array(
 		'confirm'    => 'Once installed, MPD <white>cannot be downgraded</white>.'
-					.'<br>Local browser must be switched to <white>Chromium</white>'
+					.'<br>Midori, local browser, must be upgrade as well.'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
 					.'<br>Continue?'
