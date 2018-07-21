@@ -77,6 +77,7 @@ $addons = array(
 ),
 'mido' => array(
 	'title'        => 'Midori Upgrade',
+	'needspace'    => 190,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
 					.'<br>MPD Upgrade also needs this upgrade',
