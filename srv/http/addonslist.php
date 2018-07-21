@@ -59,8 +59,8 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180711',
-	'revision'     => 'Fix bugs'
+	'version'      => '20180721',
+	'revision'     => 'General improvements'
 					.'<br>...'
 					.'<br>UI improvement'
 					.'<br>...'
@@ -222,32 +222,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180713',
-	'rollback'     => '20180630',
-	'revision'     => 'Rearrange overlay controls(tap cover art top for guide)'
+	'version'      => '20180721',
+	'rollback'     => '20180713',
+	'revision'     => 'Now Airplay is working properly.'
+					.'<br>Fix bugs'
+					.'<br>...'
+					.'<br>Rearrange overlay controls(tap cover art top for guide)'
 					.'<br>Overlay repeat = toggle: repeat | repeat single | off'
 					.'<br>...'
 					.'<br>Improve most icons and overlay controls guide'
 					.'<br>Change Webradio cover art'
 					.'<br>Add show/hide Webradio elapsed time'
 					.'<br>Fix: omit A/An/The sorting in file mode and (/[/. are omitted as well'
-					.'<br>Improve boot splash image'
-					.'<br>...'
-					.'<br>Show Webradio sampling info in Playback while stop'
-					.'<br>Show consistent <white>Webradio</white> icon, name and url in <white>Library</white> and <white>Playlist</white>'
-					.'<br>Show <white>Webradio URL</white> in <white>Library</white>'
-					.'<br>Show <white>Webradio name</white> on initial load of <white>saved playlist</white>'
-					.'<br>Hide duration if Playlist contains Webradio'
-					.'<br>Minimalize Playback on <white>empty Playlist</white>'
-					.'<br>Webradio pause = <code>stop</code>'
-					.'<br>Fix and improve random with <code>previous</code> <code>next</code>'
-					.'<br>Add show/hide <code>MPD</code> in display setting'
-					.'<br>Add <white>above countdown</white> = <code>MPD</code> button'
-					.'<br>Add <white>below countdown</white> = <code>stop</code>'
-					.'<br>Change cover art gestures (tap top shows overlay guide)'
-					.'<br>Fix Library <code>back button</code> in Artists, Albums, Genres, Composers'
-					.'<br>Fix <code>Composer</code> in <white>Library</white>'
-					.'<br>Sort without leading articles, A / An / The',
+					.'<br>Improve boot splash image',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/assets/addons/thumbenha.gif',

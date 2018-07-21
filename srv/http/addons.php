@@ -121,8 +121,8 @@ foreach( $arrayalias as $alias ) {
 				.$revision.'
 			</ul>
 			<form class="form-horizontal" alias="'.$alias.'">
-				<p class="detailtext">'.$description.$detail.'</p>'
-				.$btnin; if ( $version ) $blocks .= ' &nbsp; '.$btnun;
+				<p class="detailtext">'.$description.$detail.'</p>';
+	if ( $alias !== 'addo' ) $blocks .= $version ? $btnin.' &nbsp; '.$btnun : $btnin;
 	$blocks .= '
 			</form>';
 	if ( $thumbnail ) $blocks .= '
