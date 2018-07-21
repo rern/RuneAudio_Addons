@@ -222,8 +222,8 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180713',
-	'rollback'     => '20180630',
+	'version'      => '20180721',
+	'rollback'     => '20180713',
 	'revision'     => 'Now Airplay is working properly.'
 					.'<br>Fix bugs'
 					.'<br>...'
