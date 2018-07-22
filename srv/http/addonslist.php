@@ -132,7 +132,7 @@ $addons = array(
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Replace broken <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
+	'description'  => 'An alternative local browser',
 	'thumbnail'    => '/assets/addons/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
