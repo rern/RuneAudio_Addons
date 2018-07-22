@@ -36,6 +36,36 @@ if ( !$zoomlevel ) {
 $addons = array(
 
 /*
+'airo' => array(
+	'title'        => 'Setting - AirPlay Output',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Change AirPlay output (for shairport-sync only)',
+	'buttonlabel'  => 'Change',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync/shairport-sync-output.sh',
+	'option'       => array(
+		'wait'      => 'Set AirPlay output:'
+					.'<br><white>Connect and power on DAC</white> before proceed.'
+					.'<br>It will be set as AirPlay output.'
+	),
+),
+'shai' => array(
+	'title'        => 'AirPlay Upgrade',
+	'version'      => '20180808',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade AirPlay default package, shairport, to <white>shairport-sync 3.2.1</white>.'
+					.'<br>Elapsed and song duration are supported.',
+	'thumbnail'    => '/assets/addons/thumbshai.png',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/shairport-sync',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync/install.sh',
+	'option'       => array(
+		'wait'       => '<white>Connect and power on DAC</white> before proceed.'
+					.'<br>It will be set as AirPlay output.'
+					.'<br>(This can be change later with an addon'
+					.'<br><white>Setting - AirPlay Output</white>)'
+	),
+),
 'redi' => array(
 	'title'        => 'Redis Upgrade',
 	'maintainer'   => 'r e r n',
