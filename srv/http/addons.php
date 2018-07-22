@@ -69,14 +69,20 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
+		if ( isset( $addon[ 'conflict' ] ) && $redis->hget( 'addons', $addon[ 'conflict' ] ) ) {
+			$conflictaddon = $addons[ $addon[ 'conflict' ] ][ 'title' ];
+			$attrconflict = ' conflict="<white>'.$conflictaddon.'</white> must be uninstalled first"';
+		} else {
+			$attrconflict = '';
+		}
 		if ( $needspace < $mbfree ) {
 			$btninclass =  'btnbranch';
-			$btninattr = '';
+			$attrneedspace = '';
 		} else {
 			$btninclass = 'btnneedspace';
-			$btninattr = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
+			$attrneedspace = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		}
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'>'.$buttonlabel.'</a>';
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$attrneedspace.$attrconflict.'>'.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	}
 	
