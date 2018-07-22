@@ -74,9 +74,7 @@ $addons = array(
 					.'<br>...'
 					.'<br>Add disk bar for | used | free | expandable |'
 					.'<br>Use local thumbnails to improve loading speed'
-					.'<br>Normalize code editing template'
-					.'<br>Add <white>long-press Uninstall</white> = <white>Rollback / Downgrade</white> to previous version'
-					.'<br>Remove <white>Bash Commands</white> which may has a security issue',
+					.'<br>Normalize code editing template',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/assets/addons/thumbaddo.png',
