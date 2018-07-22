@@ -222,7 +222,6 @@ $addons = array(
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
-	'conflict'     => 'chro',
 	'option'       => array(
 		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
 					.'<br>Continue?'
