@@ -22,6 +22,14 @@ if ( !$notifysec ) {
 	$notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9"' );
 	$redis->set( 'notifysec', $notifysec );
 }
+$zoomlevel = $redis->get( 'zoomlevel' );
+if ( !$zoomlevel ) {
+	$zoomlevel = exec( "grep chromium /root/.xinitrc" );
+	if ( !$zoomlevel ) $zoomlevel = exec( "grep '^zoom-level' /root/.config/midori/config" );
+	$zoomlevel = explode( '=', $zoomlevel )[ 1 ];
+	$redis->set( 'zoomlevel', "$zoomlevel" );
+}
+
 
 ///////////////////////////////////////////////////////////////
 
@@ -77,7 +85,6 @@ $addons = array(
 ),
 'mido' => array(
 	'title'        => 'Midori Upgrade',
-	'needspace'    => 200,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
 					.'<br>MPD Upgrade also needs this upgrade',
@@ -124,7 +131,7 @@ $addons = array(
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'An alternative local browser. MPD upgrade needed after install.',
+	'description'  => 'Replace broken <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
 	'thumbnail'    => '/assets/addons/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
@@ -316,32 +323,6 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
-'noti' => array(
-	'title'        => 'RuneUI Notification Duration',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Change RuneUI notification duration',
-	'thumbnail'    => '/assets/addons/thumbnoti.gif',
-	'buttonlabel'  => 'Change',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration/notify_duration.sh',
-	'option'       => array(
-		'radio'      => array(
-			'message'  => 'Set notification duration(second):',
-			'list'     => array(
-				'1'           => 1,
-				'2'           => 2,
-				'3'           => 3,
-				'4'           => 4,
-				'5'           => 5,
-				'6'           => 6,
-				'7'           => 7,
-				'8 (default)' => 8,
-				'Custom'      => '?'
-			),
-			'checked'  => $notifysec
-		),
-	),
-),
 'pass' => array(
 	'title'        => 'RuneUI Password',
 	'version'      => '20170901',
@@ -494,6 +475,53 @@ $addons = array(
 					.'<br><code>/mnt/MPD/Webradio</code>'
 					.'<br>'
 					.'<br><code>&emsp;Ok&emsp;</code> to continue'
+	),
+),
+'noti' => array(
+	'title'        => 'Setting - RuneUI Notification Duration',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Change RuneUI notification duration',
+	'thumbnail'    => '/assets/addons/thumbnoti.gif',
+	'buttonlabel'  => 'Change',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/notify_duration/notify_duration.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set notification duration(second):',
+			'list'     => array(
+				'1'           => 1,
+				'2'           => 2,
+				'3'           => 3,
+				'4'           => 4,
+				'5'           => 5,
+				'6'           => 6,
+				'7'           => 7,
+				'8 (default)' => 8,
+				'Custom'      => '?'
+			),
+			'checked'  => $notifysec
+		),
+	),
+),
+'zoom' => array(
+	'title'        => 'Setting - Zoom Level of Local Browser',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Change Zoom Level of Local Browser (for Midori and Chromium only)',
+	'thumbnail'    => '/assets/addons/thumbzoom.gif',
+	'buttonlabel'  => 'Change',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser/zoom.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set zoom level (current = <white>'.$zoomlevel.'</white>) :',
+			'list'     => array(
+				'Width less than 800px: 0.7' => '0.7',
+				'HD - 1280px: 1.5'           => '1.5',
+				'Full HD - 1920px: 1.8'      => '1.8',
+				'Custom'                     => '?'
+			),
+			'checked'  => $zoomlevel
+		),
 	),
 ),
 	
