@@ -81,21 +81,6 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-'mido' => array(
-	'title'        => 'Midori Upgrade',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
-					.'<br>MPD Upgrade also needs this upgrade',
-	'thumbnail'    => '/assets/addons/thumbmido.png',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
-	'conflict'     => 'chro',
-	'option'       => array(
-		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
-					.'<br>Continue?'
-	),
-),
 'aria' =>array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
@@ -198,6 +183,21 @@ $addons = array(
 		),
 	),
 ),
+'mido' => array(
+	'title'        => 'Midori Upgrade',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
+					.'<br>MPD Upgrade also needs this upgrade',
+	'thumbnail'    => '/assets/addons/thumbmido.png',
+	'buttonlabel'  => 'Upgrade',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
+	'conflict'     => 'chro',
+	'option'       => array(
+		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
+					.'<br>Continue?'
+	),
+),
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
@@ -267,12 +267,13 @@ $addons = array(
 						.'<br>If first install, RuneAudio needs <white>reboot</white>',
 		'radio'      => array(
 			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
-						.'<br>'
+						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
 			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.5'           => '1.5',
 				'*Full HD - 1920px: 1.8'     => '1.8',
+				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
 		),
@@ -516,6 +517,7 @@ $addons = array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.5'           => '1.5',
 				'Full HD - 1920px: 1.8'      => '1.8',
+				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
 			'checked'  => $zoomlevel
