@@ -64,12 +64,20 @@ $( '.boxed-group .btn' ).each( function() {
 	} ).on( 'tap', function ( e ) {
 		$target = $( e.target );
 		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-		if ( $this.hasClass( 'btnneedspace' ) ) {
+		if ( $this.attr( 'needspace' ) ) {
 			info( {
 				  icon   : 'info-circle'
 				, title  : 'Warning'
-				, message: 'Disk space not enough.<br>'
+				, message: 'Disk space not enough:<br>'
 						+ $this.attr( 'needspace' )
+			} );
+			return
+		} else if ( $this.attr( 'conflict' ) ) {
+			info( {
+				  icon   : 'info-circle'
+				, title  : 'Warning'
+				, message: 'Conflict Addon:<br>'
+						+ $this.attr( 'conflict' )
 			} );
 			return
 		}

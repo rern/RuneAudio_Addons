@@ -65,18 +65,16 @@ foreach( $arrayalias as $alias ) {
 			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		$btnun = '<a class="btn btn-default btnbranch"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
+		$btnun = '<a class="btn btn-default"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		if ( $needspace < $mbfree ) {
-			$btninclass =  'btnbranch';
-			$btninattr = '';
-		} else {
-			$btninclass = 'btnneedspace';
-			$btninattr = ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
-		}
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$btninattr.'>'.$buttonlabel.'</a>';
+		$conflict = isset( $addon[ 'conflict' ] ) ? $addon[ 'conflict' ] : '';
+		$conflictaddon = $conflict ? $redis->hget( 'addons', $conflict ) : '';
+		$attrconflict = !$conflictaddon ? '' : ' conflict="<white>'.$addons[ $conflict ][ 'title' ].'</white> must be uninstalled first"';
+		$attrneedspace = $needspace < $mbfree ? '' : ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
+			
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$attrneedspace.$attrconflict.'>'.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	}
 	

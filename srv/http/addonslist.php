@@ -132,7 +132,7 @@ $addons = array(
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Replace broken <white>Midori</white>, local browser, with <white>Chromium</white> after MPD upgrade',
+	'description'  => 'An alternative local browser',
 	'thumbnail'    => '/assets/addons/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
@@ -508,7 +508,6 @@ $addons = array(
 	'title'        => 'Setting - Zoom Level of Local Browser',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Change Zoom Level of Local Browser (for Midori and Chromium only)',
-	'thumbnail'    => '/assets/addons/thumbzoom.gif',
 	'buttonlabel'  => 'Change',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser/zoom.sh',
