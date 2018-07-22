@@ -39,7 +39,7 @@ $addons = array(
 'airo' => array(
 	'title'        => 'Setting - AirPlay Output',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Change AirPlay output (for shairport-sync only)',
+	'description'  => 'Change AirPlay output (for Shairport Sync only)',
 	'buttonlabel'  => 'Change',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync/shairport-sync-output.sh',
@@ -54,7 +54,7 @@ $addons = array(
 	'version'      => '20180808',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade AirPlay default package, shairport, to <white>shairport-sync 3.2.1</white>.'
+	'description'  => 'Upgrade AirPlay default package, Shairport, to <white>Shairport Sync 3.2.1</white>.'
 					.'<br>Elapsed and song duration are supported.',
 	'thumbnail'    => '/assets/addons/thumbshai.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/shairport-sync',
