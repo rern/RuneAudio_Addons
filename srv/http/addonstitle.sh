@@ -2,10 +2,10 @@
 
 # default variables and functions for addons install/uninstall scripts
 
+tty -s && col=$( tput cols ) || col=80 # [[ -t 1 ]] not work
 lcolor() {
 	local color=6
 	[[ $2 ]] && color=$2
-	tty -s && col=$( tput cols ) || col=80 # [[ -t 1 ]] not work
 	printf "\e[38;5;${color}m%*s\e[0m\n" $col | tr ' ' "$1"
 }
 tcolor() { 
