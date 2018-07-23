@@ -53,11 +53,17 @@ file=/srv/http/app/templates/footer.php
 echo $file
 
 string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
+if grep 'jquery.mobile.custom.min.js' $file; then
+string+=$( cat <<'EOF'
+
+<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
+EOF
+)
+fi
 appendH 'code.jquery.com'
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
