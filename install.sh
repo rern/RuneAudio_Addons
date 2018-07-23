@@ -60,11 +60,11 @@ EOF
 appendH 'code.jquery.com'
 
 if ! grep 'jquery.mobile.custom.min.js' $file; then
-string+=$( cat <<'EOF'
+	string+=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
-sed '$ a\$string' $file
+	sed '$ a\$string' $file
 fi
 
 #----------------------------------------------------------------------------------
