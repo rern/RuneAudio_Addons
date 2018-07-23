@@ -59,6 +59,7 @@ EOF
 )
 appendH 'code.jquery.com'
 
+# separate to keep out of uninstall
 if ! grep 'jquery.mobile.custom.min.js' $file; then
 	string+=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
