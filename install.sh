@@ -53,12 +53,19 @@ file=/srv/http/app/templates/footer.php
 echo $file
 
 string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
 )
 appendH 'code.jquery.com'
+
+if ! grep 'jquery.mobile.custom.min.js' $file; then
+	string+=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
+EOF
+)
+	sed '$ a\$string' $file
+fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
 if ! grep -q 'ico|svg' $file; then
