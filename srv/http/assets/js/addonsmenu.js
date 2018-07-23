@@ -1,16 +1,12 @@
 $(function() { // $( document ).ready(function() {
 
-var hammeraddons = new Hammer( document.getElementById( 'addons' ) );
-hammeraddons.on( 'tap', function () {
+$( '#addons' ).click( function () {
 	$( '#loader' ).removeClass( 'hide' );
 	
 	$.get( '/addonsdl.php', function( exit ) {
 			addonsdl( exit );
 	} );
-} );
-
-// for branch testing
-hammeraddons.on( 'press', function () {
+} ).on( 'taphold', function () {
 	info( {
 		  title    : 'Addons Menu Branch Test'
 		, textlabel: 'Branch'
