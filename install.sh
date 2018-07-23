@@ -72,7 +72,7 @@ if ! grep 'jquery.mobile.custom.min.js' $file; then
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
-	sed -i "$ a\$string" $file
+	sed -i "$ a$string" $file
 fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
