@@ -53,6 +53,11 @@
 #         must be after comment to the same SEARCH (avoid commented after insert)
 #         must be combined with insert/append to the same SEARCH (avoid double insert)
 
+col=$( tput cols )
+line() {
+	printf "\e[38;5;6m%*s\e[0m\n" $col | tr ' ' -
+}
+
 comment() {
 	test=0 # reset for running from terminal
 	if [[ $1 == -h || $1 == -p ]]; then
@@ -89,11 +94,13 @@ comment() {
 			echo 'sed -n "\|'$regex'| p" "'$file'"'
 			echo
 			for (( i=0; i < ilength; i++ )); do
-				echo -e "\e[38;5;6mline#${linenum[$i]}:\e[0m"
+				echo -e "\e[38;5;6m#$(( i + 1 )) line: ${linenum[$i]}\e[0m"
+				line
 				echo $( sed -n "${linenum[$i]} p" "$file" )
+				line
 				echo
 			done
-			echo -e "\e[38;5;6m$ilength matched\e[0m"
+			echo -e "\e[38;5;6mmatched: $ilength\e[0m"
 			echo
 			return
 		fi
@@ -127,11 +134,13 @@ comment() {
 			echo 'sed -n "\|'$regex'|, \|'$regex2'| p" "'$file'"'
 			echo
 			for (( i=0; i < ilength; i++ )); do
-				echo -e "\e[38;5;6mline#${linenum[i]} - ${linenum2[i]}:\e[0m"
+				echo -e "\e[38;5;6m#$(( i + 1 )) line: ${linenum[i]} - ${linenum2[i]}\e[0m"
+				line
 				sed -n "${linenum[i]}, ${linenum2[i]} p" "$file"
+				line
 				echo
 			done
-			echo -e "\e[38;5;6m$ilength matched\e[0m"
+			echo -e "\e[38;5;6mmatched: $ilength\e[0m"
 			echo
 			return
 		fi
