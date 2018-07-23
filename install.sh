@@ -53,8 +53,7 @@ file=/srv/http/app/templates/footer.php
 echo $file
 
 string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/vendor/hammer.min.js')?>"></script>
-<script src="<?=$this->asset('/js/vendor/propagating.js')?>"></script>
+<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 EOF
