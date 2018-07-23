@@ -30,6 +30,11 @@ alias=addo
 
 installstart $@
 
+#0temp0
+# to be removed after switch from hammer.js
+#sed -i '/hammer.min.js\|propagating.js/ d' /srv/http/app/templates/footer.php
+#1temp1
+
 getinstallzip
 
 echo -e "$bar Modify files ..."
