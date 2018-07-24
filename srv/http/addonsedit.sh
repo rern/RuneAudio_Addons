@@ -53,11 +53,6 @@
 #         must be after comment to the same SEARCH (avoid commented after insert)
 #         must be combined with insert/append to the same SEARCH (avoid double insert)
 
-line() {
-	col=$( tput cols )
-	printf "\e[38;5;6m%*s\e[0m\n" $col | tr ' ' -
-}
-
 comment() {
 	test=0 # reset for running from terminal
 	if [[ $1 == -h || $1 == -p ]]; then
@@ -72,6 +67,10 @@ comment() {
 		[[ -z $file ]] && echo 'file=(undefined)' && return
 		test=1
 		shift
+		col=$( tput cols )
+		line() {
+			printf "\e[38;5;6m%*s\e[0m\n" $col | tr ' ' -
+		}
 	else
 		front='/*'$alias        # /*
 		back=$alias'*/'         # */
