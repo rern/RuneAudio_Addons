@@ -114,6 +114,16 @@ systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
 
+notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
+if ! grep '^chromium' /root/.xinitrc; then
+	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
+	browser=1
+else
+	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
+	browser=2
+fi
+redis-cli mset notifysec $notifysec zoomlevel $zoomlevel browser $browser &>/dev/null
+
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
