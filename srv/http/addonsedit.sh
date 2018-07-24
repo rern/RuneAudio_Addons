@@ -53,8 +53,8 @@
 #         must be after comment to the same SEARCH (avoid commented after insert)
 #         must be combined with insert/append to the same SEARCH (avoid double insert)
 
-col=$( tput cols )
 line() {
+	col=$( tput cols )
 	printf "\e[38;5;6m%*s\e[0m\n" $col | tr ' ' -
 }
 
