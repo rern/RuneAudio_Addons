@@ -17,20 +17,6 @@ if ( !$udaclist ) {
 	}
 }
 
-$notifysec = $redis->get( 'notifysec' );
-if ( !$notifysec ) {
-	$notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9"' );
-	$redis->set( 'notifysec', $notifysec );
-}
-$zoomlevel = $redis->get( 'zoomlevel' );
-if ( !$zoomlevel ) {
-	$zoomlevel = exec( "grep chromium /root/.xinitrc" );
-	if ( !$zoomlevel ) $zoomlevel = exec( "grep '^zoom-level' /root/.config/midori/config" );
-	$zoomlevel = explode( '=', $zoomlevel )[ 1 ];
-	$redis->set( 'zoomlevel', "$zoomlevel" );
-}
-
-
 ///////////////////////////////////////////////////////////////
 
 $addons = array(
@@ -528,7 +514,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $notifysec
+			'checked'  => $redis->get( 'notifysec' )
 		),
 	),
 ),
@@ -549,7 +535,26 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $zoomlevel
+			'checked'  => $redis->get( 'zoomlevel' )
+		),
+	),
+),
+'brow' => array(
+	'title'        => 'Setting - Switch Local Browser',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Switch Local Browser between Midori and Chromium',
+	'buttonlabel'  => 'Switch',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser/zoom.sh',
+	'hide'         => $redisaddons[ 'chro' ] ? 0 : 1,
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Select local browser:',
+			'list'     => array(
+				'Midori'   => '1',
+				'Chromium' => '2'
+			),
+			'checked'  => $redis->get( 'browser' )
 		),
 	),
 ),
