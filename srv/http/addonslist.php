@@ -151,17 +151,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 	'option'       => array(
 		'wait'    => 'After installed, Chromium needs a <white>reboot</white>.',
-		'radio'      => array(
-			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
-						.'<br>'
-						.'<br>Local screen size:',
-			'list'     => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'*Full HD - 1920px: 1.8'     => '1.8',
-				'Custom'                     => '?'
-			),
-		),
 	),
 ),
 'dual' => array(
