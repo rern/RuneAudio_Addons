@@ -306,6 +306,16 @@ $addons = array(
 				'Custom'                     => '?'
 			),
 		),
+		'radio1'      => array( 
+			'message'  => 'Local browser should be <white>disabled</white>'
+						.'<br>if no need to display on RPi connected screen.'
+						.'<br>It will save 6% CPU load and 45MB memory.'
+						.'<br>',
+			'list'     => array(
+				'*Enable' => '1',
+				'Disable' => '0'
+			),
+		),
 	),
 ),
 'font' => array(
