@@ -540,7 +540,7 @@ $addons = array(
 	),
 ),
 'brow' => array(
-	'title'        => 'Setting - Switch Local Browser',
+	'title'        => 'Setting - Switch Midori <-> Chromium',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Switch Local Browser between Midori and Chromium',
 	'buttonlabel'  => 'Switch',
