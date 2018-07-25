@@ -308,16 +308,15 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180715',
+	'version'      => '20180724',
 	'needspace'    => 5,
-	'revision'     => 'Improve UI'
+	'revision'     => 'Switch from hammer.js to jquery.mobile'
+					.'<br>...'
+					.'<br>Improve UI'
 					.'<br>On / Off: from Menu > GPIO'
 					.'<br>Settings: from Menu > long-press GPIO'
 					.'<br>...'
-					.'<br>Now use only plain BASH and Python - no PIP install needed'
-					.'<br>...'
-					.'<br>Split MPD configuration loading to <white>USB DAC Auto Switch</white>'
-					.'<br>Switch to <white>high trigger</white> relay module',
+					.'<br>Now use only plain BASH and Python - no PIP install needed',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'    => '/assets/addons/thumbgpio.gif',
