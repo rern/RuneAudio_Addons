@@ -30,82 +30,79 @@ function branchtest( title, message ) {
 		}
 	} );
 }
-$( '.boxed-group .btn' ).each( function() {
-	var hammerbtn = new Hammer( this );
-	hammerbtn.on( 'press', function ( e ) {
-		$target = $( e.target );
-		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-		alias = $this.parent().attr( 'alias' );
-		rollback = $this.attr( 'rollback' );
-		type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
-		title = $this.parent().prev().prev().find( 'span' ).text();
-		opt = '';
-		branch = '';
-		
-		if ( type === 'Install' || !rollback ) {
-			branchtest( title, 'Install version?' );
-			return 1;
+$( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
+	$target = $( e.target );
+	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
+	alias = $this.parent().attr( 'alias' );
+	rollback = $this.attr( 'rollback' );
+	type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
+	title = $this.parent().prev().prev().find( 'span' ).text();
+	opt = '';
+	branch = '';
+	
+	if ( type === 'Install' || !rollback ) {
+		branchtest( title, 'Install version?' );
+		return 1;
+	}
+	info( {
+		  title    : title
+		, message  : 'Upgrade / Downgrade ?'
+		, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
+				+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
+		, cancel   : 1
+		, ok       : function() {
+			if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
+				opt += rollback +' -b';
+				formtemp();
+			} else {
+				branchtest( title, 'Upgrade / Downgrade to ?' );
+			}
 		}
+	} );
+} ).on( 'click', function ( e ) {
+	$target = $( e.target );
+	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
+	if ( $this.attr( 'needspace' ) ) {
 		info( {
-			  title    : title
-			, message  : 'Upgrade / Downgrade ?'
-			, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
-					+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
-			, cancel   : 1
-			, ok       : function() {
-				if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
-					opt += rollback +' -b';
+			  icon   : 'info-circle'
+			, title  : 'Warning'
+			, message: 'Disk space not enough:<br>'
+					+ $this.attr( 'needspace' )
+		} );
+		return
+	} else if ( $this.attr( 'conflict' ) ) {
+		info( {
+			  icon   : 'info-circle'
+			, title  : 'Warning'
+			, message: 'Conflict Addon:<br>'
+					+ $this.attr( 'conflict' )
+		} );
+		return
+	}
+	alias = $this.parent().attr( 'alias' );
+	type = $this.text().trim();
+	title = $this.parent().prev().prev().find( 'span' ).text();
+	opt = '';
+	branch = '';
+	
+	if ( type === 'Link' ) {
+		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
+	} else {
+		info( {
+			  title  : title
+			, message: type +'?'
+			, cancel : 1
+			, ok     : function () {
+				option = addons[ alias ].option;
+				if ( type === 'Update' || type === 'Uninstall' || !option ) {
 					formtemp();
 				} else {
-					branchtest( title, 'Upgrade / Downgrade to ?' );
+					j = 0;
+					getoptions();
 				}
 			}
 		} );
-	} ).on( 'tap', function ( e ) {
-		$target = $( e.target );
-		$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-		if ( $this.attr( 'needspace' ) ) {
-			info( {
-				  icon   : 'info-circle'
-				, title  : 'Warning'
-				, message: 'Disk space not enough:<br>'
-						+ $this.attr( 'needspace' )
-			} );
-			return
-		} else if ( $this.attr( 'conflict' ) ) {
-			info( {
-				  icon   : 'info-circle'
-				, title  : 'Warning'
-				, message: 'Conflict Addon:<br>'
-						+ $this.attr( 'conflict' )
-			} );
-			return
-		}
-		alias = $this.parent().attr( 'alias' );
-		type = $this.text().trim();
-		title = $this.parent().prev().prev().find( 'span' ).text();
-		opt = '';
-		branch = '';
-		
-		if ( type === 'Link' ) {
-			window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
-		} else {
-			info( {
-				  title  : title
-				, message: type +'?'
-				, cancel : 1
-				, ok     : function () {
-					option = addons[ alias ].option;
-					if ( type === 'Update' || type === 'Uninstall' || !option ) {
-						formtemp();
-					} else {
-						j = 0;
-						getoptions();
-					}
-				}
-			} );
-		}
-	} );
+	}
 } );
 $( '.thumbnail' ).click( function() {
 	$sourcecode = $( this ).prev().find('form a').attr( 'href');

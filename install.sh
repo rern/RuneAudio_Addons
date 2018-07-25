@@ -30,6 +30,11 @@ alias=addo
 
 installstart $@
 
+#0temp0
+# to be removed after switch from hammer.js
+#sed -i '/hammer.min.js\|propagating.js/ d' /srv/http/app/templates/footer.php
+#1temp1
+
 getinstallzip
 
 echo -e "$bar Modify files ..."
@@ -60,6 +65,15 @@ string=$( cat <<'EOF'
 EOF
 )
 appendH 'code.jquery.com'
+
+# separate to keep out of uninstall
+if ! grep 'jquery.mobile.custom.min.js' $file; then
+	string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
+EOF
+)
+	sed -i "$ a$string" $file
+fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
 if ! grep -q 'ico|svg' $file; then
@@ -99,6 +113,16 @@ systemctl enable addons cronie
 systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
+
+notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
+if ! grep '^chromium' /root/.xinitrc; then
+	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
+	browser=1
+else
+	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
+	browser=2
+fi
+redis-cli mset notifysec $notifysec zoomlevel $zoomlevel browser $browser &>/dev/null
 
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )

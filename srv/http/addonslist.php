@@ -17,20 +17,6 @@ if ( !$udaclist ) {
 	}
 }
 
-$notifysec = $redis->get( 'notifysec' );
-if ( !$notifysec ) {
-	$notifysec = exec( 'grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9"' );
-	$redis->set( 'notifysec', $notifysec );
-}
-$zoomlevel = $redis->get( 'zoomlevel' );
-if ( !$zoomlevel ) {
-	$zoomlevel = exec( "grep chromium /root/.xinitrc" );
-	if ( !$zoomlevel ) $zoomlevel = exec( "grep '^zoom-level' /root/.config/midori/config" );
-	$zoomlevel = explode( '=', $zoomlevel )[ 1 ];
-	$redis->set( 'zoomlevel', "$zoomlevel" );
-}
-
-
 ///////////////////////////////////////////////////////////////
 
 $addons = array(
@@ -97,8 +83,9 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180722',
-	'revision'     => 'General improvements'
+	'version'      => '20180724',
+	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
+					.'<br>General improvements'
 					.'<br>...'
 					.'<br>UI improvement'
 					.'<br>...'
@@ -151,17 +138,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 	'option'       => array(
 		'wait'    => 'After installed, Chromium needs a <white>reboot</white>.',
-		'radio'      => array(
-			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
-						.'<br>'
-						.'<br>Local screen size:',
-			'list'     => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'*Full HD - 1920px: 1.8'     => '1.8',
-				'Custom'                     => '?'
-			),
-		),
 	),
 ),
 'dual' => array(
@@ -222,6 +198,7 @@ $addons = array(
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
+	'hide'         => $redisaddons[ 'enha' ] ? 0 : 1,
 	'option'       => array(
 		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
 					.'<br>Continue?'
@@ -273,7 +250,6 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180722',
-	'rollback'     => '20180713',
 	'revision'     => 'Now Airplay is working properly.'
 					.'<br>Fix bugs'
 					.'<br>...'
@@ -304,6 +280,17 @@ $addons = array(
 				'*Full HD - 1920px: 1.8'     => '1.8',
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
+			),
+		),
+		'radio1'      => array( 
+			'message'  => 'Local browser should be <white>disabled</white>'
+						.'<br>if no need to display on RPi connected screen.'
+						.'<br>It will save 6% CPU load + 45MB memory.'
+						.'<br>(Re-enable: <code>Menu</code> > <code>Settings</code> > <code>Local browser</code>)'
+						.'<br>',
+			'list'     => array(
+				'*Enable' => '1',
+				'Disable' => '0'
 			),
 		),
 	),
@@ -384,7 +371,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/install.sh',
 	'option'       => array(
-		'confirm'    => 'All addons and custom UI modifications'
+		'confirm'    => 'All RuneUI addons and custom UI modifications'
 					.'<br><white>will be removed</white>.'
 					.'<br>Continue?'
 	),
@@ -528,7 +515,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $notifysec
+			'checked'  => $redis->get( 'notifysec' )
 		),
 	),
 ),
@@ -549,7 +536,26 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $zoomlevel
+			'checked'  => $redis->get( 'zoomlevel' )
+		),
+	),
+),
+'brow' => array(
+	'title'        => 'Setting - Switch Midori <-> Chromium',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Switch Local Browser between Midori and Chromium',
+	'buttonlabel'  => 'Switch',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser/switch.sh',
+	'hide'         => $redisaddons[ 'chro' ] ? 0 : 1,
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Select local browser:',
+			'list'     => array(
+				'Midori'   => '1',
+				'Chromium' => '2'
+			),
+			'checked'  => $redis->get( 'browser' )
 		),
 	),
 ),
