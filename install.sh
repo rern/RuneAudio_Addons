@@ -115,6 +115,8 @@ systemctl start addons cronie
 redis-cli hset addons update 0 &>/dev/null
 
 # udaclist
+acards=$( redis-cli hgetall acards )
+readarray -t cards <<<"$acards"
 i=0
 for card in "${cards[@]}"; do
 	if (( i % 2 )); then
