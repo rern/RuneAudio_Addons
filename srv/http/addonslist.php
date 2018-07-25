@@ -3,7 +3,6 @@ $redis = new Redis();
 $redis->pconnect( '127.0.0.1' );
 
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
-
 $redisaddons = $redis->hGetAll( 'addons' );
 
 ///////////////////////////////////////////////////////////////
