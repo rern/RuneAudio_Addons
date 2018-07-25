@@ -114,6 +114,20 @@ systemctl start addons cronie
 
 redis-cli hset addons update 0 &>/dev/null
 
+# udaclist
+acards=$( redis-cli hgetall acards )
+readarray -t cards <<<"$acards"
+i=0
+for card in "${cards[@]}"; do
+	if (( i % 2 )); then
+		extlabel=$( echo "$card" | awk -F '","hwplatformid'  '{print $1}' | awk -F 'extlabel":"' '{print $2}' )
+		redis-cli hset udaclist "$extlabel" "$key@$extlabel" &> /dev/null
+	else
+		key="$card"
+	fi
+	(( i++ ))
+done
+
 notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
 if ! grep '^chromium' /root/.xinitrc; then
 	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
