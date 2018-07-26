@@ -356,7 +356,7 @@ $addons = array(
 					.'It can be used as an alternative to reflashing the SD card.',
 	'buttonlabel'  => 'Reset',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/install.sh',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/reset.sh',
 	'option'       => array(
 		'confirm'    => 'All RuneUI addons and custom UI modifications'
 					.'<br><white>will be removed</white>.'
