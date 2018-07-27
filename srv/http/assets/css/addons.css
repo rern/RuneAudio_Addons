@@ -182,6 +182,10 @@ ul,
 .ck {
 	color: #00ffff;
 }
+.cc:hover, .ck:hover {
+    text-decoration: none;
+    color: #00ffff;
+}
 .wr {
 	color: #ffffff;
 	background: #ff0000;
