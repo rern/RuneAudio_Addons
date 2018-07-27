@@ -104,7 +104,7 @@ function info( O ) {
 		$( '#infoX' ).hide();
 	} else {
 		$( '#infoX' ).click( function() {
-			if ( typeof O.cancel === 'function' ) O.cancel();
+			inforeset();
 		} );
 	}
 	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
@@ -130,13 +130,13 @@ function info( O ) {
 		$( '#infoSelectbox' ).html( O.selecthtml );
 		$( '#infoSelect' ).show();
 	}
-	if ( O.cancel ) {
+	if ( O.cancel || O.cancellabel ) {
 		$( '#infoCancel' )
 			.html( O.cancellabel ? O.cancellabel : 'Cancel' )
 			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 			.show()
 			.on( 'click', function() {
-				$( '#infoX' ).click();
+				O.cancel();
 			} );
 	}
 	if ( O.button ) {

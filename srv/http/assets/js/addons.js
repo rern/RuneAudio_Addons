@@ -139,19 +139,22 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
+			ojson = option[ oj ];
 			info( {
 				  title        : title
-				, message      : option[ oj ]
-				, cancellabel  : 'No'
+				, message      : ojson.message
+				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
 				, cancel       : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel      : 'Yes'
+				, oklabel      : ojson.oklabel ? ojson.oklabel : 'Yes'
 				, ok           : function() {
 					opt += '1 ';
 					sendcommand();
 				}
+				, cancelcolor  : ojson.checked ? '' : '#0095d8'
+				, okcolor      : ojson.checked ? '' : '#34495e'
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
