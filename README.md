@@ -15,7 +15,6 @@ Currently available:
 - [Boot Logo](https://github.com/rern/RuneAudio/tree/master/boot_splash)
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
-- [Midori Upgrade](https://github.com/rern/RuneAudio/tree/master/midori)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
 - [RuneUI Backup-Restore Enable](https://github.com/rern/RuneAudio/tree/master/backup-restore)
