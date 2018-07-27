@@ -476,8 +476,8 @@ $addons = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Change Zoom Level of Local Browser (for Midori and Chromium only)',
 	'buttonlabel'  => 'Change',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/zoom_browser/zoom.sh',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_zoom',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_zoom/set.sh',
 	'option'       => array(
 		'radio'      => array(
 			'message'  => 'Set zoom level (current = <white>'.$zoomlevel.'</white>) :',
