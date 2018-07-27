@@ -313,13 +313,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180630',
-	'rollback'     => 'fb3de20151f9fdf866de9ea51d6f03d678211428',
-	'revision'     => 'Fix missing edit snd close buttons'
-					.'<br>General improvements'
-					.'<br>'
+	'version'      => '20180726',
+	'revision'     => 'Update along with Addons 20180725'
 					.'<br>...'
-					.'<br>Update with RuneUI Enhancement 20180321',
+					.'<br>Fix missing edit snd close buttons'
+					.'<br>...'
+					.'<br>Update along with RuneUI Enhancement 20180321',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => '/assets/addons/thumblyri.gif',
