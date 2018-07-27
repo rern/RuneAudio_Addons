@@ -241,7 +241,7 @@ $addons = array(
 	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
 					.'<br>...'
-					'<br>Now Airplay is working properly.'
+					.'<br>Now Airplay is working properly.'
 					.'<br>...'
 					.'<br>Rearrange overlay controls(tap cover art top for guide)'
 					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
