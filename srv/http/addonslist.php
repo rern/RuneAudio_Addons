@@ -71,15 +71,12 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180725',
-	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
-					.'<br>General improvements'
+	'version'      => '20180727',
+	'revision'     => 'Fix Addons menu not response'
 					.'<br>...'
-					.'<br>UI improvement'
+					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>...'
-					.'<br>Add disk bar for | used | free | expandable |'
-					.'<br>Use local thumbnails to improve loading speed'
-					.'<br>Normalize code editing template',
+					.'<br>UI improvement',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/assets/addons/thumbaddo.png',
