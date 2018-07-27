@@ -492,5 +492,21 @@ $addons = array(
 		),
 	),
 ),
+'poin' => array(
+	'title'        => 'Setting - Pointer of Local Browser',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Enable Pointer of Local Browser',
+	'buttonlabel'  => 'Change',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer/set.sh',
+	'option'       => array(
+		'yesno'      => array(
+			'message'  => 'Pointer of local browser:',
+			'oklabel'    => 'Enable',
+			'cancellabel'=> 'Disable',
+			'checked'    => $redis->get( 'pointer' )
+		),
+	),
+),
 	
 );
