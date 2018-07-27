@@ -71,7 +71,7 @@ $addons = array(
 */
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180727',
+	'version'      => '20180728',
 	'revision'     => 'Improve Setting addons'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
