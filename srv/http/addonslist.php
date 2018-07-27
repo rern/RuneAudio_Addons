@@ -266,6 +266,7 @@ $addons = array(
 				'Custom'                     => '?'
 			),
 		),
+	),
 ),
 'font' => array(
 	'title'        => 'RuneUI Fonts - Extended Characters',
