@@ -237,18 +237,14 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180722',
-	'revision'     => 'Now Airplay is working properly.'
-					.'<br>Fix bugs'
+	'version'      => '20180726',
+	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
+					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
+					.'<br>...'
+					'<br>Now Airplay is working properly.'
 					.'<br>...'
 					.'<br>Rearrange overlay controls(tap cover art top for guide)'
-					.'<br>Overlay repeat = toggle: repeat | repeat single | off'
-					.'<br>...'
-					.'<br>Improve most icons and overlay controls guide'
-					.'<br>Change Webradio cover art'
-					.'<br>Add show/hide Webradio elapsed time'
-					.'<br>Fix: omit A/An/The sorting in file mode and (/[/. are omitted as well'
-					.'<br>Improve boot splash image',
+					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/assets/addons/thumbenha.gif',
@@ -316,9 +312,7 @@ $addons = array(
 	'version'      => '20180726',
 	'revision'     => 'Update along with Addons 20180725'
 					.'<br>...'
-					.'<br>Fix missing edit snd close buttons'
-					.'<br>...'
-					.'<br>Update along with RuneUI Enhancement 20180321',
+					.'<br>Fix missing edit and close buttons',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => '/assets/addons/thumblyri.gif',
