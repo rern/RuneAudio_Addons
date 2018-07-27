@@ -174,21 +174,6 @@ $addons = array(
 		),
 	),
 ),
-'mido' => array(
-	'title'        => 'Midori Upgrade',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade Midori to latest version <white>without errors</white>:'
-					.'<br>MPD Upgrade also needs this upgrade',
-	'thumbnail'    => '/assets/addons/thumbmido.png',
-	'buttonlabel'  => 'Upgrade',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/midori',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/midori/install.sh',
-	'hide'         => $redisaddons[ 'enha' ] ? 0 : 1,
-	'option'       => array(
-		'confirm'    => 'Once upgraded, Midori <white>cannot be downgraded</white>.'
-					.'<br>Continue?'
-	),
-),
 'mpdu' => array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
@@ -504,25 +489,6 @@ $addons = array(
 				'Custom'                     => '?'
 			),
 			'checked'  => $redis->get( 'zoomlevel' )
-		),
-	),
-),
-'brow' => array(
-	'title'        => 'Setting - Switch Midori <-> Chromium',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Switch Local Browser between Midori and Chromium',
-	'buttonlabel'  => 'Switch',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/switch_browser/switch.sh',
-	'hide'         => $redisaddons[ 'chro' ] ? 0 : 1,
-	'option'       => array(
-		'radio'      => array(
-			'message'  => 'Select local browser:',
-			'list'     => array(
-				'Midori'   => '1',
-				'Chromium' => '2'
-			),
-			'checked'  => $redis->get( 'browser' )
 		),
 	),
 ),
