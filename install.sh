@@ -135,7 +135,7 @@ else
 	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
 	browser=2
 fi
-redis-cli hmset addons setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
+redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
 
 # refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
