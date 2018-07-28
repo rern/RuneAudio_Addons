@@ -278,7 +278,7 @@ insert/append with SEARCH itself in $string:
 		'wait'      => '<message text>',
 		'confirm'   => '<message text>',
 		'yesno'     => array(
-		    'message'     => '<message text>',
+			'message'     => '<message text>',
 /**/		'cancellabel' => '<label text>',
 /**/		'oklabel'     => '<label text>',
 /**/		'checked'     => <0/1>
