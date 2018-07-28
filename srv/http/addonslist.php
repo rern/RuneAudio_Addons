@@ -95,7 +95,9 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => array(
-		'yesno'      => 'Start <white>Aria2</white> on system startup?'
+		'yesno'      => array(
+			'message'  => 'Start <white>Aria2</white> on system startup?'
+		)
 	),
 ),
 'spla' => array(
