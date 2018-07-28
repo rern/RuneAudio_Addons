@@ -277,6 +277,7 @@ insert/append with SEARCH itself in $string:
 /**/	'option'        => array(
 		'wait'      => '<message text>',
 		'confirm'   => '<message text>',
+		'skip'      => '<message text>',
 		'yesno'     => array(
 			'message'     => '<message text>',
 /**/			'cancellabel' => '<label text>',
@@ -362,11 +363,11 @@ insert/append with SEARCH itself in $string:
 		- `Ok` = continue (no value)
 	- `'confirm'` = `Cancel` `Ok`
 		- `Ok`  = continue (no value) | `Cancel` = cancel and back
+	- `'skip'` = `No` `Yes`
+		- `Yes` = no more options | `No` = continue options
 	- `'yesno'` = `No` `Yes`
 		- `Yes` = 1 | `No` = 0
 		- `checked` = set primary button
-	- `'skip'` = `No` `Yes`
-		- `Yes` = no more options | `No` = continue options
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`
