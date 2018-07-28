@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180625_
+_revision 20180725_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -279,9 +279,9 @@ insert/append with SEARCH itself in $string:
 		'confirm'   => '<message text>',
 		'yesno'     => array(
 			'message'     => '<message text>',
-/**/		'cancellabel' => '<label text>',
-/**/		'oklabel'     => '<label text>',
-/**/		'checked'     => <0/1>
+/**/			'cancellabel' => '<label text>',
+/**/			'oklabel'     => '<label text>',
+/**/			'checked'     => <0/1>
 		),
 		'password'  => array(
 			'message'  => '<message text>',
