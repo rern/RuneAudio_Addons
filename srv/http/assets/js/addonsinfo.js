@@ -136,7 +136,11 @@ function info( O ) {
 			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 			.show()
 			.on( 'click', function() {
-				O.cancel();
+				if ( typeof O.cancel === 'function' ) {
+					O.cancel();
+				} else {
+					inforeset();
+				}
 			} );
 	}
 	if ( O.button ) {
