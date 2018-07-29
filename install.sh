@@ -31,7 +31,7 @@ alias=addo
 installstart $@
 
 #0temp0
-# to be removed after switch from hammer.js
+sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
