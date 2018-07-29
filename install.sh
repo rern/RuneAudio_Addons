@@ -141,7 +141,7 @@ redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/de
 addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
 installfinish $@
-title -nt "$info Please clear browser cache."
+title -nt "$info Please $( tcolor 'clear browser cache' )."
 
 clearcache
 
