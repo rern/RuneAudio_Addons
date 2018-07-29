@@ -38,7 +38,8 @@ $( 'body' ).prepend( '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="infocontent"></p>\
 			<div id="infoText" class="infocontent">\
-				<a id="infoTextLabel" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox" spellcheck="false">\
+				<a id="infoTextLabel" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
+				<a id="infoTextLabel2" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
 			</div>\
 			<div id="infoPassword" class="infocontent">\
 				<a id="infoPasswordLabel" class="infolabel"></a>&emsp;<input type="password" class="inputbox" id="infoPasswordbox">\
@@ -65,19 +66,20 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	inforeset();
+	infoReset();
 } );
 
-function inforeset() {
+function infoReset() {
 	$( '#infoOverlay' ).hide();
 	$( '.infolabel, .infohtml' ).empty();
+	$( '.infolabel' ).css( 'width', '' );
 	$( '.inputbox' ).css( 'width', '' ).val( '' );
 	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
 }
 
 function info( O ) {
 	// common
-	inforeset();
+	infoReset();
 	if ( !O.icon ) {
 		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
 	} else {
@@ -104,7 +106,7 @@ function info( O ) {
 		$( '#infoX' ).hide();
 	} else {
 		$( '#infoX' ).click( function() {
-			inforeset();
+			if ( typeof O.cancel === 'function' ) O.cancel();
 		} );
 	}
 	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
@@ -115,32 +117,38 @@ function info( O ) {
 		$( '#infoText' ).show();
 		if ( O.textvalue ) $( '#infoTextbox' ).select();
 		var $infofocus = $( '#infoTextbox' );
+		if ( O.textlabel2 ) {
+			$( '#infoTextLabel2' ).html( O.textlabel2 );
+			$( '#infoTextbox2' ).val( O.textvalue2 );
+			setTimeout( function() {
+				var lW = $( '#infoTextLabel' ).width();
+				var lW2 = $( '#infoTextLabel2' ).width();
+				var labelW = lW > lW2 ? lW : lW2;
+				$( '.infolabel' ).css( 'width', labelW +'px' );
+			}, 200 );
+		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword' ).show().focus();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
 		var checked = [ O.checked ];
-		setboxwidth( $( '#infoRadio' ), O.radiohtml, checked );
+		setBoxWidth( $( '#infoRadio' ), O.radiohtml, checked );
 	} else if ( O.checkboxhtml ) {
 		var checked = typeof O.checked === 'array' ? O.checked : [ O.checked ];
-		setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml, checked );
+		setBoxWidth( $( '#infoCheckbox' ), O.checkboxhtml, checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectbox' ).html( O.selecthtml );
 		$( '#infoSelect' ).show();
 	}
-	if ( O.cancel || O.cancellabel ) {
+	if ( O.cancel ) {
 		$( '#infoCancel' )
 			.html( O.cancellabel ? O.cancellabel : 'Cancel' )
 			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 			.show()
 			.on( 'click', function() {
-				if ( typeof O.cancel === 'function' ) {
-					O.cancel();
-				} else {
-					inforeset();
-				}
+				$( '#infoX' ).click();
 			} );
 	}
 	if ( O.button ) {
@@ -176,7 +184,7 @@ window.addEventListener( 'orientationchange', function() {
 	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
 } );
 
-function setboxwidth( $box, html, checked ) {
+function setBoxWidth( $box, html, checked ) {
 	var windowW = window.innerWidth;
 	var windowH = window.innerHeight;
 	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
@@ -195,7 +203,7 @@ function setboxwidth( $box, html, checked ) {
 		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
 	}, 100 );
 }
-function verifypassword( title, pwd, fn ) {
+function verifyPassword( title, pwd, fn ) {
 	$( '#infoX' ).click();
 	info( {
 		  title         : title
@@ -210,13 +218,13 @@ function verifypassword( title, pwd, fn ) {
 				  title   : title
 				, message : 'Passwords not matched. Please try again.'
 				, ok      : function() {
-					verifypassword( title, pwd, fn )
+					verifyPassword( title, pwd, fn )
 				}
 			} );
 		}
 	} );
 }
-function blankpassword( title, message, label, fn ) {
+function blankPassword( title, message, label, fn ) {
 	info( {
 		  title   : title
 		, message : 'Blank password not allowed.'
@@ -229,9 +237,9 @@ function blankpassword( title, message, label, fn ) {
 				, ok            : function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( !pwd ) {
-						blankpassword( title, message, label, fn );
+						blankPassword( title, message, label, fn );
 					} else {
-						verifypassword( title, pwd, fn )
+						verifyPassword( title, pwd, fn )
 					}
 				}
 			} );
