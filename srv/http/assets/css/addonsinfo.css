@@ -123,7 +123,6 @@
 #infoTextLabel2 {
 	display: inline-block;
 	text-align: right;
-	margin-right: -5px;
 }
 #infoRadio,
 #infoCheckbox {
@@ -138,6 +137,14 @@
 #infoSelect a {
 	margin: 0;
 	padding-left: 10px;
+}
+.inputbox {
+	margin: 0 0 5px 5px;
+	width: 200px;
+}
+.inputbox:focus {
+	outline: none;
+	background: #34495e;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
