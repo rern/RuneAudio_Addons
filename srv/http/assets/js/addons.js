@@ -139,22 +139,19 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
-			ojson = option[ oj ];
 			info( {
 				  title        : title
-				, message      : ojson.message
-				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
+				, message      : option[ oj ]
+				, cancellabel  : 'No'
 				, cancel       : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel      : ojson.oklabel ? ojson.oklabel : 'Yes'
+				, oklabel      : 'Yes'
 				, ok           : function() {
 					opt += '1 ';
 					sendcommand();
 				}
-				, cancelcolor  : ojson.checked ? '' : '#0095d8'
-				, okcolor      : ojson.checked ? '' : '#34495e'
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
@@ -203,7 +200,7 @@ function getoptions() {
 				, ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
-						verifypassword( title, pwd, function() {
+						verifyPassword( title, pwd, function() {
 							opt += "'"+ pwd +"' ";
 							sendcommand();
 						} );
@@ -212,7 +209,7 @@ function getoptions() {
 							opt += '0 ';
 							sendcommand();
 						} else {
-							blankpassword( title, ojson.message, ojson.label, function() {
+							blankPassword( title, ojson.message, ojson.label, function() {
 								opt += "'"+ pwd +"' ";
 								sendcommand();
 							} );

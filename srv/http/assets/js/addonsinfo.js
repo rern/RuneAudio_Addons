@@ -127,11 +127,11 @@ function info( O ) {
 			
 			if ( O.boxwidth ) $( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 360 - labelW +'px' );
 			$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
-			//$( '#infoTextbox' ).select();
+			var $infofocus =  $( '#infoTextbox' );
 		}, 100 );
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel ).show();
-		$( '#infoPassword' ).show().focus();
+		$( '#infoPassword, #infoPasswordbox' ).show();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
 		var checked = [ O.checked ];
