@@ -70,7 +70,7 @@ $( '#infoX' ).click( function() {
 } );
 
 function infoReset() {
-	$( '#infoOverlay' ).hide();
+	$( '#infoOverlay, .infolabel, .inputbox' ).hide();
 	$( '.infolabel, .infohtml' ).empty();
 	$( '.infolabel' ).css( 'width', '' );
 	$( '.inputbox' ).css( 'width', '' ).val( '' );
@@ -111,13 +111,14 @@ function info( O ) {
 	}
 	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
 	if ( O.textlabel ) {
-		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextbox' ).val( O.textvalue );
-		$( '#infoTextLabel2' ).html( O.textlabel2 );
-		$( '#infoTextbox2' ).val( O.textvalue2 );
-		
+		$( '#infoTextLabel' ).html( O.textlabel ).show();
+		$( '#infoTextbox' ).val( O.textvalue ).show();
 		$( '#infoBox' ).css('left', '-100%' );           // move out of screen
-		$( '#infoText, .infolabel' ).show();             // show to get width
+		$( '#infoText' ).show();         // show to get width
+		if ( O.textlabel2 ) {
+			$( '#infoTextLabel2' ).html( O.textlabel2 ).show();
+			$( '#infoTextbox2' ).val( O.textvalue2 ).show();
+		}
 		setTimeout( function() {                         // wait for radiohtml ready
 			var lW = $( '#infoTextLabel' ).width();
 			var lW2 = O.textlabel2 ? $( '#infoTextLabel2' ).width() : 0;
@@ -126,9 +127,10 @@ function info( O ) {
 			
 			if ( O.boxwidth ) $( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 360 - labelW +'px' );
 			$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
+			$( '#infoTextbox' ).select();
 		}, 100 );
 	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel );
+		$( '#infoPasswordLabel' ).html( O.passwordlabel ).show();
 		$( '#infoPassword' ).show().focus();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
