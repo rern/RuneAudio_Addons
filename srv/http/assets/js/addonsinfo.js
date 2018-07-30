@@ -4,7 +4,7 @@ normal usage: info( {
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
-	boxwidth      : N              // 400 / N                (pixel)
+	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
@@ -78,9 +78,6 @@ function infoReset() {
 }
 
 function info( O ) {
-	if ( O.noreset ) {
-		return;
-	}
 	// common
 	infoReset();
 	if ( !O.icon ) {
@@ -113,7 +110,6 @@ function info( O ) {
 		} );
 	}
 	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
-	if ( O.boxwidth ) $( '.inputbox' ).width( O.boxwidth );
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
 		$( '#infoTextbox' ).val( O.textvalue );
@@ -121,12 +117,14 @@ function info( O ) {
 		$( '#infoTextbox2' ).val( O.textvalue2 );
 		
 		$( '#infoBox' ).css('left', '-100%' );           // move out of screen
-		$( '#infoText, .infolabel' ).show();                        // show to get width
+		$( '#infoText, .infolabel' ).show();             // show to get width
 		setTimeout( function() {                         // wait for radiohtml ready
 			var lW = $( '#infoTextLabel' ).width();
 			var lW2 = O.textlabel2 ? $( '#infoTextLabel2' ).width() : 0;
 			var labelW = lW > lW2 ? lW : lW2;
 			$( '.infolabel' ).css( 'width', labelW +'px' );
+			
+			if ( O.boxwidth ) $( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 360 - labelW +'px' );
 			$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
 		}, 100 );
 	} else if ( O.passwordlabel ) {
