@@ -10,23 +10,16 @@ fi
 
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
-	echo "
-		'alias'      => 'addo',
-		'title'      => 'Addons Menu',
-		'installurl' => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
-),
-	" > /srv/http/addonslist.php
+	gitpath=https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http
+	wget -qN --no-check-certificate $gitpath/addonslist.php -P /srv/http
+	wget -qN --no-check-certificate $gitpath/addonstitle.sh -P /srv/http
 fi
-
-wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
-wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonsedit.sh -P /srv/http
 
 # change version number in RuneAudio_Addons/srv/http/addonslist.php
 
 alias=addo
 
 . /srv/http/addonstitle.sh
-. /srv/http/addonsedit.sh
 
 installstart $@
 
@@ -36,6 +29,8 @@ redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
 getinstallzip
+
+. /srv/http/addonsedit.sh
 
 echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
@@ -136,9 +131,6 @@ else
 	browser=2
 fi
 redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
-
-# refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
-addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
 
 installfinish $@
 title -nt "$info Please $( tcolor 'clear browser cache' )."
