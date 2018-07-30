@@ -38,11 +38,11 @@ $( 'body' ).prepend( '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="infocontent"></p>\
 			<div id="infoText" class="infocontent">\
-				<a id="infoTextLabel" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
-				<a id="infoTextLabel2" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
+				<a id="infoTextLabel" class="infolabel"></a><input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
+				<a id="infoTextLabel2" class="infolabel"></a><input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
 			</div>\
 			<div id="infoPassword" class="infocontent">\
-				<a id="infoPasswordLabel" class="infolabel"></a>&emsp;<input type="password" class="inputbox" id="infoPasswordbox">\
+				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordbox">\
 			</div>\
 			<div id="infoRadio" class="infocontent infohtml"></div>\
 			<div id="infoCheckbox" class="infocontent infohtml"></div>\
@@ -78,6 +78,9 @@ function infoReset() {
 }
 
 function info( O ) {
+	if ( O.noreset ) {
+		return;
+	}
 	// common
 	infoReset();
 	if ( !O.icon ) {
@@ -114,19 +117,18 @@ function info( O ) {
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
 		$( '#infoTextbox' ).val( O.textvalue );
-		$( '#infoText' ).show();
-		if ( O.textvalue ) $( '#infoTextbox' ).select();
-		var $infofocus = $( '#infoTextbox' );
-		if ( O.textlabel2 ) {
-			$( '#infoTextLabel2' ).html( O.textlabel2 );
-			$( '#infoTextbox2' ).val( O.textvalue2 );
-			setTimeout( function() {
-				var lW = $( '#infoTextLabel' ).width();
-				var lW2 = $( '#infoTextLabel2' ).width();
-				var labelW = lW > lW2 ? lW : lW2;
-				$( '.infolabel' ).css( 'width', labelW +'px' );
-			}, 200 );
-		}
+		$( '#infoTextLabel2' ).html( O.textlabel2 );
+		$( '#infoTextbox2' ).val( O.textvalue2 );
+		
+		$( '#infoBox' ).css('left', '-100%' );           // move out of screen
+		$( '#infoText, .infolabel' ).show();                        // show to get width
+		setTimeout( function() {                         // wait for radiohtml ready
+			var lW = $( '#infoTextLabel' ).width();
+			var lW2 = O.textlabel2 ? $( '#infoTextLabel2' ).width() : 0;
+			var labelW = lW > lW2 ? lW : lW2;
+			$( '.infolabel' ).css( 'width', labelW +'px' );
+			$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
+		}, 100 );
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword' ).show().focus();
@@ -186,7 +188,6 @@ window.addEventListener( 'orientationchange', function() {
 
 function setBoxWidth( $box, html, checked ) {
 	var windowW = window.innerWidth;
-	var windowH = window.innerHeight;
 	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
 	var maxW = 0;
 	var spanW = 0;
@@ -200,7 +201,7 @@ function setBoxWidth( $box, html, checked ) {
 		} );
 		var pad = ( contentW - 20 - maxW ) / 2;      // 15 = button width
 		$box.css('padding-left', pad +'px');         // set padding-left
-		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
+		$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
 	}, 100 );
 }
 function verifyPassword( title, pwd, fn ) {
