@@ -72,8 +72,8 @@ comment() {
 			printf "\e[38;5;6m%*s\e[0m\n" $col | tr ' ' -
 		}
 	else
-		front='/*'$alias        # /*
-		back=$alias'*/'         # */
+		front='/*'$alias        # /*alias
+		back=$alias'*/'         # alias*/
 	fi
 
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi # line +-
