@@ -388,7 +388,7 @@ $addons = array(
 	),
 ),
 'noti' => array(
-	'title'        => 'Setting - Duration of Notification',
+	'title'        => 'Setting - Notification Duration',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Change RuneUI notification duration',
 	'thumbnail'    => '/assets/addons/thumbnoti.gif',
