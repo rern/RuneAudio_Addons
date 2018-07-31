@@ -24,6 +24,7 @@ alias=addo
 installstart $@
 
 #0temp0
+# delete runeui.min.js.backup from .../js/ after next RuneUIe update
 sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
