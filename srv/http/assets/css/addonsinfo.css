@@ -120,6 +120,12 @@
 	max-height: 800px;
 	color: #7795b4;
 }
+.infotextdiv {
+	display: inline-block;
+	vertical-align: baseline;
+	line-height: 50px;
+	text-align: right;
+}
 #infoTextLabel,
 #infoTextLabel2 {
 	display: inline-block;
@@ -142,8 +148,7 @@
 	padding-left: 10px;
 }
 .inputbox {
-	margin: 0 0 5px 5px;
-	width: 200px;
+	margin-left: 5px;
 }
 .inputbox:focus {
 	outline: none;
@@ -177,11 +182,4 @@
 }
 #infoOverlay code {
 	border-radius: 4px;
-}
-
-@media(max-height: 360px) {
-	#infoBox {
-		transform: scale(0.9, 0.9);
-		transform-origin: center center;
-	}
 }
