@@ -120,13 +120,11 @@ for card in "${cards[@]}"; do
 done
 
 notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
-grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=''
+grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=0
 if ! grep '^chromium' /root/.xinitrc; then
 	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
-	browser=1
 else
 	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
-	browser=2
 fi
 redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer" &>/dev/null
 redis-cli hset addons update 0 &>/dev/null
