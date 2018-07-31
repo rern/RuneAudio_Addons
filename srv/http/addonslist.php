@@ -409,7 +409,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $redis->get( 'setnotify' )
+			'checked'  => $redis->hGet( 'settings', 'notify' )
 		),
 	),
 ),
@@ -430,7 +430,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $redis->get( 'setzoom' )
+			'checked'  => $redis->hGet( 'settings', 'zoom' )
 		),
 	),
 ),
@@ -446,7 +446,7 @@ $addons = array(
 			'message'  => 'Pointer of local browser:',
 			'oklabel'    => 'Enable',
 			'cancellabel'=> 'Disable',
-			'checked'    => $redis->get( 'setpointer' )
+			'checked'    => $redis->hGet( 'settings', 'pointer' )
 		),
 	),
 ),
