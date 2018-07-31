@@ -38,8 +38,15 @@ $( 'body' ).prepend( '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="infocontent"></p>\
 			<div id="infoText" class="infocontent">\
-				<a id="infoTextLabel" class="infolabel"></a><input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
-				<a id="infoTextLabel2" class="infolabel"></a><input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
+				<div class="infotextdiv">\
+					<a id="infoTextLabel" class="infolabel"></a><br>\
+					<a id="infoTextLabel2" class="infolabel"></a>\
+				</div>\
+				<div class="infotextdiv">\
+					<input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
+					<input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
+				</div>\
+				<div style="clear: both"></div>\
 			</div>\
 			<div id="infoPassword" class="infocontent">\
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordbox">\
@@ -70,7 +77,7 @@ $( '#infoX' ).click( function() {
 } );
 
 function infoReset() {
-	$( '#infoOverlay, .infolabel, .inputbox' ).hide();
+	$( '#infoOverlay, #infoTextLabel2, #infoTextBox2' ).hide();
 	$( '.infolabel, .infohtml' ).empty();
 	$( '.infolabel' ).css( 'width', '' );
 	$( '.inputbox' ).css( 'width', '' ).val( '' );
@@ -109,34 +116,24 @@ function info( O ) {
 			if ( typeof O.cancel === 'function' ) O.cancel();
 		} );
 	}
-	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
+	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	if ( O.textlabel ) {
-		$( '#infoTextLabel' ).html( O.textlabel ).show();
-		$( '#infoTextbox' ).val( O.textvalue ).show();
-		$( '#infoBox' ).css('left', '-100%' );           // move out of screen
-		$( '#infoText' ).show();         // show to get width
+		$( '#infoTextLabel' ).html( O.textlabel );
+		$( '#infoTextBox' ).val( O.textvalue );
+		$( '#infoText' ).show();
+		var $infofocus =  $( '#infoTextBox' );
 		if ( O.textlabel2 ) {
 			$( '#infoTextLabel2' ).html( O.textlabel2 ).show();
-			$( '#infoTextbox2' ).val( O.textvalue2 ).show();
+			$( '#infoTextBox2' ).val( O.textvalue2 ).show();
 		}
-		setTimeout( function() {                         // wait for radiohtml ready
-			var lW = $( '#infoTextLabel' ).width();
-			var lW2 = O.textlabel2 ? $( '#infoTextLabel2' ).width() : 0;
-			var labelW = lW > lW2 ? lW : lW2;
-			$( '.infolabel' ).css( 'width', labelW +'px' );
-			
-			if ( O.boxwidth ) $( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 360 - labelW +'px' );
-			$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
-			var $infofocus =  $( '#infoTextbox' );
-		}, 100 );
 	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel ).show();
-		$( '#infoPassword, #infoPasswordbox' ).show();
+		$( '#infoPasswordLabel' ).html( O.passwordlabel );
+		$( '#infoPassword' ).show();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
-		radiocheck( $( '#infoRadio' ), O.radiohtml, O.checked );
+		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
-		radiocheck( $( '#infoCheckbox' ), O.checkboxhtml, O.checked );
+		radioCheckbox( $( '#infoCheckbox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectbox' ).html( O.selecthtml );
@@ -149,6 +146,7 @@ function info( O ) {
 			.show()
 			.on( 'click', function() {
 				$( '#infoX' ).click();
+				O.cancel = '';
 			} );
 	}
 	if ( O.button ) {
@@ -167,10 +165,10 @@ function info( O ) {
 		.css( 'background', O.okcolor ? O.okcolor : '' )
 		.show()
 		.on( 'click', function() {
-			$('#infoOverlay').hide();
+			$( '#infoOverlay' ).hide();
 			if ( O.ok && typeof O.ok === 'function' ) {
 				O.ok();
-				O.ok = ''; // fix: multiple runs
+				O.ok = ''; // suppress multiple runs
 			}
 		} );
 	
@@ -180,7 +178,7 @@ function info( O ) {
 	if ( $infofocus ) $infofocus.select();
 }
 
-function radiocheck( el, htm, chk ) {
+function radioCheckbox( el, htm, chk ) {
 	el.html( htm ).show();
 	if ( !chk ) return;
 	
