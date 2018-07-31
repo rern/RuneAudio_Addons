@@ -134,11 +134,9 @@ function info( O ) {
 		$( '#infoPassword, #infoPasswordbox' ).show();
 		var $infofocus = $( '#infoPasswordbox' );
 	} else if ( O.radiohtml ) {
-		var checked = [ O.checked ];
-		setBoxWidth( $( '#infoRadio' ), O.radiohtml, checked );
+		radiocheck( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
-		var checked = typeof O.checked === 'array' ? O.checked : [ O.checked ];
-		setBoxWidth( $( '#infoCheckbox' ), O.checkboxhtml, checked );
+		radiocheck( $( '#infoCheckbox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectbox' ).html( O.selecthtml );
@@ -179,30 +177,21 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
+//	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
 	if ( $infofocus ) $infofocus.select();
 }
 window.addEventListener( 'orientationchange', function() {
-	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
+//	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
 } );
 
-function setBoxWidth( $box, html, checked ) {
-	var windowW = window.innerWidth;
-	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
-	var maxW = 0;
-	var spanW = 0;
-	$( '#infoBox' ).css('left', '-100%' );           // move out of screen
-	$box.html( html ).show();                        // show to get width
-	setTimeout( function() {                         // wait for radiohtml ready
-		$box.find( 'label' ).each( function( i ) {   // get max width
-			spanW = $( this ).width();
-			maxW = ( spanW > maxW ) ? spanW : maxW;
-			if ( checked && checked.indexOf( i ) !== -1 ) $( this ).find( 'input' ).prop( 'checked', true );
-		} );
-		var pad = ( contentW - 20 - maxW ) / 2;      // 15 = button width
-		$box.css('padding-left', pad +'px');         // set padding-left
-		$( '#infoBox' ).css( { 'left': '50%', 'top': ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
-	}, 100 );
+function radiocheck( el, htm, chk ) {
+	el.html( htm ).show();
+	if ( !chk ) return;
+	
+	var checked = typeof chk === 'array' ? chk : [ chk ];
+	el.find( 'label' ).each( function( i ) {
+		if ( checked.indexOf( i ) !== -1 ) el.find( 'input' ).prop( 'checked', true );
+	} );
 }
 function verifyPassword( title, pwd, fn ) {
 	$( '#infoX' ).click();
