@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180728',
+	'version'      => '20180731',
 	'revision'     => 'Improve Setting addons'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
@@ -161,19 +161,15 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180727',
-	'revision'     => 'Fix Library display setting bug'
-					.'<br>Fix Playlist - saved playlists display on page changed'
-					.'<br>playback.php and runeui.js replaced instead of revised (not much of remainings)'
-					.'<br>Context menus can be toggled'
-					.'<br>Change context menu dialog boxes'
-					.'<br>Show warning of existing Webradio name / playlist name'
-					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
+	'version'      => '20180801',
+	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
 					.'<br>...'
-					.'<br>Now Airplay is working properly.',
+					.'<br>Now Airplay is working properly.'
+					.'<br>...'
+					.'<br>Rearrange overlay controls(tap cover art top for guide)'
+					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/assets/addons/thumbenha.gif',
