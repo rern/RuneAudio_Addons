@@ -128,7 +128,7 @@ else
 	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
 	browser=2
 fi
-redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
+redis-cli mset setnotify "$notifysec" setzoom "$zoomlevel" setpointer "$pointer" &>/dev/null
 redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
