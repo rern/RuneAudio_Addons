@@ -96,10 +96,6 @@
 	color: #0095d8;
 	cursor: pointer;
 }
-.info a {
-	color: #7795b4;
-	margin-right: 5px;
-}
 #infoTitle {
 	display: inline-block;
 	font-size: 18px;
@@ -122,20 +118,37 @@
 }
 .infotextdiv {
 	display: inline-block;
-	vertical-align: baseline;
-	line-height: 50px;
 	text-align: right;
 }
 .infolabel {
 	display: inline-block;
+	line-height: 50px;
 	text-align: right;
 	color: #e0e7ee;
+}
+.inputbox {
+	margin: 5px;
+	height: 41px;
+	padding: 0 10px;
+	color: #e0e7ee;
+	background-color: #10161c;
+	border-radius: 6px;
+	border: 2px solid #34495e;
+}
+.inputbox:focus {
+	outline: none;
 }
 #infoRadio,
 #infoCheckbox {
 	display: table;
 	margin: auto;
 	text-align: left;
+}
+#infoOverlay input[type=radio],
+#infoOverlay input[type=checkbox] {
+	height: 15px;
+	margin: 5px;
+	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
 #infoSelect button {
 	height: 40px;
@@ -147,13 +160,6 @@
 	margin: 0;
 	padding-left: 10px;
 }
-.inputbox {
-	margin-left: 5px;
-}
-.inputbox:focus {
-	outline: none;
-	background: #34495e;
-}
 #infoButtons {
 	padding: 10px 0 20px 0;
 }
@@ -161,20 +167,6 @@
 	margin: 0 5px;
 	min-width: 70px;
 	text-transform: none;
-}
-#infoOverlay input {
-	height: 41px;
-	padding: 0 10px;
-	border-radius: 6px;
-	border: 2px solid #34495e;
-	color: #e0e7ee;
-	background-color: #10161c;
-}
-#infoOverlay input[type=radio],
-#infoOverlay input[type=checkbox] {
-	height: 15px;
-	margin: 5px;
-	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
 #infoOverlay white,
 #infoOverlay code {
