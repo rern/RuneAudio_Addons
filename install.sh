@@ -122,7 +122,7 @@ for card in "${cards[@]}"; do
 done
 
 notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
-[[ grep 'use_cursor yes' /root/.xinitrc ]] && pointer=1 || pointer=''
+grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=''
 if ! grep '^chromium' /root/.xinitrc; then
 	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
 	browser=1
@@ -133,6 +133,7 @@ fi
 redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
 
 installfinish $@
+
 title -nt "$info Please $( tcolor 'clear browser cache' )."
 
 clearcache
