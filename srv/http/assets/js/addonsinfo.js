@@ -177,12 +177,8 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-//	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
 	if ( $infofocus ) $infofocus.select();
 }
-window.addEventListener( 'orientationchange', function() {
-//	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
-} );
 
 function radiocheck( el, htm, chk ) {
 	el.html( htm ).show();
