@@ -1,6 +1,6 @@
 Guideline
 ---
-_revision 20180625_
+_revision 20180725_
 
 - [Addons Menu Process](#addons-menu-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
@@ -277,26 +277,26 @@ insert/append with SEARCH itself in $string:
 /**/	'option'        => array(
 		'wait'      => '<message text>',
 		'confirm'   => '<message text>',
-		'yesno'     => '<message text>',
-		'yesno1'    => '<message text 1>',
-		'yesno2'    => '<message text 2>',
-		'text'      => array(
-			'message' => '<message text>',
-			'label'   => '<label text>'
+		'skip'      => '<message text>',
+		'yesno'     => array(
+			'message'     => '<message text>',
+/**/			'cancellabel' => '<label text>',
+/**/			'oklabel'     => '<label text>',
+/**/			'checked'     => <0/1>
 		),
 		'password'  => array(
 			'message'  => '<message text>',
 			'label'    => '<label text>',
-			'required' => '1'
+/**/		'required' => '1'
 		),
 		'radio'     => array(
 			'message' => '<message text>',
 			'list'    => array(
 				'*item1' => '<value1>',
 				'item2'  => '<value2>',
-				'custom' => '?'
+/**/			'custom' => '?'
 			),
-			'ckecked' => '<item1>'
+/**/		'ckecked' => '<item1>'
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
@@ -304,7 +304,7 @@ insert/append with SEARCH itself in $string:
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
-			'ckecked' => '<item1>'
+/**/		'ckecked' => '<item1>'
 		),
 		'select'    => array(
 			'message' => '<message text>',
@@ -312,9 +312,9 @@ insert/append with SEARCH itself in $string:
 			'list'    => array(
 				'item1'  => '<value1>',
 				'item2'  => '<value2>',
-				'custom' => '?'
+/**/			'custom' => '?'
 			),
-			'ckecked' => '<item1>'
+/**/		'ckecked' => '<item1>'
 		),
 	),
 
@@ -363,10 +363,11 @@ insert/append with SEARCH itself in $string:
 		- `Ok` = continue (no value)
 	- `'confirm'` = `Cancel` `Ok`
 		- `Ok`  = continue (no value) | `Cancel` = cancel and back
-	- `'yesno'` = `No` `Yes`
-		- `Yes` = 1 | `No` = 0
 	- `'skip'` = `No` `Yes`
 		- `Yes` = no more options | `No` = continue options
+	- `'yesno'` = `No` `Yes`
+		- `Yes` = 1 | `No` = 0
+		- `checked` = set primary button
 	- `'text'` = `<input type="text">`
 		- `Ok`  = input
 	- `'password'` = `<input type="password">`

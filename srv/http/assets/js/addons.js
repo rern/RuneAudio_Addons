@@ -178,14 +178,12 @@ function getoptions() {
 				, message      : ojson.message
 				, textlabel    : ojson.label
 				, textvalue    : ojson.value
+				, textlabel2    : ojson.label2
+				, textvalue2    : ojson.value2
 				, ok         : function() {
 					var input = $( '#infoTextbox' ).val();
-					if ( alias !== 'bash' ) {
-						opt += input ? "'"+ input +"' " : 0;
-					} else {
-						if ( input == '' ) return;
-						opt += input;
-					}
+					if ( ojson.label2 ) input += ' '+ $( '#infoTextbox2' ).val();
+					opt += input ? "'"+ input +"' " : 0;
 					sendcommand();
 				}
 			} );
@@ -200,7 +198,7 @@ function getoptions() {
 				, ok:          function() {
 					var pwd = $( '#infoPasswordbox' ).val();
 					if ( pwd ) {
-						verifypassword( title, pwd, function() {
+						verifyPassword( title, pwd, function() {
 							opt += "'"+ pwd +"' ";
 							sendcommand();
 						} );
@@ -209,7 +207,7 @@ function getoptions() {
 							opt += '0 ';
 							sendcommand();
 						} else {
-							blankpassword( title, ojson.message, ojson.label, function() {
+							blankPassword( title, ojson.message, ojson.label, function() {
 								opt += "'"+ pwd +"' ";
 								sendcommand();
 							} );

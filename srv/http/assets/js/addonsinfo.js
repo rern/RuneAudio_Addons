@@ -4,7 +4,7 @@ normal usage: info( {
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
-	boxwidth      : N              // 400 / N                (pixel)
+	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
@@ -38,10 +38,18 @@ $( 'body' ).prepend( '\
 		<div id="infoContent">\
 			<p id="infoMessage" class="infocontent"></p>\
 			<div id="infoText" class="infocontent">\
-				<a id="infoTextLabel" class="infolabel"></a>&emsp;<input type="text" class="inputbox" id="infoTextbox" spellcheck="false">\
+				<div class="infotextdiv">\
+					<a id="infoTextLabel" class="infolabel"></a><br>\
+					<a id="infoTextLabel2" class="infolabel"></a>\
+				</div>\
+				<div class="infotextdiv">\
+					<input type="text" class="inputbox" id="infoTextBox" spellcheck="false"><br>\
+					<input type="text" class="inputbox" id="infoTextBox2" spellcheck="false">\
+				</div>\
+				<div style="clear: both"></div>\
 			</div>\
 			<div id="infoPassword" class="infocontent">\
-				<a id="infoPasswordLabel" class="infolabel"></a>&emsp;<input type="password" class="inputbox" id="infoPasswordbox">\
+				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">\
 			</div>\
 			<div id="infoRadio" class="infocontent infohtml"></div>\
 			<div id="infoCheckbox" class="infocontent infohtml"></div>\
@@ -65,19 +73,20 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	inforeset();
+	infoReset();
 } );
 
-function inforeset() {
-	$( '#infoOverlay' ).hide();
+function infoReset() {
+	$( '#infoOverlay, #infoTextLabel2, #infoTextBox2' ).hide();
 	$( '.infolabel, .infohtml' ).empty();
+	$( '.infolabel' ).css( 'width', '' );
 	$( '.inputbox' ).css( 'width', '' ).val( '' );
 	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
 }
 
 function info( O ) {
 	// common
-	inforeset();
+	infoReset();
 	if ( !O.icon ) {
 		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
 	} else {
@@ -107,24 +116,24 @@ function info( O ) {
 			if ( typeof O.cancel === 'function' ) O.cancel();
 		} );
 	}
-	if ( O.message )$( '#infoMessage' ).html( O.message ).show();
-	if ( O.boxwidth ) $( '.inputbox' ).width( O.boxwidth );
+	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextbox' ).val( O.textvalue );
+		$( '#infoTextBox' ).val( O.textvalue );
 		$( '#infoText' ).show();
-		if ( O.textvalue ) $( '#infoTextbox' ).select();
-		var $infofocus = $( '#infoTextbox' );
+		var $infofocus =  $( '#infoTextBox' );
+		if ( O.textlabel2 ) {
+			$( '#infoTextLabel2' ).html( O.textlabel2 ).show();
+			$( '#infoTextBox2' ).val( O.textvalue2 ).show();
+		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
-		$( '#infoPassword' ).show().focus();
-		var $infofocus = $( '#infoPasswordbox' );
+		$( '#infoPassword' ).show();
+		var $infofocus = $( '#infoPasswordBox' );
 	} else if ( O.radiohtml ) {
-		var checked = [ O.checked ];
-		setboxwidth( $( '#infoRadio' ), O.radiohtml, checked );
+		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
-		var checked = typeof O.checked === 'array' ? O.checked : [ O.checked ];
-		setboxwidth( $( '#infoCheckbox' ), O.checkboxhtml, checked );
+		radioCheckbox( $( '#infoCheckbox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectbox' ).html( O.selecthtml );
@@ -137,6 +146,7 @@ function info( O ) {
 			.show()
 			.on( 'click', function() {
 				$( '#infoX' ).click();
+				O.cancel = '';
 			} );
 	}
 	if ( O.button ) {
@@ -155,50 +165,36 @@ function info( O ) {
 		.css( 'background', O.okcolor ? O.okcolor : '' )
 		.show()
 		.on( 'click', function() {
-			$('#infoOverlay').hide();
+			$( '#infoOverlay' ).hide();
 			if ( O.ok && typeof O.ok === 'function' ) {
 				O.ok();
-				O.ok = ''; // fix: multiple runs
+				O.ok = ''; // suppress multiple runs
 			}
 		} );
 	
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	$( '#infoBox' ).css( 'top', ( window.innerHeight - $( '#infoBox' ).height() ) / 2 +'px' );
 	if ( $infofocus ) $infofocus.select();
 }
-window.addEventListener( 'orientationchange', function() {
-	$( '#infoBox' ).css( 'top', ( window.innerWidth - $( '#infoBox' ).height() ) / 2 +'px' );
-} );
 
-function setboxwidth( $box, html, checked ) {
-	var windowW = window.innerWidth;
-	var windowH = window.innerHeight;
-	var contentW = windowW >= 400 ? $( '#infoBox' ).width() : windowW;
-	var maxW = 0;
-	var spanW = 0;
-	$( '#infoBox' ).css('left', '-100%' );           // move out of screen
-	$box.html( html ).show();                        // show to get width
-	setTimeout( function() {                         // wait for radiohtml ready
-		$box.find( 'label' ).each( function( i ) {   // get max width
-			spanW = $( this ).width();
-			maxW = ( spanW > maxW ) ? spanW : maxW;
-			if ( checked && checked.indexOf( i ) !== -1 ) $( this ).find( 'input' ).prop( 'checked', true );
-		} );
-		var pad = ( contentW - 20 - maxW ) / 2;      // 15 = button width
-		$box.css('padding-left', pad +'px');         // set padding-left
-		$( '#infoBox' ).css( { 'left': '50%', 'top': ( windowH - $( '#infoBox' ).height() ) / 2 +'px' } ); // move back
-	}, 100 );
+function radioCheckbox( el, htm, chk ) {
+	el.html( htm ).show();
+	if ( !chk ) return;
+	
+	var checked = typeof chk === 'array' ? chk : [ chk ];
+	el.find( 'label' ).each( function( i ) {
+		if ( checked.indexOf( i ) !== -1 ) el.find( 'input' ).prop( 'checked', true );
+	} );
 }
-function verifypassword( title, pwd, fn ) {
+function verifyPassword( title, pwd, fn ) {
 	$( '#infoX' ).click();
 	info( {
 		  title         : title
 		, message       : 'Please retype'
 		, passwordlabel : 'Password'
 		, ok            : function() {
-			if ( $( '#infoPasswordbox' ).val() === pwd ) {
+			if ( $( '#infoPasswordBox' ).val() === pwd ) {
 				fn();
 				return;
 			}
@@ -206,13 +202,13 @@ function verifypassword( title, pwd, fn ) {
 				  title   : title
 				, message : 'Passwords not matched. Please try again.'
 				, ok      : function() {
-					verifypassword( title, pwd, fn )
+					verifyPassword( title, pwd, fn )
 				}
 			} );
 		}
 	} );
 }
-function blankpassword( title, message, label, fn ) {
+function blankPassword( title, message, label, fn ) {
 	info( {
 		  title   : title
 		, message : 'Blank password not allowed.'
@@ -223,11 +219,11 @@ function blankpassword( title, message, label, fn ) {
 				, message       : message
 				, passwordlabel : 'Password'
 				, ok            : function() {
-					var pwd = $( '#infoPasswordbox' ).val();
+					var pwd = $( '#infoPasswordBox' ).val();
 					if ( !pwd ) {
-						blankpassword( title, message, label, fn );
+						blankPassword( title, message, label, fn );
 					} else {
-						verifypassword( title, pwd, fn )
+						verifyPassword( title, pwd, fn )
 					}
 				}
 			} );

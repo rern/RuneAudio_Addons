@@ -10,32 +10,28 @@ fi
 
 # for 'installstart' before 'addonslist.php' exist
 if [[ ! -e /srv/http/addonslist.php ]]; then
-	echo "
-		'alias'      => 'addo',
-		'title'      => 'Addons Menu',
-		'installurl' => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
-),
-	" > /srv/http/addonslist.php
+	gitpath=https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http
+	wget -qN --no-check-certificate $gitpath/addonslist.php -P /srv/http
+	wget -qN --no-check-certificate $gitpath/addonstitle.sh -P /srv/http
 fi
-
-wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonstitle.sh -P /srv/http
-wget -qN --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http/addonsedit.sh -P /srv/http
 
 # change version number in RuneAudio_Addons/srv/http/addonslist.php
 
 alias=addo
 
 . /srv/http/addonstitle.sh
-. /srv/http/addonsedit.sh
 
 installstart $@
 
 #0temp0
-# to be removed after switch from hammer.js
-#sed -i '/hammer.min.js\|propagating.js/ d' /srv/http/app/templates/footer.php
+# delete runeui.min.js.backup from .../js/ after next RuneUIe update
+sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
+redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
 getinstallzip
+
+. /srv/http/addonsedit.sh
 
 echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
@@ -70,7 +66,7 @@ if ! grep 'jquery.mobile.custom.min.js' $file; then
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
-	sed -i "$ a$string" $file
+	sed -i "/jquery-2.1.0.min.js/ a$string" $file
 fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
@@ -110,8 +106,6 @@ systemctl daemon-reload
 systemctl enable addons cronie
 systemctl start addons cronie
 
-redis-cli hset addons update 0 &>/dev/null
-
 # udaclist
 acards=$( redis-cli hgetall acards )
 readarray -t cards <<<"$acards"
@@ -127,6 +121,7 @@ for card in "${cards[@]}"; do
 done
 
 notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
+grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=''
 if ! grep '^chromium' /root/.xinitrc; then
 	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
 	browser=1
@@ -134,13 +129,12 @@ else
 	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
 	browser=2
 fi
-redis-cli mset notifysec $notifysec zoomlevel $zoomlevel browser $browser &>/dev/null
-
-# refresh from dummy to actual 'addonslist.php' before 'installfinish' get 'version'
-addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer" &>/dev/null
+redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
-title -nt "$info Please clear browser cache."
+
+title -nt "$info Please $( tcolor 'clear browser cache' )."
 
 clearcache
 
