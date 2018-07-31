@@ -43,13 +43,13 @@ $( 'body' ).prepend( '\
 					<a id="infoTextLabel2" class="infolabel"></a>\
 				</div>\
 				<div class="infotextdiv">\
-					<input type="text" class="inputbox" id="infoTextbox" spellcheck="false"><br>\
-					<input type="text" class="inputbox" id="infoTextbox2" spellcheck="false">\
+					<input type="text" class="inputbox" id="infoTextBox" spellcheck="false"><br>\
+					<input type="text" class="inputbox" id="infoTextBox2" spellcheck="false">\
 				</div>\
 				<div style="clear: both"></div>\
 			</div>\
 			<div id="infoPassword" class="infocontent">\
-				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordbox">\
+				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">\
 			</div>\
 			<div id="infoRadio" class="infocontent infohtml"></div>\
 			<div id="infoCheckbox" class="infocontent infohtml"></div>\
@@ -129,7 +129,7 @@ function info( O ) {
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword' ).show();
-		var $infofocus = $( '#infoPasswordbox' );
+		var $infofocus = $( '#infoPasswordBox' );
 	} else if ( O.radiohtml ) {
 		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
@@ -194,7 +194,7 @@ function verifyPassword( title, pwd, fn ) {
 		, message       : 'Please retype'
 		, passwordlabel : 'Password'
 		, ok            : function() {
-			if ( $( '#infoPasswordbox' ).val() === pwd ) {
+			if ( $( '#infoPasswordBox' ).val() === pwd ) {
 				fn();
 				return;
 			}
@@ -219,7 +219,7 @@ function blankPassword( title, message, label, fn ) {
 				, message       : message
 				, passwordlabel : 'Password'
 				, ok            : function() {
-					var pwd = $( '#infoPasswordbox' ).val();
+					var pwd = $( '#infoPasswordBox' ).val();
 					if ( !pwd ) {
 						blankPassword( title, message, label, fn );
 					} else {
