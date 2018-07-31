@@ -178,14 +178,12 @@ function getoptions() {
 				, message      : ojson.message
 				, textlabel    : ojson.label
 				, textvalue    : ojson.value
+				, textlabel2    : ojson.label2
+				, textvalue2    : ojson.value2
 				, ok         : function() {
 					var input = $( '#infoTextbox' ).val();
-					if ( alias !== 'bash' ) {
-						opt += input ? "'"+ input +"' " : 0;
-					} else {
-						if ( input == '' ) return;
-						opt += input;
-					}
+					if ( ojson.label2 ) input += ' '+ $( '#infoTextbox2' ).val();
+					opt += input ? "'"+ input +"' " : 0;
 					sendcommand();
 				}
 			} );
