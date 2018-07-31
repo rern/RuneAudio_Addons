@@ -126,10 +126,10 @@
 	line-height: 50px;
 	text-align: right;
 }
-#infoTextLabel,
-#infoTextLabel2 {
+.infolabel {
 	display: inline-block;
 	text-align: right;
+	color: #e0e7ee;
 }
 #infoRadio,
 #infoCheckbox {
