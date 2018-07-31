@@ -4,6 +4,7 @@
 	'version'      => '20180801',
 	'revision'     => 'Fix Library display setting bug'
 					.'<br>Fix Playlist - saved playlists display on page changed'
+					.'<br>Fix RuneUI not load after uninstalled'
 					.'<br>playback.php and runeui.js replaced instead of revised (not much of remainings)'
 					.'<br>Context menus can be toggled'
 					.'<br>Change context menu dialog boxes'
