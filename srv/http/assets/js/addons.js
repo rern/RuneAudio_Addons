@@ -139,15 +139,16 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'yesno':
+			var ojson = option[ oj ];
 			info( {
 				  title        : title
-				, message      : option[ oj ]
-				, cancellabel  : 'No'
+				, message      : ojson.message
+				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
 				, cancel       : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel      : 'Yes'
+				, oklabel      : ojson.oklabel ? ojson.oklabel : 'Yes'
 				, ok           : function() {
 					opt += '1 ';
 					sendcommand();
