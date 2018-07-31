@@ -295,12 +295,12 @@ function getoptions() {
 					return selecthtml
 				}
 				, ok           : function() {
-					opt += "'"+ $( '#infoSelectbox').val() +"' ";
+					opt += "'"+ $( '#infoSelectBox').val() +"' ";
 					sendcommand();
 				}
 			} );
-			$( '#infoSelectbox' ).change( function() { // cutom value
-				if ( $( '#infoSelectbox :selected' ).val() === '?' ) {
+			$( '#infoSelectBox' ).change( function() { // cutom value
+				if ( $( '#infoSelectBox :selected' ).val() === '?' ) {
 					info( {
 						  title        : title
 						, message      : ojson.message
