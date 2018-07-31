@@ -118,7 +118,7 @@ cmd;
 		
 		uninstall_$alias.sh u
 		
-		/usr/bin/sudo ./$installfile u $opt
+		./$installfile u $opt
 cmd;
 } else {
 	$command = $install;
@@ -126,7 +126,7 @@ cmd;
 		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
 		$conflictcommandtxt
-		./$installfile
+		./$installfile $opt
 cmd;
 }
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
