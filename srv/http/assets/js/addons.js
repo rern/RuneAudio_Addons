@@ -24,7 +24,7 @@ function branchtest( title, message ) {
 		, textvalue: 'UPDATE'
 		, cancel   : 1
 		, ok       : function() {
-			branch = $( '#infoTextbox' ).val();
+			branch = $( '#infoTextBox' ).val();
 			opt += branch +' -b';
 			formtemp();
 		}
@@ -184,8 +184,8 @@ function getoptions() {
 				, textlabel2    : ojson.label2
 				, textvalue2    : ojson.value2
 				, ok         : function() {
-					var input = $( '#infoTextbox' ).val();
-					if ( ojson.label2 ) input += ' '+ $( '#infoTextbox2' ).val();
+					var input = $( '#infoTextBox' ).val();
+					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();
 					opt += input ? "'"+ input +"' " : 0;
 					sendcommand();
 				}
@@ -247,7 +247,7 @@ function getoptions() {
 						, message     : ojson.message
 						, textlabel   : 'Custom'
 						, ok          : function() {
-							opt += "'"+ $( '#infoTextbox' ).val() +"' ";
+							opt += "'"+ $( '#infoTextBox' ).val() +"' ";
 							sendcommand();
 						}
 					} );
@@ -306,7 +306,7 @@ function getoptions() {
 						, message      : ojson.message
 						, textlabel    : 'Custom'
 						, ok           : function() {
-							var input = $( '#infoTextbox' ).val();
+							var input = $( '#infoTextBox' ).val();
 							opt += input ? "'"+ input +"' " : 0;
 							sendcommand();
 						}
