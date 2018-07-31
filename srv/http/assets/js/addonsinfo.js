@@ -52,9 +52,9 @@ $( 'body' ).prepend( '\
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">\
 			</div>\
 			<div id="infoRadio" class="infocontent infohtml"></div>\
-			<div id="infoCheckbox" class="infocontent infohtml"></div>\
+			<div id="infoCheckBox" class="infocontent infohtml"></div>\
 			<div id="infoSelect" class="infocontent">\
-				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectbox"></select>\
+				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectBox"></select>\
 			</div>\
 		</div>\
 		<div id="infoButtons">\
@@ -127,10 +127,10 @@ function info( O ) {
 	} else if ( O.radiohtml ) {
 		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
-		radioCheckbox( $( '#infoCheckbox' ), O.checkboxhtml, O.checked );
+		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
-		$( '#infoSelectbox' ).html( O.selecthtml );
+		$( '#infoSelectBox' ).html( O.selecthtml );
 		$( '#infoSelect' ).show();
 	}
 	if ( O.cancel ) {

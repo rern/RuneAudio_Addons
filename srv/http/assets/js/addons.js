@@ -199,7 +199,7 @@ function getoptions() {
 				, message      : ojson.message
 				, passwordlabel: ojson.label
 				, ok:          function() {
-					var pwd = $( '#infoPasswordbox' ).val();
+					var pwd = $( '#infoPasswordBox' ).val();
 					if ( pwd ) {
 						verifyPassword( title, pwd, function() {
 							opt += "'"+ pwd +"' ";
