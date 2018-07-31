@@ -161,7 +161,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180801',
+	'version'      => '20180727',
 	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
