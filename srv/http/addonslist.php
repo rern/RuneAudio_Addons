@@ -398,7 +398,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_notify/set.sh',
 	'option'       => array(
 		'radio'      => array(
-			'message'  => 'Set notification duration(second):',
+			'message'  => 'Notification duration(seconds):',
 			'list'     => array(
 				'1'           => 1,
 				'2'           => 2,
@@ -415,15 +415,15 @@ $addons = array(
 	),
 ),
 'zoom' => array(
-	'title'        => 'Setting - Zoom Level of Local Browser',
+	'title'        => 'Setting - Zoom Level',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Change Zoom Level of Local Browser (for Midori and Chromium only)',
+	'description'  => 'Change Zoom Level of local browser (for Midori and Chromium only)',
 	'buttonlabel'  => 'Change',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_zoom',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_zoom/set.sh',
 	'option'       => array(
 		'radio'      => array(
-			'message'  => 'Set zoom level (current = <white>'.$zoomlevel.'</white>) :',
+			'message'  => 'Zoom level:',
 			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.5'           => '1.5',
@@ -436,15 +436,15 @@ $addons = array(
 	),
 ),
 'poin' => array(
-	'title'        => 'Setting - Pointer of Local Browser',
+	'title'        => 'Setting - Mouse Pointer',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Enable Pointer of Local Browser',
+	'description'  => 'Enable mouse pointer on local browser',
 	'buttonlabel'  => 'Change',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer/set.sh',
 	'option'       => array(
 		'yesno'      => array(
-			'message'  => 'Pointer of local browser:',
+			'message'  => 'Mouse pointer on local browser:',
 			'oklabel'    => 'Enable',
 			'cancellabel'=> 'Disable',
 			'checked'    => $redis->hGet( 'settings', 'pointer' )
