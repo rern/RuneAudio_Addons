@@ -1,4 +1,15 @@
 ```php
+'enha' => array(
+	'title'        => 'RuneUI Enhancements **',
+	'version'      => '20180801',
+	'revision'     => 'Fix Library display setting bug'
+					.'<br>Fix Playlist - saved playlists display on page changed'
+					.'<br>playback.php and runeui.js replaced instead of revised (not much of remainings)'
+					.'<br>Context menus can be toggled'
+					.'<br>Change context menu dialog boxes'
+					.'<br>Show warning of existing Webradio name / playlist name'
+					.'<br>...'
+),
 'airo' => array(
 	'title'        => 'Setting - AirPlay Output',
 	'maintainer'   => 'r e r n',
