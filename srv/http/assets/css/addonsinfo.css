@@ -53,10 +53,10 @@
 	color: #e0e7ee;
 }
 #infoBox {
-	position: relative;
-	left: 50%;
-	width: 400px;
-	margin-left: -200px;
+	width: 98%;
+	max-width: 400px;
+	margin: 50vh auto;
+	transform: translateY( -50% );
 	background: #19232d;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
@@ -101,9 +101,10 @@
 	margin-right: 5px;
 }
 #infoTitle {
+	display: inline-block;
 	font-size: 18px;
 	vertical-align: text-bottom;
-	display: inline-block;
+	width: calc( 100% - 40px );
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -126,6 +127,8 @@
 }
 #infoRadio,
 #infoCheckbox {
+	display: table;
+	margin: auto;
 	text-align: left;
 }
 #infoSelect button {
@@ -180,11 +183,5 @@
 	#infoBox {
 		transform: scale(0.9, 0.9);
 		transform-origin: center center;
-	}
-}
-@media(max-width: 400px) {
-	#infoBox {
-		width: 98%;
-		margin-left: -49%;
 	}
 }
