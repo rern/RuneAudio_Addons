@@ -105,8 +105,6 @@ systemctl daemon-reload
 systemctl enable addons cronie
 systemctl start addons cronie
 
-redis-cli hset addons update 0 &>/dev/null
-
 # udaclist
 acards=$( redis-cli hgetall acards )
 readarray -t cards <<<"$acards"
@@ -131,6 +129,7 @@ else
 	browser=2
 fi
 redis-cli mset setnotify $notifysec setzoom $zoomlevel setpointer $pointer &>/dev/null
+redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
 
