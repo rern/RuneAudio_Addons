@@ -144,11 +144,13 @@ function getoptions() {
 				  title        : title
 				, message      : ojson.message
 				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
+				, cancelcolor  : ojson.checked == 0 ? '#0095d8' : ''
 				, cancel       : function() {
 					opt += '0 ';
 					sendcommand();
 				}
 				, oklabel      : ojson.oklabel ? ojson.oklabel : 'Yes'
+				, okcolor      : ojson.checked == 0 ? '#34495e' : ''
 				, ok           : function() {
 					opt += '1 ';
 					sendcommand();

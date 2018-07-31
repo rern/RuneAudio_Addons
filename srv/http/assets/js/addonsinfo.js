@@ -32,7 +32,7 @@ $( 'body' ).prepend( '\
 			<div id="infoTop">\
 				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>\
 			</div>\
-			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>\
+			<div id="infoX" class="infobtn"><i class="fa fa-times fa-2x"></i></div>\
 			<div style="clear: both"></div>\
 		</div>\
 		<div id="infoContent">\
@@ -109,13 +109,7 @@ function info( O ) {
 		return;
 	}
 	
-	if ( O.nox ) {
-		$( '#infoX' ).hide();
-	} else {
-		$( '#infoX' ).click( function() {
-			if ( typeof O.cancel === 'function' ) O.cancel();
-		} );
-	}
+	if ( O.nox ) $( '#infoX' ).hide();
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
@@ -145,8 +139,11 @@ function info( O ) {
 			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 			.show()
 			.on( 'click', function() {
-				$( '#infoX' ).click();
-				O.cancel = '';
+				$( '#infoOverlay' ).hide();
+				if ( typeof O.cancel === 'function' ) {
+					O.cancel();
+					O.cancel = ''; // suppress multiple runs
+				}
 			} );
 	}
 	if ( O.button ) {
@@ -155,7 +152,7 @@ function info( O ) {
 			.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
 			.show()
 			.on( 'click', function() {
-				$('#infoOverlay').hide();
+				$( '#infoOverlay' ).hide();
 				O.button();
 				O.button = '';
 			} );
