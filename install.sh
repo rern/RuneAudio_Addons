@@ -25,9 +25,10 @@ installstart $@
 
 #0temp0
 # delete runeui.min.js.backup after next update
-sed -i '/coverart_ctl.php/ i\
-mv /srv/http/assets/js/runeui.min.js{.backup,}
-' /usr/local/bin/uninstall_enha.sh
+file=/usr/local/bin/uninstall_enha.sh
+if ! grep 'runeui.min.js' $file; then
+	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
+fi
 sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
