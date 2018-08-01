@@ -24,6 +24,10 @@ alias=addo
 installstart $@
 
 #0temp0
+# delete runeui.min.js.backup after next update
+sed -i '/coverart_ctl.php/ i\
+mv /srv/http/assets/js/runeui.min.js{.backup,}
+' /usr/local/bin/uninstall_enha.sh
 sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
