@@ -24,7 +24,6 @@ alias=addo
 installstart $@
 
 #0temp0
-# delete runeui.min.js.backup after next update
 file=/usr/local/bin/uninstall_enha.sh
 if ! grep 'runeui.min.js' $file; then
 	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
