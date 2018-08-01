@@ -59,7 +59,7 @@ $( 'body' ).prepend( '\
 		</div>\
 		<div id="infoButtons">\
 			<a id="infoCancel" class="infobtn infobtn-default"></a>\
-			<a id="infoBtn" class="infobtn infobtn-default"></a>\
+			<a id="infoButton" class="infobtn infobtn-default"></a>\
 			<a id="infoOk" class="infobtn infobtn-primary"></a>\
 		</div>\
 	</div>\
@@ -120,6 +120,9 @@ function info( O ) {
 			$( '#infoTextLabel2' ).html( O.textlabel2 ).show();
 			$( '#infoTextBox2' ).val( O.textvalue2 ).show();
 		}
+		if ( O.boxwidth ) {
+			$( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 290 - $( '.inputbox' ).width() +'px' );
+		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword' ).show();
@@ -147,7 +150,7 @@ function info( O ) {
 			} );
 	}
 	if ( O.button ) {
-		$( '#infoBtn' )
+		$( '#infoButton' )
 			.html( O.buttonlabel )
 			.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
 			.show()
