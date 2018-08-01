@@ -121,7 +121,10 @@ function info( O ) {
 			$( '#infoTextBox2' ).val( O.textvalue2 ).show();
 		}
 		if ( O.boxwidth ) {
-			$( '.inputbox' ).css( 'width', O.boxwidth !== 'max' ? O.boxwidth +'px' : 290 - $( '.inputbox' ).width() +'px' );
+			var calcW = window.innerWidth * 0.98;
+			var infoW = calcW > 400 ? 290 : calcW - 110;
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.inputbox' ).width() +'px'
+			$( '.inputbox' ).css( 'width', boxW );
 		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
