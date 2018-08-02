@@ -382,7 +382,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => array(
-		'wait'       => 'Get webradio <code>*.pls</code> files or folders copied to:'
+		'wait'       => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders copied to:'
 					.'<br><code>/mnt/MPD/Webradio</code>'
 					.'<br>'
 					.'<br><code>&emsp;Ok&emsp;</code> to continue'
