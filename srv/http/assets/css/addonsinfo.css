@@ -116,6 +116,11 @@
 	max-height: 800px;
 	color: #7795b4;
 }
+#infoMessage p {
+	display: table;
+	margin: 0 auto;
+	text-align: left;
+}
 .infotextdiv {
 	display: inline-block;
 	text-align: right;
