@@ -29,14 +29,14 @@ normal usage: info( {
 function heredoc( fn ) {
 	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
 };
-var html = heredoc( function () { /*
+var html = heredoc( function() { /*
 <div id="infoOverlay" tabindex="1">
 	<div id="infoBox">
 		<div id="infoTopBg">
 			<div id="infoTop">
 				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>
 			</div>
-			<div id="infoX" class="infobtn"><i class="fa fa-times fa-2x"></i></div>
+			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>
 			<div style="clear: both"></div>
 		</div>
 		<div id="infoContent">
@@ -47,13 +47,13 @@ var html = heredoc( function () { /*
 					<a id="infoTextLabel2" class="infolabel"></a>
 				</div>
 				<div class="infotextdiv">
-					<input type="text" class="inputbox" id="infoTextBox" spellcheck="false"><br>
-					<input type="text" class="inputbox" id="infoTextBox2" spellcheck="false">
+					<input type="text" class="infoinput" id="infoTextBox" spellcheck="false"><br>
+					<input type="text" class="infoinput" id="infoTextBox2" spellcheck="false">
 				</div>
 				<div style="clear: both"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
-				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">
+				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
@@ -81,33 +81,24 @@ $( '#infoX' ).click( function() {
 } );
 
 function infoReset() {
-	$( '#infoOverlay, #infoTextLabel2, #infoTextBox2' ).hide();
+	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
 	$( '.infolabel, .infohtml' ).empty();
 	$( '.infolabel' ).css( 'width', '' );
-	$( '.inputbox' ).css( 'width', '' ).val( '' );
+	$( '.infoinput' ).css( 'width', '' ).val( '' );
 	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
 }
 
 function info( O ) {
 	// common
 	infoReset();
-	if ( !O.icon ) {
-		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
-	} else {
-		if ( O.icon.charAt( 0 ) !== '<' ) {
-			var iconhtml = '<i class="fa fa-'+ O.icon +' fa-2x">';
-		} else {
-			var iconhtml = O.icon;
-		}
-	}
-	$( '#infoIcon' ).html( iconhtml );
+	$( '#infoIcon' ).html( '<i class="fa fa-'+ ( O.icon ? O.icon : 'question-circle' ) +' fa-2x">' );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
-	$( '.infocontent, #infoButtons a' ).hide();
-	// simple use as info('message')
+	
+	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O ).show();
 		$( '#infoOverlay' ).show();
-		$( '#infoOk' ).on( 'click', function () {
+		$( '#infoOk' ).click( function() {
 			infoReset();
 		});
 		return;
@@ -115,6 +106,8 @@ function info( O ) {
 	
 	if ( O.nox ) $( '#infoX' ).hide();
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
+	
+	// inputs
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
 		$( '#infoTextBox' ).val( O.textvalue );
@@ -127,8 +120,8 @@ function info( O ) {
 		if ( O.boxwidth ) {
 			var calcW = window.innerWidth * 0.98;
 			var infoW = calcW > 400 ? 290 : calcW - 110;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.inputbox' ).width() +'px'
-			$( '.inputbox' ).css( 'width', boxW );
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.infoinput' ).width() +'px'
+			$( '.infoinput' ).css( 'width', boxW );
 		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
@@ -143,6 +136,8 @@ function info( O ) {
 		$( '#infoSelectBox' ).html( O.selecthtml );
 		$( '#infoSelect' ).show();
 	}
+	
+	// buttons
 	if ( O.cancel ) {
 		$( '#infoCancel' )
 			.html( O.cancellabel ? O.cancellabel : 'Cancel' )
@@ -180,6 +175,7 @@ function info( O ) {
 				infoReset();
 			}
 		} );
+		
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
