@@ -131,7 +131,7 @@
 	text-align: right;
 	color: #e0e7ee;
 }
-.inputbox {
+.infoinput {
 	margin: 5px;
 	height: 41px;
 	padding: 0 10px;
@@ -140,7 +140,7 @@
 	border-radius: 6px;
 	border: 2px solid #34495e;
 }
-.inputbox:focus {
+.infoinput:focus {
 	outline: none;
 }
 .infohtml {
