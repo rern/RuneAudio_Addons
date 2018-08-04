@@ -26,51 +26,54 @@ normal usage: info( {
 	button        : 'FUNCTION'     // required FUNCTION      (button click function)
 } );
 */
-$( 'body' ).prepend( '\
-<div id="infoOverlay" tabindex="1">\
-	<div id="infoBox">\
-		<div id="infoTopBg">\
-			<div id="infoTop">\
-				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>\
-			</div>\
-			<div id="infoX" class="infobtn"><i class="fa fa-times fa-2x"></i></div>\
-			<div style="clear: both"></div>\
-		</div>\
-		<div id="infoContent">\
-			<p id="infoMessage" class="infocontent"></p>\
-			<div id="infoText" class="infocontent">\
-				<div class="infotextdiv">\
-					<a id="infoTextLabel" class="infolabel"></a><br>\
-					<a id="infoTextLabel2" class="infolabel"></a>\
-				</div>\
-				<div class="infotextdiv">\
-					<input type="text" class="inputbox" id="infoTextBox" spellcheck="false"><br>\
-					<input type="text" class="inputbox" id="infoTextBox2" spellcheck="false">\
-				</div>\
-				<div style="clear: both"></div>\
-			</div>\
-			<div id="infoPassword" class="infocontent">\
-				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">\
-			</div>\
-			<div id="infoRadio" class="infocontent infohtml"></div>\
-			<div id="infoCheckBox" class="infocontent infohtml"></div>\
-			<div id="infoSelect" class="infocontent">\
-				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectBox"></select>\
-			</div>\
-		</div>\
-		<div id="infoButtons">\
-			<a id="infoCancel" class="infobtn infobtn-default"></a>\
-			<a id="infoButton" class="infobtn infobtn-default"></a>\
-			<a id="infoOk" class="infobtn infobtn-primary"></a>\
-		</div>\
-	</div>\
-</div>\
-' );
+function heredoc( fn ) {
+	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
+};
+var html = heredoc( function () { /*
+<div id="infoOverlay" tabindex="1">
+	<div id="infoBox">
+		<div id="infoTopBg">
+			<div id="infoTop">
+				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>
+			</div>
+			<div id="infoX" class="infobtn"><i class="fa fa-times fa-2x"></i></div>
+			<div style="clear: both"></div>
+		</div>
+		<div id="infoContent">
+			<p id="infoMessage" class="infocontent"></p>
+			<div id="infoText" class="infocontent">
+				<div class="infotextdiv">
+					<a id="infoTextLabel" class="infolabel"></a><br>
+					<a id="infoTextLabel2" class="infolabel"></a>
+				</div>
+				<div class="infotextdiv">
+					<input type="text" class="inputbox" id="infoTextBox" spellcheck="false"><br>
+					<input type="text" class="inputbox" id="infoTextBox2" spellcheck="false">
+				</div>
+				<div style="clear: both"></div>
+			</div>
+			<div id="infoPassword" class="infocontent">
+				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="inputbox" id="infoPasswordBox">
+			</div>
+			<div id="infoRadio" class="infocontent infohtml"></div>
+			<div id="infoCheckBox" class="infocontent infohtml"></div>
+			<div id="infoSelect" class="infocontent">
+				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectBox"></select>
+			</div>
+		</div>
+		<div id="infoButtons">
+			<a id="infoCancel" class="infobtn infobtn-default"></a>
+			<a id="infoButton" class="infobtn infobtn-default"></a>
+			<a id="infoOk" class="infobtn infobtn-primary"></a>
+		</div>
+	</div>
+</div>
+*/ } );
+
+$( 'body' ).prepend( html );
 
 $( '#infoOverlay' ).keypress( function( e ) {
 	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
-//} ).click( function( e ) {
-//	if ( e.target.id === this.id && $( this ).is( ':visible' ) ) $( '#infoX' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
@@ -101,12 +104,12 @@ function info( O ) {
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	$( '.infocontent, #infoButtons a' ).hide();
 	// simple use as info('message')
-	if ( typeof O != 'object' ) {
-		$( '#infoOk' ).on( 'click', function () {
-			$( '#infoOverlay' ).hide();
-		});
+	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O ).show();
 		$( '#infoOverlay' ).show();
+		$( '#infoOk' ).on( 'click', function () {
+			infoReset();
+		});
 		return;
 	}
 	
@@ -170,12 +173,13 @@ function info( O ) {
 		.show()
 		.on( 'click', function() {
 			$( '#infoOverlay' ).hide();
-			if ( O.ok && typeof O.ok === 'function' ) {
+			if ( typeof O.ok === 'function' ) {
 				O.ok();
 				O.ok = ''; // suppress multiple runs
+			} else {
+				infoReset();
 			}
 		} );
-	
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
