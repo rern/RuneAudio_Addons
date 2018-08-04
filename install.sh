@@ -37,8 +37,10 @@ getinstallzip
 . /srv/http/addonsedit.sh
 
 echo -e "$bar Modify files ..."
+
+[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=backup
 #----------------------------------------------------------------------------------
-file=/srv/http/app/templates/header.php
+file=/srv/http/app/templates/header.php.$backup
 echo $file
 
 string=$( cat <<'EOF'
@@ -53,7 +55,7 @@ EOF
 )
 appendH -n +1 'logout.php'
 #----------------------------------------------------------------------------------
-file=/srv/http/app/templates/footer.php
+file=/srv/http/app/templates/footer.php.$backup
 echo $file
 
 string=$( cat <<'EOF'
