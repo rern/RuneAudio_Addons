@@ -89,10 +89,11 @@ function infoReset() {
 }
 
 function info( O ) {
-	// common
+	// title
 	infoReset();
 	$( '#infoIcon' ).html( '<i class="fa fa-'+ ( O.icon ? O.icon : 'question-circle' ) +' fa-2x">' );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
+	if ( O.nox ) $( '#infoX' ).hide();
 	
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
@@ -104,7 +105,7 @@ function info( O ) {
 		return;
 	}
 	
-	if ( O.nox ) $( '#infoX' ).hide();
+	// message
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	
 	// inputs
