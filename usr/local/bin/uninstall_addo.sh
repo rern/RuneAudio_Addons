@@ -12,6 +12,8 @@ echo -e "$bar Restore files ..."
 files="
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
+"
+[[ -e /usr/local/bin/uninstall_enha.sh ]] && files+="
 /srv/http/app/templates/header.php.backup
 /srv/http/app/templates/footer.php.backup
 "
