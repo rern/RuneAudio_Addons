@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180801',
+	'version'      => '20180805',
 	'revision'     => 'Improve Setting addons'
 					.'<br>General improvements'
 					.'<br>...'
