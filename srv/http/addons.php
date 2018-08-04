@@ -148,10 +148,10 @@ echo $blocks;
 </script>
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
 <script src="assets/js/vendor/jquery.mobile.custom.min.js"></script>
-<script src="assets/js/vendor/bootstrap.min.js"></script>
-<script src="assets/js/vendor/bootstrap-select.min.js"></script>
 <script src="assets/js/addonsinfo.js"></script>
 <script src="assets/js/addons.js"></script>
+<script src="assets/js/vendor/bootstrap.min.js"></script>
+<!--<script src="assets/js/vendor/bootstrap-select.min.js"></script>-->
 
 </body>
 </html>
