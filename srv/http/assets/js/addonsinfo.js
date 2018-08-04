@@ -110,8 +110,8 @@ function info( O ) {
 	
 	// inputs
 	if ( O.textlabel ) {
-		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextBox' ).val( O.textvalue );
+		$( '#infoTextLabel' ).html( O.textlabel ).show();
+		$( '#infoTextBox' ).val( O.textvalue ).show();
 		$( '#infoText' ).show();
 		var $infofocus =  $( '#infoTextBox' );
 		if ( O.textlabel2 ) {
@@ -125,7 +125,7 @@ function info( O ) {
 			$( '.infoinput' ).css( 'width', boxW );
 		}
 	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel );
+		$( '#infoPasswordLabel' ).html( O.passwordlabel ).show();
 		$( '#infoPassword' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
 	} else if ( O.radiohtml ) {
@@ -133,8 +133,8 @@ function info( O ) {
 	} else if ( O.checkboxhtml ) {
 		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
-		$( '#infoSelectLabel' ).html( O.selectlabel );
-		$( '#infoSelectBox' ).html( O.selecthtml );
+		$( '#infoSelectLabel' ).html( O.selectlabel ).show();
+		$( '#infoSelectBox' ).html( O.selecthtml ).show();
 		$( '#infoSelect' ).show();
 	}
 	
