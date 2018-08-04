@@ -13,6 +13,7 @@ normal usage: info( {
 	checked       : N              // (none) / N             (pre-select input)
 	checkboxhtml  : 'HTML'         // required HTML
 	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select multiple)
+	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
 	selecthtml    : 'HTML'         // required HTML
 	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
 	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
