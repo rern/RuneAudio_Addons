@@ -38,7 +38,6 @@ getinstallzip
 
 echo -e "$bar Modify files ..."
 
-[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=backup
 #----------------------------------------------------------------------------------
 file=/srv/http/index.php
 echo $file
@@ -49,6 +48,8 @@ EOF
 )
 append 'controllers = array'
 #----------------------------------------------------------------------------------
+[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=backup
+
 file=/srv/http/app/templates/header.php.$backup
 echo $file
 
