@@ -44,12 +44,12 @@ function addonsdl( exit ) {
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
-				location.href = '/addons.php';
+				location.href = '/addons';
 			}
 		} );
 	} else {
 		PNotify.removeAll();
-		location.href = '/addons.php';
+		location.href = '/addons';
 	}
 }
 
