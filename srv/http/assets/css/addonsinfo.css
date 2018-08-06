@@ -1,7 +1,7 @@
 @font-face {
 	font-family: addons;
-	src: url( '../fonts/addons.woff' ) format( 'woff' ),
-		url( '../fonts/addons.ttf' ) format( 'truetype' );
+	src: url( '/srv/http/assets/fonts/addons.woff' ) format( 'woff' ),
+		url( '/srv/http/assets/fonts/addons.ttf' ) format( 'truetype' );
 	font-weight: normal;
 	font-style: normal;
 }
@@ -116,11 +116,6 @@
 	max-height: 800px;
 	color: #7795b4;
 }
-#infoMessage p {
-	display: table;
-	margin: 0 auto;
-	text-align: left;
-}
 .infotextdiv {
 	display: inline-block;
 	text-align: right;
@@ -131,7 +126,7 @@
 	text-align: right;
 	color: #e0e7ee;
 }
-.infoinput {
+.inputbox {
 	margin: 5px;
 	height: 41px;
 	padding: 0 10px;
@@ -140,7 +135,7 @@
 	border-radius: 6px;
 	border: 2px solid #34495e;
 }
-.infoinput:focus {
+.inputbox:focus {
 	outline: none;
 }
 .infohtml {
