@@ -43,11 +43,7 @@ echo -e "$bar Modify files ..."
 file=/srv/http/app/templates/header.php.$backup
 echo $file
 
-string=$( cat <<'EOF'
-    <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
-EOF
-)
-appendH 'runeui.css'
+appendAsset 'runeui.css' 'addonsinfo.css'
 
 string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
@@ -58,12 +54,7 @@ appendH -n +1 'logout.php'
 file=/srv/http/app/templates/footer.php.$backup
 echo $file
 
-string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
-<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-EOF
-)
-appendH 'code.jquery.com'
+appenAsset 'code.jquery.com' 'addonsinfo.js' 'addonsmenu.js'
 
 # separate to keep out of uninstall
 if ! grep 'jquery.mobile.custom.min.js' $file; then
