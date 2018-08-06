@@ -1,3 +1,8 @@
+<?php
+include 'addonslist.php';
+$addopath = 'addo'.$addons[ 'addo' ][ 'version' ];
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,8 +14,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="msapplication-tap-highlight" content="no" />
     <link rel="stylesheet" href="assets/css/runeui.css">
-    <link rel="stylesheet" href="assets/css/addons.css">
-    <link rel="stylesheet" href="assets/css/addonsinfo.css">
+    <link rel="stylesheet" href="assets/css/<?=$addopath ?>/addons.css">
+    <link rel="stylesheet" href="assets/css/<?=$addopath ?>/addonsinfo.css">
     <link rel="shortcut icon" href="assets/img/favicon.ico">
     <link rel="apple-touch-icon" sizes="57x57" href="assets/img/apple-touch-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="114x114" href="assets/img/apple-touch-icon-114x114.png">
@@ -38,5 +43,3 @@
 	<div id="loaderbg"></div>
 	<div id="loadercontent"><i class="fa fa-addons"></i>connecting...</div>
 </div>
-
-<?php include 'addonslist.php';?>
