@@ -19,11 +19,11 @@ restorefile $files
 
 echo -e "$bar Remove files ..."
 
-rm -v /srv/http/assets/css/addons*
+rm -rv /srv/http/assets/css/addo*
 rm -v /srv/http/assets/fonts/{addons.*,Inconsolata.*}
-rm -v /srv/http/assets/js/addons*
+rm -rv /srv/http/assets/js/addo*
 rm -v /srv/http/addons*
-rm -r /srv/http/assets/addons
+rm -r /srv/http/assets/img/addons
 
 # must NOT remove - used by other addons
 #rm -v /srv/http/assets/js/vendor/jquery.mobile.custom.min.js
