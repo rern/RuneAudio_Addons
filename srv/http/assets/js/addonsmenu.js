@@ -47,7 +47,6 @@ function addonsdl( exit ) {
 			}
 		} );
 	} else {
-		PNotify.removeAll();
 		location.href = '/addons';
 	}
 }
