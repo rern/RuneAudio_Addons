@@ -254,17 +254,24 @@ asset() {
 	string=
 	for filename in "$@"; do
 		type=${asset##*.}
-		string+="
-    <link rel=\"stylesheet\" href=\"/srv/http/assets/$type/$alias$version/$filename\">"
+		if [[ $type == 'css' ]]; then
+		string+='
+	<link rel="stylesheet" href="<?=$this->asset("/css/'$alias.$version.'/'.$filename.'")?>">
+'
+		else
+		string+='
+<script src=\"<?=$this->asset("/js/'$alias.$version.'/'.$filename.'")?>"></script>
+'
+		fi
 	done
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
 	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
 }
-insertasset() {
+insertAsset() {
 	asset -i "$@"
 }
-appendasset() {
+appendAsset() {
 	asset -a "$@"
 }
 
