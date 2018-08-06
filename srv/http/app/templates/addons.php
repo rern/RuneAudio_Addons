@@ -60,23 +60,24 @@ foreach( $arrayalias as $alias ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
 		} else {
-			if ( $alias !== 'addo' ) {
-				$updatecount++;
-				$check = '<i class="fa fa-refresh status"></i> ';
-				$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
-			}
+			$updatecount++;
+			$check = '<i class="fa fa-refresh status"></i> ';
+			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
 		$btnun = '<a class="btn btn-default"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
+		$attrneedspace = $needspace < $mbfree ? '' : ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
 		$conflict = isset( $addon[ 'conflict' ] ) ? $addon[ 'conflict' ] : '';
 		$conflictaddon = $conflict ? $redis->hget( 'addons', $conflict ) : '';
 		$attrconflict = !$conflictaddon ? '' : ' conflict="<white>'.$addons[ $conflict ][ 'title' ].'</white> must be uninstalled first"';
-		$attrneedspace = $needspace < $mbfree ? '' : ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
+		$depend = isset( $addon[ 'depend' ] ) ? $addon[ 'depend' ] : '';
+		$dependaddon = $depend ? $redis->hget( 'addons', $depend ) : '';
+		$attrdepend = !$dependaddon ? '' : ' depend="<white>'.$addons[ $depend ][ 'title' ].'</white> must be installed first"';
 			
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$attrneedspace.$attrconflict.'>'.$buttonlabel.'</a>';
+		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$attrneedspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
 	}
 	
