@@ -82,7 +82,15 @@ appendH '$'
 file=/srv/http/app/templates/footer.php.$backup
 echo $file
 
-appenAsset 'code.jquery.com' 'addonsinfo.js' 'addonsmenu.js'
+string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+<?php if ( $_SERVER['REQUEST_URI'] === '/addons' ): ?>
+<script src="<?=$this->asset('/js/addons.js')?>"></script>
+<?php endif ?>
+EOF
+)
+appendH 'code.jquery.com'
 
 # separate to keep out of uninstall
 if ! grep 'jquery.mobile.custom.min.js' $file; then
