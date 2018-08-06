@@ -60,9 +60,11 @@ foreach( $arrayalias as $alias ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
 		} else {
-			$updatecount++;
-			$check = '<i class="fa fa-refresh status"></i> ';
-			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
+			if ( $alias !== 'addo' ) {
+				$updatecount++;
+				$check = '<i class="fa fa-refresh status"></i> ';
+				$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
+			}
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
 		$btnun = '<a class="btn btn-default"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
