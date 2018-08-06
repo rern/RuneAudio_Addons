@@ -287,7 +287,7 @@ insert/append with SEARCH itself in $string:
 		'password'  => array(
 			'message'  => '<message text>',
 			'label'    => '<label text>',
-/**/		'required' => '1'
+/**/			'required' => '1'
 		),
 		'radio'     => array(
 			'message' => '<message text>',
@@ -296,7 +296,7 @@ insert/append with SEARCH itself in $string:
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
@@ -304,7 +304,7 @@ insert/append with SEARCH itself in $string:
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 		'select'    => array(
 			'message' => '<message text>',
@@ -314,7 +314,7 @@ insert/append with SEARCH itself in $string:
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 	),
 
