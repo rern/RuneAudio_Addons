@@ -19,9 +19,9 @@ restorefile $files
 
 echo -e "$bar Remove files ..."
 
-rm -rv /srv/http/assets/css/addo*
+rm -v /srv/http/assets/css/addo*
 rm -v /srv/http/assets/fonts/{addons.*,Inconsolata.*}
-rm -rv /srv/http/assets/js/addo*
+rm -v /srv/http/assets/js/addo*
 rm -v /srv/http/addons*
 rm -r /srv/http/assets/img/addons
 
