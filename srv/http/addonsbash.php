@@ -139,7 +139,7 @@ if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '</style>';
 	$close = '/';
 } else {
-	$close = 'addons.php';
+	$close = '/addons';
 }
 
 echo $commandtxt.'<br>';
