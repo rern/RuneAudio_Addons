@@ -43,7 +43,14 @@ echo -e "$bar Modify files ..."
 file=/srv/http/app/templates/header.php.$backup
 echo $file
 
-appendAsset 'runeui.css' 'addonsinfo.css'
+string=$( cat <<'EOF'
+    <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
+<?php if ( $_SERVER['REQUEST_URI'] !== '/' ): ?>
+    <link rel="stylesheet" href="<?=$this->asset('/css/addons.css')?>">
+<?php endif ?>
+EOF
+)
+appendH 'runeui.css'
 
 string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
