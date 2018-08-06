@@ -9,7 +9,7 @@ uninstallstart $@
 
 echo -e "$bar Restore files ..."
 
-[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=.backup
+[[ -e /srv/http/app/templates/header.php.backup ]] && backup=.backup
 
 files="
 /srv/http/index.php
