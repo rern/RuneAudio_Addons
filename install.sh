@@ -43,7 +43,7 @@ file=/srv/http/index.php
 echo $file
 
 string=$( cat <<'EOF'
-    'addons'
+    'addons',
 EOF
 )
 append 'controllers = array'
