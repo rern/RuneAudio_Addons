@@ -54,7 +54,7 @@ echo $file
 
 string=$( cat <<'EOF'
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
-<?php if ( $_SERVER['REQUEST_URI'] !== '/' ): ?>
+<?php if ( $_SERVER['REQUEST_URI'] === '/addons' ): ?>
     <link rel="stylesheet" href="<?=$this->asset('/css/addons.css')?>">
 <?php endif ?>
 EOF
