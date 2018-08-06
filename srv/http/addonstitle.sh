@@ -125,6 +125,8 @@ getvalue() { # $1-key
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\**$//'
 }
+version=$( getvalue version )
+
 rankmirrors() {
 	if grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist; then
 		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
@@ -148,6 +150,12 @@ getinstallzip() {
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
+	# 1 bust cache - change directory names
+	path=/tmp/install/srv/http/assets
+	for dir in css fonts img js; do
+		mv $path/$dir/* $path/$dir/$alias$version &> /dev/null
+	done
+	
 	if [[ -e /tmp/install/root && -L /root ]]; then # fix 0.4b /root as symlink
 		mkdir /tmp/install/home
 		mv /tmp/install/{,home/}root
@@ -161,6 +169,17 @@ getinstallzip() {
 	
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
+	
+	# 2 bust cache - change asset names
+	for file in $( find /srv/http -type f );
+		dir=$( dirname $file )
+		[[ $dir != /srv/http/app/templates \
+			&& $dir != /srv/http/assets \
+			|| $dir == /srv/http/assets/fonts \
+			|| $dir == /srv/http/assets/img ]] && continue
+		sed -i -e "s|\(assets/$alias\)/|\1$version/|" $file
+		
+	done
 }
 getuninstall() {
 	installurl=$( getvalue installurl )
@@ -228,7 +247,6 @@ installstart() { # $1-'u'=update
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() { # $1-'u'=update
-	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	. /srv/http/addonsupdate.sh 1
