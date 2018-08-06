@@ -40,6 +40,15 @@ echo -e "$bar Modify files ..."
 
 [[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=backup
 #----------------------------------------------------------------------------------
+file=/srv/http/index.php
+echo $file
+
+string=$( cat <<'EOF'
+    'addons'
+EOF
+)
+append 'controllers = array'
+#----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php.$backup
 echo $file
 
