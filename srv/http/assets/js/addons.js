@@ -78,6 +78,14 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 					+ $this.attr( 'conflict' )
 		} );
 		return
+	} else if ( $this.attr( 'depend' ) ) {
+		info( {
+			  icon   : 'info-circle'
+			, title  : 'Warning'
+			, message: 'Depended Addon:<br>'
+					+ $this.attr( 'depend' )
+		} );
+		return
 	}
 	alias = $this.parent().attr( 'alias' );
 	type = $this.text().trim();
