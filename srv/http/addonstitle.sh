@@ -150,12 +150,6 @@ getinstallzip() {
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
-	# bust cache - append path
-	path=/tmp/install/srv/http/assets
-	for dir in css fonts img js; do
-		mv $path/$dir/* $path/$dir/$alias$version &> /dev/null
-	done
-	
 	if [[ -e /tmp/install/root && -L /root ]]; then # fix 0.4b /root as symlink
 		mkdir /tmp/install/home
 		mv /tmp/install/{,home/}root
@@ -166,9 +160,6 @@ getinstallzip() {
 #		chown -R root:root /tmp/install/etc/systemd/system
 #		chmod -R 644 /tmp/install/etc/systemd/system
 #	fi
-	for file in $( find /tmp/install -type f ); do
-		sed -i -e "s|\(/srv/http/assets/.*/\)\(\..*\)|\1|" $file
-	done
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
 }
