@@ -53,10 +53,22 @@ EOF
 appendH 'runeui.css'
 
 string=$( cat <<'EOF'
+<?php if ( $_SERVER['REQUEST_URI'] !== '/addons' ): ?>
+EOF
+)
+insertH 'id="menu-top"'
+
+string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
 appendH -n +1 'logout.php'
+
+string=$( cat <<'EOF'
+<?php endif ?>
+EOF
+)
+appendH '$'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php.$backup
 echo $file
