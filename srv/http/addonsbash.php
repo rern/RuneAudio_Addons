@@ -49,7 +49,7 @@ setTimeout( function() {
 
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
 <script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/addonsinfo.js"></script>
+<script src="assets/js/<?=$addopath ?>/addonsinfo.js"></script>
 
 <div class="container">
 	<a id="close" class="close-root"><i class="fa fa-times fa-2x disabled"></i></a>
