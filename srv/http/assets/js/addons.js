@@ -93,6 +93,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, message: type +'?'
 			, cancel : 1
 			, ok     : function () {
+				$( '#loader' ).removeClass( 'hide' );
 				option = addons[ alias ].option;
 				if ( type === 'Update' || type === 'Uninstall' || !option ) {
 					formtemp();
