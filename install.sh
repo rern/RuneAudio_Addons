@@ -48,9 +48,9 @@ EOF
 )
 append 'controllers = array'
 #----------------------------------------------------------------------------------
-[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=backup
+[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=.backup
 
-file=/srv/http/app/templates/header.php.$backup
+file=/srv/http/app/templates/header.php$backup
 echo $file
 
 string=$( cat <<'EOF'
@@ -80,7 +80,7 @@ EOF
 )
 appendH '$'
 #----------------------------------------------------------------------------------
-file=/srv/http/app/templates/footer.php.$backup
+file=/srv/http/app/templates/footer.php$backup
 echo $file
 
 string=$( cat <<'EOF'
