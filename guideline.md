@@ -272,6 +272,7 @@ insert/append with SEARCH itself in $string:
 	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
+/**/	'depend'        => '<alias>',
 /**/	'conflict'      => '<alias>',
 /**/	'hide'          => '<php condition>',
 /**/	'option'        => array(
@@ -349,6 +350,9 @@ insert/append with SEARCH itself in $string:
 - `'installed'` if redundant addon already installed
 - `'exec'` if bash script result = true
 - `'php'` if php script result = true
+
+**`'depend'`** 
+- for depended addon which must be installed first 
 
 **`'conflict'`** 
 - for installed conflict addon which must be uninstalled  
