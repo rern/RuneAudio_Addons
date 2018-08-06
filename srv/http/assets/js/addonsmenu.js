@@ -43,7 +43,6 @@ function addonsdl( exit ) {
 			, message: 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
-				$( '#loader' ).addClass( 'hide' );
 				location.href = '/addons';
 			}
 		} );
