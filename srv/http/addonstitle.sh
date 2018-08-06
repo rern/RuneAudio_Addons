@@ -125,8 +125,6 @@ getvalue() { # $1-key
 		cut -d '>' -f 2 |
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\**$//'
 }
-version=$( getvalue version )
-
 rankmirrors() {
 	if grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist; then
 		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
@@ -229,6 +227,7 @@ installstart() { # $1-'u'=update
 	[[ $1 != u ]] && title -l '=' "$bar Install $title ..."
 }
 installfinish() { # $1-'u'=update
+	version=$( getvalue version )
 	redis-cli hset addons $alias $version &> /dev/null
 	
 	. /srv/http/addonsupdate.sh 1
