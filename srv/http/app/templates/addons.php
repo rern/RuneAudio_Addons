@@ -1,5 +1,5 @@
 <?php
-include '/.php';
+include '/srv/http/addonslist.php';
 if ( $redisaddons[ 'expa' ] ) {
 	$mbunpart = 0;
 } else {
@@ -146,12 +146,3 @@ echo $blocks;
 <script>
 	addons = JSON.parse( '<?php echo json_encode( $addons );?>' );
 </script>
-<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/vendor/jquery.mobile.custom.min.js"></script>
-<script src="assets/js/vendor/bootstrap.min.js"></script>
-<script src="assets/js/vendor/bootstrap-select.min.js"></script>
-<script src="assets/js/<?=$addopath ?>/addonsinfo.js?v=1"></script>
-<script src="assets/js/<?=$addopath ?>/addons.js"></script>
-
-</body>
-</html>
