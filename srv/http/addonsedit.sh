@@ -252,10 +252,10 @@ asset() {
 	line=$1
 	shift
 	string=
-	for asset in "$@"; do
+	for filename in "$@"; do
 		type=${asset##*.}
 		string+="
-    <link rel=\"stylesheet\" href=\"/srv/http/assets/$type/${asset/$type/$version.$type}\">"
+    <link rel=\"stylesheet\" href=\"/srv/http/assets/$type/$alias$version/$filename\">"
 	done
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift

@@ -150,7 +150,7 @@ getinstallzip() {
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
-	# 1 bust cache - change directory names
+	# bust cache - append path
 	path=/tmp/install/srv/http/assets
 	for dir in css fonts img js; do
 		mv $path/$dir/* $path/$dir/$alias$version &> /dev/null
@@ -166,20 +166,11 @@ getinstallzip() {
 #		chown -R root:root /tmp/install/etc/systemd/system
 #		chmod -R 644 /tmp/install/etc/systemd/system
 #	fi
-	
+	for file in $( find /tmp/install -type f ); do
+		sed -i -e "s|\(/srv/http/assets/.*/\)\(\..*\)|\1|" $file
+	done
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
-	
-	# 2 bust cache - change asset names
-	for file in $( find /srv/http -type f );
-		dir=$( dirname $file )
-		[[ $dir != /srv/http/app/templates \
-			&& $dir != /srv/http/assets \
-			|| $dir == /srv/http/assets/fonts \
-			|| $dir == /srv/http/assets/img ]] && continue
-		sed -i -e "s|\(assets/$alias\)/|\1$version/|" $file
-		
-	done
 }
 getuninstall() {
 	installurl=$( getvalue installurl )
