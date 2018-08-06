@@ -4,6 +4,7 @@ $redis->pconnect( '127.0.0.1' );
 
 $runeversion = ( $redis->get( 'release' ) == '0.4b' ) ? '0.4b' : '0.3';
 $redisaddons = $redis->hGetAll( 'addons' );
+$thumbdir = '/assets/img/addons';
 
 ///////////////////////////////////////////////////////////////
 
@@ -11,7 +12,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180805',
+	'version'      => '20180801',
 	'revision'     => 'Improve Setting addons'
 					.'<br>General improvements'
 					.'<br>...'
@@ -20,7 +21,7 @@ $addons = array(
 					.'<br>UI improvement',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
-	'thumbnail'    => '/assets/addons/thumbaddo.png',
+	'thumbnail'    => $thumbdir.'/thumbaddo.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
@@ -32,7 +33,7 @@ $addons = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
 					.'<br>Pre-configured and ready to use.',
-	'thumbnail'    => '/assets/addons/thumbaria.png',
+	'thumbnail'    => $thumbdir.'/thumbaria.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'       => array(
@@ -47,7 +48,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
-	'thumbnail'    => '/assets/addons/thumbspla.png',
+	'thumbnail'    => $thumbdir.'/thumbspla.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
 	'hide'         => $runeversion === '0.3' ? 0 : 1,
@@ -61,7 +62,7 @@ $addons = array(
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'An alternative local browser',
-	'thumbnail'    => '/assets/addons/thumbchro.png',
+	'thumbnail'    => $thumbdir.'/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 	'option'       => array(
@@ -74,7 +75,7 @@ $addons = array(
 	'description'  => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)'
 					.'<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)'
 					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
-	'thumbnail'    => '/assets/addons/thumbdual.gif',
+	'thumbnail'    => $thumbdir.'/thumbdual.gif',
 	'buttonlabel'  => 'Link',
 	'sourcecode'   => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 	'installurl'   => '',
@@ -83,7 +84,7 @@ $addons = array(
 	'title'        => 'Expand Partition',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Expand default 2GB partition to full capacity of SD card.',
-	'thumbnail'    => '/assets/addons/thumbpart.png',
+	'thumbnail'    => $thumbdir.'/thumbpart.png',
 	'buttonlabel'  => 'Expand',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
@@ -98,7 +99,7 @@ $addons = array(
 	'revision'     => 'Select color on install',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Message of the day - RuneAudio Logo and dimmed command prompt.',
-	'thumbnail'    => '/assets/addons/thumbmotd.png',
+	'thumbnail'    => $thumbdir.'/thumbmotd.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/motd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/motd/install.sh',
 	'option'       => array(
@@ -124,7 +125,7 @@ $addons = array(
 	'description'  => 'Upgrade MPD to latest version, 0.20.20 as of 20180711:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
 					.'<br>But <white>broken Midori</white>, local browser which needs upgrade as well.',
-	'thumbnail'    => '/assets/addons/thumbmpdu.png',
+	'thumbnail'    => $thumbdir.'/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
@@ -140,7 +141,7 @@ $addons = array(
 	'title'        => 'Rank Mirror Package Servers',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fix package download errors caused by unreachable servers.',
-	'thumbnail'    => '/assets/addons/thumbrank.png',
+	'thumbnail'    => $thumbdir.'/thumbrank.png',
 	'buttonlabel'  => 'Rank',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
@@ -156,7 +157,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Enable backup-restore settings and databases.',
-	'thumbnail'    => '/assets/addons/thumbback.png',
+	'thumbnail'    => $thumbdir.'/thumbback.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
@@ -173,7 +174,7 @@ $addons = array(
 					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
-	'thumbnail'    => '/assets/addons/thumbenha.gif',
+	'thumbnail'    => $thumbdir.'/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'conflict'     => 'paus',
@@ -201,7 +202,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Font files replacement for Extended Latin-based, Cyrillic-based, Greek and IPA phonetics.',
-	'thumbnail'    => '/assets/addons/thumbfont.png',
+	'thumbnail'    => $thumbdir.'/thumbfont.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
 ),
@@ -218,7 +219,7 @@ $addons = array(
 					.'<br>Now use only plain BASH and Python - no PIP install needed',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
-	'thumbnail'    => '/assets/addons/thumbgpio.gif',
+	'thumbnail'    => $thumbdir.'/thumbgpio.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'   => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ),
@@ -230,7 +231,7 @@ $addons = array(
 					.'<br>Fix missing edit and close buttons',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
-	'thumbnail'    => '/assets/addons/thumblyri.gif',
+	'thumbnail'    => $thumbdir.'/thumblyri.gif',
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
@@ -241,7 +242,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'RuneUI access restriction.',
-	'thumbnail'    => '/assets/addons/thumbpass.png',
+	'thumbnail'    => $thumbdir.'/thumbpass.png',
 	'sourcecode'   => 'https://github.com/RuneAddons/Password',
 	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
 	'hide'         => $runeversion === '0.3' ? 0 : 1,
@@ -252,7 +253,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
-	'thumbnail'    => '/assets/addons/thumbpaus.png',
+	'thumbnail'    => $thumbdir.'/thumbpaus.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'         => $redisaddons[ 'enha' ] ? 1 : 0,
@@ -280,7 +281,7 @@ $addons = array(
 	'description'  => 'This adds a youtube button to the Playlist screen of the rune audio player, '
 					.'simply paste a youtube video URL or a youtube playlist URL, '
 					.'wait for them to download, and these songs will be added to your playlist.',
-	'thumbnail'    => '/assets/addons/thumbyout.png',
+	'thumbnail'    => $thumbdir.'/thumbyout.png',
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
@@ -289,7 +290,7 @@ $addons = array(
 	'needspace'    => 43,
 	'maintainer'   => 'r e r n',
 	'description'  => 'Faster and more customized shares.',
-	'thumbnail'    => '/assets/addons/thumbsamb.png',
+	'thumbnail'    => $thumbdir.'/thumbsamb.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
@@ -330,7 +331,7 @@ $addons = array(
 					.'<br>Update alternateive WebUI source',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Fast, easy, and free BitTorrent client. Pre-configured and ready to use.',
-	'thumbnail'    => '/assets/addons/thumbtran.png',
+	'thumbnail'    => $thumbdir.'/thumbtran.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'       => array(
@@ -359,7 +360,7 @@ $addons = array(
 	'description'  => 'Automatically switch to/from MPD Audio output and reload configuration:'
 					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
 					.'<br>- USB DAC <white>power off</white> - switch to <white>preset Audio output</white>',
-	'thumbnail'    => '/assets/addons/thumbudac.png',
+	'thumbnail'    => $thumbdir.'/thumbudac.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC/install.sh',
 	'option'       => array(
@@ -377,13 +378,13 @@ $addons = array(
 	'description'  => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
 					.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
-	'thumbnail'    => '/assets/addons/thumbwebr.png',
+	'thumbnail'    => $thumbdir.'/thumbwebr.png',
 	'buttonlabel'  => 'Import',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'       => array(
-		'wait'       => 'Get webradio <code>*.pls</code> files or folders copied to:'
-					.'<br><code>/mnt/MPD/Webradio</code>'
+		'wait'       => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
+					.'<br>copied to <code>/mnt/MPD/Webradio</code>'
 					.'<br>'
 					.'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
@@ -392,7 +393,7 @@ $addons = array(
 	'title'        => 'Setting - Notification Duration',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Change RuneUI notification duration',
-	'thumbnail'    => '/assets/addons/thumbnoti.gif',
+	'thumbnail'    => $thumbdir.'/thumbnoti.gif',
 	'buttonlabel'  => 'Change',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_notify',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_notify/set.sh',
