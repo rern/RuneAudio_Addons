@@ -48,7 +48,7 @@ EOF
 )
 append 'controllers = array'
 #----------------------------------------------------------------------------------
-[[ -e /usr/local/bin/uninstall_enha.sh ]] && backup=.backup
+[[ -e /srv/http/app/templates/header.php.backup ]] && backup=.backup
 
 file=/srv/http/app/templates/header.php$backup
 echo $file
