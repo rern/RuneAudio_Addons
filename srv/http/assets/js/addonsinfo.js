@@ -86,6 +86,7 @@ function infoReset() {
 	$( '.infolabel' ).css( 'width', '' );
 	$( '.infoinput' ).css( 'width', '' ).val( '' );
 	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
+	$( '#loader' ).addClass( 'hide' );
 }
 
 function info( O ) {
