@@ -1,5 +1,5 @@
 <?php
-include 'addonshead.php';
+include '/.php';
 if ( $redisaddons[ 'expa' ] ) {
 	$mbunpart = 0;
 } else {
