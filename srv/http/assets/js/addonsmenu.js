@@ -13,7 +13,7 @@ $( '#addons' ).click( function () {
 		, textvalue: 'UPDATE'
 		, cancel   : 1
 		, ok       : function() {
-			var branch = $( '#infoTextbox' ).val();
+			var branch = $( '#infoTextBox' ).val();
 			$( '#loader' ).removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
