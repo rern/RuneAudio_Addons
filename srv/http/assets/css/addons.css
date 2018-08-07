@@ -5,6 +5,7 @@
 	font-weight: normal;
 	font-style: normal;
 }
+/* 'addons' declared in <head> for cache busting */
 .fa {
 	font-family: FontAwesome, addons;
 }
