@@ -55,15 +55,13 @@ echo $file
 
 string=$( cat <<'EOF'
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
-<?php if ( $_SERVER['REQUEST_URI'] === '/addons' ): ?>
-    <link rel="stylesheet" href="<?=$this->asset('/css/addons.css')?>">
-<?php endif ?>
+<?=( $this->uri(1) === 'addons' ? '<link rel="stylesheet" href="'.$this->asset('/css/addons.css').'">' : '' ) ?>
 EOF
 )
 appendH 'runeui.css'
 
 string=$( cat <<'EOF'
-<?php if ( $_SERVER['REQUEST_URI'] !== '/addons' ): ?>
+<?php if ( $this->uri(1) !== 'addons' ): ?>
 EOF
 )
 insertH 'id="menu-top"'
@@ -86,9 +84,7 @@ echo $file
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-<?php if ( $_SERVER['REQUEST_URI'] === '/addons' ): ?>
-<script src="<?=$this->asset('/js/addons.js')?>"></script>
-<?php endif ?>
+<?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
 EOF
 )
 appendH 'code.jquery.com'
