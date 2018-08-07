@@ -132,6 +132,9 @@ code {
 	text-transform: none;
 	min-width: 100px;
 }
+.btn i {
+	margin-right: 5px;
+}
 #bottom {
 	height: calc(100vh - 160px);
 }
