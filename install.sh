@@ -64,7 +64,7 @@ string=$( cat <<'EOF'
 <?php if ( $this->uri(1) !== 'addons' ): ?>
 EOF
 )
-insertH 'id="menu-top"'
+appendH '^-->'
 
 string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
