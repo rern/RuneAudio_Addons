@@ -1,7 +1,7 @@
 @font-face {
 	font-family: addons;
-	src: url( '/srv/http/assets/fonts/addons.woff' ) format( 'woff' ),
-		url( '/srv/http/assets/fonts/addons.ttf' ) format( 'truetype' );
+	src: url( '../fonts/addons.woff' ) format( 'woff' ),
+		url( '../fonts/addons.ttf' ) format( 'truetype' );
 	font-weight: normal;
 	font-style: normal;
 }
