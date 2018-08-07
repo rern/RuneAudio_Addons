@@ -31,15 +31,13 @@ function branchtest( title, message ) {
 	} );
 }
 $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
-	$target = $( e.target );
-	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-	alias = $this.parent().attr( 'alias' );
-	rollback = $this.attr( 'rollback' );
-	type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
-	title = $this.parent().prev().prev().find( 'span' ).text();
+	$this = $( this );
+	alias = $this.attr( 'alias' );
+	title = addons[ alias ].title.replace( / *\**$/, '' );
+	type = $this.text() === 'Install' ? 'Install' : 'Update';
+	rollback = addons[ alias ].rollback ? addons[ alias ].rollback : '';
 	opt = '';
 	branch = '';
-	
 	if ( type === 'Install' || !rollback ) {
 		branchtest( title, 'Install version?' );
 		return 1;
@@ -60,38 +58,37 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		}
 	} );
 } ).on( 'click', function ( e ) {
-	$target = $( e.target );
-	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-	if ( $this.attr( 'needspace' ) ) {
+	$this = $( this );
+	alias = $this.attr( 'alias' );
+	title = addons[ alias ].title.replace( / *\**$/, '' );
+	type = $this.text();
+	opt = '';
+	branch = '';
+	if ( $this.attr( 'space' ) ) {
 		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Disk space not enough:<br>'
-					+ $this.attr( 'needspace' )
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Disk space not enough:<br>'
+					+ 'Need: <white>'+ addons[ alias ].needspace +' MB</white><br>'+ $( this ).attr( 'space' )
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
 		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Conflict Addon:<br>'
-					+ $this.attr( 'conflict' )
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Conflict Addon:<br>'
+					+ '<white>'+ $this.attr( 'conflict' ) +'</white> must be uninstalled first.'
 		} );
 		return
 	} else if ( $this.attr( 'depend' ) ) {
 		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Depended Addon:<br>'
-					+ $this.attr( 'depend' )
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Depended Addon:<br>'
+					+ '<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
 		} );
 		return
 	}
-	alias = $this.parent().attr( 'alias' );
-	type = $this.text().trim();
-	title = $this.parent().prev().prev().find( 'span' ).text();
-	opt = '';
-	branch = '';
 	
 	if ( type === 'Link' ) {
 		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
