@@ -13,7 +13,6 @@ $addons = array(
 	'title'        => 'Addons',
 	'version'      => '20180808',
 	'revision'     => 'Clear cache on files changed with existing Cache Busting by Plates.'
-					.'<br>Replace 4 major files,runeui.js, header.php, playback.php and footer.php, for more stable handling.'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>...'
@@ -162,8 +161,16 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180727',
-	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
+	'version'      => '20180808',
+	'revision'     => 'Fix Library display setting bug'
+					.'<br>Fix Playlist - saved playlists display on page changed'
+					.'<br>Fix RuneUI not load after uninstalled'
+					.'<br>Context menus can be toggled'
+					.'<br>Change context menu dialog boxes'
+					.'<br>Show warning of existing Webradio name / playlist name'
+					.'<br>Replace 4 major files, runeui.js, header.php, playback.php and footer.php, for more stable handling.'
+					.'<br>...'
+					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
 					.'<br>...'
