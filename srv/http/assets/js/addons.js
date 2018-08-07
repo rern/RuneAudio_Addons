@@ -84,7 +84,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		info( {
 			  icon   : 'warning'
 			, title  : title
-			, message: 'Warning - Depended Addon:<br>'
+			, message: 'Warning - Depend Addon:<br>'
 					+ '<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
 		} );
 		return
