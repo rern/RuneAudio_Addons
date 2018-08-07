@@ -75,10 +75,10 @@
 }
 #infoTop {
 	float: left;
-	width: calc( 100% - 40px );
+	width: calc( 100% - 45px );
 	color: #e0e7ee;
 	line-height: 40px;
-	padding: 0 10px;
+	padding: 0 10px 0 15px;
 	text-align: left;
 }
 #infoTop a, white {
