@@ -46,7 +46,7 @@ foreach( $arrayalias as $alias ) {
 	// hide by conditions
 	if ( $addon[ 'hide' ] === 1 ) continue;
 	
-	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $addon[ 'thumbnail' ] : '';
+	$thumbnail = isset( $addon[ 'thumbnail' ] ) ? $this->asset( $addon[ 'thumbnail' ] ) : '';
 	if ( isset( $addon[ 'buttonlabel' ] ) ) {
 		$buttonlabel = $addon[ 'buttonlabel' ];
 	} else {
