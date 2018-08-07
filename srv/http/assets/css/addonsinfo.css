@@ -5,6 +5,11 @@
 	font-weight: normal;
 	font-style: normal;
 }
+.fa-times:before { content: "\f51A" }
+.fa-info-circle:before { content: "\f560" }
+.fa-question-circle:before { content: "\f561" }
+.fa-warning:before { content: "\f56D" }
+
 #settings,
 #menu-top .dropdown-menu {
 	-webkit-touch-callout: none; /* iOS Safari */
