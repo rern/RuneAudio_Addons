@@ -231,6 +231,11 @@ insertS [-n N] SEARCH                     #0alias0
 appendS [-n N] SEARCH                     ...
                                           #1alias1
 
+insertAsset SEARCH FILE.ext               <?php //0alias0 ?>
+appendAsset SEARCH FILE.ext               <link rel="stylesheet" href="<?=$this->asset('/css/FILE.css')?>">
+                                          <script src="<?=$this->asset('/js/FILE.js')?>"></script>
+                                          <?php //1alias1 ?>
+
 restorefile FILE [FILE2 ...]              remove all insert / append / comment
 
 argument:
@@ -250,6 +255,7 @@ test run SEARCH:
     # . /srv/http/addonsedit.sh
     # file=/path/file
 	# match [-n N] SEARCH [-n N] [SEARCH2]
+insert/append external FILE.css/FILE.js with insertAsset/appendAsset
 insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
