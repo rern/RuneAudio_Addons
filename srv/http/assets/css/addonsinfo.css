@@ -10,8 +10,7 @@
 .fa-question-circle:before { content: "\f561" }
 .fa-warning:before { content: "\f56D" }
 
-#settings,
-#menu-top .dropdown-menu {
+#settings {
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
