@@ -103,11 +103,13 @@ EOF
 fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
-if ! grep -q 'ico|svg' $file; then
+if ! grep -q 'ico|svg|woff|ttf' $file; then
+	# delete previous installed
+	sed -i '/ico|svg)/ d' $file
 	echo $file
 	commentS 'gif\|ico'
 	string=$( cat <<'EOF'
-        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|ttf)$ {
 EOF
 )
 	appendS 'gif\|ico'
