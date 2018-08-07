@@ -102,6 +102,20 @@ EOF
 	sed -i "/jquery-2.1.0.min.js/ a$string" $file
 fi
 #----------------------------------------------------------------------------------
+file=/etc/nginx/nginx.conf
+if ! grep -q 'ico|svg' $file; then
+	echo $file
+	commentS 'gif\|ico'
+	string=$( cat <<'EOF'
+        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
+EOF
+)
+	appendS 'gif\|ico'
+	
+	svg=0
+else
+	svg=1
+fi
 
 # set sudo no password
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
@@ -154,3 +168,5 @@ installfinish $@
 title -nt "$info Any issues, try $( tcolor 'clear browser cache' )."
 
 clearcache
+
+[[ $svg == 0 ]] && restartnginx
