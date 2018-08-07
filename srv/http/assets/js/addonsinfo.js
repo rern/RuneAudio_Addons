@@ -42,11 +42,11 @@ var html = heredoc( function() { /*
 		<div id="infoContent">
 			<p id="infoMessage" class="infocontent"></p>
 			<div id="infoText" class="infocontent">
-				<div class="infotextdiv">
+				<div class="infotextlabel">
 					<a id="infoTextLabel" class="infolabel"></a><br>
 					<a id="infoTextLabel2" class="infolabel"></a>
 				</div>
-				<div class="infotextdiv">
+				<div class="infotextbox">
 					<input type="text" class="infoinput" id="infoTextBox" spellcheck="false"><br>
 					<input type="text" class="infoinput" id="infoTextBox2" spellcheck="false">
 				</div>
