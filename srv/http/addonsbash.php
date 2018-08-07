@@ -1,6 +1,5 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
-include 'addonshead.php';
 ?>
 <!DOCTYPE html>
 <html>
