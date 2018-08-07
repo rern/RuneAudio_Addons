@@ -161,7 +161,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
 'enha' => array(
-	'title'        => 'RuneUI Enhancements **',
+	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20180727',
 	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
