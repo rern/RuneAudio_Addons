@@ -54,6 +54,15 @@ file=/srv/http/app/templates/header.php$backup
 echo $file
 
 string=$( cat <<'EOF'
+    <style>
+        @font-face {
+            font-family: addons;
+            src: url( '<?=$this->asset('/fonts/addons.woff') ?>' ) format( 'woff' ),
+                url( '<?=$this->asset('/fonts/addons.ttf') ?>' ) format( 'truetype' );
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
 <?=( $this->uri(1) === 'addons' ? '<link rel="stylesheet" href="'.$this->asset('/css/addons.css').'">' : '' ) ?>
 EOF
