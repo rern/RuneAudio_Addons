@@ -75,7 +75,7 @@ h1 {
 .boxed-group {
 	padding: 10px 20px;
 }
-img {
+.boxed-group img {
 	max-width: 100px;
 }
 legend {
