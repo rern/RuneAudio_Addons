@@ -103,9 +103,7 @@ EOF
 fi
 #----------------------------------------------------------------------------------
 file=/etc/nginx/nginx.conf
-if ! grep -q 'ico|svg|woff|ttf' $file; then
-	# delete previous installed
-	sed -i '/ico|svg)/ d' $file
+if ! grep -q 'woff|ttf' $file; then
 	echo $file
 	commentS 'gif\|ico'
 	string=$( cat <<'EOF'
