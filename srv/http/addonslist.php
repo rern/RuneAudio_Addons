@@ -12,8 +12,8 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons',
 	'version'      => '20180808',
-	'revision'     => 'Improve Setting addons'
-					.'<br>General improvements'
+	'revision'     => 'Clear cache on files changed with existing Cache Busting by Plates.'
+					.'<br>Replace 4 major files,runeui.js, header.php, playback.php and footer.php, for more stable handling.'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>...'
