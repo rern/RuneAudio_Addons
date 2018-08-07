@@ -50,7 +50,7 @@ foreach( $arrayalias as $alias ) {
 	if ( isset( $addon[ 'buttonlabel' ] ) ) {
 		$buttonlabel = $addon[ 'buttonlabel' ];
 	} else {
-		$buttonlabel = '<i class="fa fa-plus-circle"></i>&ensp;Install';
+		$buttonlabel = '<i class="fa fa-plus-circle"></i>Install';
 	}
 	
 	if ( $redisaddons[ $alias ] || $redis->hGet( 'addons', $alias ) ) {
@@ -58,27 +58,27 @@ foreach( $arrayalias as $alias ) {
 		if ( !isset( $addon[ 'version' ] ) 
 			|| $addon[ 'version' ] == $redisaddons[ $alias ] ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
-			$btnin = '<a class="btn btn-default disabled">&ensp;'.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-default disabled">'.$buttonlabel.'</a>';
 		} else {
 			$updatecount++;
 			$check = '<i class="fa fa-refresh status"></i> ';
-			$btnin = '<a class="btn btn-primary"><i class="fa fa-refresh"></i>&ensp;Update</a>';
+			$btnin = '<a class="btn btn-primary" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		$btnun = '<a class="btn btn-default"'.$btnunattr.'><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
+		$btnun = '<a class="btn btn-default" alias="'.$alias.'"'.$btnunattr.'><i class="fa fa-minus-circle"></i>Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		$attrneedspace = $needspace < $mbfree ? '' : ' needspace="Need: <white>'.number_format( $needspace ).' MB</white><br>'.$available.$expandable.'"';
+		$attrspace = $needspace < $mbfree ? '' : ' space="'.$available.$expandable.'"';
 		$conflict = isset( $addon[ 'conflict' ] ) ? $addon[ 'conflict' ] : '';
 		$conflictaddon = $conflict ? $redis->hget( 'addons', $conflict ) : '';
-		$attrconflict = !$conflictaddon ? '' : ' conflict="<white>'.$addons[ $conflict ][ 'title' ].'</white> must be uninstalled first"';
+		$attrconflict = !$conflictaddon ? '' : ' conflict="'.preg_replace( '/ *\**$/', '', $addons[ $conflict ][ 'title' ] ).'"';
 		$depend = isset( $addon[ 'depend' ] ) ? $addon[ 'depend' ] : '';
 		$dependaddon = $depend ? $redis->hget( 'addons', $depend ) : '';
-		$attrdepend = !$dependaddon ? '' : ' depend="<white>'.$addons[ $depend ][ 'title' ].'</white> must be installed first"';
+		$attrdepend = !$dependaddon ? '' : ' depend="'.preg_replace( '/ *\**$/', '', $addons[ $depend ][ 'title' ] ).'"';
 			
-		$btnin = '<a class="btn btn-default '.$btninclass.'"'.$attrneedspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
-		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>&ensp;Uninstall</a>';
+		$btnin = '<a class="btn btn-default" alias="'.$alias.'"'.$btninclass.'"'.$attrspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
+		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>Uninstall</a>';
 	}
 	
 	// addon list ---------------------------------------------------------------
