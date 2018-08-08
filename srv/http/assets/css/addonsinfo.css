@@ -4,6 +4,7 @@
 }
 #addons i:before,
 .fa-addons:before {
+	font-family: addons;
 	content: "\f520";
 	color: #7795b4;
 }
