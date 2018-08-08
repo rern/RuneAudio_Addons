@@ -44,6 +44,7 @@ echo $file
 
 string=$( cat <<'EOF'
     'addons',
+	'addonsbash',
 EOF
 )
 append 'controllers = array'
