@@ -98,9 +98,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, message: type +'?'
 			, cancel : 1
 			, ok     : function () {
-				$( '#loader' ).removeClass( 'hide' );
-				option = addons[ alias ].option;
-				if ( type === 'Update' || type === 'Uninstall' || !option ) {
+				if ( type === 'Update' || type === 'Uninstall' || !addons[ alias ].option ) {
 					formtemp();
 				} else {
 					j = 0;
@@ -174,7 +172,6 @@ function getoptions() {
 				}
 				, oklabel      : 'Yes'
 				, ok           : function() {
-					$( '#loader' ).show();
 					formtemp();
 				}
 			} );
@@ -329,7 +326,6 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
-		$( '#loader' ).show();
 		opt += branch;
 		formtemp();
 	}

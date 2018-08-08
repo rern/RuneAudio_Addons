@@ -1,8 +1,9 @@
 $(function() { // $( document ).ready(function() {
 
 $( '#addons' ).click( function () {
-	$( '#loader' ).removeClass( 'hide' );
-	
+	$( '#loader' )
+		.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+		.removeClass( 'hide' );
 	$.get( '/addonsdl.php', function( exit ) {
 			addonsdl( exit );
 	} );
@@ -14,7 +15,9 @@ $( '#addons' ).click( function () {
 		, cancel   : 1
 		, ok       : function() {
 			var branch = $( '#infoTextBox' ).val();
-			$( '#loader' ).removeClass( 'hide' );
+			$( '#loader' )
+				.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+				.removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
 					'/addonsdl.php?branch='+ branch,
