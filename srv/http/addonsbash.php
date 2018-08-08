@@ -1,8 +1,5 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
-$addonsinfocss = $_POST[ 'addonsinfocss' ];
-$addonscss = $_POST[ 'addonscss' ];
-$addonsinfojs = $_POST[ 'addonsinfojs' ];
 ?>
 <!DOCTYPE html>
 <html>
