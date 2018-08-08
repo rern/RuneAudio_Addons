@@ -12,7 +12,7 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons',
 	'version'      => '20180808',
-	'revision'     => 'Clear cache on files changed with existing Cache Busting by Plates.'
+	'revision'     => '<white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>...'
