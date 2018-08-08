@@ -144,7 +144,7 @@ echo '
 echo $blocks;
 ?>
 </div>
-<div id="bottom"></div>
+<div id="bottom"></div> <!-- for bottom padding -->
 
 <script>
 	addons = JSON.parse( '<?php echo json_encode( $addons );?>' );
