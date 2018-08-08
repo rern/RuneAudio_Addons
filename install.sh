@@ -48,10 +48,10 @@ EOF
 )
 append 'controllers = array'
 #----------------------------------------------------------------------------------
-[[ -e /srv/http/app/templates/header.php.backup ]] && backup=.backup
-
-file=/srv/http/app/templates/header.php$backup
+file=/srv/http/app/templates/header.php
 echo $file
+
+[[ -e $file.backup ]] && file=$file.backup
 
 string=$( cat <<'EOF'
     <style>
@@ -87,8 +87,10 @@ EOF
 )
 appendH '$'
 #----------------------------------------------------------------------------------
-file=/srv/http/app/templates/footer.php$backup
+file=/srv/http/app/templates/footer.php
 echo $file
+
+[[ -e $file.backup ]] && file=$file.backup
 
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
