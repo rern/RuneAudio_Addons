@@ -98,6 +98,9 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, message: type +'?'
 			, cancel : 1
 			, ok     : function () {
+				$( '#loader' )
+					.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+					.removeClass( 'hide' );
 				option = addons[ alias ].option;
 				if ( type === 'Update' || type === 'Uninstall' || !option ) {
 					formtemp();
@@ -173,6 +176,9 @@ function getoptions() {
 				}
 				, oklabel      : 'Yes'
 				, ok           : function() {
+					$( '#loader' )
+						.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+						.removeClass( 'hide' );
 					formtemp();
 				}
 			} );
@@ -327,6 +333,9 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
+		$( '#loader' )
+			.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+			.removeClass( 'hide' );
 		opt += branch;
 		formtemp();
 	}
