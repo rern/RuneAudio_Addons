@@ -22,7 +22,8 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 	</style>
 	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
-	<link rel="shortcut icon" href="/img/favicon.ico"></head>
+	<link rel="shortcut icon" href="/img/favicon.ico">
+</head>
 <body>
 
 <?php include 'addonslist.php';?>
