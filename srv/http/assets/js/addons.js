@@ -352,9 +352,9 @@ function formtemp() {
 			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
 			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
 			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
-			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).attr( 'href' ) +'">\
-			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).attr( 'href' ) +'">\
-			<input type="hidden" name="addonsinfojs" value="'+ $( '#addonsinfojs' ).attr( 'src' ) +'">\
+			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).val() +'">\
+			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).val() +'">\
+			<input type="hidden" name="addonsinfojs" value="'+ $( '#addonsinfojs' ).val() +'">\
 		</form>\
 	' );
 	$( '#formtemp' ).submit();
