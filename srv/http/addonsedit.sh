@@ -299,8 +299,7 @@ EOF
 	done
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
-	echo -e "$string"
-#	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
+	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
 }
 insertAsset() {
 	asset -i "$@"
