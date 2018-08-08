@@ -93,6 +93,16 @@ echo $file
 [[ -e $file.backup ]] && file=$file.backup
 
 string=$( cat <<'EOF'
+<input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
+<input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
+<input id="addonsinfocss" type="hidden" value="<?=$this->asset('/css/addonsinfo.css')?>">
+<input id="addonscss" type="hidden" value="<?=$this->asset('/css/addons.css')?>">
+<input id="addonsinfojs" type="hidden" value="<?=$this->asset('/js/addonsinfo.js')?>">
+EOF
+)
+appendH 'id="loader"'
+
+string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 <?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
