@@ -344,17 +344,14 @@ function sendcommand() {
 function formtemp() {
 	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 	// pass cache busting assets to addonsbash which cannot bind in '/templates'
-	var addonsfont = $( 'head' ).find( 'style' ).text();
-	var addonswoff = addonsfont.match( /.fonts.addons.*\.woff/ )[0];
-	var addonsttf = addonsfont.match( /addons.*\.ttf/ )[0].replace( /addons.*"/, '' );
 	$( 'body' ).append( '\
 		<form id="formtemp" action="addonsbash.php" method="post">\
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
 			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
-			<input type="hidden" name="addonswoff" value="'+ addonswoff +'">\
-			<input type="hidden" name="addonsttf" value="'+ addonsttf +'">\
+			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
+			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
 			<input type="hidden" name="addonsfont" value="'+ $( '#addonsfont' ).attr( 'href' ) +'">\
 			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).attr( 'href' ) +'">\
 			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).attr( 'href' ) +'">\
