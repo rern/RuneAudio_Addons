@@ -27,6 +27,12 @@
 }
 #loader {
 	font-size: 16px;
+	font-weight: 300;
+}
+#loader img {
+	margin-top: calc( 50vh - 38px );
+	width: 250px;
+	animation: blinkopaque 1.5s linear infinite;
 }
 #loader i {
 	margin-top: calc( 50vh - 80px );
