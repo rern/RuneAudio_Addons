@@ -161,7 +161,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180808',
+	'version'      => '20180727',
 	'revision'     => 'Fix Library display setting bug'
 					.'<br>Fix Playlist - saved playlists display on page changed'
 					.'<br>Fix RuneUI not load after uninstalled'
