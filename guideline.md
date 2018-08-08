@@ -198,7 +198,7 @@ pre-defined variable:
 ------------------------------------------------------------------------------------
 alias=name                                already in install.sh / uninstall_alias.sh
 file=/path/file                           before all commands of each file
-string=( cat <<'EOF'                      before each insert and append
+string=$( cat <<'EOF'                      before each insert and append
 place code without escapes
 last line
 EOF
@@ -232,7 +232,8 @@ appendS [-n N] SEARCH                     ...
                                           #1alias1
 
 insertAsset SEARCH FILE.ext               <?php //0alias0 ?>
-appendAsset SEARCH FILE.ext               <link rel="stylesheet" href="<?=$this->asset('/css/FILE.css')?>">
+appendAsset SEARCH FILE.ext               <style> @font-face { ... } </style>
+                                          <link rel="stylesheet" href="<?=$this->asset('/css/FILE.css')?>">
                                           <script src="<?=$this->asset('/js/FILE.js')?>"></script>
                                           <?php //1alias1 ?>
 
@@ -255,7 +256,7 @@ test run SEARCH:
     # . /srv/http/addonsedit.sh
     # file=/path/file
 	# match [-n N] SEARCH [-n N] [SEARCH2]
-insert/append external FILE.css/FILE.js with insertAsset/appendAsset
+cache busting - insert/append FILE.ttf/FILE.woff/FILE.css/FILE.js with insertAsset/appendAsset
 insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
