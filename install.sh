@@ -100,7 +100,7 @@ string=$( cat <<'EOF'
 <input id="addonsinfojs" type="hidden" value="<?=$this->asset('/js/addonsinfo.js')?>">
 EOF
 )
-appendH 'id="loader"'
+insertH 'jquery-2.1.0.min.js'
 
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
