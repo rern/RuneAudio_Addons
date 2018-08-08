@@ -98,7 +98,8 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, message: type +'?'
 			, cancel : 1
 			, ok     : function () {
-				if ( type === 'Update' || type === 'Uninstall' || !addons[ alias ].option ) {
+				option = addons[ alias ].option;
+				if ( type === 'Update' || type === 'Uninstall' || !option ) {
 					formtemp();
 				} else {
 					j = 0;
