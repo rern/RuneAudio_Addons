@@ -5,7 +5,7 @@
 # pre-defined variable:
 #     alias=name                                already in install.sh / uninstall_alias.sh
 #     file=/path/file                           before all commands of each file
-#     string=( cat <<'EOF'                      before each insert and append
+#     string=$( cat <<'EOF'                      before each insert and append
 #     place code without escapes
 #     last line
 #     EOF
@@ -36,6 +36,12 @@
 #     appendS [-n N] SEARCH                     ...
 #                                               #1alias1
 
+#    insertAsset SEARCH FILE.ext               <?php //0alias0 ?>
+#    appendAsset SEARCH FILE.ext               <style> @font-face { ... } </style>
+#                                              <link rel="stylesheet" href="<?=$this->asset('/css/FILE.css')?>">
+#                                              <script src="<?=$this->asset('/js/FILE.js')?>"></script>
+#                                              <?php //1alias1 ?>
+
 #     restorefile FILE [FILE2 ...]              remove all insert / append / comment
 
 # argument:
@@ -49,9 +55,14 @@
 #                                               or use  .  as placeholder instead of escape
 
 # tips:
-#     insert/append with SEARCH itself in $string
-#         must be after comment to the same SEARCH (avoid commented after insert)
-#         must be combined with insert/append to the same SEARCH (avoid double insert)
+# test run SEARCH:
+#     . /srv/http/addonsedit.sh
+#     file=/path/file
+#     match [-n N] SEARCH [-n N] [SEARCH2]
+# cache busting - insert/append FILE.ttf/FILE.woff/FILE.css/FILE.js with insertAsset/appendAsset
+# insert/append with SEARCH itself in $string
+#     must be after comment to the same SEARCH (avoid commented after insert)
+#     must be combined with insert/append to the same SEARCH (avoid double insert)
 
 comment() {
 	test=0 # reset for running from terminal
@@ -253,20 +264,43 @@ asset() {
 	shift
 	string=
 	for filename in "$@"; do
-		type=${asset##*.}
-		if [[ $type == 'css' ]]; then
-		string+='
-	<link rel="stylesheet" href="<?=$this->asset("/css/'$alias.$version.'/'.$filename.'")?>">
-'
+		ext=${filename##*.}
+		if [[ $ext == 'woff' || $ext == 'ttf' ]]; then
+			name=${filename%.*}
+			path=/srv/http/assets/fonts
+			if [[ ! -e $path/${name}.woff || ! -e $path/${name}.ttf ]]; then
+				echo $path/${name}.woff or $path/${name}.ttf missing.
+			fi
+			string+=$( cat <<EOF
+
+	<style>
+		@font-face {
+			font-family: $name;
+			src        : url( "<?=$this->asset('/fonts/$name.woff')?>" ) format( 'woff' ), url( "<?=$this->asset('/fonts/$name.ttf')?>" ) format( 'truetype' );
+			font-weight: normal;
+			font-style : normal;
+		}
+	</style>
+EOF
+)
+		elif [[ $ext == 'css' ]]; then
+			string+=$( cat <<EOF
+
+	<link rel="stylesheet" href="<?=$this->asset('/css/$filename')?>">
+EOF
+)
 		else
-		string+='
-<script src=\"<?=$this->asset("/js/'$alias.$version.'/'.$filename.'")?>"></script>
-'
+			string+=$( cat <<EOF
+
+<script src="<?=$this->asset('/js/$filename')?>"></script>
+EOF
+)
 		fi
 	done
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
-	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
+	echo -e "$string"
+#	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
 }
 insertAsset() {
 	asset -i "$@"
