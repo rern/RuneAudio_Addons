@@ -7,10 +7,9 @@
 }
 /* 'addons' declared in <head> for cache busting */
 .fa {
-	font-family: FontAwesome, addons;
+	font-family: addons, FontAwesome;
 }
 .fa-addons:before {
-	font-family: addons;
 	content: "\f520";
 	color: #7795b4;
 }
@@ -19,7 +18,7 @@
 .fa-minus-circle:before { content: "\f51C" }
 .fa-check:before { content: "\f51B" }
 .fa-refresh:before { content: "\f563" }
-.fa-arrow-up:before { font-family: addons; content: "\f566" }
+.fa-arrow-up:before { content: "\f566" }
 .fa-arrow-down:before { content: "\f567" }
 .fa-chevron-down:before { content: "\f568" }
 .fa-external-link:before { content: "\f569" }

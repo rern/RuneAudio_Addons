@@ -1,5 +1,7 @@
 /* 'addons' declared in <head> for cache busting */
-
+.fa {
+	font-family: addons, FontAwesome;
+}
 .fa-times:before { content: "\f51A" }
 .fa-info-circle:before { content: "\f560" }
 .fa-question-circle:before { content: "\f561" }
@@ -13,7 +15,6 @@
 	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
 #addons i:before {
-	font-family: addons;
 	content: "\f520";
 }
 #loader i {
@@ -60,7 +61,7 @@
 #infoBox {
 	width: 98%;
 	max-width: 400px;
-	margin: 30vh auto;
+	margin: 40vh auto;
 	transform: translateY( -50% );
 	background: #19232d;
 	border-radius: 10px;
