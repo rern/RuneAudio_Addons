@@ -20,11 +20,11 @@ restorefile $files
 
 echo -e "$bar Remove files ..."
 
+rm -v /srv/http/addons*
 rm -v /srv/http/app/templates/addons*
 rm -v /srv/http/assets/css/addons*
 rm -v /srv/http/assets/fonts/{addons*,Inconsolata*}
 rm -v /srv/http/assets/js/addons*
-rm -v /srv/http/addons*
 rm -r /srv/http/assets/img/addons
 
 # must NOT remove - used by other addons
