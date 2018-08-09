@@ -283,3 +283,6 @@ restartnginx() {
 	kill -s WINCH $( cat /run/nginx.pid.oldbin ) # stop old worker process
 	kill -s QUIT $( cat /run/nginx.pid.oldbin )  # stop old master process
 }
+reinitsystem() {
+	systemctl restart rune_SY_wrk
+}
