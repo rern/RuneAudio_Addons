@@ -2,9 +2,7 @@
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180801',
-	'revision'     => 'Fix Library display setting bug'
-					.'<br>Keep Playlist / saved Playlists display on page switched'
-					.'<br>Fix RuneUI not load after uninstalled'
+	'revision'     => 'Keep Playlist / saved Playlists display on page switched'
 					.'<br>Context menus can be toggled'
 					.'<br>Change context menu dialog boxes'
 					.'<br>Show warning of existing Webradio name / playlist name'
