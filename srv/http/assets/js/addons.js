@@ -1,3 +1,4 @@
+addons = JSON.parse( $( "#addonsjson" ).val() );
 // revision show/hide
 $( '.revision' ).click( function(e) {
 	e.stopPropagation();
