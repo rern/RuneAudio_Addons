@@ -147,4 +147,4 @@ echo $blocks;
 <div id="bottom"></div> <!-- for bottom padding -->
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
-<input id="addonsjson" type="hidden" value='<?=json_encode( $addons )?>'>
+<input id="addonslist" type="hidden" value='<?=json_encode( $addons )?>'>
