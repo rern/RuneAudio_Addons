@@ -168,8 +168,6 @@ redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
 
-title -nt "$info Any issues, try $( tcolor 'clear browser cache' )."
-
 file=/etc/nginx/nginx.conf
 if ! grep -q 'woff|ttf' $file; then
 	commentS 'gif\|ico'
