@@ -12,11 +12,11 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons',
 	'version'      => '20180808',
-	'revision'     => 'Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
+	'revision'     => 'Fix nonresponsive issue on some browsers'
 					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
+					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
 					.'<br>...'
-					.'<br>UI improvement',
+					.'<br>Switch from hammer.js to jquery.mobile which is leaner.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/img/addons/thumbaddo.png',
