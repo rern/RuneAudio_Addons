@@ -3,7 +3,7 @@
 	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180801',
 	'revision'     => 'Fix Library display setting bug'
-					.'<br>Fix Playlist - saved playlists display on page changed'
+					.'<br>Keep Playlist / saved Playlists display on page switched'
 					.'<br>Fix RuneUI not load after uninstalled'
 					.'<br>Context menus can be toggled'
 					.'<br>Change context menu dialog boxes'
