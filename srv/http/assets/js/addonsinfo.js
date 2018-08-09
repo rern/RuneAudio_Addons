@@ -100,7 +100,7 @@ function info( O ) {
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O ).show();
 		$( '#infoOverlay' ).show();
-		$( '#infoOk' ).click( function() {
+		$( '#infoOk' ).html( 'OK' ).show().click( function() {
 			infoReset();
 		});
 		return;
