@@ -252,7 +252,7 @@ $addons = array(
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Add a separate <code><i class=\"fa fa-pause\"></i></code> button',
-	'thumbnail'    => '/assets/addons/thumbpaus.png',
+	'thumbnail'    => '/assets/addons/thumbpaus.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'         => $redisaddons[ 'enha' ] ? 1 : 0,
