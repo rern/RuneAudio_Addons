@@ -92,13 +92,7 @@ echo $file
 
 [[ -e $file.backup ]] && file=$file.backup
 
-commentH 'id="loader"'
-
 string=$( cat <<'EOF'
-<div id="loader" class="hide">
-	<img src="<?=$this->asset('/img/runelogo.svg')?>">
-</div>
-
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <input id="addonsinfocss" type="hidden" value="<?=$this->asset('/css/addonsinfo.css')?>">
