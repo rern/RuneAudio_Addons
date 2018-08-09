@@ -1,20 +1,16 @@
 @font-face {
 	font-family: Inconsolata;
-	src: url('../assets/fonts/Inconsolata.woff') format('woff');
+	src: url('../fonts/Inconsolata.woff') format('woff'),
+		url( '../fonts/Inconsolata.ttf' ) format( 'truetype' );
 	font-weight: normal;
 	font-style: normal;
 }
-@font-face {
-	font-family: addons;
-	src: url( '../fonts/addons.woff' ) format( 'woff' ),
-		url( '../fonts/addons.ttf' ) format( 'truetype' );
-	font-weight: normal;
-	font-style: normal;
-}
+/* 'addons' declared in <head> for cache busting */
 .fa {
-	font-family: FontAwesome, addons;
+	font-family: addons, FontAwesome;
 }
 .fa-addons:before {
+	font-family: addons;
 	content: "\f520";
 	color: #7795b4;
 }
@@ -23,7 +19,7 @@
 .fa-minus-circle:before { content: "\f51C" }
 .fa-check:before { content: "\f51B" }
 .fa-refresh:before { content: "\f563" }
-.fa-arrow-up:before { content: "\f566" }
+.fa-arrow-up:before { 	font-family: addons; content: "\f566" }
 .fa-arrow-down:before { content: "\f567" }
 .fa-chevron-down:before { content: "\f568" }
 .fa-external-link:before { content: "\f569" }
@@ -75,7 +71,7 @@ h1 {
 .boxed-group {
 	padding: 10px 20px;
 }
-img {
+.boxed-group img {
 	max-width: 100px;
 }
 legend {
@@ -131,6 +127,9 @@ code {
 .btn {
 	text-transform: none;
 	min-width: 100px;
+}
+.btn i {
+	margin-right: 5px;
 }
 #bottom {
 	height: calc(100vh - 160px);
@@ -209,10 +208,4 @@ a[href^="http"]:hover,
 }
 .disabled:hover {
 	cursor: not-allowed;
-}
-#loadercontent i {
-	animation: blinker 1.5s linear infinite;
-}
-@keyframes blinker {
-	50% { opacity: 0; }
 }

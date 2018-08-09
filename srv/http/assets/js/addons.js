@@ -31,15 +31,13 @@ function branchtest( title, message ) {
 	} );
 }
 $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
-	$target = $( e.target );
-	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-	alias = $this.parent().attr( 'alias' );
-	rollback = $this.attr( 'rollback' );
-	type = $this.text().trim() === 'Install' ? 'Install' : 'Update';
-	title = $this.parent().prev().prev().find( 'span' ).text();
+	$this = $( this );
+	alias = $this.attr( 'alias' );
+	title = addons[ alias ].title.replace( / *\**$/, '' );
+	type = $this.text() === 'Install' ? 'Install' : 'Update';
+	rollback = addons[ alias ].rollback ? addons[ alias ].rollback : '';
 	opt = '';
 	branch = '';
-	
 	if ( type === 'Install' || !rollback ) {
 		branchtest( title, 'Install version?' );
 		return 1;
@@ -60,30 +58,37 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		}
 	} );
 } ).on( 'click', function ( e ) {
-	$target = $( e.target );
-	$this = $target.hasClass( 'fa' ) ? $target.parent() : $target;
-	if ( $this.attr( 'needspace' ) ) {
+	$this = $( this );
+	alias = $this.attr( 'alias' );
+	title = addons[ alias ].title.replace( / *\**$/, '' );
+	type = $this.text();
+	opt = '';
+	branch = '';
+	if ( $this.attr( 'space' ) ) {
 		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Disk space not enough:<br>'
-					+ $this.attr( 'needspace' )
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Disk space not enough:<br>'
+					+ 'Need: <white>'+ addons[ alias ].needspace +' MB</white><br>'+ $( this ).attr( 'space' )
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
 		info( {
-			  icon   : 'info-circle'
-			, title  : 'Warning'
-			, message: 'Conflict Addon:<br>'
-					+ $this.attr( 'conflict' )
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Conflict Addon:<br>'
+					+ '<white>'+ $this.attr( 'conflict' ) +'</white> must be uninstalled first.'
+		} );
+		return
+	} else if ( $this.attr( 'depend' ) ) {
+		info( {
+			  icon   : 'warning'
+			, title  : title
+			, message: 'Warning - Depend Addon:<br>'
+					+ '<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
 		} );
 		return
 	}
-	alias = $this.parent().attr( 'alias' );
-	type = $this.text().trim();
-	title = $this.parent().prev().prev().find( 'span' ).text();
-	opt = '';
-	branch = '';
 	
 	if ( type === 'Link' ) {
 		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
@@ -93,6 +98,9 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, message: type +'?'
 			, cancel : 1
 			, ok     : function () {
+				$( '#loader' )
+					.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+					.removeClass( 'hide' );
 				option = addons[ alias ].option;
 				if ( type === 'Update' || type === 'Uninstall' || !option ) {
 					formtemp();
@@ -168,7 +176,9 @@ function getoptions() {
 				}
 				, oklabel      : 'Yes'
 				, ok           : function() {
-					$( '#loader' ).show();
+					$( '#loader' )
+						.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+						.removeClass( 'hide' );
 					formtemp();
 				}
 			} );
@@ -323,7 +333,9 @@ function sendcommand() {
 	if ( j < olength ) {
 		getoptions();
 	} else {
-		$( '#loader' ).show();
+		$( '#loader' )
+			.html( '<i class="fa fa-addons blink"></i><br>Executing ...' )
+			.removeClass( 'hide' );
 		opt += branch;
 		formtemp();
 	}
@@ -331,13 +343,18 @@ function sendcommand() {
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
 	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
-	
+	// pass cache busting assets to addonsbash which cannot bind in '/templates'
 	$( 'body' ).append( '\
 		<form id="formtemp" action="addonsbash.php" method="post">\
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
 			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
+			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
+			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
+			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).val() +'">\
+			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).val() +'">\
+			<input type="hidden" name="addonsinfojs" value="'+ $( '#addonsinfojs' ).val() +'">\
 		</form>\
 	' );
 	$( '#formtemp' ).submit();

@@ -24,6 +24,10 @@ alias=addo
 installstart $@
 
 #0temp0
+file=/usr/local/bin/uninstall_enha.sh
+if ! grep 'runeui.min.js' $file; then
+	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
+fi
 sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
@@ -33,28 +37,75 @@ getinstallzip
 . /srv/http/addonsedit.sh
 
 echo -e "$bar Modify files ..."
+
+#----------------------------------------------------------------------------------
+file=/srv/http/index.php
+echo $file
+
+string=$( cat <<'EOF'
+    'addons',
+EOF
+)
+append 'controllers = array'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
 
+[[ -e $file.backup ]] && file=$file.backup
+
 string=$( cat <<'EOF'
+    <style>
+        @font-face {
+            font-family: addons;
+            src: url( '<?=$this->asset('/fonts/addons.woff') ?>' ) format( 'woff' ),
+                url( '<?=$this->asset('/fonts/addons.ttf') ?>' ) format( 'truetype' );
+            font-weight: normal;
+            font-style: normal;
+        }
+    </style>
     <link rel="stylesheet" href="<?=$this->asset('/css/addonsinfo.css')?>">
+<?=( $this->uri(1) === 'addons' ? '<link rel="stylesheet" href="'.$this->asset('/css/addons.css').'">' : '' ) ?>
 EOF
 )
 appendH 'runeui.css'
+
+string=$( cat <<'EOF'
+<?php if ( $this->uri(1) !== 'addons' ): ?>
+EOF
+)
+appendH '^-->'
 
 string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
 appendH -n +1 'logout.php'
+
+string=$( cat <<'EOF'
+<?php endif ?>
+EOF
+)
+appendH '$'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
 
+[[ -e $file.backup ]] && file=$file.backup
+
+string=$( cat <<'EOF'
+<input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
+<input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
+<input id="addonsinfocss" type="hidden" value="<?=$this->asset('/css/addonsinfo.css')?>">
+<input id="addonscss" type="hidden" value="<?=$this->asset('/css/addons.css')?>">
+<input id="addonsinfojs" type="hidden" value="<?=$this->asset('/js/addonsinfo.js')?>">
+EOF
+)
+insertH 'jquery-2.1.0.min.js'
+
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
+<?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
 EOF
 )
 appendH 'code.jquery.com'
@@ -68,20 +119,6 @@ EOF
 	sed -i "/jquery-2.1.0.min.js/ a$string" $file
 fi
 #----------------------------------------------------------------------------------
-file=/etc/nginx/nginx.conf
-if ! grep -q 'ico|svg' $file; then
-	echo $file
-	commentS 'gif\|ico'
-	string=$( cat <<'EOF'
-        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg)$ {
-EOF
-)
-	appendS 'gif\|ico'
-	
-	svg=0
-else
-	svg=1
-fi
 
 # set sudo no password
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
@@ -131,8 +168,17 @@ redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
 
-title -nt "$info Please $( tcolor 'clear browser cache' )."
+title -nt "$info Any issues, try $( tcolor 'clear browser cache' )."
+
+file=/etc/nginx/nginx.conf
+if ! grep -q 'woff|ttf' $file; then
+	commentS 'gif\|ico'
+	string=$( cat <<'EOF'
+        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|ttf)$ {
+EOF
+)
+	appendS 'gif\|ico'
+	restartnginx
+fi
 
 clearcache
-
-[[ $svg == 0 ]] && restartnginx

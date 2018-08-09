@@ -1,7 +1,32 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
-include 'addonshead.php';
 ?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Addons</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="msapplication-tap-highlight" content="no" />
+	<link rel="stylesheet" href="/css/runeui.css">
+	<style>
+		@font-face {
+			font-family: addons;
+			src        : url( '<?=$_POST[ 'addonswoff' ]?>' ) format( 'woff' ), url( '<?=$_POST[ 'addonsttf' ]?>' ) format( 'truetype' );
+			font-weight: normal;
+			font-style : normal;
+		}
+	</style>
+	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
+	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
+	<link rel="shortcut icon" href="/img/favicon.ico">
+</head>
+<body>
+
+<?php include 'addonslist.php';?>
 <!-- ...................................................................................... -->
 <script>
 // hide <pre> vertical scrollbar on desktop
@@ -46,10 +71,9 @@ setTimeout( function() {
 	}, 1000 );
 }, 1000 );
 </script>
-
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
-<script src="assets/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="assets/js/addonsinfo.js"></script>
+<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="<?=$_POST[ 'addonsinfojs' ]?>"></script>
 
 <div class="container">
 	<a id="close" class="close-root"><i class="fa fa-times fa-2x disabled"></i></a>
@@ -66,13 +90,6 @@ $opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
-$conflict = $addon[ 'conflict' ];
-$conflictcommandtxt = '';
-$conflictcommand = '';
-if ( $conflict && file_exists( '/usr/local/bin/uninstall_'.$conflict.'.sh' ) ) {
-	$conflictcommandtxt = 'uninstall_'.$conflict.'.sh';
-	$conflictcommand = '/usr/bin/sudo /usr/local/bin/'.$conflictcommandtxt;
-}
 
 $optarray = explode( ' ', $opt );
 if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
@@ -134,12 +151,11 @@ $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
-	include 'assets/css/addons.css';
 	include 'assets/css/addonsinfo.css';
 	echo '</style>';
 	$close = '/';
 } else {
-	$close = 'addons.php';
+	$close = '/addons';
 }
 
 echo $commandtxt.'<br>';

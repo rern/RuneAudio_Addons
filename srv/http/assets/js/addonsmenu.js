@@ -1,8 +1,9 @@
 $(function() { // $( document ).ready(function() {
 
 $( '#addons' ).click( function () {
-	$( '#loader' ).removeClass( 'hide' );
-	
+	$( '#loader' )
+		.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+		.removeClass( 'hide' );
 	$.get( '/addonsdl.php', function( exit ) {
 			addonsdl( exit );
 	} );
@@ -14,7 +15,9 @@ $( '#addons' ).click( function () {
 		, cancel   : 1
 		, ok       : function() {
 			var branch = $( '#infoTextBox' ).val();
-			$( '#loader' ).removeClass( 'hide' );
+			$( '#loader' )
+				.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+				.removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
 					'/addonsdl.php?branch='+ branch,
@@ -43,13 +46,11 @@ function addonsdl( exit ) {
 			, message: 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
-				$( '#loader' ).addClass( 'hide' );
-				location.href = '/addons.php';
+				location.href = '/addons';
 			}
 		} );
 	} else {
-		PNotify.removeAll();
-		location.href = '/addons.php';
+		location.href = '/addons';
 	}
 }
 
@@ -60,7 +61,7 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function() {
-	$( '#loadercontent' ).html( '<i class="fa fa-gear fa-spin"></i>Updating...' );
+	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i><br>Updating ...' );
 };
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();

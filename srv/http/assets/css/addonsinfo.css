@@ -1,22 +1,51 @@
-@font-face {
-	font-family: addons;
-	src: url( '../fonts/addons.woff' ) format( 'woff' ),
-		url( '../fonts/addons.ttf' ) format( 'truetype' );
-	font-weight: normal;
-	font-style: normal;
+/* 'addons' declared in <head> for cache busting */
+.fa {
+	font-family: addons, FontAwesome;
 }
-#settings,
-#menu-top .dropdown-menu {
+#addons i:before,
+.fa-addons:before {
+	font-family: addons;
+	content: "\f520";
+	color: #7795b4;
+}
+.fa-times:before { content: "\f51A" }
+.fa-info-circle:before { content: "\f560" }
+.fa-question-circle:before { content: "\f561" }
+.fa-warning:before { content: "\f56D" }
+
+#addons { cursor: pointer; } /* for non enha */
+#loadercontent { top: 0; } /* for non enha */
+
+#settings {
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* Internet Explorer/Edge */
 	user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
 }
-#addons i:before {
-	font-family: addons;
-	content: "\f520";
+@keyframes blinkopaque {
+	50% { opacity: 0; }
 }
+.blink {
+	animation: blinkopaque 1.5s linear infinite;
+}
+#loader {
+	font-size: 16px;
+	font-weight: 300;
+	background: rgba(0, 0, 0, 0.8);
+}
+#loader img {
+	margin-top: calc( 50vh - 38px );
+	width: 250px;
+	animation: blinkopaque 1.5s linear infinite;
+}
+#loader i {
+	margin-top: calc( 50vh - 80px );
+	margin-bottom: 10px;
+	width: 100px;
+	font-size: 100px;
+}
+
 .infobtn {
 	display: inline-block;
 	border: none;
@@ -55,7 +84,7 @@
 #infoBox {
 	width: 98%;
 	max-width: 400px;
-	margin: 50vh auto;
+	margin: 40vh auto;
 	transform: translateY( -50% );
 	background: #19232d;
 	border-radius: 10px;
@@ -70,10 +99,10 @@
 }
 #infoTop {
 	float: left;
-	width: calc( 100% - 40px );
+	width: calc( 100% - 45px );
 	color: #e0e7ee;
 	line-height: 40px;
-	padding: 0 10px;
+	padding: 0 10px 0 15px;
 	text-align: left;
 }
 #infoTop a, white {
@@ -116,9 +145,14 @@
 	max-height: 800px;
 	color: #7795b4;
 }
-.infotextdiv {
+.infotextlabel {
 	display: inline-block;
 	text-align: right;
+}
+.infotextbox {
+	display: inline-block;
+	margin-left: 5px;
+	text-align: left;
 }
 .infolabel {
 	display: inline-block;
@@ -126,7 +160,7 @@
 	text-align: right;
 	color: #e0e7ee;
 }
-.inputbox {
+.infoinput {
 	margin: 5px;
 	height: 41px;
 	padding: 0 10px;
@@ -135,7 +169,7 @@
 	border-radius: 6px;
 	border: 2px solid #34495e;
 }
-.inputbox:focus {
+.infoinput:focus {
 	outline: none;
 }
 .infohtml {

@@ -198,7 +198,7 @@ pre-defined variable:
 ------------------------------------------------------------------------------------
 alias=name                                already in install.sh / uninstall_alias.sh
 file=/path/file                           before all commands of each file
-string=( cat <<'EOF'                      before each insert and append
+string=$( cat <<'EOF'                      before each insert and append
 place code without escapes
 last line
 EOF
@@ -231,6 +231,12 @@ insertS [-n N] SEARCH                     #0alias0
 appendS [-n N] SEARCH                     ...
                                           #1alias1
 
+insertAsset SEARCH FILE.ext               <?php //0alias0 ?>
+appendAsset SEARCH FILE.ext               <style> @font-face { ... } </style>
+                                          <link rel="stylesheet" href="<?=$this->asset('/css/FILE.css')?>">
+                                          <script src="<?=$this->asset('/js/FILE.js')?>"></script>
+                                          <?php //1alias1 ?>
+
 restorefile FILE [FILE2 ...]              remove all insert / append / comment
 
 argument:
@@ -250,6 +256,7 @@ test run SEARCH:
     # . /srv/http/addonsedit.sh
     # file=/path/file
 	# match [-n N] SEARCH [-n N] [SEARCH2]
+cache busting - insert/append FILE.ttf/FILE.woff/FILE.css/FILE.js with insertAsset/appendAsset
 insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
@@ -272,6 +279,7 @@ insert/append with SEARCH itself in $string:
 	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
 /**/	'buttonlabel'   => '<install button label>',
+/**/	'depend'        => '<alias>',
 /**/	'conflict'      => '<alias>',
 /**/	'hide'          => '<php condition>',
 /**/	'option'        => array(
@@ -287,7 +295,7 @@ insert/append with SEARCH itself in $string:
 		'password'  => array(
 			'message'  => '<message text>',
 			'label'    => '<label text>',
-/**/		'required' => '1'
+/**/			'required' => '1'
 		),
 		'radio'     => array(
 			'message' => '<message text>',
@@ -296,7 +304,7 @@ insert/append with SEARCH itself in $string:
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
@@ -304,7 +312,7 @@ insert/append with SEARCH itself in $string:
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 		'select'    => array(
 			'message' => '<message text>',
@@ -314,7 +322,7 @@ insert/append with SEARCH itself in $string:
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/		'ckecked' => '<item1>'
+/**/			'ckecked' => '<item1>'
 		),
 	),
 
@@ -349,6 +357,9 @@ insert/append with SEARCH itself in $string:
 - `'installed'` if redundant addon already installed
 - `'exec'` if bash script result = true
 - `'php'` if php script result = true
+
+**`'depend'`** 
+- for depended addon which must be installed first 
 
 **`'conflict'`** 
 - for installed conflict addon which must be uninstalled  
