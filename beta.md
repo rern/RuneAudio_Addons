@@ -8,11 +8,6 @@
 					.'<br>Show warning of existing Webradio name / playlist name'
 					.'<br>Replace 4 major files, runeui.js, header.php, playback.php and footer.php, for more stable handling.'
 					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
-					.'<br>Fix local browser zoom setting and spacing'
-					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
-					.'<br>...'
-					.'<br>Now Airplay is working properly.',
 ),
 'airo' => array(
 	'title'        => 'Setting - AirPlay Output',
