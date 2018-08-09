@@ -13,6 +13,7 @@
 .fa-question-circle:before { content: "\f561" }
 .fa-warning:before { content: "\f56D" }
 
+#addons { cursor: pointer; } /* for non enha */
 #settings {
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
