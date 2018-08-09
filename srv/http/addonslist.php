@@ -162,19 +162,14 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20180727',
-	'revision'     => 'Fix Library display setting bug'
-					.'<br>Fix Playlist - saved playlists display on page changed'
-					.'<br>Fix RuneUI not load after uninstalled'
-					.'<br>Context menus can be toggled'
-					.'<br>Change context menu dialog boxes'
-					.'<br>Show warning of existing Webradio name / playlist name'
-					.'<br>Replace 4 major files, runeui.js, header.php, playback.php and footer.php, for more stable handling.'
-					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
+	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
 					.'<br>...'
-					.'<br>Now Airplay is working properly.',
+					.'<br>Now Airplay is working properly.'
+					.'<br>...'
+					.'<br>Rearrange overlay controls(tap cover art top for guide)'
+					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
