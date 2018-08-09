@@ -177,8 +177,6 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'conflict'     => 'paus',
 	'option'       => array(
-		'wait'    => 'After installed, web browser needs <white>clear cache/data</white>'
-						.'<br>First time install, RuneAudio needs <white>reboot</white> as well',
 		'radio'      => array(
 			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
