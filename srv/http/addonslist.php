@@ -161,15 +161,15 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180727',
-	'revision'     => 'Switch from hammer.js to jquery.mobile which is leaner.'
+	'version'      => '20180808',
+	'revision'     => 'Fix Library display setting bug.'
+					.'<br>Fix uninstall bug.'
+					.'<br>...'
+					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
 					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
 					.'<br>...'
-					.'<br>Now Airplay is working properly.'
-					.'<br>...'
-					.'<br>Rearrange overlay controls(tap cover art top for guide)'
-					.'<br>Overlay repeat = toggle: repeat | repeat single | off',
+					.'<br>Now Airplay is working properly.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
