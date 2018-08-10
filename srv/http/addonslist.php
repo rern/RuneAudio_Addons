@@ -60,13 +60,10 @@ $addons = array(
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'   => 'r e r n',
-	'description'  => 'An alternative local browser',
+	'description'  => 'A local browser replacement. Need MPD Upgrade before install.',
 	'thumbnail'    => '/img/addons/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-	'option'       => array(
-		'wait'    => 'After installed, Chromium needs a <white>reboot</white>.',
-	),
 ),
 'dual' => array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
