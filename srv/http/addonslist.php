@@ -54,6 +54,7 @@ $addons = array(
 'chro' => array(
 	'title'        => 'Chromium Browser',
 	'version'      => '20180321',
+	'depend'       => 'mpdu',
 	'needspace'    => 300,
 	'revision'     => 'Fix missing packages - Chromium 65.0.3325.181-1'
 					.'<br>...'
