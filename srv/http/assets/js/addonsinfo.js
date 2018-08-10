@@ -108,9 +108,9 @@ function info( O ) {
 	
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
-		$( '#infoMessage' ).html( O ).show();
-		$( '#infoOverlay' ).show();
-		$( '#infoOk' ).html( 'OK' ).show().click( function() {
+		$( '#infoMessage' ).html( O );
+		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
+		$( '#infoOk' ).html( 'OK' ).click( function() {
 			infoReset();
 		});
 		return;
@@ -121,13 +121,14 @@ function info( O ) {
 	
 	// inputs
 	if ( O.textlabel ) {
-		$( '#infoTextLabel' ).html( O.textlabel ).show();
-		$( '#infoTextBox' ).val( O.textvalue ).show();
-		$( '#infoText' ).show();
+		$( '#infoTextLabel' ).html( O.textlabel );
+		$( '#infoTextBox' ).val( O.textvalue );
+		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
 		var $infofocus =  $( '#infoTextBox' );
 		if ( O.textlabel2 ) {
-			$( '#infoTextLabel2' ).html( O.textlabel2 ).show();
-			$( '#infoTextBox2' ).val( O.textvalue2 ).show();
+			$( '#infoTextLabel2' ).html( O.textlabel2 );
+			$( '#infoTextBox2' ).val( O.textvalue2 );
+			$( '#infoTextLabel2, #infoTextBox2' ).show();
 		}
 		if ( O.boxwidth ) {
 			var calcW = window.innerWidth * 0.98;
@@ -136,17 +137,17 @@ function info( O ) {
 			$( '.infoinput' ).css( 'width', boxW );
 		}
 	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel ).show();
-		$( '#infoPassword' ).show();
+		$( '#infoPasswordLabel' ).html( O.passwordlabel );
+		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
 	} else if ( O.radiohtml ) {
 		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
 	} else if ( O.checkboxhtml ) {
 		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
-		$( '#infoSelectLabel' ).html( O.selectlabel ).show();
-		$( '#infoSelectBox' ).html( O.selecthtml ).show();
-		$( '#infoSelect' ).show();
+		$( '#infoSelectLabel' ).html( O.selectlabel );
+		$( '#infoSelectBox' ).html( O.selecthtml );
+		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 	}
 	
 	// buttons
