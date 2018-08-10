@@ -160,7 +160,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20180808',
-	'conflict'     => 'paus'
+	'conflict'     => 'paus',
 	'revision'     => 'Fix Library display setting bug.'
 					.'<br>Fix uninstall bug.'
 					.'<br>...'
