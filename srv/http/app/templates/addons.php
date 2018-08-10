@@ -75,7 +75,7 @@ foreach( $arrayalias as $alias ) {
 		$attrconflict = !$conflictaddon ? '' : ' conflict="'.preg_replace( '/ *\**$/', '', $addons[ $conflict ][ 'title' ] ).'"';
 		$depend = isset( $addon[ 'depend' ] ) ? $addon[ 'depend' ] : '';
 		$dependaddon = $depend ? $redis->hget( 'addons', $depend ) : '';
-		$attrdepend = !$dependaddon ? '' : ' depend="'.preg_replace( '/ *\**$/', '', $addons[ $depend ][ 'title' ] ).'"';
+		$attrdepend = $dependaddon ? '' : ' depend="'.preg_replace( '/ *\**$/', '', $addons[ $depend ][ 'title' ] ).'"';
 			
 		$btnin = '<a class="btn btn-default" alias="'.$alias.'"'.$btninclass.'"'.$attrspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>Uninstall</a>';
