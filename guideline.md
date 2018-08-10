@@ -198,8 +198,9 @@ pre-defined variable:
 ------------------------------------------------------------------------------------
 alias=name                                already in install.sh / uninstall_alias.sh
 file=/path/file                           before all commands of each file
-string=$( cat <<'EOF'                      before each insert and append
-place code without escapes
+
+string=$( cat <<'EOF'                     before each insert and append
+place code without escapes                to use variable inside, unquote 'EOF' (literal $ must be escaped)
 last line
 EOF
 )
