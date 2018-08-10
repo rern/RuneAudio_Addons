@@ -92,7 +92,17 @@ function infoReset() {
 function info( O ) {
 	// title
 	infoReset();
-	$( '#infoIcon' ).html( '<i class="fa fa-'+ ( O.icon ? O.icon : 'question-circle' ) +' fa-2x">' );
+	
+	if ( !O.icon ) {
+		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
+	} else {
+		if ( O.icon.charAt( 0 ) !== '<' ) {
+			var iconhtml = '<i class="fa fa-'+ O.icon +' fa-2x">';
+		} else {
+			var iconhtml = O.icon;
+		}
+	}
+	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
 	
