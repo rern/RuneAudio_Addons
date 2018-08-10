@@ -142,9 +142,19 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 	'option'       => array(
-		'confirm'    => 'Lately, mirror servers have been not so well as before.'
-					.'<br>Ranked servers may not work as well as it should.'
-					.'<br>Continue?'
+		'radio'      => array(
+			'message'  => 'Download test for each server(seconds):',
+			'list'     => array(
+				'3'           => 3,
+				'4'           => 4,
+				'*5'          => 5,
+				'6'           => 6,
+				'7'           => 7,
+				'8'           => 8,
+				'9'           => 9,
+				'10'          => 10,
+			),
+		),
 	),
 ),
 'back' => array(
