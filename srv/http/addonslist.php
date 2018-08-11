@@ -11,8 +11,10 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180809',
-	'revision'     => 'Fix nonresponsive buttons in some browsers'
+	'version'      => '20180811',
+	'revision'     => 'Fix minor bugs'
+					.'<br>...'
+					.'<br>Fix nonresponsive buttons in some browsers'
 					.'<br>...'
 					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
 					.'<br>...'
