@@ -20,6 +20,7 @@ fi
 alias=addo
 
 . /srv/http/addonstitle.sh
+. /srv/http/addonsedit.sh
 
 installstart $@
 
@@ -33,8 +34,6 @@ redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
 getinstallzip
-
-. /srv/http/addonsedit.sh
 
 echo -e "$bar Modify files ..."
 
@@ -167,8 +166,6 @@ redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer
 redis-cli hset addons update 0 &>/dev/null
 
 installfinish $@
-
-title -nt "$info Any issues, try $( tcolor 'clear browser cache' )."
 
 file=/etc/nginx/nginx.conf
 if ! grep -q 'woff|ttf' $file; then

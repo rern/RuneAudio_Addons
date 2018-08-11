@@ -65,6 +65,11 @@
 #     must be combined with insert/append to the same SEARCH (avoid double insert)
 
 comment() {
+	if [[ $file0 != $file ]]; then
+		echo $file
+		file0="$file"
+	fi
+	
 	test=0 # reset for running from terminal
 	if [[ $1 == -h || $1 == -p ]]; then
 		front='<?php /*'$alias  # <?php /*alias
@@ -169,6 +174,11 @@ comment() {
 }
 
 insert() {
+	if [[ $file0 != $file ]]; then
+		echo $file
+		file0="$file"
+	fi
+	
 	if [[ $1 == -h ]]; then
 		upper='<?php //0'$alias'0 ?>\n'  # <?php //0alias0 ?>
 		lower='n<?php //1'$alias'1 ?>'   # <?php //1alias1 ?>
@@ -276,7 +286,7 @@ asset() {
 	<style>
 		@font-face {
 			font-family: $name;
-			src        : url( "<?=$this->asset('/fonts/$name.woff')?>" ) format( 'woff' ), url( "<?=$this->asset('/fonts/$name.ttf')?>" ) format( 'truetype' );
+			src        : url( "<?=\$this->asset('/fonts/$name.woff')?>" ) format( 'woff' ), url( "<?=\$this->asset('/fonts/$name.ttf')?>" ) format( 'truetype' );
 			font-weight: normal;
 			font-style : normal;
 		}
@@ -286,13 +296,13 @@ EOF
 		elif [[ $ext == 'css' ]]; then
 			string+=$( cat <<EOF
 
-	<link rel="stylesheet" href="<?=$this->asset('/css/$filename')?>">
+	<link rel="stylesheet" href="<?=\$this->asset('/css/$filename')?>">
 EOF
 )
 		else
 			string+=$( cat <<EOF
 
-<script src="<?=$this->asset('/js/$filename')?>"></script>
+<script src="<?=\$this->asset('/js/$filename')?>"></script>
 EOF
 )
 		fi
