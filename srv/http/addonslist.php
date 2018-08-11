@@ -160,6 +160,7 @@ $addons = array(
 		),
 	),
 ),
+/*
 'back' => array(
 	'title'        => 'RuneUI Backup-Restore Enable',
 	'version'      => '20170901',
@@ -170,6 +171,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
 ),
+*/
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20180808',
