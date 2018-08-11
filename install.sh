@@ -20,7 +20,6 @@ fi
 alias=addo
 
 . /srv/http/addonstitle.sh
-. /srv/http/addonsedit.sh
 
 installstart $@
 
@@ -34,6 +33,8 @@ redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
 getinstallzip
+
+. /srv/http/addonsedit.sh # available after getinstallzip
 
 echo -e "$bar Modify files ..."
 
