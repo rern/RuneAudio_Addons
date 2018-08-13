@@ -16,7 +16,7 @@ $( '#addons' ).click( function () {
 		, ok       : function() {
 			var branch = $( '#infoTextBox' ).val();
 			$( '#loader' )
-				.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+				.html( '<i class="fa fa-addons blink"></i>' )
 				.removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
@@ -61,7 +61,7 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function() {
-	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i><br>Updating ...' );
+	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i>' );
 };
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
