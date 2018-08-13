@@ -2,7 +2,7 @@ $(function() { // $( document ).ready(function() {
 
 $( '#addons' ).click( function () {
 	$( '#loader' )
-		.html( '<i class="fa fa-addons blink"></i><br>Connecting ...' )
+		.html( '<i class="fa fa-addons blink"></i>' )
 		.removeClass( 'hide' );
 	$.get( '/addonsdl.php', function( exit ) {
 			addonsdl( exit );
