@@ -220,15 +220,15 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180724',
+	'version'      => '20180813',
 	'needspace'    => 5,
-	'revision'     => 'Switch from hammer.js to jquery.mobile'
+	'revision'     => 'Maintenance update'
+					.'<br>...'
+					.'<br>Switch from hammer.js to jquery.mobile'
 					.'<br>...'
 					.'<br>Improve UI'
 					.'<br>On / Off: from Menu > GPIO'
-					.'<br>Settings: from Menu > long-press GPIO'
-					.'<br>...'
-					.'<br>Now use only plain BASH and Python - no PIP install needed',
+					.'<br>Settings: from Menu > long-press GPIO',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'    => '/img/addons/thumbgpio.gif',
