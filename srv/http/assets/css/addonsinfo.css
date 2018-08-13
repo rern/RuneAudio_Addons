@@ -35,13 +35,12 @@
 	background: rgba(0, 0, 0, 0.8);
 }
 #loader img {
-	margin-top: calc( 40vh );
+	margin-top: 40vh;
 	width: 250px;
 	animation: blinkopaque 1.5s linear infinite;
 }
 #loader i {
-	margin-top: calc( 40vh );
-	margin-bottom: 10px;
+	margin-top: 40vh;
 	width: 100px;
 	font-size: 100px;
 }
