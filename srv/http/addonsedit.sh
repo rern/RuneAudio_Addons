@@ -65,11 +65,6 @@
 #     must be combined with insert/append to the same SEARCH (avoid double insert)
 
 comment() {
-	if [[ $file0 != $file ]]; then
-		echo $file
-		file0="$file"
-	fi
-	
 	test=0 # reset for running from terminal
 	if [[ $1 == -h || $1 == -p ]]; then
 		front='<?php /*'$alias  # <?php /*alias
@@ -174,11 +169,6 @@ comment() {
 }
 
 insert() {
-	if [[ $file0 != $file ]]; then
-		echo $file
-		file0="$file"
-	fi
-	
 	if [[ $1 == -h ]]; then
 		upper='<?php //0'$alias'0 ?>\n'  # <?php //0alias0 ?>
 		lower='n<?php //1'$alias'1 ?>'   # <?php //1alias1 ?>
