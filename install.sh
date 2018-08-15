@@ -157,6 +157,7 @@ for card in "${cards[@]}"; do
 	fi
 	(( i++ ))
 done
+redis-cli hdel udaclist ''
 
 notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
 grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=0
