@@ -151,7 +151,7 @@ i=0
 for card in "${cards[@]}"; do
 	if (( i % 2 )); then
 		extlabel=$( echo "$card" | awk -F '","hwplatformid'  '{print $1}' | awk -F 'extlabel":"' '{print $2}' )
-		redis-cli hset udaclist "$extlabel" "$key" &> /dev/null
+		redis-cli hset udaclist "$key" "$extlabel" &> /dev/null
 	else
 		key="$card"
 	fi
