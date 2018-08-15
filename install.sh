@@ -79,7 +79,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
-appendH -n +1 'logout.php'
+appendH -n +1 'href="#poweroff-modal"'
 
 string=$( cat <<'EOF'
 <?php endif ?>
@@ -116,7 +116,7 @@ if ! grep 'jquery.mobile.custom.min.js' $file; then
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
-	sed -i "/jquery-2.1.0.min.js/ a$string" $file
+	sed -i "$ a$string" $file
 fi
 #----------------------------------------------------------------------------------
 
