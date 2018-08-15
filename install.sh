@@ -28,7 +28,9 @@ file=/usr/local/bin/uninstall_enha.sh
 if [[ -e $file ]] && ! grep 'runeui.min.js' $file; then
 	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
 fi
-sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
+file=/srv/http/app/templates/footer.php
+[[ -e $file.backup ]] && file=$file.backup
+sed -i '/jquery.mobile.custom.min.js/ d' $file
 redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
