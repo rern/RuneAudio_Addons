@@ -61,7 +61,7 @@ var pushstreamAddons = new PushStream( {
 	modes: GUI.mode
 } );
 pushstreamAddons.onmessage = function() {
-	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i>' );
+	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i><br><br>Updating ...' );
 };
 pushstreamAddons.addChannel('addons');
 pushstreamAddons.connect();
