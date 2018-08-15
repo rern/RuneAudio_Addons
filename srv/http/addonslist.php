@@ -363,12 +363,12 @@ $addons = array(
 ),
 'udac' => array(
 	'title'        => 'USB DAC Plug and Play',
-	'version'      => '20180219',
-	'revision'     => '<white>Audio output</white> can be selected for preset when power off USB DAC'
+	'version'      => '20180805',
+	'revision'     => 'Improve installation'
 					.'<br>...'
-					.'<br>Use <white>udev rules</white> to auto switch'
+					.'<br><white>Audio output</white> can be selected for preset when power off USB DAC'
 					.'<br>...'
-					.'<br>Remove manual refresh/reload',
+					.'<br>Use <white>udev rules</white> to auto switch',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Automatically switch to/from MPD Audio output and reload configuration:'
 					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
