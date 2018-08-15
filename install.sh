@@ -116,7 +116,7 @@ if ! grep 'jquery.mobile.custom.min.js' $file; then
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
-	sed -i "/jquery-2.1.0.min.js/ a$string" $file
+	sed -i "$ a$string" $file
 fi
 #----------------------------------------------------------------------------------
 
