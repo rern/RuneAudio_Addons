@@ -361,6 +361,7 @@ $addons = array(
 		),
 	),
 ),
+/*
 'udac' => array(
 	'title'        => 'USB DAC Plug and Play',
 	'version'      => '20180805',
@@ -384,6 +385,7 @@ $addons = array(
 		),
 	),
 ),
+*/
 'webr' => array(
 	'title'        => 'Webradio Import',
 	'maintainer'   => 'r e r n',
