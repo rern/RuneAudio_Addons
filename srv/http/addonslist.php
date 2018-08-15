@@ -380,7 +380,7 @@ $addons = array(
 		'radio'      => array(
 			'message'  => '<white>Audio output</white> when power off USB DAC:',
 			'list'     => $udaclist = $redis->hGetAll( 'udaclist' ),
-			'checked'  => 'checked'  => 'bcm2835 ALSA_1',
+			'checked'  => 'bcm2835 ALSA_1',
 		),
 	),
 ),
