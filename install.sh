@@ -79,7 +79,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa"></i> Addons</a></li>
 EOF
 )
-appendH -n +1 'logout.php'
+appendH -n +1 'href="#poweroff-modal"'
 
 string=$( cat <<'EOF'
 <?php endif ?>
