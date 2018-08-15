@@ -11,13 +11,12 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180811',
-	'revision'     => 'Fix minor bugs'
+	'version'      => '20180815',
+	'revision'     => 'Fix installation bug on RuneAudio 0.3'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
 					.'<br>...'
 					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
-					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
