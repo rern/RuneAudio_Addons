@@ -21,6 +21,8 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
+sed -i '/jquery.mobile.custom.min.js/ d' file=/srv/http/app/templates/footer.php
+
 installstart $@
 
 getinstallzip
