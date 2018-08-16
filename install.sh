@@ -97,7 +97,6 @@ EOF
 )
 insertH 'jquery-2.1.0.min.js'
 
-# separate to keep out of uninstall
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
