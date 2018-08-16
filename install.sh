@@ -23,13 +23,6 @@ alias=addo
 
 installstart $@
 
-#0temp0
-file=/usr/local/bin/uninstall_enha.sh
-if [[ -e $file ]] && ! grep 'runeui.min.js' $file; then
-	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
-fi
-#1temp1
-
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
