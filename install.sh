@@ -28,10 +28,6 @@ file=/usr/local/bin/uninstall_enha.sh
 if [[ -e $file ]] && ! grep 'runeui.min.js' $file; then
 	sed -i '/coverart_ctl.php/ i\mv /srv/http/assets/js/runeui.min.js{.backup,}' $file
 fi
-file=/srv/http/app/templates/footer.php
-[[ -e $file.backup ]] && file=$file.backup
-sed -i '/jquery.mobile.custom.min.js/ d' $file
-redis-cli del notifysec zoomlevel browser &> /dev/null
 #1temp1
 
 getinstallzip
@@ -104,22 +100,21 @@ EOF
 )
 insertH 'jquery-2.1.0.min.js'
 
+# separate to keep out of uninstall
+string=$( cat <<'EOF'
+<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
+EOF
+)
+appendH 'jquery-2.1.0.min.js'
+
 string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
 <?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
 EOF
 )
-appendH 'code.jquery.com'
+appendH '$'
 
-# separate to keep out of uninstall
-if ! grep 'jquery.mobile.custom.min.js' $file; then
-	string=$( cat <<'EOF'
-<script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
-EOF
-)
-	sed -i "$ a$string" $file
-fi
 #----------------------------------------------------------------------------------
 
 # set sudo no password
