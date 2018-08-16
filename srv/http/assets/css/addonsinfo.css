@@ -14,7 +14,6 @@
 .fa-warning:before { content: "\f56D" }
 
 #addons { cursor: pointer; } /* for non enha */
-#loadercontent { top: 0; } /* for non enha */
 
 #settings {
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -32,6 +31,7 @@
 #loader {
 	font-size: 16px;
 	font-weight: 300;
+	color: #999;
 	background: rgba(0, 0, 0, 0.8);
 }
 #loader img {
