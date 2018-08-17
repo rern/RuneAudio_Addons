@@ -261,7 +261,7 @@ cache busting - insert/append FILE.ttf/FILE.woff/FILE.css/FILE.js with insertAss
 insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
-do not isert/append into another isert/append
+do not isert/append into another insert/append
     it will be uninstalled with that addon 
 ```
   
