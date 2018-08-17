@@ -261,6 +261,8 @@ cache busting - insert/append FILE.ttf/FILE.woff/FILE.css/FILE.js with insertAss
 insert/append with SEARCH itself in $string:
     must be after comment to the same SEARCH (avoid commented after insert)
     must be combined with insert/append to the same SEARCH (avoid double insert)
+insert/append with SEARCH in the just inserted/appended
+    line number will shift to another +1
 ```
   
 
