@@ -185,10 +185,8 @@ insert() {
 		upper='/*0'$alias'0*/\n'         # /*0alias0*/
 		lower='n/*1'$alias'1*/'          # /*1alias1*/
 	fi
-	
 	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi      # append / insert
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi
-	
 	stringcount=$( echo "$string" | wc -l )                 # count insert lines
 	insertcount=$(( stringcount + 2 ))                      # add 2 for upper-lower lines
 	
@@ -198,23 +196,22 @@ $( echo "$string" | sed 's|\\|\\\\|g; s|$|\\|' )
 EOF
 )
 	# if 1st or $ last line
-	if [[ $1 =~ ^[0-9]+$ ]]; then                            # line number specified
+	if [[ $1 =~ ^[0-9]+$ ]]; then                           # line number specified
 		linenum=( $(( $1 + $lines )) )                      # array of single line
 	elif [[ $1 == '$' ]]; then                              # last line specified
-		linenum=( $(( $( sed -n "$ =" $file ) + $lines )) ) # array of single line
+		linenum=( $(( $( sed -n '$ =' $file ) + $lines )) ) # array of single line
 	else
 		regex=$( echo "$1" | sed -e 's|"|\\"|g' )
 		linenum=( $( sed -n "\|$regex|=" $file ) )          # array of all line(s)
 		ilength=${#linenum[*]}
-		
-		if (( $lines != 0 )); then                           # add line +- to array
+		if [[ $lines != 0 ]]; then                          # add line +- to array
 			for (( i=0; i < ilength; i++ )); do
 				linenum[$i]=$(( ${linenum[$i]} + $lines ))
 			done
 		fi
 	fi
-
 	increment=0
+	ilength=${#linenum[*]}
 	for (( i=0; i < ilength; i++ )); do
 		lineins=$(( ${linenum[i]} + $increment ))           # increment line number after each insert
 		sed -i "$lineins $ia$upper$string$lower" "$file"
@@ -260,6 +257,16 @@ appendS() {
 asset() {
 	ia=$1
 	shift
+	if [[ $1 == -n ]]; then
+		n='-n'
+		lines=$2
+		shift
+		shift
+	else
+		n=
+		lines=
+	fi
+	
 	line=$1
 	shift
 	string=
@@ -299,7 +306,11 @@ EOF
 	done
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
-	[[ $ia == -i ]] && insertH "$line" || appendH "$line"
+	if [[ $line != '$' ]]; then
+		[[ $ia == -i ]] && insertH $n $lines "$line" || appendH $n $lines "$line"
+	else
+		[[ $ia == -i ]] && insertH $n $lines '$' || appendH $n $lines '$'
+	fi
 }
 insertAsset() {
 	asset -i "$@"
