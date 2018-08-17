@@ -187,7 +187,6 @@ insert() {
 	fi
 	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi      # append / insert
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi
-	
 	stringcount=$( echo "$string" | wc -l )                 # count insert lines
 	insertcount=$(( stringcount + 2 ))                      # add 2 for upper-lower lines
 	
@@ -211,7 +210,6 @@ EOF
 			done
 		fi
 	fi
-
 	increment=0
 	ilength=${#linenum[*]}
 	for (( i=0; i < ilength; i++ )); do
@@ -259,7 +257,16 @@ appendS() {
 asset() {
 	ia=$1
 	shift
-	if [[ $1 == -n ]]; then lines="-n $2"; shift; shift; fi # line +-
+	if [[ $1 == -n ]]; then
+		n='-n'
+		lines=$2
+		shift
+		shift
+	else
+		n=
+		lines=
+	fi
+	
 	line=$1
 	shift
 	string=
@@ -300,9 +307,9 @@ EOF
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
 	if [[ $line != '$' ]]; then
-		[[ $ia == -i ]] && insertH $lines "$line" || appendH $lines "$line"
+		[[ $ia == -i ]] && insertH $n $lines "$line" || appendH $n $lines "$line"
 	else
-		[[ $ia == -i ]] && insertH $lines '$' || appendH $lines '$'
+		[[ $ia == -i ]] && insertH $n $lines '$' || appendH $n $lines '$'
 	fi
 }
 insertAsset() {
