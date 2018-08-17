@@ -185,7 +185,6 @@ insert() {
 		upper='/*0'$alias'0*/\n'         # /*0alias0*/
 		lower='n/*1'$alias'1*/'          # /*1alias1*/
 	fi
-	
 	if [[ $1 == -a ]]; then ia=a; shift; else ia=i; fi      # append / insert
 	if [[ $1 == -n ]]; then lines=$2; shift; shift; else lines=0; fi
 	
@@ -198,16 +197,15 @@ $( echo "$string" | sed 's|\\|\\\\|g; s|$|\\|' )
 EOF
 )
 	# if 1st or $ last line
-	if [[ $1 =~ ^[0-9]+$ ]]; then                            # line number specified
+	if [[ $1 =~ ^[0-9]+$ ]]; then                           # line number specified
 		linenum=( $(( $1 + $lines )) )                      # array of single line
 	elif [[ $1 == '$' ]]; then                              # last line specified
-		linenum=( $(( $( sed -n "$ =" $file ) + $lines )) ) # array of single line
+		linenum=( $(( $( sed -n '$ =' $file ) + $lines )) ) # array of single line
 	else
 		regex=$( echo "$1" | sed -e 's|"|\\"|g' )
 		linenum=( $( sed -n "\|$regex|=" $file ) )          # array of all line(s)
-		ilength=${#linenum[*]}
 		
-		if (( $lines != 0 )); then                           # add line +- to array
+		if (( $lines != 0 )); then                          # add line +- to array
 			for (( i=0; i < ilength; i++ )); do
 				linenum[$i]=$(( ${linenum[$i]} + $lines ))
 			done
@@ -215,6 +213,7 @@ EOF
 	fi
 
 	increment=0
+	ilength=${#linenum[*]}
 	for (( i=0; i < ilength; i++ )); do
 		lineins=$(( ${linenum[i]} + $increment ))           # increment line number after each insert
 		sed -i "$lineins $ia$upper$string$lower" "$file"
@@ -260,6 +259,7 @@ appendS() {
 asset() {
 	ia=$1
 	shift
+	if [[ $1 == -n ]]; then lines="-n $2"; shift; shift; fi # line +-
 	line=$1
 	shift
 	string=
@@ -300,9 +300,9 @@ EOF
 	string=$( echo -e "$string" | sed '1 d' ) # remove 1st blank line
 	shift
 	if [[ $line != '$' ]]; then
-		[[ $ia == -i ]] && insertH "$line" || appendH "$line"
+		[[ $ia == -i ]] && insertH $lines "$line" || appendH $lines "$line"
 	else
-		[[ $ia == -i ]] && insertH '$' || appendH '$'
+		[[ $ia == -i ]] && insertH $lines '$' || appendH $lines '$'
 	fi
 }
 insertAsset() {
