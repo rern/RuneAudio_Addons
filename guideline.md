@@ -263,6 +263,8 @@ insert/append with SEARCH itself in $string:
     must be combined with insert/append to the same SEARCH (avoid double insert)
 insert/append with SEARCH in the just inserted/appended
     line number will shift to another +1
+do not isert/append into another isert/append
+    it will be uninstalled wth that addon 
 ```
   
 
