@@ -236,8 +236,9 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180815',
-	'revision'     => 'Prepare for RuneUI Enhancement update'
+	'version'      => '20180817',
+	'revision'     => 'Fix install bug'
+					.'<br>Prepare for RuneUI Enhancement update'
 					.'<br>...'
 					.'<br>Update along with Addons 20180725'
 					.'<br>...'
