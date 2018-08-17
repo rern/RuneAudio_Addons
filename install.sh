@@ -104,9 +104,13 @@ EOF
 appendH 'jquery-2.1.0.min.js'
 
 string=$( cat <<'EOF'
+<?php if ($this->section == 'index'): ?>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-<?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
+<?php elseif ( $this->uri(1) === 'addons' ): ?>
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addons.js')?>"></script>
+<?php endif ?>
 EOF
 )
 appendH '$'
