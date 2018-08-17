@@ -203,8 +203,8 @@ EOF
 	else
 		regex=$( echo "$1" | sed -e 's|"|\\"|g' )
 		linenum=( $( sed -n "\|$regex|=" $file ) )          # array of all line(s)
-		
-		if (( $lines != 0 )); then                          # add line +- to array
+		ilength=${#linenum[*]}
+		if [[ $lines != 0 ]]; then                          # add line +- to array
 			for (( i=0; i < ilength; i++ )); do
 				linenum[$i]=$(( ${linenum[$i]} + $lines ))
 			done
