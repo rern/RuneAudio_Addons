@@ -44,6 +44,9 @@
 	width: 100px;
 	font-size: 100px;
 }
+#loadercontent {
+	top: 60px;
+}
 
 .infobtn {
 	display: inline-block;
