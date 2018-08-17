@@ -9,7 +9,7 @@ else
 fi
 
 # for 'installstart' before 'addonslist.php' exist
-if [[ ! -e /srv/http/addonslist.php ]]; then
+if [[ ! -e /srv/http/addonslist.php || ! -e /srv/http/addonstitle.sh ]]; then
 	gitpath=https://github.com/rern/RuneAudio_Addons/raw/$branch/srv/http
 	wget -qN --no-check-certificate $gitpath/addonslist.php -P /srv/http
 	wget -qN --no-check-certificate $gitpath/addonstitle.sh -P /srv/http
@@ -104,13 +104,9 @@ EOF
 appendH 'jquery-2.1.0.min.js'
 
 string=$( cat <<'EOF'
-<?php if ($this->section == 'index'): ?>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-<?php elseif ( $this->uri(1) === 'addons' ): ?>
-<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
-<script src="<?=$this->asset('/js/addons.js')?>"></script>
-<?php endif ?>
+<?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
 EOF
 )
 appendH '$'
