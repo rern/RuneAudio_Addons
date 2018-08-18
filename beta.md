@@ -2,12 +2,17 @@
 'enha' => array(
 	'title'        => 'RuneUI Enhancements **',
 	'version'      => '20180801',
-	'revision'     => 'Fix - drag time/volume knobs show display settings'
-					.'<br>Keep Playlist / saved Playlists display on page switched'
-					.'<br>Context menus can be toggled'
-					.'<br>Change context menu dialog boxes'
-					.'<br>Show warning of existing Webradio name / playlist name'
-					.'<br>Replace 4 major files, runeui.js, header.php, playback.php and footer.php, for more stable handling.'
+	'revision'     => 'Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling.'
+					.'<br>Improve <white>context menus</white> and toggle'
+					.'<br>Show warning of existing Webradio / saved playlist name'
+					.'<br>Library - Improve maintaining scroll position on all pages'
+					.'<br>Library - Fix back button browsing in Artists and Genres'
+					.'<br>...'
+					.'<br>Playback - Fix drag time/volume show display settings'
+					.'<br>...'
+					.'<br>Playlist - Improve <white>drag to arrange order</white> on touch device'
+					.'<br>Playlist - Fix maintaining display on page switched'
+					.'<br>'
 					.'<br>...'
 ),
 'airo' => array(
