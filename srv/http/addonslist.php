@@ -228,9 +228,9 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180813',
+	'version'      => '20180818',
 	'needspace'    => 5,
-	'revision'     => 'Maintenance update'
+	'revision'     => 'Fix on-off indicator'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile'
 					.'<br>...'
