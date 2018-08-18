@@ -15,6 +15,7 @@
 
 #addons { cursor: pointer; } /* for non enha */
 
+.dropdown-menu,
 #settings {
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
