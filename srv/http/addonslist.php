@@ -175,16 +175,25 @@ $addons = array(
 */
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180808',
+	'version'      => '20180818',
 	'conflict'     => 'paus',
-	'revision'     => 'Fix Library display setting bug.'
+	'revision'     => 'Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling.'
+					.'<br>Improve <white>context menus</white> and toggle'
+					.'<br>Show warning of existing Webradio / saved playlist name'
+					.'<br>No need to clear cache or reboot after installed/upgraded'
+					.'<br>Library - Improve maintaining scroll position in all pages'
+					.'<br>Library - Fix back button browsing in all pages'
+					.'<br>Playback - Fix drag time/volume show display settings'
+					.'<br>Playlist - Improve <white>drag to arrange order</white> on touch device'
+					.'<br>Playlist - Fix maintaining display on page switched'
+					.'<br>Playlist - Always scroll current song to the top'
+					.'<br>...'
+					.'<br>Fix Library display setting bug.'
 					.'<br>Fix uninstall bug.'
 					.'<br>...'
 					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
 					.'<br>Fix local browser zoom setting and spacing'
-					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden'
-					.'<br>...'
-					.'<br>Now Airplay is working properly.',
+					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
