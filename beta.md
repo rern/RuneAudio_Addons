@@ -5,6 +5,7 @@
 	'revision'     => 'Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling.'
 					.'<br>Improve <white>context menus</white> and toggle'
 					.'<br>Show warning of existing Webradio / saved playlist name'
+					.'<br>No need to clear cache or reboot after installed/upgraded'
 					.'<br>Library - Improve maintaining scroll position in all pages'
 					.'<br>Library - Fix back button browsing in all pages'
 					.'<br>...'
