@@ -1,21 +1,4 @@
 ```php
-'enha' => array(
-	'title'        => 'RuneUI Enhancements **',
-	'version'      => '20180801',
-	'revision'     => 'Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling.'
-					.'<br>Improve <white>context menus</white> and toggle'
-					.'<br>Show warning of existing Webradio / saved playlist name'
-					.'<br>No need to clear cache or reboot after installed/upgraded'
-					.'<br>Library - Improve maintaining scroll position in all pages'
-					.'<br>Library - Fix back button browsing in all pages'
-					.'<br>...'
-					.'<br>Playback - Fix drag time/volume show display settings'
-					.'<br>...'
-					.'<br>Playlist - Improve <white>drag to arrange order</white> on touch device'
-					.'<br>Playlist - Fix maintaining display on page switched'
-					.'<br>Playlist - Always scroll current song to the top'
-					.'<br>...'
-),
 'airo' => array(
 	'title'        => 'Setting - AirPlay Output',
 	'maintainer'   => 'r e r n',
