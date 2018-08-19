@@ -195,6 +195,9 @@ while ( !feof( $popencmd ) ) {                            // each line
 
 	echo $std;                                            // stdout to screen
 	
+	// wait if reinit
+	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) sleep( 5 );
+	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
 		exec( $path.'killall '.$installfile.' wget pacman &' );
