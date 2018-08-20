@@ -72,7 +72,7 @@ EOF
 appendH '^-->'
 
 string=$( cat <<'EOF'
-            <li><a id="addons"><i class="fa"></i> Addons</a></li>
+            <li><a id="addons"><i class="fa fa-addons"></i> Addons</a></li>
 EOF
 )
 appendH 'href="#poweroff-modal"'
