@@ -146,7 +146,6 @@ $addons = array(
 	'option'       => array(
 		'radio'      => array(
 			'message'  => 'Download test for each server(seconds):',
-			'message' => 'Download test for each server(seconds):',
 			'list'    => array(
 				'3'  => 3,
 				'4'  => 4,
