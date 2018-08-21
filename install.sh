@@ -72,7 +72,7 @@ EOF
 appendH '^-->'
 
 string=$( cat <<'EOF'
-            <li><a id="addons"><i class="fa"></i> Addons</a></li>
+            <li><a id="addons"><i class="fa fa-addons"></i> Addons</a></li>
 EOF
 )
 appendH 'href="#poweroff-modal"'
@@ -105,9 +105,13 @@ EOF
 appendH 'jquery-2.1.0.min.js'
 
 string=$( cat <<'EOF'
+<?php if ($this->section == 'index'): ?>
 <script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
 <script src="<?=$this->asset('/js/addonsmenu.js')?>"></script>
-<?=( $this->uri(1) === 'addons' ? '<script src="'.$this->asset('/js/addons.js').'"></script>' : '' ) ?>
+<?php elseif ($this->section == 'addons'): ?>
+<script src="<?=$this->asset('/js/addonsinfo.js')?>"></script>
+<script src="<?=$this->asset('/js/addons.js')?>"></script>
+<?php endif ?>
 EOF
 )
 appendH '$'

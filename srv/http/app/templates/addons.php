@@ -134,6 +134,7 @@ foreach( $arrayalias as $alias ) {
 		</div>';
 }
 $redis->hSet( 'addons', 'update', $updatecount );
+$redis->hSet( 'display', 'update', $updatecount );
 // ------------------------------------------------------------------------------------
 echo '
 	<ul id="list">'.

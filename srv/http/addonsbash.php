@@ -55,9 +55,9 @@ if ( scrollbarWidth !== 0 ) {
 	document.head.appendChild( style );
 }
 
-// js for '<pre>' must be here before 'function bash()'.
-// php 'flush' loop waits for all outputs before going to next lines.
-// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'.
+// js for '<pre>' must be here before start stdout
+// php 'flush' loop waits for all outputs before going to next lines
+// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
 setTimeout( function() {
 	pre = document.getElementsByTagName( 'pre' )[ 0 ];
 	var h0 = pre.scrollHeight;
@@ -195,6 +195,9 @@ while ( !feof( $popencmd ) ) {                            // each line
 
 	echo $std;                                            // stdout to screen
 	
+	// wait if reinit
+	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) sleep( 5 );
+	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
 		exec( $path.'killall '.$installfile.' wget pacman &' );
@@ -220,7 +223,6 @@ pclose( $popencmd );
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
 		
-		if ( '<?=$alias;?>' === 'bash' ) return;
 		info( {
 			icon:    'info-circle',
 			title:   '<?=$title;?>',

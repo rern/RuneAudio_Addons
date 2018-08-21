@@ -2,7 +2,6 @@
 .fa {
 	font-family: addons, FontAwesome;
 }
-#addons i:before,
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
@@ -15,8 +14,8 @@
 
 #addons { cursor: pointer; } /* for non enha */
 
-.dropdown-menu,
-#settings {
+#settings,
+.dropdown-menu {
 	-webkit-touch-callout: none; /* iOS Safari */
 	-webkit-user-select: none; /* Safari */
 	-moz-user-select: none; /* Firefox */
