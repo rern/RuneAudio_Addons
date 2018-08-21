@@ -55,6 +55,11 @@ var html = heredoc( function() { /*
 			<div id="infoPassword" class="infocontent">
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
+			<div id="infoFile" class="infocontent">
+				<a id="infoFileLabel" class="infobtn infobtn-primary"></a>
+				<span id="infoFilename"></span>
+				<input type="file" class="infoinput" id="infoFileBox">
+			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
 			<div id="infoSelect" class="infocontent">
@@ -85,6 +90,7 @@ function infoReset() {
 	$( '.infolabel, .infohtml' ).empty();
 	$( '.infolabel' ).css( 'width', '' );
 	$( '.infoinput' ).css( 'width', '' ).val( '' );
+	$( '#infoFileLabel' ).css( 'background', '' );
 	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
 	$( '#loader' ).addClass( 'hide' );
 }
@@ -118,37 +124,6 @@ function info( O ) {
 	
 	// message
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
-	
-	// inputs
-	if ( O.textlabel ) {
-		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextBox' ).val( O.textvalue );
-		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
-		var $infofocus =  $( '#infoTextBox' );
-		if ( O.textlabel2 ) {
-			$( '#infoTextLabel2' ).html( O.textlabel2 );
-			$( '#infoTextBox2' ).val( O.textvalue2 );
-			$( '#infoTextLabel2, #infoTextBox2' ).show();
-		}
-		if ( O.boxwidth ) {
-			var calcW = window.innerWidth * 0.98;
-			var infoW = calcW > 400 ? 290 : calcW - 110;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.infoinput' ).width() +'px'
-			$( '.infoinput' ).css( 'width', boxW );
-		}
-	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel );
-		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
-		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.radiohtml ) {
-		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
-	} else if ( O.checkboxhtml ) {
-		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
-	} else if ( O.selecthtml ) {
-		$( '#infoSelectLabel' ).html( O.selectlabel );
-		$( '#infoSelectBox' ).html( O.selecthtml );
-		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	}
 	
 	// buttons
 	if ( O.cancel ) {
@@ -188,7 +163,57 @@ function info( O ) {
 				infoReset();
 			}
 		} );
-		
+
+		// inputs
+	if ( O.textlabel ) {
+		$( '#infoTextLabel' ).html( O.textlabel );
+		$( '#infoTextBox' ).val( O.textvalue );
+		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
+		var $infofocus =  $( '#infoTextBox' );
+		if ( O.textlabel2 ) {
+			$( '#infoTextLabel2' ).html( O.textlabel2 );
+			$( '#infoTextBox2' ).val( O.textvalue2 );
+			$( '#infoTextLabel2, #infoTextBox2' ).show();
+		}
+		if ( O.boxwidth ) {
+			var calcW = window.innerWidth * 0.98;
+			var infoW = calcW > 400 ? 290 : calcW - 110;
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.infoinput' ).width() +'px'
+			$( '.infoinput' ).css( 'width', boxW );
+		}
+	} else if ( O.passwordlabel ) {
+		$( '#infoPasswordLabel' ).html( O.passwordlabel );
+		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
+		var $infofocus = $( '#infoPasswordBox' );
+	} else if ( O.filelabel ) {
+		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+		$( '#infoOk' )
+			.css( 'background', '#34495e' )
+			.off( 'click' );
+		$( '#infoFileLabel' ).html( O.filelabel ).on( 'click', function() {
+			$( '#infoFileBox' ).click();
+		} );
+		$( '#infoFileBox' ).on( 'change', function() {
+			var file = $( this ).val();
+			$( '#infoFilename' ).html( '&ensp;'+ file.split( /[\\/]/ ).pop() );
+			$( '#infoFileLabel' ).css( 'background', '#34495e' );
+			$( '#infoOk' )
+				.css( 'background', '' )
+				.on( 'click', function() {
+					console.log( file );
+				} );
+		} );
+		$( '#infoFile, #infoFileLabel' ).show();
+	} else if ( O.radiohtml ) {
+		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
+	} else if ( O.checkboxhtml ) {
+		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
+	} else if ( O.selecthtml ) {
+		$( '#infoSelectLabel' ).html( O.selectlabel );
+		$( '#infoSelectBox' ).html( O.selecthtml );
+		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
+	}
+			
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
