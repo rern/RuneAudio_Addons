@@ -11,8 +11,8 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180818',
-	'revision'     => 'Fix installation bug on RuneAudio 0.3'
+	'version'      => '20180821',
+	'revision'     => 'Minor improvements'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
 					.'<br>...'
