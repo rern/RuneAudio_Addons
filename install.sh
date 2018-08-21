@@ -23,7 +23,7 @@ alias=addo
 . /srv/http/addonstitle.sh
 
 #0temp0
-sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php
+sed -i '/jquery.mobile.custom.min.js/ d' /srv/http/app/templates/footer.php.backup
 #1temp1
 
 installstart $@
