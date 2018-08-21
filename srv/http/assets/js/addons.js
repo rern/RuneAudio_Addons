@@ -231,6 +231,21 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
+		case 'file':
+			var ojson = option[ oj ];
+			info( {
+				  title        : title
+				, message      : ojson.message
+				, filelabel    : ojson.label
+				, filetype     : ojson.type
+				, ok         : function() {
+					var input = $( '#infoFileBox' ).val();
+					opt += "'"+ input.split( /[\\/]/ ).pop() +"' ";
+					sendcommand();
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
 		case 'radio':
 			ojson = option[ oj ];
 			info( {

@@ -56,7 +56,7 @@ var html = heredoc( function() { /*
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
 			<div id="infoFile" class="infocontent">
-				<a id="infoFileLabel" class="infobtn infobtn-primary"></a>
+				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse...</a>
 				<span id="infoFilename"></span>
 				<input type="file" class="infoinput" id="infoFileBox">
 			</div>
@@ -90,8 +90,8 @@ function infoReset() {
 	$( '.infolabel, .infohtml' ).empty();
 	$( '.infolabel' ).css( 'width', '' );
 	$( '.infoinput' ).css( 'width', '' ).val( '' );
-	$( '#infoFileLabel' ).css( 'background', '' );
-	$( '#infoButtons a' ).css( 'background', '' ).off( 'click' );
+	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
+	$( '#infoButtons a' ).off( 'click' );
 	$( '#loader' ).addClass( 'hide' );
 }
 
@@ -188,9 +188,10 @@ function info( O ) {
 	} else if ( O.filelabel ) {
 		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoOk' )
+			.html( O.filelabel )
 			.css( 'background', '#34495e' )
 			.off( 'click' );
-		$( '#infoFileLabel' ).html( O.filelabel ).on( 'click', function() {
+		$( '#infoFileLabel' ).on( 'click', function() {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFileBox' ).on( 'change', function() {
