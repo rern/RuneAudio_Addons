@@ -27,7 +27,7 @@ if ( isset( $_POST[ 'redis' ] ) ) {
 	$filetmp = $_FILES[ 'file' ][ 'tmp_name' ];
 	$filedest = '/srv/http/tmp/'.$filename;
 	$filesize = filesize( $filetmp );
-	if ( !$filesize ) die( '-1' );
+	if ( !$filesize ) die();
 
 	echo move_uploaded_file( $filetmp, $filedest );
 } else {
