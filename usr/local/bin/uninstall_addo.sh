@@ -13,6 +13,7 @@ echo -e "$bar Restore files ..."
 
 files="
 /srv/http/index.php
+/srv/http/app/templates/settings.php
 /srv/http/app/templates/header.php$backup
 /srv/http/app/templates/footer.php$backup
 "
