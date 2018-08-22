@@ -160,6 +160,12 @@ fi
 redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer" &>/dev/null
 redis-cli hset addons update 0 &>/dev/null
 
+# for backup file upload
+dir=/srv/http/tmp
+mkdir -p $dir
+chown http:http $dir
+chmod 777 $dir
+
 installfinish $@
 
 file=/etc/nginx/nginx.conf
