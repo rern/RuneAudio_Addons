@@ -56,7 +56,7 @@ var html = heredoc( function() { /*
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
 			<div id="infoFile" class="infocontent">
-				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse...</a>
+				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
 				<span id="infoFilename"></span>
 				<input type="file" class="infoinput" id="infoFileBox">
 			</div>
