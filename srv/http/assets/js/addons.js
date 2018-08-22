@@ -239,9 +239,26 @@ function getoptions() {
 				, filelabel    : ojson.label
 				, filetype     : ojson.type
 				, ok         : function() {
-					var input = $( '#infoFileBox' ).val();
-					opt += "'"+ input.split( /[\\/]/ ).pop() +"' ";
-					sendcommand();
+					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
+					var fd = new FormData();
+					fd.append( 'file', file );
+					var xhr = new XMLHttpRequest();
+					xhr.open( 'POST', 'addonsdl.php', true );
+					xhr.send( fd );
+					xhr.onreadystatechange = function() {
+						if ( xhr.readyState == 4 && xhr.status == 200 ) {
+							if ( xhr.responseText ) {
+									opt += "'"+ file.name +"' ";
+									//sendcommand();
+							} else {
+								info( {
+									  icon    : 'warning'
+									, title   : title
+									, message : 'Process backup file failed.'
+								} );
+							}
+						}
+					}
 				}
 			} );
 			break;

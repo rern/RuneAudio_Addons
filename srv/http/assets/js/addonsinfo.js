@@ -195,13 +195,13 @@ function info( O ) {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFileBox' ).on( 'change', function() {
-			var file = $( this ).val();
-			$( '#infoFilename' ).html( '&ensp;'+ file.split( /[\\/]/ ).pop() );
+			$( '#infoFilename' ).html( '&ensp;'+ this.files[ 0 ].name );
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
 				.on( 'click', function() {
-					console.log( file );
+					O.ok();
+					O.ok = '';
 				} );
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
