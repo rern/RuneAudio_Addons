@@ -90,6 +90,7 @@ $opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
+$reinit = 0;
 
 $optarray = explode( ' ', $opt );
 if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
@@ -196,7 +197,11 @@ while ( !feof( $popencmd ) ) {                            // each line
 	echo $std;                                            // stdout to screen
 	
 	// wait if reinit
-	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) sleep( 5 );
+	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
+		pclose( $popencmd );
+		$reinit = 1;
+		break;
+	}
 	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
@@ -207,7 +212,7 @@ while ( !feof( $popencmd ) ) {                            // each line
 		die();
 	}
 }
-pclose( $popencmd );
+if ( !$reinit ) pclose( $popencmd );
 ?>
 <!-- ...................................................................................... -->
 	</pre>
@@ -228,7 +233,7 @@ pclose( $popencmd );
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, 1000 );
+	}, <?=( !$reinit ? 1000 : 5000 )?> );
 </script>
 
 </body>
