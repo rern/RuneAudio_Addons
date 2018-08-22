@@ -5,7 +5,7 @@ if ( isset( $_POST[ 'redis' ] ) ) {
 	$update = $redis->hGet( 'addons', $_POST[ 'redis' ] );
 	echo $update;
 } else if ( isset( $_POST[ 'backup' ] ) ) {  // settings backup only
-	$filename = 'Rbackup-'.date( 'ymd_His' ).'.tar.gz';
+	$filename = 'rune-'.date( 'Ymd_His' ).'.tar.gz';
 	$file = '/srv/http/tmp/'.$filename;
 	$cmdlines = 'rm /srv/http/tmp/*'
 		.'; /usr/bin/sudo /usr/bin/redis-cli save'
