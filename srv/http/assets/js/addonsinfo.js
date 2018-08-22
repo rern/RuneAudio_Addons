@@ -87,12 +87,13 @@ $( '#infoX' ).click( function() {
 
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
-	$( '.infolabel, .infohtml' ).empty();
-	$( '.infolabel' ).css( 'width', '' );
-	$( '.infoinput' ).css( 'width', '' ).val( '' );
+	$( '.infolabel, .infohtml, #infoFilename' ).empty();
+	$( '.infoinput' ).val( '' );
+	$( '.infolabel, .infoinput' ).css( 'width', '' );
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
-	$( '#infoButtons a' ).off( 'click' );
-	$( '#loader' ).addClass( 'hide' );
+	$( '#infoFileBox' ).removeAttr( 'accept' );
+	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
+	$( '#loader' ).addClass( 'hide' ); // temp fix
 }
 
 function info( O ) {
@@ -115,6 +116,7 @@ function info( O ) {
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O );
+		$( '#infoIcon' ).html( '<i class="fa fa-info-circle fa-2x">' );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
 		$( '#infoOk' ).html( 'OK' ).click( function() {
 			infoReset();
@@ -195,7 +197,17 @@ function info( O ) {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFileBox' ).on( 'change', function() {
-			$( '#infoFilename' ).html( '&ensp;'+ this.files[ 0 ].name );
+			var filename = this.files[ 0 ].name;
+			if ( O.filetype && filename.indexOf( O.filetype ) === -1 ) {
+				O.ok = '';
+				info( {
+					  icon    : 'warning'
+					, title   : title
+					, message : 'The file must has extension: <white>'+ O.filetype +'</white>'
+				} );
+				return;
+			}
+			$( '#infoFilename' ).html( '&ensp;'+ filename );
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )

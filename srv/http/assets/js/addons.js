@@ -142,7 +142,45 @@ function getoptions() {
 				, message      : option[ oj ]
 				, cancel       : 1
 				, ok           : function() {
-					sendcommand();
+					if ( alias !== 'back' ) { // not settings backup
+						sendcommand();
+					} else {
+						$.post( "addonsdl.php", { backup: 1 }, function( data ) {
+							if ( data ) {
+								location = data;
+							} else {
+								info( 'Process backup file failed.' );
+							}
+						} );
+					}
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
+		case 'file':
+			var ojson = option[ oj ];
+			info( {
+				  title        : title
+				, message      : ojson.message
+				, filelabel    : ojson.label
+				, filetype     : ojson.type
+				, ok         : function() {
+					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
+					var fd = new FormData();
+					fd.append( 'file', file );
+					var xhr = new XMLHttpRequest();
+					xhr.open( 'POST', 'addonsdl.php', true );
+					xhr.send( fd );
+					xhr.onreadystatechange = function() {
+						if ( xhr.readyState == 4 && xhr.status == 200 ) {
+							if ( xhr.responseText ) {
+								opt += "'"+ file.name +"' ";
+								sendcommand();
+							} else {
+								info( 'Upload file failed.' );
+							}
+						}
+					}
 				}
 			} );
 			break;
@@ -225,38 +263,6 @@ function getoptions() {
 								opt += "'"+ pwd +"' ";
 								sendcommand();
 							} );
-						}
-					}
-				}
-			} );
-			break;
-// -------------------------------------------------------------------------------------------------
-		case 'file':
-			var ojson = option[ oj ];
-			info( {
-				  title        : title
-				, message      : ojson.message
-				, filelabel    : ojson.label
-				, filetype     : ojson.type
-				, ok         : function() {
-					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
-					var fd = new FormData();
-					fd.append( 'file', file );
-					var xhr = new XMLHttpRequest();
-					xhr.open( 'POST', 'addonsdl.php', true );
-					xhr.send( fd );
-					xhr.onreadystatechange = function() {
-						if ( xhr.readyState == 4 && xhr.status == 200 ) {
-							if ( xhr.responseText ) {
-									opt += "'"+ file.name +"' ";
-									//sendcommand();
-							} else {
-								info( {
-									  icon    : 'warning'
-									, title   : title
-									, message : 'Process backup file failed.'
-								} );
-							}
 						}
 					}
 				}
