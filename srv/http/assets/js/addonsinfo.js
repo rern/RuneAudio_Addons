@@ -202,8 +202,17 @@ function info( O ) {
 				O.ok = '';
 				info( {
 					  icon    : 'warning'
-					, title   : title
-					, message : 'The file must has extension: <white>'+ O.filetype +'</white>'
+					, title   : O.title
+					, message : 'File extension must be: <white>'+ O.filetype +'</white>'
+					, ok      : function() {
+						info( {
+							  title     : O.title
+							, message   : O.message
+							, filelabel : O.filelabel
+							, filetype  : O.filetype
+							, ok        : O.ok
+						} );
+					}
 				} );
 				return;
 			}
