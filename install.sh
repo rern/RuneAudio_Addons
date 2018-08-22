@@ -116,7 +116,7 @@ file=/srv/http/app/templates/settings.php
 echo $file
 
 commentH -n -2 'Restore configuration' -n -2 'id="modal-sysinfo"'
-
+#----------------------------------------------------------------------------------
 
 # set sudo no password
 echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
