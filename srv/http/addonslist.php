@@ -473,5 +473,34 @@ $addons = array(
 		),
 	),
 ),
+'back' => array(
+	'title'        => 'Setting - Settings Backup',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Backup all RuneAudio <white>settings and databases</white>.',
+	'thumbnail'    => '/img/addons/thumbback.png',
+	'buttonlabel'  => 'Backup',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'option'       => array(
+		'confirm'    => 'Backup all RuneAudio <white>settings and databases</white>?',
+	),
+),
+'rest' => array(
+	'title'        => 'Setting - Settings Restore',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Restore all RuneAudio <white>settings and databases</white>.',
+	'thumbnail'    => '/img/addons/thumbback.png',
+	'buttonlabel'  => 'Restore',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/restore.sh',
+	'option'       => array(
+		'file'       => array(
+			'message'  => 'Select a <white>.tar.gz</white> backup file for restore:',
+			'label'    => 'Restore',
+			'type'     => '.tar.gz'
+		),
+	),
+),
 	
 );
