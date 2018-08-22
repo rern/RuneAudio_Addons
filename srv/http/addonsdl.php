@@ -5,11 +5,11 @@ if ( isset( $_POST[ 'redis' ] ) ) {
 	$update = $redis->hGet( 'addons', $_POST[ 'redis' ] );
 	echo $update;
 } else if ( isset( $_POST[ 'backup' ] ) ) {  // settings backup only
-	$filename = 'backup_'.date( 'Ymd' ).'.tar.gz';
+	$filename = 'Rbackup-'.date( 'ymd_His' ).'.tar.gz';
 	$file = '/srv/http/tmp/'.$filename;
 	$cmdlines = 'rm /srv/http/tmp/*'
-		.'; redis-cli save'
-		.' && bsdtar -czpf '.$file
+		.'; /usr/bin/sudo /usr/bin/redis-cli save'
+		.' && /usr/bin/sudo /usr/bin/bsdtar -czpf '.$file
 			.' --exclude /etc/netctl/examples'
 			.' /etc/netctl'
 			.' /mnt/MPD/Webradio'
