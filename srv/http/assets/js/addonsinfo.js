@@ -219,14 +219,14 @@ function info( O ) {
 		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radiohtml ) {
 		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
-	} else if ( O.checkboxhtml ) {
-		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
 	} else if ( O.selecthtml ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		$( '#infoSelectBox' ).html( O.selecthtml );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
+	} else if ( O.checkboxhtml ) {
+		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
 	}
-			
+	
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
