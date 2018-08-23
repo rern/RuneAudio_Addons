@@ -43,6 +43,7 @@ array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
+	
 	// hide by conditions
 	if ( $addon[ 'hide' ] === 1 ) continue;
 	
@@ -69,15 +70,17 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		$attrspace = $needspace < $mbfree ? '' : ' space="'.$available.$expandable.'"';
+		$attrspace = $needspace < $mbfree ? '' : ' needmb="'.$needspace.'" space="'.$available.$expandable.'"';
 		$conflict = isset( $addon[ 'conflict' ] ) ? $addon[ 'conflict' ] : '';
 		$conflictaddon = $conflict ? $redis->hget( 'addons', $conflict ) : '';
 		$attrconflict = !$conflictaddon ? '' : ' conflict="'.preg_replace( '/ *\**$/', '', $addons[ $conflict ][ 'title' ] ).'"';
-		$depend = isset( $addon[ 'depend' ] ) ? $addon[ 'depend' ] : '';
-		$dependaddon = $depend ? $redis->hget( 'addons', $depend ) : '';
-		$attrdepend = $dependaddon ? '' : ' depend="'.preg_replace( '/ *\**$/', '', $addons[ $depend ][ 'title' ] ).'"';
-			
-		$btnin = '<a class="btn btn-default" alias="'.$alias.'"'.$btninclass.'"'.$attrspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
+		$attrdepend = '';
+		if ( isset( $addon[ 'depend' ] ) ) {
+			$depend = $addon[ 'depend' ];
+			$dependaddon = $redis->hget( 'addons', $depend );
+			if ( !$dependaddon ) $attrdepend = ' depend="'.preg_replace( '/ *\**$/', '', $addons[ $depend ][ 'title' ] ).'"';
+		}
+		$btnin = '<a class="btn btn-default" alias="'.$alias.'"'.$btninclass.$attrspace.$attrconflict.$attrdepend.'>'.$buttonlabel.'</a>';
 		$btnun = '<a class="btn btn-default disabled"><i class="fa fa-minus-circle"></i>Uninstall</a>';
 	}
 	
@@ -148,4 +151,11 @@ echo $blocks;
 <div id="bottom"></div> <!-- for bottom padding -->
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
-<input id="addonslist" type="hidden" value='<?=json_encode( $addons )?>'>
+<?php
+$keepkey = array( 'title', 'installurl', 'rollback', 'option' );
+foreach( $arrayalias as $alias ) {
+	if ( $alias === 'addo' || $alias === 'dual' ) continue;
+	$addonslist[ $alias ] = array_intersect_key( $addons[ $alias ], array_flip( $keepkey ) );
+}
+?>
+<input id="addonslist" type="hidden" value='<?=json_encode( $addonslist )?>'>
