@@ -134,7 +134,7 @@ cmd;
 	$command.= <<<cmd
 		/usr/bin/sudo ./$installfile $opt
 cmd;
-if ( array_key_exists( 'password', $addon[ 'option' ] ) ) $opt = '';
+if ( isset( $addon[ 'option' ] ) && array_key_exists( 'password', $addon[ 'option' ] ) ) $opt = '';
 	$commandtxt = <<<cmd
 		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
