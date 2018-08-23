@@ -11,8 +11,8 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180821',
-	'revision'     => 'Minor improvements'
+	'version'      => '20180823',
+	'revision'     => 'General improvements'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
 					.'<br>...'
@@ -462,7 +462,7 @@ $addons = array(
 	),
 ),
 'back' => array(
-	'title'        => 'Setting - Settings Backup',
+	'title'        => 'Settings+Databases Backup',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Backup all RuneAudio <white>settings and databases</white>.',
@@ -474,7 +474,7 @@ $addons = array(
 	),
 ),
 'rest' => array(
-	'title'        => 'Setting - Settings Restore',
+	'title'        => 'Settings+Databases Restore',
 	'revision'     => 'Initial release',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Restore all RuneAudio <white>settings and databases</white>.',
