@@ -93,24 +93,34 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	
 	if ( type === 'Link' ) {
 		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
-	} else {
+	} else if ( type === 'Backup' ) {
 		info( {
-			  title  : title
-			, message: type +'?'
-			, cancel : 1
-			, ok     : function () {
-				$( '#loader' )
-					.html( '<i class="fa fa-addons blink"></i>' )
-					.removeClass( 'hide' );
-				option = addons[ alias ].option;
-				if ( type === 'Update' || type === 'Uninstall' || !option ) {
-					formtemp();
-				} else {
-					j = 0;
-					getoptions();
-				}
+			  title        : title
+			, message      : 'Backup all RuneAudio <white>settings and databases</white>?'
+			, cancel       : 1
+			, ok           : function() {
+				$.post( 'addonsdl.php', { backup: 1 }, function( data ) {
+					data ? location.href = data : info( 'Process backup file failed.' );
+				} );
 			}
 		} );
+	} else {
+		option = addons[ alias ].option;
+		j = 0;
+		if ( option && type !== 'Update' && type !== 'Uninstall' ) {
+			$( '#loader' ).html( '<i class="fa fa-addons blink"></i>' ).removeClass( 'hide' );
+			getoptions();
+		} else {
+			info( {
+				  title  : title
+				, message: type +'?'
+				, cancel : 1
+				, ok     : function () {
+					$( '#loader' ).html( '<i class="fa fa-addons blink"></i>' ).removeClass( 'hide' );
+					( type !== 'Update' && type !== 'Uninstall' ) ? getoptions() : formtemp();
+				}
+			} );
+		}
 	}
 } );
 $( '.thumbnail' ).click( function() {
@@ -125,7 +135,7 @@ function getoptions() {
 	oj0 = oj.replace( /[0-9]/, '' ); // remove trailing # from option keys
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
-		case 'wait':
+		case 'wait': // only 1 'Ok' = continue
 			info( {
 				  icon         : 'info-circle'
 				, title        : title
@@ -136,7 +146,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'confirm':
+		case 'confirm': // 'Cancel' = close
 			info( {
 				  title        : title
 				, message      : option[ oj ]
@@ -147,7 +157,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'yesno':
+		case 'yesno': // 'Cancel' = 0
 			var ojson = option[ oj ];
 			info( {
 				  title        : title
@@ -167,7 +177,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'skip':
+		case 'skip': // 'Cancel' = continue, 'Ok' = skip options
 			info( {
 				  title        : title
 				, message      : option[ oj ]
@@ -231,7 +241,35 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'radio':
+		case 'file':
+			var ojson = option[ oj ];
+			info( {
+				  title        : title
+				, message      : ojson.message
+				, filelabel    : ojson.label
+				, filetype     : ojson.type
+				, ok         : function() {
+					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
+					var fd = new FormData();
+					fd.append( 'file', file );
+					var xhr = new XMLHttpRequest();
+					xhr.open( 'POST', 'addonsdl.php', true );
+					xhr.send( fd );
+					xhr.onreadystatechange = function() {
+						if ( xhr.readyState == 4 && xhr.status == 200 ) {
+							if ( xhr.responseText ) {
+								opt += "'"+ file.name +"' ";
+								sendcommand();
+							} else {
+								info( 'Upload file failed.' );
+							}
+						}
+					}
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
+		case 'radio': // single value
 			ojson = option[ oj ];
 			info( {
 				  title        : title
@@ -266,31 +304,7 @@ function getoptions() {
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
-		case 'checkbox':
-			ojson = option[ oj ];
-			info( {
-				  title        : title
-				, message      : ojson.message
-				, checkboxhtml : function() {
-					var list = ojson.list;
-					var checkboxhtml = '';
-					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
-						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
-							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
-					}
-					return checkboxhtml
-				}
-				, ok:       function() {
-					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
-						opt += "'"+ $( this ).val() +"' ";
-					} );
-					sendcommand();
-				}
-			} );
-			break;
-// -------------------------------------------------------------------------------------------------
-		case 'select':
+		case 'select': // long single value
 			ojson = option[ oj ];
 			info( {
 				  title        : title
@@ -322,6 +336,30 @@ function getoptions() {
 							sendcommand();
 						}
 					} );
+				}
+			} );
+			break;
+// -------------------------------------------------------------------------------------------------
+		case 'checkbox': // multiple values
+			ojson = option[ oj ];
+			info( {
+				  title        : title
+				, message      : ojson.message
+				, checkboxhtml : function() {
+					var list = ojson.list;
+					var checkboxhtml = '';
+					for ( var key in list ) {
+						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
+						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
+							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
+					}
+					return checkboxhtml
+				}
+				, ok:       function() {
+					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
+						opt += "'"+ $( this ).val() +"' ";
+					} );
+					sendcommand();
 				}
 			} );
 			break;
