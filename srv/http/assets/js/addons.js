@@ -117,7 +117,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 				, cancel : 1
 				, ok     : function () {
 					$( '#loader' ).html( '<i class="fa fa-addons blink"></i>' ).removeClass( 'hide' );
-					( type !== 'Update' && type !== 'Uninstall' ) ? getoptions() : formtemp();
+					( option && type !== 'Update' && type !== 'Uninstall' ) ? getoptions() : formtemp();
 				}
 			} );
 		}
