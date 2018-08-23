@@ -160,18 +160,6 @@ $addons = array(
 		),
 	),
 ),
-/*
-'back' => array(
-	'title'        => 'RuneUI Backup-Restore Enable',
-	'version'      => '20170901',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Enable backup-restore settings and databases.',
-	'thumbnail'    => '/img/addons/thumbback.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/install.sh',
-),
-*/
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20180818',
@@ -473,5 +461,34 @@ $addons = array(
 		),
 	),
 ),
-	
+'back' => array(
+	'title'        => 'Setting - Settings Backup',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Backup all RuneAudio <white>settings and databases</white>.',
+	'thumbnail'    => '/img/addons/thumbback.png',
+	'buttonlabel'  => 'Backup',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'option'       => array(
+		'confirm'    => 'Backup all RuneAudio <white>settings and databases</white>?',
+	),
+),
+'rest' => array(
+	'title'        => 'Setting - Settings Restore',
+	'revision'     => 'Initial release',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Restore all RuneAudio <white>settings and databases</white>.',
+	'thumbnail'    => '/img/addons/thumbback.png',
+	'buttonlabel'  => 'Restore',
+	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
+	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/restore.sh',
+	'option'       => array(
+		'file'       => array(
+			'message'  => 'Select a <code>*.tar.gz</code> backup file for restore:',
+			'label'    => 'Restore',
+			'type'     => '.tar.gz'
+		),
+	),
+),
+
 );

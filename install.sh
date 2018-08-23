@@ -111,7 +111,11 @@ string=$( cat <<'EOF'
 EOF
 )
 appendH '$'
+#----------------------------------------------------------------------------------
+file=/srv/http/app/templates/settings.php
+echo $file
 
+commentH -n -2 'Restore configuration' -n -2 'id="modal-sysinfo"'
 #----------------------------------------------------------------------------------
 
 # set sudo no password
@@ -159,6 +163,12 @@ else
 fi
 redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer" &>/dev/null
 redis-cli hset addons update 0 &>/dev/null
+
+# for backup file upload
+dir=/srv/http/tmp
+mkdir -p $dir
+chown http:http $dir
+chmod 777 $dir
 
 installfinish $@
 

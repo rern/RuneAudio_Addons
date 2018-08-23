@@ -8,9 +8,9 @@
 	color: #7795b4;
 }
 .fa-times:before { content: "\f51A" }
-.fa-info-circle:before { content: "\f560" }
-.fa-question-circle:before { content: "\f561" }
-.fa-warning:before { content: "\f56D" }
+.fa-question-circle:before { content: "\f560" }
+.fa-info-circle:before { content: "\f561" }
+.fa-warning:before { content: "\f562" }
 
 #addons { cursor: pointer; } /* for non enha */
 

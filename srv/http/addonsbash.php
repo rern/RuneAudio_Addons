@@ -90,6 +90,7 @@ $opt = $_POST[ 'opt' ];
 $dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
+$reinit = 0;
 
 $optarray = explode( ' ', $opt );
 if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'.prev( $optarray ), $installurl );
@@ -97,7 +98,7 @@ if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'
 $installfile = basename( $installurl );
 $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 
-$install = <<<cmd
+$getinstall = <<<cmd
 	wget -qN --no-check-certificate $installurl 
 	if [[ $? != 0 ]]; then 
 		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
@@ -105,8 +106,7 @@ $install = <<<cmd
 		exit
 	fi
 	chmod 755 $installfile
-	$conflictcommand
-	/usr/bin/sudo ./$installfile $opt
+	
 cmd;
 $uninstall = <<<cmd
 	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
@@ -116,17 +116,9 @@ if ( $type === 'Uninstall' ) {
 	$command = $uninstall;
 	$commandtxt = "uninstall_$alias.sh";
 } else if ( $type === 'Update' ) {
-	$command = <<<cmd
-		wget -qN --no-check-certificate $installurl
-		if [[ $? != 0 ]]; then 
-			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
-			echo 'Please try again.'
-			exit
-		fi
-		chmod 755 $installfile
-		
+	$command = $getinstall;
+	$command.= <<<cmd
 		$uninstall u
-		
 		/usr/bin/sudo ./$installfile u $opt
 cmd;
 	$commandtxt = <<<cmd
@@ -138,11 +130,14 @@ cmd;
 		./$installfile u $opt
 cmd;
 } else {
-	$command = $install;
+	$command = $getinstall;
+	$command.= <<<cmd
+		/usr/bin/sudo ./$installfile $opt
+cmd;
+if ( array_key_exists( 'password', $addon[ 'option' ] ) ) $opt = '';
 	$commandtxt = <<<cmd
 		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
-		$conflictcommandtxt
 		./$installfile $opt
 cmd;
 }
@@ -196,7 +191,11 @@ while ( !feof( $popencmd ) ) {                            // each line
 	echo $std;                                            // stdout to screen
 	
 	// wait if reinit
-	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) sleep( 5 );
+	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
+		pclose( $popencmd );
+		$reinit = 1;
+		break;
+	}
 	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
@@ -207,7 +206,7 @@ while ( !feof( $popencmd ) ) {                            // each line
 		die();
 	}
 }
-pclose( $popencmd );
+if ( !$reinit ) pclose( $popencmd );
 ?>
 <!-- ...................................................................................... -->
 	</pre>
@@ -228,7 +227,7 @@ pclose( $popencmd );
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, 1000 );
+	}, <?=( !$reinit ? 1000 : 5000 )?> );
 </script>
 
 </body>
