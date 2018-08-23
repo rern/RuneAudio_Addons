@@ -8,13 +8,15 @@ normal usage: info( {
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
+	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
+	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
 	required      : 1              // 0 / 1                  (password required)
 	radiohtml     : 'HTML'         // required HTML
 	checked       : N              // (none) / N             (pre-select input)
-	checkboxhtml  : 'HTML'         // required HTML
-	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select multiple)
 	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
 	selecthtml    : 'HTML'         // required HTML
+	checkboxhtml  : 'HTML'         // required HTML
+	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select multiple)
 	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
 	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
 	ok            : 'FUNCTION'     // (hide) / FUNCTION      (ok click function)
@@ -203,7 +205,7 @@ function info( O ) {
 				info( {
 					  icon    : 'warning'
 					, title   : O.title
-					, message : 'File extension must be: <white>'+ O.filetype +'</white>'
+					, message : 'File extension must be: <code>'+ O.filetype +'</code>'
 					, ok      : function() {
 						info( {
 							  title     : O.title
