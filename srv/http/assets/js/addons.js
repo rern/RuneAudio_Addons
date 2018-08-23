@@ -100,7 +100,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, cancel       : 1
 			, ok           : function() {
 				$.post( 'addonsdl.php', { backup: 1 }, function( data ) {
-					data ? location = data : info( 'Process backup file failed.' );
+					data ? location.href = data : info( 'Process backup file failed.' );
 				} );
 			}
 		} );
