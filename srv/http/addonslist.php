@@ -484,7 +484,7 @@ $addons = array(
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/backup-restore/restore.sh',
 	'option'       => array(
 		'file'       => array(
-			'message'  => 'Select a <white>.tar.gz</white> backup file for restore:',
+			'message'  => 'Select a <code>*.tar.gz</code> backup file for restore:',
 			'label'    => 'Restore',
 			'type'     => '.tar.gz'
 		),
