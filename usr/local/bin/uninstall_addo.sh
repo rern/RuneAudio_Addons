@@ -26,7 +26,8 @@ rm -v /srv/http/app/templates/addons*
 rm -v /srv/http/assets/css/addons*
 rm -v /srv/http/assets/fonts/{addons*,Inconsolata*}
 rm -v /srv/http/assets/js/addons*
-rm -r /srv/http/assets/img/addons /srv/http/tmp
+rm -r /srv/http/tmp
+[[ $1 != u ]] && rm -r /srv/http/assets/img/addons
 
 # must NOT remove - used by other addons
 #rm -v /srv/http/assets/js/vendor/jquery.mobile.custom.min.js
