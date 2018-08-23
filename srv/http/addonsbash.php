@@ -98,7 +98,7 @@ if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'
 $installfile = basename( $installurl );
 $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 
-$install = <<<cmd
+$getinstall = <<<cmd
 	wget -qN --no-check-certificate $installurl 
 	if [[ $? != 0 ]]; then 
 		echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
@@ -106,8 +106,7 @@ $install = <<<cmd
 		exit
 	fi
 	chmod 755 $installfile
-	$conflictcommand
-	/usr/bin/sudo ./$installfile $opt
+	
 cmd;
 $uninstall = <<<cmd
 	/usr/bin/sudo /usr/local/bin/uninstall_$alias.sh
@@ -117,17 +116,9 @@ if ( $type === 'Uninstall' ) {
 	$command = $uninstall;
 	$commandtxt = "uninstall_$alias.sh";
 } else if ( $type === 'Update' ) {
-	$command = <<<cmd
-		wget -qN --no-check-certificate $installurl
-		if [[ $? != 0 ]]; then 
-			echo -e '\e[38;5;7m\e[48;5;1m ! \e[0m Install file download failed.'
-			echo 'Please try again.'
-			exit
-		fi
-		chmod 755 $installfile
-		
+	$command = $getinstall;
+	$command.= <<<cmd
 		$uninstall u
-		
 		/usr/bin/sudo ./$installfile u $opt
 cmd;
 	$commandtxt = <<<cmd
@@ -139,11 +130,14 @@ cmd;
 		./$installfile u $opt
 cmd;
 } else {
-	$command = $install;
+	$command = $getinstall;
+	$command.= <<<cmd
+		/usr/bin/sudo ./$installfile $opt
+cmd;
+if ( array_key_exists( 'password', $addon[ 'option' ] ) ) $opt = '';
 	$commandtxt = <<<cmd
 		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
-		$conflictcommandtxt
 		./$installfile $opt
 cmd;
 }
