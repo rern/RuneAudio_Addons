@@ -163,9 +163,12 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180818',
+	'version'      => '20180824',
 	'conflict'     => 'paus',
-	'revision'     => 'Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling.'
+	'revision'     => 'Reflect playlist update to all clients'
+					.'<br>Fix maintaining scroll position bug'
+					.'<br>...'
+					.'<br>Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling'
 					.'<br>Improve <white>context menus</white> and toggle'
 					.'<br>Show warning of existing Webradio / saved playlist name'
 					.'<br>No need to clear cache or reboot after installed/upgraded'
@@ -177,17 +180,12 @@ $addons = array(
 					.'<br>Playlist - Always scroll current song to the top'
 					.'<br>...'
 					.'<br>Fix Library display setting bug.'
-					.'<br>Fix uninstall bug.'
-					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.'
-					.'<br>Fix local browser zoom setting and spacing'
-					.'<br>Fix missing shuffle/repeat indicator on small screen if buttons not set to hidden',
+					.'<br>Fix uninstall bug.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
-	'conflict'     => 'paus',
 	'option'       => array(
 		'radio'      => array(
 			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
