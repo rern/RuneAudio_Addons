@@ -70,7 +70,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			  icon   : 'warning'
 			, title  : title
 			, message: 'Warning - Disk space not enough:<br>'
-					+ 'Need: <white>'+ addons[ alias ].needspace +' MB</white><br>'+ $( this ).attr( 'space' )
+					+ 'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white><br>'+ $( this ).attr( 'space' )
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
