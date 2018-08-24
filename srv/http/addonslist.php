@@ -212,15 +212,13 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
-	'version'      => '20180818',
+	'version'      => '20180824',
 	'needspace'    => 5,
-	'revision'     => 'Fix on-off indicator'
+	'revision'     => 'Fix bugs'
 					.'<br>...'
-					.'<br>Switch from hammer.js to jquery.mobile'
+					.'<br>Fix on-off indicator'
 					.'<br>...'
-					.'<br>Improve UI'
-					.'<br>On / Off: from Menu > GPIO'
-					.'<br>Settings: from Menu > long-press GPIO',
+					.'<br>Switch from hammer.js to jquery.mobile',
 	'maintainer'   => 'r e r n',
 	'description'  => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'    => '/img/addons/thumbgpio.gif',
