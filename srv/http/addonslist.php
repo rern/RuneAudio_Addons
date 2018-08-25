@@ -161,9 +161,11 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180824',
+	'version'      => '20180825',
 	'conflict'     => 'paus',
-	'revision'     => 'Reflect playlist update to all clients'
+	'revision'     => 'Fix blank page on local browser and some devices'
+					.'<br>...'
+					.'<br>Reflect playlist update to all clients'
 					.'<br>Fix maintaining scroll position bug'
 					.'<br>...'
 					.'<br>Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling'
@@ -175,10 +177,7 @@ $addons = array(
 					.'<br>Playback - Fix drag time/volume show display settings'
 					.'<br>Playlist - Improve <white>drag to arrange order</white> on touch device'
 					.'<br>Playlist - Fix maintaining display on page switched'
-					.'<br>Playlist - Always scroll current song to the top'
-					.'<br>...'
-					.'<br>Fix Library display setting bug.'
-					.'<br>Fix uninstall bug.',
+					.'<br>Playlist - Always scroll current song to the top',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
