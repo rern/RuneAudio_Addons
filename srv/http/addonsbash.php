@@ -11,7 +11,9 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no" />
-	<link rel="stylesheet" href="/css/runeui.css">
+	<link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/fontawesome.min.css">
+	<link rel="stylesheet" href="/css/rune.css">
 	<style>
 		@font-face {
 			font-family: addons;
