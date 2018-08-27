@@ -7,8 +7,12 @@
 }
 /* 'addons' declared in <head> for cache busting */
 .fa {
-	font-family: addons, FontAwesome;
+	font-family: addons;
 }
+i.fa {
+	font-style: normal;
+}
+
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
@@ -29,16 +33,31 @@
 .fa-info-circle:before { content: "\f561" }
 .fa-warning:before { content: "\f562" }
 
+body {
+    font-family: "Lato";
+    font-size: 14px;
+    color: #e0e7ee;
+    background-color: #000;
+}
 .container {
-	padding : 0 15px 20px;
+	padding : 0 35px 20px 35px;
 }
 h1 {
 	display: inline-block;
 	width: calc(100% - 25px);
+	font-weight: 300;
+	font-size: 36px;
 }
 .close-root {
 	float: right;
 	margin-top: 20px;
+	font-size: 28px;
+	color: #0095d8;
+	text-decoration: none;
+}
+.close-root:hover {
+	color: #00608c;
+	text-decoration: none;
 }
 #diskused, #diskfree, #diskunpart {
 	display: inline-block;
@@ -72,15 +91,20 @@ h1 {
 	color: #7795b4;
 }
 .boxed-group {
+    margin: 0 -15px 15px;
 	padding: 10px 20px;
+	border-radius: 6px;
+    background: #19232d;
 }
 .boxed-group img {
 	max-width: 100px;
 }
 legend {
 	margin-bottom: 5px;
+	height: 36px;
 	font-size: 14px;
 	color: #7795b4;
+	border-bottom: 1px solid #34495e;
 }
 legend span {
 	font-size: 21px;
@@ -108,13 +132,19 @@ legend .fa-arrow-up {
 	margin-top: 10px;
 }
 pre {
-	width: 100%;
+    display: block;
 	max-height: calc(100vh - 170px);
+    padding: 10px;
+    margin: 0 0 10px;
+    background-color: #1a1a1a;
+    border: 1px solid #10161c;
+    border-radius: 6px;
+	font-family: 'Inconsolata', monospace;
+	font-size: 15px;
+	line-height: 20px;
 	white-space: pre-wrap;
 	overflow: auto;
 	-webkit-overflow-scrolling: touch; /* ios momentum scroll */
-	font-family: 'Inconsolata', monospace;
-	font-size: 15px;
 }
 code {
 	font-family: 'Inconsolata', monospace;
@@ -133,6 +163,9 @@ code {
 }
 .btn i {
 	margin-right: 5px;
+}
+.btn {
+    border: medium none
 }
 #bottom {
 	height: calc(100vh - 160px);
