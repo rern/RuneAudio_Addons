@@ -5,15 +5,12 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Addons</title>
+	<title>Rune Addons</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no" />
-	<link rel="stylesheet" href="/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/css/fontawesome.min.css">
-	<link rel="stylesheet" href="/css/rune.css">
 	<style>
 		@font-face {
 			font-family: addons;
@@ -22,9 +19,9 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 			font-style : normal;
 		}
 	</style>
+	<link rel="stylesheet" href="<?=$_POST[ 'favicon' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
-	<link rel="shortcut icon" href="/img/favicon.ico">
 </head>
 <body>
 
@@ -78,8 +75,8 @@ setTimeout( function() {
 <script src="<?=$_POST[ 'addonsinfojs' ]?>"></script>
 
 <div class="container">
-	<a id="close" class="close-root"><i class="fa fa-times fa-2x disabled"></i></a>
-	<h1>ADDONS TERMINAL</h1>
+	<a id="close" class="close-root"><i class="fa fa-times disabled"></i></a>
+	<h1><i class="fa fa-addons"></i> ADDONS PROGRESS</h1>
 	<legend class="bl">Please wait until finished...</legend>
 
 	<div class="hidescrollv">
