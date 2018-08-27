@@ -34,10 +34,10 @@ i.fa {
 .fa-warning:before { content: "\f562" }
 
 body {
-    font-family: "Lato";
-    font-size: 14px;
-    color: #e0e7ee;
-    background-color: #000;
+	font-family: "Lato";
+	font-size: 14px;
+	color: #e0e7ee;
+	background-color: #000;
 }
 .container {
 	padding : 0 35px 20px 35px;
@@ -91,10 +91,10 @@ h1 {
 	color: #7795b4;
 }
 .boxed-group {
-    margin: 0 -15px 15px;
+	margin: 0 -15px 15px;
 	padding: 10px 20px;
 	border-radius: 6px;
-    background: #19232d;
+	background: #19232d;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -132,13 +132,13 @@ legend .fa-arrow-up {
 	margin-top: 10px;
 }
 pre {
-    display: block;
+	display: block;
 	max-height: calc(100vh - 170px);
-    padding: 10px;
-    margin: 0 0 10px;
-    background-color: #1a1a1a;
-    border: 1px solid #10161c;
-    border-radius: 6px;
+	padding: 10px;
+	margin: 0 0 10px;
+	background-color: #1a1a1a;
+	border: 1px solid #10161c;
+	border-radius: 6px;
 	font-family: 'Inconsolata', monospace;
 	font-size: 15px;
 	line-height: 20px;
@@ -165,7 +165,7 @@ code {
 	margin-right: 5px;
 }
 .btn {
-    border: medium none
+	border: medium none
 }
 #bottom {
 	height: calc(100vh - 160px);
@@ -218,8 +218,8 @@ ul,
 	color: #00ffff;
 }
 .cc:hover, .ck:hover {
-    text-decoration: none;
-    color: #00ffff;
+	text-decoration: none;
+	color: #00ffff;
 }
 .wr {
 	color: #ffffff;
