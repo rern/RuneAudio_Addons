@@ -19,7 +19,7 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 			font-style : normal;
 		}
 	</style>
-	<link rel="stylesheet" href="<?=$_POST[ 'favicon' ]?>">
+	<link rel="shortcut icon" href="<?=$_POST[ 'favicon' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
 </head>
