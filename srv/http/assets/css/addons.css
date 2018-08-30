@@ -168,7 +168,7 @@ code {
 	border: medium none
 }
 #bottom {
-	height: calc(100vh - 160px);
+	min-height: calc(100% - 214px);
 }
 #list,
 #list li {
