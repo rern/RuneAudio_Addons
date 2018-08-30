@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180825',
+	'version'      => '20180831',
 	'revision'     => 'Minor improvements'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
