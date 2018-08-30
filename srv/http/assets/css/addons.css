@@ -76,6 +76,10 @@ h1 {
 	clear: both;
 	float: right;
 }
+.bl {
+	margin-top: 0;
+	border-bottom: 1px solid #34495e;
+}
 #list {
 	margin: 10px 0;
 	list-style: none;
