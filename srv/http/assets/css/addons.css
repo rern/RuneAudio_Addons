@@ -76,8 +76,12 @@ h1 {
 	clear: both;
 	float: right;
 }
+#wait {
+	margin: 0;
+}
 .bl {
-	margin-top: 0;
+	height: 8px;
+	margin: 0;
 	border-bottom: 1px solid #34495e;
 }
 #list {
