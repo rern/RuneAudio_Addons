@@ -77,7 +77,8 @@ setTimeout( function() {
 <div class="container">
 	<a id="close" class="close-root"><i class="fa fa-times disabled"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS PROGRESS</h1>
-	<p class="bl">Please wait until finished...</p>
+	<p id="wait">Please wait until finished...</p>
+	<p class="bl"></p>
 
 	<div class="hidescrollv">
 	<pre>
@@ -216,7 +217,7 @@ if ( !$reinit ) pclose( $popencmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementsByTagName( 'p' )[ 1 ].innerHTML = '&nbsp;';
+		document.getElementById( 'wait' ).innerHTML = '&nbsp;';
 		var close = document.getElementsByClassName( 'close-root' )[ 0 ];
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
