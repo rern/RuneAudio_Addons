@@ -29,6 +29,8 @@ info( {
 	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
 	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
 	button        : 'FUNCTION'     // required FUNCTION      (button click function)
+	nobutton      : 1              // 0 / 1                  (no button)
+	autoclose     : N              // ms                     (auto close in ms)
 } );
 */
 function heredoc( fn ) {
@@ -118,6 +120,11 @@ function info( O ) {
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
 	
+	if ( O.autoclose ) {
+		setTimeout( function() {
+			infoReset();
+		}, O.autoclose );
+	}
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O );
@@ -133,44 +140,45 @@ function info( O ) {
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	
 	// buttons
-	if ( O.cancel ) {
-		$( '#infoCancel' )
-			.html( O.cancellabel ? O.cancellabel : 'Cancel' )
-			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+	if ( !O.nobutton ) {
+		$( '#infoOk' )
+			.html( O.oklabel ? O.oklabel : 'OK' )
+			.css( 'background', O.okcolor ? O.okcolor : '' )
 			.show()
 			.on( 'click', function() {
 				$( '#infoOverlay' ).hide();
-				if ( typeof O.cancel === 'function' ) {
-					O.cancel();
-					O.cancel = ''; // suppress multiple runs
+				if ( typeof O.ok === 'function' ) {
+					O.ok();
+					O.ok = ''; // suppress multiple runs
+				} else {
+					infoReset();
 				}
 			} );
+		if ( O.cancel ) {
+			$( '#infoCancel' )
+				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
+				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+				.show()
+				.on( 'click', function() {
+					$( '#infoOverlay' ).hide();
+					if ( typeof O.cancel === 'function' ) {
+						O.cancel();
+						O.cancel = ''; // suppress multiple runs
+					}
+				} );
+		}
+		if ( O.button ) {
+			$( '#infoButton' )
+				.html( O.buttonlabel )
+				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
+				.show()
+				.on( 'click', function() {
+					$( '#infoOverlay' ).hide();
+					O.button();
+					O.button = '';
+				} );
+		}
 	}
-	if ( O.button ) {
-		$( '#infoButton' )
-			.html( O.buttonlabel )
-			.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
-			.show()
-			.on( 'click', function() {
-				$( '#infoOverlay' ).hide();
-				O.button();
-				O.button = '';
-			} );
-	}
-	$( '#infoOk' )
-		.html( O.oklabel ? O.oklabel : 'OK' )
-		.css( 'background', O.okcolor ? O.okcolor : '' )
-		.show()
-		.on( 'click', function() {
-			$( '#infoOverlay' ).hide();
-			if ( typeof O.ok === 'function' ) {
-				O.ok();
-				O.ok = ''; // suppress multiple runs
-			} else {
-				infoReset();
-			}
-		} );
-
 		// inputs
 	if ( O.textlabel ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
