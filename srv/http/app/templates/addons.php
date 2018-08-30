@@ -23,7 +23,7 @@ $available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000,
 $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 echo '
 <div class="container">
-	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
+	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS</h1>
 	<legend class="bl">
 		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
@@ -148,7 +148,7 @@ echo '
 echo $blocks;
 ?>
 </div>
-<div id="bottom"></div> <!-- for bottom padding -->
+<p id="bottom"></p> <!-- for bottom padding -->
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <?php
