@@ -25,10 +25,8 @@ echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS</h1>
-	<div id="diskused" style="width: '.$wused.'px;"></div>
-	<div id="diskfree" style="width: '.$wfree.'px;"></div>
-	<div id="diskunpart" style="width: '.$wunpart.'px;">
-	</div>&ensp;'.$available.$expandable.'
+	<p id="diskused" class="disk" style="width: '.$wused.'px;"></p><p id="diskfree" class="disk" style="width: '.$wfree.'px;"></p>
+	<p id="diskunpart" class="disk" style="width: '.$wunpart.'px;"></p><p class="disk">&ensp;'.$available.$expandable.'</p>
 	<p class="bl"></p>
 	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
