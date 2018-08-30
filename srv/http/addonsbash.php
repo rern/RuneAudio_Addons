@@ -86,7 +86,7 @@ setTimeout( function() {
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$dash = round( $_POST[ 'prewidth' ] / 7.75 );
+$dash = round( $_POST[ 'prewidth' ] / 7.76 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
