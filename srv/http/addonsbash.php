@@ -77,7 +77,7 @@ setTimeout( function() {
 <div class="container">
 	<a id="close" class="close-root"><i class="fa fa-times disabled"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS PROGRESS</h1>
-	<legend class="bl">Please wait until finished...</legend>
+	<p class="bl">Please wait until finished...</p>
 
 	<div class="hidescrollv">
 	<pre>
@@ -86,7 +86,7 @@ setTimeout( function() {
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$dash = round( $_POST[ 'prewidth' ] / 7.55 );
+$dash = round( $_POST[ 'prewidth' ] / 7.75 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
@@ -216,7 +216,7 @@ if ( !$reinit ) pclose( $popencmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
+		document.getElementsByTagName( 'p' )[ 1 ].innerHTML = '&nbsp;';
 		var close = document.getElementsByClassName( 'close-root' )[ 0 ];
 		close.children[ 0 ].classList.remove( 'disabled' );
 		close.href = '<?=$close;?>';
