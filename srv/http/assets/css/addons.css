@@ -42,11 +42,16 @@ body {
 .container {
 	padding : 0 35px 20px 35px;
 }
+@media(max-width: 540px) {
+	.container {
+		padding: 0 15px 15px 15px;
+	}
+}
 h1 {
-	display: inline-block;
-	width: calc(100% - 25px);
-	font-weight: 300;
+	margin: 20px 0 10px 0;
+	line-height: 1.1em;
 	font-size: 36px;
+	font-weight: 300;
 }
 .close-root {
 	float: right;
@@ -54,6 +59,9 @@ h1 {
 	font-size: 28px;
 	color: #0095d8;
 	text-decoration: none;
+}
+#closeprogress {
+	margin-top: 0;
 }
 .close-root:hover {
 	color: #00608c;
@@ -73,15 +81,15 @@ h1 {
 	background: #0095d8;
 }
 #issues {
-	clear: both;
-	float: right;
+	width: calc( 100vw - 350px );
+	text-align: right;
 }
 #wait {
 	margin: 0;
+	line-height: 10px;
 }
 .bl {
-	height: 8px;
-	margin: 0;
+	margin: 20px 0 10px 0;
 	border-bottom: 1px solid #34495e;
 }
 #list {
@@ -99,7 +107,7 @@ h1 {
 	color: #7795b4;
 }
 .boxed-group {
-	margin: 0 -15px 15px;
+	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
 	background: #19232d;
@@ -109,7 +117,6 @@ h1 {
 }
 legend {
 	margin-bottom: 5px;
-	height: 36px;
 	font-size: 14px;
 	color: #7795b4;
 	border-bottom: 1px solid #34495e;
