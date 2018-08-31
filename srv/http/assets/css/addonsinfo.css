@@ -207,8 +207,9 @@
 }
 #infoButtons a {
 	margin: 0 5px;
-	min-width: 70px;
-	text-transform: none;
+	min-width: 80px;
+	padding: 0 10px;
+	line-height: 36px;
 }
 #infoButtons a:hover {
 	background: #222f3d;
