@@ -75,10 +75,10 @@ setTimeout( function() {
 <script src="<?=$_POST[ 'addonsinfojs' ]?>"></script>
 
 <div class="container">
-	<a id="close" class="close-root"><i class="fa fa-times disabled"></i></a>
+	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS PROGRESS</h1>
-	<p id="wait">Please wait until finished...</p>
 	<p class="bl"></p>
+	<p id="wait">Please wait until finished...</p>
 
 	<div class="hidescrollv">
 	<pre>
