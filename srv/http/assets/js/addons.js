@@ -9,7 +9,7 @@ $( '.revision' ).click( function(e) {
 $( '#list li' ).click( function() {
 	var alias = this.getAttribute( 'alias' );
 	document.getElementById( alias ).scrollIntoView( true );
-	window.scrollBy( 0, -15 );
+	window.scrollBy( 0, -10 );
 } );
 // sroll top
 $( 'legend' ).click( function() {
