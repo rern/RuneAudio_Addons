@@ -25,11 +25,11 @@ echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	<h1><i class="fa fa-addons"></i> ADDONS</h1>
-	<p id="diskused" class="disk" style="width: '.$wused.'px;"></p><p id="diskfree" class="disk" style="width: '.$wfree.'px;"></p>
-	<p id="diskunpart" class="disk" style="width: '.$wunpart.'px;"></p><p class="disk">&ensp;'.$available.$expandable.'</p>
 	<p class="bl"></p>
-	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
-	</a>
+	<p id="diskused" class="disk" style="width: '.$wused.'px;"></p><p id="diskfree" class="disk" style="width: '.$wfree.'px;"></p>
+	<p id="diskunpart" class="disk" style="width: '.$wunpart.'px;"></p><p id="disktext" class="disk" style="width: 150px;">&ensp;'.$available.$expandable.'</p>
+	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
+	</p>
 ';
 // ------------------------------------------------------------------------------------
 $list = '';
