@@ -240,6 +240,13 @@ code,
 code i {
 	color: #e0e7ee;
 }
+pre hr {
+	margin: 10px 0 -10px -10px;
+	border: 1px solid #00ffff;
+}
+pre hr.hrlight {
+	border-width: 0.5px;
+}
 p,
 ul,
 .bl,
