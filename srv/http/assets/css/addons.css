@@ -56,8 +56,13 @@ body {
 	background-color: #000;
 }
 .container {
-	margin: 15px 6px;
+	margin: 15px auto;
 	padding : 0 35px 20px 35px;
+}
+@media (min-width: 992px) {
+	.container {
+		width: 970px;
+	}
 }
 @media(max-width: 540px) {
 	.container {
@@ -85,7 +90,7 @@ h1 {
 	text-decoration: none;
 }
 .disk {
-	display: table-cell;
+	display: inline-block;
 	line-height: 10px;
 }
 #diskused {
@@ -98,8 +103,8 @@ h1 {
 	background: #0095d8;
 }
 #issues {
-	width: calc( 100vw - 350px );
-	text-align: right;
+	float: right;
+	margin-top: 3px;
 }
 #wait {
 	margin: 0;
@@ -162,10 +167,13 @@ legend .fa-arrow-up {
 }
 .hidescrollv {
 	margin-top: 10px;
+	width: 100%;
+	overflow: hidden;
 }
 pre {
 	display: block;
 	max-height: calc(100vh - 170px);
+	width: 100%;
 	padding: 10px;
 	margin: 0 0 10px;
 	background-color: #1a1a1a;
