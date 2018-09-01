@@ -67,7 +67,10 @@ body {
 }
 @media(max-width: 540px) {
 	.container {
-		padding: 0 15px 15px 15px;
+		padding: 0 10px 15px 10px;
+	}
+	.boxed-group {
+		padding: 10px !important;
 	}
 }
 h1 {
