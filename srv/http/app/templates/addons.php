@@ -148,7 +148,6 @@ echo '
 	<ul id="list">'.
 		$list.'
 	</ul>
-	<br>
 ';
 echo $blocks;
 ?>
