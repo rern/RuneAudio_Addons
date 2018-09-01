@@ -61,7 +61,6 @@ setTimeout( function() {
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$dash = round( $_POST[ 'prewidth' ] / 8 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
@@ -130,6 +129,7 @@ if ( $alias === 'addo' && $type !== 'Update' ) {
 echo $commandtxt.'<br>';
 
 // for convert bash stdout to html
+$dash = round( $_POST[ 'prewidth' ] / 7 );
 $replace = array(
 	'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
 	'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
