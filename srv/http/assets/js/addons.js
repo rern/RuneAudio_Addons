@@ -381,14 +381,12 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-	var prewidth = $( '.container' ).width(); // width for title lines
 	// pass cache busting assets to addonsbash which cannot bind in '/templates'
 	$( 'body' ).append( '\
 		<form id="formtemp" action="addonsbash.php" method="post">\
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
 			<input type="hidden" name="favicon" value="'+ $( '#favicon' ).val() +'">\
 			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
 			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
