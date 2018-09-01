@@ -381,7 +381,7 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
+	var prewidth = $( '.container' ).width(); // width for title lines
 	// pass cache busting assets to addonsbash which cannot bind in '/templates'
 	$( 'body' ).append( '\
 		<form id="formtemp" action="addonsbash.php" method="post">\
