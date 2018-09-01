@@ -111,8 +111,8 @@ foreach( $arrayalias as $alias ) {
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
 	$description = str_replace( '\\', '', $addon[ 'description' ] );
 	$sourcecode = $addon[ 'sourcecode' ];
-	if ( $sourcecode ) {
-		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
+	if ( $sourcecode && $addon[ 'buttonlabel' ] !== 'Link') {
+		$detail = '&emsp;<a href="'.$sourcecode.'" target="_blank">detail&ensp;<i class="fa fa-external-link"></i></a>';
 	} else {
 		$detail = '';
 	}
