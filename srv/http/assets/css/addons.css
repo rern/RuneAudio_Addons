@@ -48,6 +48,7 @@ i.fa {
 .fa-warning:before { content: "\f562" }
 
 body {
+	margin: 0;
 	font-family: "Lato";
 	font-size: 14px;
 	font-weight: normal;
@@ -55,6 +56,7 @@ body {
 	background-color: #000;
 }
 .container {
+	margin: 15px 6px;
 	padding : 0 35px 20px 35px;
 }
 @media(max-width: 540px) {
@@ -63,14 +65,14 @@ body {
 	}
 }
 h1 {
-	margin: 20px 0 10px 0;
-	line-height: 1.1em;
+	-webkit-margin-before: 0;
+	-webkit-margin-after: 0;
 	font-size: 36px;
 	font-weight: 300;
 }
 .close-root {
 	float: right;
-	margin-top: 20px;
+	line-height: 40px;
 	font-size: 28px;
 	color: #0095d8;
 	text-decoration: none;
