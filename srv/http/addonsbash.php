@@ -128,17 +128,16 @@ if ( $alias === 'addo' && $type !== 'Update' ) {
 
 echo $commandtxt.'<br>';
 
-// for convert bash stdout to html
-$dash = round( $_POST[ 'prewidth' ] / 7 );
+// convert bash stdout to html
 $replace = array(
-	'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
-	'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
-	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
-	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
-	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
-	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
-	'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
-	'/.\[0m/'                => '</a>',                   // reset color
+	'/=(=+)=/'               => '<hr>',                 // double line
+	'/-(-+)-/'               => '<hr class="hrlight">', // line
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',       // bar
+	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',       // info, yesno
+	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',       // warn
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor
+	'/.\[38;5;6m/'           => '<a class="ck">',       // lcolor
+	'/.\[0m/'                => '</a>',                 // reset color
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
@@ -146,23 +145,23 @@ $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
 
-$popencmd = popen( "$command 2>&1", 'r' );                // start bash
-while ( !feof( $popencmd ) ) {                            // each line
-	$std = fread( $popencmd, 4096 );                      // read
+$popencmd = popen( "$command 2>&1", 'r' );              // start bash
+while ( !feof( $popencmd ) ) {                          // each line
+	$std = fread( $popencmd, 4096 );                    // read
 
-	$std = preg_replace(                                  // convert to html
+	$std = preg_replace(                                // convert to html
 		array_keys( $replace ),
 		array_values( $replace ),
 		$std
 	);
-	foreach( $skip as $find ) {                           // skip line
+	foreach( $skip as $find ) {                         // skip line
 		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
-	foreach( $skippacman as $findp ) {                    // skip pacman line after output once
+	foreach( $skippacman as $findp ) {                  // skip pacman line after output once
 		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
 
-	echo $std;                                            // stdout to screen
+	echo $std;                                          // stdout to screen
 	
 	// wait if reinit
 	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
