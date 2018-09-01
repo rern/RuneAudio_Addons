@@ -62,6 +62,7 @@ body {
 @media (min-width: 992px) {
 	.container {
 		width: 970px;
+		max-width: calc( 100% - 70px );
 	}
 }
 @media(max-width: 540px) {
