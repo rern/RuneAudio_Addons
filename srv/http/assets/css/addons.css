@@ -1,4 +1,18 @@
 @font-face {
+	font-family: Lato;
+	src: url( '../fonts/lato/lato-regular-webfont.woff' ) format( 'woff' ),
+		url( '../fonts/lato/lato-regular-webfont.ttf' ) format( 'truetype' );
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+	font-family: Lato;
+	src: url( '../fonts/lato/lato-light-webfont.woff' ) format( 'woff' ),
+		url( '../fonts/lato/lato-light-webfont.ttf' ) format( 'truetype' );
+	font-weight: 300;
+	font-style: normal;
+}
+@font-face {
 	font-family: Inconsolata;
 	src: url('../fonts/Inconsolata.woff') format('woff'),
 		url( '../fonts/Inconsolata.ttf' ) format( 'truetype' );
@@ -36,6 +50,7 @@ i.fa {
 body {
 	font-family: "Lato";
 	font-size: 14px;
+	font-weight: normal;
 	color: #e0e7ee;
 	background-color: #000;
 }
