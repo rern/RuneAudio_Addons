@@ -11,23 +11,28 @@ if ( $redisaddons[ 'expa' ] ) {
 	$mbtotal = round( $sectorall * $sectorbyte / 1024 / 1024 );
 	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
 	
-	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
+	if ( $mbunpart < 10 ) {
+		$redis->hSet( 'addons', 'expa', 1 );
+		$htmlunpart = '';
+	} else {
+		$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $mbunpart / $mbtotal ) * $wtotal ).'px;">&nbsp;</p>';
+	}
 }
 $mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
 $mbfree = round( disk_free_space( '/' ) / 1000000 );
 $wtotal = 200;
 $wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
-$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
+$htmlfree = $mbfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
 $wused = $wtotal- $wfree - $wunpart;
 $available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
 $expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
-	<h1><i class="fa fa-addons"></i> ADDONS</h1>
+	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
 	<p class="bl"></p>
-	<p id="diskused" class="disk" style="width: '.$wused.'px;"></p><p id="diskfree" class="disk" style="width: '.$wfree.'px;"></p>
-	<p id="diskunpart" class="disk" style="width: '.$wunpart.'px;"></p><p id="disktext" class="disk" style="width: 150px;">&ensp;'.$available.$expandable.'</p>
+	<p id="diskused" class="disk" style="width: '.$wused.'px;">&nbsp;</p>'.$htmlfree.$htmlunpart.'
+	<p id="disktext" class="disk">&ensp;'.$available.$expandable.'</p>
 	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</p>
 ';
