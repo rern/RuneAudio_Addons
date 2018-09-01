@@ -28,32 +28,6 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 <?php include 'addonslist.php';?>
 <!-- ...................................................................................... -->
 <script>
-// hide <pre> vertical scrollbar on desktop
-var div = document.createElement( 'div' );
-div.style.cssText = 
-	'width: 100px;'
-	+'msOverflowStyle: scrollbar;'
-	+'overflow: scroll;'
-	+'visibility: hidden;'
-	;
-document.body.appendChild( div );
-var scrollbarWidth = div.offsetWidth - div.clientWidth;
-document.body.removeChild( div );
-
-if ( scrollbarWidth !== 0 ) {
-	var css = 
-		'.hidescrollv {\n'
-		+'	width: 100%;\n'
-		+'	overflow: hidden;\n'
-		+'}\n'
-		+'pre {\n'
-		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
-		+'}';
-	var style = document.createElement( 'style' );
-	style.appendChild( document.createTextNode( css ) );
-	document.head.appendChild( style );
-}
-
 // js for '<pre>' must be here before start stdout
 // php 'flush' loop waits for all outputs before going to next lines
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
