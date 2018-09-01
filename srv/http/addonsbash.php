@@ -76,7 +76,7 @@ setTimeout( function() {
 
 <div class="container">
 	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
-	<h1><i class="fa fa-addons"></i> ADDONS PROGRESS</h1>
+	<h1><i class="fa fa-addons"></i>&ensp;Addons Progress</h1>
 	<p class="bl"></p>
 	<p id="wait">Please wait until finished...</p>
 
@@ -87,7 +87,7 @@ setTimeout( function() {
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$dash = round( $_POST[ 'prewidth' ] / 7.76 );
+$dash = round( $_POST[ 'prewidth' ] / 8 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
