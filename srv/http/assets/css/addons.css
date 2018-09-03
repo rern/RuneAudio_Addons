@@ -56,6 +56,7 @@ body {
 	background-color: #000;
 }
 .container {
+	max-width: 970px !important;
 	margin: 15px auto;
 	padding : 0 35px 20px 35px;
 }
@@ -65,9 +66,9 @@ body {
 		max-width: calc( 100% - 70px );
 	}
 }
-@media(min-width: 768px) {
+@media (min-width: 768px) {
 	.container {
-		width: 100%;
+		width: unset;
 	}
 }
 @media(max-width: 540px) {
