@@ -252,7 +252,7 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	if ( $infofocus ) $infofocus.select();
+	if ( $infofocus ) $infofocus.focus();
 }
 
 function radioCheckbox( el, htm, chk ) {
