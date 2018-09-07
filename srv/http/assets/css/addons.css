@@ -465,7 +465,7 @@ legend .fa-arrow-up {
 pre {
 	display: block;
 	max-height: calc(100vh - 170px);
-	width: 100%;
+	width: calc( 100% + 30px );
 	padding: 10px;
 	margin: 0 0 10px;
 	background-color: #1a1a1a;
