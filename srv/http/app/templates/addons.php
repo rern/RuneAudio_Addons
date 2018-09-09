@@ -8,9 +8,17 @@ if ( $redisaddons[ 'expa' ] ) {
 	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
 	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
 	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-	$mbtotal = round( $sectorall * $sectorbyte / 1024 / 1024 );
-	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
-	
+	$mbtotal = round( $sectorall * $sectorbyte / pow( 2, 20 ) );
+	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / pow( 2, 20 ) );
+	$mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / pow( 2, 20 ) );
+	$mbfree = round( disk_free_space( '/' ) / pow( 2, 20 ) );
+	$wtotal = 200;
+	$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
+	$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
+	$wused = $wtotal- $wfree - $wunpart;
+	$htmlfree = $mbfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
+	$available = '<white>'.( $mbfree < 1024 ? $mbfree.' MiB' : round( $mbfree / 1024, 2 ).' GiB' ).'</white> free';
+	$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1024 ? $mbunpart.' MiB' : round( $mbunpart / 1024, 2 ).' GiB' ).'</a> expandable' );
 	if ( $mbunpart < 10 ) {
 		$redis->hSet( 'addons', 'expa', 1 );
 		$htmlunpart = '';
@@ -18,14 +26,6 @@ if ( $redisaddons[ 'expa' ] ) {
 		$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $mbunpart / $mbtotal ) * $wtotal ).'px;">&nbsp;</p>';
 	}
 }
-$mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
-$mbfree = round( disk_free_space( '/' ) / 1000000 );
-$wtotal = 200;
-$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
-$htmlfree = $mbfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
-$wused = $wtotal- $wfree - $wunpart;
-$available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
-$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
