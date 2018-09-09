@@ -1,30 +1,23 @@
 <?php
 include '/srv/http/addonslist.php';
-if ( $redisaddons[ 'expa' ] ) {
-	$mbunpart = 0;
+
+$mbtotal = round( disk_total_space( '/' ) / pow( 2, 20 ) );
+$mbfree = round( disk_free_space( '/' ) / pow( 2, 20 ) );
+$unpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F | grep mmcblk0 | cut -d' ' -f6'" );
+$mbunpart = $unpart / pow( 2, 20 );
+$wtotal = 170;
+$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
+$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
+$wused = $wtotal- $wfree - $wunpart;
+$htmlfree = $wfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
+$available = '<white>'.( $mbfree < 1024 ? $mbfree.' MiB' : round( $mbfree / 1024, 2 ).' GiB' ).'</white> free';
+if ( $mbunpart < 10 ) {
+	$redis->hSet( 'addons', 'expa', 1 );
+	$htmlunpart = '';
+	$expandable = '';
 } else {
-	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
-	$fdisk = array_values( $fdisk );
-	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
-	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
-	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-	$mbtotal = round( $sectorall * $sectorbyte / pow( 2, 20 ) );
-	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / pow( 2, 20 ) );
-	$mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / pow( 2, 20 ) );
-	$mbfree = round( disk_free_space( '/' ) / pow( 2, 20 ) );
-	$wtotal = 170;
-	$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
-	$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
-	$wused = $wtotal- $wfree - $wunpart;
-	$htmlfree = $mbfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
-	$available = '<white>'.( $mbfree < 1024 ? $mbfree.' MiB' : round( $mbfree / 1024, 2 ).' GiB' ).'</white> free';
-	$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1024 ? $mbunpart.' MiB' : round( $mbunpart / 1024, 2 ).' GiB' ).'</a> expandable' );
-	if ( $mbunpart < 10 ) {
-		$redis->hSet( 'addons', 'expa', 1 );
-		$htmlunpart = '';
-	} else {
-		$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $mbunpart / $mbtotal ) * $wtotal ).'px;">&nbsp;</p>';
-	}
+	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $mbunpart / $mbtotal ) * $wtotal ).'px;">&nbsp;</p>';
+	$expandable = ' ● <a>'.( $mbunpart < 1024 ? $mbunpart.' MiB' : round( $mbunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
 echo '
 <div class="container">
