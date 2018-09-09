@@ -160,15 +160,14 @@ while ( !feof( $popencmd ) ) {                          // each line
 	foreach( $skippacman as $findp ) {                  // skip pacman line after output once
 		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
-
-	echo $std;                                          // stdout to screen
-	
-	// wait if reinit
 	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
+		echo '<i class="fa fa-refresh fa-spin"></i> Reinitialize system ...';
 		pclose( $popencmd );
 		$reinit = 1;
 		break;
 	}
+	echo $std;                                          // stdout to screen
+	
 	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
