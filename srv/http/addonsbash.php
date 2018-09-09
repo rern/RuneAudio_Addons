@@ -161,7 +161,7 @@ while ( !feof( $popencmd ) ) {                          // each line
 		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
 	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
-		echo '<i class="fa fa-refresh fa-spin"></i> Reinitialize system ...';
+		echo '<w id="reinit"><i class="fa fa-refresh fa-spin"></i>Reinitialize system ...</w><br><br>';
 		pclose( $popencmd );
 		$reinit = 1;
 		break;
@@ -189,10 +189,9 @@ if ( !$reinit ) pclose( $popencmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementById( 'wait' ).innerHTML = '&nbsp;';
-		var close = document.getElementsByClassName( 'close-root' )[ 0 ];
-		close.children[ 0 ].classList.remove( 'disabled' );
-		close.href = '<?=$close;?>';
+		$( '#wait' ).html( '&nbsp;' );
+		$( '#closeprogress' ).attr( 'href', '<?=$close;?>' ).find( 'i' ).removeClass( 'disabled' );
+		$( '#reinit' ).remove();
 		
 		info( {
 			icon:    'info-circle',
