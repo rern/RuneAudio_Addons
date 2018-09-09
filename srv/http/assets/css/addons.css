@@ -192,7 +192,7 @@ html {
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 body {
-	font-family: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-family: "Lato";
 	font-size: 14px;
 	line-height: 1.42857143;
 	color: #e0e7ee;
@@ -329,6 +329,7 @@ i.fa {
 .fa-warning:before { content: "\f562" }
 .fa-spin {
 	display: inline-block;
+	margin-right: 10px;
 	-webkit-animation: fa-spin 2s infinite linear;
 	animation: fa-spin 2s infinite linear
 }
@@ -360,7 +361,7 @@ body {
 .container {
 	max-width: 970px !important;
 	margin: 15px auto;
-	padding : 0 35px 20px 35px;
+	padding : 0 35px;
 }
 @media (min-width: 992px) {
 	.container {
@@ -479,13 +480,13 @@ legend .fa-arrow-up {
 	}
 }
 .hidescrollv {
+	max-height: calc( 100vh - 140px );
 	margin-top: 10px;
-	width: 100%;
 	overflow: hidden;
 }
 pre {
 	display: block;
-	max-height: calc(100vh - 170px);
+	max-height: calc(100vh - 140px);
 	width: calc( 100% + 30px );
 	padding: 10px;
 	margin: 0 0 10px;
