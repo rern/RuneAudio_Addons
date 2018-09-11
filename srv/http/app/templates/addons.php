@@ -1,16 +1,18 @@
 <?php
 include '/srv/http/addonslist.php';
 
-$mbtotal = round( disk_total_space( '/' ) / pow( 2, 20 ) );
+$total = exec( "/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0 | head -n 1 | cut -d' ' -f5" );
+$unpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F | grep mmcblk0 | cut -d' ' -f6" );
+$mbtotal = round( $total / pow( 2, 20 ) );
+$mbunpart = round( $unpart / pow( 2, 20 ) );
 $mbfree = round( disk_free_space( '/' ) / pow( 2, 20 ) );
-$unpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F | grep mmcblk0 | cut -d' ' -f6'" );
-$mbunpart = $unpart / pow( 2, 20 );
 $wtotal = 170;
-$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
 $wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
+$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
 $wused = $wtotal- $wfree - $wunpart;
 $htmlfree = $wfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
 $available = '<white>'.( $mbfree < 1024 ? $mbfree.' MiB' : round( $mbfree / 1024, 2 ).' GiB' ).'</white> free';
+
 if ( $mbunpart < 10 ) {
 	$redis->hSet( 'addons', 'expa', 1 );
 	$htmlunpart = '';
