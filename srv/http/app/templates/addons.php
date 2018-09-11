@@ -1,7 +1,7 @@
 <?php
 include '/srv/http/addonslist.php';
 
-$total = exec( "/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0 | head -n 1 | cut -d' ' -f5" );
+$total = exec( "/usr/bin/sudo /usr/bin/sfdisk -l /dev/mmcblk0 | head -n 1 | cut -d' ' -f5" );
 $unpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F | grep mmcblk0 | cut -d' ' -f6" );
 $mbtotal = round( $total / pow( 2, 20 ) );
 $mbunpart = round( $unpart / pow( 2, 20 ) );
