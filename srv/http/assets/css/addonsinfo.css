@@ -84,8 +84,8 @@
 	color: #e0e7ee;
 }
 #infoBox {
-	width: 98%;
-	max-width: 400px;
+	width: 400px;
+	max-width: 98%;
 	margin: 40vh auto;
 	transform: translateY( -50% );
 	background: #19232d;
