@@ -34,11 +34,6 @@
 	color: #999;
 	background: rgba(0, 0, 0, 0.8);
 }
-#loader img {
-	margin-top: 40vh;
-	width: 250px;
-	animation: blinkopaque 1.5s linear infinite;
-}
 #loader i {
 	margin-top: 40vh;
 	width: 100px;
