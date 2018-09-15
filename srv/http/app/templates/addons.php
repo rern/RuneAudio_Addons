@@ -3,22 +3,22 @@ include '/srv/http/addonslist.php';
 
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
-$MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024}'" );
+$MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
 $MiBall = $MiBused + $MiBavail + $MiBunpart;
 
 $Wall = 170;
-$Wused = round( ( $MiBused / $MiBall ) * $Wall );
-$Wavail = round( ( $MiBavail / $MiBall ) * $Wall );
+$Wused = round( $MiBused / $MiBall * $Wall );
+$Wavail = round( $MiBavail / $MiBall * $Wall );
 $Wunpart = $Wall - $Wused - $Wavail;
 $htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
 $htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
-$htmlfree = '<white>'.( $MiBavail < 1024 ? $MiBavail.' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
-if ( $mbunpart < 10 ) {
+$htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
+if ( $MiBunpart < 10 ) {
 	$redis->hSet( 'addons', 'expa', 1 );
 	$htmlunpart = '';
 	$expandable = '';
 } else {
-	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $MiBunpart / $MiBall ) * $Wall ).'px;">&nbsp;</p>';
+	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
 	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
 echo '
