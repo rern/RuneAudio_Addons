@@ -4,12 +4,15 @@ info( 'message' );
 
 normal usage:
 info( {
+	width         : N              // 400 / N                (info width)
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
 	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
+	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
+	textalign     : 'CSS'          // left / CSS             (text input align)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
@@ -95,18 +98,19 @@ $( '#infoX' ).click( function() {
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
 	$( '.infolabel, .infohtml, #infoFilename' ).empty();
-	$( '.infoinput' ).val( '' );
-	$( '.infolabel, .infoinput' ).css( 'width', '' );
+	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
+	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
-	$( '#loader' ).addClass( 'hide' ); // temp fix
+//	$( '#loader' ).addClass( 'hide' ); // temp fix
 }
 
 function info( O ) {
 	// title
 	infoReset();
 	
+	if ( O.width ) $( '#infoBox' ).css( 'width', O.width +'px' );
 	if ( !O.icon ) {
 		var iconhtml = '<i class="fa fa-question-circle">';
 	} else {
@@ -191,11 +195,13 @@ function info( O ) {
 			$( '#infoTextLabel2, #infoTextBox2' ).show();
 		}
 		if ( O.boxwidth ) {
-			var calcW = window.innerWidth * 0.98;
-			var infoW = calcW > 400 ? 290 : calcW - 110;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.infoinput' ).width() +'px'
-			$( '.infoinput' ).css( 'width', boxW );
+			var maxW = window.innerWidth * 0.98;
+			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
+			var calcW = maxW < infoW ? 290 : infoW - 110;
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - $( '.infoinput' ).width();
+			$( '.infoinput' ).css( 'width', boxW +'px' );
 		}
+		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
