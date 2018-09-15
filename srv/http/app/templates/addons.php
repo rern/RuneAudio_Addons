@@ -12,14 +12,14 @@ $Wavail = round( ( $MiBavail / $MiBall ) * $Wall );
 $Wunpart = $Wall - $Wused - $Wavail;
 $htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
 $htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
-$available = '<white>'.( $MiBavail < 1024 ? $MiBavail.' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
+$htmlfree = '<white>'.( $MiBavail < 1024 ? $MiBavail.' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
 if ( $mbunpart < 10 ) {
 	$redis->hSet( 'addons', 'expa', 1 );
 	$htmlunpart = '';
 	$expandable = '';
 } else {
 	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $MiBunpart / $MiBall ) * $Wall ).'px;">&nbsp;</p>';
-	$available.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
+	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
 echo '
 <div class="container">
@@ -27,7 +27,7 @@ echo '
 	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
 	<p class="bl"></p>
 	'.$htmlused.$htmlavail.$htmlunpart.'
-	<p id="disktext" class="disk">&ensp;'.$available.'</p>
+	<p id="disktext" class="disk">&ensp;'.$htmlfree.'</p>
 	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</p>
 ';
