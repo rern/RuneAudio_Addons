@@ -1,33 +1,33 @@
 <?php
 include '/srv/http/addonslist.php';
 
-$total = exec( "/usr/bin/sudo /usr/bin/sfdisk -l /dev/mmcblk0 | head -n 1 | cut -d' ' -f5" );
-$unpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F | grep mmcblk0 | cut -d' ' -f6" );
-$mbtotal = round( $total / pow( 2, 20 ) );
-$mbunpart = round( $unpart / pow( 2, 20 ) );
-$mbfree = round( disk_free_space( '/' ) / pow( 2, 20 ) );
-$wtotal = 170;
-$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
-$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
-$wused = $wtotal- $wfree - $wunpart;
-$htmlfree = $wfree ? '<p id="diskfree" class="disk" style="width: '.$wfree.'px;">&nbsp;</p>' : '';
-$available = '<white>'.( $mbfree < 1024 ? $mbfree.' MiB' : round( $mbfree / 1024, 2 ).' GiB' ).'</white> free';
+$MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
+$MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
+$MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024}'" );
+$MiBall = $MiBused + $MiBavail + $MiBunpart;
 
+$Wall = 170;
+$Wused = round( ( $MiBused / $MiBall ) * $Wall );
+$Wavail = round( ( $MiBavail / $MiBall ) * $Wall );
+$Wunpart = $Wall - $Wused - $Wavail;
+$htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
+$htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
+$available = '<white>'.( $MiBavail < 1024 ? $MiBavail.' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
 if ( $mbunpart < 10 ) {
 	$redis->hSet( 'addons', 'expa', 1 );
 	$htmlunpart = '';
 	$expandable = '';
 } else {
-	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $mbunpart / $mbtotal ) * $wtotal ).'px;">&nbsp;</p>';
-	$expandable = ' ● <a>'.( $mbunpart < 1024 ? $mbunpart.' MiB' : round( $mbunpart / 1024, 2 ).' GiB' ).'</a> expandable';
+	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.round( ( $MiBunpart / $MiBall ) * $Wall ).'px;">&nbsp;</p>';
+	$available.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
 echo '
 <div class="container">
 	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
 	<p class="bl"></p>
-	<p id="diskused" class="disk" style="width: '.$wused.'px;">&nbsp;</p>'.$htmlfree.$htmlunpart.'
-	<p id="disktext" class="disk">&ensp;'.$available.$expandable.'</p>
+	'.$htmlused.$htmlavail.$htmlunpart.'
+	<p id="disktext" class="disk">&ensp;'.$available.'</p>
 	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</p>
 ';
