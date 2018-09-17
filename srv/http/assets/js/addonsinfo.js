@@ -194,13 +194,6 @@ function info( O ) {
 			$( '#infoTextBox2' ).val( O.textvalue2 );
 			$( '#infoTextLabel2, #infoTextBox2' ).show();
 		}
-		if ( O.boxwidth ) {
-			var maxW = window.innerWidth * 0.98;
-			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
-			var calcW = maxW < infoW ? 290 : infoW - 110;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - $( '.infoinput' ).width();
-			$( '.infoinput' ).css( 'width', boxW +'px' );
-		}
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
@@ -259,6 +252,14 @@ function info( O ) {
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
 	if ( $infofocus ) $infofocus.focus();
+		if ( O.boxwidth ) {
+			var maxW = window.innerWidth * 0.98;
+			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
+			var calcW = maxW < infoW ? maxW : infoW;
+			console.log($( '#infoTextLabel' ).width());
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
+			$( '.infoinput' ).css( 'width', boxW +'px' );
+		}
 }
 
 function radioCheckbox( el, htm, chk ) {
