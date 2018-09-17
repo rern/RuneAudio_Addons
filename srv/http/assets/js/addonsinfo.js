@@ -4,12 +4,15 @@ info( 'message' );
 
 normal usage:
 info( {
+	width         : N              // 400 / N                (info width)
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
 	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
+	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
+	textalign     : 'CSS'          // left / CSS             (text input align)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
@@ -29,6 +32,8 @@ info( {
 	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
 	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
 	button        : 'FUNCTION'     // required FUNCTION      (button click function)
+	nobutton      : 1              // 0 / 1                  (no button)
+	autoclose     : N              // ms                     (auto close in ms)
 } );
 */
 function heredoc( fn ) {
@@ -39,9 +44,9 @@ var html = heredoc( function() { /*
 	<div id="infoBox">
 		<div id="infoTopBg">
 			<div id="infoTop">
-				<a id="infoIcon"></a>&emsp;<a id="infoTitle"></a>
+				<i id="infoIcon"></i>&emsp;<a id="infoTitle"></a>
 			</div>
-			<div id="infoX"><i class="fa fa-times fa-2x"></i></div>
+			<i id="infoX" class="fa fa-times"></i>
 			<div style="clear: both"></div>
 		</div>
 		<div id="infoContent">
@@ -93,23 +98,24 @@ $( '#infoX' ).click( function() {
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
 	$( '.infolabel, .infohtml, #infoFilename' ).empty();
-	$( '.infoinput' ).val( '' );
-	$( '.infolabel, .infoinput' ).css( 'width', '' );
+	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
+	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
-	$( '#loader' ).addClass( 'hide' ); // temp fix
+//	$( '#loader' ).addClass( 'hide' ); // temp fix
 }
 
 function info( O ) {
 	// title
 	infoReset();
 	
+	if ( O.width ) $( '#infoBox' ).css( 'width', O.width +'px' );
 	if ( !O.icon ) {
-		var iconhtml = '<i class="fa fa-question-circle fa-2x">';
+		var iconhtml = '<i class="fa fa-question-circle">';
 	} else {
 		if ( O.icon.charAt( 0 ) !== '<' ) {
-			var iconhtml = '<i class="fa fa-'+ O.icon +' fa-2x">';
+			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
 		} else {
 			var iconhtml = O.icon;
 		}
@@ -118,10 +124,15 @@ function info( O ) {
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
 	
+	if ( O.autoclose ) {
+		setTimeout( function() {
+			infoReset();
+		}, O.autoclose );
+	}
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O );
-		$( '#infoIcon' ).html( '<i class="fa fa-info-circle fa-2x">' );
+		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
 		$( '#infoOk' ).html( 'OK' ).click( function() {
 			infoReset();
@@ -133,46 +144,47 @@ function info( O ) {
 	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
 	
 	// buttons
-	if ( O.cancel ) {
-		$( '#infoCancel' )
-			.html( O.cancellabel ? O.cancellabel : 'Cancel' )
-			.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+	if ( !O.nobutton ) {
+		$( '#infoOk' )
+			.html( O.oklabel ? O.oklabel : 'OK' )
+			.css( 'background', O.okcolor ? O.okcolor : '' )
 			.show()
 			.on( 'click', function() {
 				$( '#infoOverlay' ).hide();
-				if ( typeof O.cancel === 'function' ) {
-					O.cancel();
-					O.cancel = ''; // suppress multiple runs
+				if ( typeof O.ok === 'function' ) {
+					O.ok();
+					O.ok = ''; // suppress multiple runs
+				} else {
+					infoReset();
 				}
 			} );
+		if ( O.cancel ) {
+			$( '#infoCancel' )
+				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
+				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+				.show()
+				.on( 'click', function() {
+					$( '#infoOverlay' ).hide();
+					if ( typeof O.cancel === 'function' ) {
+						O.cancel();
+						O.cancel = ''; // suppress multiple runs
+					}
+				} );
+		}
+		if ( O.button ) {
+			$( '#infoButton' )
+				.html( O.buttonlabel )
+				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
+				.show()
+				.on( 'click', function() {
+					$( '#infoOverlay' ).hide();
+					O.button();
+					O.button = '';
+				} );
+		}
 	}
-	if ( O.button ) {
-		$( '#infoButton' )
-			.html( O.buttonlabel )
-			.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
-			.show()
-			.on( 'click', function() {
-				$( '#infoOverlay' ).hide();
-				O.button();
-				O.button = '';
-			} );
-	}
-	$( '#infoOk' )
-		.html( O.oklabel ? O.oklabel : 'OK' )
-		.css( 'background', O.okcolor ? O.okcolor : '' )
-		.show()
-		.on( 'click', function() {
-			$( '#infoOverlay' ).hide();
-			if ( typeof O.ok === 'function' ) {
-				O.ok();
-				O.ok = ''; // suppress multiple runs
-			} else {
-				infoReset();
-			}
-		} );
-
 		// inputs
-	if ( O.textlabel ) {
+	if ( O.textlabel || O.textvalue ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
 		$( '#infoTextBox' ).val( O.textvalue );
 		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
@@ -182,12 +194,7 @@ function info( O ) {
 			$( '#infoTextBox2' ).val( O.textvalue2 );
 			$( '#infoTextLabel2, #infoTextBox2' ).show();
 		}
-		if ( O.boxwidth ) {
-			var calcW = window.innerWidth * 0.98;
-			var infoW = calcW > 400 ? 290 : calcW - 110;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth +'px' : infoW - $( '.infoinput' ).width() +'px'
-			$( '.infoinput' ).css( 'width', boxW );
-		}
+		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
@@ -244,7 +251,14 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	if ( $infofocus ) $infofocus.select();
+	if ( $infofocus ) $infofocus.focus();
+		if ( O.boxwidth ) {
+			var maxW = window.innerWidth * 0.98;
+			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
+			var calcW = maxW < infoW ? maxW : infoW;
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
+			$( '.infoinput' ).css( 'width', boxW +'px' );
+		}
 }
 
 function radioCheckbox( el, htm, chk ) {

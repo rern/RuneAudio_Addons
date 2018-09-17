@@ -1,4 +1,4 @@
-$(function() { // $( document ).ready(function() {
+$(function() {
 
 $( '#addons' ).click( function () {
 	$( '#loader' )
@@ -56,14 +56,32 @@ function addonsdl( exit ) {
 
 // nginx pushstream websocket
 var pushstreamAddons = new PushStream( {
-	host: window.location.hostname,
-	port: window.location.port,
-	modes: GUI.mode
+	  host  : window.location.hostname
+	, port  : window.location.port
+	, modes : 'websocket'
 } );
 pushstreamAddons.onmessage = function() {
 	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i><br><br>Updating ...' );
 };
-pushstreamAddons.addChannel('addons');
+pushstreamAddons.addChannel( 'addons' );
 pushstreamAddons.connect();
+
+if ( 'hidden' in document ) {
+	var visibilityevent = 'visibilitychange';
+	var hiddenstate = 'hidden';
+} else { // cross-browser document.visibilityState must be prefixed
+	var prefixes = [ 'webkit', 'moz', 'ms', 'o' ];
+	for ( var i = 0; i < 4; i++ ) {
+		var p = prefixes[ i ];
+		if ( p +'Hidden' in document ) {
+			var visibilityevent = p +'visibilitychange';
+			var hiddenstate = p +'Hidden';
+			break;
+		}
+	}
+}
+document.addEventListener( visibilityevent, function() {
+	document[ hiddenstate ] ? pushstreamAddons.disconnect() : pushstreamAddons.connect();
+} );
 
 } );

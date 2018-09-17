@@ -22,7 +22,7 @@ addonslist=$( sed -n "/'addo'/,/^),/p" /srv/http/addonslist.php )
 versionlist=$( echo "$addonslist" | grep 'version.*=>' | cut -d "'" -f 4 )
 versionredis=$( redis-cli hget addons addo )
 
-if [[ $versionlist != $versionredis ]]; then
+if [[ $versionlist > $versionredis ]]; then
 	if (( $( df | grep '/$' | awk '{print $4}' ) < 1000 )); then
 		# get directory size if enough after delete files
 		(( $( du /var/cache/pacman/pkg | awk '{print $1}' ) < 1000 )) && exit 2

@@ -1,35 +1,35 @@
 <?php
 include '/srv/http/addonslist.php';
-if ( $redisaddons[ 'expa' ] ) {
-	$mbunpart = 0;
+
+$MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
+$MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
+$MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
+$MiBall = $MiBused + $MiBavail + $MiBunpart;
+
+$Wall = 170;
+$Wused = round( $MiBused / $MiBall * $Wall );
+$Wavail = round( $MiBavail / $MiBall * $Wall );
+$Wunpart = $Wall - $Wused - $Wavail;
+$htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
+$htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
+$htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
+if ( $MiBunpart < 10 ) {
+	$redis->hSet( 'addons', 'expa', 1 );
+	$htmlunpart = '';
+	$expandable = '';
 } else {
-	exec( '/usr/bin/sudo /usr/bin/fdisk -l /dev/mmcblk0', $fdisk );
-	$fdisk = array_values( $fdisk );
-	$sectorbyte = preg_replace( '/.*= (.*) bytes/', '${1}', implode( preg_grep( '/^Units/', $fdisk ) ) );
-	$sectorall = preg_replace( '/.* (.*) sectors/', '${1}', implode( preg_grep( '/sectors$/', $fdisk ) ) );
-	$sectorused = preg_split( '/\s+/', end( $fdisk ) )[ 2 ];
-	$mbtotal = round( $sectorall * $sectorbyte / 1024 / 1024 );
-	$mbunpart = round( ( $sectorall - $sectorused ) * $sectorbyte / 1024 / 1024 );
-	
-	if ( $mbunpart < 10 ) $redis->hSet( 'addons', 'expa', 1 );
+	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
+	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
-$mbtotal = isset( $mbtotal ) ? $mbtotal : round( disk_total_space( '/' ) / 1000000 );
-$mbfree = round( disk_free_space( '/' ) / 1000000 );
-$wtotal = 200;
-$wfree = round( ( $mbfree / $mbtotal ) * $wtotal );
-$wunpart = round( ( $mbunpart / $mbtotal ) * $wtotal );
-$wused = $wtotal- $wfree - $wunpart;
-$available = '<white>'.( $mbfree < 1000 ? $mbfree.' MB' : round( $mbfree / 1000, 2 ).' GB' ).'</white> free';
-$expandable = ( $mbunpart < 10 ) ? '' : ( ' ● <a>'.( $mbunpart < 1000 ? $mbunpart.' MB' : round( $mbunpart / 1000, 2 ).' GB' ).'</a> expandable' );
 echo '
 <div class="container">
-	<a id="close" class="close-root" href="/"><i class="fa fa-times fa-2x"></i></a>
-	<h1><i class="fa fa-addons"></i> ADDONS</h1>
-	<legend class="bl">
-		<div id="diskused" style="width: '.$wused.'px;"></div><div id="diskfree" style="width: '.$wfree.'px;"></div><div id="diskunpart" style="width: '.$wunpart.'px;"></div>&ensp;'.$available.$expandable.'
-	</legend>
-	<a id="issues" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
-	</a>
+	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
+	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
+	<p class="bl"></p>
+	'.$htmlused.$htmlavail.$htmlunpart.'
+	<p id="disktext" class="disk">&ensp;'.$htmlfree.'</p>
+	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
+	</p>
 ';
 // ------------------------------------------------------------------------------------
 $list = '';
@@ -106,8 +106,8 @@ foreach( $arrayalias as $alias ) {
 	$revision = '<li>'.str_replace( '<br>', '</li><li>', $revision ).'</li>';
 	$description = str_replace( '\\', '', $addon[ 'description' ] );
 	$sourcecode = $addon[ 'sourcecode' ];
-	if ( $sourcecode ) {
-		$detail = ' <a href="'.$sourcecode.'" target="_blank">&emsp;detail &nbsp;<i class="fa fa-external-link"></i></a>';
+	if ( $sourcecode && $addon[ 'buttonlabel' ] !== 'Link' ) {
+		$detail = '&emsp;<a href="'.$sourcecode.'" target="_blank">detail&ensp;<i class="fa fa-external-link"></i></a>';
 	} else {
 		$detail = '';
 	}
@@ -143,12 +143,11 @@ echo '
 	<ul id="list">'.
 		$list.'
 	</ul>
-	<br>
 ';
 echo $blocks;
 ?>
 </div>
-<div id="bottom"></div> <!-- for bottom padding -->
+<p id="bottom"></p> <!-- for bottom padding -->
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <?php

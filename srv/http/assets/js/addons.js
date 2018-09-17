@@ -9,7 +9,7 @@ $( '.revision' ).click( function(e) {
 $( '#list li' ).click( function() {
 	var alias = this.getAttribute( 'alias' );
 	document.getElementById( alias ).scrollIntoView( true );
-	window.scrollBy( 0, -15 );
+	window.scrollBy( 0, -10 );
 } );
 // sroll top
 $( 'legend' ).click( function() {
@@ -19,12 +19,14 @@ $( 'legend' ).click( function() {
 // branch test
 function branchtest( title, message ) {
 	info( {
-		  title    : title
-		, message  : message
-		, textlabel: 'Tree #/Branch'
-		, textvalue: 'UPDATE'
-		, cancel   : 1
-		, ok       : function() {
+		  title     : title
+		, width     : 500
+		, message   : message
+		, textlabel : 'Tree #/Branch'
+		, textvalue : 'UPDATE'
+		, boxwidth  : 'max'
+		, cancel    : 1
+		, ok        : function() {
 			branch = $( '#infoTextBox' ).val();
 			opt += branch +' -b';
 			formtemp();
@@ -381,14 +383,13 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-	var prewidth = document.getElementsByClassName( 'container' )[ 0 ].offsetWidth - 50; // width for title lines
 	// pass cache busting assets to addonsbash which cannot bind in '/templates'
 	$( 'body' ).append( '\
 		<form id="formtemp" action="addonsbash.php" method="post">\
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="prewidth" value="'+ prewidth +'">\
+			<input type="hidden" name="favicon" value="'+ $( '#favicon' ).val() +'">\
 			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
 			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
 			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).val() +'">\

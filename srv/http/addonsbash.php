@@ -5,13 +5,12 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Addons</title>
+	<title>Rune Addons</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no" />
-	<link rel="stylesheet" href="/css/runeui.css">
 	<style>
 		@font-face {
 			font-family: addons;
@@ -20,41 +19,15 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 			font-style : normal;
 		}
 	</style>
+	<link rel="shortcut icon" href="<?=$_POST[ 'favicon' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
 	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
-	<link rel="shortcut icon" href="/img/favicon.ico">
 </head>
 <body>
 
 <?php include 'addonslist.php';?>
 <!-- ...................................................................................... -->
 <script>
-// hide <pre> vertical scrollbar on desktop
-var div = document.createElement( 'div' );
-div.style.cssText = 
-	'width: 100px;'
-	+'msOverflowStyle: scrollbar;'
-	+'overflow: scroll;'
-	+'visibility: hidden;'
-	;
-document.body.appendChild( div );
-var scrollbarWidth = div.offsetWidth - div.clientWidth;
-document.body.removeChild( div );
-
-if ( scrollbarWidth !== 0 ) {
-	var css = 
-		'.hidescrollv {\n'
-		+'	width: 100%;\n'
-		+'	overflow: hidden;\n'
-		+'}\n'
-		+'pre {\n'
-		+'	width: calc(100% + '+ ( scrollbarWidth + 1 ) +'px);\n'
-		+'}';
-	var style = document.createElement( 'style' );
-	style.appendChild( document.createTextNode( css ) );
-	document.head.appendChild( style );
-}
-
 // js for '<pre>' must be here before start stdout
 // php 'flush' loop waits for all outputs before going to next lines
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
@@ -76,9 +49,10 @@ setTimeout( function() {
 <script src="<?=$_POST[ 'addonsinfojs' ]?>"></script>
 
 <div class="container">
-	<a id="close" class="close-root"><i class="fa fa-times fa-2x disabled"></i></a>
-	<h1>ADDONS TERMINAL</h1>
-	<legend class="bl">Please wait until finished...</legend>
+	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
+	<h1><i class="fa fa-addons"></i>&ensp;Addons Progress</h1>
+	<p class="bl"></p>
+	<p id="wait">Please wait until finished...</p>
 
 	<div class="hidescrollv">
 	<pre>
@@ -87,7 +61,6 @@ setTimeout( function() {
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$dash = round( $_POST[ 'prewidth' ] / 7.55 );
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
@@ -155,16 +128,16 @@ if ( $alias === 'addo' && $type !== 'Update' ) {
 
 echo $commandtxt.'<br>';
 
-// for convert bash stdout to html
+// convert bash stdout to html
 $replace = array(
-	'/=(=+)=/'               => str_repeat( '=', $dash ), // fit line to width
-	'/-(-+)-/'               => str_repeat( '-', $dash ), // fit line to width
-	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',         // bar
-	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',         // info, yesno
-	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',         // warn
-	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',         // tcolor
-	'/.\[38;5;6m/'           => '<a class="ck">',         // lcolor
-	'/.\[0m/'                => '</a>',                   // reset color
+	'/=(=+)=/'               => '<hr>',                 // double line
+	'/-(-+)-/'               => '<hr class="hrlight">', // line
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',       // bar
+	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',       // info, yesno
+	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',       // warn
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor
+	'/.\[38;5;6m/'           => '<a class="ck">',       // lcolor
+	'/.\[0m/'                => '</a>',                 // reset color
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
 $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
@@ -172,30 +145,29 @@ $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
 
-$popencmd = popen( "$command 2>&1", 'r' );                // start bash
-while ( !feof( $popencmd ) ) {                            // each line
-	$std = fread( $popencmd, 4096 );                      // read
+$popencmd = popen( "$command 2>&1", 'r' );              // start bash
+while ( !feof( $popencmd ) ) {                          // each line
+	$std = fread( $popencmd, 4096 );                    // read
 
-	$std = preg_replace(                                  // convert to html
+	$std = preg_replace(                                // convert to html
 		array_keys( $replace ),
 		array_values( $replace ),
 		$std
 	);
-	foreach( $skip as $find ) {                           // skip line
+	foreach( $skip as $find ) {                         // skip line
 		if ( stripos( $std, $find ) !== false ) continue 2;
 	}
-	foreach( $skippacman as $findp ) {                    // skip pacman line after output once
+	foreach( $skippacman as $findp ) {                  // skip pacman line after output once
 		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
-
-	echo $std;                                            // stdout to screen
-	
-	// wait if reinit
 	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
+		echo '<w id="reinit"><i class="fa fa-refresh fa-spin"></i>Reinitialize system ...</w><br><br>';
 		pclose( $popencmd );
 		$reinit = 1;
 		break;
 	}
+	echo $std;                                          // stdout to screen
+	
 	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
@@ -217,17 +189,16 @@ if ( !$reinit ) pclose( $popencmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		document.getElementsByTagName( 'legend' )[ 0 ].innerHTML = '&nbsp;';
-		var close = document.getElementsByClassName( 'close-root' )[ 0 ];
-		close.children[ 0 ].classList.remove( 'disabled' );
-		close.href = '<?=$close;?>';
+		$( '#wait' ).html( '&nbsp;' );
+		$( '#closeprogress' ).attr( 'href', '<?=$close;?>' ).find( 'i' ).removeClass( 'disabled' );
+		$( '#reinit' ).remove();
 		
 		info( {
 			icon:    'info-circle',
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, <?=( !$reinit ? 1000 : 5000 )?> );
+	}, <?=( !$reinit ? 1000 : 7000 )?> );
 </script>
 
 </body>
