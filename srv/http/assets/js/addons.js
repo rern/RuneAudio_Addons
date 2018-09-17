@@ -19,12 +19,14 @@ $( 'legend' ).click( function() {
 // branch test
 function branchtest( title, message ) {
 	info( {
-		  title    : title
-		, message  : message
-		, textlabel: 'Tree #/Branch'
-		, textvalue: 'UPDATE'
-		, cancel   : 1
-		, ok       : function() {
+		  title     : title
+		, width     : 500
+		, message   : message
+		, textlabel : 'Tree #/Branch'
+		, textvalue : 'UPDATE'
+		, boxwidth  : 'max'
+		, cancel    : 1
+		, ok        : function() {
 			branch = $( '#infoTextBox' ).val();
 			opt += branch +' -b';
 			formtemp();
