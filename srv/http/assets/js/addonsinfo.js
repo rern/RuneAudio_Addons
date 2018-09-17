@@ -184,7 +184,7 @@ function info( O ) {
 		}
 	}
 		// inputs
-	if ( O.textlabel ) {
+	if ( O.textlabel || O.textvalue ) {
 		$( '#infoTextLabel' ).html( O.textlabel );
 		$( '#infoTextBox' ).val( O.textvalue );
 		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
@@ -256,7 +256,6 @@ function info( O ) {
 			var maxW = window.innerWidth * 0.98;
 			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
 			var calcW = maxW < infoW ? maxW : infoW;
-			console.log($( '#infoTextLabel' ).width());
 			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
 			$( '.infoinput' ).css( 'width', boxW +'px' );
 		}
