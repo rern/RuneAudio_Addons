@@ -17,7 +17,7 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
-function branchtest( title, message ) {
+function branchtest( title, message, install ) {
 	info( {
 		  title     : title
 		, width     : 500
@@ -28,8 +28,14 @@ function branchtest( title, message ) {
 		, cancel    : 1
 		, ok        : function() {
 			branch = $( '#infoTextBox' ).val();
-			opt += branch +' -b';
-			formtemp();
+			if ( install ) {
+				option = addons[ alias ].option;
+				j = 0;
+				getoptions();
+			} else {
+				opt += branch +' -b';
+				formtemp();
+			}
 		}
 	} );
 }
@@ -42,7 +48,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	opt = '';
 	branch = '';
 	if ( type === 'Install' || !rollback ) {
-		branchtest( title, 'Install version?' );
+		branchtest( title, 'Install version?', 'install' );
 		return 1;
 	}
 	info( {
