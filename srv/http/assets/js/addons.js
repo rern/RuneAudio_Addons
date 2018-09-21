@@ -29,11 +29,12 @@ function branchtest( title, message, install ) {
 		, ok        : function() {
 			branch = $( '#infoTextBox' ).val();
 			if ( install ) {
+				branch = branch +' -b';
 				option = addons[ alias ].option;
 				j = 0;
 				getoptions();
 			} else {
-				opt += branch +' -b';
+				opt = branch +' -b';
 				formtemp();
 			}
 		}
@@ -47,8 +48,11 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	rollback = addons[ alias ].rollback ? addons[ alias ].rollback : '';
 	opt = '';
 	branch = '';
-	if ( type === 'Install' || !rollback ) {
+	if ( type === 'Install' ) {
 		branchtest( title, 'Install version?', 'install' );
+		return 1;
+	} else if ( !rollback ) {
+		branchtest( title, 'Install version?' );
 		return 1;
 	}
 	info( {
@@ -59,7 +63,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		, cancel   : 1
 		, ok       : function() {
 			if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
-				opt += rollback +' -b';
+				opt = rollback +' -b';
 				formtemp();
 			} else {
 				branchtest( title, 'Upgrade / Downgrade to ?' );
