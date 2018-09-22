@@ -17,7 +17,7 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
-function branchtest( title, message ) {
+function branchtest( message, install ) {
 	info( {
 		  title     : title
 		, width     : 500
@@ -27,9 +27,15 @@ function branchtest( title, message ) {
 		, boxwidth  : 'max'
 		, cancel    : 1
 		, ok        : function() {
-			branch = $( '#infoTextBox' ).val();
-			opt += branch +' -b';
-			formtemp();
+			branch = $( '#infoTextBox' ).val() +' -b';
+			option = addons[ alias ].option;
+			j = 0;
+			if ( install && option ) {
+				getoptions();
+			} else {
+				opt = branch;
+				formtemp();
+			}
 		}
 	} );
 }
@@ -41,8 +47,11 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	rollback = addons[ alias ].rollback ? addons[ alias ].rollback : '';
 	opt = '';
 	branch = '';
-	if ( type === 'Install' || !rollback ) {
-		branchtest( title, 'Install version?' );
+	if ( type === 'Install' ) {
+		branchtest( 'Install version?', 'install' );
+		return 1;
+	} else if ( !rollback ) {
+		branchtest( 'Install version?' );
 		return 1;
 	}
 	info( {
@@ -53,10 +62,10 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		, cancel   : 1
 		, ok       : function() {
 			if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
-				opt += rollback +' -b';
+				opt = rollback +' -b';
 				formtemp();
 			} else {
-				branchtest( title, 'Upgrade / Downgrade to ?' );
+				branchtest( 'Upgrade / Downgrade to ?' );
 			}
 		}
 	} );

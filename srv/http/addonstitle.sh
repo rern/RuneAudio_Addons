@@ -240,6 +240,8 @@ installfinish() { # $1-'u'=update
 	else
 		title -l '=' "$bar $title updated successfully."
 	fi
+	
+	systemctl reload php-fpm
 }
 uninstallstart() { # $1-'u'=update
 	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
@@ -267,9 +269,11 @@ uninstallfinish() { # $1-'u'=update
 	[[ $1 == u ]] && exit
 	
 	title -l '=' "$bar $title uninstalled successfully."
+	
+	systemctl reload php-fpm
 }
 clearcache() {
-	[[ -t 1 ]] && systemctl reload php-fpm
+	systemctl reload php-fpm
 	title -nt "$bar Restart local browser ..."
 	if pgrep Xorg > /dev/null; then
 		killall Xorg
