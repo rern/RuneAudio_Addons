@@ -17,7 +17,7 @@ $( 'legend' ).click( function() {
 } );
 
 // branch test
-function branchtest( title, message, install ) {
+function branchtest( message, install ) {
 	info( {
 		  title     : title
 		, width     : 500
@@ -27,14 +27,13 @@ function branchtest( title, message, install ) {
 		, boxwidth  : 'max'
 		, cancel    : 1
 		, ok        : function() {
-			branch = $( '#infoTextBox' ).val();
-			if ( install ) {
-				branch = branch +' -b';
-				option = addons[ alias ].option;
-				j = 0;
+			branch = $( '#infoTextBox' ).val() +' -b';
+			option = addons[ alias ].option;
+			j = 0;
+			if ( install && option ) {
 				getoptions();
 			} else {
-				opt = branch +' -b';
+				opt = branch;
 				formtemp();
 			}
 		}
@@ -49,10 +48,10 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	opt = '';
 	branch = '';
 	if ( type === 'Install' ) {
-		branchtest( title, 'Install version?', 'install' );
+		branchtest( 'Install version?', 'install' );
 		return 1;
 	} else if ( !rollback ) {
-		branchtest( title, 'Install version?' );
+		branchtest( 'Install version?' );
 		return 1;
 	}
 	info( {
@@ -66,7 +65,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 				opt = rollback +' -b';
 				formtemp();
 			} else {
-				branchtest( title, 'Upgrade / Downgrade to ?' );
+				branchtest( 'Upgrade / Downgrade to ?' );
 			}
 		}
 	} );
