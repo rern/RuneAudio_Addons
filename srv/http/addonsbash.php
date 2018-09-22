@@ -169,7 +169,7 @@ while ( !feof( $popencmd ) ) {                          // each line
 	echo $std;                                          // stdout to screen
 	
 	// abort on stop loading or exit terminal page
-	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
+	if ( connection_status() !== 0 ) {
 		$path = '/usr/bin/sudo /usr/bin/';
 		exec( $path.'killall '.$installfile.' wget pacman &' );
 		exec( $path.'rm /var/lib/pacman/db.lck /srv/http/*.zip /usr/local/bin/uninstall_'.$alias.'.sh &' );
