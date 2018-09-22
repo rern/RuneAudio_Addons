@@ -269,8 +269,8 @@ uninstallfinish() { # $1-'u'=update
 	title -l '=' "$bar $title uninstalled successfully."
 }
 restartlocalbrowser() {
-	title -nt "$bar Restart local browser ..."
 	if pgrep Xorg > /dev/null; then
+		title -nt "$bar Restart local browser ..."
 		killall Xorg
 		sleep 3
 		xinit &> /dev/null &
