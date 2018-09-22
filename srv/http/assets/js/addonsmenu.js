@@ -4,7 +4,7 @@ $( '#addons' ).click( function () {
 	$( '#loader' )
 		.html( '<i class="fa fa-addons blink"></i>' )
 		.removeClass( 'hide' );
-	$.get( '/addonsdl.php', function( exit ) {
+	$.get( 'addonsdl.php', function( exit ) {
 			addonsdl( exit );
 	} );
 } ).on( 'taphold', function () {
@@ -20,7 +20,7 @@ $( '#addons' ).click( function () {
 				.removeClass( 'hide' );
 			if ( branch ) {
 				$.get(
-					'/addonsdl.php?branch='+ branch,
+					'addonsdl.php?branch='+ branch,
 					function( exit ) {
 						addonsdl( exit );
 					}
@@ -46,11 +46,11 @@ function addonsdl( exit ) {
 			, message: 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok     : function() {
-				location.href = '/addons';
+				location.href = 'addons';
 			}
 		} );
 	} else {
-		location.href = '/addons';
+		location.href = 'addons';
 	}
 }
 
