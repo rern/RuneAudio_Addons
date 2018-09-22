@@ -103,7 +103,7 @@ function infoReset() {
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
-//	$( '#loader' ).addClass( 'hide' ); // temp fix
+	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
 
 function info( O ) {
