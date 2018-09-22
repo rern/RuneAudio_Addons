@@ -277,7 +277,7 @@ restartlocalbrowser() {
 	fi
 }
 clearcache() {
-	restartlocalbrowser()
+	restartlocalbrowser
 }
 ## restart nginx seamlessly without dropping client connections
 restartnginx() {
