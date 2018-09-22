@@ -184,4 +184,9 @@ EOF
 	restartnginx
 fi
 
-clearcache
+# disable OPcache
+title -nt "$info Disable PHP OPcache"
+redis-cli set opcache 0 &> /dev/null
+file=/etc/php/conf.d/opcache.ini
+sed -i 's/opcache.enable=.*/opcache.enable=0/' $file
+systemctl restart php-fpm
