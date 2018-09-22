@@ -269,7 +269,7 @@ uninstallfinish() { # $1-'u'=update
 	title -l '=' "$bar $title uninstalled successfully."
 }
 clearcache() {
-	[[ -t 1 ]] && systemctl reload php-fpm
+	systemctl reload php-fpm
 	title -nt "$bar Restart local browser ..."
 	if pgrep Xorg > /dev/null; then
 		killall Xorg
