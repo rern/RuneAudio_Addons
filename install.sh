@@ -85,6 +85,7 @@ echo $file
 [[ -e $file.backup ]] && file=$file.backup
 
 string=$( cat <<'EOF'
+<input id="favicon" type="hidden" value="<?=$this->asset( '/img/favicon.ico' )?>">
 <input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
 <input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <input id="addonsinfocss" type="hidden" value="<?=$this->asset('/css/addonsinfo.css')?>">
