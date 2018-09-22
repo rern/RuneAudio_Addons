@@ -268,13 +268,16 @@ uninstallfinish() { # $1-'u'=update
 	
 	title -l '=' "$bar $title uninstalled successfully."
 }
-clearcache() {
+restartlocalbrowser() {
 	title -nt "$bar Restart local browser ..."
 	if pgrep Xorg > /dev/null; then
 		killall Xorg
 		sleep 3
 		xinit &> /dev/null &
 	fi
+}
+clearcache() {
+	restartlocalbrowser()
 }
 ## restart nginx seamlessly without dropping client connections
 restartnginx() {
