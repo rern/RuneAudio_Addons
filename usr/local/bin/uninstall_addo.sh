@@ -35,4 +35,4 @@ crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
 
 uninstallfinish $@
 
-clearcache
+restartlocalbrowser
