@@ -3,7 +3,7 @@
 . /srv/http/addonstitle.sh
 
 if [[ -t 1 ]]; then
-	yesno "Reset RuneUI to default?" answer
+	yesno "All RuneUI addons and custom UI modifications will be removed.\nContinue?" answer
 	if [[ $answer == 0 ]]; then
 		title "$info RuneUI Reset cancelled."
 		exit
