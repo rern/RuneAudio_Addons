@@ -77,6 +77,7 @@ yesno() { # $1: header string; $2 : optional return variable (default - answer)
 	echo -e '\e[36m0\e[m / 1 ? '
 	read -n 1 answer
 	echo
+	[[ $answer != 1 ]] && answer=0
 	[[ $2 ]] && eval $2=$answer
 }
 setpwd() { #1 : optional return variable (default - pwd1)
