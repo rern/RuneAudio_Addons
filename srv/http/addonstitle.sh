@@ -141,7 +141,7 @@ getinstallzip() {
 	
 	echo -e "$bar Get files ..."
 	wgetnc $installzip
-
+	echo
 	echo -e "$bar Install new files ..."
 	rm -rf /tmp/install
 	mkdir -p /tmp/install
