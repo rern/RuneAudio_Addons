@@ -25,22 +25,22 @@ $addons = array(
 ),
 /*
 'enhx' => array(
-	'title'        => 'RuneUI Enhancement Extreme',
+	'title'        => 'RuneUI Enhancement Extreme (Beta)',
 	'version'      => '20181015',
 	'conflict'     => 'paus',
 	'revision'     => 'Set Large Coverart to scale up with page width (except webradio vu meter)'
-					'<br>Toggle coverart scaling temporarily (Restored on song changed or refresh.)'
-					'<br>Drag to rearrange Library home blocks'
-					'<br>Show Library counts'
-					'<br>Improve Album, Artist, Composer, Genre browsing'
-					'<br>Add bookmarks renaming'
-					'<br>Allow double quote in bookmark, webradio and playlist names'
-					'<br>Scroll long bookmark names'
-					'<br>Toggle search box'
-					'<br>Show elapsed time while play/pause in Playlist'
-					'<br>Tap Playlist to play/pause (stop: tap elapsed/time)'
-					'<br>Crop button to keep only current playing song'
-					'<br>Add display saved playlist',
+					.'<br>Toggle coverart scaling temporarily (Restored on song changed or refresh.)'
+					.'<br>Drag to rearrange Library home blocks'
+					.'<br>Show Library counts'
+					.'<br>Improve Album, Artist, Composer, Genre browsing'
+					.'<br>Add bookmarks renaming'
+					.'<br>Allow double quote in bookmark, webradio and playlist names'
+					.'<br>Scroll long bookmark names'
+					.'<br>Toggle search box'
+					.'<br>Show elapsed time while play/pause in Playlist'
+					.'<br>Tap Playlist to play/pause (stop: tap elapsed/time)'
+					.'<br>Crop button to keep only current playing song'
+					.'<br>Add display saved playlist',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Extreme enhancement.',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
