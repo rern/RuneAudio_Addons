@@ -42,7 +42,7 @@ $addons = array(
 					.'<br>Crop button to keep only current playing song'
 					.'<br>Add display saved playlist',
 	'maintainer'   => 'r e r n',
-	'description'  => 'Extreme enhancement.',
+	'description'  => 'Extreme enhancement - Experimental Beta verion.',
 	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/UPDATE/install.sh',
 	'option'       => array(
