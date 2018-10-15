@@ -23,6 +23,44 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
+/*
+'enhx' => array(
+	'title'        => 'RuneUI Enhancement Extreme',
+	'version'      => '20181015',
+	'conflict'     => 'paus',
+	'revision'     => 'Set Large Coverart to scale up with page width (except webradio vu meter)'
+					'<br>Toggle coverart scaling temporarily (Restored on song changed or refresh.)'
+					'<br>Drag to rearrange Library home blocks'
+					'<br>Show Library counts'
+					'<br>Improve Album, Artist, Composer, Genre browsing'
+					'<br>Add bookmarks renaming'
+					'<br>Allow double quote in bookmark, webradio and playlist names'
+					'<br>Scroll long bookmark names'
+					'<br>Toggle search box'
+					'<br>Show elapsed time while play/pause in Playlist'
+					'<br>Tap Playlist to play/pause (stop: tap elapsed/time)'
+					'<br>Crop button to keep only current playing song'
+					'<br>Add display saved playlist',
+	'maintainer'   => 'r e r n',
+	'description'  => 'Extreme enhancement.',
+	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
+	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/UPDATE/install.sh',
+	'option'       => array(
+		'radio'      => array(
+			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
+						.'<br>(This can be changed later.)'
+						.'<br>Local screen size:',
+			'list'     => array(
+				'Width less than 800px: 0.7' => '0.7',
+				'HD - 1280px: 1.5'           => '1.5',
+				'*Full HD - 1920px: 1.8'     => '1.8',
+				'Full HD - no buttons: 2.0'  => '2.0',
+				'Custom'                     => '?'
+			),
+		),
+	),
+),
+*/
 'aria' =>array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
