@@ -23,44 +23,6 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'   => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*
-'enhx' => array(
-	'title'        => 'RuneUI Enhancement Extreme (Beta)',
-	'version'      => '20181015',
-	'conflict'     => 'paus',
-	'revision'     => 'Set Large Coverart to scale up with page width (except webradio vu meter)'
-					.'<br>Toggle coverart scaling temporarily (Restored on song changed or refresh.)'
-					.'<br>Drag to rearrange Library home blocks'
-					.'<br>Show Library counts'
-					.'<br>Improve Album, Artist, Composer, Genre browsing'
-					.'<br>Add bookmarks renaming'
-					.'<br>Allow double quote in bookmark, webradio and playlist names'
-					.'<br>Scroll long bookmark names'
-					.'<br>Toggle search box'
-					.'<br>Show elapsed time while play/pause in Playlist'
-					.'<br>Tap Playlist to play/pause (stop: tap elapsed/time)'
-					.'<br>Crop button to keep only current playing song'
-					.'<br>Add display saved playlist',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Extreme enhancement - Experimental Beta verion.',
-	'sourcecode'   => 'https://github.com/rern/RuneUI_enhancement',
-	'installurl'   => 'https://github.com/rern/RuneUI_enhancement/raw/UPDATE/install.sh',
-	'option'       => array(
-		'radio'      => array(
-			'message'  => 'Set <white>zoom level</white> for display directly connect to RPi.'
-						.'<br>(This can be changed later.)'
-						.'<br>Local screen size:',
-			'list'     => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'*Full HD - 1920px: 1.8'     => '1.8',
-				'Full HD - no buttons: 2.0'  => '2.0',
-				'Custom'                     => '?'
-			),
-		),
-	),
-),
-*/
 'aria' =>array(
 	'title'        => 'Aria2 *',
 	'version'      => '20170901',
@@ -199,23 +161,21 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20180825',
+	'version'      => '20181020',
 	'conflict'     => 'paus',
-	'revision'     => 'Fix blank page on local browser and some devices'
+	'revision'     => 'Large Coverart'
+					.'<br>Rearrangeable Library home'
+					.'<br>Library counts'
+					.'<br>Show/hide labels and counts'
+					.'<br>Improve album/artist/composer/genre browsing'
+					.'<br>Show elapsed time in Playlist'
+					.'<br>...'
+					.'<br>Show songs in saved playlists'
+					.'<br>...'
+					.'<br>Fix blank page on local browser and some devices'
 					.'<br>...'
 					.'<br>Reflect playlist update to all clients'
-					.'<br>Fix maintaining scroll position bug'
-					.'<br>...'
-					.'<br>Replace 4 major files(runeui.js, header.php, playback.php and footer.php) for efficiency and more stable handling'
-					.'<br>Improve <white>context menus</white> and toggle'
-					.'<br>Show warning of existing Webradio / saved playlist name'
-					.'<br>No need to clear cache or reboot after installed/upgraded'
-					.'<br>Library - Improve maintaining scroll position in all pages'
-					.'<br>Library - Fix back button browsing in all pages'
-					.'<br>Playback - Fix drag time/volume show display settings'
-					.'<br>Playlist - Improve <white>drag to arrange order</white> on touch device'
-					.'<br>Playlist - Fix maintaining display on page switched'
-					.'<br>Playlist - Always scroll current song to the top',
+					.'<br>Fix maintaining scroll position bug',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
