@@ -223,13 +223,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'        => 'RuneUI Lyrics',
-	'version'      => '20180817',
-	'revision'     => 'Fix install bug'
-					.'<br>Prepare for RuneUI Enhancement update'
+	'version'      => '20181020',
+	'revision'     => 'Update along with RuneUI Enhancment 20181020'
 					.'<br>...'
-					.'<br>Update along with Addons 20180725'
+					.'<br>Fix install bug'
 					.'<br>...'
-					.'<br>Fix missing edit and close buttons',
+					.'<br>Prepare for RuneUI Enhancement update',
 	'maintainer'   => 'r e r n',
 	'description'  => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'    => '/img/addons/thumblyri.gif',
