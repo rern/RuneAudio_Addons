@@ -161,7 +161,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181022',
+	'version'      => '20181023',
 	'conflict'     => 'paus',
 	'revision'     => 'Move long-press toggle setting to Setting menu items'
 					.'<br>Add browsing by Album Artist'
