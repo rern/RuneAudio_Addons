@@ -161,21 +161,22 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181020',
+	'version'      => '20181022',
 	'conflict'     => 'paus',
-	'revision'     => 'Large Coverart'
+	'revision'     => 'Change long-press toggle setting to Setting menu items'
+					.'<br>Add browsing by Album Artist'
+					.'<br>Fix setting in Time knob and Dirble, Jamendo in Library not working'
+					.'<br>Fix Playlist manual scroll'
+					.'<br>...'
+					.'<br>Large Coverart'
 					.'<br>Rearrangeable Library home'
 					.'<br>Library counts'
 					.'<br>Show/hide labels and counts'
 					.'<br>Improve album/artist/composer/genre browsing'
 					.'<br>Show elapsed time in Playlist'
-					.'<br>...'
 					.'<br>Show songs in saved playlists'
 					.'<br>...'
-					.'<br>Fix blank page on local browser and some devices'
-					.'<br>...'
-					.'<br>Reflect playlist update to all clients'
-					.'<br>Fix maintaining scroll position bug',
+					.'<br>Fix blank page on local browser and some devices',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
