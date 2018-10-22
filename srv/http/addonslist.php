@@ -163,7 +163,7 @@ $addons = array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20181022',
 	'conflict'     => 'paus',
-	'revision'     => 'Change long-press toggle setting to Setting menu items'
+	'revision'     => 'Move long-press toggle setting to Setting menu items'
 					.'<br>Add browsing by Album Artist'
 					.'<br>Fix setting in Time knob and Dirble, Jamendo in Library not working'
 					.'<br>Fix Playlist manual scroll'
