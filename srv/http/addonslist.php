@@ -11,8 +11,10 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20180923',
-	'revision'     => 'Disable PHP OPcache'
+	'version'      => '20181024',
+	'revision'     => 'General improvements'
+					.'<br>...'
+					.'<br>Disable PHP OPcache'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
 					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
