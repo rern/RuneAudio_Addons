@@ -251,14 +251,18 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
+	var boxH = $( '#infoBox' ).height();
+	var wH = window.innerHeight;
+	var translate = boxH < wH ? boxH / 2 : wH / 2
+	$( '#infoBox' ).css( 'transform', 'translateY( -'+ translate +'px )' )
 	if ( $infofocus ) $infofocus.focus();
-		if ( O.boxwidth ) {
-			var maxW = window.innerWidth * 0.98;
-			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
-			var calcW = maxW < infoW ? maxW : infoW;
-			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
-			$( '.infoinput' ).css( 'width', boxW +'px' );
-		}
+	if ( O.boxwidth ) {
+		var maxW = window.innerWidth * 0.98;
+		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
+		var calcW = maxW < infoW ? maxW : infoW;
+		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
+		$( '.infoinput' ).css( 'width', boxW +'px' );
+	}
 }
 
 function radioCheckbox( el, htm, chk ) {
