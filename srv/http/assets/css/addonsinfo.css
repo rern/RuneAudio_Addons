@@ -63,14 +63,15 @@
 }
 #infoOverlay {
 	display: none;
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
-	height: auto;
+	height: 100%;
 	background: rgba(250, 250, 250, 0.85);
 	z-index: 100000;
 	text-align: center;
+	overflow: scroll;
 }
 #infoOverlay a {
 	text-decoration: none;
@@ -81,17 +82,10 @@
 #infoBox {
 	width: 400px;
 	max-width: 98%;
-	margin: 40vh auto;
-	transform: translateY( -50% );
+	margin: 50vh auto 0;
 	background: #19232d;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
-}
-@media(max-height: 640px) {
-	#infoBox {
-		margin: 40px auto;
-		transform: translateY( 0 );
-	}
 }
 #infoTopBg {
 	width: 100%;
