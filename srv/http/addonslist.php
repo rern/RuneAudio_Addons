@@ -41,17 +41,6 @@ $addons = array(
 		)
 	),
 ),
-'spla' => array(
-	'title'        => 'Boot Logo',
-	'version'      => '20171010',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'Display RuneAudio logo during boot - Splash screen.',
-	'thumbnail'    => '/img/addons/thumbspla.png',
-	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/boot_splash',
-	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/boot_splash/install.sh',
-	'hide'         => $runeversion === '0.3' ? 0 : 1,
-),
 'chro' => array(
 	'title'        => 'Chromium Browser',
 	'version'      => '20180321',
@@ -240,18 +229,6 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'   => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
-'pass' => array(
-	'title'        => 'RuneUI Password',
-	'version'      => '20170901',
-	'rollback'     => 'e0bf023ec38ff5d9802654b82455c20c64079af6',
-	'revision'     => 'Initial release',
-	'maintainer'   => 'r e r n',
-	'description'  => 'RuneUI access restriction.',
-	'thumbnail'    => '/img/addons/thumbpass.png',
-	'sourcecode'   => 'https://github.com/RuneAddons/Password',
-	'installurl'   => 'https://github.com/RuneAddons/Password/raw/master/install.sh',
-	'hide'         => $runeversion === '0.3' ? 0 : 1,
-),
 'paus' => array(
 	'title'        => 'RuneUI Pause button',
 	'version'      => '20180217',
@@ -277,6 +254,7 @@ $addons = array(
 					.'<br>Continue?'
 	),
 ),
+/*
 'RuneYoutube' => array(
 	'title'        => 'RuneUI Youtube',
 	'version'      => '20171120',
@@ -290,6 +268,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
+*/
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
