@@ -12,7 +12,7 @@ $addons = array(
 'addo' => array(
 	'title'        => 'Addons',
 	'version'      => '20181025',
-	'revision'     => 'Runs on RuneAudio 0.5'
+	'revision'     => 'Works with RuneAudio 0.5'
 					.'<br>...'
 					.'<br>Disable PHP OPcache'
 					.'<br>...'
