@@ -268,7 +268,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
-*/
+
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
@@ -306,6 +306,7 @@ $addons = array(
 		),
 	),
 ),
+*/
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20180715',
