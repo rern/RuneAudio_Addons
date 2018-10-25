@@ -11,14 +11,13 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20181024',
-	'revision'     => 'General improvements'
+	'version'      => '20181025',
+	'revision'     => 'Runs on RuneAudio 0.5'
 					.'<br>...'
 					.'<br>Disable PHP OPcache'
 					.'<br>...'
 					.'<br>Fix nonresponsive buttons in some browsers'
-					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.'
-					.'<br>Switch from hammer.js to jquery.mobile which is leaner.',
+					.'<br>Utilize <white>Cache Busting</white> with existing <white>Asset extension by Plates</white>.',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
 	'thumbnail'    => '/img/addons/thumbaddo.png',
