@@ -66,6 +66,7 @@ $addons = array(
 	'thumbnail'    => '/img/addons/thumbchro.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 'dual' => array(
 	'title'        => 'Dual Boot: RuneAudio + OSMC *',
@@ -133,8 +134,9 @@ $addons = array(
 					.'<br>Midori, local browser, must be upgrade as well.'
 					.'<br>10 minutes upgrade may take 20+ minutes'
 					.'<br>with slow download.'
-					.'<br>Continue?'
+					.'<br>Continue?',
 	),
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 'rank' => array(
 	'title'        => 'Rank Mirror Package Servers',
@@ -209,6 +211,7 @@ $addons = array(
 	'thumbnail'    => '/img/addons/thumbfont.png',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 'gpio' => array(
 	'title'        => 'RuneUI GPIO *',
@@ -324,6 +327,7 @@ $addons = array(
 			'value'    => 'rw'
 		),
 	),
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 'tran' => array(
 	'title'        => 'Transmission *',
