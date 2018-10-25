@@ -305,7 +305,6 @@ $addons = array(
 			'value'    => 'rw'
 		),
 	),
-	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 'tran' => array(
 	'title'        => 'Transmission *',
