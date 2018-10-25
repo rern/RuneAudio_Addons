@@ -1,6 +1,6 @@
 <?php
 $redis = new Redis();
-$redis->pconnect( '127.0.0.1' );
+$redis->connect( '127.0.0.1' );
 
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );

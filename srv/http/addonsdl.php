@@ -1,7 +1,7 @@
 <?php
 if ( isset( $_POST[ 'redis' ] ) ) {
 	$redis = new Redis(); 
-	$redis->pconnect( '127.0.0.1' );
+	$redis->connect( '127.0.0.1' );
 	$update = $redis->hGet( 'addons', $_POST[ 'redis' ] );
 	echo $update;
 } else if ( isset( $_POST[ 'backup' ] ) ) {  // settings backup only
