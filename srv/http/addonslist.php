@@ -154,6 +154,7 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20181024',
+	'rollback'     => '6e56098dad492b8dfbccac1d5bd2d404106dca25',
 	'conflict'     => 'paus',
 	'revision'     => 'Fix bugs'
 					.'<br>...'
