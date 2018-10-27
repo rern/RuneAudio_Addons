@@ -1,6 +1,6 @@
 <?php
 $redis = new Redis();
-$redis->pconnect( '127.0.0.1' );
+$redis->connect( '127.0.0.1' );
 
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
@@ -181,9 +181,9 @@ $addons = array(
 						.'<br>Local screen size:',
 			'list'     => array(
 				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'*Full HD - 1920px: 1.8'     => '1.8',
-				'Full HD - no buttons: 2.0'  => '2.0',
+				'HD - 1280px: 1.2'           => '1.2',
+				'*Full HD - 1920px: 1.5'     => '1.5',
+				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
 			),
 		),
