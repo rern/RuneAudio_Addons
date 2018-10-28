@@ -269,7 +269,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
-
+*/
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
@@ -306,8 +306,8 @@ $addons = array(
 			'value'    => 'rw'
 		),
 	),
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
-*/
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20180715',
@@ -429,11 +429,13 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer/set.sh',
 	'option'       => array(
-		'yesno'      => array(
+		'radio'      => array(
 			'message'  => 'Mouse pointer on local browser:',
-			'oklabel'    => 'Enable',
-			'cancellabel'=> 'Disable',
-			'checked'    => $redis->hGet( 'settings', 'pointer' )
+			'list'     => array(
+				'Enable'  => 'yes',
+				'Disable' => 'no',
+			),
+			'checked'  => $redis->hGet( 'settings', 'pointer' )
 		),
 	),
 ),
