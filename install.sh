@@ -155,8 +155,6 @@ for card in "${cards[@]}"; do
 	(( i++ ))
 done
 
-redis-cli hset addons update 0 &>/dev/null
-
 # for backup file upload
 dir=/srv/http/tmp
 mkdir -p $dir
