@@ -4,19 +4,6 @@ $redis->connect( '127.0.0.1' );
 
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-$notifysec = exec( "grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d ';'" ) / 1000;
-$file = '/etc/X11/xinit/start_chromium.sh';
-if ( !file_exists( $file ) ) {
-	if ( !exec( 'grep "^chromium" /root/.xinitrc' ) ) {
-		$zoom = exec( 'grep "^zoom-level" /root/.config/midori/config | cut -d"=" -f2' );
-	} else {
-		$zoom = exec( 'grep "force-device-scale-factor" /root/.xinitrc | cut -d"=" -f3' );
-	}
-	$file = '/root/.xinitrc';
-} else {
-	$zoom = exec( 'grep "force-device-scale-factor" '.$file.' | cut -d"=" -f3' );
-}
-$pointer = exec( 'grep "use_cursor" '.$file.' | cut -d" " -f5' );
 
 ///////////////////////////////////////////////////////////////
 
@@ -409,7 +396,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $notifysec
+			'checked'  => $redis->hGet( 'display', 'notify' )
 		),
 	),
 ),
@@ -430,7 +417,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $zoom
+			'checked'  => $redis->hGet( 'display', 'zoom' )
 		),
 	),
 ),
@@ -448,7 +435,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $pointer
+			'checked'  => $redis->hGet( 'display', 'pointer' )
 		),
 	),
 ),
