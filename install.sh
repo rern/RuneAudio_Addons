@@ -187,7 +187,7 @@ else
 fi
 pointer=$( grep 'use_cursor' $file | cut -d' ' -f5 )
 notify=$( grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d '0;' )
-redis-cli hmset display notify $notify pointer $pointer zoom $zoom &> /dev/null
+redis-cli hmset settings notify $notify pointer $pointer zoom $zoom &> /dev/null
 
 # disable OPcache
 file=/etc/php/conf.d/opcache.ini
