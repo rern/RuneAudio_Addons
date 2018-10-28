@@ -174,6 +174,21 @@ EOF
 	restartnginx
 fi
 
+file=/etc/X11/xinit/start_chromium.sh
+if [[ ! -e $file ]]; then
+	if ! grep '^chromium' /root/.xinitrc; then
+		zoom=$( grep '^zoom-level' /root/.config/midori/config | cut -d'=' -f2 )
+	else
+		zoom=$( grep 'force-device-scale-factor' /root/.xinitrc | cut -d'=' -f3 )
+	fi
+	file=/root/.xinitrc
+else
+	zoom=$( grep 'force-device-scale-factor' /etc/X11/xinit/start_chromium.sh | cut -d'=' -f3 )
+fi
+pointer=$( grep 'use_cursor' $file | cut -d' ' -f5 )
+notify=$( grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d '0;' )
+redis-cli hmset display notify $notify pointer $pointer zoom $zoom &> /dev/null
+
 # disable OPcache
 file=/etc/php/conf.d/opcache.ini
 grep -q 'enable=0' $file && exit
