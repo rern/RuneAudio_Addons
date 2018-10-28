@@ -4,6 +4,19 @@ $redis->connect( '127.0.0.1' );
 
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
+$notifysec = exec( "grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d ';'" ) / 1000;
+$file = '/etc/X11/xinit/start_chromium.sh';
+if ( !file_exists( $file ) ) {
+	if ( !exec( 'grep "^chromium" /root/.xinitrc' ) ) {
+		$zoom = exec( 'grep "^zoom-level" /root/.config/midori/config | cut -d"=" -f2' );
+	} else {
+		$zoom = exec( 'grep "force-device-scale-factor" /root/.xinitrc | cut -d"=" -f3' );
+	}
+	$file = '/root/.xinitrc';
+} else {
+	$zoom = exec( 'grep "force-device-scale-factor" '.$file.' | cut -d"=" -f3' );
+}
+$pointer = exec( 'grep "use_cursor" '.$file.' | cut -d" " -f5' );
 
 ///////////////////////////////////////////////////////////////
 
@@ -396,7 +409,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $redis->hGet( 'settings', 'notify' )
+			'checked'  => $notifysec
 		),
 	),
 ),
@@ -417,7 +430,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $redis->hGet( 'settings', 'zoom' )
+			'checked'  => $zoom
 		),
 	),
 ),
@@ -429,11 +442,13 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer',
 	'installurl'   => 'https://github.com/rern/RuneAudio/raw/master/set_pointer/set.sh',
 	'option'       => array(
-		'yesno'      => array(
+		'radio'      => array(
 			'message'  => 'Mouse pointer on local browser:',
-			'oklabel'    => 'Enable',
-			'cancellabel'=> 'Disable',
-			'checked'    => $redis->hGet( 'settings', 'pointer' )
+			'list'     => array(
+				'Enable'  => 'yes',
+				'Disable' => 'no',
+			),
+			'checked'  => $pointer
 		),
 	),
 ),
