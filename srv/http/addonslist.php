@@ -269,7 +269,7 @@ $addons = array(
 	'sourcecode'   => 'https://github.com/RuneAddons/RuneYoutube',
 	'installurl'   => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
 ),
-
+*/
 'samb' => array(
 	'title'        => 'Samba Upgrade *',
 	'needspace'    => 43,
@@ -306,8 +306,8 @@ $addons = array(
 			'value'    => 'rw'
 		),
 	),
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
-*/
 'tran' => array(
 	'title'        => 'Transmission *',
 	'version'      => '20180715',
@@ -396,7 +396,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked'  => $redis->hGet( 'display', 'notify' )
+			'checked'  => $redis->hGet( 'settings', 'notify' )
 		),
 	),
 ),
@@ -417,7 +417,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked'  => $redis->hGet( 'display', 'zoom' )
+			'checked'  => $redis->hGet( 'settings', 'zoom' )
 		),
 	),
 ),
@@ -435,7 +435,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $redis->hGet( 'display', 'pointer' )
+			'checked'  => $redis->hGet( 'settings', 'pointer' )
 		),
 	),
 ),
