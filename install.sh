@@ -155,16 +155,6 @@ for card in "${cards[@]}"; do
 	(( i++ ))
 done
 
-notifysec=$( grep notify.delay /srv/http/assets/js/runeui.js | tr -dc "1-9" )
-grep -q 'use_cursor yes' /root/.xinitrc && pointer=1 || pointer=0
-if ! grep '^chromium' /root/.xinitrc; then
-	zoomlevel=$( grep '^zoom-level' /root/.config/midori/config | sed 's/zoom-level=//' )
-else
-	zoomlevel=$( grep '^chromium' /root/.xinitrc | sed 's/.*force-device-scale-factor=\(.*\)/\1/' )
-fi
-redis-cli hmset settings notify "$notifysec" zoom "$zoomlevel" pointer "$pointer" &>/dev/null
-redis-cli hset addons update 0 &>/dev/null
-
 # for backup file upload
 dir=/srv/http/tmp
 mkdir -p $dir
@@ -183,6 +173,21 @@ EOF
 	appendS 'gif\|ico'
 	restartnginx
 fi
+
+file=/etc/X11/xinit/start_chromium.sh
+if [[ ! -e $file ]]; then
+	if ! grep '^chromium' /root/.xinitrc; then
+		zoom=$( grep '^zoom-level' /root/.config/midori/config | cut -d'=' -f2 )
+	else
+		zoom=$( grep 'force-device-scale-factor' /root/.xinitrc | cut -d'=' -f3 )
+	fi
+	file=/root/.xinitrc
+else
+	zoom=$( grep 'force-device-scale-factor' /etc/X11/xinit/start_chromium.sh | cut -d'=' -f3 )
+fi
+pointer=$( grep 'use_cursor' $file | cut -d' ' -f5 )
+notify=$( grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d '0;' )
+redis-cli hmset settings notify $notify pointer $pointer zoom $zoom &> /dev/null
 
 # disable OPcache
 file=/etc/php/conf.d/opcache.ini
