@@ -153,7 +153,6 @@ $addons = array(
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
 	'version'      => '20181029',
-	'conflict'     => 'paus',
 	'revision'     => 'Fix Library albums with duplicate names bug'
 					.'<br>...'
 					.'<br>Move long-press toggle setting to Setting menu items'
