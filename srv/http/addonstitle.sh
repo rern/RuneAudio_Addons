@@ -202,7 +202,7 @@ EOF
 installstart() { # $1-'u'=update
 	rm $0
 	
-	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	addonslist=$( sed -n "/^'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title0=$( getvalue title )
 	title=$( tcolor "$title0" )
 	
@@ -243,7 +243,7 @@ installfinish() { # $1-'u'=update
 	fi
 }
 uninstallstart() { # $1-'u'=update
-	addonslist=$( sed -n "/'$alias'/,/^),/p" /srv/http/addonslist.php )
+	addonslist=$( sed -n "/^'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title0=$( getvalue title )
 	title=$( tcolor "$title0" )
 	
