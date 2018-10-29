@@ -252,6 +252,7 @@ $addons = array(
 					.'<br><white>will be removed</white>.'
 					.'<br>Continue?'
 	),
+	'hide'         => $runeversion === '0.5' ? 1 : 0,
 ),
 /*
 'RuneYoutube' => array(
