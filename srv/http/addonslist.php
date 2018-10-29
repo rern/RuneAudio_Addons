@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20181029',
+	'version'      => '20181030',
 	'revision'     => 'Minor improvements'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
