@@ -71,7 +71,7 @@ string=$( cat <<'EOF'
             <li><a id="addons"><i class="fa fa-addons"></i> Addons</a></li>
 EOF
 )
-appendH 'href="#poweroff-modal"'
+insertH -n -2 'playback-controls'
 
 string=$( cat <<'EOF'
 <?php endif ?>
