@@ -39,4 +39,24 @@ fi
 
 . /srv/http/addonsupdate.sh 1
 
+# get settings: notify pointer zoom
+file=/etc/X11/xinit/start_chromium.sh
+if [[ ! -e $file ]]; then
+	if ! grep '^chromium' /root/.xinitrc; then
+		zoom=$( grep '^zoom-level' /root/.config/midori/config | cut -d'=' -f2 )
+	else
+		zoom=$( grep 'force-device-scale-factor' /root/.xinitrc | cut -d'=' -f3 )
+	fi
+	file=/root/.xinitrc
+else
+	zoom=$( grep 'force-device-scale-factor' /etc/X11/xinit/start_chromium.sh | cut -d'=' -f3 )
+fi
+pointer=$( grep 'use_cursor' $file | cut -d' ' -f5 )
+if [[ -e /srv/http/assets/js/enhance.js ]]; then
+	notify=$( grep 'PNotify.prototype.options.delay' /srv/http/assets/js/enhance.js | cut -d' ' -f3 | tr -d '0;' )
+else
+	notify=$( grep 'notify.delay' /srv/http/assets/js/runeui.js | cut -d'?' -f2 | cut -d' ' -f2 )
+fi
+redis-cli hmset settings notify $notify pointer $pointer zoom $zoom &> /dev/null
+
 exit 0 # force exit code = 0
