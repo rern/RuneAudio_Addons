@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20181028',
+	'version'      => '20181029',
 	'revision'     => 'Minor improvements'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
@@ -152,9 +152,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181028',
+	'version'      => '20181029',
 	'conflict'     => 'paus',
-	'revision'     => 'Fix bugs'
+	'revision'     => 'Fix Library albums with duplicate names bug'
 					.'<br>...'
 					.'<br>Move long-press toggle setting to Setting menu items'
 					.'<br>Add browsing by Album Artist'
