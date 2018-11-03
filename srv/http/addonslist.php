@@ -152,14 +152,12 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181029',
-	'revision'     => 'Fix Library albums with duplicate names bug'
+	'version'      => '20181103',
+	'revision'     => 'Fix bugs'
 					.'<br>...'
-					.'<br>Move long-press toggle setting to Setting menu items'
+					.'<br>Fix Library albums with duplicate names bug'
+					.'<br>...'
 					.'<br>Add browsing by Album Artist'
-					.'<br>Fix setting in Time knob and Dirble, Jamendo in Library not working'
-					.'<br>Fix Playlist manual scroll'
-					.'<br>...'
 					.'<br>Large Coverart'
 					.'<br>Rearrangeable Library home'
 					.'<br>Library counts'
