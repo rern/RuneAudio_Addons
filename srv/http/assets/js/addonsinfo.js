@@ -109,7 +109,6 @@ function infoReset() {
 function info( O ) {
 	// title
 	infoReset();
-	
 	if ( O.width ) $( '#infoBox' ).css( 'width', O.width +'px' );
 	if ( !O.icon ) {
 		var iconhtml = '<i class="fa fa-question-circle">';
@@ -158,6 +157,7 @@ function info( O ) {
 					infoReset();
 				}
 			} );
+		if ( O.cancellabel ) $( '#infoCancel' ).show();
 		if ( O.cancel ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
