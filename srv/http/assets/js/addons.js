@@ -367,7 +367,7 @@ function getoptions() {
 					return checkboxhtml
 				}
 				, ok:       function() {
-					$( '#infoCheckbox input[type=checkbox]:checked').each( function() {
+					$( '#infoCheckBox input[type=checkbox]:checked').each( function() {
 						opt += "'"+ $( this ).val() +"' ";
 					} );
 					sendcommand();
