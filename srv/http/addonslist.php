@@ -153,8 +153,8 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181103',
-	'revision'     => 'Fix bugs'
+	'version'      => '20181106',
+	'revision'     => 'Add show song list of *.cue, *.m3u, *.pls in Library'
 					.'<br>...'
 					.'<br>Fix Library albums with duplicate names bug'
 					.'<br>...'
