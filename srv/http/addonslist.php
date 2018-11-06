@@ -11,11 +11,12 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20181030',
-	'revision'     => 'Minor improvements'
+	'version'      => '20181106',
+	'revision'     => 'Fix bugs'
+					.'<br>...'
+					.'<br>Minor improvements'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
-					.'<br>...'
 					.'<br>Disable PHP OPcache',
 	'maintainer'   => 'r e r n',
 	'description'  => 'This Addons main page.',
