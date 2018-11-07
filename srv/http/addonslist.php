@@ -112,7 +112,7 @@ $addons = array(
 	'maintainer'   => 'r e r n',
 	'description'  => 'Upgrade MPD to latest version, 0.21.1 as of 20181104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But <white>broken Midori</white>, local browser which needs upgrade as well.',
+					.'<br>But local browser <white>Midori</white>, if enabled, needs to be replaced with Chromium.',
 	'thumbnail'    => '/img/addons/thumbmpdu.png',
 	'buttonlabel'  => 'Upgrade',
 	'sourcecode'   => 'https://github.com/rern/RuneAudio/tree/master/mpd',
