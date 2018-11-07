@@ -110,7 +110,7 @@ $addons = array(
 	'title'        => 'MPD Upgrade *',
 	'needspace'    => 192,
 	'maintainer'   => 'r e r n',
-	'description'  => 'Upgrade MPD to latest version, 0.20.20 as of 20180711:'
+	'description'  => 'Upgrade MPD to latest version, 0.21.1 as of 20181104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
 					.'<br>But <white>broken Midori</white>, local browser which needs upgrade as well.',
 	'thumbnail'    => '/img/addons/thumbmpdu.png',
