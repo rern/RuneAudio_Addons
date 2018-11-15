@@ -157,8 +157,7 @@ function info( O ) {
 					infoReset();
 				}
 			} );
-		if ( O.cancellabel ) $( '#infoCancel' ).show();
-		if ( O.cancel ) {
+		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
 				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
@@ -168,6 +167,8 @@ function info( O ) {
 					if ( typeof O.cancel === 'function' ) {
 						O.cancel();
 						O.cancel = ''; // suppress multiple runs
+					} else {
+						infoReset();
 					}
 				} );
 		}
