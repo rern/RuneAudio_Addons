@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'        => 'Addons',
-	'version'      => '20181106',
+	'version'      => '20181115',
 	'revision'     => 'Fix bugs'
 					.'<br>...'
 					.'<br>Minor improvements'
@@ -153,19 +153,14 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181106',
-	'revision'     => 'Add show song list of *.cue, *.m3u, *.pls in Library'
+	'version'      => '20181115',
+	'revision'     => 'Fix Library file sorting bug'
+					.'<br>Fix index bar not working on some devices'
+					.'<br>Fix Playlist elapsed time bug'
 					.'<br>...'
-					.'<br>Fix Library albums with duplicate names bug'
+					.'<br>Add show song list of *.cue, *.m3u, *.pls in Library'
 					.'<br>...'
-					.'<br>Add browsing by Album Artist'
-					.'<br>Large Coverart'
-					.'<br>Rearrangeable Library home'
-					.'<br>Library counts'
-					.'<br>Show/hide labels and counts'
-					.'<br>Improve album/artist/composer/genre browsing'
-					.'<br>Show elapsed time in Playlist'
-					.'<br>Show songs in saved playlists',
+					.'<br>Fix Library albums with duplicate names bug',
 	'maintainer'   => 'r e r n',
 	'description'  => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'    => '/img/addons/thumbenha.gif',
