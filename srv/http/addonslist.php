@@ -153,7 +153,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'        => 'RuneUI Enhancement **',
-	'version'      => '20181116',
+	'version'      => '20181117',
 	'revision'     => 'Fix Library file sorting bug'
 					.'<br>Fix index bar not working on some devices'
 					.'<br>Fix Playlist elapsed time bug'
