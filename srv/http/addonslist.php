@@ -23,9 +23,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20181119',
+	'version'     => '20181120',
 	'revision'    => 'Browse genre - album based'
-					.'<br>Fix coverart on small screen scaling bug'
+					.'<br>Fix coverart scaling bug'
 					.'<br>Improve empty index and directory handling'
 					.'<br>...'
 					.'<br>Fix index bar not working on some devices'
