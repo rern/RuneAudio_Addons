@@ -23,15 +23,15 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20181120',
-	'revision'    => 'Browse genre - album based'
+	'version'     => '20181122',
+	'revision'    => 'Fix Network setting bug'
+					.'<br>...'
+					.'<br>Browse genre - album based'
 					.'<br>Fix coverart scaling bug'
 					.'<br>Improve empty index and directory handling'
 					.'<br>...'
 					.'<br>Fix index bar not working on some devices'
-					.'<br>Fix Playlist elapsed time bug'
-					.'<br>...'
-					.'<br>Add show song list of *.cue, *.m3u, *.pls in Library',
+					.'<br>Fix Playlist elapsed time bug',
 	'maintainer'  => 'r e r n',
 	'description' => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
