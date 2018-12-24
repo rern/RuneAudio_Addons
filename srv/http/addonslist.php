@@ -23,7 +23,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20181224',
+	'version'     => '20181225',
 	'revision'    => 'Library: Show cover art with info in destination of each mode.'
 					.'<br>Album info - click artist/composer to show Bio like Playback page.'
 					.'<br>Browsing various artists/composers/genres albums shows only relevant songs, not all in the album.'
