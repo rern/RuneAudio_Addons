@@ -23,15 +23,20 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20181122',
-	'revision'    => 'Fix Network setting bug'
+	'version'     => '20181224',
+	'revision'    => 'Library: Show cover art with info in destination of each mode.'
+					.'<br>Album info - click artist/composer to show Bio like Playback page.'
+					.'<br>Browsing various artists/composers/genres albums shows only relevant songs, not all in the album.'
+					.'<br>Directories contain <white>*.cue</white> directly show song list like normal directories with separated files.'
+					.'<br>*.cue can be single or multiple.'
+					.'<br>Any song in the list can be added to Playlist as a single song.'
+					.'<br>Context menus show/hide. (Left icons can be used instead)'
+					.'<br>...'
+					.'<br>Fix Network setting bug'
 					.'<br>...'
 					.'<br>Browse genre - album based'
 					.'<br>Fix coverart scaling bug'
-					.'<br>Improve empty index and directory handling'
-					.'<br>...'
-					.'<br>Fix index bar not working on some devices'
-					.'<br>Fix Playlist elapsed time bug',
+					.'<br>Improve empty index and directory handling',
 	'maintainer'  => 'r e r n',
 	'description' => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
