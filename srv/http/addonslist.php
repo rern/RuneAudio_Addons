@@ -31,6 +31,7 @@ $addons = array(
 					.'<br>*.cue can be single or multiple.'
 					.'<br>Any song in the list can be added to Playlist as a single song.'
 					.'<br>Context menus show/hide. (Left icons can be used instead)'
+					.'<br>Omit files counting in LocalStorage and Bookmarks'
 					.'<br>...'
 					.'<br>Fix Network setting bug'
 					.'<br>...'
