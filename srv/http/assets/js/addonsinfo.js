@@ -92,7 +92,8 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	infoReset();
+	$( '#infoCancel' ).click();
+	//infoReset();
 } );
 
 function infoReset() {
@@ -148,7 +149,7 @@ function info( O ) {
 			.html( O.oklabel ? O.oklabel : 'OK' )
 			.css( 'background', O.okcolor ? O.okcolor : '' )
 			.show()
-			.on( 'click', function() {
+			.click( function() {
 				$( '#infoOverlay' ).hide();
 				if ( typeof O.ok === 'function' ) {
 					O.ok();
@@ -162,14 +163,13 @@ function info( O ) {
 				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
 				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 				.show()
-				.on( 'click', function() {
+				.click( function() {
 					$( '#infoOverlay' ).hide();
 					if ( typeof O.cancel === 'function' ) {
 						O.cancel();
 						O.cancel = ''; // suppress multiple runs
-					} else {
-						infoReset();
 					}
+					infoReset();
 				} );
 		}
 		if ( O.button ) {
@@ -177,7 +177,7 @@ function info( O ) {
 				.html( O.buttonlabel )
 				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
 				.show()
-				.on( 'click', function() {
+				.click( function() {
 					$( '#infoOverlay' ).hide();
 					O.button();
 					O.button = '';
@@ -206,7 +206,7 @@ function info( O ) {
 			.html( O.filelabel )
 			.css( 'background', '#34495e' )
 			.off( 'click' );
-		$( '#infoFileLabel' ).on( 'click', function() {
+		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFileBox' ).on( 'change', function() {
@@ -233,7 +233,7 @@ function info( O ) {
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
-				.on( 'click', function() {
+				.click( function() {
 					O.ok();
 					O.ok = '';
 				} );
