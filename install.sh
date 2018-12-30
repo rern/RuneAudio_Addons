@@ -43,8 +43,6 @@ append 'controllers = array'
 file=/srv/http/app/templates/header.php
 echo $file
 
-[[ -e $file.backup ]] && file=$file.backup
-
 string=$( cat <<'EOF'
     <style>
         @font-face {
@@ -81,8 +79,6 @@ appendH '$'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/footer.php
 echo $file
-
-[[ -e $file.backup ]] && file=$file.backup
 
 string=$( cat <<'EOF'
 <input id="favicon" type="hidden" value="<?=$this->asset( '/img/favicon.ico' )?>">
