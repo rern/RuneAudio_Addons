@@ -93,7 +93,6 @@ $( '#infoOverlay' ).keypress( function( e ) {
 // close: reset to default
 $( '#infoX' ).click( function() {
 	$( '#infoCancel' ).click();
-	//infoReset();
 } );
 
 function infoReset() {
@@ -123,10 +122,9 @@ function info( O ) {
 	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
-	
 	if ( O.autoclose ) {
 		setTimeout( function() {
-			infoReset();
+			$( '#infoX' ).click();
 		}, O.autoclose );
 	}
 	// simple use as info( 'message' )
@@ -153,7 +151,7 @@ function info( O ) {
 				$( '#infoOverlay' ).hide();
 				if ( typeof O.ok === 'function' ) {
 					O.ok();
-					O.ok = ''; // suppress multiple runs
+					O.ok = ''; // reset
 				} else {
 					infoReset();
 				}
@@ -167,10 +165,12 @@ function info( O ) {
 					$( '#infoOverlay' ).hide();
 					if ( typeof O.cancel === 'function' ) {
 						O.cancel();
-						O.cancel = ''; // suppress multiple runs
-					}
+						O.cancel = ''; // reset
+					} 
 					infoReset();
 				} );
+		} else {
+			$( '#infoCancel' ).click( infoReset );
 		}
 		if ( O.button ) {
 			$( '#infoButton' )
