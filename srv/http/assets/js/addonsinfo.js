@@ -92,7 +92,7 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	infoReset();
+	$( '#infoCancel' ).click();
 } );
 
 function infoReset() {
@@ -122,10 +122,9 @@ function info( O ) {
 	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
-	
 	if ( O.autoclose ) {
 		setTimeout( function() {
-			infoReset();
+			$( '#infoX' ).click();
 		}, O.autoclose );
 	}
 	// simple use as info( 'message' )
@@ -148,11 +147,11 @@ function info( O ) {
 			.html( O.oklabel ? O.oklabel : 'OK' )
 			.css( 'background', O.okcolor ? O.okcolor : '' )
 			.show()
-			.on( 'click', function() {
+			.click( function() {
 				$( '#infoOverlay' ).hide();
 				if ( typeof O.ok === 'function' ) {
 					O.ok();
-					O.ok = ''; // suppress multiple runs
+					O.ok = ''; // reset
 				} else {
 					infoReset();
 				}
@@ -162,22 +161,23 @@ function info( O ) {
 				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
 				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
 				.show()
-				.on( 'click', function() {
+				.click( function() {
 					$( '#infoOverlay' ).hide();
 					if ( typeof O.cancel === 'function' ) {
 						O.cancel();
-						O.cancel = ''; // suppress multiple runs
-					} else {
-						infoReset();
-					}
+						O.cancel = ''; // reset
+					} 
+					infoReset();
 				} );
+		} else {
+			$( '#infoCancel' ).click( infoReset );
 		}
 		if ( O.button ) {
 			$( '#infoButton' )
 				.html( O.buttonlabel )
 				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
 				.show()
-				.on( 'click', function() {
+				.click( function() {
 					$( '#infoOverlay' ).hide();
 					O.button();
 					O.button = '';
@@ -206,7 +206,7 @@ function info( O ) {
 			.html( O.filelabel )
 			.css( 'background', '#34495e' )
 			.off( 'click' );
-		$( '#infoFileLabel' ).on( 'click', function() {
+		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFileBox' ).on( 'change', function() {
@@ -233,7 +233,7 @@ function info( O ) {
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
-				.on( 'click', function() {
+				.click( function() {
 					O.ok();
 					O.ok = '';
 				} );
@@ -254,7 +254,7 @@ function info( O ) {
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
 	var boxH = $( '#infoBox' ).height();
 	var wH = window.innerHeight;
-	var translate = boxH < wH ? boxH / 2 : wH / 2
+	var translate = boxH < wH ? boxH : wH / 2
 	$( '#infoBox' ).css( 'transform', 'translateY( -'+ translate +'px )' )
 	if ( $infofocus ) $infofocus.focus();
 	if ( O.boxwidth ) {
