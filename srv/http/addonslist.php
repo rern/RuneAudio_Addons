@@ -8,9 +8,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20181115',
-	'revision'    => 'Fix bugs'
-					.'<br>...'
+	'version'     => '20190101',
+	'revision'    => 'Maintain RuneUI enhancement if uninstalled'
 					.'<br>Minor improvements'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
@@ -213,8 +212,8 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20181228',
-	'revision'    => 'Fix bugs'
+	'version'     => '20190101',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Update along with RuneUI Enhancment 20181020'
 					.'<br>...'
