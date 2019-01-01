@@ -92,7 +92,7 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	$( '#infoCancel' ).click();
+	typeof O === 'object' ? $( '#infoCancel' ).click() : infoReset();
 } );
 
 function infoReset() {
@@ -132,6 +132,7 @@ function info( O ) {
 		$( '#infoMessage' ).html( O );
 		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
+		alignVertical();
 		$( '#infoOk' ).html( 'OK' ).click( function() {
 			infoReset();
 		});
@@ -252,10 +253,7 @@ function info( O ) {
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	var boxH = $( '#infoBox' ).height();
-	var wH = window.innerHeight;
-	var translate = boxH < wH ? boxH / 2 : wH / 2
-	$( '#infoBox' ).css( 'transform', 'translateY( -'+ translate +'px )' )
+	alignVertical();
 	if ( $infofocus ) $infofocus.focus();
 	if ( O.boxwidth ) {
 		var maxW = window.innerWidth * 0.98;
@@ -266,6 +264,12 @@ function info( O ) {
 	}
 }
 
+function alignVertical() {
+	var boxH = $( '#infoBox' ).height();
+	var wH = window.innerHeight;
+	var translate = boxH < wH ? 'translateY( -'+ boxH / 2 +'px )' : 'translateY( -'+ wH / 2 +'px )';
+	$( '#infoBox' ).css( 'transform', translate );
+}
 function radioCheckbox( el, htm, chk ) {
 	el.html( htm ).show();
 	if ( !chk ) return;
