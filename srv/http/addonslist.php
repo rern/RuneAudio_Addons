@@ -9,7 +9,7 @@ $addons = array(
 'addo' => array(
 	'title'       => 'Addons',
 	'version'     => '20190101',
-	'revision'    => 'Maintain RuneUI enhancement if uninstalled'
+	'revision'    => 'Maintain RuneUI enhancement if Addons uninstalled'
 					.'<br>Minor improvements'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
