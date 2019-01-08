@@ -22,21 +22,30 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '201812251',
-	'revision'    => 'Library: Show cover art with info in destination of each mode.'
+	'version'     => '20190108',
+	'revision'    => '<wh>Bookmark cover arts</wh> - instead of icon if available'
+					.'<br><wh>Time playback controls</wh> - available only when Cover art hidden'
+					.'<br><wh>Bottom swipe bar</wh> - swipe between pages without ghost taps'
+					.'<br><wh>Swipe pages</wh> - available only when top-bottom bars hidden'
+					.'<br><wh>Swipe current playlist items</wh> - show remove icons'
+					.'<br>Option - <wh>autohide top-bottom bars</wh> on small screen'
+					.'<br>Option - <wh>show/hide context menu icon</wh> (deprecated and hidden)'
+					.'<br>Option - <wh>clear Playlist confirmation</wh> (in Library and Playlist)'
+					.'<br>Option for <wh>Tap Add + Play</wh> song/webradio'
+					.'<br>Webradios in Playlist - restore saved names on stop / track changed'
+					.'<br>Fix - Time tap bug'
+					.'<br>Fix - maintain page scroll position bug'
+					.'<br>Fix - Webradio names with double quotes bug'
+					.'<br>Fix - rename saved playlists bug'
+					.'<br>...'
+					.'<br>Library: Show cover art with info in destination of each mode.'
 					.'<br>Album info - click artist/composer to show Bio like Playback page.'
 					.'<br>Browsing various artists/composers/genres albums shows only relevant songs, not all in the album.'
-					.'<br>Directories contain <white>*.cue</white> directly show song list like normal directories with separated files.'
+					.'<br>Directories contain <wh>*.cue</wh> directly show song list like normal directories with separated files.'
 					.'<br>*.cue can be single or multiple.'
 					.'<br>Any song in the list can be added to Playlist as a single song.'
 					.'<br>Context menus show/hide. (Left icons can be used instead)'
-					.'<br>Omit counting in LocalStorage and Bookmarks'
-					.'<br>...'
-					.'<br>Fix Network setting bug'
-					.'<br>...'
-					.'<br>Browse genre - album based'
-					.'<br>Fix coverart scaling bug'
-					.'<br>Improve empty index and directory handling',
+					.'<br>Omit counting in LocalStorage and Bookmarks',
 	'maintainer'  => 'r e r n',
 	'description' => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
