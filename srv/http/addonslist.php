@@ -22,8 +22,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190108',
-	'revision'    => '<white>Bookmark cover arts</white> - instead of icon if available'
+	'version'     => '20190112',
+	'revision'    => ''
+					.'<br>...'
+					.'<br>...'
+					.'<br>...'
+					.'<br>...'
+					.'<br><white>Bookmark cover arts</white> - instead of icon if available'
 					.'<br><white>Time playback controls</white> - available only when Cover art hidden'
 					.'<br><white>Bottom swipe bar</white> - swipe between pages without ghost taps'
 					.'<br><white>Swipe pages</white> - available only when top-bottom bars hidden'
