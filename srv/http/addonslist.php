@@ -23,10 +23,10 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190112',
-	'revision'    => ''
-					.'<br>...'
-					.'<br>...'
-					.'<br>...'
+	'revision'    => 'Fix - Dirble bugs'
+					.'<br>Fix - Invisible untagged mp3 in Playlist'
+					.'<br>Fix - Progress circle position when cover art and volume hidden'
+					.'<br>Fix - Library page long delay response'
 					.'<br>...'
 					.'<br><white>Bookmark cover arts</white> - instead of icon if available'
 					.'<br><white>Time playback controls</white> - available only when Cover art hidden'
