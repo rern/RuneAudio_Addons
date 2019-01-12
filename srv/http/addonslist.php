@@ -52,7 +52,7 @@ $addons = array(
 					.'<br>Context menus show/hide. (Left icons can be used instead)'
 					.'<br>Omit counting in LocalStorage and Bookmarks',
 	'maintainer'  => 'r e r n',
-	'description' => 'More <white>minimalism</white> and more <white>fluid</white> layout.',
+	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
