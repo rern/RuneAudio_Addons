@@ -364,6 +364,7 @@ $addons = array(
 			'checked' => 'bcm2835 ALSA_1',
 		),
 	),
+	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
 'webr' => array(
 	'title'       => 'Webradio Import',
