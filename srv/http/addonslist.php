@@ -22,8 +22,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190112',
-	'revision'    => 'Fix - Dirble bugs'
+	'version'     => '20190117',
+	'revision'    => 'Fix Dirble Add+Play and Replace+Play'
+					.'<br>Fix cover art change for files with no id3 tag'
+					.'<br>Fix play mode indicators in Time knob when buttons hidden(auto)'
+					.'<br>Improve long info text scroll to be relative to length'
+					.'<br>...'
+					.'<br>Fix - Dirble bugs'
 					.'<br>Fix - Invisible untagged mp3 in Playlist'
 					.'<br>Fix - Progress circle position when cover art and volume hidden'
 					.'<br>Fix - Library page long delay response'
@@ -41,16 +46,7 @@ $addons = array(
 					.'<br>Fix - Time tap bug'
 					.'<br>Fix - maintain page scroll position bug'
 					.'<br>Fix - Webradio names with double quotes bug'
-					.'<br>Fix - rename saved playlists bug'
-					.'<br>...'
-					.'<br>Library: Show cover art with info in destination of each mode.'
-					.'<br>Album info - click artist/composer to show Bio like Playback page.'
-					.'<br>Browsing various artists/composers/genres albums shows only relevant songs, not all in the album.'
-					.'<br>Directories contain <white>*.cue</white> directly show song list like normal directories with separated files.'
-					.'<br>*.cue can be single or multiple.'
-					.'<br>Any song in the list can be added to Playlist as a single song.'
-					.'<br>Context menus show/hide. (Left icons can be used instead)'
-					.'<br>Omit counting in LocalStorage and Bookmarks',
+					.'<br>Fix - rename saved playlists bug',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
