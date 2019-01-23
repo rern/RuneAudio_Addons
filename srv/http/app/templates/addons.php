@@ -148,8 +148,6 @@ echo $blocks;
 ?>
 </div>
 <p id="bottom"></p> <!-- for bottom padding -->
-<input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
-<input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <?php
 $keepkey = array( 'title', 'installurl', 'rollback', 'option' );
 foreach( $arrayalias as $alias ) {
