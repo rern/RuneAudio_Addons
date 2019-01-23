@@ -139,6 +139,7 @@ $addons = array(
 		),
 	),
 ),
+/*
 'mpdu' => array(
 	'title'       => 'MPD Upgrade *',
 	'needspace'   => 192,
@@ -159,6 +160,7 @@ $addons = array(
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
+*/
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
