@@ -1,5 +1,6 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
+$time = time();
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,14 +15,14 @@ ignore_user_abort( TRUE ); // for 'connection_status()' to work
 	<style>
 		@font-face {
 			font-family: addons;
-			src        : url( '<?=$_POST[ 'addonswoff' ]?>' ) format( 'woff' ), url( '<?=$_POST[ 'addonsttf' ]?>' ) format( 'truetype' );
+			src        : url( '/fonts/addons.<?=$time?>.woff' ) format( 'woff' ), url( '/fonts/addons.<?=$time?>.ttf' ) format( 'truetype' );
 			font-weight: normal;
 			font-style : normal;
 		}
 	</style>
-	<link rel="shortcut icon" href="<?=$_POST[ 'favicon' ]?>">
-	<link rel="stylesheet" href="<?=$_POST[ 'addonsinfocss' ]?>">
-	<link rel="stylesheet" href="<?=$_POST[ 'addonscss' ]?>">
+	<link rel="shortcut icon" href="/img/favicon.<?=$time?>.ico">
+	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
 </head>
 <body>
 
@@ -45,8 +46,8 @@ setTimeout( function() {
 }, 1000 );
 </script>
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
-<script src="/js/vendor/jquery-2.1.0.min.js"></script>
-<script src="<?=$_POST[ 'addonsinfojs' ]?>"></script>
+<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
+<script src="/js/addonsinfo.<?=$time?>.js"></script>
 
 <div class="container">
 	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>

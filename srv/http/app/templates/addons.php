@@ -1,5 +1,5 @@
 <?php
-include '/srv/http/addonslist.php';
+include 'addonslist.php';
 
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
@@ -148,8 +148,6 @@ echo $blocks;
 ?>
 </div>
 <p id="bottom"></p> <!-- for bottom padding -->
-<input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
-<input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
 <?php
 $keepkey = array( 'title', 'installurl', 'rollback', 'option' );
 foreach( $arrayalias as $alias ) {
