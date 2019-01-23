@@ -24,7 +24,7 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190123',
-	'revision'    => 'Fix cover art for songs without ID3 tag'
+	'revision'    => 'Fix missing embedded cover arts'
 					.'<br>Fix Playback text scrolling bug'
 					.'<br>Fix Replace+Play sometimes switched to Playback with empty item'
 					.'<br>...'
