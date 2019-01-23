@@ -46,7 +46,7 @@ setTimeout( function() {
 }, 1000 );
 </script>
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
-<script src="/js/vendor/jquery-2.1.0.min.js"></script>
+<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
 <script src="/js/addonsinfo.<?=$time?>.js"></script>
 
 <div class="container">
