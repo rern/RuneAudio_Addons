@@ -23,8 +23,12 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190117',
-	'revision'    => 'Fix Dirble Add+Play and Replace+Play'
+	'version'     => '20190123',
+	'revision'    => 'Fix cover art for songs without ID3 tag'
+					.'<br>Fix Playback text scrolling bug'
+					.'<br>Fix Replace+Play sometimes switched to Playback with empty item'
+					.'<br>...'
+					.'<br>Fix Dirble Add+Play and Replace+Play'
 					.'<br>Fix cover art change for files with no id3 tag'
 					.'<br>Fix play mode indicators in Time knob when buttons hidden(auto)'
 					.'<br>Improve long info text scroll to be relative to length'
@@ -32,22 +36,7 @@ $addons = array(
 					.'<br>Fix - Dirble bugs'
 					.'<br>Fix - Invisible untagged mp3 in Playlist'
 					.'<br>Fix - Progress circle position when cover art and volume hidden'
-					.'<br>Fix - Library page long delay response'
-					.'<br>...'
-					.'<br><white>Bookmark cover arts</white> - instead of icon if available'
-					.'<br><white>Time playback controls</white> - available only when Cover art hidden'
-					.'<br><white>Bottom swipe bar</white> - swipe between pages without ghost taps'
-					.'<br><white>Swipe pages</white> - available only when top-bottom bars hidden'
-					.'<br><white>Swipe current playlist items</white> - show remove icons'
-					.'<br>Option - <white>autohide top-bottom bars</white> on small screen'
-					.'<br>Option - <white>show/hide context menu icon</white> (deprecated and hidden)'
-					.'<br>Option - <white>clear Playlist confirmation</white> (in Library and Playlist)'
-					.'<br>Option for <white>Tap Add + Play</white> song/webradio'
-					.'<br>Webradios in Playlist - restore saved names on stop / track changed'
-					.'<br>Fix - Time tap bug'
-					.'<br>Fix - maintain page scroll position bug'
-					.'<br>Fix - Webradio names with double quotes bug'
-					.'<br>Fix - rename saved playlists bug',
+					.'<br>Fix - Library page long delay response',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
