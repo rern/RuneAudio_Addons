@@ -8,9 +8,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190101',
-	'revision'    => 'Maintain RuneUI enhancement if Addons uninstalled'
-					.'<br>Minor improvements'
+	'version'     => '20190123',
+	'revision'    => 'Minor improvements'
+					.'<br>...'
+					.'<br>Maintain RuneUI enhancement if Addons uninstalled'
 					.'<br>...'
 					.'<br>Works with RuneAudio 0.5'
 					.'<br>Disable PHP OPcache',
@@ -208,9 +209,11 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
-	'version'     => '20180830',
+	'version'     => '20190123',
 	'needspace'   => 5,
-	'revision'    => 'Improve notifications - show devices name'
+	'revision'    => 'Minor improvements'
+					.'<br>...'
+					.'<br>Improve notifications - show devices name'
 					.'<br>Fix bugs'
 					.'<br>...'
 					.'<br>Fix on-off indicator',
