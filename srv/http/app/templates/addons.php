@@ -1,5 +1,5 @@
 <?php
-include '/srv/http/addonslist.php';
+include 'addonslist.php';
 
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
