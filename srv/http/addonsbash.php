@@ -120,11 +120,11 @@ $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 // if uninstall only - css file will be gone
 if ( $alias === 'addo' && $type !== 'Update' ) {
 	echo '<style>';
-	include 'assets/css/addonsinfo.css';
+	include 'assets/css/addonsinfo.'.$time.'.css';
 	echo '</style>';
 	$close = '/';
 } else {
-	$close = '/addons';
+	$close = 'addons.php';
 }
 
 echo $commandtxt.'<br>';
