@@ -23,7 +23,7 @@ alias=addo
 . /srv/http/addonstitle.sh
 
 #0temp0
-sed -i $'s/\'addons\'/\'addons.php\'/' /srv/http/addonsbash.php
+sed -i 's/\(href = .addons\)/\1\.php/' /srv/http/assets/js/addonsmenu.js
 #1temp1
 
 installstart $@
