@@ -50,7 +50,7 @@ function addonsdl( exit ) {
 			}
 		} );
 	} else {
-		location.href = 'addons';
+		location.href = 'addons.php';
 	}
 }
 
