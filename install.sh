@@ -36,7 +36,7 @@ echo -e "$bar Modify files ..."
 
 #----------------------------------------------------------------------------------
 file=/srv/http/index.php
-[[ -e $file.backup ]] && file=/srv/http/index.php.backup
+[[ -e /srv/http/enhance.php ]] && file=/srv/http/index.php.backup
 echo $file
 
 string=$( cat <<'EOF'
