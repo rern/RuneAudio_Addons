@@ -8,7 +8,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190123',
+	'version'     => '20190124',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Maintain RuneUI enhancement if Addons uninstalled'
