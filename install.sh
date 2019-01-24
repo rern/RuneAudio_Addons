@@ -22,6 +22,10 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
+#0temp0
+sed -i $'s/\'addons\'/\'addons.php\'/' /srv/http/addonsbash.php
+#1temp1
+
 installstart $@
 
 getinstallzip
