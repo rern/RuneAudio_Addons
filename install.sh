@@ -29,10 +29,6 @@ getinstallzip
 . /srv/http/addonsedit.sh # available after getinstallzip
 
 #0temp0
-
-#2019???? - remove 20190125 temp fix dir
-# rm -r /srv/http/addons
-
 # 20190125 - move addons.php back to /srv/http
 sed -i '/addons/ d' /srv/http/index.php
 
@@ -45,6 +41,7 @@ EOF
 mkdir /srv/http/addons
 echo $string > /srv/http/addons/index.php
 
+alias=temp
 file=/etc/nginx/nginx.conf
 
 string=$( cat <<EOF
@@ -55,6 +52,8 @@ string=$( cat <<EOF
 EOF
 )
 insertS 'location .pub'
+
+alias=addo
 
 restartnginx
 #1temp1
