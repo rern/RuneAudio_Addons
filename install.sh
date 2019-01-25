@@ -29,7 +29,11 @@ getinstallzip
 . /srv/http/addonsedit.sh # available after getinstallzip
 
 #0temp0
-# move addons.php back to /srv/http
+
+#2019???? - remove 20190125 temp fix dir
+# rm -r /srv/http/addons
+
+# 20190125 - move addons.php back to /srv/http
 sed -i '/addons/ d' /srv/http/index.php
 
 if [[ ! -e /srv/http/addons.php ]]; then
