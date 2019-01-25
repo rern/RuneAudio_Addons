@@ -23,7 +23,22 @@ alias=addo
 . /srv/http/addonstitle.sh
 
 #0temp0
-sed -i 's/\(href = .addons\)/\1\.php/' /srv/http/assets/js/addonsmenu.js
+# move addons.php back to /srv/http
+mkdir /srv/http/addons
+ln -s /srv/http/addons.php /srv/http/addons/index.php
+
+file=/etc/nginx/nginx.conf
+
+string=$( cat <<EOF
+        location /addons {
+            alias  /var/www/addons;
+            index  index.php;
+        }
+EOF
+)
+insertS 'location .pub'
+
+restartnginx
 #1temp1
 
 installstart $@
