@@ -14,7 +14,6 @@ indexfile=/srv/http/index.php
 
 files="
 $indexfile
-/srv/http/index.php.backup
 /srv/http/app/templates/settings.php
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
