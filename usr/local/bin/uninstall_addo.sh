@@ -8,10 +8,11 @@ alias=addo
 uninstallstart $@
 
 #0temp0
-
 # 20190125
 rm -rf /srv/http/addons
 sed '/#0temp0/,/#1temp1/ d' /etc/nginx/nginx.conf
+restartnginx
+#1temp1
 
 echo -e "$bar Restore files ..."
 
