@@ -56,17 +56,6 @@ getinstallzip
 . /srv/http/addonsedit.sh # available after getinstallzip
 
 echo -e "$bar Modify files ..."
-
-#----------------------------------------------------------------------------------
-file=/srv/http/index.php
-[[ -e /srv/http/enhance.php ]] && file=/srv/http/index.php.backup
-echo $file
-
-string=$( cat <<'EOF'
-    'addons',
-EOF
-)
-append 'controllers = array'
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
