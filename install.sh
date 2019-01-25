@@ -22,6 +22,12 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
+installstart $@
+
+getinstallzip
+
+. /srv/http/addonsedit.sh # available after getinstallzip
+
 #0temp0
 # move addons.php back to /srv/http
 if [[ ! -e /srv/http/addons.php ]]; then
@@ -48,12 +54,6 @@ EOF
 	restartnginx
 fi
 #1temp1
-
-installstart $@
-
-getinstallzip
-
-. /srv/http/addonsedit.sh # available after getinstallzip
 
 echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
