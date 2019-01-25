@@ -25,13 +25,8 @@ rm -v /srv/http/assets/css/addons.css
 rm -v /srv/http/assets/fonts/{addons*,Inconsolata*}
 rm -v /srv/http/assets/js/{addons.js,addonsmenu.js}
 rm -r /srv/http/assets/img/addons /srv/http/tmp
-if [[ ! -e /srv/http/gpiosettings.php && ! -e /srv/http/enhance.php ]]; then
-	rm -v /srv/http/assets/css/bootstrap.min.css
-	rm -v /srv/http/assets/js/vendor/jquery.mobile.custom.min.js
-fi
 # DO NOT remove - used by other addons
-# addonsinfo.css
-# addonsinfo.js
+# addonsinfo.css, addonsinfo.js, bootstrap.min.css, jquery.mobile.custom.min.js
 
 crontab -l | { cat | sed '/addonsupdate.sh/ d'; } | crontab -
 
