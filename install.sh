@@ -30,6 +30,8 @@ getinstallzip
 
 #0temp0
 # move addons.php back to /srv/http
+sed -i '/addons/ d' /srv/http/index.php
+
 if [[ ! -e /srv/http/addons.php ]]; then
 	string=$( cat <<EOF
 <script language="javascript">
