@@ -23,7 +23,6 @@ restorefile $files
 echo -e "$bar Remove files ..."
 
 rm -v /srv/http/addons*
-rm -v /srv/http/app/templates/addons*
 rm -v /srv/http/assets/css/addons.css
 rm -v /srv/http/assets/fonts/{addons*,Inconsolata*}
 rm -v /srv/http/assets/js/{addons.js,addonsmenu.js}
