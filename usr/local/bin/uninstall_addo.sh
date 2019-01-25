@@ -10,9 +10,9 @@ uninstallstart $@
 echo -e "$bar Restore files ..."
 
 files="
-/srv/http/app/templates/settings.php
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
+/srv/http/app/templates/settings.php
 "
 restorefile $files
 
