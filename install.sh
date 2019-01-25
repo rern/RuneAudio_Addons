@@ -31,6 +31,7 @@ getinstallzip
 #0temp0
 # 20190125 - move addons.php back to /srv/http
 sed -i '/addons/ d' /srv/http/index.php
+sed -i '/#0addo0/,/#1addo1/ d' /srv/http/index.php.backup &> /dev/null
 
 string=$( cat <<EOF
 <script language="javascript">
