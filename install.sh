@@ -36,29 +36,27 @@ getinstallzip
 # 20190125 - move addons.php back to /srv/http
 sed -i '/addons/ d' /srv/http/index.php
 
-if [[ ! -e /srv/http/addons.php ]]; then
-	string=$( cat <<EOF
+string=$( cat <<EOF
 <script language="javascript">
 	location.href = "/addons.php"
 </script>
 EOF
 )
-	mkdir /srv/http/addons
-	echo $string > /srv/http/addons/index.php
+mkdir /srv/http/addons
+echo $string > /srv/http/addons/index.php
 
-	file=/etc/nginx/nginx.conf
+file=/etc/nginx/nginx.conf
 
-	string=$( cat <<EOF
+string=$( cat <<EOF
         location /addons {
             alias  /var/www/addons;
             index  index.php;
         }
 EOF
 )
-	insertS 'location .pub'
+insertS 'location .pub'
 
-	restartnginx
-fi
+restartnginx
 #1temp1
 
 echo -e "$bar Modify files ..."
