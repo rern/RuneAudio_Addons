@@ -16,9 +16,10 @@ restartnginx
 
 echo -e "$bar Restore files ..."
 
+[[ -e /srv/http/index.php.backup ]] && indexbackup=/srv/http/index.php.backup
 files="
 /srv/http/index.php
-/srv/http/index.php.backup
+$indexbackup
 /srv/http/app/templates/settings.php
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
