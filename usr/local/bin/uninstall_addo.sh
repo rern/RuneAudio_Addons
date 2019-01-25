@@ -9,11 +9,9 @@ uninstallstart $@
 
 echo -e "$bar Restore files ..."
 
-indexfile=/srv/http/index.php
-[[ -e /srv/http/enhance.php ]] && indexfile=/srv/http/index.php.backup
-
 files="
-$indexfile
+/srv/http/index.php
+/srv/http/index.php.backup
 /srv/http/app/templates/settings.php
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
