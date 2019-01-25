@@ -24,21 +24,29 @@ alias=addo
 
 #0temp0
 # move addons.php back to /srv/http
-mkdir /srv/http/addons
-ln -s /srv/http/addons.php /srv/http/addons/index.php
+if [[ ! -e /srv/http/addons.php ]]; then
+	string=$( cat <<EOF
+<script language="javascript">
+	location.href = "/addons.php"
+</script>
+EOF
+)
+	mkdir /srv/http/addons
+	echo $string > /srv/http/addons/index.php
 
-file=/etc/nginx/nginx.conf
+	file=/etc/nginx/nginx.conf
 
-string=$( cat <<EOF
+	string=$( cat <<EOF
         location /addons {
             alias  /var/www/addons;
             index  index.php;
         }
 EOF
 )
-insertS 'location .pub'
+	insertS 'location .pub'
 
-restartnginx
+	restartnginx
+fi
 #1temp1
 
 installstart $@
