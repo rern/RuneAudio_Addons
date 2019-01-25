@@ -9,11 +9,13 @@ $( '#addons' ).click( function () {
 	} );
 } ).on( 'taphold', function () {
 	info( {
-		  title    : 'Addons Menu Branch Test'
-		, textlabel: 'Branch'
-		, textvalue: 'UPDATE'
-		, cancel   : 1
-		, ok       : function() {
+		  title     : 'Addons Menu Branch Test'
+		, width     : 500
+		, textlabel : 'Branch'
+		, textvalue : 'UPDATE'
+		, boxwidth  : 'max'
+		, cancel    : 1
+		, ok        : function() {
 			var branch = $( '#infoTextBox' ).val();
 			$( '#loader' )
 				.html( '<i class="fa fa-addons blink"></i>' )
@@ -33,8 +35,8 @@ $( '#addons' ).click( function () {
 function addonsdl( exit ) {
 	if ( exit == 1 ) {
 		info( {
-			  icon   : 'info-circle'
-			, message: 'Download from Addons server failed.'
+			  icon    : 'info-circle'
+			, message : 'Download from Addons server failed.'
 				+'<br>Please try again later.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
@@ -42,15 +44,15 @@ function addonsdl( exit ) {
 		} );
 	} else if ( exit == 2 ) {
 		info( {
-			  icon   : 'info-circle'
-			, message: 'Addons Menu cannot be updated.'
+			  icon    : 'info-circle'
+			, message : 'Addons Menu cannot be updated.'
 				+'<br>Root partition has <white>less than 1 MB free space</white>.'
-			, ok     : function() {
-				location.href = 'addons';
+			, ok      : function() {
+				location.href = 'addons.php';
 			}
 		} );
 	} else {
-		location.href = 'addons';
+		location.href = 'addons.php';
 	}
 }
 

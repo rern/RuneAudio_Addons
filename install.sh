@@ -28,17 +28,38 @@ getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
 
-echo -e "$bar Modify files ..."
+#0temp0
+# 20190125 - move addons.php back to /srv/http
+sed -i '/addons/ d' /srv/http/index.php
+sed -i '/#0addo0/,/#1addo1/ d' /srv/http/index.php.backup &> /dev/null
 
-#----------------------------------------------------------------------------------
-file=/srv/http/index.php
-echo $file
-
-string=$( cat <<'EOF'
-    'addons',
+string=$( cat <<EOF
+<script language="javascript">
+	location.href = "/addons.php"
+</script>
 EOF
 )
-append 'controllers = array'
+mkdir /srv/http/addons
+echo $string > /srv/http/addons/index.php
+
+alias=temp
+file=/etc/nginx/nginx.conf
+
+string=$( cat <<EOF
+        location /addons {
+            alias  /var/www/addons;
+            index  index.php;
+        }
+EOF
+)
+insertS 'location .pub'
+
+alias=addo
+
+restartnginx
+#1temp1
+
+echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
 file=/srv/http/app/templates/header.php
 echo $file
