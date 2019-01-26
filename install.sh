@@ -42,21 +42,23 @@ EOF
 mkdir /srv/http/addons
 echo $string > /srv/http/addons/index.php
 
-alias=temp
 file=/etc/nginx/nginx.conf
+if ! grep -q 'location /addons' $file; then
+	alias=temp
 
-string=$( cat <<EOF
+	string=$( cat <<EOF
         location /addons {
             alias  /var/www/addons;
             index  index.php;
         }
 EOF
 )
-insertS 'location .pub'
+	insertS 'location .pub'
 
-alias=addo
+	alias=addo
 
-restartnginx
+	restartnginx
+fi
 #1temp1
 
 echo -e "$bar Modify files ..."
