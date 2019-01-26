@@ -12,7 +12,8 @@ $time = time();
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="msapplication-tap-highlight" content="no" />
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="shortcut icon" href="/img/favicon.<?=$time?>.ico">
 	<style>
 		@font-face {
 			font-family: addons;
