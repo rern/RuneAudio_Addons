@@ -8,13 +8,12 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190125',
-	'revision'    => 'General improvements'
+	'version'     => '20190126',
+	'revision'    => 'Fix loding error'
 					.'<br>...'
-					.'<br>Maintain RuneUI enhancement if Addons uninstalled'
+					.'<br>General improvements'
 					.'<br>...'
-					.'<br>Works with RuneAudio 0.5'
-					.'<br>Disable PHP OPcache',
+					.'<br>Maintain RuneUI enhancement if Addons uninstalled',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
