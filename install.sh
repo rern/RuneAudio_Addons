@@ -102,17 +102,6 @@ file=/srv/http/app/templates/footer.php
 echo $file
 
 string=$( cat <<'EOF'
-<input id="favicon" type="hidden" value="<?=$this->asset( '/img/favicon.ico' )?>">
-<input id="addonswoff" type="hidden" value="<?=$this->asset('/fonts/addons.woff')?>">
-<input id="addonsttf" type="hidden" value="<?=$this->asset('/fonts/addons.ttf')?>">
-<input id="addonsinfocss" type="hidden" value="<?=$this->asset('/css/addonsinfo.css')?>">
-<input id="addonscss" type="hidden" value="<?=$this->asset('/css/addons.css')?>">
-<input id="addonsinfojs" type="hidden" value="<?=$this->asset('/js/addonsinfo.js')?>">
-EOF
-)
-insertH 'jquery-2.1.0.min.js'
-
-string=$( cat <<'EOF'
 <script src="<?=$this->asset('/js/vendor/jquery.mobile.custom.min.js')?>"></script>
 EOF
 )
