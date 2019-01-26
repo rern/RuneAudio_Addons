@@ -1,6 +1,6 @@
 <?php
-include 'addonslist.php';
-
+$redis = new Redis();
+$redis->pconnect( '127.0.0.1' );
 $time = time();
 function fontface( $name, $_this, $time ) {
 	$woff = "/fonts/$name.$time.woff";
@@ -8,8 +8,7 @@ function fontface( $name, $_this, $time ) {
 	return "
 	@font-face {
 		font-family: $name;
-		src        : url( '$woff' ) format( 'woff' ),
-		             url( '$ttf' ) format( 'truetype' );
+		src        : url( '$woff' ) format( 'woff' ), url( '$ttf' ) format( 'truetype' );
 		font-weight: normal;
 		font-style : normal;
 	}";
@@ -38,10 +37,38 @@ if ( $MiBunpart < 10 ) {
 	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
 	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
-
+?>
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Rune Addons</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="msapplication-tap-highlight" content="no">
+	<link rel="shortcut icon" href="/img/favicon.<?=$time?>.ico">
+	<link rel="stylesheet" href="/css/bootstrap.min.<?=$time?>.css">
+	<?=$fontface?>
+	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
+</head>
+<body>
+<div class="container">
+	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
+	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
+	<p class="bl"></p>
+	<?=$htmlused.$htmlavail.$htmlunpart?>
+	<p id="disktext" class="disk">&ensp;<?=$htmlfree?></p>
+	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
+	</p>
+<?php
+// ------------------------------------------------------------------------------------
 $list = '';
 $blocks = '';
 // sort
+include 'addonslist.php';
 $arraytitle = array_column( $addons, 'title' );
 $addoindex = array_search( 'Addons Menu', $arraytitle );
 $arraytitle[ $addoindex ] = 0;
@@ -145,48 +172,27 @@ foreach( $arrayalias as $alias ) {
 }
 $redis->hSet( 'addons', 'update', $updatecount );
 $redis->hSet( 'display', 'update', $updatecount );
+// ------------------------------------------------------------------------------------
+echo '
+	<ul id="list">'.
+		$list.'
+	</ul>
+';
+echo $blocks;
+?>
+</div>
+<p id="bottom"></p> <!-- for bottom padding -->
+<div id="loader" class="hide"><img src="/img/runelogo.<?=$time?>.svg"></div>
+
+<?php
 $keepkey = array( 'title', 'installurl', 'rollback', 'option' );
 foreach( $arrayalias as $alias ) {
 	if ( $alias === 'addo' || $alias === 'dual' ) continue;
 	$addonslist[ $alias ] = array_intersect_key( $addons[ $alias ], array_flip( $keepkey ) );
 }
 ?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Rune Addons</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="msapplication-tap-highlight" content="no">
-	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.ico">
-	<link rel="stylesheet" href="/css/bootstrap.min.<?=$time?>.css">
-	<?=$fontface?>
-	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
-	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
-</head>
-<body>
-<div class="container">
-	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
-	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
-	<p class="bl"></p>
-	<?=$htmlused.$htmlavail.$htmlunpart?>
-	<p id="disktext" class="disk">&ensp;<?=$htmlfree?></p>
-	<p id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
-	</p>
-		<ul id="list">
-		<?=$list?>
-	</ul>
-	<?=$blocks?>
-</div>
-<p id="bottom"></p> <!-- for bottom padding -->
-<div id="loader" class="hide"><img src="/img/runelogo.<?=$time?>.svg"></div>
-
 <script>
-	var addons = <?=json_encode( $addonslist )?>;
+var addons = <?=json_encode( $addonslist )?>;
 </script>
 
 <script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
