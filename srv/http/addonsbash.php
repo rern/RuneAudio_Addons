@@ -12,6 +12,7 @@ $time = time();
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no" />
+	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.ico">
 	<style>
 		@font-face {
 			font-family: addons;
@@ -20,7 +21,6 @@ $time = time();
 			font-style : normal;
 		}
 	</style>
-	<link rel="shortcut icon" href="/img/favicon.<?=$time?>.ico">
 	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
 	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
 </head>
