@@ -199,7 +199,7 @@ if ( !$reinit ) pclose( $popencmd );
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, <?=( !$reinit ? 1000 : 7000 )?> );
+	}, <?=( !$reinit ? 1000 : 8000 )?> );
 </script>
 
 </body>
