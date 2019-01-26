@@ -42,9 +42,9 @@ EOF
 mkdir -p /srv/http/addons
 echo $string > /srv/http/addons/index.php
 
-file=/etc/nginx/nginx.conf
 alias=temp
-restorefile $file
+file=/etc/nginx/nginx.conf
+sed -i '/#0temp0/,/#1temp1/ d' $file
 
 string=$( cat <<EOF
         location /addons {
