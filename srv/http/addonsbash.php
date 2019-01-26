@@ -1,6 +1,5 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
-include 'addonslist.php';
 $time = time();
 ?>
 <!DOCTYPE html>
@@ -12,7 +11,7 @@ $time = time();
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="msapplication-tap-highlight" content="no" />
 	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.ico">
 	<style>
 		@font-face {
@@ -22,28 +21,29 @@ $time = time();
 			font-style : normal;
 		}
 	</style>
-	<link rel="shortcut icon" href="/img/favicon.<?=$time?>.ico">
 	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
 	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
 </head>
 <body>
+
+<?php include 'addonslist.php';?>
 <!-- ...................................................................................... -->
 <script>
-	// js for '<pre>' must be here before start stdout
-	// php 'flush' loop waits for all outputs before going to next lines
-	// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
-	setTimeout( function() {
-		pre = document.getElementsByTagName( 'pre' )[ 0 ];
-		var h0 = pre.scrollHeight;
-		var h1;
-		intscroll = setInterval( function() {
-			h1 = pre.scrollHeight;
-			if ( h1 > h0 ) {
-				pre.scrollTop = pre.scrollHeight;
-				h0 = h1;
-			}
-		}, 1000 );
+// js for '<pre>' must be here before start stdout
+// php 'flush' loop waits for all outputs before going to next lines
+// but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
+setTimeout( function() {
+	pre = document.getElementsByTagName( 'pre' )[ 0 ];
+	var h0 = pre.scrollHeight;
+	var h1;
+	intscroll = setInterval( function() {
+		h1 = pre.scrollHeight;
+		if ( h1 > h0 ) {
+			pre.scrollTop = pre.scrollHeight;
+			h0 = h1;
+		}
 	}, 1000 );
+}, 1000 );
 </script>
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
 <script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
@@ -199,7 +199,7 @@ if ( !$reinit ) pclose( $popencmd );
 			title:   '<?=$title;?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, <?=( !$reinit ? 1000 : 8000 )?> );
+	}, <?=( !$reinit ? 1000 : 7000 )?> );
 </script>
 
 </body>
