@@ -30,34 +30,37 @@ getinstallzip
 
 #0temp0
 # 20190125 - move addons.php back to /srv/http
-sed -i '/addons/ d' /srv/http/index.php
-sed -i '/#0addo0/,/#1addo1/ d' /srv/http/index.php.backup &> /dev/null
+version=$( redis-cli hget addons addo )
+if [[ $version < 20190125 ]]; then
+	sed -i '/addons/ d' /srv/http/index.php
+	sed -i '/#0addo0/,/#1addo1/ d' /srv/http/index.php.backup &> /dev/null
 
-string=$( cat <<EOF
+	string=$( cat <<EOF
 <script language="javascript">
 	location.href = "/addons.php"
 </script>
 EOF
 )
-mkdir -p /srv/http/addons
-echo $string > /srv/http/addons/index.php
+	mkdir -p /srv/http/addons
+	echo $string > /srv/http/addons/index.php
 
-file=/etc/nginx/nginx.conf
-alias=temp
-restorefile $file
+	file=/etc/nginx/nginx.conf
+	alias=temp
+	restorefile $file
 
-string=$( cat <<EOF
+	string=$( cat <<EOF
         location /addons {
             alias  /var/www/addons;
             index  index.php;
         }
 EOF
 )
-insertS 'location .pub'
+	insertS 'location .pub'
 
-alias=addo
+	alias=addo
 
-restartnginx
+	restartnginx
+fi
 #1temp1
 
 echo -e "$bar Modify files ..."
