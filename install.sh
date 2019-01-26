@@ -55,7 +55,7 @@ EOF
 )
 insertS 'location .pub'
 
-restartnginx
+[[ $1 == u ]] && restartenginx
 alias=addo
 #1temp1
 
