@@ -22,8 +22,6 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
-installstart $@
-
 #0temp0
 # 20190126
 rm -rf /srv/http/addons
@@ -32,6 +30,8 @@ if grep -q 0temp0 /etc/nginx/nginx.conf; then
 	restartnginx
 fi
 #1temp1
+
+installstart $@
 
 getinstallzip
 
