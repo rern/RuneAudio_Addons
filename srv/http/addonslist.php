@@ -138,12 +138,11 @@ $addons = array(
 		),
 	),
 ),
-/*
 'mpdu' => array(
 	'title'       => 'MPD Upgrade *',
 	'needspace'   => 192,
 	'maintainer'  => 'r e r n',
-	'description' => 'Upgrade MPD to latest version, 0.21.1 as of 20181104:'
+	'description' => 'Upgrade MPD to latest version, 0.21.4 as of 20190104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
 					.'<br>But local browser <white>Midori</white>, if enabled, needs to be replaced with Chromium.',
 	'thumbnail'   => '/img/addons/thumbmpdu.png',
@@ -159,7 +158,6 @@ $addons = array(
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
-*/
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
