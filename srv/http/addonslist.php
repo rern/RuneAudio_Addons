@@ -8,12 +8,12 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190126',
-	'revision'    => 'Fix loding error'
+	'version'     => '20190203',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>General improvements'
+					.'<br>Fix loding error'
 					.'<br>...'
-					.'<br>Maintain RuneUI enhancement if Addons uninstalled',
+					.'<br>General improvements',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
