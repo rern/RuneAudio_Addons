@@ -267,8 +267,8 @@ function info( O ) {
 function alignVertical() {
 	var boxH = $( '#infoBox' ).height();
 	var wH = window.innerHeight;
-	var translate = boxH < wH ? 'translateY( -'+ boxH / 2 +'px )' : 'translateY( -'+ wH / 2 +'px )';
-	$( '#infoBox' ).css( 'transform', translate );
+	var top = boxH < wH ? ( wH - boxH ) / 2 : 20;
+	$( '#infoBox' ).css( 'margin', top +'px auto' );
 }
 function radioCheckbox( el, htm, chk ) {
 	el.html( htm ).show();

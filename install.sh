@@ -22,42 +22,20 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
+#0temp0
+# 20190126
+rm -rf /srv/http/addons
+if grep -q 0temp0 /etc/nginx/nginx.conf; then
+	sed -i '/#0temp0/,/#1temp1/ d' /etc/nginx/nginx.conf
+	restartnginx
+fi
+#1temp1
+
 installstart $@
 
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
-
-#0temp0
-# 20190125 - move addons.php back to /srv/http
-sed -i '/addons/ d' /srv/http/index.php
-sed -i '/#0addo0/,/#1addo1/ d' /srv/http/index.php.backup &> /dev/null
-
-string=$( cat <<EOF
-<script language="javascript">
-	location.href = "/addons.php"
-</script>
-EOF
-)
-mkdir -p /srv/http/addons
-echo $string > /srv/http/addons/index.php
-
-alias=temp
-file=/etc/nginx/nginx.conf
-sed -i '/#0temp0/,/#1temp1/ d' $file
-
-string=$( cat <<EOF
-        location /addons {
-            alias  /var/www/addons;
-            index  index.php;
-        }
-EOF
-)
-insertS 'location .pub'
-
-[[ $1 == u ]] && restartenginx
-alias=addo
-#1temp1
 
 echo -e "$bar Modify files ..."
 #----------------------------------------------------------------------------------
