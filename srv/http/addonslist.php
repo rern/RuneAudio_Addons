@@ -8,7 +8,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190203',
+	'version'     => '20190126',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Fix loding error'
