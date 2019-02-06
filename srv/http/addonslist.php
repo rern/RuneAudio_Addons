@@ -216,7 +216,7 @@ $addons = array(
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
 	'version'     => '20190306',
-	'revision'    => 'Webradio support'
+	'revision'    => 'Add Webradio support'
 					.'<br>...'
 					.'<br>Minor improvements'
 					.'<br>...'
