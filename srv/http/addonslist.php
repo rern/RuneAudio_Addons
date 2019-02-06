@@ -29,7 +29,7 @@ $addons = array(
 					.'<br>Fix search box display'
 					.'<br>Improve Playlist elapsed time display'
 					.'<br>Add tap swipe bar > drop down menu'
-					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD FFmpeg setting)'
+					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)'
 					.'<br>...'
 					.'<br>Fix missing embedded cover arts'
 					.'<br>Fix Replace+Play sometimes switched to Playback with empty item'
