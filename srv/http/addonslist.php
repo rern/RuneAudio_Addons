@@ -25,7 +25,7 @@ $addons = array(
 	'version'     => '20190206',
 	'revision'    => 'Fix Playback text scrolling on some devices'
 					.'<br>Fix text scrolling delay'
-					.'<br>Fix current metadata refresh'
+					.'<br>Fix metadata refresh on add/replace + play'
 					.'<br>Fix search box display'
 					.'<br>Improve Playlist elapsed time display'
 					.'<br>Add tap swipe bar > drop down menu'
