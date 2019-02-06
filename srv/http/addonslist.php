@@ -226,6 +226,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumblyri.gif',
 	'sourcecode'  => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'  => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
+	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
 'paus' => array(
 	'title'       => 'RuneUI Pause button',
