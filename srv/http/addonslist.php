@@ -214,12 +214,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190101',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190306',
+	'revision'    => 'Webradio support'
 					.'<br>...'
-					.'<br>Update along with RuneUI Enhancment 20181020'
+					.'<br>Minor improvements'
 					.'<br>...'
-					.'<br>Fix install bug',
+					.'<br>Update along with RuneUI Enhancment 20181020',
 	'maintainer'  => 'r e r n',
 	'description' => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'   => '/img/addons/thumblyri.gif',
