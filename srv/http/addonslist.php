@@ -22,20 +22,21 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190123',
-	'revision'    => 'Fix missing embedded cover arts'
-					.'<br>Fix Playback text scrolling bug'
+	'version'     => '20190206',
+	'revision'    => 'Fix Playback text scrolling on some devices'
+					.'<br>Fix text scrolling delay'
+					.'<br>Fix current metadata refresh'
+					.'<br>Fix search box display'
+					.'<br>Improve Playlist elapsed time display'
+					.'<br>Add tap swipe bar > drop down menu'
+					.'<br>...'
+					.'<br>Fix missing embedded cover arts'
 					.'<br>Fix Replace+Play sometimes switched to Playback with empty item'
 					.'<br>...'
 					.'<br>Fix Dirble Add+Play and Replace+Play'
 					.'<br>Fix cover art change for files with no id3 tag'
 					.'<br>Fix play mode indicators in Time knob when buttons hidden(auto)'
-					.'<br>Improve long info text scroll to be relative to length'
-					.'<br>...'
-					.'<br>Fix - Dirble bugs'
-					.'<br>Fix - Invisible untagged mp3 in Playlist'
-					.'<br>Fix - Progress circle position when cover art and volume hidden'
-					.'<br>Fix - Library page long delay response',
+					.'<br>Improve long info text scroll to be relative to length',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
