@@ -22,22 +22,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190206',
-	'revision'    => 'Fix Playback text scrolling on some devices'
+	'version'     => '20190210',
+	'revision'    => 'Fix search bug'
+					.'<br>Fix delay on initial page loading with large Library'
+					.'<br>Improve text scrolling in scaled landscape mode on small screen'
+					.'<br>...'
+					.'<br>Fix Playback text scrolling on some devices'
+					.'<br>...'
 					.'<br>Fix text scrolling delay'
 					.'<br>Fix metadata refresh on add/replace + play'
 					.'<br>Fix search box display'
 					.'<br>Improve Playlist elapsed time display'
 					.'<br>Add tap swipe bar > drop down menu'
-					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)'
-					.'<br>...'
-					.'<br>Fix missing embedded cover arts'
-					.'<br>Fix Replace+Play sometimes switched to Playback with empty item'
-					.'<br>...'
-					.'<br>Fix Dirble Add+Play and Replace+Play'
-					.'<br>Fix cover art change for files with no id3 tag'
-					.'<br>Fix play mode indicators in Time knob when buttons hidden(auto)'
-					.'<br>Improve long info text scroll to be relative to length',
+					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
