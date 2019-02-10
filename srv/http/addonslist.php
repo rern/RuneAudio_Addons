@@ -22,8 +22,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190209',
-	'revision'    => 'Fix delay on initial page loading with large Library'
+	'version'     => '20190210',
+	'revision'    => 'Fix search bug'
+					.'<br>Fix delay on initial page loading with large Library'
 					.'<br>Improve text scrolling in scaled landscape mode on small screen'
 					.'<br>...'
 					.'<br>Fix Playback text scrolling on some devices'
@@ -33,10 +34,7 @@ $addons = array(
 					.'<br>Fix search box display'
 					.'<br>Improve Playlist elapsed time display'
 					.'<br>Add tap swipe bar > drop down menu'
-					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)'
-					.'<br>...'
-					.'<br>Fix missing embedded cover arts'
-					.'<br>Fix Replace+Play sometimes switched to Playback with empty item',
+					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
