@@ -22,10 +22,11 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190210',
+	'version'     => '20190211',
 	'revision'    => 'Fix search bug'
 					.'<br>Fix delay on initial page loading with large Library'
 					.'<br>Improve text scrolling in scaled landscape mode on small screen'
+					.'<br>Add option to disable open Playback on Add+Play'
 					.'<br>...'
 					.'<br>Fix Playback text scrolling on some devices'
 					.'<br>...'
