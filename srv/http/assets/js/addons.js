@@ -79,8 +79,10 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 		info( {
 			  icon   : 'warning'
 			, title  : title
-			, message: 'Warning - Disk space not enough:<br>'
-					+ 'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white><br>'+ $( this ).attr( 'space' )
+			, message: '<white>Warning</white> - Disk space not enough:<br>'
+					+ 'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white>'
+					+'<br>'+ $( this ).attr( 'space' )
+					+'<br>(Use <white>Expand Partition</white> addon to gain more space.)'
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
