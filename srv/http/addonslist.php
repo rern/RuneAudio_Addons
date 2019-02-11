@@ -138,7 +138,7 @@ $addons = array(
 ),
 'mpdu' => array(
 	'title'       => 'MPD Upgrade *',
-	'needspace'   => 192,
+	'needspace'   => 300,
 	'maintainer'  => 'r e r n',
 	'description' => 'Upgrade MPD to latest version, 0.21.4 as of 20190104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
