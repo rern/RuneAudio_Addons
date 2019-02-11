@@ -8,12 +8,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190203',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190212',
+	'revision'    => 'Fix missing disk space warning on install addons'
 					.'<br>...'
-					.'<br>Fix loding error'
-					.'<br>...'
-					.'<br>General improvements',
+					.'<br>Fix loding error',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
