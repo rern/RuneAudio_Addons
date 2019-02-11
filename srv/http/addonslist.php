@@ -75,7 +75,7 @@ $addons = array(
 	'title'       => 'Chromium Browser',
 	'version'     => '20180321',
 	'depend'      => 'mpdu',
-	'needspace'   => 300,
+	'needspace'   => 200,
 	'revision'    => 'Fix missing packages - Chromium 65.0.3325.181-1'
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
