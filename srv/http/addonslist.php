@@ -20,19 +20,18 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190210',
-	'revision'    => 'Fix search bug'
+	'version'     => '20190212',
+	'revision'    => 'Fix missing metadata on initial load'
+					.'<br>Fix inaccessible Webradio list when disable counting in Library'
+					.'<br>Fix missing back icon'
+					.'<br>Bookmarks can be dragged to rearrange order'
+					.'<br>...'
+					.'<br>Fix search bug'
 					.'<br>Fix delay on initial page loading with large Library'
 					.'<br>Improve text scrolling in scaled landscape mode on small screen'
+					.'<br>Add option to disable open Playback on Add+Play'
 					.'<br>...'
-					.'<br>Fix Playback text scrolling on some devices'
-					.'<br>...'
-					.'<br>Fix text scrolling delay'
-					.'<br>Fix metadata refresh on add/replace + play'
-					.'<br>Fix search box display'
-					.'<br>Improve Playlist elapsed time display'
-					.'<br>Add tap swipe bar > drop down menu'
-					.'<br>Disable AAC/ALAC support for faster Library update(re-enable in MPD > FFmpeg setting)',
+					.'<br>Fix Playback text scrolling on some devices',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
@@ -74,7 +73,7 @@ $addons = array(
 	'title'       => 'Chromium Browser',
 	'version'     => '20180321',
 	'depend'      => 'mpdu',
-	'needspace'   => 300,
+	'needspace'   => 200,
 	'revision'    => 'Fix missing packages - Chromium 65.0.3325.181-1'
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
@@ -137,7 +136,7 @@ $addons = array(
 ),
 'mpdu' => array(
 	'title'       => 'MPD Upgrade *',
-	'needspace'   => 192,
+	'needspace'   => 300,
 	'maintainer'  => 'r e r n',
 	'description' => 'Upgrade MPD to latest version, 0.21.4 as of 20190104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
@@ -221,7 +220,6 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumblyri.gif',
 	'sourcecode'  => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'  => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
 'paus' => array(
 	'title'       => 'RuneUI Pause button',
