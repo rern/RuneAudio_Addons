@@ -61,7 +61,6 @@ var pushstreamAddons = new PushStream( {
 	  host  : window.location.hostname
 	, port  : window.location.port
 	, modes : 'websocket'
-	, reconnectOnChannelUnavailableInterval: 1000
 } );
 pushstreamAddons.onmessage = function() {
 	$( '#loader' ).html( '<i class="fa fa-gear fa-spin"></i><br><br>Updating ...' );
