@@ -103,7 +103,12 @@ foreach( $arrayalias as $alias ) {
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
-		$attrspace = $needspace < $mbfree ? '' : ' needmb="'.$needspace.'" space="'.$available.$expandable.'"';
+		if ( $needspace < $MiBavail ) {
+			$attrspace = '';
+		} else {
+			$expandable = $MiBunpart < 1000 ? round( $MiBunpart ).' MB' : number_format( round( $MiBunpart / 1000 ) ).' GB';
+			$attrspace = ' needmb="'.$needspace.'" space="Available: <white>'.round( $MiBavail ).' MB</white><br>Expandable: <white>'.$expandable.'</white>"';
+		}
 		$conflict = isset( $addon[ 'conflict' ] ) ? $addon[ 'conflict' ] : '';
 		$conflictaddon = $conflict ? $redis->hget( 'addons', $conflict ) : '';
 		$attrconflict = !$conflictaddon ? '' : ' conflict="'.preg_replace( '/ *\**$/', '', $addons[ $conflict ][ 'title' ] ).'"';

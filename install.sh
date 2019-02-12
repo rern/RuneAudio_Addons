@@ -159,11 +159,11 @@ EOF
 fi
 
 # disable OPcache
-file=/etc/php/conf.d/opcache.ini
-grep -q 'enable=0' $file && exit
-
 title -nt "$info Disable PHP OPcache"
 redis-cli set opcache 0 &> /dev/null
 
-sed -i 's/opcache.enable=.*/opcache.enable=0/' $file
-systemctl restart php-fpm
+file=/etc/php/conf.d/opcache.ini
+if grep -q 'opcache.enable=1' $file; then
+	sed -i 's/opcache.enable=1/opcache.enable=0/' $file
+	systemctl restart php-fpm
+fi
