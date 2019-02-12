@@ -8,7 +8,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190213',
+	'version'     => '20190212',
 	'revision'    => 'Fix missing disk space warning on install addons'
 					.'<br>...'
 					.'<br>Fix loding error',
