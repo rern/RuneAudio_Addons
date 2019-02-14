@@ -147,6 +147,16 @@ chmod 777 $dir
 
 installfinish $@
 
+# disable OPcache
+title -nt "$info Disable PHP OPcache"
+redis-cli set opcache 0 &> /dev/null
+
+file=/etc/php/conf.d/opcache.ini
+if grep -q 'opcache.enable=1' $file; then
+	sed -i 's/opcache.enable=1/opcache.enable=0/' $file
+	systemctl restart php-fpm
+fi
+
 file=/etc/nginx/nginx.conf
 if ! grep -q 'woff|ttf' $file; then
 	commentS 'gif\|ico'
@@ -156,14 +166,4 @@ EOF
 )
 	appendS 'gif\|ico'
 	nginx -s reload
-fi
-
-# disable OPcache
-title -nt "$info Disable PHP OPcache"
-redis-cli set opcache 0 &> /dev/null
-
-file=/etc/php/conf.d/opcache.ini
-if grep -q 'opcache.enable=1' $file; then
-	sed -i 's/opcache.enable=1/opcache.enable=0/' $file
-	systemctl restart php-fpm
 fi
