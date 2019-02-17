@@ -225,7 +225,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
 ),
 'paus' => array(
-	'title'       => 'RuneUI Pause button',
+	'title'       => 'RuneUI Pause Button',
 	'version'     => '20180217',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
@@ -236,7 +236,7 @@ $addons = array(
 	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'bbtn' => array(
-	'title'       => 'RuneUI Left Back button',
+	'title'       => 'RuneUI Left Back Button',
 	'version'     => '20190217',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
