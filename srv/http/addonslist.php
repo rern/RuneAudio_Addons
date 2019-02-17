@@ -235,6 +235,16 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
 	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
+'bbtn' => array(
+	'title'       => 'RuneUI Left Back button',
+	'version'     => '20190217',
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Move Library Back button to left side',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/back_button',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/back_button/install.sh',
+	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
+),
 'uire' => array(
 	'title'       => 'RuneUI Reset',
 	'maintainer'  => 'r e r n',
