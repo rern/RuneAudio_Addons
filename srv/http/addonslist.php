@@ -18,6 +18,18 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
+/*
+'cove' => array(
+	'title'       => 'RuneUI Enhancement Coverart Update',
+	'version'     => '20190220',
+	'depend'      => 'enha',
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Create thumbnail for coverarts browsing from local coverart files or ID3 embedded data.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/update.sh',
+),
+*/
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190213',
