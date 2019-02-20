@@ -24,10 +24,19 @@ $addons = array(
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Update / Create thumbnails for by browsing from local coverart files or ID3 embedded data.',
+	'description' => 'Update / Create thumbnails for browsing by coverart from local coverart files or ID3 embedded data.',
 	'buttonlabel' => 'Update',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/update.sh',
+	'option'      => array(
+		'confirm'   => 'Large amount of directories takes a lot of time.'
+					  .'<br>Continue?',
+		'text'      => array(
+			'message' => 'Specify music directory to process:',
+			'label'   => 'Path',
+			'value'   => '/mnt/MPD'
+		),
+	),
 ),
 */
 'enha' => array(
