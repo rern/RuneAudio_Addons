@@ -17,6 +17,8 @@ Currently available:
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
 - [RuneUI Backup-Restore Enable](https://github.com/rern/RuneAudio/tree/master/backup-restore)
+- [RuneUIe Browse By Coverart](https://github.com/rern/RuneAudio/tree/master/coverarts)
+- [RuneUIe Left Back Button](https://github.com/rern/RuneAudio/tree/master/back_button)
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
 - [RuneUI Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
 - [RuneUI GPIO](https://github.com/rern/RuneUI_GPIO)
