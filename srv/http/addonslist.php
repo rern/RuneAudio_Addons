@@ -29,13 +29,9 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/update.sh',
 	'option'      => array(
-		'confirm'   => 'Large amount of directories takes a lot of time.'
+		'confirm'   => 'A lot of albums will take a lot of time.'
+					  .'<br>(±200 album/minute)'
 					  .'<br>Continue?',
-		'text'      => array(
-			'message' => 'Specify music directory to process:',
-			'label'   => 'Path',
-			'value'   => '/mnt/MPD'
-		),
 	),
 ),
 */
