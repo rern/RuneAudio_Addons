@@ -19,7 +19,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'cove' => array(
-	'title'       => 'RuneUI Enhancement Coverart',
+	'title'       => 'RuneUIe - Coverart Browsing',
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
@@ -250,7 +250,7 @@ $addons = array(
 	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'bbtn' => array(
-	'title'       => 'RuneUI Left Back Button',
+	'title'       => 'RuneUIe - Left Back Button',
 	'version'     => '20190217',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
