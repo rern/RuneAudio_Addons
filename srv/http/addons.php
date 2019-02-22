@@ -145,7 +145,7 @@ foreach( $arrayalias as $alias ) {
 	$description = str_replace( '\\', '', $addon[ 'description' ] );
 	$sourcecode = $addon[ 'sourcecode' ];
 	if ( $sourcecode && $addon[ 'buttonlabel' ] !== 'Link' ) {
-		$detail = '&emsp;<a href="'.$sourcecode.'" target="_blank">detail&ensp;<i class="fa fa-external-link"></i></a>';
+		$detail = '<br><a href="'.$sourcecode.'" target="_blank">detail&ensp;<i class="fa fa-external-link"></i></a>';
 	} else {
 		$detail = '';
 	}
