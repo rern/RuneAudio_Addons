@@ -26,7 +26,7 @@ $addons = array(
 	'description' => 'Scan for coverarts and create thumbnails for browsing by coverart from local coverart files or ID3 embedded data. Take times to finished on 1st scan. Afterwards create only non-exist ones.',
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/update.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'option'      => array(
 		'confirm'   => 'A lot of albums will take a lot of time.'
 					  .'<br>(±200 album/minute)'
