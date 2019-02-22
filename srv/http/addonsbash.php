@@ -133,8 +133,9 @@ echo $commandtxt.'<br>';
 $replace = array(
 	'/=(=+)=/'               => '<hr>',                 // double line
 	'/-(-+)-/'               => '<hr class="hrlight">', // line
-	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',       // bar
-	'/.\[38;5;4m.\[48;5;4m/' => '<a class="cc">',       // bar - darkblue
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',       // bar - light blue
+	'/.\[38;5;4m.\[48;5;4m/' => '<a class="cb">',       // bar - blue
+	'/.\[38;5;1m.\[48;5;1m/' => '<a class="cr">',       // bar - red
 	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',       // info, yesno
 	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',       // warn
 	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor
