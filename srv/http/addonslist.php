@@ -8,8 +8,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190213',
-	'revision'    => 'Fix missing disk space warning on install addons'
+	'version'     => '20190224',
+	'revision'    => 'Maintenance improvements'
+					.'<br>...'
+					.'<br>Fix missing disk space warning on install addons'
 					.'<br>...'
 					.'<br>Fix loding error',
 	'maintainer'  => 'r e r n',
