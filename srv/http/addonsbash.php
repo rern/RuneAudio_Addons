@@ -142,7 +142,8 @@ $replace = array(
 	'/.\[38;5;1m.\[48;5;1m/' => '<a class="cr">',       // bar - red
 	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',       // info, yesno
 	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',       // warn
-	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor
+	'/.\[38;5;8m.\[48;5;0m/' => '<a class="cgr">',      // tcolor - white
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor - gray
 	'/.\[38;5;6m/'           => '<a class="ck">',       // lcolor
 	'/.\[0m/'                => '</a>',                 // reset color
 );
