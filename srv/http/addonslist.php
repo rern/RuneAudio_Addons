@@ -18,23 +18,21 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*
 'cove' => array(
-	'title'       => 'RuneUI Enhancement Coverart',
+	'title'       => 'RuneUIe - Coverart Browsing',
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Update / Create thumbnails for browsing by coverart from local coverart files or ID3 embedded data.',
-	'buttonlabel' => 'Update',
+	'description' => 'Scan for coverarts and create thumbnails for browsing by coverart from local coverart files or ID3 embedded data. Take times to finished on 1st scan. Afterwards create only non-exist ones.',
+	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/update.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'option'      => array(
 		'confirm'   => 'A lot of albums will take a lot of time.'
-					  .'<br>(±200 album/minute)'
+					  .'<br>(±200 album/minute for initial scan)'
 					  .'<br>Continue?',
 	),
 ),
-*/
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190221',
@@ -252,7 +250,7 @@ $addons = array(
 	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'bbtn' => array(
-	'title'       => 'RuneUI Left Back Button',
+	'title'       => 'RuneUIe - Left Back Button',
 	'version'     => '20190217',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',

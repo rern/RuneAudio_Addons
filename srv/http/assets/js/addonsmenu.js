@@ -9,7 +9,7 @@ $( '#addons' ).click( function () {
 	} );
 } ).on( 'taphold', function () {
 	info( {
-		  title     : 'Addons Menu Branch Test'
+		  title     : 'Addons Branch Test'
 		, width     : 500
 		, textlabel : 'Branch'
 		, textvalue : 'UPDATE'
