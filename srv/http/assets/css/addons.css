@@ -571,18 +571,13 @@ ul,
 .disabled {
 	color: #7795b4;
 }
-.cc {
-	color: #00ffff;
-	background: #00ffff;
-}
-.cb {
-	color: #0000ff;
-	background: #0000ff;
-}
-.cr {
-	color: #ff0000;
-	background: #ff0000;
-}
+.cw { color: #ffffff; background: #ffffff; }
+.cc { color: #00ffff; background: #00ffff; }
+.cm { color: #ff00ff; background: #ff00ff; }
+.cb { color: #00ffff; background: #00ffff; }
+.cy { color: #ffff00; background: #ffff00; }
+.cg { color: #00ff00; background: #00ff00; }
+.cr { color: #ff0000; background: #ff0000; }
 .ky {
 	color: #000;
 	background: #ffff00;
