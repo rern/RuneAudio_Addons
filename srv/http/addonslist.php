@@ -57,7 +57,7 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
-		'radio'     => array(
+		'radio1'     => array(
 			'message' => 'Set <white>zoom level</white> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
@@ -67,6 +67,16 @@ $addons = array(
 				'*Full HD - 1920px: 1.5'     => '1.5',
 				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
+			),
+		),
+		'radio2'     => array(
+			'message' => 'Disable <white>AAC/ALAC</white> support?'
+						.'<br>Disable if no *.m4a files.'
+						.'<br>It makes database update faster.'
+						.'<br>(This can be changed later in MPD > FFmpeg)',
+			'list'    => array(
+				'Enable'   => 1,
+				'*Disable' => 0,
 			),
 		),
 	),
