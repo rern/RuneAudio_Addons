@@ -3,6 +3,8 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
+$aacalac = $redis->hGet( 'mpdconf', 'ffmpeg' );
+
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -75,9 +77,10 @@ $addons = array(
 						.'<br>It makes database update faster.'
 						.'<br>(This can be changed later in MPD > FFmpeg)',
 			'list'    => array(
-				'Enable'   => 1,
-				'*Disable' => 0,
+				'Enable'   => 'yes',
+				'Disable' => 'no',
 			),
+			'checked' => $aacalac,
 		),
 	),
 ),
