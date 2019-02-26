@@ -23,7 +23,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'cove' => array(
-	'title'       => 'RuneUIe - Coverart Browsing **',
+	'title'       => 'RuneUIe - Browse By Coverart **',
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
