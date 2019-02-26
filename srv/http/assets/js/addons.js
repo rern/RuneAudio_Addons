@@ -399,12 +399,6 @@ function formtemp() {
 			<input type="hidden" name="alias" value="'+ alias +'">\
 			<input type="hidden" name="type" value="'+ type +'">\
 			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="favicon" value="'+ $( '#favicon' ).val() +'">\
-			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
-			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
-			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).val() +'">\
-			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).val() +'">\
-			<input type="hidden" name="addonsinfojs" value="'+ $( '#addonsinfojs' ).val() +'">\
 		</form>\
 	' );
 	$( '#formtemp' ).submit();
