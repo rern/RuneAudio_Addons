@@ -9,7 +9,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190224',
+	'version'     => '20190227',
 	'revision'    => 'Maintenance improvements'
 					.'<br>...'
 					.'<br>Fix missing disk space warning on install addons'
@@ -22,7 +22,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'cove' => array(
-	'title'       => 'RuneUIe - Browse By Coverart **',
+	'title'       => 'RuneUIe - Browse By Coverart',
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
