@@ -3,12 +3,13 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
+
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190224',
+	'version'     => '20190227',
 	'revision'    => 'Maintenance improvements'
 					.'<br>...'
 					.'<br>Fix missing disk space warning on install addons'
@@ -20,13 +21,14 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*
 'cove' => array(
-	'title'       => 'RuneUIe - Coverart Browsing',
+	'title'       => 'RuneUIe - Browse By Coverart',
 	'depend'      => 'enha',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Scan for coverarts and create thumbnails for browsing by coverart from local coverart files or ID3 embedded data. Take times to finished on 1st scan. Afterwards create only non-exist ones.',
+	'description' => 'Scan for coverarts and create thumbnails for Browse by CoverArt from local <white>coverart files</white> or <white>ID3 embedded</white> data.'
+					.'It will take a while to finished on first scan, ±200 album/minute. Afterwards it creates only non-exist ones.'
+					.'<br><white>CoverArt</white> button will appear in Library after scan.',
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
@@ -36,7 +38,6 @@ $addons = array(
 					  .'<br>Continue?',
 	),
 ),
-*/
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190221',
@@ -59,7 +60,7 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
-		'radio'     => array(
+		'radio1'     => array(
 			'message' => 'Set <white>zoom level</white> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
@@ -70,6 +71,17 @@ $addons = array(
 				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
 			),
+		),
+		'radio2'     => array(
+			'message' => 'Disable <white>AAC/ALAC</white> support?'
+						.'<br>Disable if no *.m4a files.'
+						.'<br>It makes database update faster.'
+						.'<br>(This can be changed later in MPD > FFmpeg)',
+			'list'    => array(
+				'Enable'   => 'yes',
+				'Disable' => 'no',
+			),
+			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
 		),
 	),
 ),
@@ -254,7 +266,7 @@ $addons = array(
 	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'bbtn' => array(
-	'title'       => 'RuneUIe - Left Back Button',
+	'title'       => 'RuneUIe - Back Button To Left',
 	'version'     => '20190217',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',

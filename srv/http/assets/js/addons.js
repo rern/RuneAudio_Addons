@@ -393,19 +393,11 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-	// pass cache busting assets to addonsbash which cannot bind in '/templates'
-	$( 'body' ).append( '\
-		<form id="formtemp" action="addonsbash.php" method="post">\
-			<input type="hidden" name="alias" value="'+ alias +'">\
-			<input type="hidden" name="type" value="'+ type +'">\
-			<input type="hidden" name="opt" value="'+ opt +'">\
-			<input type="hidden" name="favicon" value="'+ $( '#favicon' ).val() +'">\
-			<input type="hidden" name="addonswoff" value="'+ $( '#addonswoff' ).val() +'">\
-			<input type="hidden" name="addonsttf" value="'+ $( '#addonsttf' ).val() +'">\
-			<input type="hidden" name="addonsinfocss" value="'+ $( '#addonsinfocss' ).val() +'">\
-			<input type="hidden" name="addonscss" value="'+ $( '#addonscss' ).val() +'">\
-			<input type="hidden" name="addonsinfojs" value="'+ $( '#addonsinfojs' ).val() +'">\
-		</form>\
-	' );
+	$( 'body' ).append(
+		'<form id="formtemp" action="addonsbash.php" method="post">'
+			+'<input type="hidden" name="alias" value="'+ alias +'">'
+			+'<input type="hidden" name="type" value="'+ type +'">'
+			+'<input type="hidden" name="opt" value="'+ opt +'">'
+		+'</form>' );
 	$( '#formtemp' ).submit();
 }
