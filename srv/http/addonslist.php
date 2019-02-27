@@ -21,7 +21,6 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-/*
 'cove' => array(
 	'title'       => 'RuneUIe - Browse By Coverart',
 	'depend'      => 'enha',
@@ -38,7 +37,8 @@ $addons = array(
 					  .'<br>(±200 album/minute for initial scan)'
 					  .'<br>Continue?',
 	),
-),*/
+	'hide'       => 1,
+),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190221',
