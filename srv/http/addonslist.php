@@ -38,7 +38,7 @@ $addons = array(
 					  .'<br>Continue?',
 		'text'      => array(
 			'message' => 'Set <white>coverarts</white> path:'
-						.'<br>(Default as shown - "blank" for auto)',
+						.'<br>(Current as shown - "blank" for auto setting)',
 			'label'   => 'Path',
 			'value'   => $redis->get( 'pathcoverarts' ) ?: '',
 			'boxwidth'=> 'max',
