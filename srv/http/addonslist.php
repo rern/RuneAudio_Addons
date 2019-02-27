@@ -3,7 +3,6 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-$aacalac = $redis->hGet( 'mpdconf', 'ffmpeg' );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
@@ -37,6 +36,13 @@ $addons = array(
 		'confirm'   => 'A lot of albums will take a lot of time.'
 					  .'<br>(±200 album/minute for initial scan)'
 					  .'<br>Continue?',
+		'text'      => array(
+			'message' => 'Set <white>coverarts</white> path:'
+						.'<br>(Default as shown - "blank" for auto)',
+			'label'   => 'Path',
+			'value'   => $redis->get( 'pathcoverarts' ) ?: '',
+			'boxwidth'=> 'max',
+		),
 	),
 ),
 'enha' => array(
@@ -82,7 +88,7 @@ $addons = array(
 				'Enable'   => 'yes',
 				'Disable' => 'no',
 			),
-			'checked' => $aacalac,
+			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
 		),
 	),
 ),
