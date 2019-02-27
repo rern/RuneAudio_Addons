@@ -36,13 +36,6 @@ $addons = array(
 		'confirm'   => 'A lot of albums will take a lot of time.'
 					  .'<br>(±200 album/minute for initial scan)'
 					  .'<br>Continue?',
-		'text'      => array(
-			'message' => 'Set <white>coverarts</white> path:'
-						.'<br>(Current as shown - "blank" for auto setting)',
-			'label'   => 'Path',
-			'value'   => $redis->get( 'pathcoverarts' ) ?: '',
-			'boxwidth'=> 'max',
-		),
 	),
 ),
 'enha' => array(
