@@ -1,6 +1,10 @@
 <?php
 ignore_user_abort( TRUE ); // for 'connection_status()' to work
 $time = time();
+$alias = $_POST[ 'alias' ];
+$type = $_POST[ 'type' ];
+$opt = $_POST[ 'opt' ];
+$heading = $alias !== 'cove' ? 'Addons Progress ...' : 'Update Thumbnails ...';
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,7 +55,7 @@ setTimeout( function() {
 
 <div class="container">
 	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
-	<h1><i class="fa fa-addons"></i>&ensp;Addons Progress</h1>
+	<h1><i class="fa fa-addons"></i>&ensp;<?=$heading?></h1>
 	<p class="bl"></p>
 	<p id="wait">Please wait until finished...</p>
 
@@ -59,9 +63,6 @@ setTimeout( function() {
 	<pre>
 <!-- ...................................................................................... -->
 <?php
-$alias = $_POST[ 'alias' ];
-$type = $_POST[ 'type' ];
-$opt = $_POST[ 'opt' ];
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
 $reinit = 0;
@@ -118,7 +119,7 @@ cmd;
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
 // if uninstall only - css file will be gone
-if ( $alias === 'addo' && $type !== 'Update' ) {
+if ( ( $alias === 'addo' && $type !== 'Update' ) || $alias === 'cove' ) {
 	echo '<style>';
 	include 'assets/css/addonsinfo.'.$time.'.css';
 	echo '</style>';
