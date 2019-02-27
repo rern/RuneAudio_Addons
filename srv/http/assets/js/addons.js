@@ -214,8 +214,9 @@ function getoptions() {
 				, message      : ojson.message
 				, textlabel    : ojson.label
 				, textvalue    : ojson.value
-				, textlabel2    : ojson.label2
-				, textvalue2    : ojson.value2
+				, textlabel2   : ojson.label2
+				, textvalue2   : ojson.value2
+				, boxwidth     : ojson.boxwidth
 				, ok         : function() {
 					var input = $( '#infoTextBox' ).val();
 					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();
@@ -260,6 +261,7 @@ function getoptions() {
 				, message      : ojson.message
 				, filelabel    : ojson.label
 				, filetype     : ojson.type
+				, boxwidth     : ojson.boxwidth
 				, ok         : function() {
 					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
 					var fd = new FormData();
