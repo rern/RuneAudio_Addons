@@ -214,9 +214,8 @@ function getoptions() {
 				, message      : ojson.message
 				, textlabel    : ojson.label
 				, textvalue    : ojson.value
-				, textlabel2   : ojson.label2
-				, textvalue2   : ojson.value2
-				, boxwidth     : ojson.boxwidth
+				, textlabel2    : ojson.label2
+				, textvalue2    : ojson.value2
 				, ok         : function() {
 					var input = $( '#infoTextBox' ).val();
 					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();
@@ -261,7 +260,6 @@ function getoptions() {
 				, message      : ojson.message
 				, filelabel    : ojson.label
 				, filetype     : ojson.type
-				, boxwidth     : ojson.boxwidth
 				, ok         : function() {
 					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
 					var fd = new FormData();
@@ -395,13 +393,11 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
-	// pass cache busting assets to addonsbash which cannot bind in '/templates'
-	$( 'body' ).append( '\
-		<form id="formtemp" action="addonsbash.php" method="post">\
-			<input type="hidden" name="alias" value="'+ alias +'">\
-			<input type="hidden" name="type" value="'+ type +'">\
-			<input type="hidden" name="opt" value="'+ opt +'">\
-		</form>\
-	' );
+	$( 'body' ).append(
+		'<form id="formtemp" action="addonsbash.php" method="post">'
+			+'<input type="hidden" name="alias" value="'+ alias +'">'
+			+'<input type="hidden" name="type" value="'+ type +'">'
+			+'<input type="hidden" name="opt" value="'+ opt +'">'
+		+'</form>' );
 	$( '#formtemp' ).submit();
 }
