@@ -388,9 +388,11 @@ h1 {
 	font-size: 36px;
 	font-weight: 300;
 }
+h1 i {
+	line-height: 40px;
+}
 .close-root {
 	float: right;
-	line-height: 54px;
 	font-size: 28px;
 	color: #0095d8;
 	text-decoration: none;
@@ -482,9 +484,9 @@ legend .fa-arrow-up {
 		display: none;
 	}
 }
-@media(max-width: 340px) {
+@media(max-width: 360px) {
 	h1 span {
-		font-size: 28px;
+		font-size: 26px;
 	}
 }
 .hidescrollv {
