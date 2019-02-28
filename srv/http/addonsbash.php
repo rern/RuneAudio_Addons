@@ -4,7 +4,7 @@ $time = time();
 $alias = $_POST[ 'alias' ];
 $type = $_POST[ 'type' ];
 $opt = $_POST[ 'opt' ];
-$heading = $alias !== 'cove' ? 'Addons Progress ...' : 'Update Thumbnails ...';
+$heading = $alias !== 'cove' ? 'Addons Progress' : 'Update Thumbnails';
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,8 +54,10 @@ setTimeout( function() {
 <script src="/js/addonsinfo.<?=$time?>.js"></script>
 
 <div class="container">
-	<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
-	<h1><i class="fa fa-addons"></i>&ensp;<?=$heading?></h1>
+	<h1>
+		<i class="fa fa-addons"></i>&ensp;<span><?=$heading?></span>
+		<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
+	</h1>
 	<p class="bl"></p>
 	<p id="wait">Please wait until finished...</p>
 

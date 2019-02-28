@@ -56,8 +56,10 @@ if ( $MiBunpart < 10 ) {
 </head>
 <body>
 <div class="container">
-	<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
-	<h1><i class="fa fa-addons"></i>&ensp;Addons</h1>
+	<h1>
+		<i class="fa fa-addons"></i>&ensp;Addons
+		<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
+	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail.$htmlunpart?>
 	<p id="disktext" class="disk">&ensp;<?=$htmlfree?></p>
