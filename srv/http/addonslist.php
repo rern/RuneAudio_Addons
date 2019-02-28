@@ -25,7 +25,7 @@ $addons = array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190228',
 	'revision'    => 'Add <white>Browse By CoverArt</white>'
-					.'<br>Fix scrolling bookamrk titles'
+					.'<br>Fix scrolling bookmark titles'
 					.'<br>...'
 					.'<br>Reinstate coverart bookmarks (long delay fixed)'
 					.'<br>Fix - Library blocks dragging to rearrange'
