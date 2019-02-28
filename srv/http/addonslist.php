@@ -32,11 +32,6 @@ $addons = array(
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'option'      => array(
-		'confirm'   => 'A lot of albums will take a lot of time.'
-					  .'<br>(±200 album/minute for initial scan)'
-					  .'<br>Continue?',
-	),
 	'hide'       => 1,
 ),
 'enha' => array(
