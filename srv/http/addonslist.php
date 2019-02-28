@@ -41,20 +41,18 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190221',
-	'revision'    => 'Reinstate coverart bookmarks (long delay fixed)'
+	'version'     => '20190228',
+	'revision'    => 'Add <white>Browse By CoverArt</white>'
+					.'<br>Fix scrolling bookamrk titles'
+					.'<br>...'
+					.'<br>Reinstate coverart bookmarks (long delay fixed)'
 					.'<br>Fix - Library blocks dragging to rearrange'
 					.'<br>Fix - Library coverart context menu'
 					.'<br>...'
 					.'<br>Fix bug - add/replace from Album, Artist, Composer and Genre'
 					.'<br>Fix missing Back button'
 					.'<br>Fix Rescan button'
-					.'<br>Improve scrolling texts to the same speed, 80px/s'
-					.'<br>...'
-					.'<br>Fix missing metadata on initial load'
-					.'<br>Fix inaccessible Webradio list when disable counting in Library'
-					.'<br>Fix missing back icon'
-					.'<br>Bookmarks can be dragged to rearrange order',
+					.'<br>Improve scrolling texts to the same speed, 80px/s',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
