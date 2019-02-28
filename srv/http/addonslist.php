@@ -21,19 +21,6 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
-'cove' => array(
-	'title'       => 'RuneUIe - Browse By Coverart',
-	'depend'      => 'enha',
-	'revision'    => 'Initial release',
-	'maintainer'  => 'r e r n',
-	'description' => 'Scan for coverarts and create thumbnails for Browse by CoverArt from local <white>coverart files</white> or <white>ID3 embedded</white> data.'
-					.'It will take a while to finished on first scan, ±200 album/minute. Afterwards it creates only non-exist ones.'
-					.'<br><white>CoverArt</white> button will appear in Library after scan.',
-	'buttonlabel' => 'Scan',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'hide'       => 1,
-),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190228',
@@ -78,6 +65,19 @@ $addons = array(
 			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
 		),
 	),
+),
+'cove' => array(
+	'title'       => 'RuneUIe - Browse By Coverart',
+	'depend'      => 'enha',
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Scan for coverarts and create thumbnails for Browse by CoverArt from local <white>coverart files</white> or <white>ID3 embedded</white> data.'
+					.'It will take a while to finished on first scan, ±200 album/minute. Afterwards it creates only non-exist ones.'
+					.'<br><white>CoverArt</white> button will appear in Library after scan.',
+	'buttonlabel' => 'Scan',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
+	'hide'       => 1,
 ),
 'aria' =>array(
 	'title'       => 'Aria2 *',
