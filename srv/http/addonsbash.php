@@ -121,7 +121,9 @@ cmd;
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
 // if uninstall only - css file will be gone
-if ( ( $alias === 'addo' && $type !== 'Update' ) || $alias === 'cove' ) {
+if ( ( $alias === 'addo' && $type !== 'Update' )
+	|| ( $alias === 'cove' && $type !== 'Scan' )
+) {
 	echo '<style>';
 	include 'assets/css/addonsinfo.'.$time.'.css';
 	echo '</style>';
@@ -201,12 +203,12 @@ if ( !$reinit ) pclose( $popencmd );
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		$( '#wait' ).html( '&nbsp;' );
-		$( '#closeprogress' ).attr( 'href', '<?=$close;?>' ).find( 'i' ).removeClass( 'disabled' );
+		$( '#closeprogress' ).attr( 'href', '<?=$close?>' ).find( 'i' ).removeClass( 'disabled' );
 		$( '#reinit' ).remove();
 		
 		info( {
 			icon:    'info-circle',
-			title:   '<?=$title;?>',
+			title:   '<?=$title?>',
 			message: 'Please see result information on screen.',
 		} );
 	}, <?=( !$reinit ? 1000 : 7000 )?> );
