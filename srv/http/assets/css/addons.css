@@ -489,7 +489,7 @@ legend .fa-arrow-up {
 		font-size: 26px;
 	}
 }
-.hidescrollv {
+#hidescrollv {
 	max-height: calc( 100vh - 140px );
 	margin-top: 10px;
 	overflow: hidden;
