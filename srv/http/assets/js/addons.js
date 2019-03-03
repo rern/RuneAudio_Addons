@@ -210,12 +210,13 @@ function getoptions() {
 		case 'text':
 			var ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, textlabel    : ojson.label
-				, textvalue    : ojson.value
-				, textlabel2    : ojson.label2
-				, textvalue2    : ojson.value2
+				  title      : title
+				, message    : ojson.message
+				, textlabel  : ojson.label
+				, textvalue  : ojson.value
+				, textlabel2 : ojson.label2
+				, textvalue2 : ojson.value2
+				, boxwidth   : ojson.width
 				, ok         : function() {
 					var input = $( '#infoTextBox' ).val();
 					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();

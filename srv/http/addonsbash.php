@@ -31,8 +31,12 @@ $heading = $alias !== 'cove' ? 'Addons Progress' : 'Update Thumbnails';
 <body>
 
 <?php include 'addonslist.php';?>
-<!-- ...................................................................................... -->
+<!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
+<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
+<script src="/js/vendor/jquery.documentsize.min.<?=$time?>.js"></script>
+<script src="/js/addonsinfo.<?=$time?>.js"></script>
 <script>
+$( 'head' ).append( '<style>#hidescrollv, pre { max-height: '+ ( $.documentHeight() - 140 ) +'px }</style>' );
 // js for '<pre>' must be here before start stdout
 // php 'flush' loop waits for all outputs before going to next lines
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
@@ -49,9 +53,6 @@ setTimeout( function() {
 	}, 1000 );
 }, 1000 );
 </script>
-<!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
-<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
-<script src="/js/addonsinfo.<?=$time?>.js"></script>
 
 <div class="container">
 	<h1>
@@ -61,7 +62,7 @@ setTimeout( function() {
 	<p class="bl"></p>
 	<p id="wait">Please wait until finished...</p>
 
-	<div class="hidescrollv">
+	<div id="hidescrollv">
 	<pre>
 <!-- ...................................................................................... -->
 <?php
@@ -121,7 +122,9 @@ cmd;
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
 // if uninstall only - css file will be gone
-if ( ( $alias === 'addo' && $type !== 'Update' ) || $alias === 'cove' ) {
+if ( ( $alias === 'addo' && $type !== 'Update' )
+	|| ( $alias === 'cove' && $type !== 'Scan' )
+) {
 	echo '<style>';
 	include 'assets/css/addonsinfo.'.$time.'.css';
 	echo '</style>';
@@ -201,12 +204,12 @@ if ( !$reinit ) pclose( $popencmd );
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		$( '#wait' ).html( '&nbsp;' );
-		$( '#closeprogress' ).attr( 'href', '<?=$close;?>' ).find( 'i' ).removeClass( 'disabled' );
+		$( '#closeprogress' ).attr( 'href', '<?=$close?>' ).find( 'i' ).removeClass( 'disabled' );
 		$( '#reinit' ).remove();
 		
 		info( {
 			icon:    'info-circle',
-			title:   '<?=$title;?>',
+			title:   '<?=$title?>',
 			message: 'Please see result information on screen.',
 		} );
 	}, <?=( !$reinit ? 1000 : 7000 )?> );

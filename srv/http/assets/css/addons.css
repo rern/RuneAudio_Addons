@@ -387,8 +387,6 @@ h1 {
 	-webkit-margin-after: 0;
 	font-size: 36px;
 	font-weight: 300;
-}
-h1 i {
 	line-height: 40px;
 }
 .close-root {
@@ -489,7 +487,7 @@ legend .fa-arrow-up {
 		font-size: 26px;
 	}
 }
-.hidescrollv {
+#hidescrollv {
 	max-height: calc( 100vh - 140px );
 	margin-top: 10px;
 	overflow: hidden;

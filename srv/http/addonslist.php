@@ -67,17 +67,26 @@ $addons = array(
 	),
 ),
 'cove' => array(
-	'title'       => 'RuneUIe - Browse By Coverart',
-	'depend'      => 'enha',
+	'title'       => 'RuneUIe - Thumbnails Update',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Scan for coverarts and create thumbnails for Browse by CoverArt from local <white>coverart files</white> or <white>ID3 embedded</white> data.'
-					.'It will take a while to finished on first scan, ±200 album/minute. Afterwards it creates only non-exist ones.'
-					.'<br><white>CoverArt</white> button will appear in Library after scan.',
+	'description' => 'For creating thumbnails from specific path only.'
+					.'<br>Use <w>long-press CoverArt</w> in Library for complete update.',
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'hide'       => 1,
+	'option'      => array(
+		'confirm'   => 'For creating thumbnails from specific path only.'
+					  .'<br>Use <w>long-press CoverArt</w> in Library for complete update.'
+					  .'<br>Continue?',
+		'text'      => array(
+			'message' => 'Specify path to scan:',
+			'label'   => 'Path',
+			'value'   => '/mnt/MPD/',
+			'width'   => 'max',
+		),
+	),
+	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
 ),
 'aria' =>array(
 	'title'       => 'Aria2 *',
