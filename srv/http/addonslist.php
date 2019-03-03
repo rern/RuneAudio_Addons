@@ -10,7 +10,7 @@ $addons = array(
 'addo' => array(
 	'title'       => 'Addons',
 	'version'     => '20190303',
-	'revision'    => 'Maintenance improvements'
+	'revision'    => 'Improve progress page layout on mobile'
 					.'<br>...'
 					.'<br>Fix missing disk space warning on install addons'
 					.'<br>...'
