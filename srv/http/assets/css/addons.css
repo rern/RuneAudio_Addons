@@ -317,7 +317,7 @@ i.fa {
 .fa-plus-circle:before { content: "\f51D" }
 .fa-minus-circle:before { content: "\f51C" }
 .fa-check:before { content: "\f51B" }
-.fa-refresh:before { content: "\f53A" }
+.fa-refresh:before { content: "\f563" }
 .fa-arrow-up:before { 	font-family: addons; content: "\f566" }
 .fa-arrow-down:before { content: "\f567" }
 .fa-chevron-down:before { content: "\f564" }
