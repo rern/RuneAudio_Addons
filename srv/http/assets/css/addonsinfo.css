@@ -45,10 +45,11 @@
 
 .infobtn {
 	display: inline-block;
+	height: 36px;
+	padding: 7px 0;
 	border: none;
 	border-radius: 6px;
 	white-space: nowrap;
-	padding: 7px 0;
 	font-size: 14px;
 	text-align: center;
 	color: #e0e7ee;
