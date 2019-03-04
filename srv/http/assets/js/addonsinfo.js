@@ -10,6 +10,7 @@ info( {
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
 	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
+	messagealign  : 'ALIGN'        // (blank) / ALIGN        (message alignment)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input align)
@@ -120,7 +121,7 @@ function info( O ) {
 		}
 	}
 	$( '#infoIcon' ).html( iconhtml );
-	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
+	$( '#infoTitle' ).html( O.title || 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
 	if ( O.autoclose ) {
 		setTimeout( function() {
@@ -140,13 +141,17 @@ function info( O ) {
 	}
 	
 	// message
-	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
-	
+	if ( O.message ) {
+		$( '#infoMessage' )
+			.html( O.message )
+			.css( 'text-align', O.messagealign || '' )
+			.show();
+	}
 	// buttons
 	if ( !O.nobutton ) {
 		$( '#infoOk' )
 			.html( O.oklabel ? O.oklabel : 'OK' )
-			.css( 'background', O.okcolor ? O.okcolor : '' )
+			.css( 'background', O.okcolor || '' )
 			.show()
 			.click( function() {
 				$( '#infoOverlay' ).hide();
@@ -159,8 +164,8 @@ function info( O ) {
 			} );
 		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
-				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
-				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+				.html( O.cancellabel || 'Cancel' )
+				.css( 'background', O.cancelcolor || '' )
 				.show()
 				.click( function() {
 					$( '#infoOverlay' ).hide();
@@ -176,7 +181,7 @@ function info( O ) {
 		if ( O.button ) {
 			$( '#infoButton' )
 				.html( O.buttonlabel )
-				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
+				.css( 'background', O.buttoncolor || '' )
 				.show()
 				.click( function() {
 					$( '#infoOverlay' ).hide();
