@@ -148,7 +148,7 @@ installPackages() {
 	checklist=$2   # all packages and depends
 	fallbackurl=$3 # fallback packages tarball url (optional)
 	echo -e "$bar Prefetch packages ..."
-	rm /var/lib/pacman/db.lck
+	rm -f /var/lib/pacman/db.lck
 	pacman -Syw --noconfirm $pkgs
 	for file in $checklist; do
 		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
