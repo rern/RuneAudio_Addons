@@ -160,6 +160,7 @@ installPackages() {
 				break
 			else
 				if [[ -n $fallbackurl ]]; then
+					echo -e "$bar Get fallback package files ..."
 					wgetnc $fallbackurl
 					tarfile=$( basename $fallbackurl )
 					bsdtar xf $tarfile -C /
