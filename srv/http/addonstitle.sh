@@ -136,13 +136,13 @@ rankmirrors() {
 		pacman -Sy
 	fi
 }
-prefetch=0
 installPackageFailed() {
 	title "$warn Packages download/install incomplete."
 	echo -e "$info Reinstall manually by SSH: pacman -Sy $pkgs"
 	title -nt "Then install / update again."
 	exit
 }
+prefetch=0
 installPackages() {
 	pkgs=$1        # packages
 	checklist=$2   # all packages and depends
