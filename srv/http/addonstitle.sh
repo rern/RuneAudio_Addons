@@ -19,6 +19,7 @@ bar=$( tcolor ' . ' 6 6 )   # [   ]     (cyan on cyan)
 info=$( tcolor ' i ' 0 3 )  # [ i ]     (black on yellow)
 yn=$( tcolor ' ? ' 0 3 )  # [ i ]       (black on yellow)
 warn=$( tcolor ' ! ' 7 1 )  # [ ! ]     (white on red)
+padR=$( tcolor '.' 1 1 )
 
 title() {
 	local ctop=6
@@ -137,8 +138,8 @@ rankmirrors() {
 }
 prefetch=0
 installPackageFailed() {
-	title "$info Packages downloaded/installed improperly."
-	echo "Reinstall manually by SSH: pacman -Sy $pkgs"
+	title "$warn Packages download/install incomplete."
+	echo -e "$info Reinstall manually by SSH: pacman -Sy $pkgs"
 	title -nt "Then install / update again."
 	exit
 }
@@ -152,6 +153,7 @@ installPackages() {
 	for file in $checklist; do
 		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
 		if (( findpkg == 0 )); then
+			echo -e "$padR $( tcolor $file ) missing."
 			if (( (( prefetch++ )) < 3 )); then
 				echo -e "$bar Retry #$prefetch ..."
 				installPackages "$pkgs" "$checklist" "$fallbackurl"
@@ -178,7 +180,7 @@ installPackages() {
 		installed=$( pacman -Ss "^$pkg$" | head -n1 | awk '{print $NF}' )
 		if [[ $installed != '[installed]' ]]; then
 			(( failed ++ ))
-			echo -e "$warn Package install failed: $( tcolor $pkg )"
+			echo -e "$padR $( tcolor $pkg ) install failed."
 		fi
 	done
 	(( $failed != 0 )) && installPackageFailed
