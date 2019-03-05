@@ -10,6 +10,7 @@ info( {                            // default / custom
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
 	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
+	msgalign      : 'CSS'          // left / CSS             (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input alignment)
@@ -143,6 +144,7 @@ function info( O ) {
 	if ( O.message ) {
 		$( '#infoMessage' )
 			.html( O.message )
+			.css( 'text-align', O.msgalign || '' )
 			.show();
 	}
 	// buttons
