@@ -42,11 +42,10 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
 		'radio1'     => array(
-			'message'      => 'Set <white>zoom level</white> for display directly connect to RPi.'
-							 .'<br>(This can be changed later.)'
-							 .'<br>Local screen size:',
-			'messagealign' => 'left',
-			'list'         => array(
+			'message' => 'Set <white>zoom level</white> for display directly connect to RPi.'
+						.'<br>(This can be changed later.)'
+						.'<br>Local screen size:',
+			'list'    => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.2'           => '1.2',
 				'*Full HD - 1920px: 1.5'     => '1.5',
@@ -55,14 +54,13 @@ $addons = array(
 			),
 		),
 		'radio2'     => array(
-			'message'      => 'Disable <white>AAC/ALAC</white> support?'
-							 .'<br>Disable if no *.m4a files.'
-							 .'<br>It makes database update faster.'
-							 .'<br>(This can be changed later in MPD > FFmpeg)',
-			'messagealign' => 'left',
-			'list'         => array(
-				'Enable'    => 'yes',
-				'Disable'   => 'no',
+			'message' => 'Disable <white>AAC/ALAC</white> support?'
+						.'<br>Disable if no *.m4a files.'
+						.'<br>It makes database update faster.'
+						.'<br>(This can be changed later in MPD > FFmpeg)',
+			'list'    => array(
+				'Enable'  => 'yes',
+				'Disable' => 'no',
 			),
 			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
 		),
@@ -72,18 +70,16 @@ $addons = array(
 	'title'       => 'RuneUIe - Thumbnails Update',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'For creating thumbnails from specific path only.'
+	'description' => 'Partially create / update thumbnails from a specific path instead of entire database.'
 					.'<br>Use <w>long-press CoverArt</w> in Library for complete update.',
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'option'      => array(
-		'confirm'   => array(
-			'message'      => 'For creating thumbnails from specific path only.'
-							 .'<br>Use <w>long-press CoverArt</w> in Library for complete update.'
-							 .'<br>Continue?',
-			'messagealign' => 'left',
-		),
+		'confirm'   => 'For creating thumbnails from specific path.'
+					  .'<br><w>Long-press CoverArt</w> in Library'
+					  .'<br>for complete update.'
+					  .'<br>Continue?',
 		'text'      => array(
 			'message' => 'Specify path to scan:',
 			'label'   => 'Path',
@@ -146,11 +142,8 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'hide'        => $redisaddons[ 'expa' ] ? 1 : 0,
 	'option'      => array(
-		'wait'      => array(
-			'message'      => '<white>USB drives</white> should be'
-							 .'<br>unmount and removed before proceeding.',
-			'messagealign' => 'left',
-		),
+		'wait'      => '<white>USB drives</white> should be'
+					  .'<br>unmount and removed before proceeding.'
 	),
 ),
 'motd' => array(
@@ -190,14 +183,11 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'      => array(
-		'confirm'   => array(
-			'message'      => 'Once installed, MPD <white>cannot be downgraded</white>.'
-							 .'<br>Midori, local browser, must be upgrade as well.'
-							 .'<br>10 minutes upgrade may take 20+ minutes'
-							 .'<br>with slow download.'
-							 .'<br>Continue?',
-			'messagealign' => 'left',
-		),
+		'confirm'   => 'Once installed, MPD <white>cannot be downgraded</white>.'
+					  .'<br>Midori, local browser, must be upgrade as well.'
+					  .'<br>10 minutes upgrade may take 20+ minutes'
+					  .'<br>with slow download.'
+					  .'<br>Continue?',
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
@@ -298,12 +288,9 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/ui_reset',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/reset.sh',
 	'option'      => array(
-		'confirm'   => array(
-			'message'      => 'All RuneUI addons and custom UI modifications'
-							 .'<br><white>will be removed</white>.'
-							 .'<br>Continue?',
-			'messagealign' => 'left',
-		),
+		'confirm'   => 'All RuneUI addons and custom UI modifications'
+					  .'<br><white>will be removed</white>.'
+					  .'<br>Continue?'
 	),
 ),
 /*
@@ -331,25 +318,16 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => array(
-		'confirm'   => array(
-			'message'   => 'Once installed, Samba <white>cannot be downgraded</white>.'
+		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.'
 					  .'<br>Continue?',
-			'messagealign' => 'left',
-		),
 		'password'  => array(
-			'message'      => '(for connecting to <white>USB root share</white>)'
-							 .'<br>Password for user <white>root</white> (blank = rune):',
-			'messagealign' => 'left',
-			'label'   => 'Password',
+			'message' => '(for connecting to <white>USB root share</white>)'
+						.'<br>Password for user <white>root</white> (blank = rune):',
+			'label'   => 'Password'
 		),
-		'skip'   => array(
-			'message'      => 'Keep current Samba settings and shares?',
-		),
-		'wait'   => array(
-			'message'      => 'Connect a <white>USB drive</white> before continue.'
-							.'<br>1st drive will be used for shared directories.',
-			'messagealign' => 'left',
-		),
+		'skip'      => 'Keep current Samba settings and shares?',
+		'wait'      => 'Connect a <white>USB drive</white> before continue.'
+					  .'<br>1st drive will be used for shared directories.',
 		'text1'     => array(
 			'message' => '<white>File Server</white>:',
 			'label'   => 'Name',
@@ -429,13 +407,10 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/webradiodb.sh',
 	'option'      => array(
-		'wait'      => array(
-			'message'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
-							 .'<br>copied to <code>/mnt/MPD/Webradio</code>'
-							 .'<br>'
-							 .'<br><code>&emsp;Ok&emsp;</code> to continue',
-			'messagealign' => 'left',
-		),
+		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
+					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
+					  .'<br>'
+					  .'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
 ),
 'noti' => array(
@@ -512,9 +487,7 @@ $addons = array(
 	'buttonlabel' => 'Backup',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'option'      => array(
-		'confirm'      => array(
-			'message'   => 'Backup all RuneAudio <white>settings and databases</white>?',
-		),
+		'confirm'   => 'Backup all RuneAudio <white>settings and databases</white>?',
 	),
 ),
 'rest' => array(
