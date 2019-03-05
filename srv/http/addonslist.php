@@ -59,7 +59,7 @@ $addons = array(
 						.'<br>It makes database update faster.'
 						.'<br>(This can be changed later in MPD > FFmpeg)',
 			'list'    => array(
-				'Enable'   => 'yes',
+				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
 			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
@@ -70,14 +70,15 @@ $addons = array(
 	'title'       => 'RuneUIe - Thumbnails Update',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'For creating thumbnails from specific path only.'
+	'description' => 'Partially create / update thumbnails from a specific path instead of entire database.'
 					.'<br>Use <w>long-press CoverArt</w> in Library for complete update.',
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'option'      => array(
-		'confirm'   => 'For creating thumbnails from specific path only.'
-					  .'<br>Use <w>long-press CoverArt</w> in Library for complete update.'
+		'confirm'   => 'For creating thumbnails from specific path.'
+					  .'<br><w>Long-press CoverArt</w> in Library'
+					  .'<br>for complete update.'
 					  .'<br>Continue?',
 		'text'      => array(
 			'message' => 'Specify path to scan:',
