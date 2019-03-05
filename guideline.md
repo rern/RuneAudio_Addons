@@ -105,6 +105,14 @@ alias=<alias>
 ### template - function: start message, installed check
 installstart $@
 
+### template - verify installed > download > install > verify install
+if [[ $( pacman -Ss 'mainpackage$' | head -n1 | awk '{print $NF}' ) != '[installed]' ]]; then
+	pkgs='package package1 package2'
+	checklist='package package1 package2 depend other'
+	fallbackurl=https://path/to/single/tarball
+	installPackages "$pkgs" "$checklist" "$fallbackurl"
+fi
+
 ### template - function: get repository zip and extract to system directories
 getinstallzip
 
