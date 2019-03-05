@@ -135,6 +135,53 @@ rankmirrors() {
 		pacman -Sy
 	fi
 }
+prefetch=0
+installPackageFailed() {
+	title "$info Packages downloaded/installed improperly."
+	echo "Reinstall manually by SSH: pacman -Sy $pkgs"
+	title -nt "Then install / update again."
+	exit
+}
+installPackages() { # $1-packages, $2-package filenames, $3-package url(optional)
+	pkgs=$1
+	files=$2
+	pkgurl=$3
+	echo -e "$bar Prefetch packages ..."
+	pacman -Syw --noconfirm $pkgs
+	for file in $files; do
+		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
+		if (( findpkg == 0 )); then
+			if (( (( prefetch++ )) < 3 )); then
+				echo -e "$bar Retry #$prefetch ..."
+				installPackages "$pkgs" "$files" "$pkgurl"
+				break
+			else
+				if [[ -n $pkgurl ]]; then
+					wgetnc $pkgurl
+					tarfile=$( basename $pkgurl )
+					bsdtar xf $tarfile -C /
+					rm $tarfile
+					break
+				else
+					installPackageFailed
+				fi
+			fi
+		fi
+	done
+		
+	echo -e "$bar Install packages ..."
+	pacman -S --noconfirm $pkgs
+	
+	failed=0
+	for pkg in $pkgs; do
+		installed=$( pacman -Ss "^$pkg$" | head -n1 | awk '{print $NF}' )
+		if [[ $installed != '[installed]' ]]; then
+			(( failed ++ ))
+			echo -e "$warn Package install failed: $( tcolor $pkg )"
+		fi
+	done
+	(( $failed != 0 )) && installPackageFailed
+}
 getinstallzip() {
 	installurl=$( getvalue installurl )
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
