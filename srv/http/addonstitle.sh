@@ -147,6 +147,7 @@ installPackages() { # $1-packages, $2-package filenames, $3-package url(optional
 	files=$2
 	pkgurl=$3
 	echo -e "$bar Prefetch packages ..."
+	rm /var/lib/pacman/db.lck
 	pacman -Syw --noconfirm $pkgs
 	for file in $files; do
 		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
