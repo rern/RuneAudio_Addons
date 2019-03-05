@@ -19,6 +19,7 @@ bar=$( tcolor ' . ' 6 6 )   # [   ]     (cyan on cyan)
 info=$( tcolor ' i ' 0 3 )  # [ i ]     (black on yellow)
 yn=$( tcolor ' ? ' 0 3 )  # [ i ]       (black on yellow)
 warn=$( tcolor ' ! ' 7 1 )  # [ ! ]     (white on red)
+padR=$( tcolor '.' 1 1 )
 
 title() {
 	local ctop=6
@@ -134,6 +135,56 @@ rankmirrors() {
 	else
 		pacman -Sy
 	fi
+}
+installPackageFailed() {
+	title "$warn Packages download/install incomplete."
+	echo -e "$info Reinstall manually by SSH: pacman -Sy $pkgs"
+	title -nt "Then install / update again."
+	exit
+}
+prefetch=0
+installPackages() {
+	pkgs=$1        # packages
+	checklist=$2   # all packages and depends
+	fallbackurl=$3 # fallback packages tarball url (optional)
+	echo -e "$bar Prefetch packages ..."
+	rm -f /var/lib/pacman/db.lck
+	pacman -Syw --noconfirm $pkgs
+	for file in $checklist; do
+		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
+		if (( findpkg == 0 )); then
+			echo -e "$padR $( tcolor $file ) missing."
+			if (( (( prefetch++ )) < 3 )); then
+				echo -e "$bar Retry #$prefetch ..."
+				installPackages "$pkgs" "$checklist" "$fallbackurl"
+				break
+			else
+				if [[ -n $fallbackurl ]]; then
+					echo -e "$bar Get fallback package files ..."
+					wgetnc $fallbackurl
+					tarfile=$( basename $fallbackurl )
+					bsdtar xf $tarfile -C /
+					rm $tarfile
+					break
+				else
+					installPackageFailed
+				fi
+			fi
+		fi
+	done
+		
+	echo -e "$bar Install packages ..."
+	pacman -S --noconfirm $pkgs
+	
+	failed=0
+	for pkg in $pkgs; do
+		installed=$( pacman -Ss "^$pkg$" | head -n1 | awk '{print $NF}' )
+		if [[ $installed != '[installed]' ]]; then
+			(( failed ++ ))
+			echo -e "$padR $( tcolor $pkg ) install failed."
+		fi
+	done
+	(( $failed != 0 )) && installPackageFailed
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )

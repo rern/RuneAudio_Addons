@@ -3,7 +3,7 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {
+info( {                            // default / custom
 	width         : N              // 400 / N                (info width)
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
@@ -12,7 +12,7 @@ info( {
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
-	textalign     : 'CSS'          // left / CSS             (text input align)
+	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
@@ -120,7 +120,7 @@ function info( O ) {
 		}
 	}
 	$( '#infoIcon' ).html( iconhtml );
-	$( '#infoTitle' ).html( O.title ? O.title : 'Information' );
+	$( '#infoTitle' ).html( O.title || 'Information' );
 	if ( O.nox ) $( '#infoX' ).hide();
 	if ( O.autoclose ) {
 		setTimeout( function() {
@@ -140,13 +140,16 @@ function info( O ) {
 	}
 	
 	// message
-	if ( O.message ) $( '#infoMessage' ).html( O.message ).show();
-	
+	if ( O.message ) {
+		$( '#infoMessage' )
+			.html( O.message )
+			.show();
+	}
 	// buttons
 	if ( !O.nobutton ) {
 		$( '#infoOk' )
 			.html( O.oklabel ? O.oklabel : 'OK' )
-			.css( 'background', O.okcolor ? O.okcolor : '' )
+			.css( 'background', O.okcolor || '' )
 			.show()
 			.click( function() {
 				$( '#infoOverlay' ).hide();
@@ -159,8 +162,8 @@ function info( O ) {
 			} );
 		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
-				.html( O.cancellabel ? O.cancellabel : 'Cancel' )
-				.css( 'background', O.cancelcolor ? O.cancelcolor : '' )
+				.html( O.cancellabel || 'Cancel' )
+				.css( 'background', O.cancelcolor || '' )
 				.show()
 				.click( function() {
 					$( '#infoOverlay' ).hide();
@@ -176,7 +179,7 @@ function info( O ) {
 		if ( O.button ) {
 			$( '#infoButton' )
 				.html( O.buttonlabel )
-				.css( 'background', O.buttoncolor ? O.buttoncolor : '' )
+				.css( 'background', O.buttoncolor || '' )
 				.show()
 				.click( function() {
 					$( '#infoOverlay' ).hide();
