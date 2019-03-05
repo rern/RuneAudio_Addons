@@ -142,24 +142,24 @@ installPackageFailed() {
 	title -nt "Then install / update again."
 	exit
 }
-installPackages() { # $1-packages, $2-package filenames, $3-package url(optional)
-	pkgs=$1
-	files=$2
-	pkgurl=$3
+installPackages() {
+	pkgs=$1        # packages
+	checklist=$2   # all packages and depends
+	fallbackurl=$3 # fallback packages tarball url (optional)
 	echo -e "$bar Prefetch packages ..."
 	rm /var/lib/pacman/db.lck
 	pacman -Syw --noconfirm $pkgs
-	for file in $files; do
+	for file in $checklist; do
 		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
 		if (( findpkg == 0 )); then
 			if (( (( prefetch++ )) < 3 )); then
 				echo -e "$bar Retry #$prefetch ..."
-				installPackages "$pkgs" "$files" "$pkgurl"
+				installPackages "$pkgs" "$checklist" "$fallbackurl"
 				break
 			else
-				if [[ -n $pkgurl ]]; then
-					wgetnc $pkgurl
-					tarfile=$( basename $pkgurl )
+				if [[ -n $fallbackurl ]]; then
+					wgetnc $fallbackurl
+					tarfile=$( basename $fallbackurl )
 					bsdtar xf $tarfile -C /
 					rm $tarfile
 					break
