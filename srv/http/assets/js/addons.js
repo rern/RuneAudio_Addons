@@ -77,13 +77,12 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 	branch = '';
 	if ( $this.attr( 'space' ) ) {
 		info( {
-			  icon         : 'warning'
-			, title        : title
-			, message      : '<white>Warning</white> - Disk space not enough:<br>'
-							+'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white>'
-							+'<br>'+ $( this ).attr( 'space' )
-							+'<br>(Use <white>Expand Partition</white> to gain more space.)'
-			, messagealign : 'left'
+			  icon   : 'warning'
+			, title  : title
+			, message: '<white>Warning</white> - Disk space not enough:<br>'
+					+ 'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white>'
+					+'<br>'+ $( this ).attr( 'space' )
+					+'<br>(Use <white>Expand Partition</white> addon to gain more space.)'
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
@@ -92,7 +91,6 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, title  : title
 			, message: 'Warning - Conflict Addon:<br>'
 					+ '<white>'+ $this.attr( 'conflict' ) +'</white> must be uninstalled first.'
-			, messagealign : 'left'
 		} );
 		return
 	} else if ( $this.attr( 'depend' ) ) {
@@ -101,7 +99,6 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			, title  : title
 			, message: 'Warning - Depend Addon:<br>'
 					+ '<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
-			, messagealign : 'left'
 		} );
 		return
 	}
@@ -151,12 +148,10 @@ function getoptions() {
 	switch( oj0 ) {
 // -------------------------------------------------------------------------------------------------
 		case 'wait': // only 1 'Ok' = continue
-			var ojson = option[ oj ];
 			info( {
 				  icon         : 'info-circle'
 				, title        : title
-				, message      : ojson.message
-				, messagealign : ojson.messagealign
+				, message      : option[ oj ]
 				, ok           : function() {
 					sendcommand();
 				}
@@ -164,11 +159,9 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'confirm': // 'Cancel' = close
-			var ojson = option[ oj ];
 			info( {
 				  title        : title
-				, message      : ojson.message
-				, messagealign : ojson.messagealign
+				, message      : option[ oj ]
 				, cancel       : 1
 				, ok           : function() {
 					sendcommand();
@@ -181,7 +174,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
 				, cancelcolor  : ojson.checked == 0 ? '#0095d8' : ''
 				, cancel       : function() {
@@ -198,11 +190,9 @@ function getoptions() {
 			break;
 // -------------------------------------------------------------------------------------------------
 		case 'skip': // 'Cancel' = continue, 'Ok' = skip options
-			var ojson = option[ oj ];
 			info( {
 				  title        : title
-				, message      : ojson.message
-				, messagealign : ojson.messagealign
+				, message      : option[ oj ]
 				, cancellabel  : 'No'
 				, cancel       : function() {
 					sendcommand();
@@ -222,7 +212,6 @@ function getoptions() {
 			info( {
 				  title      : title
 				, message    : ojson.message
-				, messagealign : ojson.messagealign
 				, textlabel  : ojson.label
 				, textvalue  : ojson.value
 				, textlabel2 : ojson.label2
@@ -242,7 +231,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, passwordlabel: ojson.label
 				, ok:          function() {
 					var pwd = $( '#infoPasswordBox' ).val();
@@ -271,7 +259,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, filelabel    : ojson.label
 				, filetype     : ojson.type
 				, ok         : function() {
@@ -300,7 +287,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, radiohtml    : function() {
 					var list = ojson.list;
 					var radiohtml = '';
@@ -321,7 +307,6 @@ function getoptions() {
 					info( {
 						  title       : title
 						, message     : ojson.message
-						, messagealign : ojson.messagealign
 						, textlabel   : 'Custom'
 						, ok          : function() {
 							opt += "'"+ $( '#infoTextBox' ).val() +"' ";
@@ -337,7 +322,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, selectlabel  : ojson.label
 				, selecthtml   : function() {
 					var list = ojson.list;
@@ -358,7 +342,6 @@ function getoptions() {
 					info( {
 						  title        : title
 						, message      : ojson.message
-						, messagealign : ojson.messagealign
 						, textlabel    : 'Custom'
 						, ok           : function() {
 							var input = $( '#infoTextBox' ).val();
@@ -375,7 +358,6 @@ function getoptions() {
 			info( {
 				  title        : title
 				, message      : ojson.message
-				, messagealign : ojson.messagealign
 				, checkboxhtml : function() {
 					var list = ojson.list;
 					var checkboxhtml = '';

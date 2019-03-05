@@ -3,17 +3,16 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {
+info( {                            // default / custom
 	width         : N              // 400 / N                (info width)
 	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
 	title         : 'TITLE'        // Information / TITLE    (top title)
 	nox           : 1..            // 0 / 1                  (no top 'X' close button)
 	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
-	messagealign  : 'ALIGN'        // (blank) / ALIGN        (message alignment)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
-	textalign     : 'CSS'          // left / CSS             (text input align)
+	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
@@ -144,7 +143,6 @@ function info( O ) {
 	if ( O.message ) {
 		$( '#infoMessage' )
 			.html( O.message )
-			.css( 'text-align', O.messagealign || '' )
 			.show();
 	}
 	// buttons
