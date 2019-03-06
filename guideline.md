@@ -8,7 +8,7 @@ _revision 20180725_
 - [Update An Addon](#update-an-addon)
 
 
-### Addons Menu Process  
+### Addons Process  
 
 - **Menu** > **Addons**
 	- download list
@@ -446,7 +446,7 @@ do not isert/append into another insert/append
 - `boxwidth`:
 	- none(`medium`), `Npx`, `'max'`
 
-## Enlist To Addons Menu
+## Enlist To Addons
 - **test scripts:**
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
@@ -485,7 +485,7 @@ do not isert/append into another insert/append
 		- `Install` existing version
 		- long-press `Uninstall` button and type the branch name, your `<GitHubID>`
 	- `Pull request`
-- **update the list in Addons Menu:**
+- **update the list in Addons:**
 	- test updating as a user
 		- **`SSH`** - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
 		- (next `Menu` > `Addons` will overwrite this edit)
