@@ -23,18 +23,22 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190228',
-	'revision'    => 'Add <white>Browse By CoverArt</white>'
+	'version'     => '20190306',
+	'revision'    => 'Fix Library home blocks rearranging'
+					.'<br>Fix bookmarks: coverarts, renaming, removing'
+					.'<br>Fix high CPU cycles on local browser when playback webradio(remove animations)'
+					.'<br>Replace bookmark labels scrolling with ellipse'
+					.'<br>Library sorting - case insensitive'
+					.'<br>Index bar - greyed out for blank list'
+					.'<br>Switch page - tap swipe bar left / right'
+					.'<br>Refresh browser - long-press swipe bar / bottom bar'
+					.'<br>...'
+					.'<br>Add <white>Browse By CoverArt</white>'
 					.'<br>Fix scrolling bookmark titles'
 					.'<br>...'
 					.'<br>Reinstate coverart bookmarks (long delay fixed)'
 					.'<br>Fix - Library blocks dragging to rearrange'
-					.'<br>Fix - Library coverart context menu'
-					.'<br>...'
-					.'<br>Fix bug - add/replace from Album, Artist, Composer and Genre'
-					.'<br>Fix missing Back button'
-					.'<br>Fix Rescan button'
-					.'<br>Improve scrolling texts to the same speed, 80px/s',
+					.'<br>Fix - Library coverart context menu',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
