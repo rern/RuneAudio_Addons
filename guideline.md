@@ -39,7 +39,7 @@ _revision 20180725_
 		- append options
 		- `addons.js` > `addonsbash.php`
 		
-- **Addons Terminal** page
+- **Addons Progress** page
 	- prepare command and options
 		- get download url from `addonslist.php`
 	- run script
@@ -65,6 +65,7 @@ _revision 20180725_
 
 - install script 
 	- for update, get saved options as install parameters / arguments
+	- install required packages and verify
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
