@@ -308,6 +308,7 @@ do not isert/append into another insert/append
 			'message'  => '<message text>',
 /**/			'cancellabel' => '<label text>',
 			'label'    => '<label text>',
+/**/			'boxwidth'    => '<input box width>',
 		'password'  => array(
 			'message'  => '<message text>',
 			'label'    => '<label text>',
@@ -440,6 +441,10 @@ do not isert/append into another insert/append
     - single quote: `&#039;` = `'` (no `\` escape for single quote)
 - FontAwesome:
 	- `<i class=\"fa fa-<icon>\"></i>` (escape double quotes)
+- `msgalign`:
+	- none(`left`), `center`, `right`
+- `boxwidth`:
+	- none(`medium`), `Npx`, `'max'`
 
 ## Enlist To Addons Menu
 - **test scripts:**
