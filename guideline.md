@@ -2,9 +2,9 @@ Guideline
 ---
 _revision 20180725_
 
-- [Addons Menu Process](#addons-menu-process)
+- [Addons Process](#addons-process)
 - [Requirement For Each Addon](#requirement-for-each-addon)
-- [Enlist To Addons Menu](#enlist-to-addons-menu)
+- [Enlist To Addons](#enlist-to-addons)
 - [Update An Addon](#update-an-addon)
 
 
