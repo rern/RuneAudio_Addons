@@ -299,12 +299,14 @@ do not isert/append into another insert/append
 		'skip'      => '<message text>',
 		'yesno'     => array(
 			'message'     => '<message text>',
+/**/			'mgsalign'    => '<css>',
 /**/			'cancellabel' => '<label text>',
 /**/			'oklabel'     => '<label text>',
 /**/			'checked'     => <0/1>
 		),
 		'text'      => array(
 			'message'  => '<message text>',
+/**/			'cancellabel' => '<label text>',
 			'label'    => '<label text>',
 		'password'  => array(
 			'message'  => '<message text>',
@@ -313,10 +315,12 @@ do not isert/append into another insert/append
 		),
 		'file'  => array(
 			'message'  => '<message text>',
+/**/			'cancellabel' => '<label text>',
 			'label'    => '<label text>',
 			'type'     => '<filetype filter>'
 		'radio'     => array(
 			'message' => '<message text>',
+/**/			'cancellabel' => '<label text>',
 			'list'    => array(
 				'*item1' => '<value1>',
 				'item2'  => '<value2>',
@@ -328,6 +332,7 @@ do not isert/append into another insert/append
 		),
 		'select'    => array(
 			'message' => '<message text>',
+/**/			'cancellabel' => '<label text>',
 			'label'   => '<label text>',
 			'list'    => array(
 				'item1'  => '<value1>',
@@ -338,6 +343,7 @@ do not isert/append into another insert/append
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
+/**/			'cancellabel' => '<label text>',
 			'list'    => array(
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
