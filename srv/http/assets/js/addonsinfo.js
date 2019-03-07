@@ -251,7 +251,8 @@ function info( O ) {
 	} else if ( O.radio ) {
 		var radiohtml = '';
 		$.each( O.radio, function( key, val ) {
-			radiohtml += '<input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'<br>';
+			// <label> for clickable label
+			radiohtml += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
 		} );
 		renderOption( $( '#infoRadio' ), radiohtml, O.checked );
 	} else if ( O.select ) {
@@ -265,7 +266,7 @@ function info( O ) {
 	} else if ( O.checkbox ) {
 		var checkboxhtml = '';
 		$.each( O.checkbox, function( key, val ) {
-			checkboxhtml += '<input type="checkbox" value="'+ val +'">&ensp;'+ key +'<br>';
+			checkboxhtml += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
 		} );
 		renderOption( $( '#infoCheckBox' ), checkboxhtml, O.checked );
 	}
@@ -296,7 +297,8 @@ function renderOption( $el, htm, chk ) {
 	
 	var checked = typeof chk === 'array' ? chk : [ chk ];
 	checked.forEach( function( i ) {
-		$el.children().not( 'br' ).eq( i ).prop( 'checked', true );
+		$opt = $el.prop( 'id' ) === 'infoSelectBox' ? $el.find( 'option' ) : $el.find( 'input' )
+		$opt.eq( i ).prop( 'checked', true );
 	} );
 }
 function verifyPassword( title, pwd, fn ) {
