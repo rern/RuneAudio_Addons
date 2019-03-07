@@ -10,12 +10,12 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190305',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190308',
+	'revision'    => 'Partial thumbnails update integration'
 					.'<br>...'
-					.'<br>Improve progress page layout on mobile'
+					.'<br>Minor improvements'
 					.'<br>...'
-					.'<br>Fix missing disk space warning on install addons',
+					.'<br>Improve progress page layout on mobile',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
