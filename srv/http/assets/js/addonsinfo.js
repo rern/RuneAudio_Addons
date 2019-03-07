@@ -18,12 +18,14 @@ info( {                            // default / custom
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
 	required      : 1              // 0 / 1                  (password required)
-	radio         : JSON           // required               ( value = $( '#infoRadio input[ type=radio ]:checked' ).val() )
+	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
 	checked       : N              // (none) / N             (pre-select input index)
 	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
-	select        : JSON           // required               ( value = $( '#infoSelectBox').val() )
+	select        : JSON           // required               ( var value = $( '#infoSelectBox').val(); )
 	checked       : N              // (none) / N             (pre-select option index)
-	checkbox      : JSON           // required               ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() { value = $( this ).val() } ) )
+	checkbox      : JSON           // required               ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	                                                               var value = $( this ).val();
+	                                                           } ); )
 	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select input indexes)
 	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
 	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
