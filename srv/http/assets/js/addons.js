@@ -290,7 +290,7 @@ function getoptions() {
 				, checkbox : ojson.list
 				, checked  : ojson.checked
 				, ok       : function() {
-					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
+					var radiovalue = $( '#infoRadio input[ type=radio ]:checked' ).val();
 					opt += "'"+ radiovalue +"' ";
 					sendcommand();
 				}
@@ -347,7 +347,7 @@ function getoptions() {
 				, checkbox : ojson.list
 				, checked  : ojson.checked
 				, ok       : function() {
-					$( '#infoCheckBox input[type=checkbox]:checked').each( function() {
+					$( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
 						opt += "'"+ $( this ).val() +"' ";
 					} );
 					sendcommand();
