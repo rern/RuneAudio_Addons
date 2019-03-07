@@ -435,8 +435,8 @@ do not isert/append into another insert/append
 
 **styling** for `revision`, `description`, `option`
 - preset css:
-	- `<white>...</white>`
-	- `<code>...</code>`
+	- `<white>white text</white>`
+	- `<code>code block</code>`
 - quotes in strings: (otherwise json errors)
     - double quote: `\"` or `&#034;` = `"`
     - single quote: `&#039;` = `'` (no `\` escape for single quote)
