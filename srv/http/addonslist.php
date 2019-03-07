@@ -81,19 +81,7 @@ $addons = array(
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'option'      => array(
-		'confirm'   => 'For creating thumbnails from specific path.'
-					  .'<br><w>Long-press CoverArt</w> in Library'
-					  .'<br>for complete update.'
-					  .'<br>Continue?',
-		'text'      => array(
-			'message' => 'Specify path to scan:',
-			'label'   => 'Path',
-			'value'   => '/mnt/MPD/',
-			'width'   => 'max',
-		),
-	),
-	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
+	'hide'        => 1,
 ),
 'aria' =>array(
 	'title'       => 'Aria2 *',
