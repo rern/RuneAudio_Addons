@@ -18,12 +18,13 @@ info( {                            // default / custom
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
 	required      : 1              // 0 / 1                  (password required)
-	radiohtml     : 'HTML'         // required HTML
-	checked       : N              // (none) / N             (pre-select input)
+	radio         : JSON           // required { name: value }
+	checked       : N              // (none) / N             (pre-select input index)
 	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
-	selecthtml    : 'HTML'         // required HTML
-	checkboxhtml  : 'HTML'         // required HTML
-	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select multiple)
+	select        : JSON           // required { name: value }
+	checked       : N              // (none) / N             (pre-select option index)
+	checkbox      : JSON           // required { name: value }
+	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select input indexes)
 	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
 	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
 	ok            : 'FUNCTION'     // (hide) / FUNCTION      (ok click function)
@@ -245,14 +246,26 @@ function info( O ) {
 				} );
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
-	} else if ( O.radiohtml ) {
-		radioCheckbox( $( '#infoRadio' ), O.radiohtml, O.checked );
-	} else if ( O.selecthtml ) {
+	} else if ( O.radio ) {
+		var radiohtml = '';
+		$.each( O.radio, function( key, val ) {
+			radiohtml += '<input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'<br>';
+		} );
+		renderOption( $( '#infoRadio' ), radiohtml, O.checked );
+	} else if ( O.select ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
-		$( '#infoSelectBox' ).html( O.selecthtml );
+		var selecthtml = '';
+		$.each( O.select, function( key, val ) {
+			selecthtml += '<option value="'+ val +'">'+ key +'</option>';
+		} );
+		renderOption( $( '#infoSelectBox' ), selecthtml, O.checked );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( O.checkboxhtml ) {
-		radioCheckbox( $( '#infoCheckBox' ), O.checkboxhtml, O.checked );
+	} else if ( O.checkbox ) {
+		var checkboxhtml = '';
+		$.each( O.checkbox, function( key, val ) {
+			checkboxhtml += '<input type="checkbox" value="'+ val +'">&ensp;'+ key +'<br>';
+		} );
+		renderOption( $( '#infoCheckBox' ), checkboxhtml, O.checked );
 	}
 	
 	$( '#infoOverlay' )
@@ -275,13 +288,13 @@ function alignVertical() {
 	var top = boxH < wH ? ( wH - boxH ) / 2 : 20;
 	$( '#infoBox' ).css( 'margin', top +'px auto' );
 }
-function radioCheckbox( el, htm, chk ) {
-	el.html( htm ).show();
-	if ( !chk ) return;
+function renderOption( $el, htm, chk ) {
+	$el.html( htm ).show();
+	if ( chk == 'undefined' ) return;
 	
 	var checked = typeof chk === 'array' ? chk : [ chk ];
-	el.find( 'label' ).each( function( i ) {
-		if ( checked.indexOf( i ) !== -1 ) el.find( 'input' ).prop( 'checked', true );
+	checked.forEach( function( i ) {
+		$el.children().not( 'br' ).eq( i ).prop( 'checked', true );
 	} );
 }
 function verifyPassword( title, pwd, fn ) {

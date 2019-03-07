@@ -38,7 +38,7 @@ function branchtest( message, install ) {
 		}
 	} );
 }
-$( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
+$( '.boxed-group .btn' ).on( 'taphold', function () {
 	$this = $( this );
 	alias = $this.attr( 'alias' );
 	title = addons[ alias ].title.replace( / *\**$/, '' );
@@ -68,7 +68,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function ( e ) {
 			}
 		}
 	} );
-} ).on( 'click', function ( e ) {
+} ).on( 'click', function () {
 	$this = $( this );
 	alias = $this.attr( 'alias' );
 	title = addons[ alias ].title.replace( / *\**$/, '' );
@@ -149,10 +149,10 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'wait': // only 1 'Ok' = continue
 			info( {
-				  icon         : 'info-circle'
-				, title        : title
-				, message      : option[ oj ]
-				, ok           : function() {
+				  icon    : 'info-circle'
+				, title   : title
+				, message : option[ oj ]
+				, ok      : function() {
 					sendcommand();
 				}
 			} );
@@ -160,10 +160,10 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'confirm': // 'Cancel' = close
 			info( {
-				  title        : title
-				, message      : option[ oj ]
-				, cancel       : 1
-				, ok           : function() {
+				  title   : title
+				, message : option[ oj ]
+				, cancel  : 1
+				, ok      : function() {
 					sendcommand();
 				}
 			} );
@@ -172,17 +172,17 @@ function getoptions() {
 		case 'yesno': // 'Cancel' = 0
 			var ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, cancellabel  : ojson.cancellabel ? ojson.cancellabel : 'No'
-				, cancelcolor  : ojson.checked == 0 ? '#0095d8' : ''
-				, cancel       : function() {
+				  title       : title
+				, message     : ojson.message
+				, cancellabel : ojson.cancellabel ? ojson.cancellabel : 'No'
+				, cancelcolor : ojson.checked == 0 ? '#0095d8' : ''
+				, cancel      : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel      : ojson.oklabel ? ojson.oklabel : 'Yes'
-				, okcolor      : ojson.checked == 0 ? '#34495e' : ''
-				, ok           : function() {
+				, oklabel     : ojson.oklabel ? ojson.oklabel : 'Yes'
+				, okcolor     : ojson.checked == 0 ? '#34495e' : ''
+				, ok          : function() {
 					opt += '1 ';
 					sendcommand();
 				}
@@ -191,14 +191,14 @@ function getoptions() {
 // -------------------------------------------------------------------------------------------------
 		case 'skip': // 'Cancel' = continue, 'Ok' = skip options
 			info( {
-				  title        : title
-				, message      : option[ oj ]
-				, cancellabel  : 'No'
-				, cancel       : function() {
+				  title       : title
+				, message     : option[ oj ]
+				, cancellabel : 'No'
+				, cancel      : function() {
 					sendcommand();
 				}
-				, oklabel      : 'Yes'
-				, ok           : function() {
+				, oklabel     : 'Yes'
+				, ok          : function() {
 					$( '#loader' )
 						.html( '<i class="fa fa-addons blink"></i>' )
 						.removeClass( 'hide' );
@@ -229,9 +229,9 @@ function getoptions() {
 		case 'password':
 			ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, passwordlabel: ojson.label
+				  title         : title
+				, message       : ojson.message
+				, passwordlabel : ojson.label
 				, ok:          function() {
 					var pwd = $( '#infoPasswordBox' ).val();
 					if ( pwd ) {
@@ -257,11 +257,11 @@ function getoptions() {
 		case 'file':
 			var ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, filelabel    : ojson.label
-				, filetype     : ojson.type
-				, ok         : function() {
+				  title     : title
+				, message   : ojson.message
+				, filelabel : ojson.label
+				, filetype  : ojson.type
+				, ok        : function() {
 					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
 					var fd = new FormData();
 					fd.append( 'file', file );
@@ -285,18 +285,11 @@ function getoptions() {
 		case 'radio': // single value
 			ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, radiohtml    : function() {
-					var list = ojson.list;
-					var radiohtml = '';
-					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
-						radiohtml += '<label><input type="radio" name="inforadio" value="'+ list[ key ] +'"'+ checked +'>&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
-					}
-					return radiohtml
-				}
-				, ok           : function() {
+				  title    : title
+				, message  : ojson.message
+				, checkbox : ojson.list
+				, checked  : ojson.checked
+				, ok       : function() {
 					var radiovalue = $( '#infoRadio input[type=radio]:checked').val();
 					opt += "'"+ radiovalue +"' ";
 					sendcommand();
@@ -305,10 +298,10 @@ function getoptions() {
 			$( '#infoRadio input' ).change( function() { // cutom value
 				if ( $( this ).val() === '?' ) {
 					info( {
-						  title       : title
-						, message     : ojson.message
-						, textlabel   : 'Custom'
-						, ok          : function() {
+						  title     : title
+						, message   : ojson.message
+						, textlabel : 'Custom'
+						, ok        : function() {
 							opt += "'"+ $( '#infoTextBox' ).val() +"' ";
 							sendcommand();
 						}
@@ -320,19 +313,12 @@ function getoptions() {
 		case 'select': // long single value
 			ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, selectlabel  : ojson.label
-				, selecthtml   : function() {
-					var list = ojson.list;
-					var selecthtml = '';
-					for ( var key in list ) {
-						var selected = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' selected' : '';
-						selecthtml += '<option value="'+ list[ key ] +'"'+ selected +'>'+ key.replace( /^\*/, '' ) +'</option>';
-					}
-					return selecthtml
-				}
-				, ok           : function() {
+				  title       : title
+				, message     : ojson.message
+				, selectlabel : ojson.label
+				, select      : ojson.list
+				, checked     : ojson.checked
+				, ok          : function() {
 					opt += "'"+ $( '#infoSelectBox').val() +"' ";
 					sendcommand();
 				}
@@ -340,10 +326,10 @@ function getoptions() {
 			$( '#infoSelectBox' ).change( function() { // cutom value
 				if ( $( '#infoSelectBox :selected' ).val() === '?' ) {
 					info( {
-						  title        : title
-						, message      : ojson.message
-						, textlabel    : 'Custom'
-						, ok           : function() {
+						  title     : title
+						, message   : ojson.message
+						, textlabel : 'Custom'
+						, ok        : function() {
 							var input = $( '#infoTextBox' ).val();
 							opt += input ? "'"+ input +"' " : 0;
 							sendcommand();
@@ -356,19 +342,11 @@ function getoptions() {
 		case 'checkbox': // multiple values
 			ojson = option[ oj ];
 			info( {
-				  title        : title
-				, message      : ojson.message
-				, checkboxhtml : function() {
-					var list = ojson.list;
-					var checkboxhtml = '';
-					for ( var key in list ) {
-						var checked = ( key[ 0 ] === '*' || list[ key ] == ojson.checked ) ? ' checked' : '';
-						checkboxhtml += '<label><input type="checkbox" value="'+ list[ key ] +'"'+ checked +'>\
-							&ensp;'+ key.replace( /^\*/, '' ) +'</label><br>';
-					}
-					return checkboxhtml
-				}
-				, ok:       function() {
+				  title    : title
+				, message  : ojson.message
+				, checkbox : ojson.list
+				, checked  : ojson.checked
+				, ok       : function() {
 					$( '#infoCheckBox input[type=checkbox]:checked').each( function() {
 						opt += "'"+ $( this ).val() +"' ";
 					} );
