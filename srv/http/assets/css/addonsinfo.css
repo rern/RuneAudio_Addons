@@ -190,7 +190,7 @@
 #infoOverlay input[type=radio],
 #infoOverlay input[type=checkbox] {
 	height: 15px;
-	margin: 5px;
+	margin: 8px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
 }
 #infoSelect button {
