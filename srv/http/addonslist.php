@@ -3,7 +3,8 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-
+$udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
+$zoom = $redis->hGet( 'settings', 'zoom' );
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -56,6 +57,7 @@ $addons = array(
 				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
 			),
+			'checked' => 2
 		),
 		'radio2'     => array(
 			'message' => 'Disable <white>AAC/ALAC</white> support?'
@@ -66,7 +68,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
+			'checked' => ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1 ),
 		),
 	),
 ),
@@ -163,7 +165,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'*<a style="color: #f#0095d8">Rune blue</a>' => 0,
+				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
 				'<a style="color: #ff0000">Red</a>'          => 1,
 				'<a style="color: #00ff00">Green'            => 2,
 				'<a style="color: #ffff00">Yellow'           => 3,
@@ -172,6 +174,7 @@ $addons = array(
 				'<a style="color: #00ffff">Cyan'             => 6,
 				'<a style="color: #ffffff">White'            => 7,
 			),
+			'checked' => 0
 		),
 	),
 ),
@@ -216,7 +219,7 @@ $addons = array(
 				'9'  => 9,
 				'10' => 10,
 			),
-			'checked' => 5,
+			'checked' => 2,
 		),
 	),
 ),
@@ -373,6 +376,7 @@ $addons = array(
 				'*Install <white>WebUI</white> alternative?'            => '1',
 				'*Start <white>Transmission</white> on system startup?' => '1'
 			),
+			'checked' => array( 0, 1 )
 		),
 	),
 ),
@@ -394,8 +398,8 @@ $addons = array(
 	'option'      => array(
 		'radio'     => array(
 			'message' => '<white>Audio output</white> when power off USB DAC:',
-			'list'    => array_flip( $redis->hGetAll( 'udaclist' ) ),
-			'checked' => 'bcm2835 ALSA_1',
+			'list'    => $udaclist,
+			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
 		),
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
@@ -439,7 +443,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked' => $redis->hGet( 'settings', 'notify' )
+			'checked' => $redis->hGet( 'settings', 'notify' ) - 1
 		),
 	),
 ),
@@ -460,7 +464,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked' => $redis->hGet( 'settings', 'zoom' )
+			'checked' => $zoom == '0.7' ? 0 : ( $zoom == '1.5' ? 1 : ( $zoom == '1.8' ? 2 : 3 ) )
 		),
 	),
 ),
@@ -478,7 +482,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $redis->hGet( 'settings', 'pointer' )
+			'checked'  => $redis->hGet( 'settings', 'pointer' ) === 'yes' ? 0 : 1
 		),
 	),
 ),
