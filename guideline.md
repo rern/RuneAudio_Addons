@@ -422,6 +422,7 @@ do not isert/append into another insert/append
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
 		- `checked` = pre-select optional
+- `'radio'`, `'select'`, `'checkbox'` can be html instead
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - blank value get passed as 1 bash argument and must be process as `''`
 - last `key:value` not allow trailing `,`
