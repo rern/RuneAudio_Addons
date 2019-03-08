@@ -53,7 +53,7 @@ $addons = array(
 			'list'    => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.2'           => '1.2',
-				'*Full HD - 1920px: 1.5'     => '1.5',
+				'Full HD - 1920px: 1.5'      => '1.5',
 				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
 			),
@@ -361,8 +361,8 @@ $addons = array(
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'*Install <white>WebUI</white> alternative?'            => '1',
-				'*Start <white>Transmission</white> on system startup?' => '1'
+				'Install <white>WebUI</white> alternative?'            => '1',
+				'Start <white>Transmission</white> on system startup?' => '1'
 			),
 			'checked' => array( 0, 1 )
 		),
