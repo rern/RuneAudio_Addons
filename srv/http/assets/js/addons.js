@@ -287,7 +287,7 @@ function getoptions() {
 			info( {
 				  title    : title
 				, message  : ojson.message
-				, checkbox : ojson.list
+				, radio    : ojson.list
 				, checked  : ojson.checked
 				, ok       : function() {
 					var radiovalue = $( '#infoRadio input[ type=radio ]:checked' ).val();
