@@ -249,36 +249,36 @@ function info( O ) {
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {
-		if ( Array.isArray( O.select ) ) {
+		if ( typeof O.radio === 'string' ) {
+			var html = O.radio;
+		} else {
 			var html = '';
 			$.each( O.radio, function( key, val ) {
 				// <label> for clickable label
 				html += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
 			} );
-		} else {
-			var html = O.radio;
 		}
 		renderOption( $( '#infoRadio' ), html, O.checked );
 	} else if ( O.select ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
-		if ( Array.isArray( O.select ) ) {
+		if ( typeof O.select === 'string' ) {
+			var html = O.select;
+		} else {
 			var html = '';
 			$.each( O.select, function( key, val ) {
 				html += '<option value="'+ val +'">'+ key +'</option>';
 			} );
-		} else {
-			var html = O.select;
 		}
 		renderOption( $( '#infoSelectBox' ), html, O.checked );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 	} else if ( O.checkbox ) {
-		if ( Array.isArray( O.checkbox ) ) {
+		if ( typeof O.checkbox === 'string' ) {
+			var html = O.checkbox;
+		} else {
 			var html = '';
 			$.each( O.checkbox, function( key, val ) {
 				html += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
 			} );
-		} else {
-			var html = O.checkbox;
 		}
 		renderOption( $( '#infoCheckBox' ), html, O.checked );
 	}
