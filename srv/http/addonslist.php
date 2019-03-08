@@ -182,7 +182,6 @@ $addons = array(
 					  .'<br>Midori, local browser, must be upgrade as well.'
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
-					  .'<br>Continue?',
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
@@ -285,7 +284,6 @@ $addons = array(
 	'option'      => array(
 		'confirm'   => 'All RuneUI addons and custom UI modifications'
 					  .'<br><white>will be removed</white>.'
-					  .'<br>Continue?'
 	),
 ),
 /*
@@ -313,8 +311,7 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => array(
-		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.'
-					  .'<br>Continue?',
+		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.',
 		'password'  => array(
 			'message' => '(for connecting to <white>USB root share</white>)'
 						.'<br>Password for user <white>root</white> (blank = rune):',
@@ -405,8 +402,6 @@ $addons = array(
 	'option'      => array(
 		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
 					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
-					  .'<br>'
-					  .'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
 ),
 'noti' => array(
