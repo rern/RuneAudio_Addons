@@ -249,26 +249,38 @@ function info( O ) {
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {
-		var radiohtml = '';
-		$.each( O.radio, function( key, val ) {
-			// <label> for clickable label
-			radiohtml += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
-		} );
-		renderOption( $( '#infoRadio' ), radiohtml, O.checked );
+		if ( Array.isArray( O.select ) ) {
+			var html = '';
+			$.each( O.radio, function( key, val ) {
+				// <label> for clickable label
+				html += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
+			} );
+		} else {
+			var html = O.radio;
+		}
+		renderOption( $( '#infoRadio' ), html, O.checked );
 	} else if ( O.select ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
-		var selecthtml = '';
-		$.each( O.select, function( key, val ) {
-			selecthtml += '<option value="'+ val +'">'+ key +'</option>';
-		} );
-		renderOption( $( '#infoSelectBox' ), selecthtml, O.checked );
+		if ( Array.isArray( O.select ) ) {
+			var html = '';
+			$.each( O.select, function( key, val ) {
+				html += '<option value="'+ val +'">'+ key +'</option>';
+			} );
+		} else {
+			var html = O.select;
+		}
+		renderOption( $( '#infoSelectBox' ), html, O.checked );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 	} else if ( O.checkbox ) {
-		var checkboxhtml = '';
-		$.each( O.checkbox, function( key, val ) {
-			checkboxhtml += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
-		} );
-		renderOption( $( '#infoCheckBox' ), checkboxhtml, O.checked );
+		if ( Array.isArray( O.checkbox ) ) {
+			var html = '';
+			$.each( O.checkbox, function( key, val ) {
+				html += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
+			} );
+		} else {
+			var html = O.checkbox;
+		}
+		renderOption( $( '#infoCheckBox' ), html, O.checked );
 	}
 	
 	$( '#infoOverlay' )
