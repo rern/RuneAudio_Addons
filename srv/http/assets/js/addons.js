@@ -152,6 +152,8 @@ function getoptions() {
 				  icon    : 'info-circle'
 				, title   : title
 				, message : option[ oj ]
+				, cancel  : 1
+				, oklabel : 'Continue'
 				, ok      : function() {
 					sendcommand();
 				}
@@ -163,6 +165,7 @@ function getoptions() {
 				  title   : title
 				, message : option[ oj ]
 				, cancel  : 1
+				, oklabel : 'Continue'
 				, ok      : function() {
 					sendcommand();
 				}
@@ -174,13 +177,13 @@ function getoptions() {
 			info( {
 				  title       : title
 				, message     : ojson.message
-				, cancellabel : ojson.cancellabel ? ojson.cancellabel : 'No'
+				, cancellabel : 'No'
 				, cancelcolor : ojson.checked == 0 ? '#0095d8' : ''
 				, cancel      : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel     : ojson.oklabel ? ojson.oklabel : 'Yes'
+				, oklabel     : 'Yes'
 				, okcolor     : ojson.checked == 0 ? '#34495e' : ''
 				, ok          : function() {
 					opt += '1 ';
