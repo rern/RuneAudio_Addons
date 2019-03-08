@@ -303,7 +303,6 @@ do not isert/append into another insert/append
 /**/			'mgsalign'    => '<css>',
 /**/			'cancellabel' => '<label text>',
 /**/			'oklabel'     => '<label text>',
-/**/			'checked'     => <0/1>
 		),
 		'text'      => array(
 			'message'  => '<message text>',
@@ -328,9 +327,7 @@ do not isert/append into another insert/append
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/			'ckecked' => '<item1>'
-		),
-/**/			'ckecked' => '<item1>'
+/**/			'ckecked' => <index>
 		),
 		'select'    => array(
 			'message' => '<message text>',
@@ -341,7 +338,7 @@ do not isert/append into another insert/append
 				'item2'  => '<value2>',
 /**/			'custom' => '?'
 			),
-/**/			'ckecked' => '<item1>'
+/**/			'ckecked' => <index>
 		),
 		'checkbox'  => array(
 			'message' => '<message text>',
@@ -349,6 +346,8 @@ do not isert/append into another insert/append
 			'list'    => array(
 				'item1'  => '<value1>',
 				'*item2' => '<value2>'
+			),
+/**/			'ckecked' => [ <i0>, <i1> ]
 		),
 	),
 
@@ -394,7 +393,6 @@ do not isert/append into another insert/append
 - each `'key': ...` open a dialog
 - each `'value'` will be appended as `install.sh` arguments / parameters
 - options must be **single quoted** json, `" 'key': 'value' "`
-- `*` leading `itemN` = pre-select items
 - dialog types:
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
@@ -415,18 +413,15 @@ do not isert/append into another insert/append
 		- `type` filetype filter and verify
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `*` pre-select must be specified
-		- `checked` = alternative for pre-select
+		- `checked` = pre-select must be specified
 		- `'?'` custom input marker
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `*` pre-select optional
-		- `checked` = alternative for pre-select
+		- `checked` = pre-select optional
 		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
-		- `*` pre-select optional
-		- `checked` = alternative for pre-select
+		- `checked` = pre-select optional
 - multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
 - blank value get passed as 1 bash argument and must be process as `''`
 - last `key:value` not allow trailing `,`
