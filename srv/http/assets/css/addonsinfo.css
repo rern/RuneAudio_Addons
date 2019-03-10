@@ -224,5 +224,7 @@
 	color: #e0e7ee;
 }
 #infoOverlay code {
-	border-radius: 4px;
+	display: inline-block;
+	line-height: 14px;
+	border-radius: 3px;
 }
