@@ -199,6 +199,7 @@
 	height: 15px;
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
+	vertical-align: 4px;
 }
 #infoSelect button {
 	height: 40px;
