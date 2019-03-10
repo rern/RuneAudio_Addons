@@ -153,6 +153,10 @@
 	margin: 0 auto 10px;
 	color: #7795b4;
 }
+#infoMessage img {
+	-webkit-box-shadow: #555555 0 0 2px 0;
+	box-shadow: #555555 0 0 2px 0;
+}
 .infotextlabel {
 	display: inline-block;
 	text-align: right;
