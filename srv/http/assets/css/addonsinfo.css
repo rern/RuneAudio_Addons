@@ -1,6 +1,7 @@
 /* 'addons' declared in <head> for cache busting */
 .fa {
 	font-family: addons, FontAwesome;
+	vertical-align: middle;
 }
 .fa-addons:before {
 	font-family: addons;
@@ -102,7 +103,7 @@
 	float: left;
 	width: calc( 100% - 70px );
 	color: #e0e7ee;
-	line-height: 40px;
+	line-height: 36px;
 	padding: 0 10px 0 15px;
 	text-align: left;
 }
@@ -199,7 +200,7 @@
 	height: 15px;
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
-	vertical-align: 4px;
+	vertical-align: 2px;
 }
 #infoSelect button {
 	height: 40px;
