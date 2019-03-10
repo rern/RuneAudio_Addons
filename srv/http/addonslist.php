@@ -10,7 +10,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190308',
+	'version'     => '20190310',
 	'revision'    => 'Partial thumbnails update integration'
 					.'<br>...'
 					.'<br>Minor improvements'
