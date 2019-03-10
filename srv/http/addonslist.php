@@ -30,6 +30,7 @@ $addons = array(
 					.'<br>Fix *.m3u parsing in Library'
 					.'<br>Fix Back button for dummy thumbnails album view'
 					.'<br>Improve sorting order and performance'
+					.'<br>Replace dummy thumbnails with `cover.svg` symbolic link'
 					.'<br>...'
 					.'<br>Fix Library home blocks rearranging'
 					.'<br>Fix bookmarks: coverarts, renaming, removing'
