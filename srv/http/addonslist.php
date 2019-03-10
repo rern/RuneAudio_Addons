@@ -3,18 +3,19 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-
+$udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
+$zoom = $redis->hGet( 'settings', 'zoom' );
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190305',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190308',
+	'revision'    => 'Partial thumbnails update integration'
 					.'<br>...'
-					.'<br>Improve progress page layout on mobile'
+					.'<br>Minor improvements'
 					.'<br>...'
-					.'<br>Fix missing disk space warning on install addons',
+					.'<br>Improve progress page layout on mobile',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
@@ -52,10 +53,11 @@ $addons = array(
 			'list'    => array(
 				'Width less than 800px: 0.7' => '0.7',
 				'HD - 1280px: 1.2'           => '1.2',
-				'*Full HD - 1920px: 1.5'     => '1.5',
+				'Full HD - 1920px: 1.5'      => '1.5',
 				'Full HD - no buttons: 1.8'  => '1.8',
 				'Custom'                     => '?'
 			),
+			'checked' => 2
 		),
 		'radio2'     => array(
 			'message' => 'Disable <white>AAC/ALAC</white> support?'
@@ -66,7 +68,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked' => $redis->hGet( 'mpdconf', 'ffmpeg' ),
+			'checked' => ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1 ),
 		),
 	),
 ),
@@ -79,19 +81,7 @@ $addons = array(
 	'buttonlabel' => 'Scan',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'option'      => array(
-		'confirm'   => 'For creating thumbnails from specific path.'
-					  .'<br><w>Long-press CoverArt</w> in Library'
-					  .'<br>for complete update.'
-					  .'<br>Continue?',
-		'text'      => array(
-			'message' => 'Specify path to scan:',
-			'label'   => 'Path',
-			'value'   => '/mnt/MPD/',
-			'width'   => 'max',
-		),
-	),
-	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
+	'hide'        => 1,
 ),
 'aria' =>array(
 	'title'       => 'Aria2 *',
@@ -163,7 +153,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'*<a style="color: #f#0095d8">Rune blue</a>' => 0,
+				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
 				'<a style="color: #ff0000">Red</a>'          => 1,
 				'<a style="color: #00ff00">Green'            => 2,
 				'<a style="color: #ffff00">Yellow'           => 3,
@@ -172,6 +162,7 @@ $addons = array(
 				'<a style="color: #00ffff">Cyan'             => 6,
 				'<a style="color: #ffffff">White'            => 7,
 			),
+			'checked' => 0
 		),
 	),
 ),
@@ -191,7 +182,6 @@ $addons = array(
 					  .'<br>Midori, local browser, must be upgrade as well.'
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
-					  .'<br>Continue?',
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
@@ -216,7 +206,7 @@ $addons = array(
 				'9'  => 9,
 				'10' => 10,
 			),
-			'checked' => 5,
+			'checked' => 2,
 		),
 	),
 ),
@@ -294,7 +284,6 @@ $addons = array(
 	'option'      => array(
 		'confirm'   => 'All RuneUI addons and custom UI modifications'
 					  .'<br><white>will be removed</white>.'
-					  .'<br>Continue?'
 	),
 ),
 /*
@@ -322,8 +311,7 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => array(
-		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.'
-					  .'<br>Continue?',
+		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.',
 		'password'  => array(
 			'message' => '(for connecting to <white>USB root share</white>)'
 						.'<br>Password for user <white>root</white> (blank = rune):',
@@ -370,9 +358,10 @@ $addons = array(
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'*Install <white>WebUI</white> alternative?'            => '1',
-				'*Start <white>Transmission</white> on system startup?' => '1'
+				'Install <white>WebUI</white> alternative?'            => '1',
+				'Start <white>Transmission</white> on system startup?' => '1'
 			),
+			'checked' => array( 0, 1 )
 		),
 	),
 ),
@@ -394,8 +383,8 @@ $addons = array(
 	'option'      => array(
 		'radio'     => array(
 			'message' => '<white>Audio output</white> when power off USB DAC:',
-			'list'    => array_flip( $redis->hGetAll( 'udaclist' ) ),
-			'checked' => 'bcm2835 ALSA_1',
+			'list'    => $udaclist,
+			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
 		),
 	),
 	'hide'        => $runeversion === '0.5' ? 1 : 0,
@@ -413,8 +402,6 @@ $addons = array(
 	'option'      => array(
 		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
 					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
-					  .'<br>'
-					  .'<br><code>&emsp;Ok&emsp;</code> to continue'
 	),
 ),
 'noti' => array(
@@ -439,7 +426,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked' => $redis->hGet( 'settings', 'notify' )
+			'checked' => $redis->hGet( 'settings', 'notify' ) - 1
 		),
 	),
 ),
@@ -460,7 +447,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => '2.0',
 				'Custom'                     => '?'
 			),
-			'checked' => $redis->hGet( 'settings', 'zoom' )
+			'checked' => $zoom == '0.7' ? 0 : ( $zoom == '1.5' ? 1 : ( $zoom == '1.8' ? 2 : 3 ) )
 		),
 	),
 ),
@@ -478,7 +465,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $redis->hGet( 'settings', 'pointer' )
+			'checked'  => $redis->hGet( 'settings', 'pointer' ) === 'yes' ? 0 : 1
 		),
 	),
 ),
