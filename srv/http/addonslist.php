@@ -30,6 +30,7 @@ $addons = array(
 					.'<br>Add option sort by artist for Browse By CoverArt'
 					.'<br>Fix *.m3u parsing in Library'
 					.'<br>Fix Back button for dummy thumbnails album view'
+					.'<br>Fix screenoff for local browser'
 					.'<br>Improve sorting order and performance'
 					.'<br>Replace dummy thumbnails with `cover.svg` symbolic link'
 					.'<br>...'
