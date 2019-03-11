@@ -5,7 +5,7 @@ $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
-$timeout = exec( "export DISPLAY=:0; xset q | grep timeout | awk '{print $2}'" ) / 60;
+$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $2}'" ) / 60;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -42,16 +42,16 @@ $addons = array(
 					.'<br>Switch page - tap swipe bar left / right'
 					.'<br>Refresh browser - long-press swipe bar / bottom bar'
 					.'<br>...'
-					.'<br>Add <white>Browse By CoverArt</white>'
+					.'<br>Add <w>Browse By CoverArt</w>'
 					.'<br>Fix scrolling bookmark titles',
 	'maintainer'  => 'r e r n',
-	'description' => 'Lots of new features. More <white>minimalism</white> and more <white>fluid</white> layout.',
+	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
 		'radio1'     => array(
-			'message' => 'Set <white>zoom level</white> for display directly connect to RPi.'
+			'message' => 'Set <w>zoom level</w> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
 			'list'    => array(
@@ -64,7 +64,7 @@ $addons = array(
 			'checked' => 2
 		),
 		'radio2'     => array(
-			'message' => 'Disable <white>AAC/ALAC</white> support?'
+			'message' => 'Disable <w>AAC/ALAC</w> support?'
 						.'<br>Disable if no *.m4a files.'
 						.'<br>It makes database update faster.'
 						.'<br>(This can be changed later in MPD > FFmpeg)',
@@ -100,7 +100,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 	'option'      => array(
 		'yesno'     => array(
-			'message' => 'Start <white>Aria2</white> on system startup?'
+			'message' => 'Start <w>Aria2</w> on system startup?'
 		)
 	),
 ),
@@ -122,9 +122,9 @@ $addons = array(
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
 	'maintainer'  => 'r e r n',
-	'description' => 'Best of Audio Distro - <white>RuneAudio</white> 0.3 + Addons Menu ready (ArchLinux MPD)'
-					.'<br>Best of Video Distro - <white>OSMC</white> 2017-08-1 (Raspbian Kodi)'
-					.'<br>Best of Dual Boot - <white>NOOBS</white> 2.4',
+	'description' => 'Best of Audio Distro - <w>RuneAudio</w> 0.3 + Addons Menu ready (ArchLinux MPD)'
+					.'<br>Best of Video Distro - <w>OSMC</w> 2017-08-1 (Raspbian Kodi)'
+					.'<br>Best of Dual Boot - <w>NOOBS</w> 2.4',
 	'thumbnail'   => '/img/addons/thumbdual.gif',
 	'buttonlabel' => 'Link',
 	'sourcecode'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
@@ -140,7 +140,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
 	'hide'        => $redisaddons[ 'expa' ] ? 1 : 0,
 	'option'      => array(
-		'wait'      => '<white>USB drives</white> should be'
+		'wait'      => '<w>USB drives</w> should be'
 					  .'<br>unmount and removed before proceeding.'
 	),
 ),
@@ -164,7 +164,7 @@ $addons = array(
 				'<a style="color: #0000ff">Blue'             => 4,
 				'<a style="color: #ff00ff">Magenta'          => 5,
 				'<a style="color: #00ffff">Cyan'             => 6,
-				'<a style="color: #ffffff">White'            => 7,
+				'<a style="color: #ffffff">w'            => 7,
 			),
 			'checked' => 0
 		),
@@ -176,13 +176,13 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Upgrade MPD to latest version, 0.21.4 as of 20190104:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But local browser <white>Midori</white>, if enabled, needs to be replaced with Chromium.',
+					.'<br>But local browser <w>Midori</w>, if enabled, needs to be replaced with Chromium.',
 	'thumbnail'   => '/img/addons/thumbmpdu.png',
 	'buttonlabel' => 'Upgrade',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
 	'option'      => array(
-		'confirm'   => 'Once installed, MPD <white>cannot be downgraded</white>.'
+		'confirm'   => 'Once installed, MPD <w>cannot be downgraded</w>.'
 					  .'<br>Midori, local browser, must be upgrade as well.'
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
@@ -287,7 +287,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/ui_reset/reset.sh',
 	'option'      => array(
 		'confirm'   => 'All RuneUI addons and custom UI modifications'
-					  .'<br><white>will be removed</white>.'
+					  .'<br><w>will be removed</w>.'
 	),
 ),
 /*
@@ -315,27 +315,27 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => array(
-		'confirm'   => 'Once installed, Samba <white>cannot be downgraded</white>.',
+		'confirm'   => 'Once installed, Samba <w>cannot be downgraded</w>.',
 		'password'  => array(
-			'message' => '(for connecting to <white>USB root share</white>)'
-						.'<br>Password for user <white>root</white> (blank = rune):',
+			'message' => '(for connecting to <w>USB root share</w>)'
+						.'<br>Password for user <w>root</w> (blank = rune):',
 			'label'   => 'Password'
 		),
 		'skip'      => 'Keep current Samba settings and shares?',
-		'wait'      => 'Connect a <white>USB drive</white> before continue.'
+		'wait'      => 'Connect a <w>USB drive</w> before continue.'
 					  .'<br>1st drive will be used for shared directories.',
 		'text1'     => array(
-			'message' => '<white>File Server</white>:',
+			'message' => '<w>File Server</w>:',
 			'label'   => 'Name',
 			'value'   => 'RuneAudio'
 		),
 		'text2'     => array(
-			'message' => '<white>Read-Only</white> directory:',
+			'message' => '<w>Read-Only</w> directory:',
 			'label'   => 'Name',
 			'value'   => 'ro'
 		),
 		'text3'     => array(
-			'message' => '<white>Read-Write</white> directory:',
+			'message' => '<w>Read-Write</w> directory:',
 			'label'   => 'Name',
 			'value'   => 'rw'
 		),
@@ -356,14 +356,14 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
 	'option'      => array(
 		'password'  => array(
-			'message' => 'Password for user <white>root</white> (blank = no password):',
+			'message' => 'Password for user <w>root</w> (blank = no password):',
 			'label'   => 'Password',
 		),
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'Install <white>WebUI</white> alternative?'            => '1',
-				'Start <white>Transmission</white> on system startup?' => '1'
+				'Install <w>WebUI</w> alternative?'            => '1',
+				'Start <w>Transmission</w> on system startup?' => '1'
 			),
 			'checked' => array( 0, 1 )
 		),
@@ -374,19 +374,19 @@ $addons = array(
 	'version'     => '20180805',
 	'revision'    => 'Improve installation'
 					.'<br>...'
-					.'<br><white>Audio output</white> can be selected for preset when power off USB DAC'
+					.'<br><w>Audio output</w> can be selected for preset when power off USB DAC'
 					.'<br>...'
-					.'<br>Use <white>udev rules</white> to auto switch',
+					.'<br>Use <w>udev rules</w> to auto switch',
 	'maintainer'  => 'r e r n',
 	'description' => 'Automatically switch to/from MPD Audio output and reload configuration:'
-					.'<br>- USB DAC <white>power on</white> - switch to <white>USB DAC</white>'
-					.'<br>- USB DAC <white>power off</white> - switch to <white>preset Audio output</white>',
+					.'<br>- USB DAC <w>power on</w> - switch to <w>USB DAC</w>'
+					.'<br>- USB DAC <w>power off</w> - switch to <w>preset Audio output</w>',
 	'thumbnail'   => '/img/addons/thumbudac.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/USB_DAC/install.sh',
 	'option'      => array(
 		'radio'     => array(
-			'message' => '<white>Audio output</white> when power off USB DAC:',
+			'message' => '<w>Audio output</w> when power off USB DAC:',
 			'list'    => $udaclist,
 			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
 		),
@@ -398,7 +398,7 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Webradio files import. Adding files to <code>/mnt/MPD/Webradio/</code> alone will not work.'
 					.'<br>Add files at anytime then run this addon to refresh Webradio list.'
-					.'<br><white>Webradio Sorting</white> should be installed after import on 0.3.',
+					.'<br><w>Webradio Sorting</w> should be installed after import on 0.3.',
 	'thumbnail'   => '/img/addons/thumbwebr.png',
 	'buttonlabel' => 'Import',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
@@ -476,7 +476,7 @@ $addons = array(
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
 	'maintainer'  => 'r e r n',
-	'description' => 'Change / set screen off timeout for local browser.',
+	'description' => 'Set screen off timeout, <w>DPMS (Energy Star) standby</w>, for local browser.',
 	'buttonlabel' => 'Change',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/set_screenoff',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/set_screenoff/set.sh',
@@ -489,7 +489,7 @@ $addons = array(
 				'15 minutes'      => 15,
 				'Disable' => 0,
 			),
-			'checked'  => !$timeout ? 3 : ( $timeout == 5 ? 0 : ( $timeout == 10 ? 1 : 2 ) )
+			'checked'  => !$standby ? 3 : ( $standby == 5 ? 0 : ( $standby == 10 ? 1 : 2 ) )
 		),
 	),
 ),
@@ -497,19 +497,19 @@ $addons = array(
 	'title'       => 'Settings+Databases Backup',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Backup all RuneAudio <white>settings and databases</white>.',
+	'description' => 'Backup all RuneAudio <w>settings and databases</w>.',
 	'thumbnail'   => '/img/addons/thumbback.png',
 	'buttonlabel' => 'Backup',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
 	'option'      => array(
-		'confirm'   => 'Backup all RuneAudio <white>settings and databases</white>?',
+		'confirm'   => 'Backup all RuneAudio <w>settings and databases</w>?',
 	),
 ),
 'rest' => array(
 	'title'       => 'Settings+Databases Restore',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Restore all RuneAudio <white>settings and databases</white>.',
+	'description' => 'Restore all RuneAudio <w>settings and databases</w>.',
 	'thumbnail'   => '/img/addons/thumbback.png',
 	'buttonlabel' => 'Restore',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/backup-restore',
