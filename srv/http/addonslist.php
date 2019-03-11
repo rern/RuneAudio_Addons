@@ -485,10 +485,10 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Screen off timeout:',
 			'list'    => array(
-				'5 minutes'       => 5,
-				'10 minutes'      => 10,
-				'15 minutes'      => 15,
-				'Disable' => 0,
+				'5 minutes'  => 5,
+				'10 minutes' => 10,
+				'15 minutes' => 15,
+				'Disable'    => 0,
 			),
 			'checked'  => !$standby ? 3 : ( $standby == 5 ? 0 : ( $standby == 10 ? 1 : 2 ) )
 		),
