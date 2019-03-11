@@ -5,7 +5,7 @@ $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
-$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $2}'" ) / 60;
+$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
