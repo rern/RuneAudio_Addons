@@ -5,6 +5,7 @@ $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
+$timeout = exec( "export DISPLAY=:0; xset q | grep timeout | awk '{print $2}'" ) / 60;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -469,6 +470,26 @@ $addons = array(
 				'Disable' => 'no',
 			),
 			'checked'  => $redis->hGet( 'settings', 'pointer' ) === 'yes' ? 0 : 1
+		),
+	),
+),
+'soff' => array(
+	'title'       => 'Setting - Screen Off Timeout',
+	'maintainer'  => 'r e r n',
+	'description' => 'Change / set screen off timeout for local browser.',
+	'buttonlabel' => 'Change',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/set_screenoff',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/set_screenoff/set.sh',
+	'option'      => array(
+		'radio'     => array(
+			'message' => 'Screen off timeout:',
+			'list'    => array(
+				'5 minutes'       => 5,
+				'10 minutes'      => 10,
+				'15 minutes'      => 15,
+				'Disable' => 0,
+			),
+			'checked'  => !$timeout ? 3 : ( $timeout == 5 ? 0 : ( $timeout == 10 ? 1 : 2 ) )
 		),
 	),
 ),
