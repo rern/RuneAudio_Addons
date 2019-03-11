@@ -25,7 +25,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190311',
+	'version'     => '20190312',
 	'revision'    => 'Add partial update thumbnails with directory context menu'
 					.'<br>Add option sort by artist for Browse By CoverArt'
 					.'<br>Fix *.m3u parsing in Library'
