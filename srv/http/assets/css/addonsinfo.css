@@ -202,7 +202,13 @@
 #infoOverlay input[type=checkbox] {
 	height: 15px;
 	margin: 5px;
-	transform: matrix(1.8, 0, 0, 1.8, 0, 3); /* scaleX, rotate, skew, scaleY, x, y */
+	transform: matrix(1.8, 0, 0, 1.8, 0, 0); /* scaleX, rotate, skew, scaleY, x, y */
+}
+@media ( hover:hover ) {
+	#infoOverlay input[type=radio],
+	#infoOverlay input[type=checkbox] {
+		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
+	}
 }
 #infoSelect button {
 	height: 40px;
