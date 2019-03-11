@@ -1,7 +1,6 @@
 /* 'addons' declared in <head> for cache busting */
 .fa {
 	font-family: addons, FontAwesome;
-	vertical-align: middle;
 }
 .fa-addons:before {
 	font-family: addons;
@@ -79,6 +78,10 @@
 	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 }
+#infoOverlay .fa {
+	vertical-align: -2px;
+}
+
 #infoOverlay a {
 	text-decoration: none;
 }
@@ -199,8 +202,13 @@
 #infoOverlay input[type=checkbox] {
 	height: 15px;
 	margin: 5px;
-	transform: matrix(1.8, 0, 0, 1.8, 0, 2);
-	vertical-align: 2px;
+	transform: matrix(1.8, 0, 0, 1.8, 0, 0); /* scaleX, rotate, skew, scaleY, x, y */
+}
+@media ( hover:hover ) {
+	#infoOverlay input[type=radio],
+	#infoOverlay input[type=checkbox] {
+		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
+	}
 }
 #infoSelect button {
 	height: 40px;
