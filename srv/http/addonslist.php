@@ -25,8 +25,11 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190312',
-	'revision'    => 'Add partial update thumbnails with directory context menu'
+	'version'     => '20190313',
+	'revision'    => 'Fix add webradio bug'
+					.'<br>Fix track sorting in Libray'
+					.'<br>...'
+					.'<br>Add partial update thumbnails with directory context menu'
 					.'<br>Add option sort by artist for Browse By CoverArt'
 					.'<br>Fix *.m3u parsing in Library'
 					.'<br>Fix Back button for dummy thumbnails album view'
@@ -41,10 +44,7 @@ $addons = array(
 					.'<br>Library sorting - case insensitive'
 					.'<br>Index bar - greyed out for blank list'
 					.'<br>Switch page - tap swipe bar left / right'
-					.'<br>Refresh browser - long-press swipe bar / bottom bar'
-					.'<br>...'
-					.'<br>Add <w>Browse By CoverArt</w>'
-					.'<br>Fix scrolling bookmark titles',
+					.'<br>Refresh browser - long-press swipe bar / bottom bar',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
