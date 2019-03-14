@@ -25,8 +25,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190313',
-	'revision'    => 'Fix add webradio bug'
+	'version'     => '20190314',
+	'revision'    => 'Fix single tap add + play'
+					.'<br>...'
+					.'<br>Fix add webradio bug'
 					.'<br>Fix track sorting in Libray'
 					.'<br>...'
 					.'<br>Add partial update thumbnails with directory context menu'
@@ -35,16 +37,7 @@ $addons = array(
 					.'<br>Fix Back button for dummy thumbnails album view'
 					.'<br>Fix screenoff for local browser'
 					.'<br>Improve sorting order and performance'
-					.'<br>Replace dummy thumbnails with `cover.svg` symbolic link'
-					.'<br>...'
-					.'<br>Fix Library home blocks rearranging'
-					.'<br>Fix bookmarks: coverarts, renaming, removing'
-					.'<br>Fix high CPU cycles on local browser when playback webradio(remove animations)'
-					.'<br>Replace bookmark labels scrolling with ellipse'
-					.'<br>Library sorting - case insensitive'
-					.'<br>Index bar - greyed out for blank list'
-					.'<br>Switch page - tap swipe bar left / right'
-					.'<br>Refresh browser - long-press swipe bar / bottom bar',
+					.'<br>Replace dummy thumbnails with `cover.svg` symbolic link',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
