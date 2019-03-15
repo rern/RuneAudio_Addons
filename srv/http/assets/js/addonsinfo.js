@@ -17,6 +17,7 @@ info( {                            // default / custom
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
+	fileimage     : 1              // 0 / 1 / 2              (show image from file: 1 = replace message, 2 = append message )
 	required      : 1              // 0 / 1                  (password required)
 	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
 	checked       : N              // (none) / N             (pre-select input index)
@@ -218,7 +219,7 @@ function info( O ) {
 		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
-		$( '#infoFileBox' ).on( 'change', function() {
+		$( '#infoFileBox' ).change( function() {
 			var filename = this.files[ 0 ].name;
 			if ( O.filetype && filename.indexOf( O.filetype ) === -1 ) {
 				O.ok = '';
@@ -238,7 +239,20 @@ function info( O ) {
 				} );
 				return;
 			}
-			$( '#infoFilename' ).html( '&ensp;'+ filename );
+			if ( O.fileimage ) {
+				var reader = new FileReader();    // create filereader
+				reader.onload = function ( e ) {  // prepare onload callback
+					var img = '<img src="'+ e.target.result +'">'; // base64
+					if ( O.fileimage === 1 ) {
+						$( '#infoMessage' ).html( img );
+					} else {
+						$( '#infoMessage' ).append( img );
+					}
+				}
+				reader.readAsDataURL( this.files[ 0 ] ); // load filereader
+			} else {
+				$( '#infoFilename' ).html( '&ensp;'+ filename );
+			}
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
