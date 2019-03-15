@@ -142,14 +142,30 @@ installPackageFailed() {
 	title -nt "Then install / update again."
 	exit
 }
+i=0
+pacmanSync() {
+	pacman -Sy | tee sync.log
+	if (( $( cat sync.log | grep -c error ) > 0 )) && (( $i < 3 ));then
+		echo -e "$info Error - Synchronizing package databases"
+		(( i++ ))
+		echo "Trying again #$i..."
+		sleep 3
+		pacmanSync
+	elif (( $i == 3 )); then
+		title "$warn Package databases synchronizing failed."
+		title -nt "Try again later."
+		exit
+	fi
+}
 prefetch=0
 installPackages() {
 	pkgs=$1        # packages
 	checklist=$2   # all packages and depends
 	fallbackurl=$3 # fallback packages tarball url (optional)
 	echo -e "$bar Prefetch packages ..."
-	rm -f /var/lib/pacman/db.lck
-	pacman -Syw --noconfirm $pkgs
+	rm -f /var/lib/pacman/db.lck sync.log
+	pacmanSync
+	pacman -Sw --noconfirm $pkgs
 	for file in $checklist; do
 		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
 		if (( findpkg == 0 )); then
