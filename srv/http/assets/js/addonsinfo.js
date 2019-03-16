@@ -70,11 +70,6 @@ var html = heredoc( function() { /*
 			<div id="infoPassword" class="infocontent">
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
-			<div id="infoFile" class="infocontent">
-				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
-				<span id="infoFilename"></span>
-				<input type="file" class="infoinput" id="infoFileBox">
-			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
 			<div id="infoSelect" class="infocontent">
@@ -82,6 +77,11 @@ var html = heredoc( function() { /*
 			</div>
 		</div>
 		<div id="infoButtons">
+			<div id="infoFile" class="infobtn">
+				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
+				<span id="infoFilename"></span>
+				<input type="file" class="infoinput" id="infoFileBox">
+			</div>
 			<a id="infoCancel" class="infobtn infobtn-default"></a>
 			<a id="infoButton" class="infobtn infobtn-default"></a>
 			<a id="infoOk" class="infobtn infobtn-primary"></a>
@@ -242,11 +242,23 @@ function info( O ) {
 			if ( O.fileimage ) {
 				var reader = new FileReader();    // create filereader
 				reader.onload = function ( e ) {  // prepare onload callback
-					var img = '<img src="'+ e.target.result +'">'; // base64
+					var base64 = e.target.result;
+					var imghtml = '<img class="newimg" src="'+ base64 +'">';
+					$( '.newimg' ).remove();
 					if ( O.fileimage === 1 ) {
-						$( '#infoMessage' ).html( img );
+						$( '#infoMessage' ).html( imghtml );
 					} else {
-						$( '#infoMessage' ).append( img );
+						$( '#infoMessage' ).append( imghtml );
+					}
+					if ( O.filewh ) {
+						var img = new Image();
+						img.src = base64; // base64
+						img.onload = function () {
+							var w = this.width;
+							var h = this.height;
+							$( '.imagewh' ).remove();
+							$( '#infoMessage' ).append( '<div class="imagewh"><span></span><span>'+ w +' x '+ h +'</span></div>' );
+						}
 					}
 				}
 				reader.readAsDataURL( this.files[ 0 ] ); // load filereader
