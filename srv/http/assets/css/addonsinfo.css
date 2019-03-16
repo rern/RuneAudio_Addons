@@ -154,8 +154,19 @@
 	max-height: 800px;
 	width: fit-content;
 	text-align: left;
-	margin: 0 auto 10px;
+	margin: 0 auto;
 	color: #7795b4;
+}
+#infoMessage img {
+	margin: 10px 10px 0 10px;
+	width: 100px;
+	height: 100px;
+}
+.imagewh span {
+	display: inline-block;
+	width: 100px;
+	margin: 0 10px;
+	font-size: 14px;
 }
 #infoMessage img {
 	-webkit-box-shadow: #555555 0 0 2px 0;
@@ -219,6 +230,10 @@
 #infoSelect a {
 	margin: 0;
 	padding-left: 10px;
+}
+#infoFile {
+	display: block;
+	margin-bottom: 10px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
