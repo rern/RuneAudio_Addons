@@ -215,6 +215,7 @@ function info( O ) {
 			.html( O.filelabel )
 			.css( 'background', '#34495e' )
 			.off( 'click' );
+		$( '#infoOk, #infoCancel' ).hide();
 		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
@@ -246,6 +247,7 @@ function info( O ) {
 					O.ok();
 					O.ok = '';
 				} );
+			$( '#infoOk, #infoCancel' ).show();
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {
