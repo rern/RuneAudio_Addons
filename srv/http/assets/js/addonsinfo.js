@@ -15,7 +15,7 @@ info( {                            // default / custom
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
-	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
+	fileoklabel   : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
 	required      : 1              // 0 / 1                  (password required)
 	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
@@ -209,13 +209,13 @@ function info( O ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.filelabel ) {
+	} else if ( O.fileoklabel ) {
 		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoOk' )
-			.html( O.filelabel )
+			.html( O.fileoklabel )
 			.css( 'background', '#34495e' )
+			.hide()
 			.off( 'click' );
-		$( '#infoOk, #infoCancel' ).hide();
 		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
@@ -229,11 +229,11 @@ function info( O ) {
 					, message : 'File extension must be: <code>'+ O.filetype +'</code>'
 					, ok      : function() {
 						info( {
-							  title     : O.title
-							, message   : O.message
-							, filelabel : O.filelabel
-							, filetype  : O.filetype
-							, ok        : O.ok
+							  title       : O.title
+							, message     : O.message
+							, fileoklabel : O.fileoklabel
+							, filetype    : O.filetype
+							, ok          : O.ok
 						} );
 					}
 				} );
@@ -243,11 +243,11 @@ function info( O ) {
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
+				.show()
 				.click( function() {
 					O.ok();
 					O.ok = '';
 				} );
-			$( '#infoOk, #infoCancel' ).show();
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {

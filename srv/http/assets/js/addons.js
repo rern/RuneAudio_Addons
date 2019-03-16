@@ -260,11 +260,11 @@ function getoptions() {
 		case 'file':
 			var ojson = option[ oj ];
 			info( {
-				  title     : title
-				, message   : ojson.message
-				, filelabel : ojson.label
-				, filetype  : ojson.type
-				, ok        : function() {
+				  title       : title
+				, message     : ojson.message
+				, fileoklabel : ojson.label
+				, filetype    : ojson.type
+				, ok          : function() {
 					var file = $( '#infoFileBox' )[ 0 ].files[ 0 ];
 					var fd = new FormData();
 					fd.append( 'file', file );
