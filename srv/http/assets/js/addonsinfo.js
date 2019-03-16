@@ -210,18 +210,18 @@ function info( O ) {
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
 	} else if ( O.fileoklabel ) {
-		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoOk' )
 			.html( O.fileoklabel )
-			.css( 'background', '#34495e' )
-			.hide()
-			.off( 'click' );
+			.hide();
 		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
+		$( '#infoFile, #infoFileLabel' ).show();
+		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoFileBox' ).change( function() {
 			var filename = this.files[ 0 ].name;
-			if ( O.filetype && filename.indexOf( O.filetype ) === -1 ) {
+			var ext = filename.split( '.' ).pop();
+			if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
 				O.ok = '';
 				info( {
 					  icon    : 'warning'
@@ -239,17 +239,10 @@ function info( O ) {
 				} );
 				return;
 			}
-			$( '#infoFilename' ).html( '&ensp;'+ filename );
+			$( '#infoOk' ).show();
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
-			$( '#infoOk' )
-				.css( 'background', '' )
-				.show()
-				.click( function() {
-					O.ok();
-					O.ok = '';
-				} );
+			$( '#infoFilename' ).html( '&ensp;'+ filename );
 		} );
-		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {
 		if ( typeof O.radio === 'string' ) {
 			var html = O.radio;
