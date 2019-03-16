@@ -17,7 +17,6 @@ info( {                            // default / custom
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
 	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
-	fileimage     : 1              // 0 / 1 / 2              (show image from file: 1 = replace message, 2 = append message )
 	required      : 1              // 0 / 1                  (password required)
 	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
 	checked       : N              // (none) / N             (pre-select input index)
@@ -239,32 +238,7 @@ function info( O ) {
 				} );
 				return;
 			}
-			if ( O.fileimage ) {
-				var reader = new FileReader();    // create filereader
-				reader.onload = function ( e ) {  // prepare onload callback
-					var base64 = e.target.result;
-					var imghtml = '<img class="newimg" src="'+ base64 +'">';
-					$( '.newimg' ).remove();
-					if ( O.fileimage === 1 ) {
-						$( '#infoMessage' ).html( imghtml );
-					} else {
-						$( '#infoMessage' ).append( imghtml );
-					}
-					if ( O.filewh ) {
-						var img = new Image();
-						img.src = base64; // base64
-						img.onload = function () {
-							var w = this.width;
-							var h = this.height;
-							$( '.imagewh' ).remove();
-							$( '#infoMessage' ).append( '<div class="imagewh"><span></span><span>'+ w +' x '+ h +'</span></div>' );
-						}
-					}
-				}
-				reader.readAsDataURL( this.files[ 0 ] ); // load filereader
-			} else {
-				$( '#infoFilename' ).html( '&ensp;'+ filename );
-			}
+			$( '#infoFilename' ).html( '&ensp;'+ filename );
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoOk' )
 				.css( 'background', '' )
