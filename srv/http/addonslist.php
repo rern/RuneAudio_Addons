@@ -23,12 +23,14 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190314',
-	'revision'    => 'Fix single tap add + play'
+	'version'     => '20190317',
+	'revision'    => 'Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
+					.'<br>Fix sorting and index bar in Dirble'
+					.'<br>Show image icons in Dirble'
 					.'<br>...'
+					.'<br>Fix single tap add + play'
 					.'<br>Fix add webradio bug'
 					.'<br>Fix track sorting in Libray'
-					.'<br>...'
 					.'<br>Add partial update thumbnails with directory context menu'
 					.'<br>Add option sort by artist for Browse By CoverArt'
 					.'<br>Fix *.m3u parsing in Library'
