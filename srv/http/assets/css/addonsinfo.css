@@ -81,7 +81,10 @@
 #infoOverlay .fa {
 	vertical-align: -2px;
 }
-
+#infoButtons .fa {
+	font-size: 24px;
+	margin-right: 5px;
+}
 #infoOverlay a {
 	text-decoration: none;
 }
@@ -154,12 +157,8 @@
 	max-height: 800px;
 	width: fit-content;
 	text-align: left;
-	margin: 0 auto 10px;
+	margin: 0 auto;
 	color: #7795b4;
-}
-#infoMessage img {
-	-webkit-box-shadow: #555555 0 0 2px 0;
-	box-shadow: #555555 0 0 2px 0;
 }
 .infotextlabel {
 	display: inline-block;
@@ -219,6 +218,10 @@
 #infoSelect a {
 	margin: 0;
 	padding-left: 10px;
+}
+#infoFile {
+	display: block;
+	margin-bottom: 10px;
 }
 #infoButtons {
 	padding: 10px 0 20px 0;

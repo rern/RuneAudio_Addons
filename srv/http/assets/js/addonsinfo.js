@@ -15,7 +15,7 @@ info( {                            // default / custom
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
-	filelabel     : 'LABEL'        // (blank) / LABEL        (upload button label)
+	fileoklabel   : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
 	required      : 1              // 0 / 1                  (password required)
 	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
@@ -33,6 +33,7 @@ info( {                            // default / custom
 	cancellabel   : 'LABEL'        // Cancel / LABEL         (cancel button label)
 	cancelcolor   : 'COLOR'        // #34495e / COLOR        (cancel button color)
 	cancel        : 'FUNCTION'     // (hide) / FUNCTION      (cancel click function)
+	buttonwidth   : 0              // 0 / 1                  (keep same button witdth)
 	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
 	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
 	button        : 'FUNCTION'     // required FUNCTION      (button click function)
@@ -69,11 +70,6 @@ var html = heredoc( function() { /*
 			<div id="infoPassword" class="infocontent">
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
 			</div>
-			<div id="infoFile" class="infocontent">
-				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
-				<span id="infoFilename"></span>
-				<input type="file" class="infoinput" id="infoFileBox">
-			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
 			<div id="infoSelect" class="infocontent">
@@ -81,6 +77,11 @@ var html = heredoc( function() { /*
 			</div>
 		</div>
 		<div id="infoButtons">
+			<div id="infoFile" class="infobtn">
+				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
+				<span id="infoFilename"></span>
+				<input type="file" class="infoinput" id="infoFileBox">
+			</div>
 			<a id="infoCancel" class="infobtn infobtn-default"></a>
 			<a id="infoButton" class="infobtn infobtn-default"></a>
 			<a id="infoOk" class="infobtn infobtn-primary"></a>
@@ -96,7 +97,8 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	typeof O === 'object' ? $( '#infoCancel' ).click() : infoReset();
+	$( '#infoCancel' ).click();
+	infoReset();
 } );
 
 function infoReset() {
@@ -209,18 +211,19 @@ function info( O ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.filelabel ) {
-		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+	} else if ( O.fileoklabel ) {
 		$( '#infoOk' )
-			.html( O.filelabel )
-			.css( 'background', '#34495e' )
-			.off( 'click' );
+			.html( O.fileoklabel )
+			.hide();
 		$( '#infoFileLabel' ).click( function() {
 			$( '#infoFileBox' ).click();
 		} );
-		$( '#infoFileBox' ).on( 'change', function() {
+		$( '#infoFile, #infoFileLabel' ).show();
+		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+		$( '#infoFileBox' ).change( function() {
 			var filename = this.files[ 0 ].name;
-			if ( O.filetype && filename.indexOf( O.filetype ) === -1 ) {
+			var ext = filename.split( '.' ).pop();
+			if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
 				O.ok = '';
 				info( {
 					  icon    : 'warning'
@@ -228,26 +231,20 @@ function info( O ) {
 					, message : 'File extension must be: <code>'+ O.filetype +'</code>'
 					, ok      : function() {
 						info( {
-							  title     : O.title
-							, message   : O.message
-							, filelabel : O.filelabel
-							, filetype  : O.filetype
-							, ok        : O.ok
+							  title       : O.title
+							, message     : O.message
+							, fileoklabel : O.fileoklabel
+							, filetype    : O.filetype
+							, ok          : O.ok
 						} );
 					}
 				} );
 				return;
 			}
-			$( '#infoFilename' ).html( '&ensp;'+ filename );
+			$( '#infoOk' ).show();
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
-			$( '#infoOk' )
-				.css( 'background', '' )
-				.click( function() {
-					O.ok();
-					O.ok = '';
-				} );
+			$( '#infoFilename' ).html( '&ensp;'+ filename );
 		} );
-		$( '#infoFile, #infoFileLabel' ).show();
 	} else if ( O.radio ) {
 		if ( typeof O.radio === 'string' ) {
 			var html = O.radio;
@@ -294,6 +291,15 @@ function info( O ) {
 		var calcW = maxW < infoW ? maxW : infoW;
 		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
 		$( '.infoinput' ).css( 'width', boxW +'px' );
+	}
+	if ( O.buttonwidth ) {
+		var widest = 0;
+		var w;
+		$.each( $( '.infobtn' ), function() {
+			w = $( this ).outerWidth();
+			if ( w > widest ) widest = w;
+		} );
+		$( '.infobtn' ).css( 'min-width', widest +'px' );
 	}
 }
 
