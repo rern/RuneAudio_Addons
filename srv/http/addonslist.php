@@ -11,12 +11,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190311',
-	'revision'    => 'Partial thumbnails update integration'
+	'version'     => '20190317',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>Minor improvements'
-					.'<br>...'
-					.'<br>Improve progress page layout on mobile',
+					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
