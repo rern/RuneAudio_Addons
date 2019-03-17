@@ -96,7 +96,8 @@ $( '#infoOverlay' ).keypress( function( e ) {
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
-	typeof O === 'object' ? $( '#infoCancel' ).click() : infoReset();
+	if ( typeof O === 'object' ) $( '#infoCancel' ).click();
+	infoReset();
 } );
 
 function infoReset() {
