@@ -81,7 +81,10 @@
 #infoOverlay .fa {
 	vertical-align: -2px;
 }
-
+#infoButtons .fa {
+	font-size: 24px;
+	margin-right: 5px;
+}
 #infoOverlay a {
 	text-decoration: none;
 }
