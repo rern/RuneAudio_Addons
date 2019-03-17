@@ -33,6 +33,7 @@ info( {                            // default / custom
 	cancellabel   : 'LABEL'        // Cancel / LABEL         (cancel button label)
 	cancelcolor   : 'COLOR'        // #34495e / COLOR        (cancel button color)
 	cancel        : 'FUNCTION'     // (hide) / FUNCTION      (cancel click function)
+	buttonwidth   : 0              // 0 / 1                  (keep same button witdth)
 	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
 	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
 	button        : 'FUNCTION'     // required FUNCTION      (button click function)
@@ -290,6 +291,15 @@ function info( O ) {
 		var calcW = maxW < infoW ? maxW : infoW;
 		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
 		$( '.infoinput' ).css( 'width', boxW +'px' );
+	}
+	if ( O.buttonwidth ) {
+		var widest = 0;
+		var w;
+		$.each( $( '.infobtn' ), function() {
+			w = $( this ).outerWidth();
+			if ( w > widest ) widest = w;
+		} );
+		$( '.infobtn' ).css( 'min-width', widest +'px' );
 	}
 }
 
