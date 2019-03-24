@@ -361,9 +361,9 @@ reinitsystem() {
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
 # 3. create dir in /srv/http/assets/img/
-makeDirLink() { # $1-existing dir name, $2-new dir
+makeDirLink() { # $1-directory name
 	name=$1
-	dir=$2
+	dir=/srv/http/assets/img/
 	direxist=$( find /mnt/MPD/ -maxdepth 3 -type d -name "$name" )
 	if [[ -e $direxist ]]; then
 		if (( $( echo "$direxist" | wc -l ) > 1 )); then
@@ -399,7 +399,7 @@ makeDirLink() { # $1-existing dir name, $2-new dir
 			mkdir -p "$newdir"
 			ln -sf "$newdir" "$dir"
 		else
-			mkdir -p "/srv/http/assets/img/$name"
+			mkdir -p "$dir/$name"
 		fi
 	fi
 }
