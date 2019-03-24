@@ -357,3 +357,49 @@ reinitsystem() {
 	title -nt "$bar Reinitialize system ..."
 	systemctl restart rune_SY_wrk
 }
+
+# 1. find existing dir > verify write > create symlink
+# 2. USB / NAS > verify write > create dir > create symlink
+# 3. create dir in /srv/http/assets/img/
+makeDirLink() { # $1-existing dir name, $2-new dir
+	name=$1
+	dir=$2
+	direxist=$( find /mnt/MPD/ -maxdepth 3 -type d -name "$name" )
+	if [[ -e $direxist ]]; then
+		if (( $( echo "$direxist" | wc -l ) > 1 )); then
+			title "$info Directory $( tcolor "$name" ) found more than 1 at:"
+			echo "$direxist"
+			title -nt "Keep one to use and rename others."
+			exit
+		fi
+		
+		touch "$direxist/0"
+		if [[ $? != 0 ]]; then
+			title "$info Directory $( tcolor "$direxist" ) found but not writable."
+			title -nt "Set write permission then try again."
+			exit
+		fi
+		
+		rm "$direxist/0"
+		ln -sf "$direxist" "$dir"
+	else
+		df=$( df )
+		dfUSB=$( echo "$df" | grep '/mnt/MPD/USB' | head -n1 )
+		dfNAS=$( echo "$df" | grep '/mnt/MPD/NAS' | head -n1 )
+		if [[ $dfUSB || $dfNAS ]]; then
+			[[ $dfUSB ]] && mount=$dfUSB || mount=$dfNAS
+			mnt=$( echo $mount | awk '{ print $NF }' )
+			touch $mnt/0
+			if [[ $? == 0 ]]; then
+				newdir=$mnt/$name
+				rm $mnt/0
+			fi
+		fi
+		if [[ $newdir ]]; then
+			mkdir -p "$newdir"
+			ln -sf "$newdir" "$dir"
+		else
+			mkdir -p "/srv/http/assets/img/$name"
+		fi
+	fi
+}
