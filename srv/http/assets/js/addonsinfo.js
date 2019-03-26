@@ -12,12 +12,13 @@ info( {                            // default / custom
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	msgalign      : 'CSS'          // left / CSS             (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
+	textrequired  : 1              // 0 / 1                  (text input  required)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
+	pwdrequired   : 1              // 0 / 1                  (password required)
 	fileoklabel   : 'LABEL'        // (blank) / LABEL        (upload button label)
 	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
-	required      : 1              // 0 / 1                  (password required)
 	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
 	checked       : N              // (none) / N             (pre-select input index)
 	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
@@ -109,6 +110,7 @@ function infoReset() {
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
+	$( '#infoOk' ).removeClass( 'disabled' );
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
 
@@ -207,6 +209,13 @@ function info( O ) {
 			$( '#infoTextLabel2, #infoTextBox2' ).show();
 		}
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
+		if ( O.textrequired ) {
+			if ( !$( '#infoTextBox' ).val() ) $( '#infoOk' ).addClass( 'disabled' );
+			$( '#infoTextBox, #infoTextBox2' ).on( 'keyup', function() {
+				var emptytext = !$( '#infoTextBox' ).val() && !$( '#infoTextBox2' ).val();
+				$( '#infoOk' ).toggleClass( 'disabled', emptytext );
+			} );
+		}
 	} else if ( O.passwordlabel ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
