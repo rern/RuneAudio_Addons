@@ -12,7 +12,7 @@ info( {                            // default / custom
 	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
 	msgalign      : 'CSS'          // left / CSS             (message under title)
 	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
-	textrequired  : 1              // 0 / 1                  (text input  required)
+	textrequired  : 1              // 0 / 1                  (text input - ! = disable ok if blank)
 	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
 	textalign     : 'CSS'          // left / CSS             (text input alignment)
 	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
