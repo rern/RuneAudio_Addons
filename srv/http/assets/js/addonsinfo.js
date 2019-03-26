@@ -212,7 +212,11 @@ function info( O ) {
 		if ( O.textrequired ) {
 			if ( !$( '#infoTextBox' ).val() ) $( '#infoOk' ).addClass( 'disabled' );
 			$( '#infoTextBox, #infoTextBox2' ).on( 'keyup', function() {
-				var emptytext = !$( '#infoTextBox' ).val() && !$( '#infoTextBox2' ).val();
+				if ( O.textlabel2 ) {
+					var emptytext = !$( '#infoTextBox' ).val() || !$( '#infoTextBox2' ).val();
+				} else {
+					var emptytext = !$( '#infoTextBox' ).val();
+				}
 				$( '#infoOk' ).toggleClass( 'disabled', emptytext );
 			} );
 		}
