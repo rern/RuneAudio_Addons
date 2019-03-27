@@ -397,9 +397,11 @@ makeDirLink() { # $1-directory name
 		fi
 		if [[ $newdir ]]; then
 			mkdir -p "$newdir"
+			chown -R http:http "$newdir"
 			ln -sf "$newdir" "$dir"
 		else
 			mkdir -p "$dir/$name"
+			chown -R http:http "$dir/$name"
 		fi
 	fi
 }
