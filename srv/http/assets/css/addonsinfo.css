@@ -65,6 +65,10 @@
 .infobtn-default {
 	background: #34495e;
 }
+.infobtn.disabled {
+	background: #212e3c;
+	pointer-events: none;
+}
 #infoOverlay {
 	display: none;
 	position: fixed;
