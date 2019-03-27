@@ -381,6 +381,7 @@ makeDirLink() { # $1-directory name
 		fi
 		
 		rm "$direxist/0"
+		chown -R http:http "$direxist"
 		ln -sf "$direxist" "$dir"
 	else
 		df=$( df )
