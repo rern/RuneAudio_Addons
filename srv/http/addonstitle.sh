@@ -382,6 +382,7 @@ makeDirLink() { # $1-directory name
 		
 		rm "$direxist/0"
 		ln -sf "$direxist" "$dir"
+		chown -R http:http "$direxist" "$dir"
 	else
 		df=$( df )
 		dfUSB=$( echo "$df" | grep '/mnt/MPD/USB' | head -n1 )
@@ -398,8 +399,10 @@ makeDirLink() { # $1-directory name
 		if [[ $newdir ]]; then
 			mkdir -p "$newdir"
 			ln -sf "$newdir" "$dir"
+			chown -R http:http "$newdir" "$dir"
 		else
 			mkdir -p "$dir/$name"
+			chown -R http:http "$dir/$name"
 		fi
 	fi
 }
