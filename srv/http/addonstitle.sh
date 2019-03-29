@@ -367,22 +367,20 @@ makeDirLink() { # $1-directory name
 	direxist=$( find /mnt/MPD/ -maxdepth 3 -type d -name "$name" )
 	if [[ -e $direxist ]]; then
 		if (( $( echo "$direxist" | wc -l ) > 1 )); then
-			title "$info Directory $( tcolor "$name" ) found more than 1 at:"
-			echo "$direxist"
-			title -nt "Keep one to use and rename others."
-			exit
+			direxist=$( echo "$direxist" | grep '/mnt/MPD/USB' )
 		fi
 		
 		touch "$direxist/0"
 		if [[ $? != 0 ]]; then
 			title "$info Directory $( tcolor "$direxist" ) found but not writable."
-			title -nt "Set write permission then try again."
-			exit
+			title -nt "Set write permission after install."
+			ln -sf "$direxist" "$dir"
+			chown -R http:http "$dir"
+		else
+			rm "$direxist/0"
+			ln -sf "$direxist" "$dir"
+			chown -R http:http "$direxist" "$dir"
 		fi
-		
-		rm "$direxist/0"
-		ln -sf "$direxist" "$dir"
-		chown -R http:http "$direxist" "$dir"
 	else
 		df=$( df )
 		dfUSB=$( echo "$df" | grep '/mnt/MPD/USB' | head -n1 )
