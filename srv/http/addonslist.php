@@ -23,7 +23,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190317',
+	'version'     => '20190401',
 	'revision'    => 'Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
 					.'<br>Fix sorting and index bar in Dirble'
 					.'<br>Show image icons in Dirble'
