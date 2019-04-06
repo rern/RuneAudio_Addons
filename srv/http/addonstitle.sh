@@ -388,19 +388,17 @@ makeDirLink() { # $1-directory name
 		if [[ $dfUSB || $dfNAS ]]; then
 			[[ $dfUSB ]] && mount=$dfUSB || mount=$dfNAS
 			mnt=$( echo $mount | awk '{ print $NF }' )
-			touch $mnt/0
+			touch $mnt/0 2> /dev/null
 			if [[ $? == 0 ]]; then
-				newdir=$mnt/$name
 				rm $mnt/0
+				newdir=$mnt/$name
+				mkdir -p "$newdir"
+				ln -sf "$newdir" "$dir"
+				chown -R http:http "$newdir" "$dir"
+			else
+				mkdir -p "$dir/$name"
+				chown -R http:http "$dir/$name"
 			fi
-		fi
-		if [[ $newdir ]]; then
-			mkdir -p "$newdir"
-			ln -sf "$newdir" "$dir"
-			chown -R http:http "$newdir" "$dir"
-		else
-			mkdir -p "$dir/$name"
-			chown -R http:http "$dir/$name"
 		fi
 	fi
 }
