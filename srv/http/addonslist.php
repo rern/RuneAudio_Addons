@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190401',
+	'version'     => '20190406',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
@@ -23,21 +23,15 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190401',
-	'revision'    => 'Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
-					.'<br>Fix sorting and index bar in Dirble'
-					.'<br>Show image icons in Dirble'
+	'version'     => '20190406',
+	'revision'    => 'Fix - incomplete ImageMagick installation'
+					.'<br>Fix - change album coverarts'
+					.'<br>Fix - names with '?' in Browse By CoverArt'
+					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
 					.'<br>...'
-					.'<br>Fix single tap add + play'
-					.'<br>Fix add webradio bug'
-					.'<br>Fix track sorting in Libray'
-					.'<br>Add partial update thumbnails with directory context menu'
-					.'<br>Add option sort by artist for Browse By CoverArt'
-					.'<br>Fix *.m3u parsing in Library'
-					.'<br>Fix Back button for dummy thumbnails album view'
-					.'<br>Fix screenoff for local browser'
-					.'<br>Improve sorting order and performance'
-					.'<br>Replace dummy thumbnails with `cover.svg` symbolic link',
+					.'<br>Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
+					.'<br>Fix sorting and index bar in Dirble'
+					.'<br>Show image icons in Dirble',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
