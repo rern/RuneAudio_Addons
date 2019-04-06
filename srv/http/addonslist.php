@@ -26,7 +26,7 @@ $addons = array(
 	'version'     => '20190406',
 	'revision'    => 'Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
-					.'<br>Fix - names with '?' in Browse By CoverArt'
+					.'<br>Fix - names with "?" in Browse By CoverArt'
 					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
 					.'<br>...'
 					.'<br>Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
