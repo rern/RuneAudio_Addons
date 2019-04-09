@@ -24,7 +24,11 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190406',
-	'revision'    => 'Fix - incomplete ImageMagick installation'
+	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
+					.'<br>Add - Persistent database and settings (Saved to USB / NAS)'
+					.'<br>Fix - NAS mount bug'
+					.'<br>...'
+					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
 					.'<br>Fix - names with "?" in Browse By CoverArt'
 					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
