@@ -23,7 +23,7 @@ rm -v /srv/http/addons*
 rm -v /srv/http/assets/css/addons.css
 rm -v /srv/http/assets/fonts/{addons*,Inconsolata*}
 rm -v /srv/http/assets/js/{addons.js,addonsmenu.js}
-rm -v /srv/http/assets/js/verdor/jquery.documentsize.min.js
+rm -v /srv/http/assets/js/vendor/jquery.documentsize.min.js
 rm -r /srv/http/assets/img/addons /srv/http/tmp
 # DO NOT remove - used by other addons
 # addonsinfo.css, addonsinfo.js, bootstrap.min.css, jquery.mobile.custom.min.js
