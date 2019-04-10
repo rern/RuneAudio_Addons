@@ -28,6 +28,7 @@ $addons = array(
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
+					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)'
 					.'<br>...'
 					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
