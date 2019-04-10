@@ -25,7 +25,7 @@ $addons = array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190406',
 	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
-					.'<br>Add - Persistent database and settings (Saved to USB / NAS)'
+					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
 					.'<br>...'
 					.'<br>Fix - incomplete ImageMagick installation'
