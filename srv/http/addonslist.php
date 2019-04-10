@@ -23,7 +23,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190406',
+	'version'     => '20190410',
 	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
