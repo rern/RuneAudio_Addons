@@ -27,6 +27,7 @@ $addons = array(
 	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
+					.'<br>.Fix - Development settings page in 0.5'
 					.'<br>...'
 					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
