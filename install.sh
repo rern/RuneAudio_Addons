@@ -104,13 +104,17 @@ commentH -n -2 'Restore configuration' -n -2 'id="modal-sysinfo"'
 #----------------------------------------------------------------------------------
 
 # set sudo no password
-echo 'http ALL=NOPASSWD: ALL' > /etc/sudoers.d/http
+cat << 'EOF' > /etc/sudoers.d/http
+http ALL=NOPASSWD: ALL
+EOF
 chmod 4755 /usr/bin/sudo
 
 # update check
 file=/etc/systemd/system/addons.service
 echo $file
-echo '[Unit]
+
+cat << 'EOF' > $file
+[Unit]
 Description=Addons Menu update check
 After=network-online.target
 [Service]
@@ -118,7 +122,7 @@ Type=idle
 ExecStart=/srv/http/addonsupdate.sh &
 [Install]
 WantedBy=multi-user.target
-' > $file
+EOF
 
 crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab - &> /dev/null
 systemctl daemon-reload
