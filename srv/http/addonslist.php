@@ -365,8 +365,8 @@ $addons = array(
 ),
 'udac' => array(
 	'title'       => 'USB DAC Plug and Play',
-	'version'     => '20180805',
-	'revision'    => 'Improve installation'
+	'version'     => '20190312',
+	'revision'    => 'Fix bugs when running on 0.5'
 					.'<br>...'
 					.'<br><w>Audio output</w> can be selected for preset when power off USB DAC'
 					.'<br>...'
@@ -385,7 +385,6 @@ $addons = array(
 			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
 		),
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
 'webr' => array(
 	'title'       => 'Webradio Import',
