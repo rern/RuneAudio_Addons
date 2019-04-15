@@ -70,6 +70,12 @@ $addons = array(
 		),
 	),
 ),
+'covd' => array(
+	'title'       => 'Browse By CoverArt Thumbnails',
+	'buttonlabel' => 'Scan',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
+	'hide'        => 1,
+),
 'cove' => array(
 	'title'       => 'RuneUIe - Thumbnails Update',
 	'revision'    => 'Initial release',
