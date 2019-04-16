@@ -25,6 +25,8 @@ $addons = array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190416',
 	'revision'    => 'Change Browse By CoverArt from MPD database to directory based'
+					.'<br>Remove - Long-press CoverArt to update thumbnails'
+					.'<br>...'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - Search result context menu'
 					.'<br>Add - Long-press Playback coverart to edit'
