@@ -350,8 +350,8 @@ function getoptions() {
 				, checkbox : ojson.list
 				, checked  : ojson.checked
 				, ok       : function() {
-					$( '#infoCheckBox input[ type=checkbox ]' ).each( function() {
-						opt += "'"+ $( this ).val() +"' ";
+					$( '#infoCheckBox input' ).each( function() {
+						opt += "'"+ ( $( this ).prop( 'checked' ) ? 0 : 1 ) +"' ";
 					} );
 					sendcommand();
 				}
