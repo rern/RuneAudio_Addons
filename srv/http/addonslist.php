@@ -76,7 +76,7 @@ $addons = array(
 		),
 	),
 ),
-'cove' > array(
+'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'buttonlabel' => 'Scan',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
