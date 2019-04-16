@@ -11,7 +11,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190406',
+	'version'     => '20190416',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
@@ -23,9 +23,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190410',
-	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
+	'version'     => '20190416',
+	'revision'    => 'Change Browse By CoverArt from MPD database to directory based'
 					.'<br>Fix - Missing index bar'
+					.'<br>Fix - Search result context menu'
+					.'<br>Add - Long-press Playback coverart to edit'
+					.'<br>...'
+					.'<br>Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
 					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)'
@@ -33,11 +37,7 @@ $addons = array(
 					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
 					.'<br>Fix - names with "?" in Browse By CoverArt'
-					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
-					.'<br>...'
-					.'<br>Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
-					.'<br>Fix sorting and index bar in Dirble'
-					.'<br>Show image icons in Dirble',
+					.'<br>Improve - keyboard navigation - left/right/enter in Library home',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
@@ -70,21 +70,10 @@ $addons = array(
 		),
 	),
 ),
-'covd' => array(
+'cove' > array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'buttonlabel' => 'Scan',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
-	'hide'        => 1,
-),
-'cove' => array(
-	'title'       => 'RuneUIe - Thumbnails Update',
-	'revision'    => 'Initial release',
-	'maintainer'  => 'r e r n',
-	'description' => 'Partially create / update thumbnails from a specific path instead of entire database.'
-					.'<br>Use <w>long-press CoverArt</w> in Library for complete update.',
-	'buttonlabel' => 'Scan',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
 'aria' =>array(
