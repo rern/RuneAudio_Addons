@@ -72,18 +72,11 @@ $addons = array(
 ),
 'covd' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
-	'buttonlabel' => 'Scan',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
 	'hide'        => 1,
 ),
 'cove' => array(
 	'title'       => 'RuneUIe - Thumbnails Update',
-	'revision'    => 'Initial release',
-	'maintainer'  => 'r e r n',
-	'description' => 'Partially create / update thumbnails from a specific path instead of entire database.'
-					.'<br>Use <w>long-press CoverArt</w> in Library for complete update.',
-	'buttonlabel' => 'Scan',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
