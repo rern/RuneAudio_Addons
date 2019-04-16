@@ -6,6 +6,13 @@ $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
+
+$ffmpeg = $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1;
+$accesspoint = $redis->hGet( 'AccessPoint', 'enabled' );
+$localbrowser = $redis->get( 'local_browser' );
+if ( $ffmpeg == 1 ) $enhacheck[] = 0;
+if ( $accesspoint == 1 ) $enhacheck[] = 1;
+if ( $localbrowser == 1 ) $enhacheck[] = 2;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -45,7 +52,7 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
-		'radio1'     => array(
+		'radio'     => array(
 			'message' => 'Set <w>zoom level</w> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
@@ -58,16 +65,14 @@ $addons = array(
 			),
 			'checked' => 2
 		),
-		'radio2'     => array(
-			'message' => 'Disable <w>AAC/ALAC</w> support?'
-						.'<br>Disable if no *.m4a files.'
-						.'<br>It makes database update faster.'
-						.'<br>(This can be changed later in MPD > FFmpeg)',
+		'checkbox'  => array(
+			'message' => '',
 			'list'    => array(
-				'Enable'  => 'yes',
-				'Disable' => 'no',
+				'Disable <w>AAC/ALAC</w> support'     => '1',
+				'Disable <w>Access point</w> feature' => '1',
+				'Disable <w>Local browser</w>'        => '1'
 			),
-			'checked' => ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1 ),
+			'checked' => $enhacheck
 		),
 	),
 ),
