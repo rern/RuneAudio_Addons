@@ -79,13 +79,11 @@ $addons = array(
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
-	'buttonlabel' => 'Scan',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
 'covd' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
-	'buttonlabel' => 'Scan',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
 	'hide'        => 1,
 ),
