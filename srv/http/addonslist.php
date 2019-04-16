@@ -10,9 +10,9 @@ $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" 
 $ffmpeg = $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 1 : 0;
 $accesspoint = $redis->hGet( 'AccessPoint', 'enabled' );
 $localbrowser = $redis->get( 'local_browser' );
-if ( $ffmpeg == 1 ) $enhacheck[] = 0;
-if ( $accesspoint == 1 ) $enhacheck[] = 1;
-if ( $localbrowser == 1 ) $enhacheck[] = 2;
+if ( $ffmpeg != 1 ) $enhacheck[] = 0;
+if ( $accesspoint != 1 ) $enhacheck[] = 1;
+if ( $localbrowser != 1 ) $enhacheck[] = 2;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -68,9 +68,9 @@ $addons = array(
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'Disable <w>AAC/ALAC</w> support'     => '1',
-				'Disable <w>Access point</w> feature' => '1',
-				'Disable <w>Local browser</w>'        => '1'
+				'Disable <w>AAC/ALAC</w> support'     => 0,
+				'Disable <w>Access point</w> feature' => 0,
+				'Disable <w>Local browser</w>'        => 0
 			),
 			'checked' => $enhacheck
 		),
