@@ -351,7 +351,7 @@ function getoptions() {
 				, checked  : ojson.checked
 				, ok       : function() {
 					$( '#infoCheckBox input' ).each( function() {
-						opt += "'"+ ( $( this ).prop( 'checked' ) ? 0 : 1 ) +"' ";
+						opt += "'"+ ( $( this ).prop( 'checked' ) ? 1 : 0 ) +"' ";
 					} );
 					sendcommand();
 				}
@@ -375,11 +375,12 @@ function sendcommand() {
 }
 // post submit with temporary form (separate option to hide password)
 function formtemp() {
+	console.log(opt)
 	$( 'body' ).append(
 		'<form id="formtemp" action="addonsbash.php" method="post">'
 			+'<input type="hidden" name="alias" value="'+ alias +'">'
 			+'<input type="hidden" name="type" value="'+ type +'">'
 			+'<input type="hidden" name="opt" value="'+ opt +'">'
 		+'</form>' );
-	$( '#formtemp' ).submit();
+//	$( '#formtemp' ).submit();
 }
