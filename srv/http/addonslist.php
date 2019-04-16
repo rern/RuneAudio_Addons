@@ -7,12 +7,11 @@ $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
-$ffmpeg = $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 1 : 0;
-$accesspoint = $redis->hGet( 'AccessPoint', 'enabled' );
-$localbrowser = $redis->get( 'local_browser' );
-if ( $ffmpeg != 1 ) $enhacheck[] = 0;
-if ( $accesspoint != 1 ) $enhacheck[] = 1;
-if ( $localbrowser != 1 ) $enhacheck[] = 2;
+if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
+if ( $redis->hGet( 'AccessPoint', 'enabled' ) == 1 ) $enhacheck[] = 1;
+if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
+if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
+if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -66,11 +65,13 @@ $addons = array(
 			'checked' => 2
 		),
 		'checkbox'  => array(
-			'message' => 'Should be disabled if not used:',
+			'message' => 'Should be unchecked if not used:',
 			'list'    => array(
-				'Disable <w>AAC/ALAC</w> support'     => 0,
-				'Disable <w>Access point</w> feature' => 0,
-				'Disable <w>Local browser</w>'        => 0
+				'<gr>Enable</gr> AAC/ALAC'      => 1,
+				'<gr>Enable</gr> Access point'  => 1,
+				'<gr>Enable</gr> Local browser' => 1,
+				'<gr>Enable</gr> AirPlay'       => 1,
+				'<gr>Enable</gr> UPnP/DLNA'     => 1
 			),
 			'checked' => $enhacheck
 		),
