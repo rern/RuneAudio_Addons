@@ -123,7 +123,7 @@ $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
 // if uninstall only - css file will be gone
 if ( ( $alias === 'addo' && $type !== 'Update' )
-	|| ( $alias === 'cove' && $type !== 'Scan' )
+	|| ( $alias === 'cove' )
 ) {
 	echo '<style>';
 	include 'assets/css/addonsinfo.'.$time.'.css';
