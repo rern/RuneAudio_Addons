@@ -66,7 +66,7 @@ $addons = array(
 			'checked' => 2
 		),
 		'checkbox'  => array(
-			'message' => '',
+			'message' => 'Should be disabled if not used:',
 			'list'    => array(
 				'Disable <w>AAC/ALAC</w> support'     => 0,
 				'Disable <w>Access point</w> feature' => 0,
