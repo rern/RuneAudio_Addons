@@ -7,7 +7,7 @@ $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
-$ffmpeg = $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1;
+$ffmpeg = $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 1 : 0;
 $accesspoint = $redis->hGet( 'AccessPoint', 'enabled' );
 $localbrowser = $redis->get( 'local_browser' );
 if ( $ffmpeg == 1 ) $enhacheck[] = 0;
