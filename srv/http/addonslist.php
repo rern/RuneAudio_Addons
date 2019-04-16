@@ -56,10 +56,10 @@ $addons = array(
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
 			'list'    => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.2'           => '1.2',
-				'Full HD - 1920px: 1.5'      => '1.5',
-				'Full HD - no buttons: 1.8'  => '1.8',
+				'Width less than 800px: 0.7' => 0.7,
+				'HD - 1280px: 1.2'           => 1.2,
+				'Full HD - 1920px: 1.5'      => 1.5,
+				'Full HD - no buttons: 1.8'  => 1.8,
 				'Custom'                     => '?'
 			),
 			'checked' => 2
@@ -154,13 +154,13 @@ $addons = array(
 			'message' => 'Set logo color:',
 			'list'    => array(
 				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
-				'<a style="color: #ff0000">Red</a>'          => 1,
-				'<a style="color: #00ff00">Green'            => 2,
-				'<a style="color: #ffff00">Yellow'           => 3,
-				'<a style="color: #0000ff">Blue'             => 4,
-				'<a style="color: #ff00ff">Magenta'          => 5,
-				'<a style="color: #00ffff">Cyan'             => 6,
-				'<a style="color: #ffffff">w'            => 7,
+				'<a style="color: #ff0000">Red</a>'         => 1,
+				'<a style="color: #00ff00">Green'           => 2,
+				'<a style="color: #ffff00">Yellow'          => 3,
+				'<a style="color: #0000ff">Blue'            => 4,
+				'<a style="color: #ff00ff">Magenta'         => 5,
+				'<a style="color: #00ffff">Cyan'            => 6,
+				'<a style="color: #ffffff">w'               => 7,
 			),
 			'checked' => 0
 		),
@@ -358,8 +358,8 @@ $addons = array(
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'Install <w>WebUI</w> alternative?'            => '1',
-				'Start <w>Transmission</w> on system startup?' => '1'
+				'Install <w>WebUI</w> alternative?'            => 1,
+				'Start <w>Transmission</w> on system startup?' => 1
 			),
 			'checked' => array( 0, 1 )
 		),
@@ -440,10 +440,10 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Zoom level:',
 			'list'    => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'Full HD - 1920px: 1.8'      => '1.8',
-				'Full HD - 1920px: 2.0'      => '2.0',
+				'Width less than 800px: 0.7' => 0.7,
+				'HD - 1280px: 1.5'           => 1.5,
+				'Full HD - 1920px: 1.8'      => 1.8,
+				'Full HD - 1920px: 2.0'      => 2.0,
 				'Custom'                     => '?'
 			),
 			'checked' => $zoom == '0.7' ? 0 : ( $zoom == '1.5' ? 1 : ( $zoom == '1.8' ? 2 : 3 ) )
