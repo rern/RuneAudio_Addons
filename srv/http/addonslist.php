@@ -29,14 +29,9 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190416',
-	'revision'    => 'Change Browse By CoverArt from MPD database to directory based'
-					.'<br>Remove - Long-press CoverArt to update thumbnails, use directory context menu instead'
+	'version'     => '20190410',
+	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - Missing index bar'
-					.'<br>Fix - Search result context menu'
-					.'<br>Add - Long-press Playback coverart to edit'
-					.'<br>...'
-					.'<br>Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
 					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)'
@@ -44,7 +39,11 @@ $addons = array(
 					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
 					.'<br>Fix - names with "?" in Browse By CoverArt'
-					.'<br>Improve - keyboard navigation - left/right/enter in Library home',
+					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
+					.'<br>...'
+					.'<br>Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
+					.'<br>Fix sorting and index bar in Dirble'
+					.'<br>Show image icons in Dirble',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
