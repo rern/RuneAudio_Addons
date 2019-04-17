@@ -87,6 +87,16 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
 	'hide'        => 1,
 ),
+'pers' =>array(
+	'title'       => 'Persistent database and settings',
+	'version'     => '20190417',
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Move database and settings to USB or NAS to maintain across SD card reflashing.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/persistent_settings',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
+	'hide'        => 1,
+),
 'aria' =>array(
 	'title'       => 'Aria2 *',
 	'version'     => '20170901',
