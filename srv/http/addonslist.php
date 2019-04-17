@@ -6,12 +6,18 @@ $redisaddons = $redis->hGetAll( 'addons' );
 $udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
+
+if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
+if ( $redis->hGet( 'AccessPoint', 'enabled' ) == 1 ) $enhacheck[] = 1;
+if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
+if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
+if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190406',
+	'version'     => '20190416',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
@@ -44,40 +50,40 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneUI_enhancement',
 	'installurl'  => 'https://github.com/rern/RuneUI_enhancement/raw/master/install.sh',
 	'option'      => array(
-		'radio1'     => array(
+		'radio'     => array(
 			'message' => 'Set <w>zoom level</w> for display directly connect to RPi.'
 						.'<br>(This can be changed later.)'
 						.'<br>Local screen size:',
 			'list'    => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.2'           => '1.2',
-				'Full HD - 1920px: 1.5'      => '1.5',
-				'Full HD - no buttons: 1.8'  => '1.8',
+				'Width less than 800px: 0.7' => 0.7,
+				'HD - 1280px: 1.2'           => 1.2,
+				'Full HD - 1920px: 1.5'      => 1.5,
+				'Full HD - no buttons: 1.8'  => 1.8,
 				'Custom'                     => '?'
 			),
 			'checked' => 2
 		),
-		'radio2'     => array(
-			'message' => 'Disable <w>AAC/ALAC</w> support?'
-						.'<br>Disable if no *.m4a files.'
-						.'<br>It makes database update faster.'
-						.'<br>(This can be changed later in MPD > FFmpeg)',
+		'checkbox'  => array(
+			'message' => 'Should be unchecked if not used:',
 			'list'    => array(
-				'Enable'  => 'yes',
-				'Disable' => 'no',
+				'<gr>Enable</gr> AAC/ALAC'      => 1,
+				'<gr>Enable</gr> Access point'  => 1,
+				'<gr>Enable</gr> Local browser' => 1,
+				'<gr>Enable</gr> AirPlay'       => 1,
+				'<gr>Enable</gr> UPnP/DLNA'     => 1
 			),
-			'checked' => ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ? 0 : 1 ),
+			'checked' => $enhacheck
 		),
 	),
+),
+'cove' => array(
+	'title'       => 'Browse By CoverArt Thumbnails',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
+	'hide'        => 1,
 ),
 'covd' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
-	'hide'        => 1,
-),
-'cove' => array(
-	'title'       => 'RuneUIe - Thumbnails Update',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
 'aria' =>array(
@@ -151,13 +157,13 @@ $addons = array(
 			'message' => 'Set logo color:',
 			'list'    => array(
 				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
-				'<a style="color: #ff0000">Red</a>'          => 1,
-				'<a style="color: #00ff00">Green'            => 2,
-				'<a style="color: #ffff00">Yellow'           => 3,
-				'<a style="color: #0000ff">Blue'             => 4,
-				'<a style="color: #ff00ff">Magenta'          => 5,
-				'<a style="color: #00ffff">Cyan'             => 6,
-				'<a style="color: #ffffff">w'            => 7,
+				'<a style="color: #ff0000">Red</a>'         => 1,
+				'<a style="color: #00ff00">Green'           => 2,
+				'<a style="color: #ffff00">Yellow'          => 3,
+				'<a style="color: #0000ff">Blue'            => 4,
+				'<a style="color: #ff00ff">Magenta'         => 5,
+				'<a style="color: #00ffff">Cyan'            => 6,
+				'<a style="color: #ffffff">w'               => 7,
 			),
 			'checked' => 0
 		),
@@ -355,8 +361,8 @@ $addons = array(
 		'checkbox'  => array(
 			'message' => '',
 			'list'    => array(
-				'Install <w>WebUI</w> alternative?'            => '1',
-				'Start <w>Transmission</w> on system startup?' => '1'
+				'Install <w>WebUI</w> alternative?'            => 1,
+				'Start <w>Transmission</w> on system startup?' => 1
 			),
 			'checked' => array( 0, 1 )
 		),
@@ -437,10 +443,10 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Zoom level:',
 			'list'    => array(
-				'Width less than 800px: 0.7' => '0.7',
-				'HD - 1280px: 1.5'           => '1.5',
-				'Full HD - 1920px: 1.8'      => '1.8',
-				'Full HD - 1920px: 2.0'      => '2.0',
+				'Width less than 800px: 0.7' => 0.7,
+				'HD - 1280px: 1.5'           => 1.5,
+				'Full HD - 1920px: 1.8'      => 1.8,
+				'Full HD - 1920px: 2.0'      => 2.0,
 				'Custom'                     => '?'
 			),
 			'checked' => $zoom == '0.7' ? 0 : ( $zoom == '1.5' ? 1 : ( $zoom == '1.8' ? 2 : 3 ) )

@@ -326,10 +326,10 @@ function renderOption( $el, htm, chk ) {
 	$el.html( htm ).show();
 	if ( chk == 'undefined' ) return;
 	
-	var checked = typeof chk === 'array' ? chk : [ chk ];
-	checked.forEach( function( i ) {
-		$opt = $el.prop( 'id' ) === 'infoSelectBox' ? $el.find( 'option' ) : $el.find( 'input' )
-		$opt.eq( i ).prop( 'checked', true );
+	var $opt = $el.prop( 'id' ) === 'infoSelectBox' ? $el.find( 'option' ) : $el.find( 'input' );
+	var checked = typeof chk === 'object' ? chk : [ chk ];
+	checked.forEach( function( val ) {
+		$opt.eq( val ).prop( 'checked', true );
 	} );
 }
 function verifyPassword( title, pwd, fn ) {

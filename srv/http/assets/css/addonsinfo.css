@@ -42,6 +42,9 @@
 #loadercontent {
 	top: 60px;
 }
+wh { color: #e0e7ee; }
+gr { color: #7795b4; }
+wh, gr { font-weight: 300; }
 
 .infobtn {
 	display: inline-block;
