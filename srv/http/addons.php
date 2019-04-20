@@ -204,7 +204,6 @@ var addons = <?=json_encode( $addonslist )?>;
 
 <script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
 <script src="/js/vendor/jquery.mobile.custom.min.<?=$time?>.js"></script>
-<script src="/js/vendor/pnotify.custom.min.<?=$time?>.js"></script>
 <script src="/js/addonsinfo.<?=$time?>.js"></script>
 <script src="/js/addons.<?=$time?>.js"></script>
 
