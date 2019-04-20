@@ -82,11 +82,6 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
-'covd' => array(
-	'title'       => 'Browse By CoverArt Thumbnails',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/parse.sh',
-	'hide'        => 1,
-),
 'pers' =>array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
