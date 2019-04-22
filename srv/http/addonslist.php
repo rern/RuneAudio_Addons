@@ -91,6 +91,7 @@ $addons = array(
 					.'Reuse if previously moved data is available. Otherwise move existings to USB or NAS.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/persistent_settings',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
+	'hide'        => 1
 ),
 'aria' =>array(
 	'title'       => 'Aria2 *',
