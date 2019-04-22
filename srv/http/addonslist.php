@@ -30,8 +30,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190410',
-	'revision'    => 'Add - Rearrange / edit / add to saved playlists'
+	'version'     => '20190422',
+	'revision'    => 'General improvements'
+					.'<br>...'
+					.'<br>Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
@@ -40,11 +42,7 @@ $addons = array(
 					.'<br>Fix - incomplete ImageMagick installation'
 					.'<br>Fix - change album coverarts'
 					.'<br>Fix - names with "?" in Browse By CoverArt'
-					.'<br>Improve - keyboard navigation - left/right/enter in Library home'
-					.'<br>...'
-					.'<br>Fix Browse By CoverArt thumbnails update - created from embedded coverarts'
-					.'<br>Fix sorting and index bar in Dirble'
-					.'<br>Show image icons in Dirble',
+					.'<br>Improve - keyboard navigation - left/right/enter in Library home',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
@@ -249,12 +247,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190215',
-	'revision'    => 'Fix to work with default RuneUI'
+	'version'     => '20190422',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>Add Webradio support'
+					.'<br>Fix - work with default RuneUI'
 					.'<br>...'
-					.'<br>Minor improvements',
+					.'<br>Add Webradio support',
 	'maintainer'  => 'r e r n',
 	'description' => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'   => '/img/addons/thumblyri.gif',
@@ -376,12 +374,12 @@ $addons = array(
 ),
 'udac' => array(
 	'title'       => 'USB DAC Plug and Play',
-	'version'     => '20190312',
-	'revision'    => 'Fix bugs when running on 0.5'
+	'version'     => '20190422',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br><w>Audio output</w> can be selected for preset when power off USB DAC'
+					.'<br>Fix bugs when running on 0.5'
 					.'<br>...'
-					.'<br>Use <w>udev rules</w> to auto switch',
+					.'<br><w>Audio output</w> can be selected for preset when power off USB DAC',
 	'maintainer'  => 'r e r n',
 	'description' => 'Automatically switch to/from MPD Audio output and reload configuration:'
 					.'<br>- USB DAC <w>power on</w> - switch to <w>USB DAC</w>'
