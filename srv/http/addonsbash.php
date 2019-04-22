@@ -137,20 +137,26 @@ echo $commandtxt.'<br>';
 
 // convert bash stdout to html
 $replace = array(
+	'/.\[38;5;8m.\[48;5;8m/' => '<a class="cbgr">',     // bar - gray
+	'/.\[38;5;7m.\[48;5;7m/' => '<a class="cbw">',      // bar - white
+	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cbc">',      // bar - cyan
+	'/.\[38;5;5m.\[48;5;5m/' => '<a class="cbm">',      // bar - magenta
+	'/.\[38;5;4m.\[48;5;4m/' => '<a class="cbb">',      // bar - blue
+	'/.\[38;5;3m.\[48;5;3m/' => '<a class="cby">',      // bar - yellow
+	'/.\[38;5;2m.\[48;5;2m/' => '<a class="cbg">',      // bar - green
+	'/.\[38;5;1m.\[48;5;1m/' => '<a class="cbr">',      // bar - red
+	'/.\[38;5;8m.\[48;5;0m/' => '<a class="cgr">',      // tcolor - gray
+	'/.\[38;5;6m.\[48;5;0m/' => '<a class="cc">',       // tcolor - cyan
+	'/.\[38;5;5m.\[48;5;0m/' => '<a class="cm">',       // tcolor - magenta
+	'/.\[38;5;4m.\[48;5;0m/' => '<a class="cb">',       // tcolor - blue
+	'/.\[38;5;3m.\[48;5;0m/' => '<a class="cy">',       // tcolor - yellow
+	'/.\[38;5;2m.\[48;5;0m/' => '<a class="cg">',       // tcolor - green
+	'/.\[38;5;1m.\[48;5;0m/' => '<a class="cr">',       // tcolor - red
+	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ckby">',     // info, yesno
+	'/.\[38;5;7m.\[48;5;1m/' => '<a class="cwbr">',     // warn
 	'/=(=+)=/'               => '<hr>',                 // double line
 	'/-(-+)-/'               => '<hr class="hrlight">', // line
-	'/.\[38;5;7m.\[48;5;7m/' => '<a class="cw">',       // bar - white
-	'/.\[38;5;6m.\[48;5;6m/' => '<a class="cc">',       // bar - cyan
-	'/.\[38;5;5m.\[48;5;5m/' => '<a class="cm">',       // bar - magenta
-	'/.\[38;5;4m.\[48;5;4m/' => '<a class="cb">',       // bar - blue
-	'/.\[38;5;3m.\[48;5;3m/' => '<a class="cy">',       // bar - yellow
-	'/.\[38;5;2m.\[48;5;2m/' => '<a class="cg">',       // bar - green
-	'/.\[38;5;1m.\[48;5;1m/' => '<a class="cr">',       // bar - red
-	'/.\[38;5;0m.\[48;5;3m/' => '<a class="ky">',       // info, yesno
-	'/.\[38;5;7m.\[48;5;1m/' => '<a class="wr">',       // warn
-	'/.\[38;5;8m.\[48;5;0m/' => '<a class="cgr">',      // tcolor - white
-	'/.\[38;5;6m.\[48;5;0m/' => '<a class="ck">',       // tcolor - gray
-	'/.\[38;5;6m/'           => '<a class="ck">',       // lcolor
+	'/.\[38;5;6m/'           => '<a class="cc">',       // lcolor
 	'/.\[0m/'                => '</a>',                 // reset color
 );
 $skip = array( 'warning:', 'y/n', 'uninstall:' );
