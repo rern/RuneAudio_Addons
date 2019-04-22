@@ -167,7 +167,7 @@ $addons = array(
 				'<a style="color: #0000ff">Blue'            => 4,
 				'<a style="color: #ff00ff">Magenta'         => 5,
 				'<a style="color: #00ffff">Cyan'            => 6,
-				'<a style="color: #ffffff">w'               => 7,
+				'<a style="color: #ffffff">White'           => 7,
 			),
 			'checked' => 0
 		),
