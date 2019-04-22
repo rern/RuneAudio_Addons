@@ -31,7 +31,7 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190422',
-	'revision'    => 'Browse By CoverArt - 1 thumbnail : 1 directory'
+	'revision'    => 'Browse By CoverArt - 1 thumbnail : 1 directory to avoid duplicate thumbnails'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - Search result context menu bug'
 					.'<br>Add - Long-press Playback coverart to edit'
