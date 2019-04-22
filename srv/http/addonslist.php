@@ -31,10 +31,12 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190422',
-	'revision'    => 'General improvements'
+	'revision'    => 'Browse By CoverArt - 1 thumbnail : 1 directory'
+					.'<br>Fix - Missing index bar'
+					.'<br>Fix - Search result context menu bug'
+					.'<br>Add - Long-press Playback coverart to edit'
 					.'<br>...'
 					.'<br>Add - Rearrange / edit / add to saved playlists'
-					.'<br>Fix - Missing index bar'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
 					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)'
