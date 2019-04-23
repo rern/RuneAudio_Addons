@@ -250,12 +250,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190422',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190423',
+	'revision'    => 'Fix - Blank page if RuneUI Enhancement uninstalled'
 					.'<br>...'
-					.'<br>Fix - work with default RuneUI'
+					.'<br>Minor improvements'
 					.'<br>...'
-					.'<br>Add Webradio support',
+					.'<br>Fix - work with default RuneUI',
 	'maintainer'  => 'r e r n',
 	'description' => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'   => '/img/addons/thumblyri.gif',
