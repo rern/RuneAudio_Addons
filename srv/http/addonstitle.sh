@@ -338,6 +338,9 @@ makeDirLink() { # $1-directory name
 				mkdir -p "$dir/$name"
 				chown -R http:http "$dir/$name"
 			fi
+		else
+			mkdir -p "$dir/$name"
+			chown -R http:http "$dir/$name"
 		fi
 	fi
 }
