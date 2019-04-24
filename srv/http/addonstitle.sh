@@ -101,6 +101,19 @@ timestart() { # timelapse: any argument
 	time0=$( date +%s )
 	[[ $1 ]] && timelapse0=$( date +%s )
 }
+formatTime() {
+	hh=$(( $1 / 3600 ))
+	(( ${#hh} == 1 )) && hh=0$hh
+	mm=$(( $1 / 60 ))
+	(( ${#mm} == 1 )) && mm=0$mm
+	ss=$(( $1 % 60 ))
+	(( ${#ss} == 1 )) && ss=0$ss
+	if [[ $hh == 00 ]]; then
+		echo "$mm:$ss"
+	else
+		echo "$hh:$mm:$ss"
+	fi
+}
 timestop() { # timelapse: any argument
 	time1=$( date +%s )
 	if [[ $1 ]]; then
@@ -110,11 +123,7 @@ timestop() { # timelapse: any argument
 		dif=$(( $time1 - $time0 ))
 		stringlapse=''
 	fi
-	min=$(( $dif / 60 ))
-	(( ${#min} == 1 )) && min=0$min
-	sec=$(( $dif % 60 ))
-	(( ${#sec} == 1 )) && sec=0$sec
-	echo -e "\nDuration$stringlapse ${min}:$sec"
+	echo -e "\nDuration$stringlapse $( formatTime $dif )"
 }
 
 wgetnc() {
@@ -136,72 +145,6 @@ rankmirrors() {
 		pacman -Sy
 	fi
 }
-installPackageFailed() {
-	title "$warn Packages download/install incomplete."
-	echo -e "$info Reinstall manually by SSH: pacman -Sy $pkgs"
-	title -nt "Then install / update again."
-	exit
-}
-i=0
-pacmanSync() {
-	pacman -Sy | tee sync.log
-	if (( $( cat sync.log | grep -c error ) > 0 )) && (( $i < 3 ));then
-		echo -e "$info Error - Synchronizing package databases"
-		(( i++ ))
-		echo "Trying again #$i..."
-		sleep 3
-		pacmanSync
-	elif (( $i == 3 )); then
-		title "$warn Package databases synchronizing failed."
-		title -nt "Try again later."
-		exit
-	fi
-}
-prefetch=0
-installPackages() {
-	pkgs=$1        # packages
-	checklist=$2   # all packages and depends
-	fallbackurl=$3 # fallback packages tarball url (optional)
-	echo -e "$bar Prefetch packages ..."
-	rm -f /var/lib/pacman/db.lck sync.log
-	pacmanSync
-	pacman -Sw --noconfirm $pkgs
-	for file in $checklist; do
-		findpkg=$( find /var/cache/pacman/pkg -type f -name $file* | wc -l )
-		if (( findpkg == 0 )); then
-			echo -e "$padR $( tcolor $file ) missing."
-			if (( (( prefetch++ )) < 3 )); then
-				echo -e "$bar Retry #$prefetch ..."
-				installPackages "$pkgs" "$checklist" "$fallbackurl"
-				break
-			else
-				if [[ -n $fallbackurl ]]; then
-					echo -e "$bar Get fallback package files ..."
-					wgetnc $fallbackurl
-					tarfile=$( basename $fallbackurl )
-					bsdtar xf $tarfile -C /
-					rm $tarfile
-					break
-				else
-					installPackageFailed
-				fi
-			fi
-		fi
-	done
-		
-	echo -e "$bar Install packages ..."
-	pacman -S --noconfirm $pkgs
-	
-	failed=0
-	for pkg in $pkgs; do
-		installed=$( pacman -Ss "^$pkg$" | head -n1 | awk '{print $NF}' )
-		if [[ $installed != '[installed]' ]]; then
-			(( failed ++ ))
-			echo -e "$padR $( tcolor $pkg ) install failed."
-		fi
-	done
-	(( $failed != 0 )) && installPackageFailed
-}
 getinstallzip() {
 	installurl=$( getvalue installurl )
 	installzip=${installurl/raw\/master\/install.sh/archive\/$branch.zip}
@@ -222,10 +165,6 @@ getinstallzip() {
 	fi
 	chown -R http:http /tmp/install/srv
 	chmod -R 755 /tmp/install
-#	if [[ -e /tmp/install/etc/systemd/system ]]; then
-#		chown -R root:root /tmp/install/etc/systemd/system
-#		chmod -R 644 /tmp/install/etc/systemd/system
-#	fi
 	cp -rfp /tmp/install/* /
 	rm -rf /tmp/install
 }
@@ -361,6 +300,9 @@ reinitsystem() {
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
 # 3. create dir in /srv/http/assets/img/
+getMountpoint() {
+	mnt=$( df --output=target,fstype | grep "$1.* ext" -m1 | cut -d' ' -f1 )
+}
 makeDirLink() { # $1-directory name
 	name=$1
 	dir=/srv/http/assets/img/
@@ -382,12 +324,9 @@ makeDirLink() { # $1-directory name
 			chown -R http:http "$direxist" "$dir"
 		fi
 	else
-		df=$( df )
-		dfUSB=$( echo "$df" | grep '/mnt/MPD/USB' | head -n1 )
-		dfNAS=$( echo "$df" | grep '/mnt/MPD/NAS' | head -n1 )
-		if [[ $dfUSB || $dfNAS ]]; then
-			[[ $dfUSB ]] && mount=$dfUSB || mount=$dfNAS
-			mnt=$( echo $mount | awk '{ print $NF }' )
+		getMountpoint /mnt/MPD/USB
+		[[ -z $mnt ]] && getMountpoint /mnt/MPD/
+		if [[ -n $mnt ]]; then
 			touch $mnt/0 2> /dev/null
 			if [[ $? == 0 ]]; then
 				rm $mnt/0
