@@ -300,7 +300,7 @@ reinitsystem() {
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
 # 3. create dir in /srv/http/assets/img/
-getMountpoint() {
+getextMount() {
 	mnt=$( df --output=target,fstype | grep "$1.* ext" -m1 | cut -d' ' -f1 )
 }
 makeDirLink() { # $1-directory name
@@ -324,8 +324,8 @@ makeDirLink() { # $1-directory name
 			chown -R http:http "$direxist" "$dir"
 		fi
 	else
-		getMountpoint /mnt/MPD/USB
-		[[ -z $mnt ]] && getMountpoint /mnt/MPD/
+		getextMount /mnt/MPD/USB
+		[[ -z $mnt ]] && getextMount /mnt/MPD/NAS
 		if [[ -n $mnt ]]; then
 			touch $mnt/0 2> /dev/null
 			if [[ $? == 0 ]]; then
