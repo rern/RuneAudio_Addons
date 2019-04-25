@@ -438,6 +438,7 @@ $addons = array(
 			'checked' => $redis->hGet( 'settings', 'notify' ) - 1
 		),
 	),
+	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
 ),
 'zoom' => array(
 	'title'       => 'Setting - Zoom Level',
