@@ -322,6 +322,7 @@ i.fa {
 .fa-arrow-down:before { content: "\f567" }
 .fa-chevron-down:before { content: "\f564" }
 .fa-external-link:before { content: "\f565" }
+.fa-output:before { content: "\f52B" }
 
 .fa-times:before { content: "\f51A" }
 .fa-question-circle:before { content: "\f560" }
