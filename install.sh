@@ -143,6 +143,10 @@ for card in "${cards[@]}"; do
 	(( i++ ))
 done
 
+# notify
+delay=$( grep 'notify.delay' /srv/http/assets/js/runeui.js | awk '{print $6}' )
+redis-cli hset settings notify $(( delay / 1000 )) &> /dev/null
+
 # for backup file upload
 dir=/srv/http/tmp
 mkdir -p $dir
