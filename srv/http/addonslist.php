@@ -32,6 +32,7 @@ $addons = array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190427',
 	'revision'    => 'Fix - unable to create 1st bookmark'
+					.'<br>Fix - unable to add/replace album to playlist in Browse By CoverArt > album view'
 					.'<br>Fix - set volume by tap'
 					.'<br>Fix - names with double quotes in Browse By CoverArt'
 					.'<br>Fix - unable to edit thumbnails on Sort CoverArt by artist'
