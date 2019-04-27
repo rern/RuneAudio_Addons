@@ -30,8 +30,14 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190422',
-	'revision'    => 'Browse By CoverArt - 1 thumbnail : 1 directory to avoid duplicate thumbnails'
+	'version'     => '20190427',
+	'revision'    => 'Fix - unable to create 1st bookmark'
+					.'<br>Fix - set volume by tap'
+					.'<br>Fix - names with double quotes in Browse By CoverArt'
+					.'<br>Fix - unable to edit thumbnails on Sort CoverArt by artist'
+					.'<br>Fix - intermittent update notification'
+					.'<br>...'
+					.'<br>Browse By CoverArt - 1 thumbnail : 1 directory to avoid duplicate thumbnails'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - Search result context menu bug'
 					.'<br>Add - Long-press Playback coverart to edit'
@@ -39,12 +45,7 @@ $addons = array(
 					.'<br>Add - Rearrange / edit / add to saved playlists'
 					.'<br>Fix - NAS mount bug'
 					.'<br>Fix - Development settings page in 0.5'
-					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)'
-					.'<br>...'
-					.'<br>Fix - incomplete ImageMagick installation'
-					.'<br>Fix - change album coverarts'
-					.'<br>Fix - names with "?" in Browse By CoverArt'
-					.'<br>Improve - keyboard navigation - left/right/enter in Library home',
+					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
