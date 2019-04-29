@@ -31,7 +31,7 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190427',
-	'revision'    => 'Add - Consume mode - remove songs from playlist once played'
+	'revision'    => 'Add - Consume mode - remove each song from playlist after played'
 					.'<br>Fix - unable to create 1st bookmark...'
 					.'<br>Fix - unable to add/replace album to playlist in Browse By CoverArt > album view'
 					.'<br>Fix - set volume by tap'
