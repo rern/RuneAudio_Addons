@@ -112,7 +112,14 @@ cmd;
 	$command.= <<<cmd
 		/usr/bin/sudo ./$installfile $opt
 cmd;
-if ( isset( $addon[ 'option' ] ) && array_key_exists( 'password', $addon[ 'option' ] ) ) $opt = '';
+	// hide password from command verbose
+	$options = isset( $addon[ 'option' ] ) ? $addon[ 'option' ] : '';
+	if ( $options && array_key_exists( 'password', $options ) ) {
+		$pwdindex = array_search( 'password', array_keys( $options ) );
+		$opts = explode( ' ', $opt );
+		$opts[ $pwdindex ] = '***';
+		$opt = implode( ' ', $opts );
+	}
 	$commandtxt = <<<cmd
 		wget -qN --no-check-certificate $installurl
 		chmod 755 $installfile
