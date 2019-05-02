@@ -58,14 +58,8 @@ var html = heredoc( function() { /*
 		<div id="infoContent">
 			<p id="infoMessage" class="infocontent"></p>
 			<div id="infoText" class="infocontent">
-				<div class="infotextlabel">
-					<a id="infoTextLabel" class="infolabel"></a><br>
-					<a id="infoTextLabel2" class="infolabel"></a>
-				</div>
-				<div class="infotextbox">
-					<input type="text" class="infoinput" id="infoTextBox" spellcheck="false"><br>
-					<input type="text" class="infoinput" id="infoTextBox2" spellcheck="false">
-				</div>
+				<div class="infotextlabel"></div>
+				<div class="infotextbox"></div>
 				<div style="clear: both"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
@@ -199,25 +193,36 @@ function info( O ) {
 	}
 		// inputs
 	if ( O.textlabel || O.textvalue ) {
-		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextBox' ).val( O.textvalue );
-		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
-		var $infofocus =  $( '#infoTextBox' );
-		if ( O.textlabel2 ) {
-			$( '#infoTextLabel2' ).html( O.textlabel2 );
-			$( '#infoTextBox2' ).val( O.textvalue2 );
-			$( '#infoTextLabel2, #infoTextBox2' ).show();
+		O.textlabel = O.textlabel || '';
+		O.textvalue = O.textvalue || '';
+		if ( typeof O.textlabel === 'string' ) {
+			O.textlabel = [ O.textlabel ];
+			O.textvalue = [ O.textvalue ];
 		}
+		var labelhtml = '';
+		var boxhtml = '';
+		var iid;
+		var iL = O.textlabel.length;
+		for ( i = 0; i < iL; i++ ) {
+			iid = i ? i + 1 : '';
+			labelhtml += i ? '<br>' : '';
+			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ O.textlabel[ i ] +'</a>';
+			boxhtml += i ? '<br>' : '';
+			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'" value="'+ O.textvalue[ i ] +'" spellcheck="false">';
+		}
+		$( '.infotextlabel' ).html( labelhtml );
+		$( '.infotextbox' ).html( boxhtml );
+		var $infofocus = $( '#infoTextBox' );
+		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 		if ( O.textrequired ) {
-			if ( !$( '#infoTextBox' ).val() ) $( '#infoOk' ).addClass( 'disabled' );
-			$( '#infoTextBox, #infoTextBox2' ).on( 'keyup', function() {
-				if ( O.textlabel2 ) {
-					var emptytext = !$( '#infoTextBox' ).val() || !$( '#infoTextBox2' ).val();
-				} else {
-					var emptytext = !$( '#infoTextBox' ).val();
-				}
-				$( '#infoOk' ).toggleClass( 'disabled', emptytext );
+			$( '#infoOk' ).addClass( 'disabled' );
+			$( '.infoinput' ).on( 'keyup', function() {
+				var empty = 0;
+				$( '.infotextbox input' ).each( function() {
+					if ( !this.value ) empty++;
+				} );
+				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
 			} );
 		}
 	} else if ( O.passwordlabel ) {
