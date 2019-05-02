@@ -195,30 +195,35 @@ function info( O ) {
 	if ( O.textlabel || O.textvalue ) {
 		O.textlabel = O.textlabel || '';
 		O.textvalue = O.textvalue || '';
-		if ( typeof O.textlabel === 'string' ) {
-			O.textlabel = [ O.textlabel ];
-			O.textvalue = [ O.textvalue ];
-		}
+		if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
+		if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
 		var labelhtml = '';
 		var boxhtml = '';
-		var iid;
-		var iL = O.textlabel.length;
+		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
+		console.log(iL)
 		for ( i = 0; i < iL; i++ ) {
-			iid = i ? i + 1 : '';
+			console.log(O.textvalue[ i ])
+			var iid = i || '';
 			labelhtml += i ? '<br>' : '';
-			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ O.textlabel[ i ] +'</a>';
+			var labelhtml = O.textlabel[ i ] || '';
+			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labelhtml +'</a>';
 			boxhtml += i ? '<br>' : '';
-			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'" value="'+ O.textvalue[ i ] +'" spellcheck="false">';
+			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ] : '';
+			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
 		}
 		$( '.infotextlabel' ).html( labelhtml );
 		$( '.infotextbox' ).html( boxhtml );
 		var $infofocus = $( '#infoTextBox' );
-		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
+		$( '#infoText' ).show();
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 		if ( O.textrequired ) {
-			$( '#infoOk' ).addClass( 'disabled' );
+			var empty = 0;
+			$( '.infotextbox input' ).each( function() {
+				if ( !this.value ) empty++;
+			} );
+			if ( empty ) $( '#infoOk' ).addClass( 'disabled' );
 			$( '.infoinput' ).on( 'keyup', function() {
-				var empty = 0;
+				empty = 0;
 				$( '.infotextbox input' ).each( function() {
 					if ( !this.value ) empty++;
 				} );
@@ -307,7 +312,12 @@ function info( O ) {
 		var maxW = window.innerWidth * 0.98;
 		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
 		var calcW = maxW < infoW ? maxW : infoW;
-		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
+		var labelW = 0;
+		$( '#infoTextLabel' ).each( function() {
+			var thisW = $( this ).width();
+			if ( thisW > labelW ) labelW = thisW;
+		} );
+		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - labelW;
 		$( '.infoinput' ).css( 'width', boxW +'px' );
 	}
 	if ( O.buttonwidth ) {
