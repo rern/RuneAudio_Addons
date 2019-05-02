@@ -60,7 +60,6 @@ var html = heredoc( function() { /*
 			<div id="infoText" class="infocontent">
 				<div class="infotextlabel"></div>
 				<div class="infotextbox"></div>
-				<div style="clear: both"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
@@ -98,7 +97,7 @@ $( '#infoX' ).click( function() {
 
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
-	$( '.infolabel, .infohtml, #infoFilename' ).empty();
+	$( '.infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
@@ -200,13 +199,11 @@ function info( O ) {
 		var labelhtml = '';
 		var boxhtml = '';
 		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
-		console.log(iL)
 		for ( i = 0; i < iL; i++ ) {
-			console.log(O.textvalue[ i ])
 			var iid = i || '';
 			labelhtml += i ? '<br>' : '';
-			var labelhtml = O.textlabel[ i ] || '';
-			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labelhtml +'</a>';
+			var labeltext = O.textlabel[ i ] || '';
+			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
 			boxhtml += i ? '<br>' : '';
 			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ] : '';
 			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
@@ -217,14 +214,15 @@ function info( O ) {
 		$( '#infoText' ).show();
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
 		if ( O.textrequired ) {
-			var empty = 0;
+			var blank = 0;
 			$( '.infotextbox input' ).each( function() {
-				if ( !this.value ) empty++;
+				if ( !this.value ) blank++;
 			} );
-			if ( empty ) $( '#infoOk' ).addClass( 'disabled' );
+			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
 			$( '.infoinput' ).on( 'keyup', function() {
-				empty = 0;
+				var empty = 0;
 				$( '.infotextbox input' ).each( function() {
+					console.log(this.value)
 					if ( !this.value ) empty++;
 				} );
 				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
