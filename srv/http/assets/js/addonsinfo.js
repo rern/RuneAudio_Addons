@@ -3,44 +3,56 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {                            // default / custom
-	width         : N              // 400 / N                (info width)
-	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
-	title         : 'TITLE'        // Information / TITLE    (top title)
-	nox           : 1..            // 0 / 1                  (no top 'X' close button)
-	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
-	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
-	msgalign      : 'CSS'          // left / CSS             (message under title)
-	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
-	textrequired  : 1              // 0 / 1                  (text input - ! = disable ok if blank)
-	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
-	textalign     : 'CSS'          // left / CSS             (text input alignment)
-	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
-	pwdrequired   : 1              // 0 / 1                  (password required)
-	fileoklabel   : 'LABEL'        // (blank) / LABEL        (upload button label)
-	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
-	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
-	checked       : N              // (none) / N             (pre-select input index)
-	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
-	select        : JSON           // required               ( var value = $( '#infoSelectBox').val(); )
-	checked       : N              // (none) / N             (pre-select option index)
-	checkbox      : JSON           // required               ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
-	                                                               var value = $( this ).val();
-	                                                           } ); )
-	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select input indexes)
-	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
-	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
-	ok            : 'FUNCTION'     // (hide) / FUNCTION      (ok click function)
-	cancellabel   : 'LABEL'        // Cancel / LABEL         (cancel button label)
-	cancelcolor   : 'COLOR'        // #34495e / COLOR        (cancel button color)
-	cancel        : 'FUNCTION'     // (hide) / FUNCTION      (cancel click function)
-	buttonwidth   : 0              // 0 / 1                  (keep same button witdth)
-	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
-	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
-	button        : 'FUNCTION'     // required FUNCTION      (button click function)
-	nobutton      : 1              // 0 / 1                  (no button)
-	autoclose     : N              // ms                     (auto close in ms)
+info( {                              // default / custom
+	width         : N                // 400 / N             (info width)
+	icon          : 'NAME'           // question / NAME     (FontAwesome name for top icon)
+	title         : 'TITLE'          // Information / TITLE (top title)
+	nox           : 1..              // 0 / 1               (no top 'X' close button)
+	nobutton      : 1                // 0 / 1               (no button)
+	boxwidth      : N                // 200 / N / 'max'     (input text/password width)
+	autoclose     : N                // ms                  (auto close in ms)
+	
+	message       : 'MESSAGE'        // (blank) / MESSAGE   (message under title)
+	msgalign      : 'CSS'            // left / CSS          (message under title)
+	
+	textlabel     : [ 'LABEL', ... ] // (blank) / LABEL     (label array input label)
+	textvalue     : [ 'VALUE', ... ] // (blank) / VALUE     (pre-filled array input value)
+	textalign     : 'CSS'            // left / CSS          (input text alignment)
+	textrequired  : 1                // 0 / 1               (disable ok button if blank)
+	
+	passwordlabel : 'LABEL'          // (blank) / LABEL     (password input label)
+	pwdrequired   : 1                // 0 / 1               (password required)
+	
+	fileoklabel   : 'LABEL'          // (blank) / LABEL     (upload button label)
+	filetype      : '.TYPE'          // (none) / .TYPE      (filter and verify filetype)
+	
+	radio         : JSON             // LABEL: VALUE        ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
+	checked       : N                // (none) / N          (pre-select input index)
+	
+	select        : JSON             //                     ( var value = $( '#infoSelectBox').val(); )
+	selectlabel   : 'LABEL'          // (blank) / LABEL     (select input label)
+	checked       : N                // (none) / N          (pre-select option index)
+	
+	checkbox      : JSON             // LABEL: VALUE        ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	                                                            var value = this.value;
+	                                                          } ); )
+	checked       : [ N, ... ]       // (none) / [ array ]  (pre-select array input indexes)
+	
+	oklabel       : 'LABEL'          // OK / LABEL          (ok button label)
+	okcolor       : 'COLOR'          // #0095d8 / COLOR     (ok button color)
+	ok            : 'FUNCT'          // (hide) / FUNCTION   (ok click function)
+	cancellabel   : 'LABEL'          // Cancel / LABEL      (cancel button label)
+	cancelcolor   : 'COLOR'          // #34495e / COLOR     (cancel button color)
+	cancel        : 'FUNCT'          // (hide) / FUNCTION   (cancel click function)
+	
+	buttonlabel   : [ 'LABEL', ... ] // LABEL               (label array)
+	button        : [ 'FUNCT', ... ] // FUNCTION            (function array)
+	buttoncolor   : [ 'COLOR', ... ] // #34495e / COLOR     (color array)
+	buttonwidth   : 0                // 0 / 1               (equal buttons width)
 } );
+Note:
+- No default - must be specified.
+- Single value/function ot required to be array.
 */
 function heredoc( fn ) {
 	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
@@ -77,7 +89,6 @@ var html = heredoc( function() { /*
 				<input type="file" class="infoinput" id="infoFileBox">
 			</div>
 			<a id="infoCancel" class="infobtn infobtn-default"></a>
-			<a id="infoButton" class="infobtn infobtn-default"></a>
 			<a id="infoOk" class="infobtn infobtn-primary"></a>
 		</div>
 	</div>
@@ -104,13 +115,14 @@ function infoReset() {
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
 	$( '#infoOk' ).removeClass( 'disabled' );
+	$( '.extrabtn' ).remove();
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
 
 function info( O ) {
 	// title
 	infoReset();
-	if ( O.width ) $( '#infoBox' ).css( 'width', O.width +'px' );
+	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
 	if ( !O.icon ) {
 		var iconhtml = '<i class="fa fa-question-circle">';
 	} else {
@@ -179,15 +191,23 @@ function info( O ) {
 			$( '#infoCancel' ).click( infoReset );
 		}
 		if ( O.button ) {
-			$( '#infoButton' )
-				.html( O.buttonlabel )
-				.css( 'background', O.buttoncolor || '' )
-				.show()
-				.click( function() {
-					$( '#infoOverlay' ).hide();
-					O.button();
-					O.button = '';
-				} );
+			if ( !O.button.length ) O.button = [ O.button ];
+			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
+			O.buttoncolor = O.buttoncolor || '';
+			if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
+			var buttonhtml = '';
+			var iL = O.button.length;
+			for ( i = 0; i < iL; i++ ) {
+				var iid = i || '';
+				$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn infobtn-default extrabtn">'+ O.buttonlabel[ i ] +'</a>' );
+				$( '#infoButton'+ iid )
+					.css( 'background', O.buttoncolor[ i ] || '' )
+					.click( function() {
+						$( '#infoOverlay' ).hide();
+						O.button[ i ]();
+						O.button[ i ] = '';
+					} );
+			}
 		}
 	}
 		// inputs
