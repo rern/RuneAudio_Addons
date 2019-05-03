@@ -178,7 +178,7 @@ wh, gr { font-weight: 300; }
 }
 .infolabel {
 	display: inline-block;
-	line-height: 50px;
+	line-height: 51px;
 	text-align: right;
 	color: #e0e7ee;
 }
