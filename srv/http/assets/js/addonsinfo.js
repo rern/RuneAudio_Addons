@@ -331,7 +331,7 @@ function info( O ) {
 		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
 		var calcW = maxW < infoW ? maxW : infoW;
 		var labelW = 0;
-		$( '#infoTextLabel' ).each( function() {
+		$( '.infolabel' ).each( function() {
 			var thisW = $( this ).width();
 			if ( thisW > labelW ) labelW = thisW;
 		} );
