@@ -18,8 +18,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190426',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190505',
+	'revision'    => 'Improve popup dialog box on multiple inputs / buttons'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
