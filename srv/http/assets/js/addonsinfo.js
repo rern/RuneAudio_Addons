@@ -168,6 +168,7 @@ function info( O ) {
 			.click( function() {
 				if( typeof O.ok === 'function' ) {
 					O.ok();
+					infoReset();
 				} else {
 					infoReset();
 				}
