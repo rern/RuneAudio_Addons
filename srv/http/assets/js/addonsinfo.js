@@ -105,9 +105,6 @@ $( '#infoX' ).click( function() {
 	$( '#infoCancel' ).click();
 	infoReset();
 } );
-$( '#infoButtons' ).on( 'click', '.infobtn', function() {
-	if ( [ 'infoFile', 'infoFileLabel' ].indexOf( this.id ) === -1 ) $( '#infoOverlay' ).hide();
-} );
 
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
@@ -169,7 +166,11 @@ function info( O ) {
 			.css( 'background', O.okcolor || '' )
 			.show()
 			.click( function() {
-				typeof O.ok === 'function' ? O.ok() : infoReset();
+				if( typeof O.ok === 'function' ) {
+					O.ok();
+				} else {
+					infoReset();
+				}
 			} );
 		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
