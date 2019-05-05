@@ -170,7 +170,6 @@ $addons = array(
 				'<a style="color: #ff0000">Red</a>'         => 1,
 				'<a style="color: #00ff00">Green'           => 2,
 				'<a style="color: #ffff00">Yellow'          => 3,
-				'<a style="color: #0000ff">Blue'            => 4,
 				'<a style="color: #ff00ff">Magenta'         => 5,
 				'<a style="color: #00ffff">Cyan'            => 6,
 				'<a style="color: #ffffff">White'           => 7,
