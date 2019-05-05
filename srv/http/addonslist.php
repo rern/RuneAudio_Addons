@@ -166,7 +166,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
+				'<a style="color: #f#0095d8">UI blue</a>' => 0,
 				'<a style="color: #ff0000">Red</a>'         => 1,
 				'<a style="color: #00ff00">Green'           => 2,
 				'<a style="color: #ffff00">Yellow'          => 3,
