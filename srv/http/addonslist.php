@@ -500,6 +500,7 @@ $addons = array(
 			'checked'  => !$standby ? 3 : ( $standby == 5 ? 0 : ( $standby == 10 ? 1 : 2 ) )
 		),
 	),
+	'hide'        => $redis->get( 'local_browser' ) == 0 ? 1 : 0,
 ),
 'back' => array(
 	'title'       => 'Settings+Databases Backup',
