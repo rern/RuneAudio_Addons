@@ -111,9 +111,9 @@ function infoReset() {
 	$( '.infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
-	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
+	$( '.infobtn' ).css( 'background', '' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
-	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
+	$( '#infoFileLabel, #infoOk' ).off( 'click' );
 	$( '#infoOk' ).removeClass( 'disabled' );
 	$( '.extrabtn' ).remove();
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
@@ -166,12 +166,7 @@ function info( O ) {
 			.css( 'background', O.okcolor || '' )
 			.show()
 			.click( function() {
-				if( typeof O.ok === 'function' ) {
-					O.ok();
-					infoReset();
-				} else {
-					infoReset();
-				}
+				typeof O.ok === 'function' ? O.ok() : infoReset();
 			} );
 		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
@@ -179,8 +174,7 @@ function info( O ) {
 				.css( 'background', O.cancelcolor || '' )
 				.show()
 				.click( function() {
-					if ( typeof O.cancel === 'function' ) O.cancel();
-					infoReset();
+					typeof O.cancel === 'function' ? O.cancel() : infoReset();
 				} );
 		} else {
 			$( '#infoCancel' ).click( infoReset );
@@ -233,7 +227,6 @@ function info( O ) {
 			$( '.infoinput' ).on( 'keyup', function() {
 				var empty = 0;
 				$( '.infotextbox input' ).each( function() {
-					console.log(this.value)
 					if ( !this.value ) empty++;
 				} );
 				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
@@ -357,7 +350,6 @@ function renderOption( $el, htm, chk ) {
 	} );
 }
 function verifyPassword( title, pwd, fn ) {
-	$( '#infoX' ).click();
 	info( {
 		  title         : title
 		, message       : 'Please retype'
