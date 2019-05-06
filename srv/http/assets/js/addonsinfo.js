@@ -108,7 +108,7 @@ $( '#infoX' ).click( function() {
 
 function infoReset() {
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
-	$( '.infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
+	$( '#infoMessage, .infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '.infobtn' ).css( 'background', '' );
@@ -166,7 +166,8 @@ function info( O ) {
 			.css( 'background', O.okcolor || '' )
 			.show()
 			.click( function() {
-				typeof O.ok === 'function' ? O.ok() : infoReset();
+				if ( typeof O.ok === 'function' ) O.ok();
+				infoReset();
 			} );
 		if ( O.cancel || O.cancellabel ) {
 			$( '#infoCancel' )
@@ -174,7 +175,8 @@ function info( O ) {
 				.css( 'background', O.cancelcolor || '' )
 				.show()
 				.click( function() {
-					typeof O.cancel === 'function' ? O.cancel() : infoReset();
+					if ( typeof O.cancel === 'function' ) O.cancel();
+					infoReset();
 				} );
 		} else {
 			$( '#infoCancel' ).click( infoReset );
@@ -191,7 +193,11 @@ function info( O ) {
 				$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn infobtn-default extrabtn">'+ O.buttonlabel[ i ] +'</a>' );
 				$( '#infoButton'+ iid )
 					.css( 'background', O.buttoncolor[ i ] || '' )
-					.click( O.button[ i ] );
+					.click( O.button[ i ] )
+					.click( function() {
+						infoReset();
+					} );
+
 			}
 		}
 	}
