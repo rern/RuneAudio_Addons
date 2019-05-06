@@ -46,7 +46,8 @@ wh { color: #e0e7ee; }
 gr { color: #7795b4; }
 wh, gr { font-weight: 300; }
 
-.infobtn {
+.infobtn,
+.filebtn {
 	display: inline-block;
 	height: 36px;
 	margin: 0 5px;
