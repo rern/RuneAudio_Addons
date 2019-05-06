@@ -18,8 +18,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190505',
-	'revision'    => 'Improve popup dialog box on multiple inputs / buttons'
+	'version'     => '20190426',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
@@ -85,18 +85,27 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
-'pers' =>array(
+'kid3' => array(
+	'title'       => 'RuneUIe Metadata Editor',
+	'version'     => '20190506',
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Enable metadata editor feature in context menu.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
+),
+'pers' => array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Maintain database and settings across SD card reflashing. '
+	'description' => 'Maintain database and settings across SD card reflashing.'
 					.'Reuse if previously moved data is available. Otherwise move existings to USB or NAS.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/persistent_settings',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
 	'hide'        => 1
 ),
-'aria' =>array(
+'aria' => array(
 	'title'       => 'Aria2 *',
 	'version'     => '20170901',
 	'needspace'   => 15,
@@ -166,10 +175,11 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'<a style="color: #f#0095d8">UI blue</a>' => 0,
+				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
 				'<a style="color: #ff0000">Red</a>'         => 1,
 				'<a style="color: #00ff00">Green'           => 2,
 				'<a style="color: #ffff00">Yellow'          => 3,
+				'<a style="color: #0000ff">Blue'            => 4,
 				'<a style="color: #ff00ff">Magenta'         => 5,
 				'<a style="color: #00ffff">Cyan'            => 6,
 				'<a style="color: #ffffff">White'           => 7,
