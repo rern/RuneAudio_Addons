@@ -83,8 +83,8 @@ var html = heredoc( function() { /*
 			</div>
 		</div>
 		<div id="infoButtons">
-			<div id="infoFile" class="infobtn">
-				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
+			<div id="infoFile">
+				<a id="infoFileLabel" class="filebtn infobtn-primary">Browse</a>
 				<span id="infoFilename"></span>
 				<input type="file" class="infoinput" id="infoFileBox">
 			</div>
@@ -107,236 +107,230 @@ $( '#infoX' ).click( function() {
 } );
 
 function infoReset() {
-	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
+	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .filebtn, .infobtn' ).hide();
 	$( '#infoMessage, .infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
-	$( '.infobtn' ).css( 'background', '' );
+	$( '.filebtn, .infobtn' ).css( 'background', '' ).off( 'click' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
-	$( '#infoFileLabel, #infoOk' ).off( 'click' );
 	$( '#infoOk' ).removeClass( 'disabled' );
 	$( '.extrabtn' ).remove();
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
+infoReset();
 
 function info( O ) {
-	// title
-	infoReset();
-	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
-	if ( !O.icon ) {
-		var iconhtml = '<i class="fa fa-question-circle">';
-	} else {
-		if ( O.icon.charAt( 0 ) !== '<' ) {
-			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
+	setTimeout( function() { // force wait for reset
+		// title
+		$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
+		if ( !O.icon ) {
+			var iconhtml = '<i class="fa fa-question-circle">';
 		} else {
-			var iconhtml = O.icon;
+			if ( O.icon.charAt( 0 ) !== '<' ) {
+				var iconhtml = '<i class="fa fa-'+ O.icon +'">';
+			} else {
+				var iconhtml = O.icon;
+			}
 		}
-	}
-	$( '#infoIcon' ).html( iconhtml );
-	$( '#infoTitle' ).html( O.title || 'Information' );
-	if ( O.nox ) $( '#infoX' ).hide();
-	if ( O.autoclose ) {
-		setTimeout( function() {
-			$( '#infoX' ).click();
-		}, O.autoclose );
-	}
-	// simple use as info( 'message' )
-	if ( typeof O !== 'object' ) {
-		$( '#infoMessage' ).html( O );
-		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
-		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
-		alignVertical();
-		$( '#infoOk' ).html( 'OK' ).click( function() {
-			infoReset();
-		});
-		return;
-	}
-	
-	// message
-	if ( O.message ) {
-		$( '#infoMessage' )
-			.html( O.message )
-			.css( 'text-align', O.msgalign || '' )
-			.show();
-	}
-	// buttons
-	if ( !O.nobutton ) {
-		$( '#infoOk' )
-			.html( O.oklabel ? O.oklabel : 'OK' )
-			.css( 'background', O.okcolor || '' )
-			.show()
-			.click( function() {
-				if ( typeof O.ok === 'function' ) O.ok();
+		$( '#infoIcon' ).html( iconhtml );
+		$( '#infoTitle' ).html( O.title || 'Information' );
+		if ( O.nox ) $( '#infoX' ).hide();
+		if ( O.autoclose ) {
+			setTimeout( function() {
+				$( '#infoX' ).click();
+			}, O.autoclose );
+		}
+		// simple use as info( 'message' )
+		if ( typeof O !== 'object' ) {
+			$( '#infoMessage' ).html( O );
+			$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
+			$( '#infoOverlay, #infoMessage, #infoOk' ).show();
+			alignVertical();
+			$( '#infoOk' ).html( 'OK' ).click( function() {
 				infoReset();
-			} );
-		if ( O.cancel || O.cancellabel ) {
-			$( '#infoCancel' )
-				.html( O.cancellabel || 'Cancel' )
-				.css( 'background', O.cancelcolor || '' )
-				.show()
-				.click( function() {
-					if ( typeof O.cancel === 'function' ) O.cancel();
-					infoReset();
-				} );
-		} else {
-			$( '#infoCancel' ).click( infoReset );
+			});
+			return;
 		}
-		if ( O.button ) {
-			if ( !O.button.length ) O.button = [ O.button ];
-			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
-			O.buttoncolor = O.buttoncolor || '';
-			if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
-			var buttonhtml = '';
-			var iL = O.button.length;
+		
+		// message
+		if ( O.message ) {
+			$( '#infoMessage' )
+				.html( O.message )
+				.css( 'text-align', O.msgalign || '' )
+				.show();
+		}
+		// buttons
+		if ( !O.nobutton ) {
+			$( '#infoOk' )
+				.html( O.oklabel ? O.oklabel : 'OK' )
+				.css( 'background', O.okcolor || '' )
+				.show();
+				if ( typeof O.ok === 'function' ) $( '#infoOk' ).click( O.ok );
+			if ( O.cancel ) {
+				$( '#infoCancel' )
+					.html( O.cancellabel || 'Cancel' )
+					.css( 'background', O.cancelcolor || '' )
+					.show();
+				if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
+			}
+			if ( O.button ) {
+				if ( !O.button.length ) O.button = [ O.button ];
+				if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
+				O.buttoncolor = O.buttoncolor || '';
+				if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
+				var buttonhtml = '';
+				var iL = O.button.length;
+				for ( i = 0; i < iL; i++ ) {
+					var iid = i || '';
+					$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn extrabtn infobtn-default">'+ O.buttonlabel[ i ] +'</a>' );
+					$( '#infoButton'+ iid )
+										.css( 'background', O.buttoncolor[ i ] || '' )
+										.click( O.button[ i ] );
+				}
+			}
+			$( '.infobtn' ).click( infoReset );
+		}
+		// inputs
+		if ( O.textlabel || O.textvalue ) {
+			O.textlabel = O.textlabel || '';
+			O.textvalue = O.textvalue || '';
+			if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
+			if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
+			var labelhtml = '';
+			var boxhtml = '';
+			var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
 			for ( i = 0; i < iL; i++ ) {
 				var iid = i || '';
-				$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn infobtn-default extrabtn">'+ O.buttonlabel[ i ] +'</a>' );
-				$( '#infoButton'+ iid )
-					.css( 'background', O.buttoncolor[ i ] || '' )
-					.click( O.button[ i ] )
-					.click( function() {
-						infoReset();
-					} );
-
+				labelhtml += i ? '<br>' : '';
+				var labeltext = O.textlabel[ i ] || '';
+				labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
+				boxhtml += i ? '<br>' : '';
+				var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ] : '';
+				boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
 			}
-		}
-	}
-	// inputs
-	if ( O.textlabel || O.textvalue ) {
-		O.textlabel = O.textlabel || '';
-		O.textvalue = O.textvalue || '';
-		if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
-		if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
-		var labelhtml = '';
-		var boxhtml = '';
-		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
-		for ( i = 0; i < iL; i++ ) {
-			var iid = i || '';
-			labelhtml += i ? '<br>' : '';
-			var labeltext = O.textlabel[ i ] || '';
-			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
-			boxhtml += i ? '<br>' : '';
-			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ] : '';
-			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
-		}
-		$( '.infotextlabel' ).html( labelhtml );
-		$( '.infotextbox' ).html( boxhtml );
-		var $infofocus = $( '#infoTextBox' );
-		$( '#infoText' ).show();
-		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
-		if ( O.textrequired ) {
-			var blank = 0;
-			$( '.infotextbox input' ).each( function() {
-				if ( !this.value ) blank++;
-			} );
-			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
-			$( '.infoinput' ).on( 'keyup', function() {
-				var empty = 0;
+			$( '.infotextlabel' ).html( labelhtml );
+			$( '.infotextbox' ).html( boxhtml );
+			var $infofocus = $( '#infoTextBox' );
+			$( '#infoText' ).show();
+			if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
+			if ( O.textrequired ) {
+				var blank = 0;
 				$( '.infotextbox input' ).each( function() {
-					if ( !this.value ) empty++;
+					if ( !this.value ) blank++;
 				} );
-				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
-			} );
-		}
-	} else if ( O.passwordlabel ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel );
-		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
-		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.fileoklabel ) {
-		$( '#infoOk' )
-			.html( O.fileoklabel )
-			.hide();
-		$( '#infoFileLabel' ).click( function() {
-			$( '#infoFileBox' ).click();
-		} );
-		$( '#infoFile, #infoFileLabel' ).show();
-		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
-		$( '#infoFileBox' ).change( function() {
-			var filename = this.files[ 0 ].name;
-			var ext = filename.split( '.' ).pop();
-			if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
-				O.ok = '';
-				info( {
-					  icon    : 'warning'
-					, title   : O.title
-					, message : 'File extension must be: <code>'+ O.filetype +'</code>'
-					, ok      : function() {
-						info( {
-							  title       : O.title
-							, message     : O.message
-							, fileoklabel : O.fileoklabel
-							, filetype    : O.filetype
-							, ok          : O.ok
-						} );
-					}
+				if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
+				$( '.infoinput' ).on( 'keyup', function() {
+					var empty = 0;
+					$( '.infotextbox input' ).each( function() {
+						if ( !this.value ) empty++;
+					} );
+					$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
 				} );
-				return;
 			}
-			$( '#infoOk' ).show();
-			$( '#infoFileLabel' ).css( 'background', '#34495e' );
-			$( '#infoFilename' ).html( '&ensp;'+ filename );
-		} );
-	} else if ( O.radio ) {
-		if ( typeof O.radio === 'string' ) {
-			var html = O.radio;
-		} else {
-			var html = '';
-			$.each( O.radio, function( key, val ) {
-				// <label> for clickable label
-				html += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
+		} else if ( O.passwordlabel ) {
+			$( '#infoPasswordLabel' ).html( O.passwordlabel );
+			$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
+			var $infofocus = $( '#infoPasswordBox' );
+		} else if ( O.fileoklabel ) {
+			$( '#infoOk' )
+				.html( O.fileoklabel )
+				.hide();
+			$( '#infoFileLabel' ).click( function() {
+				$( '#infoFileBox' ).click();
 			} );
-		}
-		renderOption( $( '#infoRadio' ), html, O.checked );
-	} else if ( O.select ) {
-		$( '#infoSelectLabel' ).html( O.selectlabel );
-		if ( typeof O.select === 'string' ) {
-			var html = O.select;
-		} else {
-			var html = '';
-			$.each( O.select, function( key, val ) {
-				html += '<option value="'+ val +'">'+ key +'</option>';
+			$( '#infoFile, #infoFileLabel' ).show();
+			if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+			$( '#infoFileBox' ).change( function() {
+				var file = this.files[ 0 ];
+				if ( !file ) return
+				
+				var filename = file.name;
+				var ext = filename.split( '.' ).pop();
+				if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
+					O.ok = '';
+					info( {
+						  icon    : 'warning'
+						, title   : O.title
+						, message : 'File extension must be: <code>'+ O.filetype +'</code>'
+						, ok      : function() {
+							info( {
+								  title       : O.title
+								, message     : O.message
+								, fileoklabel : O.fileoklabel
+								, filetype    : O.filetype
+								, ok          : O.ok
+							} );
+						}
+					} );
+					return;
+				}
+				
+				$( '#infoOk' ).show();
+				$( '#infoFileLabel' ).css( 'background', '#34495e' );
+				$( '#infoFilename' ).html( '&ensp;'+ filename );
 			} );
+		} else if ( O.radio ) {
+			if ( typeof O.radio === 'string' ) {
+				var html = O.radio;
+			} else {
+				var html = '';
+				$.each( O.radio, function( key, val ) {
+					// <label> for clickable label
+					html += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
+				} );
+			}
+			renderOption( $( '#infoRadio' ), html, O.checked );
+		} else if ( O.select ) {
+			$( '#infoSelectLabel' ).html( O.selectlabel );
+			if ( typeof O.select === 'string' ) {
+				var html = O.select;
+			} else {
+				var html = '';
+				$.each( O.select, function( key, val ) {
+					html += '<option value="'+ val +'">'+ key +'</option>';
+				} );
+			}
+			renderOption( $( '#infoSelectBox' ), html, O.checked );
+			$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
+		} else if ( O.checkbox ) {
+			if ( typeof O.checkbox === 'string' ) {
+				var html = O.checkbox;
+			} else {
+				var html = '';
+				$.each( O.checkbox, function( key, val ) {
+					html += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
+				} );
+			}
+			renderOption( $( '#infoCheckBox' ), html, O.checked );
 		}
-		renderOption( $( '#infoSelectBox' ), html, O.checked );
-		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( O.checkbox ) {
-		if ( typeof O.checkbox === 'string' ) {
-			var html = O.checkbox;
-		} else {
-			var html = '';
-			$.each( O.checkbox, function( key, val ) {
-				html += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
+		
+		$( '#infoOverlay' )
+			.show()
+			.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
+		alignVertical();
+		if ( $infofocus ) $infofocus.focus();
+		if ( O.boxwidth ) {
+			var maxW = window.innerWidth * 0.98;
+			var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
+			var calcW = maxW < infoW ? maxW : infoW;
+			var labelW = 0;
+			$( '.infolabel' ).each( function() {
+				var thisW = $( this ).width();
+				if ( thisW > labelW ) labelW = thisW;
 			} );
+			var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - labelW;
+			$( '.infoinput' ).css( 'width', boxW +'px' );
 		}
-		renderOption( $( '#infoCheckBox' ), html, O.checked );
-	}
-	
-	$( '#infoOverlay' )
-		.show()
-		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
-	alignVertical();
-	if ( $infofocus ) $infofocus.focus();
-	if ( O.boxwidth ) {
-		var maxW = window.innerWidth * 0.98;
-		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
-		var calcW = maxW < infoW ? maxW : infoW;
-		var labelW = 0;
-		$( '.infolabel' ).each( function() {
-			var thisW = $( this ).width();
-			if ( thisW > labelW ) labelW = thisW;
-		} );
-		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - labelW;
-		$( '.infoinput' ).css( 'width', boxW +'px' );
-	}
-	if ( O.buttonwidth ) {
-		var widest = 0;
-		var w;
-		$.each( $( '.infobtn' ), function() {
-			w = $( this ).outerWidth();
-			if ( w > widest ) widest = w;
-		} );
-		$( '.infobtn' ).css( 'min-width', widest +'px' );
-	}
+		if ( O.buttonwidth ) {
+			var widest = 0;
+			var w;
+			$.each( $( '.infobtn' ), function() {
+				w = $( this ).outerWidth();
+				if ( w > widest ) widest = w;
+			} );
+			$( '.infobtn' ).css( 'min-width', widest +'px' );
+		}
+	}, 0 );
 }
 
 function alignVertical() {
