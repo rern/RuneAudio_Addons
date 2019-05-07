@@ -97,8 +97,9 @@ var html = heredoc( function() { /*
 
 $( 'body' ).prepend( html );
 
+emptyinput = 0; // for 'textrequired'
 $( '#infoOverlay' ).keypress( function( e ) {
-	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
+	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 && !emptyinput ) $( '#infoOk' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
@@ -214,7 +215,7 @@ function info( O ) {
 		var $infofocus = $( '#infoTextBox' );
 		$( '#infoText' ).show();
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
-		if ( O.textrequired !== 'undefined' ) {
+		if ( 'textrequired' in O ) {
 			if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
 			var blank = 0;
 			O.textrequired.forEach( function( e ) {
@@ -222,11 +223,11 @@ function info( O ) {
 			} );
 			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
 			$( '.infoinput' ).on( 'keyup', function() {
-				var empty = 0;
+				emptyinput = 0;
 				O.textrequired.forEach( function( e ) {
-					if ( !$( '.infotextbox input' ).eq( e ).val() ) empty++;
+					if ( !$( '.infotextbox input' ).eq( e ).val() ) emptyinput++;
 				} );
-				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
+				$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
 			} );
 		}
 	} else if ( O.passwordlabel ) {
