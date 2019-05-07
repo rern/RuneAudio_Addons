@@ -206,7 +206,7 @@ function info( O ) {
 			var labeltext = O.textlabel[ i ] || '';
 			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
 			boxhtml += i ? '<br>' : '';
-			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ].replace( /"/g, '&quot;' ) : '';
+			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
 			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
 		}
 		$( '.infotextlabel' ).html( labelhtml );
@@ -277,7 +277,7 @@ function info( O ) {
 			var html = '';
 			$.each( O.radio, function( key, val ) {
 				// <label> for clickable label
-				html += '<label><input type="radio" name="inforadio" value="'+ val.replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
+				html += '<label><input type="radio" name="inforadio" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
 		renderOption( $( '#infoRadio' ), html, O.checked );
@@ -288,7 +288,7 @@ function info( O ) {
 		} else {
 			var html = '';
 			$.each( O.select, function( key, val ) {
-				html += '<option value="'+ val.replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
+				html += '<option value="'+ val.toString().replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
 			} );
 		}
 		renderOption( $( '#infoSelectBox' ), html, O.checked );
@@ -299,7 +299,7 @@ function info( O ) {
 		} else {
 			var html = '';
 			$.each( O.checkbox, function( key, val ) {
-				html += '<label><input type="checkbox" value="'+ val.replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
+				html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
 		renderOption( $( '#infoCheckBox' ), html, O.checked );
