@@ -155,27 +155,27 @@ function info( O ) {
 	}
 	
 	// message
-	if ( O.message ) {
+	if ( 'message' in O ) {
 		$( '#infoMessage' )
 			.html( O.message )
 			.css( 'text-align', O.msgalign || '' )
 			.show();
 	}
 	// buttons
-	if ( !O.nobutton ) {
+	if ( 'nobutton' in O === false ) {
 		$( '#infoOk' )
 			.html( O.oklabel ? O.oklabel : 'OK' )
 			.css( 'background', O.okcolor || '' )
 			.show();
 			if ( typeof O.ok === 'function' ) $( '#infoOk' ).click( O.ok );
-		if ( O.cancel ) {
+		if ( 'cancel' in O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
 				.css( 'background', O.cancelcolor || '' )
 				.show();
 			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
-		if ( O.button ) {
+		if ( 'button' in O ) {
 			if ( !O.button.length ) O.button = [ O.button ];
 			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
 			O.buttoncolor = O.buttoncolor || '';
@@ -193,7 +193,7 @@ function info( O ) {
 		$( '.infobtn' ).click( infoReset );
 	}
 	// inputs
-	if ( O.textlabel || O.textvalue ) {
+	if ( 'textlabel' in O || 'textvalue' in O ) {
 		O.textlabel = O.textlabel || '';
 		O.textvalue = O.textvalue || '';
 		if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
@@ -230,11 +230,11 @@ function info( O ) {
 				$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
 			} );
 		}
-	} else if ( O.passwordlabel ) {
+	} else if ( 'passwordlabel' in O ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.fileoklabel ) {
+	} else if ( 'fileoklabel' in O ) {
 		$( '#infoOk' )
 			.html( O.fileoklabel )
 			.hide();
@@ -242,7 +242,7 @@ function info( O ) {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
-		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+		if ( 'filetype' in O ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoFileBox' ).change( function() {
 			var file = this.files[ 0 ];
 			if ( !file ) return
@@ -272,7 +272,7 @@ function info( O ) {
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoFilename' ).html( '&ensp;'+ filename );
 		} );
-	} else if ( O.radio ) {
+	} else if ( 'radio' in O ) {
 		if ( typeof O.radio === 'string' ) {
 			var html = O.radio;
 		} else {
@@ -283,7 +283,7 @@ function info( O ) {
 			} );
 		}
 		renderOption( $( '#infoRadio' ), html, O.checked );
-	} else if ( O.select ) {
+	} else if ( 'select' in O ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		if ( typeof O.select === 'string' ) {
 			var html = O.select;
@@ -295,7 +295,7 @@ function info( O ) {
 		}
 		renderOption( $( '#infoSelectBox' ), html, O.checked );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( O.checkbox ) {
+	} else if ( 'checkbox' in O ) {
 		if ( typeof O.checkbox === 'string' ) {
 			var html = O.checkbox;
 		} else {
@@ -312,7 +312,7 @@ function info( O ) {
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
 	alignVertical();
 	if ( $infofocus ) $infofocus.focus();
-	if ( O.boxwidth ) {
+	if ( 'boxwidth' in O ) {
 		var maxW = window.innerWidth * 0.98;
 		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
 		var calcW = maxW < infoW ? maxW : infoW;
@@ -324,7 +324,7 @@ function info( O ) {
 		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - labelW;
 		$( '.infoinput' ).css( 'width', boxW +'px' );
 	}
-	if ( O.buttonwidth ) {
+	if ( 'buttonwidth' in O ) {
 		var widest = 0;
 		var w;
 		$.each( $( '.infobtn' ), function() {
