@@ -3,56 +3,56 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {                              // default / custom
-	width         : N                // 400 / N             (info width)
-	icon          : 'NAME'           // question / NAME     (FontAwesome name for top icon)
-	title         : 'TITLE'          // Information / TITLE (top title)
-	nox           : 1..              // 0 / 1               (no top 'X' close button)
-	nobutton      : 1                // 0 / 1               (no button)
-	boxwidth      : N                // 200 / N / 'max'     (input text/password width)
-	autoclose     : N                // ms                  (auto close in ms)
+info( {                                     // default / custom
+	width         : N                       // 400 / N             (info width)
+	icon          : 'NAME'                  // question / NAME     (FontAwesome name for top icon)
+	title         : 'TITLE'                 // Information / TITLE (top title)
+	nox           : 1..                     // 0 / 1               (no top 'X' close button)
+	nobutton      : 1                       // 0 / 1               (no button)
+	boxwidth      : N                       // 200 / N / 'max'     (input text/password width)
+	autoclose     : N                       // ms                  (auto close in ms)
 	
-	message       : 'MESSAGE'        // (blank) / MESSAGE   (message under title)
-	msgalign      : 'CSS'            // left / CSS          (message under title)
+	message       : 'MESSAGE'               // (blank) / MESSAGE   (message under title)
+	msgalign      : 'CSS'                   // left / CSS          (message under title)
 	
-	textlabel     : [ 'LABEL', ... ] // (blank) / LABEL     (label array input label)
-	textvalue     : [ 'VALUE', ... ] // (blank) / VALUE     (pre-filled array input value)
-	textalign     : 'CSS'            // left / CSS          (input text alignment)
-	textrequired  : 1                // 0 / 1               (disable ok button if blank)
+	textlabel     : [ 'LABEL', ... ]        // (blank) / LABEL     (label array input label)
+	textvalue     : [ 'VALUE', ... ]        // (blank) / VALUE     (pre-filled array input value)
+	textrequired  : [ N, ... ]              // (none) / N          (required fields disable ok button if blank)
+	textalign     : 'CSS'                   // left / CSS          (input text alignment)
 	
-	passwordlabel : 'LABEL'          // (blank) / LABEL     (password input label)
-	pwdrequired   : 1                // 0 / 1               (password required)
+	passwordlabel : 'LABEL'                 // (blank) / LABEL     (password input label)
+	pwdrequired   : 1                       // 0 / 1               (password required)
 	
-	fileoklabel   : 'LABEL'          // (blank) / LABEL     (upload button label)
-	filetype      : '.TYPE'          // (none) / .TYPE      (filter and verify filetype)
+	fileoklabel   : 'LABEL'                 // (blank) / LABEL     (upload button label)
+	filetype      : 'TYPE'      .           // (none) / .TYPE      (filter and verify filetype)
 	
-	radio         : JSON             // LABEL: VALUE        ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
-	checked       : N                // (none) / N          (pre-select input index)
+	radio         : { LABEL: 'VALUE', ... } // ............        ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
+	checked       : N                       // (none) / N          (pre-select input index)
 	
-	select        : JSON             //                     ( var value = $( '#infoSelectBox').val(); )
-	selectlabel   : 'LABEL'          // (blank) / LABEL     (select input label)
-	checked       : N                // (none) / N          (pre-select option index)
+	select        : { LABEL: 'VALUE', ... } //                     ( var value = $( '#infoSelectBox').val(); )
+	selectlabel   : 'LABEL'                 // (blank) / LABEL     (select input label)
+	checked       : N                       // (none) / N          (pre-select option index)
 	
-	checkbox      : JSON             // LABEL: VALUE        ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
-	                                                            var value = this.value;
-	                                                          } ); )
-	checked       : [ N, ... ]       // (none) / [ array ]  (pre-select array input indexes)
+	checkbox      : { LABEL: 'VALUE', ... }// ............         ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	                                                                   var value = this.value;
+	                                                                 } ); )
+	checked       : [ N, ... ]              // (none) / N          (pre-select array input indexes)
 	
-	oklabel       : 'LABEL'          // OK / LABEL          (ok button label)
-	okcolor       : 'COLOR'          // #0095d8 / COLOR     (ok button color)
-	ok            : 'FUNCT'          // (hide) / FUNCTION   (ok click function)
-	cancellabel   : 'LABEL'          // Cancel / LABEL      (cancel button label)
-	cancelcolor   : 'COLOR'          // #34495e / COLOR     (cancel button color)
-	cancel        : 'FUNCT'          // (hide) / FUNCTION   (cancel click function)
+	oklabel       : 'LABEL'                 // OK / LABEL          (ok button label)
+	okcolor       : 'COLOR'                 // #0095d8 / COLOR     (ok button color)
+	ok            : 'FUNCT'                 // (hide) / FUNCTION   (ok click function)
+	cancellabel   : 'LABEL'                 // Cancel / LABEL      (cancel button label)
+	cancelcolor   : 'COLOR'                 // #34495e / COLOR     (cancel button color)
+	cancel        : 'FUNCT'                 // (hide) / FUNCTION   (cancel click function)
 	
-	buttonlabel   : [ 'LABEL', ... ] // LABEL               (label array)
-	button        : [ 'FUNCT', ... ] // FUNCTION            (function array)
-	buttoncolor   : [ 'COLOR', ... ] // #34495e / COLOR     (color array)
-	buttonwidth   : 0                // 0 / 1               (equal buttons width)
+	buttonlabel   : [ 'LABEL', ... ]        // LABEL               (label array)
+	button        : [ 'FUNCT', ... ]        // FUNCTION            (function array)
+	buttoncolor   : [ 'COLOR', ... ]        // #34495e / COLOR     (color array)
+	buttonwidth   : 0                       // 0 / 1               (equal buttons width)
 } );
 Note:
 - No default - must be specified.
-- Single value/function ot required to be array.
+- Single value/function - no need to be array
 */
 function heredoc( fn ) {
 	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
@@ -214,16 +214,17 @@ function info( O ) {
 		var $infofocus = $( '#infoTextBox' );
 		$( '#infoText' ).show();
 		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
-		if ( O.textrequired ) {
+		if ( O.textrequired !== 'undefined' ) {
+			if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
 			var blank = 0;
-			$( '.infotextbox input' ).each( function() {
-				if ( !this.value ) blank++;
+			O.textrequired.forEach( function( e ) {
+				if ( !$( '.infotextbox input' ).eq( e ).val() ) blank++;
 			} );
 			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
 			$( '.infoinput' ).on( 'keyup', function() {
 				var empty = 0;
-				$( '.infotextbox input' ).each( function() {
-					if ( !this.value ) empty++;
+				O.textrequired.forEach( function( e ) {
+					if ( !$( '.infotextbox input' ).eq( e ).val() ) empty++;
 				} );
 				$( '#infoOk' ).toggleClass( 'disabled', empty !== 0 );
 			} );
