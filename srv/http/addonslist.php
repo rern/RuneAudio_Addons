@@ -87,7 +87,8 @@ $addons = array(
 ),
 'kid3' => array(
 	'title'       => 'RuneUIe Metadata Editor',
-	'version'     => '20190506',
+	'version'     => '20190508',
+	'needspace'   => 350,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
 	'description' => 'Enable metadata editor feature in context menu.',
