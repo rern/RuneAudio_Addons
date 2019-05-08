@@ -18,8 +18,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190426',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190508',
+	'revision'    => 'Improve for Metadata editor'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
