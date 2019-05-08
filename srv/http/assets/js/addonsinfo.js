@@ -13,7 +13,7 @@ info( {                                     // default / custom
 	autoclose     : N                       // ms                  (auto close in ms)
 	
 	message       : 'MESSAGE'               // (blank) / MESSAGE   (message under title)
-	msgalign      : 'CSS'                   // left / CSS          (message under title)
+	messagealign  : 'CSS'                   // 'center' / CSS      (message under title)
 	
 	textlabel     : [ 'LABEL', ... ]        // (blank) / LABEL     (label array input label)
 	textvalue     : [ 'VALUE', ... ]        // (blank) / VALUE     (pre-filled array input value)
@@ -21,7 +21,7 @@ info( {                                     // default / custom
 	textalign     : 'CSS'                   // left / CSS          (input text alignment)
 	
 	passwordlabel : 'LABEL'                 // (blank) / LABEL     (password input label)
-	pwdrequired   : 1                       // 0 / 1               (password required)
+	pwdrequired   : 1                       // (none) / 1          (password required)
 	
 	fileoklabel   : 'LABEL'                 // (blank) / LABEL     (upload button label)
 	filetype      : 'TYPE'      .           // (none) / .TYPE      (filter and verify filetype)
@@ -33,7 +33,7 @@ info( {                                     // default / custom
 	selectlabel   : 'LABEL'                 // (blank) / LABEL     (select input label)
 	checked       : N                       // (none) / N          (pre-select option index)
 	
-	checkbox      : { LABEL: 'VALUE', ... }// ............         ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	checkbox      : { LABEL: 'VALUE', ... } // ............         ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
 	                                                                   var value = this.value;
 	                                                                 } ); )
 	checked       : [ N, ... ]              // (none) / N          (pre-select array input indexes)
@@ -43,6 +43,7 @@ info( {                                     // default / custom
 	ok            : 'FUNCT'                 // (hide) / FUNCTION   (ok click function)
 	cancellabel   : 'LABEL'                 // Cancel / LABEL      (cancel button label)
 	cancelcolor   : 'COLOR'                 // #34495e / COLOR     (cancel button color)
+	cancelbutton  : 1                       // (none) / 1          (cancel button color)
 	cancel        : 'FUNCT'                 // (hide) / FUNCTION   (cancel click function)
 	
 	buttonlabel   : [ 'LABEL', ... ]        // LABEL               (label array)
@@ -158,7 +159,7 @@ function info( O ) {
 	if ( 'message' in O ) {
 		$( '#infoMessage' )
 			.html( O.message )
-			.css( 'text-align', O.msgalign || '' )
+			.css( 'text-align', O.messagealign || 'center' )
 			.show();
 	}
 	// buttons
@@ -172,7 +173,7 @@ function info( O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
 				.css( 'background', O.cancelcolor || '' );
-			if ( 'cancelbtn' in O ) $( '#infoCancel' ).show();
+			if ( 'cancelbutton' in O ) $( '#infoCancel' ).show();
 			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
 		if ( 'button' in O ) {
