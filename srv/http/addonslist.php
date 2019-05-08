@@ -86,7 +86,7 @@ $addons = array(
 	'hide'        => 1,
 ),
 'kid3' => array(
-	'title'       => 'RuneUIe Metadata Editor',
+	'title'       => 'RuneUIe Metadata Tag Editor',
 	'version'     => '20190508',
 	'needspace'   => 350,
 	'revision'    => 'Initial release',
