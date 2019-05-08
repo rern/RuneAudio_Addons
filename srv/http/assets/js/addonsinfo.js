@@ -125,19 +125,19 @@ function info( O ) {
 	///////////////////////////////////////////////////////////////////
 	// title
 	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
-	if ( !O.icon ) {
-		var iconhtml = '<i class="fa fa-question-circle">';
-	} else {
+	if ( 'icon' in O ) {
 		if ( O.icon.charAt( 0 ) !== '<' ) {
 			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
 		} else {
 			var iconhtml = O.icon;
 		}
+	} else {
+		var iconhtml = '<i class="fa fa-question-circle">';
 	}
 	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title || 'Information' );
-	if ( O.nox ) $( '#infoX' ).hide();
-	if ( O.autoclose ) {
+	if ( 'nox' in O ) $( '#infoX' ).hide();
+	if ( 'autoclose' in O ) {
 		setTimeout( function() {
 			$( '#infoX' ).click();
 		}, O.autoclose );
@@ -171,8 +171,8 @@ function info( O ) {
 		if ( 'cancel' in O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
-				.css( 'background', O.cancelcolor || '' )
-				.show();
+				.css( 'background', O.cancelcolor || '' );
+			if ( 'cancelbtn' in O ) $( '#infoCancel' ).show();
 			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
 		if ( 'button' in O ) {
@@ -214,7 +214,7 @@ function info( O ) {
 		$( '.infotextbox' ).html( boxhtml );
 		var $infofocus = $( '#infoTextBox' );
 		$( '#infoText' ).show();
-		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
+		if ( 'textalign' in O ) $( '.infoinput' ).css( 'text-align', O.textalign );
 		if ( 'textrequired' in O ) {
 			if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
 			var blank = 0;
@@ -249,8 +249,7 @@ function info( O ) {
 			
 			var filename = file.name;
 			var ext = filename.split( '.' ).pop();
-			if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
-				O.ok = '';
+			if ( 'filetype' in O && O.filetype.indexOf( ext ) === -1 ) {
 				info( {
 					  icon    : 'warning'
 					, title   : O.title
@@ -261,7 +260,9 @@ function info( O ) {
 							, message     : O.message
 							, fileoklabel : O.fileoklabel
 							, filetype    : O.filetype
-							, ok          : O.ok
+							, ok          : function() {
+								info( O );
+							}
 						} );
 					}
 				} );
@@ -363,6 +364,7 @@ function verifyPassword( title, pwd, fn ) {
 				fn();
 				return;
 			}
+			
 			info( {
 				  title   : title
 				, message : 'Passwords not matched. Please try again.'
@@ -378,7 +380,6 @@ function blankPassword( title, message, label, fn ) {
 		  title   : title
 		, message : 'Blank password not allowed.'
 		, ok      : function() {
-			$( '#infoX' ).click();
 			info( {
 				  title         : title
 				, message       : message
