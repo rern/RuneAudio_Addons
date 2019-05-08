@@ -122,6 +122,11 @@ systemctl start addons cronie
 
 # udaclist
 acards=$( redis-cli hgetall acards )
+# fix missing data in 0.5
+if [[ -z $acards ]]; then
+	/srv/http/command/refresh_ao
+	acards=$( redis-cli hgetall acards )
+fi
 readarray -t cards <<<"$acards"
 i=0
 for card in "${cards[@]}"; do
