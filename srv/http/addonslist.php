@@ -87,7 +87,6 @@ $addons = array(
 ),
 'kid3' => array(
 	'title'       => 'RuneUIe Metadata Tag Editor',
-	'depend'      => 'enha',
 	'needspace'   => 350,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
