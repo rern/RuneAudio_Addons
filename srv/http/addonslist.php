@@ -85,6 +85,17 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ),
+'kid3' => array(
+	'title'       => 'RuneUIe Metadata Editor',
+	'version'     => '20190508',
+	'needspace'   => 350,
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Enable metadata editor feature in context menu.',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
+	'hide'        => 1
+),
 'pers' =>array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
