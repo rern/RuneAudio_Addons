@@ -25,7 +25,7 @@ alias=addo
 installstart $@
 
 #temp
-redis-cli del udaclist &> /dev/null
+redis-cli del settings udaclist &> /dev/null
 #temp
 
 getinstallzip
