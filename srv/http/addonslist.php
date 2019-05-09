@@ -3,7 +3,12 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-$udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
+$acards = $redis->hGetAll( 'acards' );
+foreach( $acards as $key => $value ) {
+	$name = json_decode( $value )->extlabel;
+	if ( $name ) $udaclist[ $name ] = $key;
+}
+ksort( $udaclist );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
@@ -18,8 +23,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190508',
-	'revision'    => 'Improve for Metadata editor'
+	'version'     => '20190426',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
@@ -93,19 +98,20 @@ $addons = array(
 	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
+	'hide'        => 1
 ),
-'pers' => array(
+'pers' =>array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Maintain database and settings across SD card reflashing.'
+	'description' => 'Maintain database and settings across SD card reflashing. '
 					.'Reuse if previously moved data is available. Otherwise move existings to USB or NAS.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/persistent_settings',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
 	'hide'        => 1
 ),
-'aria' => array(
+'aria' =>array(
 	'title'       => 'Aria2 *',
 	'version'     => '20170901',
 	'needspace'   => 15,
@@ -406,7 +412,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => '<w>Audio output</w> when power off USB DAC:',
 			'list'    => $udaclist,
-			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
+			'checked' => array_search( 'RaspberryPi Analog Out', array_values( $udaclist ) )
 		),
 	),
 ),
