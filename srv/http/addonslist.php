@@ -3,27 +3,41 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-$acards = $redis->hGetAll( 'acards' );
-foreach( $acards as $key => $value ) {
-	$name = json_decode( $value )->extlabel;
-	if ( $name ) $udaclist[ $name ] = $key;
-}
-ksort( $udaclist );
-$zoom = $redis->hGet( 'settings', 'zoom' );
-$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
-
+// checked items
 $enhacheck = array();
 if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
 if ( $redis->hGet( 'AccessPoint', 'enabled' ) == 1 ) $enhacheck[] = 1;
 if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
 if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
+
+$acards = $redis->hGetAll( 'acards' );
+foreach( $acards as $key => $value ) {
+	$name = json_decode( $value )->extlabel;
+	if ( $name ) $udaclist[ $name ] = $key;
+}
+ksort( $udaclist );
+
+$notifydelay = exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' );
+
+$pointer = exec( "sed -i 's/use_cursor \\(.*\\) /\\1/' /root/.xinitrc" );
+
+if ( file_exists( '/usr/bin/chromium' ) ) {
+	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
+	$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
+	$zoom = exec( "grep 'chromium --' $chromiumfile | sed 's/.*=\\(.*\\)/\\1/'" );
+	$chromium = 1;
+} else {
+	$zoom = exec( "grep zoom /root/.config/midori/config | sed 's/.*=\\(.*\\)/\\1/'" );
+}
+$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
+
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190508',
+	'version'     => '20190426',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
@@ -98,6 +112,7 @@ $addons = array(
 	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
+	'hide'        => 1
 ),
 'pers' =>array(
 	'title'       => 'Persistent database and settings',
@@ -452,7 +467,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked' => $redis->hGet( 'settings', 'notify' ) - 1
+			'checked' => $notifydelay / 1000
 		),
 	),
 ),
@@ -473,7 +488,7 @@ $addons = array(
 				'Full HD - 1920px: 2.0'      => 2.0,
 				'Custom'                     => '?'
 			),
-			'checked' => $zoom == '0.7' ? 0 : ( $zoom == '1.5' ? 1 : ( $zoom == '1.8' ? 2 : 3 ) )
+			'checked' => $zoom,
 		),
 	),
 ),
@@ -491,9 +506,10 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $redis->hGet( 'settings', 'pointer' ) === 'yes' ? 0 : 1
+			'checked'  => $pointer,
 		),
 	),
+	'hide'        => $runeversion === '0.5' ? 1 : 0,
 ),
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
@@ -511,7 +527,7 @@ $addons = array(
 				'15 minutes' => 15,
 				'Disable'    => 0,
 			),
-			'checked'  => !$standby ? 3 : ( $standby == 5 ? 0 : ( $standby == 10 ? 1 : 2 ) )
+			'checked'  => $standby
 		),
 	),
 	'hide'        => $redis->get( 'local_browser' ) == 0 ? 1 : 0,
