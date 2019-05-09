@@ -203,13 +203,15 @@ function getoptions() {
 			info( {
 				  title     : title
 				, message   : ojson.message
-				, textlabel : [ ojson.label, ojson.label2 ]
-				, textvalue : [ ojson.value, ojson.value2 ]
+				, textlabel : ojson.label
+				, textvalue : ojson.value
 				, boxwidth  : ojson.width
 				, ok        : function() {
-					var input = $( '#infoTextBox' ).val();
-					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();
-					opt += input ? "'"+ input +"' " : 0;
+					var input = '';
+					$( '.infotextbox .infoinput' ).each( function() {
+						var input = this.value;
+						opt += input ? "'"+ input +"' " : '0 ';
+					} );
 					sendcommand();
 				}
 			} );
