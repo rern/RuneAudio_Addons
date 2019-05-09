@@ -284,7 +284,7 @@ function info( O ) {
 				html += '<label><input type="radio" name="inforadio" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
-		renderOption( $( '#infoRadio' ), html, O.checked );
+		renderOption( $( '#infoRadio' ), html, O.checked || '' );
 	} else if ( 'select' in O ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		if ( typeof O.select === 'string' ) {
@@ -295,7 +295,7 @@ function info( O ) {
 				html += '<option value="'+ val.toString().replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
 			} );
 		}
-		renderOption( $( '#infoSelectBox' ), html, O.checked );
+		renderOption( $( '#infoSelectBox' ), html, O.checked || '' );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 	} else if ( 'checkbox' in O ) {
 		if ( typeof O.checkbox === 'string' ) {
@@ -306,7 +306,7 @@ function info( O ) {
 				html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
-		renderOption( $( '#infoCheckBox' ), html, O.checked );
+		renderOption( $( '#infoCheckBox' ), html, O.checked || '' );
 	}
 	
 	$( '#infoOverlay' )
@@ -347,13 +347,21 @@ function alignVertical() {
 }
 function renderOption( $el, htm, chk ) {
 	$el.html( htm ).show();
-	if ( chk == 'undefined' ) return;
-	
-	var $opt = $el.prop( 'id' ) === 'infoSelectBox' ? $el.find( 'option' ) : $el.find( 'input' );
-	var checked = typeof chk === 'object' ? chk : [ chk ];
-	checked.forEach( function( val ) {
-		$opt.eq( val ).prop( 'checked', true );
-	} );
+	if ( $el.prop( 'id' ) === 'infoCheckBox' ) { // by index
+		if ( chk == 'undefined' ) return;
+		
+		var checked = typeof chk === 'object' ? chk : [ chk ];
+		checked.forEach( function( val ) {
+			$el.find( 'input' ).eq( val ).prop( 'checked', true );
+		} );
+	} else {                                    // by value
+		var opt = $el.prop( 'id' ) === 'infoSelectBox' ? 'option' : 'input';
+		if ( chk === '' ) { // undefined
+			$el.find( opt ).eq( 0 ).prop( 'checked', true );
+		} else {
+			$el.find( opt +'[value="'+ chk +'"]' ).prop( 'checked', true );
+		}
+	}
 }
 function verifyPassword( title, pwd, fn ) {
 	info( {
