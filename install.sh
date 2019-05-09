@@ -24,6 +24,10 @@ alias=addo
 
 installstart $@
 
+#temp
+redis-cli del udaclist &> /dev/null
+#temp
+
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
@@ -120,24 +124,8 @@ systemctl daemon-reload
 systemctl enable addons cronie
 systemctl start addons cronie
 
-# udaclist
-acards=$( redis-cli hgetall acards )
 # fix missing data in 0.5
-if [[ -z $acards ]]; then
-	/srv/http/command/refresh_ao
-	acards=$( redis-cli hgetall acards )
-fi
-readarray -t cards <<<"$acards"
-i=0
-for card in "${cards[@]}"; do
-	if (( i % 2 )); then
-		extlabel=$( echo "$card" | awk -F '","hwplatformid'  '{print $1}' | awk -F 'extlabel":"' '{print $2}' )
-		redis-cli hset udaclist "$key" "$extlabel" &> /dev/null
-	else
-		key="$card"
-	fi
-	(( i++ ))
-done
+[[ -z $acards ]] && /srv/http/command/refresh_ao
 
 # notify
 delay=$( grep 'notify.delay' /srv/http/assets/js/runeui.js | awk '{print $6}' )
