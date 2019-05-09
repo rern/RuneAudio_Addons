@@ -37,7 +37,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190426',
+	'version'     => '20190508',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
@@ -112,7 +112,6 @@ $addons = array(
 	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
-	'hide'        => 1
 ),
 'pers' =>array(
 	'title'       => 'Persistent database and settings',
