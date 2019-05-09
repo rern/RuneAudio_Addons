@@ -3,53 +3,53 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {                                     // default / custom
-	width         : N                       // 400 / N             (info width)
-	icon          : 'NAME'                  // question / NAME     (FontAwesome name for top icon)
-	title         : 'TITLE'                 // Information / TITLE (top title)
-	nox           : 1..                     // 0 / 1               (no top 'X' close button)
-	nobutton      : 1                       // 0 / 1               (no button)
-	boxwidth      : N                       // 200 / N / 'max'     (input text/password width)
-	autoclose     : N                       // ms                  (auto close in ms)
+info( {                                     // default
+	width         : N                       // 400            (info width)
+	icon          : 'NAME'                  // 'question'     (FontAwesome name for top icon)
+	title         : 'TITLE'                 // 'Information'  (top title)
+	nox           : 1                       // (show)         (no top 'X' close button)
+	nobutton      : 1                       // (show)         (no button)
+	boxwidth      : N                       // 200            (input text/password width - 'max' to fit)
+	autoclose     : N                       // (disabled)     (auto close in ms)
 	
-	message       : 'MESSAGE'               // (blank) / MESSAGE   (message under title)
-	messagealign  : 'CSS'                   // 'center' / CSS      (message under title)
+	message       : 'MESSAGE'               // (blank)        (message under title)
+	messagealign  : 'CSS'                   // 'center'       (message under title)
 	
-	textlabel     : [ 'LABEL', ... ]        // (blank) / LABEL     (label array input label)
-	textvalue     : [ 'VALUE', ... ]        // (blank) / VALUE     (pre-filled array input value)
-	textrequired  : [ N, ... ]              // (none) / N          (required fields disable ok button if blank)
-	textalign     : 'CSS'                   // left / CSS          (input text alignment)
+	textlabel     : [ 'LABEL', ... ]        // (blank)        (label array input label)
+	textvalue     : [ 'VALUE', ... ]        // (blank)        (pre-filled array input value)
+	textrequired  : [ N, ... ]              // (none)         (required fields disable ok button if blank)
+	textalign     : 'CSS'                   // 'left'         (input text alignment)
 	
-	passwordlabel : 'LABEL'                 // (blank) / LABEL     (password input label)
-	pwdrequired   : 1                       // (none) / 1          (password required)
+	passwordlabel : 'LABEL'                 // (blank)        (password input label)
+	pwdrequired   : 1                       // (none)         (password required)
 	
-	fileoklabel   : 'LABEL'                 // (blank) / LABEL     (upload button label)
-	filetype      : 'TYPE'      .           // (none) / .TYPE      (filter and verify filetype)
+	fileoklabel   : 'LABEL'                 // 'OK'           (upload button label)
+	filetype      : 'TYPE'                  // (none)         (filter and verify filetype)
 	
-	radio         : { LABEL: 'VALUE', ... } // ............        ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
-	checked       : N                       // (none) / N          (pre-select input index)
+	radio         : { LABEL: 'VALUE', ... } //                ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
+	checked       : N                       // 0              (pre-select input index)
 	
-	select        : { LABEL: 'VALUE', ... } //                     ( var value = $( '#infoSelectBox').val(); )
-	selectlabel   : 'LABEL'                 // (blank) / LABEL     (select input label)
-	checked       : N                       // (none) / N          (pre-select option index)
+	select        : { LABEL: 'VALUE', ... } //                ( var value = $( '#infoSelectBox').val(); )
+	selectlabel   : 'LABEL'                 // (blank)        (select input label)
+	checked       : N                       // 0              (pre-select option index)
 	
-	checkbox      : { LABEL: 'VALUE', ... } // ............         ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
-	                                                                   var value = this.value;
-	                                                                 } ); )
-	checked       : [ N, ... ]              // (none) / N          (pre-select array input indexes)
+	checkbox      : { LABEL: 'VALUE', ... } //                ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	                                                                var value = this.value;
+	                                                            } ); )
+	checked       : [ N, ... ]              // (none)         (pre-select array input indexes)
 	
-	oklabel       : 'LABEL'                 // OK / LABEL          (ok button label)
-	okcolor       : 'COLOR'                 // #0095d8 / COLOR     (ok button color)
-	ok            : 'FUNCT'                 // (hide) / FUNCTION   (ok click function)
-	cancellabel   : 'LABEL'                 // Cancel / LABEL      (cancel button label)
-	cancelcolor   : 'COLOR'                 // #34495e / COLOR     (cancel button color)
-	cancelbutton  : 1                       // (none) / 1          (cancel button color)
-	cancel        : 'FUNCT'                 // (hide) / FUNCTION   (cancel click function)
+	oklabel       : 'LABEL'                 // 'OK'           (ok button label)
+	okcolor       : 'COLOR'                 // '#0095d8'      (ok button color)
+	ok            : 'FUNCT'                 // (reset)        (ok click function)
+	cancellabel   : 'LABEL'                 // 'Cancel'       (cancel button label)
+	cancelcolor   : 'COLOR'                 // '#34495e'      (cancel button color)
+	cancelbutton  : 1                       // (hide)         (cancel button color)
+	cancel        : 'FUNCT'                 // (reset)        (cancel click function)
 	
-	buttonlabel   : [ 'LABEL', ... ]        // LABEL               (label array)
-	button        : [ 'FUNCT', ... ]        // FUNCTION            (function array)
-	buttoncolor   : [ 'COLOR', ... ]        // #34495e / COLOR     (color array)
-	buttonwidth   : 0                       // 0 / 1               (equal buttons width)
+	buttonlabel   : [ 'LABEL', ... ]        //                (label array)
+	button        : [ 'FUNCT', ... ]        //                (function array)
+	buttoncolor   : [ 'COLOR', ... ]        // '#34495e'      (color array)
+	buttonwidth   : 1                       // (none)         (equal buttons width)
 } );
 Note:
 - No default - must be specified.
