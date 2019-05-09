@@ -282,10 +282,10 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190423',
-	'revision'    => 'Fix - Blank page if RuneUI Enhancement uninstalled'
+	'version'     => '20190509',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>Minor improvements'
+					.'<br>Fix - Blank page if RuneUI Enhancement uninstalled'
 					.'<br>...'
 					.'<br>Fix - work with default RuneUI',
 	'maintainer'  => 'r e r n',
