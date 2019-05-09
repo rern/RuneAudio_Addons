@@ -37,6 +37,7 @@ if ( $MiBunpart < 10 ) {
 	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
 	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
+$runeversion = ' (v '.$redis->get( 'release' ).')';
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,8 +62,8 @@ if ( $MiBunpart < 10 ) {
 		<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	</h1>
 	<p class="bl"></p>
-	<?=$htmlused.$htmlavail.$htmlunpart?>
-	<p id="disktext" class="disk">&ensp;<?=$htmlfree?></p>
+	<?=$htmlused.$htmlavail.$htmlunpart ?>
+	<p id="disktext" class="disk">&ensp;<?=$htmlfree.$runeversion ?></p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 <?php
