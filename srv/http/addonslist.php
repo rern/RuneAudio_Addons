@@ -3,7 +3,12 @@ $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $runeversion = $redis->get( 'release' );
 $redisaddons = $redis->hGetAll( 'addons' );
-$udaclist = array_flip( $redis->hGetAll( 'udaclist' ) );
+$acards = $redis->hGetAll( 'acards' );
+foreach( $acards as $key => $value ) {
+	$name = json_decode( $value )->extlabel;
+	if ( $name ) $udaclist[ $name ] = $key;
+}
+ksort( $udaclist );
 $zoom = $redis->hGet( 'settings', 'zoom' );
 $standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
@@ -407,7 +412,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => '<w>Audio output</w> when power off USB DAC:',
 			'list'    => $udaclist,
-			'checked' => array_search( 'RaspberryPi Analog Out', array_keys( $udaclist ) )
+			'checked' => array_search( 'RaspberryPi Analog Out', array_values( $udaclist ) )
 		),
 	),
 ),
