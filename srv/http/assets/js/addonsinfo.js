@@ -40,14 +40,14 @@ info( {                                     // default
 	
 	oklabel       : 'LABEL'                 // 'OK'           (ok button label)
 	okcolor       : 'COLOR'                 // '#0095d8'      (ok button color)
-	ok            : 'FUNCT'                 // (reset)        (ok click function)
+	ok            : 'FUNCTION'              // (reset)        (ok click function)
 	cancellabel   : 'LABEL'                 // 'Cancel'       (cancel button label)
 	cancelcolor   : 'COLOR'                 // '#34495e'      (cancel button color)
 	cancelbutton  : 1                       // (hide)         (cancel button color)
 	cancel        : 'FUNCT'                 // (reset)        (cancel click function)
 	
 	buttonlabel   : [ 'LABEL', ... ]        //                (label array)
-	button        : [ 'FUNCT', ... ]        //                (function array)
+	button        : [ 'FUNCTION', ... ]     //                (function array)
 	buttoncolor   : [ 'COLOR', ... ]        // '#34495e'      (color array)
 	buttonwidth   : 1                       // (none)         (equal buttons width)
 } );
