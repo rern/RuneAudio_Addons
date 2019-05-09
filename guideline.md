@@ -423,8 +423,8 @@ do not isert/append into another insert/append
 		- `Ok` = checked values
 		- `checked` = pre-select optional
 - `'radio'`, `'select'`, `'checkbox'` can be html instead
-- multiple dialogs of the same type must add trailing numbers to avoid duplicate `key`
-- blank value get passed as 1 bash argument and must be process as `''`
+- multiple `'text'`dialogs must be array
+- blank value get passed as a bash argument and must be process as `''`
 - last `key:value` not allow trailing `,`
 - `X` - cancel and back to main page
 ---
