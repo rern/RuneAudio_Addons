@@ -24,7 +24,6 @@ function branchtest( message, install ) {
 		, textlabel : 'Tree #/Branch'
 		, textvalue : 'UPDATE'
 		, boxwidth  : 'max'
-		, cancel    : 1
 		, ok        : function() {
 			branch = $( '#infoTextBox' ).val() +' -b';
 			option = addons[ alias ].option;
@@ -54,12 +53,11 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 		return 1;
 	}
 	info( {
-		  title    : title
-		, message  : 'Upgrade / Downgrade ?'
-		, radiohtml: '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
-				+'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
-		, cancel   : 1
-		, ok       : function() {
+		  title     : title
+		, message   : 'Upgrade / Downgrade ?'
+		, radiohtml : '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
+					 +'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
+		, ok        : function() {
 			if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
 				opt = rollback +' -b';
 				formtemp();
@@ -77,28 +75,28 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 	branch = '';
 	if ( $this.attr( 'space' ) ) {
 		info( {
-			  icon   : 'warning'
-			, title  : title
-			, message: '<white>Warning</white> - Disk space not enough:<br>'
-					+ 'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white>'
-					+'<br>'+ $( this ).attr( 'space' )
-					+'<br>(Use <white>Expand Partition</white> addon to gain more space.)'
+			  icon    : 'warning'
+			, title   : title
+			, message : '<white>Warning</white> - Disk space not enough:<br>'
+					   +'Need: <white>'+ $( this ).attr( 'needmb' ) +' MB</white>'
+					   +'<br>'+ $( this ).attr( 'space' )
+					   +'<br>(Use <white>Expand Partition</white> addon to gain more space.)'
 		} );
 		return
 	} else if ( $this.attr( 'conflict' ) ) {
 		info( {
-			  icon   : 'warning'
-			, title  : title
-			, message: 'Warning - Conflict Addon:<br>'
-					+ '<white>'+ $this.attr( 'conflict' ) +'</white> must be uninstalled first.'
+			  icon    : 'warning'
+			, title   : title
+			, message : 'Warning - Conflict Addon:<br>'
+					   +'<white>'+ $this.attr( 'conflict' ) +'</white> must be uninstalled first.'
 		} );
 		return
 	} else if ( $this.attr( 'depend' ) ) {
 		info( {
-			  icon   : 'warning'
-			, title  : title
-			, message: 'Warning - Depend Addon:<br>'
-					+ '<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
+			  icon    : 'warning'
+			, title   : title
+			, message : 'Warning - Depend Addon:<br>'
+					   +'<white>'+ $this.attr( 'depend' ) +'</white> must be installed first.'
 		} );
 		return
 	}
@@ -107,10 +105,9 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
 	} else if ( type === 'Backup' ) {
 		info( {
-			  title        : title
-			, message      : 'Backup all RuneAudio <white>settings and databases</white>?'
-			, cancel       : 1
-			, ok           : function() {
+			  title   : title
+			, message : 'Backup all RuneAudio <white>settings and databases</white>?'
+			, ok      : function() {
 				$.post( 'addonsdl.php', { backup: 1 }, function( data ) {
 					data ? location.href = data : info( 'Process backup file failed.' );
 				} );
@@ -124,10 +121,9 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 			getoptions();
 		} else {
 			info( {
-				  title  : title
-				, message: type +'?'
-				, cancel : 1
-				, ok     : function () {
+				  title   : title
+				, message : type +'?'
+				, ok      : function () {
 					$( '#loader' ).html( '<i class="fa fa-addons blink"></i>' ).removeClass( 'hide' );
 					( option && type !== 'Update' && type !== 'Uninstall' ) ? getoptions() : formtemp();
 				}
@@ -152,11 +148,8 @@ function getoptions() {
 				  icon    : 'info-circle'
 				, title   : title
 				, message : option[ oj ]
-				, cancel  : 1
 				, oklabel : 'Continue'
-				, ok      : function() {
-					sendcommand();
-				}
+				, ok      : sendcommand
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
@@ -164,11 +157,8 @@ function getoptions() {
 			info( {
 				  title   : title
 				, message : option[ oj ]
-				, cancel  : 1
 				, oklabel : 'Continue'
-				, ok      : function() {
-					sendcommand();
-				}
+				, ok      : sendcommand
 			} );
 			break;
 // -------------------------------------------------------------------------------------------------
@@ -197,9 +187,7 @@ function getoptions() {
 				  title       : title
 				, message     : option[ oj ]
 				, cancellabel : 'No'
-				, cancel      : function() {
-					sendcommand();
-				}
+				, cancel      : sendcommand
 				, oklabel     : 'Yes'
 				, ok          : function() {
 					$( '#loader' )
@@ -213,14 +201,12 @@ function getoptions() {
 		case 'text':
 			var ojson = option[ oj ];
 			info( {
-				  title      : title
-				, message    : ojson.message
-				, textlabel  : ojson.label
-				, textvalue  : ojson.value
-				, textlabel2 : ojson.label2
-				, textvalue2 : ojson.value2
-				, boxwidth   : ojson.width
-				, ok         : function() {
+				  title     : title
+				, message   : ojson.message
+				, textlabel : [ ojson.label, ojson.label2 ]
+				, textvalue : [ ojson.value, ojson.value2 ]
+				, boxwidth  : ojson.width
+				, ok        : function() {
 					var input = $( '#infoTextBox' ).val();
 					if ( ojson.label2 ) input += ' '+ $( '#infoTextBox2' ).val();
 					opt += input ? "'"+ input +"' " : 0;
@@ -288,11 +274,11 @@ function getoptions() {
 		case 'radio': // single value
 			ojson = option[ oj ];
 			info( {
-				  title    : title
-				, message  : ojson.message
-				, radio    : ojson.list
-				, checked  : ojson.checked
-				, ok       : function() {
+				  title   : title
+				, message : ojson.message
+				, radio   : ojson.list
+				, checked : ojson.checked
+				, ok      : function() {
 					var radiovalue = $( '#infoRadio input[ type=radio ]:checked' ).val();
 					opt += "'"+ radiovalue +"' ";
 					sendcommand();

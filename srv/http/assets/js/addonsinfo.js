@@ -3,44 +3,57 @@ simple usage:
 info( 'message' );
 
 normal usage:
-info( {                            // default / custom
-	width         : N              // 400 / N                (info width)
-	icon          : 'NAME'         // question-circle / NAME (FontAwesome name for top icon)
-	title         : 'TITLE'        // Information / TITLE    (top title)
-	nox           : 1..            // 0 / 1                  (no top 'X' close button)
-	boxwidth      : N              // 200 / N / 'max'        (input text/password width)
-	message       : 'MESSAGE'      // (blank) / MESSAGE      (message under title)
-	msgalign      : 'CSS'          // left / CSS             (message under title)
-	textlabel     : 'LABEL'        // (blank) / LABEL        (text input label)
-	textrequired  : 1              // 0 / 1                  (text input - ! = disable ok if blank)
-	textvalue     : 'VALUE'        // (blank) / VALUE        (text input value)
-	textalign     : 'CSS'          // left / CSS             (text input alignment)
-	passwordlabel : 'LABEL'        // (blank) / LABEL        (password input label)
-	pwdrequired   : 1              // 0 / 1                  (password required)
-	fileoklabel   : 'LABEL'        // (blank) / LABEL        (upload button label)
-	filetype      : '.TYPE'        // (none) / .TYPE         (filter and verify filetype)
-	radio         : JSON           // required               ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
-	checked       : N              // (none) / N             (pre-select input index)
-	selectlabel   : 'LABEL'        // (blank) / LABEL        (select input label)
-	select        : JSON           // required               ( var value = $( '#infoSelectBox').val(); )
-	checked       : N              // (none) / N             (pre-select option index)
-	checkbox      : JSON           // required               ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
-	                                                               var value = $( this ).val();
-	                                                           } ); )
-	checked       : [ N, N1, ... ] // (none) / [ array ]     (pre-select input indexes)
-	oklabel       : 'LABEL'        // OK / LABEL             (ok button label)
-	okcolor       : 'COLOR'        // #0095d8 / COLOR        (ok button color)
-	ok            : 'FUNCTION'     // (hide) / FUNCTION      (ok click function)
-	cancellabel   : 'LABEL'        // Cancel / LABEL         (cancel button label)
-	cancelcolor   : 'COLOR'        // #34495e / COLOR        (cancel button color)
-	cancel        : 'FUNCTION'     // (hide) / FUNCTION      (cancel click function)
-	buttonwidth   : 0              // 0 / 1                  (keep same button witdth)
-	buttonlabel   : 'LABEL'        // required LABEL         (button button label)
-	buttoncolor   : 'COLOR'        // #34495e / COLOR        (button button color)
-	button        : 'FUNCTION'     // required FUNCTION      (button click function)
-	nobutton      : 1              // 0 / 1                  (no button)
-	autoclose     : N              // ms                     (auto close in ms)
+info( {                                     // default / custom
+	width         : N                       // 400 / N             (info width)
+	icon          : 'NAME'                  // question / NAME     (FontAwesome name for top icon)
+	title         : 'TITLE'                 // Information / TITLE (top title)
+	nox           : 1..                     // 0 / 1               (no top 'X' close button)
+	nobutton      : 1                       // 0 / 1               (no button)
+	boxwidth      : N                       // 200 / N / 'max'     (input text/password width)
+	autoclose     : N                       // ms                  (auto close in ms)
+	
+	message       : 'MESSAGE'               // (blank) / MESSAGE   (message under title)
+	messagealign  : 'CSS'                   // 'center' / CSS      (message under title)
+	
+	textlabel     : [ 'LABEL', ... ]        // (blank) / LABEL     (label array input label)
+	textvalue     : [ 'VALUE', ... ]        // (blank) / VALUE     (pre-filled array input value)
+	textrequired  : [ N, ... ]              // (none) / N          (required fields disable ok button if blank)
+	textalign     : 'CSS'                   // left / CSS          (input text alignment)
+	
+	passwordlabel : 'LABEL'                 // (blank) / LABEL     (password input label)
+	pwdrequired   : 1                       // (none) / 1          (password required)
+	
+	fileoklabel   : 'LABEL'                 // (blank) / LABEL     (upload button label)
+	filetype      : 'TYPE'      .           // (none) / .TYPE      (filter and verify filetype)
+	
+	radio         : { LABEL: 'VALUE', ... } // ............        ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
+	checked       : N                       // (none) / N          (pre-select input index)
+	
+	select        : { LABEL: 'VALUE', ... } //                     ( var value = $( '#infoSelectBox').val(); )
+	selectlabel   : 'LABEL'                 // (blank) / LABEL     (select input label)
+	checked       : N                       // (none) / N          (pre-select option index)
+	
+	checkbox      : { LABEL: 'VALUE', ... } // ............         ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
+	                                                                   var value = this.value;
+	                                                                 } ); )
+	checked       : [ N, ... ]              // (none) / N          (pre-select array input indexes)
+	
+	oklabel       : 'LABEL'                 // OK / LABEL          (ok button label)
+	okcolor       : 'COLOR'                 // #0095d8 / COLOR     (ok button color)
+	ok            : 'FUNCT'                 // (hide) / FUNCTION   (ok click function)
+	cancellabel   : 'LABEL'                 // Cancel / LABEL      (cancel button label)
+	cancelcolor   : 'COLOR'                 // #34495e / COLOR     (cancel button color)
+	cancelbutton  : 1                       // (none) / 1          (cancel button color)
+	cancel        : 'FUNCT'                 // (hide) / FUNCTION   (cancel click function)
+	
+	buttonlabel   : [ 'LABEL', ... ]        // LABEL               (label array)
+	button        : [ 'FUNCT', ... ]        // FUNCTION            (function array)
+	buttoncolor   : [ 'COLOR', ... ]        // #34495e / COLOR     (color array)
+	buttonwidth   : 0                       // 0 / 1               (equal buttons width)
 } );
+Note:
+- No default - must be specified.
+- Single value/function - no need to be array
 */
 function heredoc( fn ) {
 	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
@@ -58,15 +71,8 @@ var html = heredoc( function() { /*
 		<div id="infoContent">
 			<p id="infoMessage" class="infocontent"></p>
 			<div id="infoText" class="infocontent">
-				<div class="infotextlabel">
-					<a id="infoTextLabel" class="infolabel"></a><br>
-					<a id="infoTextLabel2" class="infolabel"></a>
-				</div>
-				<div class="infotextbox">
-					<input type="text" class="infoinput" id="infoTextBox" spellcheck="false"><br>
-					<input type="text" class="infoinput" id="infoTextBox2" spellcheck="false">
-				</div>
-				<div style="clear: both"></div>
+				<div class="infotextlabel"></div>
+				<div class="infotextbox"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
 				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
@@ -78,13 +84,12 @@ var html = heredoc( function() { /*
 			</div>
 		</div>
 		<div id="infoButtons">
-			<div id="infoFile" class="infobtn">
-				<a id="infoFileLabel" class="infobtn infobtn-primary">Browse</a>
+			<div id="infoFile">
+				<a id="infoFileLabel" class="filebtn infobtn-primary">Browse</a>
 				<span id="infoFilename"></span>
 				<input type="file" class="infoinput" id="infoFileBox">
 			</div>
 			<a id="infoCancel" class="infobtn infobtn-default"></a>
-			<a id="infoButton" class="infobtn infobtn-default"></a>
 			<a id="infoOk" class="infobtn infobtn-primary"></a>
 		</div>
 	</div>
@@ -93,8 +98,9 @@ var html = heredoc( function() { /*
 
 $( 'body' ).prepend( html );
 
+emptyinput = 0; // for 'textrequired'
 $( '#infoOverlay' ).keypress( function( e ) {
-	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 ) $( '#infoOk' ).click();
+	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 && !emptyinput ) $( '#infoOk' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
@@ -103,34 +109,36 @@ $( '#infoX' ).click( function() {
 } );
 
 function infoReset() {
-	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .infobtn' ).hide();
-	$( '.infolabel, .infohtml, #infoFilename' ).empty();
+	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .filebtn, .infobtn' ).hide();
+	$( '#infoMessage, .infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
-	$( '#infoFileLabel, #infoButtons a' ).css( 'background', '' );
+	$( '.filebtn, .infobtn' ).css( 'background', '' ).off( 'click' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
-	$( '#infoFileLabel, #infoButtons a' ).off( 'click' );
 	$( '#infoOk' ).removeClass( 'disabled' );
+	$( '.extrabtn' ).remove();
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
+infoReset();
 
 function info( O ) {
+	setTimeout( function() { // force wait for infoReset()
+	///////////////////////////////////////////////////////////////////
 	// title
-	infoReset();
-	if ( O.width ) $( '#infoBox' ).css( 'width', O.width +'px' );
-	if ( !O.icon ) {
-		var iconhtml = '<i class="fa fa-question-circle">';
-	} else {
+	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
+	if ( 'icon' in O ) {
 		if ( O.icon.charAt( 0 ) !== '<' ) {
 			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
 		} else {
 			var iconhtml = O.icon;
 		}
+	} else {
+		var iconhtml = '<i class="fa fa-question-circle">';
 	}
 	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title || 'Information' );
-	if ( O.nox ) $( '#infoX' ).hide();
-	if ( O.autoclose ) {
+	if ( 'nox' in O ) $( '#infoX' ).hide();
+	if ( 'autoclose' in O ) {
 		setTimeout( function() {
 			$( '#infoX' ).click();
 		}, O.autoclose );
@@ -148,83 +156,86 @@ function info( O ) {
 	}
 	
 	// message
-	if ( O.message ) {
+	if ( 'message' in O ) {
 		$( '#infoMessage' )
 			.html( O.message )
-			.css( 'text-align', O.msgalign || '' )
+			.css( 'text-align', O.messagealign || 'center' )
 			.show();
 	}
 	// buttons
-	if ( !O.nobutton ) {
+	if ( 'nobutton' in O === false ) {
 		$( '#infoOk' )
 			.html( O.oklabel ? O.oklabel : 'OK' )
 			.css( 'background', O.okcolor || '' )
-			.show()
-			.click( function() {
-				$( '#infoOverlay' ).hide();
-				if ( typeof O.ok === 'function' ) {
-					O.ok();
-					O.ok = ''; // reset
-				} else {
-					infoReset();
-				}
-			} );
-		if ( O.cancel || O.cancellabel ) {
+			.show();
+			if ( typeof O.ok === 'function' ) $( '#infoOk' ).click( O.ok );
+		if ( 'cancel' in O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
-				.css( 'background', O.cancelcolor || '' )
-				.show()
-				.click( function() {
-					$( '#infoOverlay' ).hide();
-					if ( typeof O.cancel === 'function' ) {
-						O.cancel();
-						O.cancel = ''; // reset
-					} 
-					infoReset();
-				} );
-		} else {
-			$( '#infoCancel' ).click( infoReset );
+				.css( 'background', O.cancelcolor || '' );
+			if ( 'cancelbutton' in O ) $( '#infoCancel' ).show();
+			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
-		if ( O.button ) {
-			$( '#infoButton' )
-				.html( O.buttonlabel )
-				.css( 'background', O.buttoncolor || '' )
-				.show()
-				.click( function() {
-					$( '#infoOverlay' ).hide();
-					O.button();
-					O.button = '';
-				} );
+		if ( 'button' in O ) {
+			if ( !O.button.length ) O.button = [ O.button ];
+			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
+			O.buttoncolor = O.buttoncolor || '';
+			if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
+			var buttonhtml = '';
+			var iL = O.button.length;
+			for ( i = 0; i < iL; i++ ) {
+				var iid = i || '';
+				$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn extrabtn infobtn-default">'+ O.buttonlabel[ i ] +'</a>' );
+				$( '#infoButton'+ iid )
+									.css( 'background', O.buttoncolor[ i ] || '' )
+									.click( O.button[ i ] );
+			}
 		}
+		$( '.infobtn' ).click( infoReset );
 	}
-		// inputs
-	if ( O.textlabel || O.textvalue ) {
-		$( '#infoTextLabel' ).html( O.textlabel );
-		$( '#infoTextBox' ).val( O.textvalue );
-		$( '#infoText, #infoTextLabel, #infoTextBox' ).show();
-		var $infofocus =  $( '#infoTextBox' );
-		if ( O.textlabel2 ) {
-			$( '#infoTextLabel2' ).html( O.textlabel2 );
-			$( '#infoTextBox2' ).val( O.textvalue2 );
-			$( '#infoTextLabel2, #infoTextBox2' ).show();
+	// inputs
+	if ( 'textlabel' in O || 'textvalue' in O ) {
+		O.textlabel = O.textlabel || '';
+		O.textvalue = O.textvalue || '';
+		if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
+		if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
+		var labelhtml = '';
+		var boxhtml = '';
+		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
+		for ( i = 0; i < iL; i++ ) {
+			var iid = i || '';
+			labelhtml += i ? '<br>' : '';
+			var labeltext = O.textlabel[ i ] || '';
+			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
+			boxhtml += i ? '<br>' : '';
+			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
+			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
 		}
-		if ( O.textalign ) $( '.infoinput' ).css( 'text-align', O.textalign );
-		if ( O.textrequired ) {
-			if ( !$( '#infoTextBox' ).val() ) $( '#infoOk' ).addClass( 'disabled' );
-			$( '#infoTextBox, #infoTextBox2' ).on( 'keyup', function() {
-				if ( O.textlabel2 ) {
-					var emptytext = !$( '#infoTextBox' ).val() || !$( '#infoTextBox2' ).val();
-				} else {
-					var emptytext = !$( '#infoTextBox' ).val();
-				}
-				$( '#infoOk' ).toggleClass( 'disabled', emptytext );
+		$( '.infotextlabel' ).html( labelhtml );
+		$( '.infotextbox' ).html( boxhtml );
+		var $infofocus = $( '#infoTextBox' );
+		$( '#infoText' ).show();
+		if ( 'textalign' in O ) $( '.infoinput' ).css( 'text-align', O.textalign );
+		if ( 'textrequired' in O ) {
+			if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
+			var blank = 0;
+			O.textrequired.forEach( function( e ) {
+				if ( !$( '.infotextbox input' ).eq( e ).val() ) blank++;
+			} );
+			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
+			$( '.infoinput' ).on( 'keyup', function() {
+				emptyinput = 0;
+				O.textrequired.forEach( function( e ) {
+					if ( !$( '.infotextbox input' ).eq( e ).val() ) emptyinput++;
+				} );
+				$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
 			} );
 		}
-	} else if ( O.passwordlabel ) {
+	} else if ( 'passwordlabel' in O ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( O.fileoklabel ) {
+	} else if ( 'fileoklabel' in O ) {
 		$( '#infoOk' )
 			.html( O.fileoklabel )
 			.hide();
@@ -232,12 +243,14 @@ function info( O ) {
 			$( '#infoFileBox' ).click();
 		} );
 		$( '#infoFile, #infoFileLabel' ).show();
-		if ( O.filetype ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+		if ( 'filetype' in O ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
 		$( '#infoFileBox' ).change( function() {
-			var filename = this.files[ 0 ].name;
+			var file = this.files[ 0 ];
+			if ( !file ) return
+			
+			var filename = file.name;
 			var ext = filename.split( '.' ).pop();
-			if ( O.filetype && O.filetype.indexOf( ext ) === -1 ) {
-				O.ok = '';
+			if ( 'filetype' in O && O.filetype.indexOf( ext ) === -1 ) {
 				info( {
 					  icon    : 'warning'
 					, title   : O.title
@@ -248,49 +261,52 @@ function info( O ) {
 							, message     : O.message
 							, fileoklabel : O.fileoklabel
 							, filetype    : O.filetype
-							, ok          : O.ok
+							, ok          : function() {
+								info( O );
+							}
 						} );
 					}
 				} );
 				return;
 			}
+			
 			$( '#infoOk' ).show();
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoFilename' ).html( '&ensp;'+ filename );
 		} );
-	} else if ( O.radio ) {
+	} else if ( 'radio' in O ) {
 		if ( typeof O.radio === 'string' ) {
 			var html = O.radio;
 		} else {
 			var html = '';
 			$.each( O.radio, function( key, val ) {
 				// <label> for clickable label
-				html += '<label><input type="radio" name="inforadio" value="'+ val +'">&ensp;'+ key +'</label><br>';
+				html += '<label><input type="radio" name="inforadio" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
-		renderOption( $( '#infoRadio' ), html, O.checked );
-	} else if ( O.select ) {
+		renderOption( $( '#infoRadio' ), html, O.checked || '' );
+	} else if ( 'select' in O ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		if ( typeof O.select === 'string' ) {
 			var html = O.select;
 		} else {
 			var html = '';
 			$.each( O.select, function( key, val ) {
-				html += '<option value="'+ val +'">'+ key +'</option>';
+				html += '<option value="'+ val.toString().replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
 			} );
 		}
-		renderOption( $( '#infoSelectBox' ), html, O.checked );
+		renderOption( $( '#infoSelectBox' ), html, O.checked || '' );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( O.checkbox ) {
+	} else if ( 'checkbox' in O ) {
 		if ( typeof O.checkbox === 'string' ) {
 			var html = O.checkbox;
 		} else {
 			var html = '';
 			$.each( O.checkbox, function( key, val ) {
-				html += '<label><input type="checkbox" value="'+ val +'">&ensp;'+ key +'</label><br>';
+				html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
-		renderOption( $( '#infoCheckBox' ), html, O.checked );
+		renderOption( $( '#infoCheckBox' ), html, O.checked || '' );
 	}
 	
 	$( '#infoOverlay' )
@@ -298,14 +314,19 @@ function info( O ) {
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
 	alignVertical();
 	if ( $infofocus ) $infofocus.focus();
-	if ( O.boxwidth ) {
+	if ( 'boxwidth' in O ) {
 		var maxW = window.innerWidth * 0.98;
 		var infoW = O.width ? O.width : parseInt( $( '#infoBox' ).css( 'width' ) );
 		var calcW = maxW < infoW ? maxW : infoW;
-		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - $( '#infoTextLabel' ).width();
+		var labelW = 0;
+		$( '.infolabel' ).each( function() {
+			var thisW = $( this ).width();
+			if ( thisW > labelW ) labelW = thisW;
+		} );
+		var boxW = O.boxwidth !== 'max' ? O.boxwidth : calcW - 40 - labelW;
 		$( '.infoinput' ).css( 'width', boxW +'px' );
 	}
-	if ( O.buttonwidth ) {
+	if ( 'buttonwidth' in O ) {
 		var widest = 0;
 		var w;
 		$.each( $( '.infobtn' ), function() {
@@ -314,6 +335,8 @@ function info( O ) {
 		} );
 		$( '.infobtn' ).css( 'min-width', widest +'px' );
 	}
+	/////////////////////////////////////////////////////////////////////////////
+	}, 0 );
 }
 
 function alignVertical() {
@@ -324,16 +347,23 @@ function alignVertical() {
 }
 function renderOption( $el, htm, chk ) {
 	$el.html( htm ).show();
-	if ( chk == 'undefined' ) return;
-	
-	var $opt = $el.prop( 'id' ) === 'infoSelectBox' ? $el.find( 'option' ) : $el.find( 'input' );
-	var checked = typeof chk === 'object' ? chk : [ chk ];
-	checked.forEach( function( val ) {
-		$opt.eq( val ).prop( 'checked', true );
-	} );
+	if ( $el.prop( 'id' ) === 'infoCheckBox' ) { // by index
+		if ( chk == 'undefined' ) return;
+		
+		var checked = typeof chk === 'object' ? chk : [ chk ];
+		checked.forEach( function( val ) {
+			$el.find( 'input' ).eq( val ).prop( 'checked', true );
+		} );
+	} else {                                    // by value
+		var opt = $el.prop( 'id' ) === 'infoSelectBox' ? 'option' : 'input';
+		if ( chk === '' ) { // undefined
+			$el.find( opt ).eq( 0 ).prop( 'checked', true );
+		} else {
+			$el.find( opt +'[value="'+ chk +'"]' ).prop( 'checked', true );
+		}
+	}
 }
 function verifyPassword( title, pwd, fn ) {
-	$( '#infoX' ).click();
 	info( {
 		  title         : title
 		, message       : 'Please retype'
@@ -343,6 +373,7 @@ function verifyPassword( title, pwd, fn ) {
 				fn();
 				return;
 			}
+			
 			info( {
 				  title   : title
 				, message : 'Passwords not matched. Please try again.'
@@ -358,7 +389,6 @@ function blankPassword( title, message, label, fn ) {
 		  title   : title
 		, message : 'Blank password not allowed.'
 		, ok      : function() {
-			$( '#infoX' ).click();
 			info( {
 				  title         : title
 				, message       : message

@@ -22,16 +22,11 @@ alias=addo
 
 . /srv/http/addonstitle.sh
 
-#0temp0
-# 20190126
-rm -rf /srv/http/addons
-if grep -q 0temp0 /etc/nginx/nginx.conf; then
-	sed -i '/#0temp0/,/#1temp1/ d' /etc/nginx/nginx.conf
-	nginx -s reload
-fi
-#1temp1
-
 installstart $@
+
+#temp
+redis-cli del settings udaclist &> /dev/null
+#temp
 
 getinstallzip
 
@@ -129,23 +124,8 @@ systemctl daemon-reload
 systemctl enable addons cronie
 systemctl start addons cronie
 
-# udaclist
-acards=$( redis-cli hgetall acards )
-readarray -t cards <<<"$acards"
-i=0
-for card in "${cards[@]}"; do
-	if (( i % 2 )); then
-		extlabel=$( echo "$card" | awk -F '","hwplatformid'  '{print $1}' | awk -F 'extlabel":"' '{print $2}' )
-		redis-cli hset udaclist "$key" "$extlabel" &> /dev/null
-	else
-		key="$card"
-	fi
-	(( i++ ))
-done
-
-# notify
-delay=$( grep 'notify.delay' /srv/http/assets/js/runeui.js | awk '{print $6}' )
-redis-cli hset settings notify $(( delay / 1000 )) &> /dev/null
+# fix missing data in 0.5
+[[ -z $acards ]] && /srv/http/command/refresh_ao
 
 # for backup file upload
 dir=/srv/http/tmp

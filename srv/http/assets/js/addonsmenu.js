@@ -14,7 +14,6 @@ $( '#addons' ).click( function () {
 		, textlabel : 'Branch'
 		, textvalue : 'UPDATE'
 		, boxwidth  : 'max'
-		, cancel    : 1
 		, ok        : function() {
 			var branch = $( '#infoTextBox' ).val();
 			$( '#loader' )
@@ -37,7 +36,7 @@ function addonsdl( exit ) {
 		info( {
 			  icon    : 'info-circle'
 			, message : 'Download from Addons server failed.'
-				+'<br>Please try again later.'
+					   +'<br>Please try again later.'
 			, ok     : function() {
 				$( '#loader' ).addClass( 'hide' );
 			}
@@ -46,7 +45,7 @@ function addonsdl( exit ) {
 		info( {
 			  icon    : 'info-circle'
 			, message : 'Addons Menu cannot be updated.'
-				+'<br>Root partition has <white>less than 1 MB free space</white>.'
+					   +'<br>Root partition has <white>less than 1 MB free space</white>.'
 			, ok      : function() {
 				location.href = 'addons.php';
 			}
