@@ -49,8 +49,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190428',
-	'revision'    => 'Add - Consume mode - remove each song from playlist after played'
+	'version'     => '20190510',
+	'revision'    => 'New feature - Metadata Tag Editor'
+					.'<br>Fix - Add single track from Browse By CoverArt'
+					.'<br>Fix - Partial create/update thumbnails with single quotes in directory name'
+					.'<br>Delete dummy thumbnails for albums with *.cue or *.m3u'
+					.'<br>...'
+					.'<br>Add - Consume mode - remove each song from playlist after played'
 					.'<br>Fix - unable to create 1st bookmark'
 					.'<br>Fix - unable to add/replace album to playlist in Browse By CoverArt > album view'
 					.'<br>Fix - set volume by tap'
@@ -61,12 +66,7 @@ $addons = array(
 					.'<br>Browse By CoverArt - 1 thumbnail : 1 directory to avoid duplicate thumbnails'
 					.'<br>Fix - Missing index bar'
 					.'<br>Fix - Search result context menu bug'
-					.'<br>Add - Long-press Playback coverart to edit'
-					.'<br>...'
-					.'<br>Add - Rearrange / edit / add to saved playlists'
-					.'<br>Fix - NAS mount bug'
-					.'<br>Fix - Development settings page in 0.5'
-					.'<br>Remove - options for Debug and Development menu(can be accessed by append /debug or /dev to URL)',
+					.'<br>Add - Long-press Playback coverart to edit',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
