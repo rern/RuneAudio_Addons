@@ -21,10 +21,6 @@ foreach( $acards as $key => $value ) {
 }
 ksort( $udaclist );
 
-$notifydelay = exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' );
-
-$pointer = exec( "sed -i 's/use_cursor \\(.*\\) /\\1/' /root/.xinitrc" );
-
 if ( file_exists( '/usr/bin/chromium' ) ) {
 	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
 	$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
@@ -33,7 +29,6 @@ if ( file_exists( '/usr/bin/chromium' ) ) {
 } else {
 	$zoom = exec( "grep zoom /root/.config/midori/config | sed 's/.*=\\(.*\\)/\\1/'" );
 }
-$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
@@ -87,7 +82,7 @@ $addons = array(
 				'Full HD - no buttons: 1.8'  => 1.8,
 				'Custom'                     => '?'
 			),
-			'checked' => 2
+			'checked' => 1.8
 		),
 		'checkbox'  => array(
 			'message' => 'Should be unchecked if not used:',
@@ -195,14 +190,13 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
-				'<a style="color: #ff0000">Red</a>'         => 1,
-				'<a style="color: #00ff00">Green'           => 2,
-				'<a style="color: #ffff00">Yellow'          => 3,
-				'<a style="color: #0000ff">Blue'            => 4,
-				'<a style="color: #ff00ff">Magenta'         => 5,
-				'<a style="color: #00ffff">Cyan'            => 6,
-				'<a style="color: #ffffff">White'           => 7,
+				'<a style="color: #f#0095d8">UI blue</a>' => 0,
+				'<a style="color: #ff0000">Red</a>'       => 1,
+				'<a style="color: #00ff00">Green'         => 2,
+				'<a style="color: #ffff00">Yellow'        => 3,
+				'<a style="color: #ff00ff">Magenta'       => 5,
+				'<a style="color: #00ffff">Cyan'          => 6,
+				'<a style="color: #ffffff">White'         => 7,
 			),
 			'checked' => 0
 		),
@@ -248,7 +242,7 @@ $addons = array(
 				'9'  => 9,
 				'10' => 10,
 			),
-			'checked' => 2,
+			'checked' => 5,
 		),
 	),
 ),
@@ -426,7 +420,7 @@ $addons = array(
 		'radio'     => array(
 			'message' => '<w>Audio output</w> when power off USB DAC:',
 			'list'    => $udaclist,
-			'checked' => array_search( 'RaspberryPi Analog Out', array_values( $udaclist ) )
+			'checked' => $redis->get( 'ao' )
 		),
 	),
 	'hide'        => !$acards
@@ -469,7 +463,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked' => $notifydelay / 1000
+			'checked' => exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' ) / 1000
 		),
 	),
 ),
@@ -508,7 +502,7 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $pointer,
+			'checked'  => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
 		),
 	),
 	'hide'        => $rune05,
@@ -529,7 +523,7 @@ $addons = array(
 				'15 minutes' => 15,
 				'Disable'    => 0,
 			),
-			'checked'  => $standby
+			'checked'  => exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60
 		),
 	),
 	'hide'        => !$redis->get( 'local_browser' ),
