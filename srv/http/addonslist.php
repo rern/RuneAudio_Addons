@@ -113,7 +113,6 @@ $addons = array(
 	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
-	'hide'        => 1,
 ),
 'pers' => array(
 	'title'       => 'Persistent database and settings',
