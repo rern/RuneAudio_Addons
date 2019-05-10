@@ -125,7 +125,7 @@ systemctl enable addons cronie
 systemctl start addons cronie
 
 # fix missing data in 0.5
-[[ -z $acards ]] && /srv/http/command/refresh_ao
+[[ -z $( redis-cli hgetall acards ) ]] && /srv/http/command/refresh_ao
 
 # for backup file upload
 dir=/srv/http/tmp
