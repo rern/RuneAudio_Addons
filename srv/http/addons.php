@@ -82,7 +82,7 @@ foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
 	
 	// hide by conditions
-	if ( $addon[ 'hide' ] === 1 ) continue;
+	if ( $addon[ 'hide' ] ) continue;
 	
 	if ( isset( $addon[ 'buttonlabel' ] ) ) {
 		$buttonlabel = $addon[ 'buttonlabel' ];

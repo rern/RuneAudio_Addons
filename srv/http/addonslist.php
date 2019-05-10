@@ -1,8 +1,9 @@
 <?php
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
-$runeversion = $redis->get( 'release' );
+$rune05 = $redis->get( 'release' ) === '0.5';
 $redisaddons = $redis->hGetAll( 'addons' );
+$enha = $redisaddons[ 'enha' ];
 // checked items
 $enhacheck = array();
 if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
@@ -12,15 +13,13 @@ if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 
 $acards = $redis->hGetAll( 'acards' );
+$udaclist = array(); // fix: undefined $udaclist error( empty $acards)
 foreach( $acards as $key => $value ) {
-	$name = json_decode( $value )->extlabel;
-	if ( $name ) $udaclist[ $name ] = $key;
+	$value = json_decode( $value );
+	$name = $value->extlabel ?: $value->name;
+	$udaclist[ $name ] = $key;
 }
 ksort( $udaclist );
-
-$notifydelay = exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' );
-
-$pointer = exec( "sed -i 's/use_cursor \\(.*\\) /\\1/' /root/.xinitrc" );
 
 if ( file_exists( '/usr/bin/chromium' ) ) {
 	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
@@ -30,7 +29,6 @@ if ( file_exists( '/usr/bin/chromium' ) ) {
 } else {
 	$zoom = exec( "grep zoom /root/.config/midori/config | sed 's/.*=\\(.*\\)/\\1/'" );
 }
-$standby = exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60;
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
@@ -84,7 +82,7 @@ $addons = array(
 				'Full HD - no buttons: 1.8'  => 1.8,
 				'Custom'                     => '?'
 			),
-			'checked' => 2
+			'checked' => 1.8
 		),
 		'checkbox'  => array(
 			'message' => 'Should be unchecked if not used:',
@@ -105,16 +103,17 @@ $addons = array(
 	'hide'        => 1,
 ),
 'kid3' => array(
-	'title'       => 'RuneUIe - Kid3 Tag Editor',
+	'title'       => 'RuneUIe Metadata Tag Editor',
+	'depend'      => 'enha',
 	'needspace'   => 350,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Enable metadata tag editor feature in context menu.',
+	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
 	'hide'        => 1,
 ),
-'pers' =>array(
+'pers' => array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
 	'revision'    => 'Initial release',
@@ -125,7 +124,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
 	'hide'        => 1
 ),
-'aria' =>array(
+'aria' => array(
 	'title'       => 'Aria2 *',
 	'version'     => '20170901',
 	'needspace'   => 15,
@@ -155,7 +154,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbchro.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
@@ -176,11 +175,7 @@ $addons = array(
 	'buttonlabel' => 'Expand',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'        => $redisaddons[ 'expa' ] ? 1 : 0,
-	'option'      => array(
-		'wait'      => '<w>USB drives</w> should be'
-					  .'<br>unmount and removed before proceeding.'
-	),
+	'hide'        => $redisaddons[ 'expa' ],
 ),
 'motd' => array(
 	'title'       => 'Login Logo for Terminal',
@@ -195,14 +190,13 @@ $addons = array(
 		'radio'     => array(
 			'message' => 'Set logo color:',
 			'list'    => array(
-				'<a style="color: #f#0095d8">Rune blue</a>' => 0,
-				'<a style="color: #ff0000">Red</a>'         => 1,
-				'<a style="color: #00ff00">Green'           => 2,
-				'<a style="color: #ffff00">Yellow'          => 3,
-				'<a style="color: #0000ff">Blue'            => 4,
-				'<a style="color: #ff00ff">Magenta'         => 5,
-				'<a style="color: #00ffff">Cyan'            => 6,
-				'<a style="color: #ffffff">White'           => 7,
+				'<a style="color: #f#0095d8">UI blue</a>' => 0,
+				'<a style="color: #ff0000">Red</a>'       => 1,
+				'<a style="color: #00ff00">Green'         => 2,
+				'<a style="color: #ffff00">Yellow'        => 3,
+				'<a style="color: #ff00ff">Magenta'       => 5,
+				'<a style="color: #00ffff">Cyan'          => 6,
+				'<a style="color: #ffffff">White'         => 7,
 			),
 			'checked' => 0
 		),
@@ -225,7 +219,7 @@ $addons = array(
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
@@ -248,7 +242,7 @@ $addons = array(
 				'9'  => 9,
 				'10' => 10,
 			),
-			'checked' => 2,
+			'checked' => 5,
 		),
 	),
 ),
@@ -262,7 +256,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbfont.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
@@ -303,7 +297,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbpaus.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
+	'hide'        => $enha,
 ),
 'bbtn' => array(
 	'title'       => 'RuneUIe - Back Button To Left',
@@ -313,7 +307,7 @@ $addons = array(
 	'description' => 'Move Library Back button to left side',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/back_button',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/back_button/install.sh',
-	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
+	'hide'        => !$enha,
 ),
 'uire' => array(
 	'title'       => 'RuneUI Reset',
@@ -378,7 +372,7 @@ $addons = array(
 			'value'   => 'rw'
 		),
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'tran' => array(
 	'title'       => 'Transmission *',
@@ -426,9 +420,10 @@ $addons = array(
 		'radio'     => array(
 			'message' => '<w>Audio output</w> when power off USB DAC:',
 			'list'    => $udaclist,
-			'checked' => array_search( 'RaspberryPi Analog Out', array_values( $udaclist ) )
+			'checked' => $redis->get( 'ao' )
 		),
 	),
+	'hide'        => !$acards
 ),
 'webr' => array(
 	'title'       => 'Webradio Import',
@@ -444,6 +439,7 @@ $addons = array(
 		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
 					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
 	),
+	'hide'        => $enha,
 ),
 'noti' => array(
 	'title'       => 'Setting - Notification Duration',
@@ -467,7 +463,7 @@ $addons = array(
 				'8 (default)' => 8,
 				'Custom'      => '?'
 			),
-			'checked' => $notifydelay / 1000
+			'checked' => exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' ) / 1000
 		),
 	),
 ),
@@ -506,10 +502,10 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => $pointer,
+			'checked'  => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
 		),
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
@@ -527,10 +523,10 @@ $addons = array(
 				'15 minutes' => 15,
 				'Disable'    => 0,
 			),
-			'checked'  => $standby
+			'checked'  => exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60
 		),
 	),
-	'hide'        => $redis->get( 'local_browser' ) == 0 ? 1 : 0,
+	'hide'        => !$redis->get( 'local_browser' ),
 ),
 'back' => array(
 	'title'       => 'Settings+Databases Backup',
