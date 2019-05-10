@@ -1,8 +1,9 @@
 <?php
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
-$runeversion = $redis->get( 'release' );
+$rune05 = $redis->get( 'release' ) === '0.5';
 $redisaddons = $redis->hGetAll( 'addons' );
+$enha = $redisaddons[ 'enha' ];
 // checked items
 $enhacheck = array();
 if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
@@ -12,9 +13,11 @@ if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 
 $acards = $redis->hGetAll( 'acards' );
+$udaclist = array();
 foreach( $acards as $key => $value ) {
-	$name = json_decode( $value )->extlabel;
-	if ( $name ) $udaclist[ $name ] = $key;
+	$value = json_decode( $value );
+	$name = $value->extlabel ?: $value->name;
+	$udaclist[ $name ] = $key;
 }
 ksort( $udaclist );
 
@@ -105,16 +108,17 @@ $addons = array(
 	'hide'        => 1,
 ),
 'kid3' => array(
-	'title'       => 'RuneUIe - Kid3 Tag Editor',
+	'title'       => 'RuneUIe Metadata Tag Editor',
+	'depend'      => 'enha',
 	'needspace'   => 350,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Enable metadata tag editor feature in context menu.',
+	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
 	'hide'        => 1,
 ),
-'pers' =>array(
+'pers' => array(
 	'title'       => 'Persistent database and settings',
 	'version'     => '20190417',
 	'revision'    => 'Initial release',
@@ -125,7 +129,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
 	'hide'        => 1
 ),
-'aria' =>array(
+'aria' => array(
 	'title'       => 'Aria2 *',
 	'version'     => '20170901',
 	'needspace'   => 15,
@@ -155,7 +159,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbchro.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
@@ -176,11 +180,7 @@ $addons = array(
 	'buttonlabel' => 'Expand',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'        => $redisaddons[ 'expa' ] ? 1 : 0,
-	'option'      => array(
-		'wait'      => '<w>USB drives</w> should be'
-					  .'<br>unmount and removed before proceeding.'
-	),
+	'hide'        => $redisaddons[ 'expa' ],
 ),
 'motd' => array(
 	'title'       => 'Login Logo for Terminal',
@@ -225,7 +225,7 @@ $addons = array(
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
@@ -262,7 +262,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbfont.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
@@ -303,7 +303,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbpaus.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-	'hide'        => $redisaddons[ 'enha' ] ? 1 : 0,
+	'hide'        => $enha,
 ),
 'bbtn' => array(
 	'title'       => 'RuneUIe - Back Button To Left',
@@ -313,7 +313,7 @@ $addons = array(
 	'description' => 'Move Library Back button to left side',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/back_button',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/back_button/install.sh',
-	'hide'        => $redisaddons[ 'enha' ] ? 0 : 1,
+	'hide'        => !$enha,
 ),
 'uire' => array(
 	'title'       => 'RuneUI Reset',
@@ -378,7 +378,7 @@ $addons = array(
 			'value'   => 'rw'
 		),
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'tran' => array(
 	'title'       => 'Transmission *',
@@ -429,6 +429,7 @@ $addons = array(
 			'checked' => array_search( 'RaspberryPi Analog Out', array_values( $udaclist ) )
 		),
 	),
+	'hide'        => !$acards
 ),
 'webr' => array(
 	'title'       => 'Webradio Import',
@@ -444,6 +445,7 @@ $addons = array(
 		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
 					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
 	),
+	'hide'        => $enha,
 ),
 'noti' => array(
 	'title'       => 'Setting - Notification Duration',
@@ -509,7 +511,7 @@ $addons = array(
 			'checked'  => $pointer,
 		),
 	),
-	'hide'        => $runeversion === '0.5' ? 1 : 0,
+	'hide'        => $rune05,
 ),
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
@@ -530,7 +532,7 @@ $addons = array(
 			'checked'  => $standby
 		),
 	),
-	'hide'        => $redis->get( 'local_browser' ) == 0 ? 1 : 0,
+	'hide'        => !$redis->get( 'local_browser' ),
 ),
 'back' => array(
 	'title'       => 'Settings+Databases Backup',
