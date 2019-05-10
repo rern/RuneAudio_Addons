@@ -13,7 +13,7 @@ if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 
 $acards = $redis->hGetAll( 'acards' );
-$udaclist = array();
+$udaclist = array(); // fix: undefined $udaclist error( empty $acards)
 foreach( $acards as $key => $value ) {
 	$value = json_decode( $value );
 	$name = $value->extlabel ?: $value->name;
