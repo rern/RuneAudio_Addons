@@ -105,7 +105,7 @@ $addons = array(
 	'hide'        => 1,
 ),
 'kid3' => array(
-	'title'       => 'RuneUIe Tag Editor',
+	'title'       => 'RuneUIe - Kid3 Tag Editor',
 	'needspace'   => 350,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
