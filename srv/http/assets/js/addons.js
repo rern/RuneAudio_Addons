@@ -19,7 +19,6 @@ $( 'legend' ).click( function() {
 function branchtest( message, install ) {
 	info( {
 		  title     : title
-		, width     : 500
 		, message   : message
 		, textlabel : 'Tree #/Branch'
 		, textvalue : 'UPDATE'
