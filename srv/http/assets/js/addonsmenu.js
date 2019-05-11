@@ -1,43 +1,39 @@
-$(function() {
-
 $( '#addons' ).click( function () {
-	$( '#loader' )
-		.html( '<i class="fa fa-addons blink"></i>' )
-		.removeClass( 'hide' );
 	$.get( 'addonsdl.php', function( exit ) {
-			addonsdl( exit );
+		addonsdl( exit );
 	} );
+	temploader();
 } ).on( 'taphold', function () {
 	info( {
 		  title     : 'Addons Branch Test'
-		, width     : 500
 		, textlabel : 'Branch'
 		, textvalue : 'UPDATE'
 		, boxwidth  : 'max'
 		, ok        : function() {
 			var branch = $( '#infoTextBox' ).val();
-			$( '#loader' )
-				.html( '<i class="fa fa-addons blink"></i>' )
-				.removeClass( 'hide' );
 			if ( branch ) {
-				$.get(
-					'addonsdl.php?branch='+ branch,
-					function( exit ) {
-						addonsdl( exit );
-					}
-				);
+				$.get( 'addonsdl.php?branch='+ branch, function( exit ) {
+					addonsdl( exit );
+				} );
 			}
+			setTimeout( temploader, 0 ); // info() hides #loader on close
 		}
 	} );
 } );
 
+function temploader() {
+	$( '#loader' )
+		.html( '<i class="fa fa-addons blink"></i>' )
+		.removeClass( 'hide' );
+	$( '#settings' ).addClass( 'hide' );
+}
 function addonsdl( exit ) {
 	if ( exit == 1 ) {
 		info( {
 			  icon    : 'info-circle'
 			, message : 'Download from Addons server failed.'
 					   +'<br>Please try again later.'
-			, ok     : function() {
+			, ok      : function() {
 				$( '#loader' ).addClass( 'hide' );
 			}
 		} );
@@ -54,8 +50,6 @@ function addonsdl( exit ) {
 		location.href = 'addons.php';
 	}
 }
-
-// nginx pushstream websocket
 var pushstreamAddons = new PushStream( {
 	  host  : window.location.hostname
 	, port  : window.location.port
@@ -67,22 +61,6 @@ pushstreamAddons.onmessage = function() {
 pushstreamAddons.addChannel( 'addons' );
 pushstreamAddons.connect();
 
-if ( 'hidden' in document ) {
-	var visibilityevent = 'visibilitychange';
-	var hiddenstate = 'hidden';
-} else { // cross-browser document.visibilityState must be prefixed
-	var prefixes = [ 'webkit', 'moz', 'ms', 'o' ];
-	for ( var i = 0; i < 4; i++ ) {
-		var p = prefixes[ i ];
-		if ( p +'Hidden' in document ) {
-			var visibilityevent = p +'visibilitychange';
-			var hiddenstate = p +'Hidden';
-			break;
-		}
-	}
-}
-document.addEventListener( visibilityevent, function() {
-	document[ hiddenstate ] ? pushstreamAddons.disconnect() : pushstreamAddons.connect();
-} );
-
+document.addEventListener( 'visibilitychange', function() {
+	document.hidden ? pushstreamAddons.disconnect() : pushstreamAddons.connect();
 } );
