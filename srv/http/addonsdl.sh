@@ -10,7 +10,7 @@ if (( $# != 0 )); then
 	installurl=$( echo $installurl | sed s"/master/$branch/" )
 fi
 
-# minor fixes
+# for push update if necessary
 wget -qN --no-check-certificate $( dirname $installurl )/update.sh
 if [[ $? == 0 ]]; then
 	chmod +x update.sh
