@@ -16,7 +16,7 @@ $( '#addons' ).click( function () {
 					addonsdl( exit );
 				} );
 			}
-			setTimeout( temploader, 0 ); // info() hides #loader on close
+			setTimeout( temploader, 0 ); // fix - info() hides #loader on close
 		}
 	} );
 } );
