@@ -279,72 +279,72 @@ do not isert/append into another insert/append
 
 **`<alias> => array(...)` template**   
 ```php
-'<alias>' => array(
-/**/	'version'       => '<yyyymmdd>',
-/**/	'rollback'      => '<yyyymmdd>',
-/**/	'revision'      => '<revision summary>',
-/**/	'needspace'     =>  <MB>,
-	'title'         => '<display name>',
-	'maintainer'    => '<maintainer>',
-	'description'   => '<description>',
-	'sourcecode'    => 'https://github.com/RuneAddons/<addon_title>',
-	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
-/**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
-/**/	'buttonlabel'   => '<install button label>',
-/**/	'depend'        => '<alias>',
-/**/	'conflict'      => '<alias>',
-/**/	'hide'          => '<php condition>',
+'ALIAS' => array(
+/**/	'version'       => 'YYYMMDD',
+/**/	'rollback'      => 'TREENUMBER',
+/**/	'revision'      => 'SUMMARY',
+/**/	'needspace'     => MB,
+	'title'         => 'NAME',
+	'maintainer'    => 'NAME',
+	'description'   => 'DESCRIPTION',
+	'sourcecode'    => 'https://github.com/RuneAddons/REPOSITORY',
+	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
+/**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
+/**/	'buttonlabel'   => 'LABEL',
+/**/	'depend'        => 'ALIAS',
+/**/	'conflict'      => 'ALIAS',
+/**/	'hide'          => BOOLEAN,
 /**/	'option'        => array(
-	'wait'      => '<message text>',
-	'confirm'   => '<message text>',
-	'skip'      => '<message text>',
+	'wait'      => 'MESSAGE',
+	'confirm'   => 'MESSAGE',
+	'skip'      => 'MESSAGE',
 	'yesno'     => array(
-		'message'     => '<message text>',
-/**/			'mgsalign'    => '<css>',
-/**/			'cancellabel' => '<label text>',
-/**/			'oklabel'     => '<label text>',
+		'message'     => 'MESSAGE',
+/**/			'mgsalign'    => 'CSS',
+/**/			'cancellabel' => 'LABEL',
+/**/			'oklabel'     => 'LABEL',
 	),
 	'text'      => array(
-/**/		'message'  => '<message text>',
-		'label'    => '<label text>',
-/**/		'boxwidth'    => '<input box width>',
+/**/		'message'  => 'MESSAGE',
+		'label'    => [ 'LABEL', ... ]
+/**/		'boxwidth'    => PIXEL,
 /**/		'required' => 1,
 	),
 	'password'  => array(
-/**/		'message'  => '<message text>',
-		'label'    => '<label text>',
+/**/		'message'  => 'MESSAGE',
+		'label'    => 'LABEL',
 /**/		'required' => 1,
 	),
 	'file'  => array(
-/**/		'message'  => '<message text>',
-		'label'    => '<label text>',
-/**/		'type'     => '<filetype filter>'
+/**/		'message'  => 'MESSAGE',
+		'label'    => 'LABEL',
+/**/		'type'     => 'FILETYPE'
 	'radio'     => array(
-/**/		'message' => '<message text>',
+/**/		'message' => 'MESSAGE',
 		'list'    => array(
-			'item1' => '<value1>',
-			'item2'  => '<value2>',
+			'label' => [ 'LABEL', ... ],
+			'item'  => [ 'VALUE', ... ],
 /**/			'custom' => '?',
 		),
-/**/		'ckecked' => <index>,
+/**/		'ckecked' => INDEX,
 	),
 	'select'    => array(
-/**/		'message' => '<message text>',
-/**/		'label'   => '<label text>',
+/**/		'message' => 'MESSAGE',
+/**/		'label'   => 'LABEL',
 		'list'    => array(
-			'item1'  => '<value1>',
-			'item2'  => '<value2>',
+			'label' => [ 'LABEL', ... ],
+			'item'  => [ 'VALUE', ... ],
 /**/			'custom' => '?',
 		),
-/**/		'ckecked' => <index>
+/**/		'ckecked' => INDEX
 	),
 	'checkbox'  => array(
-/**/		'message' => '<message text>',
+/**/		'message' => 'MESSAGE',
 		'list'    => array(
-			'item1'  => '<value1>',
-			'item2' => '<value2>'
+			'label' => [ 'LABEL', ... ],
+			'item'  => [ 'VALUE', ... ],
 		),
-/**/		'ckecked' => [ <i0>, <i1> ]
+/**/		'ckecked' => [ INDEX, ... ]
 	),
 ),
 ```
