@@ -35,10 +35,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190510',
-	'revision'    => 'Fix error lines when "HDMI & 3,5mm jack" turned off'
+	'version'     => '20190512',
+	'revision'    => 'Fix minor bugs'
 					.'<br>...'
-					.'<br>Minor improvements'
+					.'<br>Fix error lines when "HDMI & 3,5mm jack" turned off'
 					.'<br>...'
 					.'<br>Partial thumbnails update integration',
 	'maintainer'  => 'r e r n',
