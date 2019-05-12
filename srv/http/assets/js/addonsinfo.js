@@ -306,7 +306,7 @@ function info( O ) {
 				html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
 			} );
 		}
-		renderOption( $( '#infoCheckBox' ), html, O.checked || '' );
+		renderOption( $( '#infoCheckBox' ), html, 'checked' in O ? O.checked : '' );
 	}
 	
 	$( '#infoOverlay' )
@@ -348,7 +348,7 @@ function alignVertical() {
 function renderOption( $el, htm, chk ) {
 	$el.html( htm ).show();
 	if ( $el.prop( 'id' ) === 'infoCheckBox' ) { // by index
-		if ( chk == 'undefined' ) return;
+		if ( !chk ) return;
 		
 		var checked = typeof chk === 'object' ? chk : [ chk ];
 		checked.forEach( function( val ) {

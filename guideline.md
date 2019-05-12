@@ -279,78 +279,70 @@ do not isert/append into another insert/append
 
 **`<alias> => array(...)` template**   
 ```php
-<alias> => array(
-/**/	'version'       => '<yyyymmdd>',
-/**/	'rollback'      => '<yyyymmdd>',
-/**/	'revision'      => '<revision summary>',
-/**/	'needspace'     =>  <MB>,
-	'title'         => '<display name>',
-	'maintainer'    => '<maintainer>',
-	'description'   => '<description>',
-	'sourcecode'    => 'https://github.com/RuneAddons/<addon_title>',
-	'installurl'    => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh',
-/**/	'thumbnail'     => 'https://github.com/RuneAddons/<addon_title>/image/<w100px.png>',
-/**/	'buttonlabel'   => '<install button label>',
-/**/	'depend'        => '<alias>',
-/**/	'conflict'      => '<alias>',
-/**/	'hide'          => '<php condition>',
+'ALIAS' => array(
+/**/	'version'       => 'YYYMMDD',
+/**/	'rollback'      => 'TREE SHA',
+/**/	'revision'      => 'SUMMARY',
+/**/	'needspace'     => MB,
+	'title'         => 'ADDON NAME',
+	'maintainer'    => 'AUTHOR NAME',
+	'description'   => 'DESCRIPTION',
+	'sourcecode'    => 'https://github.com/RuneAddons/REPOSITORY',
+	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
+/**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
+/**/	'buttonlabel'   => 'LABEL',
+/**/	'depend'        => 'ALIAS',
+/**/	'conflict'      => 'ALIAS',
+/**/	'hide'          => BOOLEAN,
 /**/	'option'        => array(
-		'wait'      => '<message text>',
-		'confirm'   => '<message text>',
-		'skip'      => '<message text>',
-		'yesno'     => array(
-			'message'     => '<message text>',
-/**/			'mgsalign'    => '<css>',
-/**/			'cancellabel' => '<label text>',
-/**/			'oklabel'     => '<label text>',
-		),
-		'text'      => array(
-			'message'  => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'    => '<label text>',
-/**/			'boxwidth'    => '<input box width>',
-		'password'  => array(
-			'message'  => '<message text>',
-			'label'    => '<label text>',
-/**/			'required' => '1'
-		),
-		'file'  => array(
-			'message'  => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'    => '<label text>',
-			'type'     => '<filetype filter>'
-		'radio'     => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'list'    => array(
-				'*item1' => '<value1>',
-				'item2'  => '<value2>',
-/**/			'custom' => '?'
-			),
-/**/			'ckecked' => <index>
-		),
-		'select'    => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'   => '<label text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'item2'  => '<value2>',
-/**/			'custom' => '?'
-			),
-/**/			'ckecked' => <index>
-		),
-		'checkbox'  => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'*item2' => '<value2>'
-			),
-/**/			'ckecked' => [ <i0>, <i1> ]
-		),
+	'wait'      => 'MESSAGE',
+	'confirm'   => 'MESSAGE',
+	'skip'      => 'MESSAGE',
+	'yesno'     => array(
+		'message'     => 'MESSAGE',
+/**/			'mgsalign'    => 'CSS',
+/**/			'cancellabel' => 'LABEL',
+/**/			'oklabel'     => 'LABEL',
 	),
-
+	'text'      => array(
+/**/		'message'  => 'MESSAGE',
+		'label'    => 'LABEL',
+/**/		'boxwidth'    => PIXEL,
+/**/		'required' => INDEX
+	),
+	'password'  => array(
+/**/		'message'  => 'MESSAGE',
+		'label'    => 'LABEL',
+/**/		'required' => TRUE,
+	),
+	'file'  => array(
+/**/		'message'  => 'MESSAGE',
+		'label'    => 'LABEL',
+/**/		'type'     => 'FILETYPE'
+	'radio'     => array(
+/**/		'message' => 'MESSAGE',
+		'list'    => array(
+			'LABEL' => 'VALUE',
+/**/			'custom' => '?',
+		),
+/**/		'ckecked' => INDEX,
+	),
+	'select'    => array(
+/**/		'message' => 'MESSAGE',
+/**/		'label'   => 'LABEL',
+		'list'    => array(
+			'LABEL' => 'VALUE',
+/**/			'custom' => '?',
+		),
+/**/		'ckecked' => INDEX
+	),
+	'checkbox'  => array(
+/**/		'message' => 'MESSAGE',
+		'list'    => array(
+			'LABEL' => 'VALUE',
+		),
+/**/		'ckecked' => INDEX
+	),
 ),
 ```
 `/**/` - optional  
@@ -390,9 +382,9 @@ do not isert/append into another insert/append
 - for installed conflict addon which must be uninstalled  
 
 **`'option'`** - user inputs  
-- each `'key': ...` open a dialog
-- each `'value'` will be appended as `install.sh` arguments / parameters
-- options must be **single quoted** json, `" 'key': 'value' "`
+- each `'key' => 'value'` open a dialog
+- each `'key'` will be appended as `install.sh` arguments / parameters
+- options must be **single quoted**, `" 'key' => 'value' "`
 - dialog types:
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
@@ -405,27 +397,27 @@ do not isert/append into another insert/append
 		- `checked` = set primary button
 	- `'text'` = `<input type="text">`
 		- `Ok` = input
+		- `required` = ok button disabled if required field blank
 	- `'password'` = `<input type="password">`
 		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
-		- `required` = blank pasword not allowed
+		- `required` = ok button disabled if password blank
 	- `'file'` = `<input type="file">`
 		- `Ok` = upload
 		- `type` filetype filter and verify
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select must be specified
+		- `checked` = default 0
 		- `'?'` custom input marker
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select optional
+		- `checked` = default 0
 		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
-		- `checked` = pre-select optional
+		- `checked` = default none
 - `'radio'`, `'select'`, `'checkbox'` can be html instead
-- multiple `'text'`dialogs must be array
-- blank value get passed as a bash argument and must be process as `''`
-- last `key:value` not allow trailing `,`
+- multiple tems of the same type must be array
+- blank value get passed as a ` ''` arguement to bash
 - `X` - cancel and back to main page
 ---
 
