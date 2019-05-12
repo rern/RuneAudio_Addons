@@ -295,61 +295,56 @@ do not isert/append into another insert/append
 /**/	'conflict'      => '<alias>',
 /**/	'hide'          => '<php condition>',
 /**/	'option'        => array(
-		'wait'      => '<message text>',
-		'confirm'   => '<message text>',
-		'skip'      => '<message text>',
-		'yesno'     => array(
-			'message'     => '<message text>',
+	'wait'      => '<message text>',
+	'confirm'   => '<message text>',
+	'skip'      => '<message text>',
+	'yesno'     => array(
+		'message'     => '<message text>',
 /**/			'mgsalign'    => '<css>',
 /**/			'cancellabel' => '<label text>',
 /**/			'oklabel'     => '<label text>',
 		),
-		'text'      => array(
-			'message'  => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'    => '<label text>',
-/**/			'boxwidth'    => '<input box width>',
-		'password'  => array(
-			'message'  => '<message text>',
-			'label'    => '<label text>',
-/**/			'required' => '1'
-		),
-		'file'  => array(
-			'message'  => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'    => '<label text>',
-			'type'     => '<filetype filter>'
-		'radio'     => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'list'    => array(
-				'*item1' => '<value1>',
-				'item2'  => '<value2>',
-/**/			'custom' => '?'
-			),
-/**/			'ckecked' => <index>
-		),
-		'select'    => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'label'   => '<label text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'item2'  => '<value2>',
-/**/			'custom' => '?'
-			),
-/**/			'ckecked' => <index>
-		),
-		'checkbox'  => array(
-			'message' => '<message text>',
-/**/			'cancellabel' => '<label text>',
-			'list'    => array(
-				'item1'  => '<value1>',
-				'*item2' => '<value2>'
-			),
-/**/			'ckecked' => [ <i0>, <i1> ]
-		),
+	'text'      => array(
+/**/		'message'  => '<message text>',
+/**/		'label'    => '<label text>',
+/**/		'boxwidth'    => '<input box width>',
+	'password'  => array(
+/**/		'message'  => '<message text>',
+		'label'    => '<label text>',
+/**/		'required' => '1'
 	),
+	'file'  => array(
+/**/		'message'  => '<message text>',
+		'label'    => '<label text>',
+/**/		'type'     => '<filetype filter>'
+	'radio'     => array(
+/**/		'message' => '<message text>',
+		'list'    => array(
+			'item1' => '<value1>',
+			'item2'  => '<value2>',
+/**/			'custom' => '?'
+		),
+/**/		'ckecked' => <index>
+	),
+	'select'    => array(
+/**/		'message' => '<message text>',
+/**/		'label'   => '<label text>',
+		'list'    => array(
+			'item1'  => '<value1>',
+			'item2'  => '<value2>',
+/**/			'custom' => '?'
+		),
+/**/		'ckecked' => <index>
+	),
+	'checkbox'  => array(
+/**/		'message' => '<message text>',
+		'list'    => array(
+			'item1'  => '<value1>',
+			'item2' => '<value2>'
+		),
+/**/		'ckecked' => [ <i0>, <i1> ]
+	),
+),
 
 ),
 ```
