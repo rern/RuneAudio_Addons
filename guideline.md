@@ -420,7 +420,7 @@ do not isert/append into another insert/append
 		- `checked` = default none
 - `'radio'`, `'select'`, `'checkbox'` can be html instead
 - multiple tems of the same type must be array
-- blank value get passed as a bash ` ''` argument
+- blank value get passed as a ` ''` arguement to bash
 - `X` - cancel and back to main page
 ---
 
