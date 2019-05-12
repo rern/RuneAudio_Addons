@@ -313,7 +313,7 @@ do not isert/append into another insert/append
 	'password'  => array(
 /**/		'message'  => 'MESSAGE',
 		'label'    => 'LABEL',
-/**/		'required' => 1,
+/**/		'required' => TRUE,
 	),
 	'file'  => array(
 /**/		'message'  => 'MESSAGE',
