@@ -281,11 +281,11 @@ do not isert/append into another insert/append
 ```php
 'ALIAS' => array(
 /**/	'version'       => 'YYYMMDD',
-/**/	'rollback'      => 'TREENUMBER',
+/**/	'rollback'      => 'TREE SHA',
 /**/	'revision'      => 'SUMMARY',
 /**/	'needspace'     => MB,
-	'title'         => 'NAME',
-	'maintainer'    => 'NAME',
+	'title'         => 'ADDON NAME',
+	'maintainer'    => 'AUTHOR NAME',
 	'description'   => 'DESCRIPTION',
 	'sourcecode'    => 'https://github.com/RuneAddons/REPOSITORY',
 	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
@@ -308,7 +308,7 @@ do not isert/append into another insert/append
 /**/		'message'  => 'MESSAGE',
 		'label'    => [ 'LABEL', ... ]
 /**/		'boxwidth'    => PIXEL,
-/**/		'required' => 1,
+/**/		'required' => [ INDEX, ... ]
 	),
 	'password'  => array(
 /**/		'message'  => 'MESSAGE',
@@ -400,27 +400,27 @@ do not isert/append into another insert/append
 		- `checked` = set primary button
 	- `'text'` = `<input type="text">`
 		- `Ok` = input
-		- `required` = blank fields not allowed
+		- `required` = ok button disabled if required field blank
 	- `'password'` = `<input type="password">`
 		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
-		- `required` = blank pasword not allowed
+		- `required` = ok button disabled if password blank
 	- `'file'` = `<input type="file">`
 		- `Ok` = upload
 		- `type` filetype filter and verify
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select (default 1st)
+		- `checked` = default 0
 		- `'?'` custom input marker
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select (default 1st)
+		- `checked` = default 0
 		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
-		- `checked` = pre-select optional
+		- `checked` = default none
 - `'radio'`, `'select'`, `'checkbox'` can be html instead
-- multiple `'text'` dialogs must be array
-- blank value get passed as a bash argument and must be process as `''`
+- multiple tems of the same type must be array
+- blank value get passed as a bash ` ''` argument
 - `X` - cancel and back to main page
 ---
 
