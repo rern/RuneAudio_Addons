@@ -322,8 +322,7 @@ do not isert/append into another insert/append
 	'radio'     => array(
 /**/		'message' => 'MESSAGE',
 		'list'    => array(
-			'label' => [ 'LABEL', ... ],
-			'value' => [ 'VALUE', ... ],
+			'LABEL' => 'VALUE',
 /**/			'custom' => '?',
 		),
 /**/		'ckecked' => INDEX,
@@ -332,8 +331,7 @@ do not isert/append into another insert/append
 /**/		'message' => 'MESSAGE',
 /**/		'label'   => 'LABEL',
 		'list'    => array(
-			'label' => [ 'LABEL', ... ],
-			'value' => [ 'VALUE', ... ],
+			'LABEL' => 'VALUE',
 /**/			'custom' => '?',
 		),
 /**/		'ckecked' => INDEX
@@ -341,8 +339,7 @@ do not isert/append into another insert/append
 	'checkbox'  => array(
 /**/		'message' => 'MESSAGE',
 		'list'    => array(
-			'label' => [ 'LABEL', ... ],
-			'value' => [ 'VALUE', ... ],
+			'LABEL' => 'VALUE',
 		),
 /**/		'ckecked' => [ INDEX, ... ]
 	),
