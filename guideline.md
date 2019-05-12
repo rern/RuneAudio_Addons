@@ -279,7 +279,7 @@ do not isert/append into another insert/append
 
 **`<alias> => array(...)` template**   
 ```php
-<alias> => array(
+'<alias>' => array(
 /**/	'version'       => '<yyyymmdd>',
 /**/	'rollback'      => '<yyyymmdd>',
 /**/	'revision'      => '<revision summary>',
