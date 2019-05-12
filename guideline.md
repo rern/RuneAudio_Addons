@@ -323,7 +323,7 @@ do not isert/append into another insert/append
 /**/		'message' => 'MESSAGE',
 		'list'    => array(
 			'label' => [ 'LABEL', ... ],
-			'item'  => [ 'VALUE', ... ],
+			'value' => [ 'VALUE', ... ],
 /**/			'custom' => '?',
 		),
 /**/		'ckecked' => INDEX,
@@ -333,7 +333,7 @@ do not isert/append into another insert/append
 /**/		'label'   => 'LABEL',
 		'list'    => array(
 			'label' => [ 'LABEL', ... ],
-			'item'  => [ 'VALUE', ... ],
+			'value' => [ 'VALUE', ... ],
 /**/			'custom' => '?',
 		),
 /**/		'ckecked' => INDEX
@@ -342,7 +342,7 @@ do not isert/append into another insert/append
 /**/		'message' => 'MESSAGE',
 		'list'    => array(
 			'label' => [ 'LABEL', ... ],
-			'item'  => [ 'VALUE', ... ],
+			'value' => [ 'VALUE', ... ],
 		),
 /**/		'ckecked' => [ INDEX, ... ]
 	),
