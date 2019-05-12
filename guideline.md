@@ -303,15 +303,17 @@ do not isert/append into another insert/append
 /**/			'mgsalign'    => '<css>',
 /**/			'cancellabel' => '<label text>',
 /**/			'oklabel'     => '<label text>',
-		),
+	),
 	'text'      => array(
 /**/		'message'  => '<message text>',
-/**/		'label'    => '<label text>',
+		'label'    => '<label text>',
 /**/		'boxwidth'    => '<input box width>',
+/**/		'required' => 1,
+	),
 	'password'  => array(
 /**/		'message'  => '<message text>',
 		'label'    => '<label text>',
-/**/		'required' => '1'
+/**/		'required' => 1,
 	),
 	'file'  => array(
 /**/		'message'  => '<message text>',
@@ -322,9 +324,9 @@ do not isert/append into another insert/append
 		'list'    => array(
 			'item1' => '<value1>',
 			'item2'  => '<value2>',
-/**/			'custom' => '?'
+/**/			'custom' => '?',
 		),
-/**/		'ckecked' => <index>
+/**/		'ckecked' => <index>,
 	),
 	'select'    => array(
 /**/		'message' => '<message text>',
@@ -332,7 +334,7 @@ do not isert/append into another insert/append
 		'list'    => array(
 			'item1'  => '<value1>',
 			'item2'  => '<value2>',
-/**/			'custom' => '?'
+/**/			'custom' => '?',
 		),
 /**/		'ckecked' => <index>
 	),
@@ -344,8 +346,6 @@ do not isert/append into another insert/append
 		),
 /**/		'ckecked' => [ <i0>, <i1> ]
 	),
-),
-
 ),
 ```
 `/**/` - optional  
@@ -385,9 +385,9 @@ do not isert/append into another insert/append
 - for installed conflict addon which must be uninstalled  
 
 **`'option'`** - user inputs  
-- each `'key': ...` open a dialog
-- each `'value'` will be appended as `install.sh` arguments / parameters
-- options must be **single quoted** json, `" 'key': 'value' "`
+- each `'key' => 'value'` open a dialog
+- each `'key'` will be appended as `install.sh` arguments / parameters
+- options must be **single quoted**, `" 'key' => 'value' "`
 - dialog types:
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
@@ -400,6 +400,7 @@ do not isert/append into another insert/append
 		- `checked` = set primary button
 	- `'text'` = `<input type="text">`
 		- `Ok` = input
+		- `required` = blank fields not allowed
 	- `'password'` = `<input type="password">`
 		- input + `Ok` > verification + `Ok` = input | blank + `Ok` = 0
 		- `required` = blank pasword not allowed
@@ -408,19 +409,18 @@ do not isert/append into another insert/append
 		- `type` filetype filter and verify
 	- `'radio'` = `<input type="radio">` - single value
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select must be specified
+		- `checked` = pre-select (default 1st)
 		- `'?'` custom input marker
 	- `'select'` = `<select><option>...` - single value, too long for `'radio'`
 		- `Ok` = selected value | custom + `Ok` > `'text'` > `Ok` = input
-		- `checked` = pre-select optional
+		- `checked` = pre-select (default 1st)
 		- `'?'` custom input marker
 	- `'checkbox'` = `<input type="checkbox">` - multiple values
 		- `Ok` = checked values
 		- `checked` = pre-select optional
 - `'radio'`, `'select'`, `'checkbox'` can be html instead
-- multiple `'text'`dialogs must be array
+- multiple `'text'` dialogs must be array
 - blank value get passed as a bash argument and must be process as `''`
-- last `key:value` not allow trailing `,`
 - `X` - cancel and back to main page
 ---
 
