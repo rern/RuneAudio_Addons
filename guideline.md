@@ -306,9 +306,9 @@ do not isert/append into another insert/append
 	),
 	'text'      => array(
 /**/		'message'  => 'MESSAGE',
-		'label'    => [ 'LABEL', ... ]
+		'label'    => 'LABEL',
 /**/		'boxwidth'    => PIXEL,
-/**/		'required' => [ INDEX, ... ]
+/**/		'required' => INDEX
 	),
 	'password'  => array(
 /**/		'message'  => 'MESSAGE',
@@ -341,7 +341,7 @@ do not isert/append into another insert/append
 		'list'    => array(
 			'LABEL' => 'VALUE',
 		),
-/**/		'ckecked' => [ INDEX, ... ]
+/**/		'ckecked' => INDEX
 	),
 ),
 ```
