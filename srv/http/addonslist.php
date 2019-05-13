@@ -509,9 +509,9 @@ $addons = array(
 	'hide'        => $rune05,
 ),
 'wifi' => array(
-	'title'       => 'Setting - On/Off WiFi and Bluetooth',
+	'title'       => 'Setting - WiFi and Bluetooth',
 	'maintainer'  => 'r e r n',
-	'description' => 'On/Off WiFi and Bluetooth',
+	'description' => 'Enable/Disable WiFi and Bluetooth',
 	'buttonlabel' => 'Change',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/set_wlan-bt',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/set_wlan-bt/set.sh',
