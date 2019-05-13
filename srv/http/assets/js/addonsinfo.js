@@ -4,55 +4,59 @@ info( 'message' );
 
 normal usage:
 info( {                                     // default
+/////////////////// common
 	width         : N                       // 400            (info width)
+	autoclose     : N                       // (disabled)     (auto close in ms)
+/////////////////// top bar
 	icon          : 'NAME'                  // 'question'     (FontAwesome name for top icon)
 	title         : 'TITLE'                 // 'Information'  (top title)
 	nox           : 1                       // (show)         (no top 'X' close button)
-	nobutton      : 1                       // (show)         (no button)
-	boxwidth      : N                       // 200            (input text/password width - 'max' to fit)
-	autoclose     : N                       // (disabled)     (auto close in ms)
-	
+/////////////////// message
 	message       : 'MESSAGE'               // (blank)        (message under title)
 	messagealign  : 'CSS'                   // 'center'       (message under title)
-	
+/////////////////// input text
 	textlabel     : [ 'LABEL', ... ]        // (blank)        (label array input label)
 	textvalue     : [ 'VALUE', ... ]        // (blank)        (pre-filled array input value)
 	textrequired  : [ N, ... ]              // (none)         (required fields disable ok button if blank)
 	textalign     : 'CSS'                   // 'left'         (input text alignment)
-	
+	boxwidth      : N                       // 200            (input text/password width - 'max' to fit)
+/////////////////// input password
 	passwordlabel : 'LABEL'                 // (blank)        (password input label)
 	pwdrequired   : 1                       // (none)         (password required)
-	
+/////////////////// input file
 	fileoklabel   : 'LABEL'                 // 'OK'           (upload button label)
 	filetype      : 'TYPE'                  // (none)         (filter and verify filetype)
-	
+/////////////////// input radio
 	radio         : { LABEL: 'VALUE', ... } //                ( var value = $( '#infoRadio input[ type=radio ]:checked' ).val(); )
 	checked       : N                       // 0              (pre-select input index)
-	
+/////////////////// select
 	select        : { LABEL: 'VALUE', ... } //                ( var value = $( '#infoSelectBox').val(); )
 	selectlabel   : 'LABEL'                 // (blank)        (select input label)
 	checked       : N                       // 0              (pre-select option index)
-	
+/////////////////// input checkbox
 	checkbox      : { LABEL: 'VALUE', ... } //                ( $( '#infoCheckBox input[ type=checkbox ]:checked' ).each( function() {
 	                                                                var value = this.value;
 	                                                            } ); )
 	checked       : [ N, ... ]              // (none)         (pre-select array input indexes)
+/////////////////// button
+	nobutton      : 1                       // (show)         (no button)
+	buttonwidth   : 1                       // (none)         (equal buttons width)
 	
 	oklabel       : 'LABEL'                 // 'OK'           (ok button label)
 	okcolor       : 'COLOR'                 // '#0095d8'      (ok button color)
-	ok            : 'FUNCTION'              // (reset)        (ok click function)
+	ok            : 'FUNCTION'              // infoReset      (ok click function)
+	
 	cancellabel   : 'LABEL'                 // 'Cancel'       (cancel button label)
 	cancelcolor   : 'COLOR'                 // '#34495e'      (cancel button color)
+	cancel        : 'FUNCT'                 // infoReset      (cancel click function)
 	cancelbutton  : 1                       // (hide)         (cancel button color)
-	cancel        : 'FUNCT'                 // (reset)        (cancel click function)
 	
 	buttonlabel   : [ 'LABEL', ... ]        //                (label array)
-	button        : [ 'FUNCTION', ... ]     //                (function array)
 	buttoncolor   : [ 'COLOR', ... ]        // '#34495e'      (color array)
-	buttonwidth   : 1                       // (none)         (equal buttons width)
+	button        : [ 'FUNCTION', ... ]     //                (function array)
 } );
 Note:
-- No default - must be specified.
+- No default - must be specified if used
 - Single value/function - no need to be array
 */
 function heredoc( fn ) {
