@@ -49,7 +49,7 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no">
-	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.ico">
+	<link rel="icon" href="/img/addons/addons.<?=$time?>.png">
 	<link rel="stylesheet" href="/css/bootstrap.min.<?=$time?>.css">
 	<?=$fontface?>
 	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
