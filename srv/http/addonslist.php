@@ -503,10 +503,28 @@ $addons = array(
 				'Enable'  => 'yes',
 				'Disable' => 'no',
 			),
-			'checked'  => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
+			'checked' => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
 		),
 	),
 	'hide'        => $rune05,
+),
+'wifi' => array(
+	'title'       => 'Setting - Enable/Disable WiFi and Bluetooth',
+	'maintainer'  => 'r e r n',
+	'description' => 'Enable/Disable WiFi and Bluetooth',
+	'buttonlabel' => 'Change',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/set_wlan-bt',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/set_wlan-bt/set.sh',
+	'option'      => array(
+		'radio'     => array(
+			'message' => 'WiFi and Bluetooth:',
+			'list'    => array(
+				'Enable'  => 1,
+				'Disable' => 0,
+			),
+			'checked' => file_exists( '/etc/systemd/system/multi-user.target.wants/netctl-auto@wlan0.service' ),
+		),
+	),
 ),
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
@@ -524,7 +542,7 @@ $addons = array(
 				'15 minutes' => 15,
 				'Disable'    => 0,
 			),
-			'checked'  => exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60
+			'checked' => exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60
 		),
 	),
 	'hide'        => !$redis->get( 'local_browser' ),
