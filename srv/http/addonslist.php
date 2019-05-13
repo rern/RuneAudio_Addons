@@ -49,8 +49,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190510',
-	'revision'    => 'New feature - Metadata Tag Editor'
+	'version'     => '20190513',
+	'revision'    => 'New feature - Save coverart button - Directly save coverarts fetched from online'
+					.'<br>Fix bug - names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
+					.'<br>Convert webradios data directly from file - no import needed anymore'
+					.'<br>Correct orientation of coverarts taken directly with phone camera'
+					.'<br>...'
+					.'<br>New feature - Metadata Tag Editor'
 					.'<br>Fix - Add single track from Browse By CoverArt'
 					.'<br>Fix - Partial create/update thumbnails with single quotes in directory name'
 					.'<br>Delete dummy thumbnails for albums with *.cue or *.m3u'
@@ -61,12 +66,7 @@ $addons = array(
 					.'<br>Fix - set volume by tap'
 					.'<br>Fix - names with double quotes in Browse By CoverArt'
 					.'<br>Fix - unable to edit thumbnails on Sort CoverArt by artist'
-					.'<br>Fix - intermittent update notification'
-					.'<br>...'
-					.'<br>Browse By CoverArt - 1 thumbnail : 1 directory to avoid duplicate thumbnails'
-					.'<br>Fix - Missing index bar'
-					.'<br>Fix - Search result context menu bug'
-					.'<br>Add - Long-press Playback coverart to edit',
+					.'<br>Fix - intermittent update notification',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
