@@ -63,7 +63,7 @@ var html = heredoc( function() { /*
 	<div id="infoBox">
 		<div id="infoTopBg">
 			<div id="infoTop">
-				<i id="infoIcon"></i>&emsp;<a id="infoTitle"></a>
+				<div id="infoIcon"></div>&emsp;<a id="infoTitle"></a>
 			</div>
 			<i id="infoX" class="fa fa-times"></i>
 			<div style="clear: both"></div>
