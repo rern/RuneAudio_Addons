@@ -51,7 +51,7 @@ $addons = array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190513',
 	'revision'    => 'New feature - Save coverart button - Directly save coverarts fetched from online'
-					.'<br>Fix bug - names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
+					.'<br>Fix bug - Names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
 					.'<br>Convert webradios data directly from file - no import needed anymore'
 					.'<br>Correct orientation of coverarts taken directly with phone camera'
 					.'<br>...'
