@@ -53,6 +53,7 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 	<?=$fontface?>
 	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
 	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
+	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.png">
 </head>
 <body>
 <div class="container">
