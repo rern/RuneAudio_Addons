@@ -49,11 +49,11 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no">
-	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.ico">
 	<link rel="stylesheet" href="/css/bootstrap.min.<?=$time?>.css">
 	<?=$fontface?>
 	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
 	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
+	<link rel="shortcut icon" href="/img/addons/addons.<?=$time?>.png">
 </head>
 <body>
 <div class="container">
@@ -195,7 +195,7 @@ echo $blocks;
 <?php
 $keepkey = array( 'title', 'installurl', 'rollback', 'option' );
 foreach( $arrayalias as $alias ) {
-	if ( $alias === 'addo' || $alias === 'dual' ) continue;
+	if ( $alias === 'addo' ) continue;
 	$addonslist[ $alias ] = array_intersect_key( $addons[ $alias ], array_flip( $keepkey ) );
 }
 ?>

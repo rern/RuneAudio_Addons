@@ -115,10 +115,10 @@ wh, gr { font-weight: 300; }
 }
 #infoTop {
 	float: left;
-	width: calc( 100% - 70px );
+	width: calc( 100% - 40px );
 	color: #e0e7ee;
 	line-height: 36px;
-	padding: 0 10px 0 15px;
+	padding: 0 0 0 15px;
 	text-align: left;
 }
 #infoTop a, white {
@@ -126,7 +126,7 @@ wh, gr { font-weight: 300; }
 }
 #infoIcon {
 	display: inline-block;
-	vertical-align: 20%;
+	vertical-align: 12px;
 	font-size: 28px;
 	color: #7795b4;
 }
@@ -145,9 +145,8 @@ wh, gr { font-weight: 300; }
 }
 #infoTitle {
 	display: inline-block;
+	width: calc( 100% - 36px );
 	font-size: 18px;
-	vertical-align: text-bottom;
-	width: calc( 100% - 40px );
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -163,7 +162,7 @@ wh, gr { font-weight: 300; }
 	width: 100%;
 	max-width: fit-content;
 	max-height: 800px;
-	margin: 0 auto;
+	margin: 0 auto 5px;
 	text-align: left;
 	word-wrap: break-word;
 	overflow: hidden;

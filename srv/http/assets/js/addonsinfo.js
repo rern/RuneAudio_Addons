@@ -11,6 +11,7 @@ info( {                                     // default
 	nobutton      : 1                       // (show)         (no button)
 	boxwidth      : N                       // 200            (input text/password width - 'max' to fit)
 	autoclose     : N                       // (disabled)     (auto close in ms)
+	preshow       : FUNCTION                // (none)         (function before show)
 	
 	message       : 'MESSAGE'               // (blank)        (message under title)
 	messagealign  : 'CSS'                   // 'center'       (message under title)
@@ -40,14 +41,14 @@ info( {                                     // default
 	
 	oklabel       : 'LABEL'                 // 'OK'           (ok button label)
 	okcolor       : 'COLOR'                 // '#0095d8'      (ok button color)
-	ok            : 'FUNCTION'              // (reset)        (ok click function)
+	ok            : FUNCTION                // (reset)        (ok click function)
 	cancellabel   : 'LABEL'                 // 'Cancel'       (cancel button label)
 	cancelcolor   : 'COLOR'                 // '#34495e'      (cancel button color)
 	cancelbutton  : 1                       // (hide)         (cancel button color)
-	cancel        : 'FUNCT'                 // (reset)        (cancel click function)
+	cancel        : FUNCTION                // (reset)        (cancel click function)
 	
 	buttonlabel   : [ 'LABEL', ... ]        //                (label array)
-	button        : [ 'FUNCTION', ... ]     //                (function array)
+	button        : [ FUNCTION, ... ]       //                (function array)
 	buttoncolor   : [ 'COLOR', ... ]        // '#34495e'      (color array)
 	buttonwidth   : 1                       // (none)         (equal buttons width)
 } );
@@ -308,7 +309,7 @@ function info( O ) {
 		}
 		renderOption( $( '#infoCheckBox' ), html, 'checked' in O ? O.checked : '' );
 	}
-	
+	if ( O.preshow ) O.preshow();
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")

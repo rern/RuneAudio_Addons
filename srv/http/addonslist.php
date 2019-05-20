@@ -165,8 +165,7 @@ $addons = array(
 					.'<br>Best of Dual Boot - <w>NOOBS</w> 2.4',
 	'thumbnail'   => '/img/addons/thumbdual.gif',
 	'buttonlabel' => 'Link',
-	'sourcecode'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
-	'installurl'  => '',
+	'installurl'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 ),
 'expa' => array(
 	'title'       => 'Expand Partition',
