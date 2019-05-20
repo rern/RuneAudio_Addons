@@ -41,8 +41,9 @@ info( {                                     // default
 	oklabel       : 'LABEL'                 // 'OK'           (ok button label)
 	okcolor       : 'COLOR'                 // '#0095d8'      (ok button color)
 	ok            : 'FUNCTION'              // (reset)        (ok click function)
-	cancellabel   : 'LABEL'                 // (hidden)       (show with cancel button label)
+	cancellabel   : 'LABEL'                 // 'Cancel'       (cancel button label)
 	cancelcolor   : 'COLOR'                 // '#34495e'      (cancel button color)
+	cancelbutton  : 1                       // (hide)         (cancel button color)
 	cancel        : 'FUNCT'                 // (reset)        (cancel click function)
 	
 	buttonlabel   : [ 'LABEL', ... ]        //                (label array)
@@ -168,12 +169,12 @@ function info( O ) {
 			.css( 'background', O.okcolor || '' )
 			.show();
 			if ( typeof O.ok === 'function' ) $( '#infoOk' ).click( O.ok );
-		if ( 'cancel' in O ) $( '#infoCancel' ).click( O.cancel );
-		if ( 'cancellabel' in O ) {
+		if ( 'cancel' in O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
-				.css( 'background', O.cancelcolor || '' )
-				.show();
+				.css( 'background', O.cancelcolor || '' );
+			if ( 'cancelbutton' in O ) $( '#infoCancel' ).show();
+			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
 		if ( 'button' in O ) {
 			if ( !O.button.length ) O.button = [ O.button ];
@@ -307,7 +308,7 @@ function info( O ) {
 		}
 		renderOption( $( '#infoCheckBox' ), html, 'checked' in O ? O.checked : '' );
 	}
-	
+	if ( O.preshow ) O.preshow();
 	$( '#infoOverlay' )
 		.show()
 		.focus(); // enable e.which keypress (#infoOverlay needs tabindex="1")
