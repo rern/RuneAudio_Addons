@@ -35,12 +35,12 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190512',
-	'revision'    => 'Fix minor bugs'
+	'version'     => '20190520',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>Fix error lines when "HDMI & 3,5mm jack" turned off'
+					.'<br>Fix minor bugs'
 					.'<br>...'
-					.'<br>Partial thumbnails update integration',
+					.'<br>Fix error lines when "HDMI & 3,5mm jack" turned off',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
