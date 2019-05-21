@@ -101,7 +101,7 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 	}
 	
 	if ( type === 'Link' ) {
-		window.open( $this.prev().find( 'a' ).attr( 'href' ), '_blank' );
+		window.open( addons[ 'dual' ][ 'installurl' ], '_blank' );
 	} else if ( type === 'Backup' ) {
 		info( {
 			  title   : title
