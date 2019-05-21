@@ -125,7 +125,7 @@ wh, gr { font-weight: 300; }
 	color: #e0e7ee;
 }
 #infoIcon {
-	display: inline-block;
+	float: left;
 	vertical-align: 12px;
 	font-size: 28px;
 	color: #7795b4;
