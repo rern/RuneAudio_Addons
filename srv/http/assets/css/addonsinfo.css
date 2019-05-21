@@ -170,6 +170,7 @@ wh, gr { font-weight: 300; }
 }
 .infotextlabel {
 	display: inline-block;
+	line-height: 40px;
 	text-align: right;
 }
 .infotextbox {
@@ -178,18 +179,17 @@ wh, gr { font-weight: 300; }
 }
 .infolabel {
 	display: inline-block;
-	line-height: 51px;
 	text-align: right;
 	color: #e0e7ee;
 }
 .infoinput {
-	margin: 5px;
-	height: 41px;
+	margin: 2px 5px;
+	height: 36px;
 	padding: 0 10px;
 	color: #e0e7ee;
 	background-color: #10161c;
-	border-radius: 6px;
-	border: 2px solid #34495e;
+	border-radius: 4px;
+	border: 1px solid #34495e;
 }
 .infoinput:focus {
 	outline: none;
