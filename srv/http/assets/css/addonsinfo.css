@@ -145,7 +145,7 @@ wh, gr { font-weight: 300; }
 }
 #infoTitle {
 	display: inline-block;
-	width: calc( 100% - 36px );
+	width: calc( 100% - 38px );
 	font-size: 18px;
 	white-space: nowrap;
 	overflow: hidden;
