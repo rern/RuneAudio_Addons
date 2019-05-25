@@ -35,7 +35,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190520',
+	'version'     => '201905205',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Fix minor bugs'
@@ -49,8 +49,13 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190513',
-	'revision'    => 'New feature - Save coverart button - Directly save coverarts fetched from online'
+	'version'     => '20190525',
+	'revision'    => ''
+					.'<br>...'
+					.'<br>...'
+					.'<br>...'
+					.'<br>...'
+					.'<br>New feature - Save coverart button - Directly save coverarts fetched from online'
 					.'<br>Fix bug - Names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
 					.'<br>Convert webradios data directly from file - no import needed anymore'
 					.'<br>Correct orientation of coverarts taken directly with phone camera'
@@ -58,15 +63,7 @@ $addons = array(
 					.'<br>New feature - Metadata Tag Editor'
 					.'<br>Fix - Add single track from Browse By CoverArt'
 					.'<br>Fix - Partial create/update thumbnails with single quotes in directory name'
-					.'<br>Delete dummy thumbnails for albums with *.cue or *.m3u'
-					.'<br>...'
-					.'<br>Add - Consume mode - remove each song from playlist after played'
-					.'<br>Fix - unable to create 1st bookmark'
-					.'<br>Fix - unable to add/replace album to playlist in Browse By CoverArt > album view'
-					.'<br>Fix - set volume by tap'
-					.'<br>Fix - names with double quotes in Browse By CoverArt'
-					.'<br>Fix - unable to edit thumbnails on Sort CoverArt by artist'
-					.'<br>Fix - intermittent update notification',
+					.'<br>Delete dummy thumbnails for albums with *.cue or *.m3u',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
