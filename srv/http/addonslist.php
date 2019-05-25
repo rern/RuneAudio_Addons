@@ -50,10 +50,10 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190525',
-	'revision'    => ''
-					.'<br>...'
-					.'<br>...'
-					.'<br>...'
+	'revision'    => 'Tracks with *.cue saved correctly to playlist as individual tracks'
+					.'<br>Editable *.cue metadata'
+					.'<br>Keep data from Playback and Libray tools after uninstalled.'
+					.'<br>Fix bugs'
 					.'<br>...'
 					.'<br>New feature - Save coverart button - Directly save coverarts fetched from online'
 					.'<br>Fix bug - Names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
