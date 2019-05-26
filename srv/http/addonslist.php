@@ -49,8 +49,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190525',
-	'revision'    => 'Tracks with *.cue saved correctly to playlist as individual tracks'
+	'version'     => '20190526',
+	'revision'    => 'Fix context menu bugs'
+					.'<br>...'
+					.'<br>Tracks with *.cue saved correctly to playlist as individual tracks'
 					.'<br>Editable *.cue metadata'
 					.'<br>Keep data from Playback and Libray tools after uninstalled.'
 					.'<br>Fix bugs'
@@ -58,12 +60,7 @@ $addons = array(
 					.'<br>New feature - Save coverart button - Directly save coverarts fetched from online'
 					.'<br>Fix bug - Names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
 					.'<br>Convert webradios data directly from file - no import needed anymore'
-					.'<br>Correct orientation of coverarts taken directly with phone camera'
-					.'<br>...'
-					.'<br>New feature - Metadata Tag Editor'
-					.'<br>Fix - Add single track from Browse By CoverArt'
-					.'<br>Fix - Partial create/update thumbnails with single quotes in directory name'
-					.'<br>Delete dummy thumbnails for albums with *.cue or *.m3u',
+					.'<br>Correct orientation of coverarts taken directly with phone camera',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
