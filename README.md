@@ -10,7 +10,19 @@ _for RuneAudio **0.4b, 0.5** (incompatible addons will be hidden)_
 - It does nothing using zero CPU cycle unless run it from the menu.
 <hr>
 
-Currently available:
+Install
+---
+**for beginners:**  [Addons Installation](https://github.com/rern/RuneAudio/blob/master/Addons_install/README.md) `<< click`
+
+**ssh terminal:**
+```sh
+wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
+```
+`--no-check-certificate` - for RuneAudio out-of-sync system date which causes failed download
+
+---
+
+**Currently available:**
 - [Aria2](https://github.com/rern/RuneAudio_Addons)
 - [Expand Partition](https://github.com/rern/RuneAudio/tree/master/expand_partition)
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
@@ -41,18 +53,6 @@ Currently available:
 - installed indication
 - update indication
 - modular template for easy to add addon scripts from other sources
-
-Install
----
-**for beginners:**  [Addons Installation](https://github.com/rern/RuneAudio/blob/master/Addons_install/README.md) `<< click`
-
-**ssh terminal:**
-```sh
-wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
-```
-`--no-check-certificate` - for RuneAudio out-of-sync system date which causes failed download
-
----
 
 Reset All
 ---
