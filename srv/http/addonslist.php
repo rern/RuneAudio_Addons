@@ -49,18 +49,16 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190526',
-	'revision'    => 'Fix context menu bugs'
+	'version'     => '20190529',
+	'revision'    => 'Fix missing online coverarts - switch source to coverartarchive.org'
+					.'<br>Fix missing artist images - switch source to fanart.tv'
+					.'<br>Fix missing coverarts in album view'
+					.'<br>...'
+					.'<br>Fix context menu bugs'
 					.'<br>...'
 					.'<br>Tracks with *.cue saved correctly to playlist as individual tracks'
 					.'<br>Editable *.cue metadata'
-					.'<br>Keep data from Playback and Libray tools after uninstalled.'
-					.'<br>Fix bugs'
-					.'<br>...'
-					.'<br>New feature - Save coverart button - Directly save coverarts fetched from online'
-					.'<br>Fix bug - Names contain certain words, Connected/Escape/OK/Connection/Date, disappear from Playback page'
-					.'<br>Convert webradios data directly from file - no import needed anymore'
-					.'<br>Correct orientation of coverarts taken directly with phone camera',
+					.'<br>Keep data from Playback and Libray tools after uninstalled.',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
