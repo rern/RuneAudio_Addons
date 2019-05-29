@@ -35,8 +35,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '201905205',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190529',
+	'revision'    => 'Fix 0.5 trying to change some files permission'
 					.'<br>...'
 					.'<br>Fix minor bugs'
 					.'<br>...'
