@@ -14,6 +14,10 @@ files="
 /srv/http/app/templates/header.php
 /srv/http/app/templates/footer.php
 /srv/http/app/templates/settings.php
+/srv/http/app/libs/runeaudio.php
+/srv/http/command/convert_dos_files_to_unix_script.sh
+/srv/http/command/mpd_update.sh
+/srv/http/command/restore.sh
 "
 restorefile $files
 
