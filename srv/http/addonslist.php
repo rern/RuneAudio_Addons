@@ -101,12 +101,12 @@ $addons = array(
 'kid3' => array(
 	'title'       => 'RuneUIe Metadata Tag Editor',
 	'depend'      => 'enha',
-	'needspace'   => 350,
+	'needspace'   => 250,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
 	'description' => 'Enable metadata editor feature in context menu.',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/Metadata_editing/install.sh',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/kid3-cli',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/kid3-cli/install.sh',
 ),
 'pers' => array(
 	'title'       => 'Persistent database and settings',
