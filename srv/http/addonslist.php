@@ -213,7 +213,6 @@ $addons = array(
 					  .'<br>10 minutes upgrade may take 20+ minutes'
 					  .'<br>with slow download.'
 	),
-	'hide'        => $rune05,
 ),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
