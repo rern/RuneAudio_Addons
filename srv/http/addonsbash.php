@@ -166,7 +166,7 @@ $replace = array(
 	'/.\[38;5;6m/'           => '<a class="cc">',       // lcolor
 	'/.\[0m/'                => '</a>',                 // reset color
 );
-$skip = array( 'warning:', 'y/n', 'uninstall:' );
+$skip = array( 'warning:', 'permissions differ', 'filesystem:', 'uninstall:', 'y/n' );
 $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
 
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
