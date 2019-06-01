@@ -102,12 +102,12 @@ timestart() { # timelapse: any argument
 	[[ $1 ]] && timelapse0=$( date +%s )
 }
 formatTime() {
-	hh=$(( $1 / 3600 ))
-	(( ${#hh} == 1 )) && hh=0$hh
-	mm=$(( $1 / 60 ))
-	(( ${#mm} == 1 )) && mm=0$mm
-	ss=$(( $1 % 60 ))
-	(( ${#ss} == 1 )) && ss=0$ss
+	h=00$(( $1 / 3600 ))
+	hh=${h: -2}
+	m=00$(( $1 % 3600 / 60 ))
+	mm=${m: -2}
+	s=00$(( $1 % 60 ))
+	ss=${s: -2}
 	if [[ $hh == 00 ]]; then
 		echo "$mm:$ss"
 	else
