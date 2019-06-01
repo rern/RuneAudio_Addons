@@ -108,11 +108,8 @@ formatTime() {
 	mm=${m: -2}
 	s=00$(( $1 % 60 ))
 	ss=${s: -2}
-	if [[ $hh == 00 ]]; then
-		echo "$mm:$ss"
-	else
-		echo "$hh:$mm:$ss"
-	fi
+	[[ $hh == 00 ]] && hh= || hh=$hh:
+	echo $hh$mm:$ss
 }
 timestop() { # timelapse: any argument
 	time1=$( date +%s )
