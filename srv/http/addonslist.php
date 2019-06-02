@@ -198,7 +198,7 @@ $addons = array(
 	'title'       => 'MPD Upgrade *',
 	'needspace'   => 300,
 	'maintainer'  => 'r e r n',
-	'description' => 'Upgrade MPD to latest version, 0.21.4 as of 20190104:'
+	'description' => 'Upgrade MPD to latest version, 0.21.9 as of 20190520:'
 					.'<br>Fix conflicts, missing lib symlinks, missing packages'
 					.'<br>But local browser <w>Midori</w>, if enabled, needs to be replaced with Chromium.',
 	'thumbnail'   => '/img/addons/thumbmpdu.png',
