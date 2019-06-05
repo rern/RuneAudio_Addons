@@ -41,7 +41,7 @@ wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudi
 - [Setting - Zoom Level of Local Browser](https://github.com/rern/RuneAudio/tree/master/zoom_browser)
 - [Settings+Databases Backup / Restore](https://github.com/rern/RuneAudio/tree/master/backup-restore)
 - [Transmission](https://github.com/rern/RuneAudio/tree/master/transmission)
-- [USB DAC Auto Switch](https://github.com/rern/RuneAudio/tree/master/USB_DAC_switch)
+- [USB DAC Plug and Play](https://github.com/rern/RuneAudio/tree/master/USB_DAC)
 
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
