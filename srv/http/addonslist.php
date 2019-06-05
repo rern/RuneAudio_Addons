@@ -21,6 +21,20 @@ foreach( $acards as $key => $value ) {
 }
 ksort( $udaclist );
 
+// samba
+if ( exec( '/usr/bin/pacman -Qs mpd-rune' ) ) {
+	$optmpd = array(
+		'confirm'   => 'Once installed, MPD <w>cannot be downgraded</w>.'
+					  .( $rune05 ? '' : '<br>Midori, local browser, must be upgrade as well.' )
+					  .'<br>10 minutes upgrade may take 20+ minutes'
+					  .'<br>with slow download.'
+	);
+} else {
+	$optmpd = array(
+		'confirm'  => 'Upgrade?'
+	);
+}
+// chromium
 if ( file_exists( '/usr/bin/chromium' ) ) {
 	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
 	$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
@@ -29,7 +43,38 @@ if ( file_exists( '/usr/bin/chromium' ) ) {
 } else {
 	$zoom = exec( "grep zoom /root/.config/midori/config | sed 's/.*=\\(.*\\)/\\1/'" );
 }
-
+// samba
+if ( exec( '/usr/bin/pacman -Qs samba4-rune' ) ) {
+	$optsamb = array(
+		'password'  => array(
+			'message' => '(for connecting to <w>USB root share</w>)'
+						.'<br>Password for user <w>root</w> (blank = existing or rune):',
+			'label'   => 'Password'
+		),
+		'skip'      => 'Keep current Samba settings and shares?',
+		'wait'      => 'Connect a <w>USB drive</w> before continue.'
+					  .'<br>1st drive will be used for shared directories.',
+		'text1'     => array(
+			'message' => '<w>File Server</w>:',
+			'label'   => 'Name',
+			'value'   => 'RuneAudio'
+		),
+		'text2'     => array(
+			'message' => '<w>Read-Only</w> directory:',
+			'label'   => 'Name',
+			'value'   => 'ro'
+		),
+		'text3'     => array(
+			'message' => '<w>Read-Write</w> directory:',
+			'label'   => 'Name',
+			'value'   => 'rw'
+		),
+	);
+} else {
+	$optsamb = array(
+		'confirm'  => 'Upgrade?'
+	);
+}
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
@@ -205,12 +250,7 @@ $addons = array(
 	'buttonlabel' => 'Upgrade',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/mpd',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
-	'option'      => array(
-		'confirm'   => 'Once installed, MPD <w>cannot be downgraded</w>.'
-					  .( $rune05 ? '' : '<br>Midori, local browser, must be upgrade as well.' )
-					  .'<br>10 minutes upgrade may take 20+ minutes'
-					  .'<br>with slow download.'
-	),
+	'option'      => $optmpd,
 ),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
@@ -337,31 +377,7 @@ $addons = array(
 	'buttonlabel' => 'Upgrade',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
-	'option'      => array(
-		'password'  => array(
-			'message' => '(for connecting to <w>USB root share</w>)'
-						.'<br>Password for user <w>root</w> (blank = rune):',
-			'label'   => 'Password'
-		),
-		'skip'      => 'Keep current Samba settings and shares?',
-		'wait'      => 'Connect a <w>USB drive</w> before continue.'
-					  .'<br>1st drive will be used for shared directories.',
-		'text1'     => array(
-			'message' => '<w>File Server</w>:',
-			'label'   => 'Name',
-			'value'   => 'RuneAudio'
-		),
-		'text2'     => array(
-			'message' => '<w>Read-Only</w> directory:',
-			'label'   => 'Name',
-			'value'   => 'ro'
-		),
-		'text3'     => array(
-			'message' => '<w>Read-Write</w> directory:',
-			'label'   => 'Name',
-			'value'   => 'rw'
-		),
-	),
+	'option'      => $optsamb
 ),
 'tran' => array(
 	'title'       => 'Transmission *',
