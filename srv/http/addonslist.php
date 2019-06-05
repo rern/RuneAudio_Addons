@@ -338,7 +338,6 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/samba',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => array(
-		'confirm'   => 'Once installed, Samba <w>cannot be downgraded</w>.',
 		'password'  => array(
 			'message' => '(for connecting to <w>USB root share</w>)'
 						.'<br>Password for user <w>root</w> (blank = rune):',
@@ -363,7 +362,6 @@ $addons = array(
 			'value'   => 'rw'
 		),
 	),
-	'hide'        => $rune05,
 ),
 'tran' => array(
 	'title'       => 'Transmission *',
