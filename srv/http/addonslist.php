@@ -80,12 +80,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190529',
-	'revision'    => 'Fix 0.5 trying to change some files permission'
+	'version'     => '20190605',
+	'revision'    => 'Fix minor bugs'
 					.'<br>...'
-					.'<br>Fix minor bugs'
-					.'<br>...'
-					.'<br>Fix error lines when "HDMI & 3,5mm jack" turned off',
+					.'<br>Fix 0.5 trying to change some files permission',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',
@@ -94,16 +92,14 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190529',
-	'revision'    => 'Fix missing online coverarts - switch source to coverartarchive.org'
+	'version'     => '20190605',
+	'revision'    => 'Fix minor bugs'
+					.'<br>...'
+					.'<br>Fix missing online coverarts - switch source to coverartarchive.org'
 					.'<br>Fix missing artist images - switch source to fanart.tv'
 					.'<br>Fix missing coverarts in album view'
 					.'<br>...'
-					.'<br>Fix context menu bugs'
-					.'<br>...'
-					.'<br>Tracks with *.cue saved correctly to playlist as individual tracks'
-					.'<br>Editable *.cue metadata'
-					.'<br>Keep data from Playback and Libray tools after uninstalled.',
+					.'<br>Fix context menu bugs',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
