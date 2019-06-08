@@ -24,10 +24,6 @@ alias=addo
 
 installstart $@
 
-#temp
-redis-cli del settings udaclist &> /dev/null
-#temp
-
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
