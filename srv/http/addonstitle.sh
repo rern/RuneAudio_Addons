@@ -134,13 +134,18 @@ getvalue() { # $1-key
 		sed $'s/^ [\'"]//; s/[\'"],$//; s/\s*\**$//'
 }
 rankmirrors() {
-	if grep -q 'Server = http://mirror.archlinuxarm.org/' /etc/pacman.d/mirrorlist; then
+	now=$( date '+%s' )
+	timestamp=$( date -r /etc/pacman.d/mirrorlist '+%s' )
+	if (( $(( now - timestamp )) > 86400 )); then
 		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 		chmod +x rankmirrors.sh
 		./rankmirrors.sh
-	else
-		pacman -Sy
 	fi
+}
+packagestatus() {
+	pkg=$( pacman -Ss "^$1$" | head -n1 )
+	version=$( echo $pkg | cut -d' ' -f2 )
+	[[ $( echo $pkg | cut -d' ' -f3 ) == '[installed]' ]] && installed=1 || installed=0
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )

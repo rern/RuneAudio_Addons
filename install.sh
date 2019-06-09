@@ -24,10 +24,6 @@ alias=addo
 
 installstart $@
 
-#temp
-redis-cli del settings udaclist &> /dev/null
-#temp
-
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
@@ -110,7 +106,7 @@ echo $file
 
 cat << 'EOF' > $file
 [Unit]
-Description=Addons Menu update check
+Description=Addons update check
 After=network-online.target
 [Service]
 Type=idle

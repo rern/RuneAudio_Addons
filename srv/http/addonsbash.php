@@ -140,8 +140,6 @@ if ( ( $alias === 'addo' && $type !== 'Update' )
 	$close = 'addons.php';
 }
 
-echo $commandtxt.'<br>';
-
 // convert bash stdout to html
 $replace = array(
 	'/.\[38;5;8m.\[48;5;8m/' => '<a class="cbgr">',     // bar - gray
@@ -171,6 +169,10 @@ $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading
 
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
+
+echo '<p class="flushdot">'.str_repeat( '.', 1024 ).'</p>'; // force flush on ios
+echo $commandtxt.'<br>';
+if ( $type === 'Uninstall' ) sleep(1);
 
 $popencmd = popen( "$command 2>&1", 'r' );              // start bash
 while ( !feof( $popencmd ) ) {                          // each line
