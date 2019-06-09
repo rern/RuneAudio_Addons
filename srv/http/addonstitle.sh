@@ -141,7 +141,7 @@ rankmirrors() {
 packagestatus() {
 	pkg=$( pacman -Ss $1 | head -n1 )
 	version=$( echo $pkg | cut -d' ' -f2 )
-	installed=$( echo $pkg | cut -d' ' -f3 )
+	[[ $( echo $pkg | cut -d' ' -f3 ) == '[installed]' ]] && installed=1 || installed=0
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )
