@@ -80,8 +80,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190605',
-	'revision'    => 'Fix minor bugs'
+	'version'     => '20190609',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Fix 0.5 trying to change some files permission',
 	'maintainer'  => 'r e r n',
