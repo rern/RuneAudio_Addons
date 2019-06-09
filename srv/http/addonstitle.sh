@@ -143,7 +143,7 @@ rankmirrors() {
 	fi
 }
 packagestatus() {
-	pkg=$( pacman -Ss $1 | head -n1 )
+	pkg=$( pacman -Ss "^$1$" | head -n1 )
 	version=$( echo $pkg | cut -d' ' -f2 )
 	[[ $( echo $pkg | cut -d' ' -f3 ) == '[installed]' ]] && installed=1 || installed=0
 }
