@@ -269,7 +269,7 @@ $addons = array(
 				'9'  => 9,
 				'10' => 10,
 			),
-			'checked' => 5,
+			'checked' => 3,
 		),
 	),
 ),
