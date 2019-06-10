@@ -8,7 +8,11 @@ $enha = $redisaddons[ 'enha' ];
 $enhacheck = array();
 if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
 if ( $redis->hGet( 'AccessPoint', 'enabled' ) == 1 ) $enhacheck[] = 1;
-if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
+if ( $rune05 ) {
+	if ( $redis->hget( 'local_browser', 'enable' ) == 1 ) $enhacheck[] = 2;
+} else {
+	if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
+}
 if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
 
