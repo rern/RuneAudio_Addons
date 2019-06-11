@@ -414,6 +414,7 @@ h1 {
 	background: #e0e7ee;
 }
 #diskunpart {
+	margin-right: 5px;
 	background: #0095d8/*c*/;
 }
 #issues {
@@ -474,6 +475,11 @@ legend .status {
 }
 legend .fa-arrow-up {
 	float: right;
+}
+@media(max-width: 600px) {
+	#issues {
+		display: none;
+	}
 }
 @media(max-width: 480px) {
 	h1 span {
