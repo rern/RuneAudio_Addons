@@ -24,13 +24,15 @@ alias=addo
 
 installstart $@
 
-if [[ $( pacman -Ss glibc | head -1 | cut -d' ' -f4 ) != '[installed]' ]]; then
+packagestatus glibc # $version, $installed
+if [[ -z $installed ]]; then
 	echo -e "$bar Upgrade common packages ..."
 	
 	rankmirrors
 	pacman -S --noconfirm glibc
 fi
-if [[ $( pacman -Ss openssl-cryptodev | head -1 | cut -d' ' -f4 ) != '[installed]' ]]; then
+packagestatus openssl-cryptodev # $version, $installed
+if [[ -z $installed ]]; then
 	rankmirrors
 	echo -e "y \n" | pacman -S --noconfirm openssl-cryptodev
 fi
