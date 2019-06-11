@@ -136,7 +136,7 @@ getvalue() { # $1-key
 rankmirrors() {
 	now=$( date '+%s' )
 	timestamp=$( date -r /etc/pacman.d/mirrorlist '+%s' )
-	if (( $(( now - timestamp )) > 3600 )); then # only if more than 1 hour
+	if (( $(( now - timestamp )) > 21600 )); then # only if more than 6 hour
 		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 		chmod +x rankmirrors.sh
 		./rankmirrors.sh
