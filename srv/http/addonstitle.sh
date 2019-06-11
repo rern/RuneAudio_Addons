@@ -136,7 +136,7 @@ getvalue() { # $1-key
 rankmirrors() {
 	now=$( date '+%s' )
 	timestamp=$( date -r /etc/pacman.d/mirrorlist '+%s' )
-	if (( $(( now - timestamp )) > 86400 )); then
+	if (( $(( now - timestamp )) > 3600 )); then # only if more than 1 hour
 		wgetnc https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh
 		chmod +x rankmirrors.sh
 		./rankmirrors.sh
@@ -145,7 +145,7 @@ rankmirrors() {
 packagestatus() {
 	pkg=$( pacman -Ss "^$1$" | head -n1 )
 	version=$( echo $pkg | cut -d' ' -f2 )
-	[[ $( echo $pkg | cut -d' ' -f3 ) == '[installed]' ]] && installed=1 || installed=0
+	[[ $( echo $pkg | cut -d' ' -f3 ) == '[installed]' ]] && installed=1
 }
 getinstallzip() {
 	installurl=$( getvalue installurl )
