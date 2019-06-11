@@ -84,6 +84,7 @@ $addons = array(
 	'title'       => 'Addons',
 	'version'     => '20190611',
 	'revision'    => 'Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>'
+					.'<br>Rank mirror package servers before install/upgrade'
 					.'<br>...'
 					.'<br>Minor improvements'
 					.'<br>...'
