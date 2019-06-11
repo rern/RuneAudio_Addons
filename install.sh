@@ -30,7 +30,7 @@ if [[ -z $installed ]]; then
 	echo -e "y \n" | pacman -S --noconfirm openssl-cryptodev
 fi
 
-packagestatus glibc # $version, $installed
+packagestatus glibc
 if [[ -z $installed ]]; then
 	echo -e "$bar Upgrade common packages ..."
 	
