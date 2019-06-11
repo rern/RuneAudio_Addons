@@ -26,15 +26,15 @@ installstart $@
 
 packagestatus openssl-cryptodev # $version, $installed
 if [[ -z $installed ]]; then
+	echo -e "$bar Upgrade common packages ..."
+	
 	rankmirrors
 	echo -e "y \n" | pacman -S openssl-cryptodev
 fi
 
 packagestatus glibc
 if [[ -z $installed ]]; then
-	echo -e "$bar Upgrade common packages ..."
-	
-	rankmirrors
+		rankmirrors
 	pacman -S --noconfirm glibc
 fi
 
