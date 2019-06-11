@@ -16,7 +16,7 @@ Install
 
 **ssh terminal:**
 ```sh
-wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/install.sh; chmod +x install.sh; ./install.sh
+wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudio_Addons/raw/master/install.sh -O - | sh
 ```
 `--no-check-certificate` - for RuneAudio out-of-sync system date which causes failed download
 
