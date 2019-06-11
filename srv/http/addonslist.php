@@ -96,8 +96,10 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190605',
-	'revision'    => 'Fix minor bugs'
+	'version'     => '20190611',
+	'revision'    => '<w>Lastfm playlist</w> was fixed and renamed to <w>Add similar</w> in context menu'
+					.'<br>Add submenu for Add+Play, Replace+Play and Reboot/ScreenOff'
+					.'<br>Fix local browser setting'
 					.'<br>...'
 					.'<br>Fix missing online coverarts - switch source to coverartarchive.org'
 					.'<br>Fix missing artist images - switch source to fanart.tv'
