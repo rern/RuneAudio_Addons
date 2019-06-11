@@ -24,9 +24,9 @@ alias=addo
 
 installstart $@
 
-echo -e "$bar Upgrade common packages ..."
-
 if [[ $( pacman -Ss glibc | head -1 | cut -d' ' -f4 ) != '[installed]' ]]; then
+	echo -e "$bar Upgrade common packages ..."
+	
 	rankmirrors
 	pacman -S --noconfirm glibc
 fi
