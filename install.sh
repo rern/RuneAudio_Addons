@@ -24,6 +24,12 @@ alias=addo
 
 installstart $@
 
+echo -e "$bar Upgrade common packages ..."
+
+rankmirrors
+pacman -Rd --noconfirm openssl
+pacman -S --noconfirm openssl-cryptodev glibc
+
 getinstallzip
 
 . /srv/http/addonsedit.sh # available after getinstallzip
