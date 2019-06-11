@@ -26,9 +26,15 @@ installstart $@
 
 echo -e "$bar Upgrade common packages ..."
 
-rankmirrors
-pacman -Rd --noconfirm openssl
-pacman -S --noconfirm openssl-cryptodev glibc
+if [[ $( pacman -Ss glibc | head -1 | cut -d' ' -f4 ) == '[installed]' ]]; then
+	rankmirrors
+	pacman -S --noconfirm glibc
+fi
+if [[ $( pacman -Ss openssl-cryptodev | head -1 | cut -d' ' -f4 ) == '[installed]' ]]; then
+	rankmirrors
+	pacman -Rd --noconfirm openssl
+	pacman -S --noconfirm openssl-cryptodev
+fi
 
 getinstallzip
 
