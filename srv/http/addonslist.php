@@ -491,6 +491,7 @@ $addons = array(
 			'checked' => $zoom,
 		),
 	),
+	'hide'        => $rune05,
 ),
 'poin' => array(
 	'title'       => 'Setting - Mouse Pointer',
