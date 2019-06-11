@@ -30,8 +30,6 @@ if ( exec( '/usr/bin/pacman -Qs mpd-rune' ) ) {
 	$optmpd = array(
 		'confirm'   => 'Once installed, MPD <w>cannot be downgraded</w>.'
 					  .( $rune05 ? '' : '<br>Midori, local browser, must be upgrade as well.' )
-					  .'<br>10 minutes upgrade may take 20+ minutes'
-					  .'<br>with slow download.'
 	);
 } else {
 	$optmpd = array(
