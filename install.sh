@@ -27,7 +27,7 @@ installstart $@
 packagestatus openssl-cryptodev # $version, $installed
 if [[ -z $installed ]]; then
 	rankmirrors
-	echo -e "y \n" | pacman -S --noconfirm openssl-cryptodev
+	echo -e "y \n" | pacman -S openssl-cryptodev
 fi
 
 packagestatus glibc
