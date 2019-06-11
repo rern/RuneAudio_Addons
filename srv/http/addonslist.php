@@ -82,8 +82,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190609',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190611',
+	'revision'    => 'Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>'
+					.'<br>...'
+					.'<br>Minor improvements'
 					.'<br>...'
 					.'<br>Fix 0.5 trying to change some files permission',
 	'maintainer'  => 'r e r n',
