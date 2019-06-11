@@ -62,7 +62,7 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 		<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
 	</h1>
 	<p class="bl"></p>
-	<?=$htmlused.$htmlavail.$htmlunpart ?>
+	<?=$htmlused.$htmlavail.$htmlunpart ?>&nbsp;
 	<p id="disktext" class="disk"><?=$htmlfree.$runeversion ?></p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
