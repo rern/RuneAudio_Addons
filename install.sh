@@ -32,8 +32,7 @@ if [[ $( pacman -Ss glibc | head -1 | cut -d' ' -f4 ) != '[installed]' ]]; then
 fi
 if [[ $( pacman -Ss openssl-cryptodev | head -1 | cut -d' ' -f4 ) != '[installed]' ]]; then
 	rankmirrors
-	pacman -Rdd --noconfirm openssl
-	pacman -S --noconfirm openssl-cryptodev
+	pacman -Sf --noconfirm openssl-cryptodev
 fi
 
 getinstallzip
