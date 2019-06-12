@@ -125,6 +125,17 @@ infoReset();
 function info( O ) {
 	setTimeout( function() { // force wait for infoReset()
 	///////////////////////////////////////////////////////////////////
+	// simple use as info( 'message' )
+	if ( typeof O !== 'object' ) {
+		$( '#infoMessage' ).html( O );
+		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
+		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
+		alignVertical();
+		$( '#infoOk' ).html( 'OK' ).click( function() {
+			infoReset();
+		});
+		return;
+	}
 	// title
 	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
 	if ( 'icon' in O ) {
@@ -143,17 +154,6 @@ function info( O ) {
 		setTimeout( function() {
 			$( '#infoX' ).click();
 		}, O.autoclose );
-	}
-	// simple use as info( 'message' )
-	if ( typeof O !== 'object' ) {
-		$( '#infoMessage' ).html( O );
-		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
-		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
-		alignVertical();
-		$( '#infoOk' ).html( 'OK' ).click( function() {
-			infoReset();
-		});
-		return;
 	}
 	
 	// message
