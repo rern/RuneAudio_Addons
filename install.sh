@@ -29,12 +29,14 @@ if [[ -z $installed ]]; then
 	echo -e "$bar Upgrade common packages ..."
 	
 	rankmirrors
+	echo -e "\n$bar Upgrade OpenSSL ..."
 	echo -e "y \n" | pacman -S openssl-cryptodev
 fi
 
 packagestatus glibc
 if [[ -z $installed ]]; then
-		rankmirrors
+	rankmirrors
+	echo -e "\n$bar GNU C Library ..."
 	pacman -S --noconfirm glibc
 fi
 
