@@ -53,18 +53,6 @@ setTimeout( function() {
 	}, 1000 );
 }, 1000 );
 </script>
-
-<div class="container">
-	<h1>
-		<i class="fa fa-addons"></i>&ensp;<span><?=$heading?></span>
-		<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
-	</h1>
-	<p class="bl"></p>
-	<p id="wait">Please wait until finished...</p>
-
-	<div id="hidescrollv">
-	<pre>
-<!-- ...................................................................................... -->
 <?php
 $addon = $addons[ $alias ];
 $installurl = $addon[ 'installurl' ];
@@ -75,7 +63,20 @@ if ( end( $optarray ) === '-b' ) $installurl = str_replace( 'raw/master', 'raw/'
 
 $installfile = basename( $installurl );
 $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
+?>
+<div class="container">
+	<h1>
+		<i class="fa fa-addons"></i>&ensp;<span><?=$heading?></span>
+		<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
+	</h1>
+	<p class="bl"></p>
+	<?=$title?>
+	<p id="wait">Please wait until finished...</p>
 
+	<div id="hidescrollv">
+	<pre>
+<!-- ...................................................................................... -->
+<?php
 $getinstall = <<<cmd
 	wget -qN --no-check-certificate $installurl 
 	if [[ $? != 0 ]]; then 
@@ -218,7 +219,7 @@ if ( !$reinit ) pclose( $popencmd );
 	setTimeout( function() {
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
-		$( '#wait' ).html( '&nbsp;' );
+		$( '#wait' ).remove();
 		$( '#closeprogress' ).attr( 'href', '<?=$close?>' ).find( 'i' ).removeClass( 'disabled' );
 		$( '#reinit' ).remove();
 		
