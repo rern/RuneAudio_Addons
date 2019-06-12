@@ -423,8 +423,7 @@ h1 {
 	color: #0095d8/*c*/;
 }
 #wait {
-	margin: 0;
-	line-height: 10px;
+	line-height: 0;
 }
 .bl {
 	margin: 20px 0 10px 0;
