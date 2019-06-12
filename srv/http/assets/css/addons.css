@@ -405,6 +405,7 @@ h1 {
 }
 .disk {
 	display: inline-block;
+	margin-bottom: 0;
 	line-height: 10px;
 }
 #diskused {
