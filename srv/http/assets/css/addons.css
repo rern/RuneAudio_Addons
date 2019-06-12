@@ -418,7 +418,7 @@ h1 {
 }
 #issues {
 	float: right;
-	margin-top: 5px;
+	margin-top: 3px;
 	color: #0095d8/*c*/;
 }
 #wait {
@@ -474,11 +474,6 @@ legend .status {
 }
 legend .fa-arrow-up {
 	float: right;
-}
-@media(max-width: 600px) {
-	#issues {
-		display: none;
-	}
 }
 @media(max-width: 480px) {
 	h1 span {
