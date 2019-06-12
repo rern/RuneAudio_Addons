@@ -70,8 +70,10 @@ $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 		<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
 	</h1>
 	<p class="bl"></p>
-	<?=$title?>
-	<p id="wait">Please wait until finished...</p>
+	<p id="wait">
+		<w><?=$title?></w><br>
+		Please wait until finished...
+	</p>
 
 	<div id="hidescrollv">
 	<pre>
