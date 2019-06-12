@@ -10,14 +10,6 @@ if (( $# != 0 )); then
 	installurl=$( echo $installurl | sed s"/master/$branch/" )
 fi
 
-# for general push update if necessary
-wget -qN --no-check-certificate $( dirname $installurl )/update.sh
-if [[ $? == 0 ]]; then
-	chmod +x update.sh
-	./update.sh
-	rm update.sh
-fi
-
 wget -qN --no-check-certificate $( dirname $installurl )/srv/http/addonslist.php -P /srv/http
 [[ $? != 0 ]] && exit 1
 
