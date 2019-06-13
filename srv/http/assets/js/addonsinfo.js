@@ -100,8 +100,8 @@ var html = heredoc( function() { /*
 $( 'body' ).prepend( html );
 
 emptyinput = 0; // for 'textrequired'
-$( '#infoOverlay' ).keypress( function( e ) {
-	if ( $( '#infoOverlay' ).is( ':visible' ) && e.which == 13 && !emptyinput ) $( '#infoOk' ).click();
+$( '#infoOverlay' ).keydown( function( e ) {
+	if ( $( '#infoOverlay' ).is( ':visible' ) && e.key == 'Enter' && !emptyinput ) $( '#infoOk' ).click();
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
