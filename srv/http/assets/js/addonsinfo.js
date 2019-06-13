@@ -101,7 +101,13 @@ $( 'body' ).prepend( html );
 
 emptyinput = 0; // for 'textrequired'
 $( '#infoOverlay' ).keydown( function( e ) {
-	if ( $( '#infoOverlay' ).is( ':visible' ) && e.key == 'Enter' && !emptyinput ) $( '#infoOk' ).click();
+	if ( $( '#infoOverlay' ).is( ':visible' ) ) {
+		if ( e.key == 'Enter' && !emptyinput ) {
+			$( '#infoOk' ).click();
+		} else if ( e.key === 'Escape' ) {
+			infoReset();
+		}
+	}
 } );
 // close: reset to default
 $( '#infoX' ).click( function() {
