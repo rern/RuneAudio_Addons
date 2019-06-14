@@ -72,7 +72,7 @@ $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 	<p class="bl"></p>
 	<p id="wait">
 		<w><?=$title?></w><br>
-		Please wait until finished...
+		<i class="fa fa-gear fa-spin"></i>Please wait until finished...
 	</p>
 
 	<div id="hidescrollv">
@@ -193,7 +193,7 @@ while ( !feof( $popencmd ) ) {                          // each line
 		if ( stripos( $std, $findp ) !== false ) $skip[] = $findp; // add skip string to $skip array
 	}
 	if (  stripos( $std, 'Reinitialize system ...' ) !== false ) {
-		echo '<w id="reinit"><i class="fa fa-refresh fa-spin"></i>Reinitialize system ...</w><br><br>';
+		echo '<w id="reinit"><i class="fa fa-gear fa-spin"></i>Reinitialize system ...</w><br><br>';
 		pclose( $popencmd );
 		$reinit = 1;
 		break;
