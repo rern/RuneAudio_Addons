@@ -82,13 +82,11 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190611',
-	'revision'    => 'Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>'
-					.'<br>Rank mirror package servers before install/upgrade'
+	'version'     => '20190614',
+	'revision'    => 'Minor improvements'
 					.'<br>...'
-					.'<br>Minor improvements'
-					.'<br>...'
-					.'<br>Fix 0.5 trying to change some files permission',
+					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
+					.'<br>Rank mirror package servers before install/upgrade',
 	'maintainer'  => 'r e r n',
 	'description' => 'This Addons main page.',
 	'thumbnail'   => '/img/addons/thumbaddo.png',

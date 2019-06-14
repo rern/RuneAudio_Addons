@@ -5,6 +5,8 @@
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
+}
+.fa-addons {
 	color: #7795b4;
 }
 .fa-times:before { content: "\f51A" }
