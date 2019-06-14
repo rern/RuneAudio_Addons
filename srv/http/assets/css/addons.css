@@ -207,7 +207,7 @@ textarea {
 	line-height: inherit
 }
 a {
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 	text-decoration: none
 }
 a:hover,
@@ -394,7 +394,7 @@ h1 {
 .close-root {
 	float: right;
 	font-size: 28px;
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 	text-decoration: none;
 }
 #closeprogress {
@@ -416,12 +416,12 @@ h1 {
 	background: #e0e7ee;
 }
 #diskunpart {
-	background: #0095d8/*c*//*c*//*c*//*c*/;
+	background: #0095d8/*c*/;
 }
 #issues {
 	float: right;
 	margin-top: 3px;
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 }
 .bl {
 	margin: 20px 0 10px 0;
@@ -435,7 +435,7 @@ h1 {
 	margin-right: 5px;
 	font-family: addons;
 	content: '\f567';
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 }
 #issues i,
 .detailtext i {
@@ -551,7 +551,7 @@ strike {
 li i,
 .boxed-group legend i,
 blue {
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 }
 span,
 pre,
@@ -612,7 +612,7 @@ a[href^="http"] {
 }
 #list li:hover,
 a:hover {
-	color: #0095d8/*c*//*c*//*c*//*c*/;
+	color: #0095d8/*c*/;
 }
 .revision:hover:after,
 legend a:hover,
