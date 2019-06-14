@@ -207,7 +207,7 @@ textarea {
 	line-height: inherit
 }
 a {
-	color: #0095d8/*c*/;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 	text-decoration: none
 }
 a:hover,
@@ -328,6 +328,7 @@ i.fa {
 .fa-question-circle:before { content: "\f560" }
 .fa-info-circle:before { content: "\f561" }
 .fa-warning:before { content: "\f562" }
+.fa-gear:before { content: "\f509" }
 .fa-spin {
 	display: inline-block;
 	margin-right: 10px;
@@ -393,7 +394,7 @@ h1 {
 .close-root {
 	float: right;
 	font-size: 28px;
-	color: #0095d8/*c*/;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 	text-decoration: none;
 }
 #closeprogress {
@@ -415,15 +416,12 @@ h1 {
 	background: #e0e7ee;
 }
 #diskunpart {
-	background: #0095d8/*c*/;
+	background: #0095d8/*c*//*c*//*c*//*c*/;
 }
 #issues {
 	float: right;
 	margin-top: 3px;
-	color: #0095d8/*c*/;
-}
-#wait {
-	line-height: 0;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 }
 .bl {
 	margin: 20px 0 10px 0;
@@ -437,7 +435,7 @@ h1 {
 	margin-right: 5px;
 	font-family: addons;
 	content: '\f567';
-	color: #0095d8/*c*/;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 }
 #issues i,
 .detailtext i {
@@ -553,7 +551,7 @@ strike {
 li i,
 .boxed-group legend i,
 blue {
-	color: #0095d8/*c*/;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 }
 span,
 pre,
@@ -614,7 +612,7 @@ a[href^="http"] {
 }
 #list li:hover,
 a:hover {
-	color: #0095d8/*c*/;
+	color: #0095d8/*c*//*c*//*c*//*c*/;
 }
 .revision:hover:after,
 legend a:hover,
