@@ -166,8 +166,8 @@ function getoptions() {
 			info( {
 				  title       : title
 				, message     : ojson.message
-				, cancellabel : 'No'
-				, cancel      : function() {
+				, buttonlabel : 'No'
+				, button      : function() {
 					opt += '0 ';
 					sendcommand();
 				}
