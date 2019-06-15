@@ -311,7 +311,7 @@ i.fa {
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
-	color: #7795b4;
+	color: #7795b4/*cl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
@@ -410,7 +410,7 @@ h1 {
 	line-height: 10px;
 }
 #diskused {
-	background: #7795b4;
+	background: #7795b4/*cl*/;
 }
 #diskfree {
 	background: #e0e7ee;
@@ -425,7 +425,7 @@ h1 {
 }
 .bl {
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid #34495e;
+	border-bottom: 1px solid #333333;
 }
 #list {
 	margin: 10px 0;
@@ -439,7 +439,7 @@ h1 {
 }
 #issues i,
 .detailtext i {
-	color: #7795b4;
+	color: #7795b4/*cl*/;
 }
 .boxed-group {
 	margin: 10px 0;
@@ -453,8 +453,8 @@ h1 {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
-	color: #7795b4;
-	border-bottom: 1px solid #34495e;
+	color: #7795b4/*cl*/;
+	border-bottom: 1px solid #333333;
 }
 legend span {
 	font-size: 21px;
@@ -563,7 +563,7 @@ code i {
 }
 gray,
 g {
-	color: #7795b4;
+	color: #7795b4/*cl*/;
 }
 .flushdot {
 	height: 0;
@@ -582,7 +582,7 @@ p,
 ul,
 .bl,
 .disabled {
-	color: #7795b4;
+	color: #7795b4/*cl*/;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }
