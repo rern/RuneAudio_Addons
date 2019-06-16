@@ -59,7 +59,7 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 <div class="container">
 	<h1>
 		<i class="fa fa-addons"></i>&ensp;Addons
-		<a id="close" class="close-root" href="/"><i class="fa fa-times"></i></a>
+		<i class="close-root fa fa-times"></i>
 	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail.$htmlunpart ?>&nbsp;

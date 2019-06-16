@@ -67,7 +67,7 @@ $title = preg_replace( '/\**$/', '', $addon[ 'title' ] );
 <div class="container">
 	<h1>
 		<i class="fa fa-addons"></i>&ensp;<span><?=$heading?></span>
-		<a id="closeprogress" class="close-root"><i class="fa fa-times disabled"></i></a>
+		<i class="close-root fa fa-times disabled"></i>
 	</h1>
 	<p class="bl"></p>
 	<p id="wait">
@@ -140,7 +140,7 @@ if ( ( $alias === 'addo' && $type !== 'Update' )
 	echo '</style>';
 	$close = '/';
 } else {
-	$close = 'addons.php';
+	$close = '/addons.php';
 }
 
 // convert bash stdout to html
@@ -222,7 +222,11 @@ if ( !$reinit ) pclose( $popencmd );
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		$( '#wait' ).remove();
-		$( '#closeprogress' ).attr( 'href', '<?=$close?>' ).find( 'i' ).removeClass( 'disabled' );
+		$( '.close-root' )
+			.removeClass( 'disabled' )
+			.click( function() {
+				location.href = '<?=$close ?>';
+			} );
 		$( '#reinit' ).remove();
 		
 		info( {
@@ -230,7 +234,7 @@ if ( !$reinit ) pclose( $popencmd );
 			title:   '<?=$title?>',
 			message: 'Please see result information on screen.',
 		} );
-	}, <?=( !$reinit ? 1000 : 7000 )?> );
+	}, '<?=( !$reinit ? 1000 : 7000 )?>' );
 </script>
 
 </body>
