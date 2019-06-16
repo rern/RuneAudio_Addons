@@ -171,7 +171,6 @@ function getoptions() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel     : 'Yes'
 				, ok          : function() {
 					opt += '1 ';
 					sendcommand();
