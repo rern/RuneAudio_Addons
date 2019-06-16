@@ -534,6 +534,9 @@ code {
 .btn-default:hover {
 	background: #555555;
 }
+.btn:active {
+	background: #222222/*cd*/ !important;
+}
 .btn i {
 	margin-right: 5px;
 }
