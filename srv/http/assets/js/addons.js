@@ -1,3 +1,6 @@
+$( '.close-root' ).click( function() {
+	location.href = '/';
+} );
 // revision show/hide
 $( '.revision' ).click( function(e) {
 	e.stopPropagation();
