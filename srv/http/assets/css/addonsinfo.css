@@ -74,6 +74,12 @@ wh, gr { font-weight: 300; }
 	background: #111111;
 	pointer-events: none;
 }
+.infobtn:hover {
+	opacity: 0.85;
+}
+.infobtn:active {
+	background: #000000 !important;
+}
 #infoOverlay {
 	display: none;
 	position: fixed;
@@ -234,10 +240,6 @@ wh, gr { font-weight: 300; }
 }
 #infoButtons {
 	padding: 10px 0 20px 0;
-}
-#infoButtons a:hover,
-#infoButtons a.infobtn-primary:hover {
-	opacity: 0.85;
 }
 #infoOverlay white,
 #infoOverlay code {
