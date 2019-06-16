@@ -207,7 +207,6 @@ textarea {
 	line-height: inherit
 }
 a {
-	color: #0095d8/*c*/;
 	text-decoration: none
 }
 a:hover,
@@ -421,11 +420,10 @@ h1 {
 #issues {
 	float: right;
 	margin-top: 3px;
-	color: #0095d8/*c*/;
 }
 .bl {
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid #444444/*cg*/;
 }
 #list {
 	margin: 10px 0;
@@ -454,7 +452,7 @@ legend {
 	margin-bottom: 5px;
 	font-size: 14px;
 	color: #888888/*cl*/;
-	border-bottom: 1px solid #333333;
+	border-bottom: 1px solid #444444/*cg*/;
 }
 legend span {
 	font-size: 21px;
@@ -521,6 +519,10 @@ code {
 	text-transform: none;
 	min-width: 100px;
 }
+.btn-primary {
+	background: #0095d8/*c*/;
+	border: none;
+}
 .btn-default,
 .btn-default.disabled,
 .btn-default:hover {
@@ -560,6 +562,7 @@ strike {
 	text-decoration: line-through;
 }
 li i,
+.revision,
 .boxed-group legend i,
 blue {
 	color: #0095d8/*c*/;
@@ -620,10 +623,6 @@ pre *:hover {
 
 a[href^="http"] {
 	text-decoration: none;
-}
-#list li:hover,
-a:hover {
-	color: #0095d8/*c*/;
 }
 .revision:hover:after,
 legend a:hover,
