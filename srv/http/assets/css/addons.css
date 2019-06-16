@@ -401,7 +401,7 @@ h1 {
 	margin-top: 0;
 }
 .close-root:hover {
-	color: #00608c;
+	opacity: 0.85;
 	text-decoration: none;
 }
 .disk {
@@ -445,7 +445,7 @@ h1 {
 	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
-	background: #19232d;
+	background: #222222/*cd*/;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -520,6 +520,17 @@ code {
 .btn {
 	text-transform: none;
 	min-width: 100px;
+}
+.btn-default,
+.btn-default.disabled,
+.btn-default:hover {
+	background: #444444/*cg*/;
+}
+.btn-default.disabled {
+	opacity: 0.5;
+}
+.btn-default:hover {
+	background: #555555;
 }
 .btn i {
 	margin-right: 5px;
@@ -620,7 +631,7 @@ legend:hover:after,
 a[href^="http"]:hover,
 #revision:hover:after,
 #list li:hover:after {
-	color: #e0e7ee;
+	opacity: 0.85;
 	text-decoration: none;
 }
 .disabled:hover {

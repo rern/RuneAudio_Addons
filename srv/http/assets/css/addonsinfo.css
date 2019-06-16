@@ -105,7 +105,7 @@ wh, gr { font-weight: 300; }
 	width: 400px;
 	max-width: 98%;
 	margin: 50vh auto 0;
-	background: #19232d;
+	background: #222222/*cd*/;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
@@ -143,7 +143,7 @@ wh, gr { font-weight: 300; }
 	cursor: pointer;
 }
 #infoX:hover {
-	color: #00608c;
+	opacity: 0.85;
 }
 #infoTitle {
 	display: inline-block;
@@ -236,11 +236,9 @@ wh, gr { font-weight: 300; }
 #infoButtons {
 	padding: 10px 0 20px 0;
 }
-#infoButtons a:hover {
-	background: #222f3d;
-}
+#infoButtons a:hover,
 #infoButtons a.infobtn-primary:hover {
-	background: #0072a5;
+	opacity: 0.85;
 }
 #infoOverlay white,
 #infoOverlay code {
