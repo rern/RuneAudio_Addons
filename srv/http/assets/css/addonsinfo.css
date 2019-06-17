@@ -234,6 +234,7 @@ wh, gr { font-weight: 300; }
 }
 
 @media( hover:hover ) {
+	/* :hover *********************************************************/
 	#infoOverlay input[type=radio],
 	#infoOverlay input[type=checkbox] {
 		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
@@ -247,10 +248,14 @@ wh, gr { font-weight: 300; }
 	.infobtn-default:hover {
 		background-color: #666666/*cgh*/
 	}
-	.infobtn:active {
-		background-color: #111111 !important;
+	/* :active *********************************************************/
+	#infoX:active {
+		color: #0077ac/*ca*/;
 	}
-	#infoOverlay a:hover {
-		color: #e0e7ee;
+	.infobtn-primary:active {
+		background-color: #0077ac/*ca*/;
+	}
+	.infobtn-default:active {
+		background-color: #333333/*cga*/
 	}
 }

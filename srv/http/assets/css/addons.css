@@ -600,6 +600,7 @@ a:hover {
 	outline: 0
 }
 @media( hover:hover ) {
+	/* :hover *********************************************************/
 	a:hover,
 	.close-root:hover,
 	#list li:hover {
@@ -615,5 +616,17 @@ a:hover {
 		text-decoration: none;
 		cursor: text;
 		color: inherit;
+	}
+	/* :active *********************************************************/
+	a:active,
+	.close-root:active,
+	#list li:active {
+		color: #0077ac/*ca*/;
+	}
+	.btn-primary:active {
+		background: #0077ac/*ca*/;
+	}
+	.btn-default:active {
+		background: #333333/*cga*/;
 	}
 }
