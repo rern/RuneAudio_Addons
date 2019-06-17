@@ -40,10 +40,6 @@ template {
 a {
 	background-color: transparent
 }
-a:active,
-a:hover {
-	outline: 0
-}
 abbr[title] {
 	border-bottom: 1px dotted
 }
@@ -205,20 +201,6 @@ textarea {
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit
-}
-a {
-	text-decoration: none
-}
-.close-root:hover,
-a:hover,
-a:focus {
-	color: #0095d8/*c*/;
-	opacity: 0.85;
-}
-a:focus {
-	outline: thin dotted;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px
 }
 figure {
 	margin: 0
@@ -521,19 +503,11 @@ code {
 	background: #0095d8/*c*/;
 	border: none;
 }
-.btn-default,
-.btn-default.disabled,
-.btn-default:hover {
+.btn-default {
 	background: #444444/*cg*/;
 }
 .btn-default.disabled {
-	opacity: 0.5;
-}
-.btn-default:hover {
-	background: #555555;
-}
-.btn:active {
-	background: #222222/*cd*/ !important;
+	background: #333333;
 }
 .btn i {
 	margin-right: 5px;
@@ -616,24 +590,30 @@ ul,
 .cy   { color: #ffff00 }
 .cg   { color: #00ff00 }
 .cr   { color: #ff0000 }
-pre *:hover {
-	text-decoration: none;
-	cursor: text;
-	color: inherit;
-}
 
-a[href^="http"] {
+a,
+a:hover {
 	text-decoration: none;
 }
-.revision:hover:after,
-legend a:hover,
-legend:hover:after,
-a[href^="http"]:hover,
-#revision:hover:after,
-#list li:hover:after {
-	opacity: 0.85;
-	text-decoration: none;
+a:active,
+a:hover {
+	outline: 0
 }
-.disabled:hover {
-	cursor: not-allowed;
+@media( hover:hover ) {
+	a:hover,
+	.close-root:hover,
+	#list li:hover {
+		color: #00a3ed/*ch*/;
+	}
+	.btn-primary:hover {
+		background: #00a3ed/*ch*/
+	}
+	.btn-default:hover {
+		background: #666666/*cgh*/;
+	}
+	pre *:hover {
+		text-decoration: none;
+		cursor: text;
+		color: inherit;
+	}
 }

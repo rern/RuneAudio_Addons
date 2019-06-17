@@ -71,14 +71,8 @@ wh, gr { font-weight: 300; }
 	background: #444444/*cg*/;
 }
 .infobtn.disabled {
-	background: #111111;
+	background: #333333;
 	pointer-events: none;
-}
-.infobtn:hover {
-	opacity: 0.85;
-}
-.infobtn:active {
-	background: #000000 !important;
 }
 #infoOverlay {
 	display: none;
@@ -102,9 +96,6 @@ wh, gr { font-weight: 300; }
 }
 #infoOverlay a {
 	text-decoration: none;
-}
-#infoOverlay a:hover {
-	color: #e0e7ee;
 }
 #infoBox {
 	width: 400px;
@@ -146,9 +137,6 @@ wh, gr { font-weight: 300; }
 	font-size: 28px;
 	color: #0095d8/*c*/;
 	cursor: pointer;
-}
-#infoX:hover {
-	opacity: 0.85;
 }
 #infoTitle {
 	display: inline-block;
@@ -218,12 +206,6 @@ wh, gr { font-weight: 300; }
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 0); /* scaleX, rotate, skew, scaleY, x, y */
 }
-@media ( hover:hover ) {
-	#infoOverlay input[type=radio],
-	#infoOverlay input[type=checkbox] {
-		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
-	}
-}
 #infoSelect button {
 	height: 40px;
 	margin-left: 5px;
@@ -249,4 +231,26 @@ wh, gr { font-weight: 300; }
 	display: inline-block;
 	line-height: 14px;
 	border-radius: 3px;
+}
+
+@media( hover:hover ) {
+	#infoOverlay input[type=radio],
+	#infoOverlay input[type=checkbox] {
+		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
+	}
+	#infoX:hover {
+		color: #00a3ed/*ch*/;
+	}
+	.infobtn-primary:hover {
+		background-color: #00a3ed/*ch*/;
+	}
+	.infobtn-default:hover {
+		background-color: #666666/*cgh*/
+	}
+	.infobtn:active {
+		background-color: #111111 !important;
+	}
+	#infoOverlay a:hover {
+		color: #e0e7ee;
+	}
 }
