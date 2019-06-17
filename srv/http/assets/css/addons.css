@@ -209,10 +209,11 @@ textarea {
 a {
 	text-decoration: none
 }
+.close-root:hover,
 a:hover,
 a:focus {
-	color: #00608c;
-	text-decoration: underline
+	color: #0095d8/*c*/;
+	opacity: 0.85;
 }
 a:focus {
 	outline: thin dotted;
@@ -395,13 +396,10 @@ h1 {
 	font-size: 28px;
 	color: #0095d8/*c*/;
 	text-decoration: none;
+	cursor: pointer;
 }
 #closeprogress {
 	margin-top: 0;
-}
-.close-root:hover {
-	opacity: 0.85;
-	text-decoration: none;
 }
 .disk {
 	display: inline-block;
