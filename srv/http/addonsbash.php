@@ -131,18 +131,6 @@ cmd;
 }
 $commandtxt = preg_replace( '/\t*/', '', $commandtxt );
 
-// if uninstall only - css file will be gone
-if ( ( $alias === 'addo' && $type !== 'Update' )
-	|| ( $alias === 'cove' )
-) {
-	echo '<style>';
-	include 'assets/css/addonsinfo.'.$time.'.css';
-	echo '</style>';
-	$close = '/';
-} else {
-	$close = '/addons.php';
-}
-
 // convert bash stdout to html
 $replace = array(
 	'/.\[38;5;8m.\[48;5;8m/' => '<a class="cbgr">',     // bar - gray
@@ -225,7 +213,7 @@ if ( !$reinit ) pclose( $popencmd );
 		$( '.close-root' )
 			.removeClass( 'disabled' )
 			.click( function() {
-				location.href = '<?=$close ?>';
+				location.href = '<?=( $alias === "cove" ? "/" : "/addons.php" )?>';
 			} );
 		$( '#reinit' ).remove();
 		
