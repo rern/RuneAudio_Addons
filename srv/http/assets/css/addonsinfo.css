@@ -243,9 +243,11 @@ wh, gr { font-weight: 300; }
 		color: #00a3ed/*ch*/;
 	}
 	.infobtn-primary:hover {
+		color: #e0e7ee;
 		background-color: #00a3ed/*ch*/;
 	}
 	.infobtn-default:hover {
+		color: #e0e7ee;
 		background-color: #555555/*cgh*/
 	}
 	/* :active *********************************************************/
