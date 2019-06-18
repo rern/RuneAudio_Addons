@@ -376,7 +376,7 @@ h1 {
 .close-root {
 	float: right;
 	font-size: 28px;
-	color: #0095d8/*c*/;
+	color:hsl(200,100%,40%)/*c*/;
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -395,7 +395,7 @@ h1 {
 	background: #e0e7ee;
 }
 #diskunpart {
-	background: #0095d8/*c*/;
+	background:hsl(200,100%,40%)/*c*/;
 }
 #issues {
 	float: right;
@@ -413,7 +413,7 @@ h1 {
 	margin-right: 5px;
 	font-family: addons;
 	content: '\f567';
-	color: #0095d8/*c*/;
+	color:hsl(200,100%,40%)/*c*/;
 }
 #issues i,
 .detailtext i {
@@ -500,7 +500,7 @@ code {
 	min-width: 100px;
 }
 .btn-primary {
-	background: #0095d8/*c*/;
+	background:hsl(200,100%,40%)/*c*/;
 	border: none;
 }
 .btn-default {
@@ -540,7 +540,7 @@ li i,
 .revision,
 .boxed-group legend i,
 blue {
-	color: #0095d8/*c*/;
+	color:hsl(200,100%,40%)/*c*/;
 }
 span,
 pre,
@@ -604,10 +604,10 @@ a:hover {
 	a:hover,
 	.close-root:hover,
 	#list li:hover {
-		color: #00a3ed/*ch*/;
+		color:hsl(200,100%,50%)/*ch*/;
 	}
 	.btn-primary:hover {
-		background: #00a3ed/*ch*/
+		background:hsl(200,100%,50%)/*ch*/
 	}
 	.btn-default:hover {
 		background: #555555/*cgh*/;
@@ -621,10 +621,10 @@ a:hover {
 	a:active,
 	.close-root:active,
 	#list li:active {
-		color: #0077ac/*ca*/;
+		color:hsl(200,100%,20%)/*ca*/;
 	}
 	.btn-primary:active {
-		background: #0077ac/*ca*/;
+		background:hsl(200,100%,20%)/*ca*/;
 	}
 	.btn-default:active {
 		background: #333333/*cga*/;
