@@ -293,7 +293,7 @@ i.fa {
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
-	color: #888888/*cl*/;
+	color: hsl(0,0%,50%)/*cl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
@@ -389,7 +389,7 @@ h1 {
 	line-height: 10px;
 }
 #diskused {
-	background: #888888/*cl*/;
+	background: hsl(0,0%,50%)/*cl*/;
 }
 #diskfree {
 	background: #e0e7ee;
@@ -403,7 +403,7 @@ h1 {
 }
 .bl {
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid #444444/*cg*/;
+	border-bottom: 1px solid hsl(0,0%,30%)/*cg*/;
 }
 #list {
 	margin: 10px 0;
@@ -417,13 +417,13 @@ h1 {
 }
 #issues i,
 .detailtext i {
-	color: #888888/*cl*/;
+	color: hsl(0,0%,50%)/*cl*/;
 }
 .boxed-group {
 	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
-	background: #222222/*cd*/;
+	background: hsl(0,0%,15%)/*cd*/;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -431,8 +431,8 @@ h1 {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
-	color: #888888/*cl*/;
-	border-bottom: 1px solid #444444/*cg*/;
+	color: hsl(0,0%,50%)/*cl*/;
+	border-bottom: 1px solid hsl(0,0%,30%)/*cg*/;
 }
 legend span {
 	font-size: 21px;
@@ -504,7 +504,7 @@ code {
 	border: none;
 }
 .btn-default {
-	background: #444444/*cg*/;
+	background: hsl(0,0%,30%)/*cg*/;
 }
 .btn-default.disabled {
 	background: #333333;
@@ -552,7 +552,7 @@ code i {
 }
 gray,
 g {
-	color: #888888/*cl*/;
+	color: hsl(0,0%,50%)/*cl*/;
 }
 .flushdot {
 	height: 0;
@@ -571,7 +571,7 @@ p,
 ul,
 .bl,
 .disabled {
-	color: #888888/*cl*/;
+	color: hsl(0,0%,50%)/*cl*/;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }
@@ -610,7 +610,7 @@ a:hover {
 		background: hsl(200,100%,50%)/*ch*/
 	}
 	.btn-default:hover {
-		background: #555555/*cgh*/;
+		background: hsl(0,0%,40%)/*cgh*/;
 	}
 	pre *:hover {
 		text-decoration: none;
@@ -627,6 +627,6 @@ a:hover {
 		background: hsl(200,100%,20%)/*ca*/;
 	}
 	.btn-default:active {
-		background: #333333/*cga*/;
+		background: hsl(0,0%,20%)/*cga*/;
 	}
 }
