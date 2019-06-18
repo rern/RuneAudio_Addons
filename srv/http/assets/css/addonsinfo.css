@@ -65,7 +65,7 @@ wh, gr { font-weight: 300; }
 	user-select: none;
 }
 .infobtn-primary {
-	background:hsl(200,100%,40%)/*c*/;
+	background: hsl(200,100%,40%)/*c*/;
 }
 .infobtn-default {
 	background: #444444/*cg*/;
@@ -135,7 +135,7 @@ wh, gr { font-weight: 300; }
 	border-radius: 0 10px 0 0;
 	padding: 0;
 	font-size: 28px;
-	color:hsl(200,100%,40%)/*c*/;
+	color: hsl(200,100%,40%)/*c*/;
 	cursor: pointer;
 }
 #infoTitle {
@@ -240,11 +240,11 @@ wh, gr { font-weight: 300; }
 		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
 	}
 	#infoX:hover {
-		color:hsl(200,100%,50%)/*ch*/;
+		color: hsl(200,100%,50%)/*ch*/;
 	}
 	.infobtn-primary:hover {
 		color: #e0e7ee;
-		background-color:hsl(200,100%,50%)/*ch*/;
+		background-color: hsl(200,100%,50%)/*ch*/;
 	}
 	.infobtn-default:hover {
 		color: #e0e7ee;
@@ -252,10 +252,10 @@ wh, gr { font-weight: 300; }
 	}
 	/* :active *********************************************************/
 	#infoX:active {
-		color:hsl(200,100%,20%)/*ca*/;
+		color: hsl(200,100%,20%)/*ca*/;
 	}
 	.infobtn-primary:active {
-		background-color:hsl(200,100%,20%)/*ca*/;
+		background-color: hsl(200,100%,20%)/*ca*/;
 	}
 	.infobtn-default:active {
 		background-color: #333333/*cga*/
