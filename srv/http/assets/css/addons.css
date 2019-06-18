@@ -423,7 +423,7 @@ h1 {
 	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
-	background: hsl(0,0%,15%)/*cd*/;
+	background: hsl(0,0%,20%)/*cd*/;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -503,11 +503,9 @@ code {
 	background: hsl(200,100%,40%)/*c*/;
 	border: none;
 }
-.btn-default {
-	background: hsl(0,0%,30%)/*cg*/;
-}
+.btn-default,
 .btn-default.disabled {
-	background: #333333;
+	background: hsl(0,0%,30%)/*cg*/;
 }
 .btn i {
 	margin-right: 5px;
