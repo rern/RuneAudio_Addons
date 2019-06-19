@@ -63,16 +63,19 @@ wh, gr { font-weight: 300; }
 	color: #e0e7ee;
 	cursor: pointer;
 	user-select: none;
+	background: -webkit-radial-gradient(50% -50%, 160% 200%, hsla(0,0%,100%,.3) 50%, hsla(0,0%,100%,0) 55%); /* button highlight - last % for anti-alias edge*/
+	background: radial-gradient(160% 100% at 50% 0% ,hsla(0,0%,100%,.3) 50%,hsla(0,0%,100%,0) 55%); /* (Width% Heigth% at H-center_offset% V-center_offset%, hsla(0,0%,100%,1st-T) 1st-area%, hsla(0,0%,100%,2nd-T) 2nd-area%)) */
+	box-shadow: 2px 2px 3px 1px rgba(0,0,0,0.5);  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
 .infobtn-primary {
-	background: hsl(200,100%,40%)/*c*/;
+	background-color: hsl(200,100%,40%)/*c*/;
 }
 .infobtn-default {
-	background: hsl(0,0%,40%)/*cg*/;
+	background-color: hsl(0,0%,40%)/*cg*/;
 }
 .infobtn.disabled {
 	color: hsl(0,0%,60%)/*cl*/;
-	background: hsl(0,0%,30%)/*cg*/;
+	background-color: hsl(0,0%,30%)/*cg*/;
 	pointer-events: none;
 }
 #infoOverlay {
