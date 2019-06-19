@@ -298,7 +298,16 @@ reinitsystem() {
 	title -nt "$bar Reinitialize system ..."
 	systemctl restart rune_SY_wrk
 }
-
+setColor() {
+	c=$( redis-cli hget display color )
+	if [[ -n $c && $c != 'hsl(200,100%,40%)' ]]; then
+		l=$( echo $c | cut -d'%' -f2 | tr -d ',' )
+		ch=$( echo $c | sed "s/%.*%/%,$(( l + 5 ))%/" )
+		ca=$( echo $c | sed "s/%.*%/%,$(( l - 10 ))%/" )
+		sed -i "s|hsl(*\(/\*c\*/\)|$c\1|g; s|hsl(.*\(/\*ch\*/\)|$ch\1|g; s|hsl(.*\(/\*ca\*/\)|$ca\1|g
+		" $( grep -ril '\/\*c' /srv/http/assets/{css,js} )
+	fi
+}
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
 # 3. create dir in /srv/http/assets/img/
