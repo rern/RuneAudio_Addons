@@ -68,10 +68,11 @@ wh, gr { font-weight: 300; }
 	background: hsl(200,100%,40%)/*c*/;
 }
 .infobtn-default {
-	background: hsl(0,0%,30%)/*cg*/;
+	background: hsl(0,0%,40%)/*cg*/;
 }
 .infobtn.disabled {
-	background: #333333;
+	color: hsl(0,0%,50%)/*cl*/;
+	background: hsl(0,0%,30%)/*cg*/;
 	pointer-events: none;
 }
 #infoOverlay {
