@@ -293,7 +293,7 @@ i.fa {
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
@@ -389,7 +389,7 @@ h1 {
 	line-height: 10px;
 }
 #diskused {
-	background: hsl(0,0%,50%)/*cl*/;
+	background: hsl(0,0%,60%)/*cl*/;
 }
 #diskfree {
 	background: #e0e7ee;
@@ -417,7 +417,7 @@ h1 {
 }
 #issues i,
 .detailtext i {
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .boxed-group {
 	margin: 10px 0;
@@ -431,7 +431,7 @@ h1 {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 	border-bottom: 1px solid hsl(0,0%,30%)/*cg*/;
 }
 legend span {
@@ -550,7 +550,7 @@ code i {
 }
 gray,
 g {
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .flushdot {
 	height: 0;
@@ -569,7 +569,7 @@ p,
 ul,
 .bl,
 .disabled {
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }

@@ -7,7 +7,7 @@
 	content: "\f520";
 }
 .fa-addons {
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-question-circle:before { content: "\f560" }
@@ -45,7 +45,7 @@
 	top: 60px;
 }
 wh { color: #e0e7ee; }
-gr { color: hsl(0,0%,50%)/*cl*/; }
+gr { color: hsl(0,0%,60%)/*cl*/; }
 wh, gr { font-weight: 300; }
 .infobtn,
 .filebtn {
@@ -71,7 +71,7 @@ wh, gr { font-weight: 300; }
 	background: hsl(0,0%,40%)/*cg*/;
 }
 .infobtn.disabled {
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 	background: hsl(0,0%,30%)/*cg*/;
 	pointer-events: none;
 }
@@ -127,7 +127,7 @@ wh, gr { font-weight: 300; }
 	float: left;
 	font-size: 28px;
 	line-height: 34px;
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 #infoX {
 	float: right;
@@ -162,7 +162,7 @@ wh, gr { font-weight: 300; }
 	text-align: left;
 	word-wrap: break-word;
 	overflow: hidden;
-	color: hsl(0,0%,50%)/*cl*/;
+	color: hsl(0,0%,60%)/*cl*/;
 }
 .infotextlabel {
 	display: inline-block;
