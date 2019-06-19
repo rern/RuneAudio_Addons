@@ -260,6 +260,8 @@ hr {
 [role="button"] {
 	cursor: pointer
 }
+a[ href^='http' ] { color: #0095d8 }
+a[ href^='http' ]:hover { color: #0ab1ff }
 
 @font-face {
 	font-family: Lato;
