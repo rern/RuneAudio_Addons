@@ -101,7 +101,7 @@ wh, gr { font-weight: 300; }
 	width: 400px;
 	max-width: 98%;
 	margin: 50vh auto 0;
-	background: hsl(0,0%,15%)/*cd*/;
+	background: hsl(0,0%,20%)/*cd*/;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
@@ -240,11 +240,11 @@ wh, gr { font-weight: 300; }
 		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
 	}
 	#infoX:hover {
-		color: hsl(200,100%,50%)/*ch*/;
+		color: hsl(200,100%,45%)/*ch*/;
 	}
 	.infobtn-primary:hover {
 		color: #e0e7ee;
-		background-color: hsl(200,100%,50%)/*ch*/;
+		background-color: hsl(200,100%,45%)/*ch*/;
 	}
 	.infobtn-default:hover {
 		color: #e0e7ee;
@@ -252,10 +252,10 @@ wh, gr { font-weight: 300; }
 	}
 	/* :active *********************************************************/
 	#infoX:active {
-		color: hsl(200,100%,20%)/*ca*/;
+		color: hsl(200,100%,30%)/*ca*/;
 	}
 	.infobtn-primary:active {
-		background-color: hsl(200,100%,20%)/*ca*/;
+		background-color: hsl(200,100%,30%)/*ca*/;
 	}
 	.infobtn-default:active {
 		background-color: hsl(0,0%,20%)/*cga*/

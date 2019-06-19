@@ -602,10 +602,10 @@ a:hover {
 	a:hover,
 	.close-root:hover,
 	#list li:hover {
-		color: hsl(200,100%,50%)/*ch*/;
+		color: hsl(200,100%,45%)/*ch*/;
 	}
 	.btn-primary:hover {
-		background: hsl(200,100%,50%)/*ch*/
+		background: hsl(200,100%,45%)/*ch*/
 	}
 	.btn-default:hover {
 		background: hsl(0,0%,40%)/*cgh*/;
@@ -619,10 +619,10 @@ a:hover {
 	a:active,
 	.close-root:active,
 	#list li:active {
-		color: hsl(200,100%,20%)/*ca*/;
+		color: hsl(200,100%,30%)/*ca*/;
 	}
 	.btn-primary:active {
-		background: hsl(200,100%,20%)/*ca*/;
+		background: hsl(200,100%,30%)/*ca*/;
 	}
 	.btn-default:active {
 		background: hsl(0,0%,20%)/*cga*/;
