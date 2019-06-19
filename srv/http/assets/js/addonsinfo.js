@@ -173,7 +173,7 @@ function info( O ) {
 	if ( 'nobutton' in O === false ) {
 		$( '#infoOk' )
 			.html( O.oklabel ? O.oklabel : 'OK' )
-			.css( 'background', O.okcolor || '' )
+			.css( 'background-color', O.okcolor || '' )
 			.show();
 			if ( typeof O.ok === 'function' ) $( '#infoOk' ).click( O.ok );
 		if ( 'cancel' in O ) {
@@ -194,7 +194,7 @@ function info( O ) {
 				var iid = i || '';
 				$( '#infoOk' ).before(  '<a id="infoButton'+ iid +'" class="infobtn extrabtn infobtn-default">'+ O.buttonlabel[ i ] +'</a>' );
 				$( '#infoButton'+ iid )
-									.css( 'background', O.buttoncolor[ i ] || '' )
+									.css( 'background-color', O.buttoncolor[ i ] || '' )
 									.click( O.button[ i ] );
 			}
 		}
