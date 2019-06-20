@@ -295,7 +295,7 @@ i.fa {
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
-	color: hsl(0,0%,60%)/*cl*/;
+	color: hsl(200,5%,60%)/*cgl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
@@ -391,7 +391,7 @@ h1 {
 	line-height: 10px;
 }
 #diskused {
-	background: hsl(0,0%,60%)/*cl*/;
+	background: hsl(200,5%,60%)/*cgl*/;
 }
 #diskfree {
 	background: #e0e7ee;
@@ -405,7 +405,7 @@ h1 {
 }
 .bl {
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid hsl(0,0%,30%)/*cg*/;
+	border-bottom: 1px solid hsl(200,5%,30%)/*cg*/;
 }
 #list {
 	margin: 10px 0;
@@ -419,13 +419,13 @@ h1 {
 }
 #issues i,
 .detailtext i {
-	color: hsl(0,0%,60%)/*cl*/;
+	color: hsl(200,5%,60%)/*cgl*/;
 }
 .boxed-group {
 	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
-	background: hsl(0,0%,20%)/*cd*/;
+	background: hsl(200,5%,20%)/*cd*/;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -433,8 +433,8 @@ h1 {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
-	color: hsl(0,0%,60%)/*cl*/;
-	border-bottom: 1px solid hsl(0,0%,30%)/*cg*/;
+	color: hsl(200,5%,60%)/*cgl*/;
+	border-bottom: 1px solid hsl(200,5%,30%)/*cg*/;
 }
 legend span {
 	font-size: 21px;
@@ -507,7 +507,7 @@ code {
 }
 .btn-default,
 .btn-default.disabled {
-	background: hsl(0,0%,30%)/*cg*/;
+	background: hsl(200,5%,30%)/*cg*/;
 }
 .btn i {
 	margin-right: 5px;
@@ -552,7 +552,7 @@ code i {
 }
 gray,
 g {
-	color: hsl(0,0%,60%)/*cl*/;
+	color: hsl(200,5%,60%)/*cgl*/;
 }
 .flushdot {
 	height: 0;
@@ -571,7 +571,7 @@ p,
 ul,
 .bl,
 .disabled {
-	color: hsl(0,0%,60%)/*cl*/;
+	color: hsl(200,5%,60%)/*cgl*/;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }
@@ -610,7 +610,7 @@ a:hover {
 		background: hsl(200,100%,45%)/*ch*/
 	}
 	.btn-default:hover {
-		background: hsl(0,0%,40%)/*cgh*/;
+		background: hsl(200,5%,40%)/*cgh*/;
 	}
 	pre *:hover {
 		text-decoration: none;
@@ -627,6 +627,6 @@ a:hover {
 		background: hsl(200,100%,30%)/*ca*/;
 	}
 	.btn-default:active {
-		background: hsl(0,0%,20%)/*cga*/;
+		background: hsl(200,5%,20%)/*cga*/;
 	}
 }
