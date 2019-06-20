@@ -299,13 +299,24 @@ reinitsystem() {
 	systemctl restart rune_SY_wrk
 }
 setColor() {
-	c=$( redis-cli hget display color )
-	if [[ -n $c && $c != 'hsl(200,100%,40%)' ]]; then
-		l=$( echo $c | cut -d'%' -f2 | tr -d ',' )
-		ch=$( echo $c | sed "s/%.*%/%,$(( l + 5 ))%/" )
-		ca=$( echo $c | sed "s/%.*%/%,$(( l - 10 ))%/" )
-		sed -i "s|hsl(*\(/\*c\*/\)|$c\1|g; s|hsl(.*\(/\*ch\*/\)|$ch\1|g; s|hsl(.*\(/\*ca\*/\)|$ca\1|g
-		" $( grep -ril '\/\*c' /srv/http/assets/{css,js} )
+	hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
+	if [[ -n $c && $c != '200 100 40' ]]; then
+		hsl=( $hsl )
+		h=${hsl[0]}
+		s=${hsl[1]}
+		l=${hsl[2]}
+		sed -i "
+s|\(hsl(\).*\()/\*ch\*/\)|\1$h,$s%,$(( l + 5 ))%\2|g
+s|\(hsl(\).*\()/\*c\*/\)|\1$h,$s%,$l%\2|g
+s|\(hsl(\).*\()/\*ca\*/\)|\1$h,$s%,$(( l - 10 ))%\2|g
+s|\(hsl(\).*\()/\*cgh\*/\)|\1$h,5%,40%\2|g
+s|\(hsl(\).*\()/\*cg\*/\)|\1$h,5%,30%\2|g
+s|\(hsl(\).*\()/\*cga\*/\)|\1$h,5%,20%\2|g
+s|\(hsl(\).*\()/\*cdh\*/\)|\1$h,5%,30%\2|g
+s|\(hsl(\).*\()/\*cd\*/\)|\1$h,5%,20%\2|g
+s|\(hsl(\).*\()/\*cda\*/\)|\1$h,5%,10%\2|g
+s|\(hsl(\).*\()/\*cgl\*/\)|\1$h,5%,60%\2|g
+		" $( grep -ril '\/\*c' /srv/http/assets/css )
 	fi
 }
 # 1. find existing dir > verify write > create symlink
