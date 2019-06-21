@@ -82,7 +82,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190621',
+	'version'     => '20190622',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
@@ -309,8 +309,8 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190621',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190622',
+	'revision'    => 'Allow colors changed with RuneUIe'
 					.'<br>...'
 					.'<br>Fix - Blank page if RuneUI Enhancement uninstalled'
 					.'<br>...'
