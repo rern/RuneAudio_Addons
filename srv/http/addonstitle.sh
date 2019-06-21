@@ -305,6 +305,8 @@ setColor() {
 		hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
 		[[ -z $hsl || $hsl == '200 100 40' ]] && return
 	fi
+	echo -e "$bar Set colors ..."
+	
 	hsl=( $hsl )
 	h=${hsl[0]}
 	s=${hsl[1]}
