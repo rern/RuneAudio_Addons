@@ -7,7 +7,7 @@
 	content: "\f520";
 }
 .fa-addons {
-	color: hsl(200,5%,60%)/*cgl*/;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-question-circle:before { content: "\f560" }
@@ -45,7 +45,7 @@
 	top: 60px;
 }
 wh { color: #e0e7ee; }
-gr { color: hsl(200,5%,60%)/*cgl*/; }
+gr { color: hsl(200,3%,60%)/*cgl*/; }
 wh, gr { font-weight: 300; }
 .infobtn,
 .filebtn {
@@ -71,11 +71,11 @@ wh, gr { font-weight: 300; }
 	background-color: hsl(200,100%,40%)/*c*/;
 }
 .infobtn-default {
-	background-color: hsl(200,5%,40%)/*cg*/;
+	background-color: hsl(200,3%,30%)/*cg*/;
 }
 .infobtn.disabled {
-	color: hsl(200,5%,60%)/*cgl*/;
-	background-color: hsl(200,5%,30%)/*cg*/;
+	color: hsl(200,3%,60%)/*cgl*/;
+	background-color: hsl(200,3%,30%)/*cg*/;
 	pointer-events: none;
 }
 #infoOverlay {
@@ -105,7 +105,7 @@ wh, gr { font-weight: 300; }
 	width: 400px;
 	max-width: 98%;
 	margin: 50vh auto 0;
-	background: hsl(200,5%,20%)/*cd*/;
+	background: hsl(200,3%,20%)/*cd*/;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
@@ -130,7 +130,7 @@ wh, gr { font-weight: 300; }
 	float: left;
 	font-size: 28px;
 	line-height: 34px;
-	color: hsl(200,5%,60%)/*cgl*/;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 #infoX {
 	float: right;
@@ -165,7 +165,7 @@ wh, gr { font-weight: 300; }
 	text-align: left;
 	word-wrap: break-word;
 	overflow: hidden;
-	color: hsl(200,5%,60%)/*cgl*/;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .infotextlabel {
 	display: inline-block;
@@ -188,7 +188,7 @@ wh, gr { font-weight: 300; }
 	color: #e0e7ee;
 	background-color: #000000;
 	border-radius: 4px;
-	border: 1px solid hsl(200,5%,30%)/*cg*/;
+	border: 1px solid hsl(200,3%,30%)/*cg*/;
 }
 .infoinput:focus {
 	outline: none;
@@ -252,7 +252,7 @@ wh, gr { font-weight: 300; }
 	}
 	.infobtn-default:hover {
 		color: #e0e7ee;
-		background-color: hsl(200,5%,40%)/*cgh*/
+		background-color: hsl(200,3%,40%)/*cgh*/
 	}
 	/* :active *********************************************************/
 	#infoX:active {
@@ -262,6 +262,6 @@ wh, gr { font-weight: 300; }
 		background-color: hsl(200,100%,30%)/*ca*/;
 	}
 	.infobtn-default:active {
-		background-color: hsl(200,5%,20%)/*cga*/
+		background-color: hsl(200,3%,20%)/*cga*/
 	}
 }
