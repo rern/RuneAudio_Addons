@@ -95,16 +95,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190611',
-	'revision'    => '<w>Lastfm playlist</w> was fixed and renamed to <w>Add similar</w> in context menu'
+	'version'     => '20190622',
+	'revision'    => 'Add color picker to change colors of UI'
+					.'<br>Highlight keyword in search result'
+					.'<br>Faster saving for online fetched coverarts'
+					.'<br>Extend keyboard navigation to menu and context menus'
+					.'<br>...'
+					.'<br><w>Lastfm playlist</w> was fixed and renamed to <w>Add similar</w> in context menu'
 					.'<br>Add submenu for Add+Play, Replace+Play and Reboot/ScreenOff'
 					.'<br>Fix local browser setting'
 					.'<br>...'
 					.'<br>Fix missing online coverarts - switch source to coverartarchive.org'
 					.'<br>Fix missing artist images - switch source to fanart.tv'
-					.'<br>Fix missing coverarts in album view'
-					.'<br>...'
-					.'<br>Fix context menu bugs',
+					.'<br>Fix missing coverarts in album view',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
