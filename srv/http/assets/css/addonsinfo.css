@@ -7,7 +7,7 @@
 	content: "\f520";
 }
 .fa-addons {
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-question-circle:before { content: "\f560" }
@@ -45,9 +45,8 @@
 	top: 60px;
 }
 wh { color: #e0e7ee; }
-gr { color: #7795b4; }
+gr { color: hsl(200,3%,60%)/*cgl*/; }
 wh, gr { font-weight: 300; }
-
 .infobtn,
 .filebtn {
 	display: inline-block;
@@ -64,15 +63,19 @@ wh, gr { font-weight: 300; }
 	color: #e0e7ee;
 	cursor: pointer;
 	user-select: none;
+	background: -webkit-radial-gradient(50% -50%, 160% 200%, hsla(0,0%,100%,.3) 50%, hsla(0,0%,100%,0) 55%); /* button highlight - last % for anti-alias edge*/
+	background: radial-gradient(160% 100% at 50% 0% ,hsla(0,0%,100%,.3) 50%,hsla(0,0%,100%,0) 55%); /* (Width% Heigth% at H-center_offset% V-center_offset%, hsla(0,0%,100%,1st-T) 1st-area%, hsla(0,0%,100%,2nd-T) 2nd-area%)) */
+	box-shadow: 2px 2px 3px 1px #000000;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
 .infobtn-primary {
-	background: #0095d8/*c*/;
+	background-color: hsl(200,100%,40%)/*c*/;
 }
 .infobtn-default {
-	background: #34495e;
+	background-color: hsl(200,3%,30%)/*cg*/;
 }
 .infobtn.disabled {
-	background: #212e3c;
+	color: hsl(200,3%,60%)/*cgl*/;
+	background-color: hsl(200,3%,30%)/*cg*/;
 	pointer-events: none;
 }
 #infoOverlay {
@@ -98,14 +101,11 @@ wh, gr { font-weight: 300; }
 #infoOverlay a {
 	text-decoration: none;
 }
-#infoOverlay a:hover {
-	color: #e0e7ee;
-}
 #infoBox {
 	width: 400px;
 	max-width: 98%;
 	margin: 50vh auto 0;
-	background: #19232d;
+	background: hsl(200,3%,20%)/*cd*/;
 	border-radius: 10px;
 	box-shadow: 4px 4px 10px #555;  /*  V-offfset, H-Offset, Blur width, Shadow width , Color */
 }
@@ -130,7 +130,7 @@ wh, gr { font-weight: 300; }
 	float: left;
 	font-size: 28px;
 	line-height: 34px;
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 #infoX {
 	float: right;
@@ -139,11 +139,8 @@ wh, gr { font-weight: 300; }
 	border-radius: 0 10px 0 0;
 	padding: 0;
 	font-size: 28px;
-	color: #0095d8/*c*/;
+	color: hsl(200,100%,40%)/*c*/;
 	cursor: pointer;
-}
-#infoX:hover {
-	color: #00608c;
 }
 #infoTitle {
 	display: inline-block;
@@ -168,7 +165,7 @@ wh, gr { font-weight: 300; }
 	text-align: left;
 	word-wrap: break-word;
 	overflow: hidden;
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .infotextlabel {
 	display: inline-block;
@@ -189,9 +186,9 @@ wh, gr { font-weight: 300; }
 	height: 36px;
 	padding: 0 10px;
 	color: #e0e7ee;
-	background-color: #10161c;
+	background-color: #000000;
 	border-radius: 4px;
-	border: 1px solid #34495e;
+	border: 1px solid hsl(200,3%,30%)/*cg*/;
 }
 .infoinput:focus {
 	outline: none;
@@ -213,12 +210,6 @@ wh, gr { font-weight: 300; }
 	margin: 5px;
 	transform: matrix(1.8, 0, 0, 1.8, 0, 0); /* scaleX, rotate, skew, scaleY, x, y */
 }
-@media ( hover:hover ) {
-	#infoOverlay input[type=radio],
-	#infoOverlay input[type=checkbox] {
-		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
-	}
-}
 #infoSelect button {
 	height: 40px;
 	margin-left: 5px;
@@ -236,12 +227,6 @@ wh, gr { font-weight: 300; }
 #infoButtons {
 	padding: 10px 0 20px 0;
 }
-#infoButtons a:hover {
-	background: #222f3d;
-}
-#infoButtons a.infobtn-primary:hover {
-	background: #0072a5;
-}
 #infoOverlay white,
 #infoOverlay code {
 	color: #e0e7ee;
@@ -250,4 +235,33 @@ wh, gr { font-weight: 300; }
 	display: inline-block;
 	line-height: 14px;
 	border-radius: 3px;
+}
+
+@media( hover:hover ) {
+	/* :hover *********************************************************/
+	#infoOverlay input[type=radio],
+	#infoOverlay input[type=checkbox] {
+		transform: matrix(1.8, 0, 0, 1.8, 0, 2); /* scaleX, rotate, skew, scaleY, x, y */
+	}
+	#infoX:hover {
+		color: hsl(200,100%,45%)/*ch*/;
+	}
+	.infobtn-primary:hover {
+		color: #e0e7ee;
+		background-color: hsl(200,100%,45%)/*ch*/;
+	}
+	.infobtn-default:hover {
+		color: #e0e7ee;
+		background-color: hsl(200,3%,40%)/*cgh*/
+	}
+	/* :active *********************************************************/
+	#infoX:active {
+		color: hsl(200,100%,30%)/*ca*/;
+	}
+	.infobtn-primary:active {
+		background-color: hsl(200,100%,30%)/*ca*/;
+	}
+	.infobtn-default:active {
+		background-color: hsl(200,3%,20%)/*cga*/
+	}
 }

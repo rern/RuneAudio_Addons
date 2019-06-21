@@ -208,7 +208,7 @@ EOF
 	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "$data" &> /dev/null
 }
 installstart() { # $1-'u'=update
-	rm $0
+	rm -f $0
 	
 	addonslist=$( sed -n "/^'$alias'/,/^),/p" /srv/http/addonslist.php )
 	title0=$( getvalue title )
@@ -298,7 +298,31 @@ reinitsystem() {
 	title -nt "$bar Reinitialize system ..."
 	systemctl restart rune_SY_wrk
 }
-
+setColor() {
+	if (( $# > 0 )); then
+		hsl='200 100 40'
+	else
+		hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
+		[[ -z $hsl || $hsl == '200 100 40' ]] && return
+	fi
+	hsl=( $hsl )
+	h=${hsl[0]}
+	s=${hsl[1]}
+	l=${hsl[2]}
+	hsg="$h,3%,"
+	sed -i "
+s|\(hsl(\).*\()/\*ch\*/\)|\1$h,$s%,$(( l + 5 ))%\2|g
+s|\(hsl(\).*\()/\*c\*/\)|\1$h,$s%,$l%\2|g
+s|\(hsl(\).*\()/\*ca\*/\)|\1$h,$s%,$(( l - 10 ))%\2|g
+s|\(hsl(\).*\()/\*cgh\*/\)|\1${hsg}40%\2|g
+s|\(hsl(\).*\()/\*cg\*/\)|\1${hsg}30%\2|g
+s|\(hsl(\).*\()/\*cga\*/\)|\1${hsg}20%\2|g
+s|\(hsl(\).*\()/\*cdh\*/\)|\1${hsg}30%\2|g
+s|\(hsl(\).*\()/\*cd\*/\)|\1${hsg}20%\2|g
+s|\(hsl(\).*\()/\*cda\*/\)|\1${hsg}10%\2|g
+s|\(hsl(\).*\()/\*cgl\*/\)|\1${hsg}60%\2|g
+	" $( grep -ril '\/\*c' /srv/http/assets/css )
+}
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
 # 3. create dir in /srv/http/assets/img/

@@ -1,3 +1,6 @@
+$( '.close-root' ).click( function() {
+	location.href = '/';
+} );
 // revision show/hide
 $( '.revision' ).click( function(e) {
 	e.stopPropagation();
@@ -166,12 +169,11 @@ function getoptions() {
 			info( {
 				  title       : title
 				, message     : ojson.message
-				, cancellabel : 'No'
-				, cancel      : function() {
+				, buttonlabel : 'No'
+				, button      : function() {
 					opt += '0 ';
 					sendcommand();
 				}
-				, oklabel     : 'Yes'
 				, ok          : function() {
 					opt += '1 ';
 					sendcommand();

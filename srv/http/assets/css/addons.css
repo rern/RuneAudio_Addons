@@ -40,10 +40,6 @@ template {
 a {
 	background-color: transparent
 }
-a:active,
-a:hover {
-	outline: 0
-}
 abbr[title] {
 	border-bottom: 1px dotted
 }
@@ -206,20 +202,6 @@ textarea {
 	font-size: inherit;
 	line-height: inherit
 }
-a {
-	color: #0095d8/*c*/;
-	text-decoration: none
-}
-a:hover,
-a:focus {
-	color: #00608c;
-	text-decoration: underline
-}
-a:focus {
-	outline: thin dotted;
-	outline: 5px auto -webkit-focus-ring-color;
-	outline-offset: -2px
-}
 figure {
 	margin: 0
 }
@@ -278,6 +260,8 @@ hr {
 [role="button"] {
 	cursor: pointer
 }
+a[ href^='http' ] { color: #0095d8 }
+a[ href^='http' ]:hover { color: #0ab1ff }
 
 @font-face {
 	font-family: Lato;
@@ -311,7 +295,7 @@ i.fa {
 .fa-addons:before {
 	font-family: addons;
 	content: "\f520";
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .fa-times:before { content: "\f51A" }
 .fa-plus-circle:before { content: "\f51D" }
@@ -394,15 +378,12 @@ h1 {
 .close-root {
 	float: right;
 	font-size: 28px;
-	color: #0095d8/*c*/;
+	color: hsl(200,100%,40%)/*c*/;
 	text-decoration: none;
+	cursor: pointer;
 }
 #closeprogress {
 	margin-top: 0;
-}
-.close-root:hover {
-	color: #00608c;
-	text-decoration: none;
 }
 .disk {
 	display: inline-block;
@@ -410,22 +391,21 @@ h1 {
 	line-height: 10px;
 }
 #diskused {
-	background: #7795b4;
+	background: hsl(200,3%,60%)/*cgl*/;
 }
 #diskfree {
 	background: #e0e7ee;
 }
 #diskunpart {
-	background: #0095d8/*c*/;
+	background: hsl(200,100%,40%)/*c*/;
 }
 #issues {
 	float: right;
 	margin-top: 3px;
-	color: #0095d8/*c*/;
 }
 .bl {
 	margin: 20px 0 10px 0;
-	border-bottom: 1px solid #34495e;
+	border-bottom: 1px solid hsl(200,3%,30%)/*cg*/;
 }
 #list {
 	margin: 10px 0;
@@ -435,17 +415,17 @@ h1 {
 	margin-right: 5px;
 	font-family: addons;
 	content: '\f567';
-	color: #0095d8/*c*/;
+	color: hsl(200,100%,40%)/*c*/;
 }
 #issues i,
 .detailtext i {
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .boxed-group {
 	margin: 10px 0;
 	padding: 10px 20px;
 	border-radius: 6px;
-	background: #19232d;
+	background: hsl(200,3%,20%)/*cd*/;
 }
 .boxed-group img {
 	max-width: 100px;
@@ -453,8 +433,8 @@ h1 {
 legend {
 	margin-bottom: 5px;
 	font-size: 14px;
-	color: #7795b4;
-	border-bottom: 1px solid #34495e;
+	color: hsl(200,3%,60%)/*cgl*/;
+	border-bottom: 1px solid hsl(200,3%,30%)/*cg*/;
 }
 legend span {
 	font-size: 21px;
@@ -521,6 +501,14 @@ code {
 	text-transform: none;
 	min-width: 100px;
 }
+.btn-primary {
+	background: hsl(200,100%,40%)/*c*/;
+	border: none;
+}
+.btn-default,
+.btn-default.disabled {
+	background: hsl(200,3%,30%)/*cg*/;
+}
 .btn i {
 	margin-right: 5px;
 }
@@ -549,9 +537,10 @@ strike {
 	text-decoration: line-through;
 }
 li i,
+.revision,
 .boxed-group legend i,
 blue {
-	color: #0095d8/*c*/;
+	color: hsl(200,100%,40%)/*c*/;
 }
 span,
 pre,
@@ -563,7 +552,7 @@ code i {
 }
 gray,
 g {
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .flushdot {
 	height: 0;
@@ -582,7 +571,7 @@ p,
 ul,
 .bl,
 .disabled {
-	color: #7795b4;
+	color: hsl(200,3%,60%)/*cgl*/;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }
@@ -601,28 +590,43 @@ ul,
 .cy   { color: #ffff00 }
 .cg   { color: #00ff00 }
 .cr   { color: #ff0000 }
-pre *:hover {
-	text-decoration: none;
-	cursor: text;
-	color: inherit;
-}
 
-a[href^="http"] {
-	text-decoration: none;
-}
-#list li:hover,
+a,
 a:hover {
-	color: #0095d8/*c*/;
-}
-.revision:hover:after,
-legend a:hover,
-legend:hover:after,
-a[href^="http"]:hover,
-#revision:hover:after,
-#list li:hover:after {
-	color: #e0e7ee;
 	text-decoration: none;
 }
-.disabled:hover {
-	cursor: not-allowed;
+a:active,
+a:hover {
+	outline: 0
+}
+@media( hover:hover ) {
+	/* :hover *********************************************************/
+	a:hover,
+	.close-root:hover,
+	#list li:hover {
+		color: hsl(200,100%,45%)/*ch*/;
+	}
+	.btn-primary:hover {
+		background: hsl(200,100%,45%)/*ch*/
+	}
+	.btn-default:hover {
+		background: hsl(200,3%,40%)/*cgh*/;
+	}
+	pre *:hover {
+		text-decoration: none;
+		cursor: text;
+		color: inherit;
+	}
+	/* :active *********************************************************/
+	a:active,
+	.close-root:active,
+	#list li:active {
+		color: hsl(200,100%,30%)/*ca*/;
+	}
+	.btn-primary:active {
+		background: hsl(200,100%,30%)/*ca*/;
+	}
+	.btn-default:active {
+		background: hsl(200,3%,20%)/*cga*/;
+	}
 }
