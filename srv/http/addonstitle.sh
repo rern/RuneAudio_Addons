@@ -300,7 +300,7 @@ reinitsystem() {
 }
 setColor() {
 	hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
-	if [[ -n $c && $c != '200 100 40' ]]; then
+	if [[ -n $hsl && $hsl != '200 100 40' ]]; then
 		hsl=( $hsl )
 		h=${hsl[0]}
 		s=${hsl[1]}
