@@ -299,13 +299,17 @@ reinitsystem() {
 	systemctl restart rune_SY_wrk
 }
 setColor() {
-	hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
-	if [[ -n $hsl && $hsl != '200 100 40' ]]; then
-		hsl=( $hsl )
-		h=${hsl[0]}
-		s=${hsl[1]}
-		l=${hsl[2]}
-		sed -i "
+	if (( $# > 0 )); then
+		hsl='200 100 40'
+	else
+		hsl=$( redis-cli hget display color | tr -d 'hsl(%)' | tr ',' ' ' ) # hsl(360,100%,100%) > 360 100 100
+		[[ -z $hsl || $hsl == '200 100 40' ]] && return
+	fi
+	hsl=( $hsl )
+	h=${hsl[0]}
+	s=${hsl[1]}
+	l=${hsl[2]}
+	sed -i "
 s|\(hsl(\).*\()/\*ch\*/\)|\1$h,$s%,$(( l + 5 ))%\2|g
 s|\(hsl(\).*\()/\*c\*/\)|\1$h,$s%,$l%\2|g
 s|\(hsl(\).*\()/\*ca\*/\)|\1$h,$s%,$(( l - 10 ))%\2|g
@@ -316,8 +320,7 @@ s|\(hsl(\).*\()/\*cdh\*/\)|\1$h,5%,30%\2|g
 s|\(hsl(\).*\()/\*cd\*/\)|\1$h,5%,20%\2|g
 s|\(hsl(\).*\()/\*cda\*/\)|\1$h,5%,10%\2|g
 s|\(hsl(\).*\()/\*cgl\*/\)|\1$h,5%,60%\2|g
-		" $( grep -ril '\/\*c' /srv/http/assets/css )
-	fi
+	" $( grep -ril '\/\*c' /srv/http/assets/css )
 }
 # 1. find existing dir > verify write > create symlink
 # 2. USB / NAS > verify write > create dir > create symlink
