@@ -95,19 +95,21 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190622',
-	'revision'    => 'Add color picker to change colors of UI'
+	'version'     => '20190623',
+	'revision'    => 'Fix add webradio bug'
+					.'<br>Fix playlists conversion during install'
+					.'<br>Fix playlists with 1,000 tracks not show'
+					.'<br>Fix saved playlists with 1,000 tracks not load'
+					.'<br>Reinstate Last.fm as primary source for online coverarts'
+					.'<br>...'
+					.'<br>Add color picker to change colors of UI'
 					.'<br>Highlight keyword in search result'
 					.'<br>Faster saving for online fetched coverarts'
 					.'<br>Extend keyboard navigation to menu and context menus'
 					.'<br>...'
 					.'<br><w>Lastfm playlist</w> was fixed and renamed to <w>Add similar</w> in context menu'
 					.'<br>Add submenu for Add+Play, Replace+Play and Reboot/ScreenOff'
-					.'<br>Fix local browser setting'
-					.'<br>...'
-					.'<br>Fix missing online coverarts - switch source to coverartarchive.org'
-					.'<br>Fix missing artist images - switch source to fanart.tv'
-					.'<br>Fix missing coverarts in album view',
+					.'<br>Fix local browser setting',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
