@@ -60,7 +60,7 @@ wh, gr { font-weight: 300; }
 	white-space: nowrap;
 	font-size: 14px;
 	text-align: center;
-	color: #e0e7ee;
+	color: #e0e7ee !important;
 	cursor: pointer;
 	user-select: none;
 	background: -webkit-radial-gradient(50% -50%, 160% 200%, hsla(0,0%,100%,.3) 50%, hsla(0,0%,100%,0) 55%); /* button highlight - last % for anti-alias edge*/
