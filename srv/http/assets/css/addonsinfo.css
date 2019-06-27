@@ -9,9 +9,9 @@
 .fa-addons {
 	color: hsl(200,3%,60%)/*cgl*/;
 }
-.fa-times:before { content: "\f51A" }
-.fa-question-circle:before { content: "\f560" }
 .fa-info-circle:before { content: "\f561" }
+.fa-question-circle:before { content: "\f560" }
+.fa-times:before { content: "\f51A" }
 .fa-warning:before { content: "\f562" }
 
 #addons { cursor: pointer; } /* for non enha */

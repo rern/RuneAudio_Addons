@@ -297,22 +297,20 @@ i.fa {
 	content: "\f520";
 	color: hsl(200,3%,60%)/*cgl*/;
 }
-.fa-times:before { content: "\f51A" }
-.fa-plus-circle:before { content: "\f51D" }
-.fa-minus-circle:before { content: "\f51C" }
-.fa-check:before { content: "\f51B" }
-.fa-refresh:before { content: "\f53A" }
-.fa-arrow-up:before { 	font-family: addons; content: "\f566" }
 .fa-arrow-down:before { content: "\f567" }
+.fa-arrow-up:before { 	font-family: addons; content: "\f566" }
+.fa-check:before { content: "\f51B" }
 .fa-chevron-down:before { content: "\f564" }
 .fa-external-link:before { content: "\f565" }
-.fa-output:before { content: "\f52B" }
-
-.fa-times:before { content: "\f51A" }
-.fa-question-circle:before { content: "\f560" }
-.fa-info-circle:before { content: "\f561" }
-.fa-warning:before { content: "\f562" }
 .fa-gear:before { content: "\f509" }
+.fa-info-circle:before { content: "\f561" }
+.fa-minus-circle:before { content: "\f51C" }
+.fa-plus-circle:before { content: "\f51D" }
+.fa-question-circle:before { content: "\f560" }
+.fa-refresh:before { content: "\f53A" }
+.fa-output:before { content: "\f52B" }
+.fa-times:before { content: "\f51A" }
+.fa-warning:before { content: "\f562" }
 .fa-spin {
 	display: inline-block;
 	margin-right: 10px;
