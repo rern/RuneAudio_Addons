@@ -2,21 +2,6 @@
 $redis = new Redis();
 $redis->pconnect( '127.0.0.1' );
 $time = time();
-function fontface( $name, $_this, $time ) {
-	$woff = "/fonts/$name.$time.woff";
-	$ttf = "/fonts/$name.$time.ttf";
-	return "
-	@font-face {
-		font-family: $name;
-		src        : url( '$woff' ) format( 'woff' ), url( '$ttf' ) format( 'truetype' );
-		font-weight: normal;
-		font-style : normal;
-	}";
-}
-$fontface = '<style>'
-	.fontface( 'addons', $this, $time )
-	.fontface( 'enhance', $this, $time )
-	.'</style>';
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
 $MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
@@ -49,11 +34,19 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no">
-	<link rel="stylesheet" href="/css/bootstrap.min.<?=$time?>.css">
-	<?=$fontface?>
-	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
-	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
-	<link rel="icon" href="/img/addons/addons.<?=$time?>.png">
+	<link rel="stylesheet" href="/assets/css/bootstrap.min.<?=$time?>.css">
+	<style>
+		@font-face {
+			font-family: addons;
+			src        : url( '/assets/fonts/addons.<?=$time?>.woff' ) format( 'woff' ),
+			             url( '/assets/fonts/addons.<?=$time?>.ttf' ) format( 'truetype' );
+			font-weight: normal;
+			font-style : normal;
+		}
+	</style>
+	<link rel="stylesheet" href="/assets/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/assets/css/addons.<?=$time?>.css">
+	<link rel="icon" href="/assets/img/addons/addons.<?=$time?>.png">
 </head>
 <body>
 <div class="container">
@@ -203,10 +196,10 @@ foreach( $arrayalias as $alias ) {
 var addons = <?=json_encode( $addonslist )?>;
 </script>
 
-<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
-<script src="/js/vendor/jquery.mobile.custom.min.<?=$time?>.js"></script>
-<script src="/js/addonsinfo.<?=$time?>.js"></script>
-<script src="/js/addons.<?=$time?>.js"></script>
+<script src="/assets/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
+<script src="/assets/js/vendor/jquery.mobile.custom.min.<?=$time?>.js"></script>
+<script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
+<script src="/assets/js/addons.<?=$time?>.js"></script>
 
 </body>
 </html>

@@ -16,25 +16,26 @@ $heading = $alias !== 'cove' ? 'Addons Progress' : 'Update Thumbnails';
 	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="msapplication-tap-highlight" content="no" />
-	<link rel="icon" href="/img/addons/addons.<?=$time?>.png">
+	<link rel="icon" href="/assets/img/addons/addons.<?=$time?>.png">
 	<style>
 		@font-face {
 			font-family: addons;
-			src        : url( '/fonts/addons.<?=$time?>.woff' ) format( 'woff' ), url( '/fonts/addons.<?=$time?>.ttf' ) format( 'truetype' );
+			src        : url( '/assets/fonts/addons.<?=$time?>.woff' ) format( 'woff' ),
+			             url( '/assets/fonts/addons.<?=$time?>.ttf' ) format( 'truetype' );
 			font-weight: normal;
 			font-style : normal;
 		}
 	</style>
-	<link rel="stylesheet" href="/css/addonsinfo.<?=$time?>.css">
-	<link rel="stylesheet" href="/css/addons.<?=$time?>.css">
+	<link rel="stylesheet" href="/assets/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/assets/css/addons.<?=$time?>.css">
 </head>
 <body>
 
 <?php include 'addonslist.php';?>
 <!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
-<script src="/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
-<script src="/js/vendor/jquery.documentsize.min.<?=$time?>.js"></script>
-<script src="/js/addonsinfo.<?=$time?>.js"></script>
+<script src="/assets/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
+<script src="/assets/js/vendor/jquery.documentsize.min.<?=$time?>.js"></script>
+<script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
 <script>
 $( 'head' ).append( '<style>#hidescrollv, pre { max-height: '+ ( $.documentHeight() - 140 ) +'px }</style>' );
 // js for '<pre>' must be here before start stdout
