@@ -54,7 +54,7 @@ string=$( cat <<'EOF'
         @font-face {
             font-family: addons;
             src: url( '<?=$this->asset('/fonts/addons.woff') ?>' ) format( 'woff' ),
-                url( '<?=$this->asset('/fonts/addons.ttf') ?>' ) format( 'truetype' );
+                 url( '<?=$this->asset('/fonts/addons.ttf') ?>' ) format( 'truetype' );
             font-weight: normal;
             font-style: normal;
         }
