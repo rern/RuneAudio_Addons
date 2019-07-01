@@ -162,7 +162,7 @@ $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
 
-echo '<p class="flushdot">'.str_repeat( '.', 4096 ).'</p>'; // pre-fill flush to force start output
+echo '<p class="flushdot">'.str_repeat( '.', 4096 ).'</p>'; // pre-fill buffer to force start output
 echo $commandtxt.'<br>';
 if ( $type === 'Uninstall' ) sleep(1);
 
