@@ -314,12 +314,12 @@ $addons = array(
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
-	'version'     => '20190622',
-	'revision'    => 'Allow colors changed with RuneUIe'
+	'version'     => '20190701',
+	'revision'    => 'Link saved location to common directory'
 					.'<br>...'
-					.'<br>Fix - Blank page if RuneUI Enhancement uninstalled'
+					.'<br>Allow colors changed with RuneUIe'
 					.'<br>...'
-					.'<br>Fix - work with default RuneUI',
+					.'<br>Fix - Blank page if RuneUI Enhancement uninstalled',
 	'maintainer'  => 'r e r n',
 	'description' => 'Improve lyrics feature in 0.4b / add lyrics feature in 0.3',
 	'thumbnail'   => '/img/addons/thumblyri.gif',
