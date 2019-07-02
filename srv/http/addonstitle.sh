@@ -338,33 +338,27 @@ makeDirLink() { # $1-directory name
 			direxist=$( echo "$direxist" | grep '/mnt/MPD/USB' )
 		fi
 		
-		touch "$direxist/0"
-		if [[ $? != 0 ]]; then
+		ln -sf "$direxist" "$dir"
+		chown -R http:http "$direxist" "$dir"
+		chmod -R +w "$direxist"
+		perm=$( stat -L -c "%A %G %U" "$direxist" )
+		if [[ ${perm:2:1} != w ]]; then
 			title "$info Directory $( tcolor "$direxist" ) found but not writable."
 			title -nt "Set write permission after install."
-			ln -sf "$direxist" "$dir"
-			chown -R http:http "$dir"
-		else
-			rm "$direxist/0"
-			ln -sf "$direxist" "$dir"
-			chown -R http:http "$direxist" "$dir"
 		fi
 	else
 		getextMount /mnt/MPD/USB
 		[[ -z $mnt ]] && getextMount /mnt/MPD/NAS
 		if [[ -n $mnt ]]; then
-			touch $mnt/0 2> /dev/null
-			if [[ $? == 0 ]]; then
-				rm $mnt/0
+			perm=$( stat -L -c "%A %G %U" "$mnt" )
+			if [[ ${perm:2:1} == w ]]; then
 				newdir=$mnt/$name
 				mkdir -p "$newdir"
 				ln -sf "$newdir" "$dir"
 				chown -R http:http "$newdir" "$dir"
-			else
-				mkdir -p "$dir/$name"
-				chown -R http:http "$dir/$name"
 			fi
-		else
+		fi
+		if [[ -z $newdir ]]; then
 			mkdir -p "$dir/$name"
 			chown -R http:http "$dir/$name"
 		fi
