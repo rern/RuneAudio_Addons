@@ -498,6 +498,7 @@ code {
 .btn {
 	text-transform: none;
 	min-width: 100px;
+	box-shadow: 2px 2px 3px 1px #000000;
 }
 .btn-primary {
 	background: hsl(200,100%,40%)/*c*/;
