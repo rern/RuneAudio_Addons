@@ -142,6 +142,15 @@ $addons = array(
 		),
 	),
 ),
+'extr' => array(
+	'title'       => 'RuneUIe - Restore Extra Directories',
+	'maintainer'  => 'r e r n',
+	'description' => 'Restore extra directories: bookmarks, coverarts, lyrics, playlists and webradios.',
+	'buttonlabel' => 'Restore',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
+	'hide'        => !$enha,
+),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
