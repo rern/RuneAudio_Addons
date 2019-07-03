@@ -96,7 +96,13 @@ $addons = array(
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190703',
-	'revision'    => 'Fix add webradio bug'
+	'revision'    => 'Fix replace/remove/save coverart bug'
+					.'<br>Fix volume not update on other devices'
+					.'<br>Fix albums/artists with % or # not show in Browse By CoverArt'
+					.'<br>Much faster loading long saved playlists'
+					.'<br>'
+					.'<br>...'
+					.'<br>Fix add webradio bug'
 					.'<br>Fix playlists conversion during install'
 					.'<br>Fix playlists with 1,000 tracks not show'
 					.'<br>Fix saved playlists with 1,000 tracks not load'
@@ -105,11 +111,7 @@ $addons = array(
 					.'<br>Add color picker to change colors of UI'
 					.'<br>Highlight keyword in search result'
 					.'<br>Faster saving for online fetched coverarts'
-					.'<br>Extend keyboard navigation to menu and context menus'
-					.'<br>...'
-					.'<br><w>Lastfm playlist</w> was fixed and renamed to <w>Add similar</w> in context menu'
-					.'<br>Add submenu for Add+Play, Replace+Play and Reboot/ScreenOff'
-					.'<br>Fix local browser setting',
+					.'<br>Extend keyboard navigation to menu and context menus',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
