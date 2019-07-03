@@ -158,11 +158,11 @@ $replace = array(
 );
 $skip = array( 'warning:', 'permissions differ', 'filesystem:', 'uninstall:', 'y/n' );
 $skippacman = array( 'downloading core.db', 'downloading extra.db', 'downloading alarm.db', 'downloading aur.db' );
-
+$fillbuffer = '<p class="flushdot">'.str_repeat( '.', 4096 ).'</p>';
 ob_implicit_flush();       // start flush: bypass buffer - output to screen
 ob_end_flush();            // force flush: current buffer (run after flush started)
 
-echo '<p class="flushdot">'.str_repeat( '.', 4096 ).'</p>'; // pre-fill buffer to force start output
+echo $fillbuffer;          // fill buffer to force start output
 echo $commandtxt.'<br>';
 if ( $type === 'Uninstall' ) sleep(1);
 
@@ -188,6 +188,7 @@ while ( !feof( $popencmd ) ) {                          // each line
 		break;
 	}
 	echo $std;                                          // stdout to screen
+	echo $fillbuffer;                                   // fill buffer to force output line by line
 	
 	// abort on stop loading or exit terminal page
 	if ( connection_status() !== 0 || connection_aborted() === 1 ) {
