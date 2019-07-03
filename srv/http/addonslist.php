@@ -95,7 +95,7 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190623',
+	'version'     => '20190703',
 	'revision'    => 'Fix add webradio bug'
 					.'<br>Fix playlists conversion during install'
 					.'<br>Fix playlists with 1,000 tracks not show'
