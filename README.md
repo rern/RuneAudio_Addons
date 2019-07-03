@@ -28,7 +28,6 @@ wget -qN --show-progress --no-check-certificate https://github.com/rern/RuneAudi
 - [Login Logo for SSH Terminal](https://github.com/rern/RuneAudio/tree/master/motd)
 - [MPD Upgrade](https://github.com/rern/RuneAudio/tree/master/mpd)
 - [Rank Mirror Package Servers](https://github.com/rern/RuneAudio/tree/master/rankmirrors)
-- [RuneUIe - Back Button To Left](https://github.com/rern/RuneAudio/tree/master/back_button)
 - [RuneUIe Metadata Tag Editor](https://github.com/rern/RuneAudio/tree/master/kid3-cli)
 - [RuneUI Enhancements](https://github.com/rern/RuneUI_enhancement)
 - [RuneUI Fonts - Extended Characters](https://github.com/rern/RuneAudio/tree/master/font_extended)
