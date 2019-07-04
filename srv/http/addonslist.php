@@ -309,14 +309,11 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
-	'version'     => '20190622',
+	'version'     => '20190704',
 	'needspace'   => 5,
-	'revision'    => 'Minor improvements'
+	'revision'    => 'Link setting location to common directory'
 					.'<br>...'
-					.'<br>Improve notifications - show devices name'
-					.'<br>Fix bugs'
-					.'<br>...'
-					.'<br>Fix on-off indicator',
+					.'<br>Improve notifications - show devices name',
 	'maintainer'  => 'r e r n',
 	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'   => '/img/addons/thumbgpio.gif',
