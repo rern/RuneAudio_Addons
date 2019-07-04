@@ -170,10 +170,10 @@ if grep -q 'opcache.enable=1' $file; then
 fi
 
 file=/etc/nginx/nginx.conf
-if ! grep -q 'woff|ttf' $file; then
+if ! grep -q 'ttf|woff' $file; then
 	commentS 'gif\|ico'
 	string=$( cat <<'EOF'
-        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|ttf)$ {
+        location ~* (.+)\.(?:\d+)\.(js|css|png|jpg|jpeg|gif|ico|svg|ttf|woff)$ {
 EOF
 )
 	appendS 'gif\|ico'
