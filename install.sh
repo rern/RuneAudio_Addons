@@ -47,7 +47,7 @@ packagestatus glibc
 if [[ -z $installed ]]; then
 	rankmirrors
 	echo -e "\n$bar GNU C Library ..."
-	pacman -S --noconfirm glibc
+	pacman -S --noconfirm glibc freetype2
 fi
 
 getinstallzip
