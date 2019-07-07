@@ -43,7 +43,7 @@ if ( file_exists( '/usr/bin/chromium' ) ) {
 	$zoom = exec( "/usr/bin/sudo /usr/bin/grep 'chromium --' $chromiumfile | /usr/bin/sed 's/.*=\\(.*\\)/\\1/'" );
 	$chromium = 1;
 } else {
-	$zoom = exec( "/usr/bin/sudo /usr/bin/grep zoom /root/.config/midori/config | /usr/bin/sed 's/.*=\\(.*\\)/\\1/'" );
+	$zoom = exec( "/usr/bin/sudo /usr/bin/grep '^zoom' /root/.config/midori/config | /usr/bin/sed 's/.*=\\(.*\\)/\\1/'" );
 }
 // samba
 if ( exec( '/usr/bin/pacman -Qs samba4-rune' ) ) {
