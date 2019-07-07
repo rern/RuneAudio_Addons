@@ -40,10 +40,10 @@ if ( exec( '/usr/bin/pacman -Qs mpd-rune' ) ) {
 if ( file_exists( '/usr/bin/chromium' ) ) {
 	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
 	$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
-	$zoom = exec( "grep 'chromium --' $chromiumfile | sed 's/.*=\\(.*\\)/\\1/'" );
+	$zoom = exec( "/usr/bin/sudo /usr/bin/grep 'chromium --' $chromiumfile | /usr/bin/sed 's/.*=\\(.*\\)/\\1/'" );
 	$chromium = 1;
 } else {
-	$zoom = exec( "grep zoom /root/.config/midori/config | sed 's/.*=\\(.*\\)/\\1/'" );
+	$zoom = exec( "/usr/bin/sudo /usr/bin/grep zoom /root/.config/midori/config | /usr/bin/sed 's/.*=\\(.*\\)/\\1/'" );
 }
 // samba
 if ( exec( '/usr/bin/pacman -Qs samba4-rune' ) ) {
