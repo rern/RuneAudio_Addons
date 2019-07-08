@@ -280,7 +280,13 @@ uninstallfinish() { # $1-'u'=update
 restartlocalbrowser() {
 	if pgrep Xorg > /dev/null; then
 		title -nt "$bar Restart local browser ..."
-		systemctl restart local-browser
+		if [[ -e /usr/bin/chromium ]]; then
+			systemctl restart local-browser
+		else
+			killall Xorg &> /dev/null
+			sleep 3
+			xinit &> /dev/null &
+		fi
 	fi
 }
 clearcache() {
