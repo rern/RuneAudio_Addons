@@ -280,9 +280,7 @@ uninstallfinish() { # $1-'u'=update
 restartlocalbrowser() {
 	if pgrep Xorg > /dev/null; then
 		title -nt "$bar Restart local browser ..."
-		killall Xorg
-		sleep 3
-		xinit &> /dev/null &
+		systemctl restart local-browser
 	fi
 }
 clearcache() {
