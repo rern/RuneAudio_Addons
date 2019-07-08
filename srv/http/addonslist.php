@@ -494,6 +494,7 @@ $addons = array(
 			'message' => 'Zoom level:',
 			'list'    => array(
 				'Width less than 800px: 0.7' => 0.7,
+				'Width 1024px: 1.0'          => 1,
 				'HD - 1280px: 1.5'           => 1.5,
 				'Full HD - 1920px: 1.8'      => 1.8,
 				'Full HD - 1920px: 2.0'      => 2.0,
