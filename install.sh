@@ -25,8 +25,8 @@ alias=addo
 installstart $@
 
 if [[ $( redis-cli get release ) != '0.5' ]]; then # for 0.4 pacman
-	mv /usr/lib/libcrypto.so.1.0.0{,.backup}
-	mv /usr/lib/libssl.so.1.0.0{,.backup}
+	cp /usr/lib/libcrypto.so.1.0.0{,.backup}
+	cp /usr/lib/libssl.so.1.0.0{,.backup}
 fi
 
 packagestatus openssl-cryptodev # $version, $installed
