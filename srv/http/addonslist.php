@@ -503,6 +503,7 @@ $addons = array(
 			'checked' => $zoom,
 		),
 	),
+	'hide'        => ( $redis->get( 'local_browser' ) === '0' || $redis->hGet( 'local_browser', 'enable' ) === '0' ),
 ),
 'poin' => array(
 	'title'       => 'Setting - Mouse Pointer',
