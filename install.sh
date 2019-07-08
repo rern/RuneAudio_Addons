@@ -24,6 +24,11 @@ alias=addo
 
 installstart $@
 
+if [[ $( redis-cli get release ) != '0.5' ]]; then # for 0.4 pacman
+	cp /usr/lib/libcrypto.so.1.0.0{,.backup}
+	cp /usr/lib/libssl.so.1.0.0{,.backup}
+fi
+
 packagestatus openssl-cryptodev # $version, $installed
 if [[ -z $installed ]]; then
 	echo -e "$bar Upgrade common packages ..."
@@ -33,11 +38,16 @@ if [[ -z $installed ]]; then
 	echo -e "y \n" | pacman -S openssl-cryptodev
 fi
 
+if [[ $( redis-cli get release ) != '0.5' ]]; then # for 0.4 pacman
+	mv /usr/lib/libcrypto.so.1.0.0{.backup,}
+	mv /usr/lib/libssl.so.1.0.0{.backup,}
+fi
+
 packagestatus glibc
 if [[ -z $installed ]]; then
 	rankmirrors
 	echo -e "\n$bar GNU C Library ..."
-	pacman -S --noconfirm glibc
+	pacman -S --noconfirm glibc freetype2
 fi
 
 getinstallzip
