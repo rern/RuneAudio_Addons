@@ -38,8 +38,13 @@ if ( exec( '/usr/bin/pacman -Qs mpd-rune' ) ) {
 }
 // chromium
 if ( file_exists( '/usr/bin/chromium' ) ) {
-	$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
-	$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
+	$xinitrc = file_get_contents( '/etc/X11/xinit/xinitrc' );
+	if ( !preg_match( '/calibrator/', $xinitrc ) ) {
+		$chromiumfile = '/etc/X11/xinit/xinitrc';
+	} else {
+		$chromiumfile = '/etc/X11/xinit/start_chromium.sh';
+		$chromiumfile = file_exists( $chromiumfile ) ? $chromiumfile : '/root/.xinitrc';
+	}
 	$zoom = exec( "/usr/bin/sudo /usr/bin/grep 'chromium --' $chromiumfile | /usr/bin/cut -d'=' -f3" );
 	$chromium = 1;
 } else {
@@ -497,7 +502,6 @@ $addons = array(
 			'checked' => $zoom,
 		),
 	),
-	'hide'        => $rune05,
 ),
 'poin' => array(
 	'title'       => 'Setting - Mouse Pointer',
