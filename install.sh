@@ -24,22 +24,20 @@ alias=addo
 
 installstart $@
 
-if [[ $( redis-cli get release ) == '0.5' ]]; then # for 0.4 pacman
-	packagestatus openssl-cryptodev # $version, $installed
-	if [[ -z $installed ]]; then
-		echo -e "$bar Upgrade common packages ..."
+packagestatus openssl-cryptodev # $version, $installed
+if [[ -z $installed ]]; then
+	echo -e "$bar Upgrade common packages ..."
 
-		rankmirrors
-		echo -e "\n$bar Upgrade OpenSSL ..."
-		echo -e "y \n" | pacman -S openssl-cryptodev
-	fi
+	rankmirrors
+	echo -e "\n$bar Upgrade OpenSSL ..."
+	echo -e "y \n" | pacman -S openssl-cryptodev
+fi
 
-	packagestatus glibc
-	if [[ -z $installed ]]; then
-		rankmirrors
-		echo -e "\n$bar GNU C Library ..."
-		pacman -S --noconfirm glibc freetype2
-	fi
+packagestatus glibc
+if [[ -z $installed ]]; then
+	rankmirrors
+	echo -e "\n$bar GNU C Library ..."
+	pacman -S --noconfirm glibc freetype2
 fi
 
 getinstallzip
