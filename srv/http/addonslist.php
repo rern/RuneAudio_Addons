@@ -208,18 +208,15 @@ $addons = array(
 ),
 'chro' => array(
 	'title'       => 'Chromium Browser',
-	'version'     => '20180321',
-	'depend'      => 'mpdu',
 	'needspace'   => 200,
 	'revision'    => 'Fix missing packages - Chromium 65.0.3325.181-1'
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'  => 'r e r n',
-	'description' => 'A local browser replacement. Need MPD Upgrade before install.',
+	'description' => 'A local browser replacement. RuneAudio 0.4 needs MPD Upgrade before install.',
 	'thumbnail'   => '/img/addons/thumbchro.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-	'hide'        => $rune05,
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
