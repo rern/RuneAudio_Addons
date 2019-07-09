@@ -207,9 +207,11 @@ $addons = array(
 	),
 ),
 'chro' => array(
-	'title'       => 'Chromium Browser',
+	'title'       => 'Chromium Upgrade',
 	'needspace'   => 200,
-	'revision'    => 'Fix missing packages - Chromium 65.0.3325.181-1'
+	'revision'    => 'Purge before install for Chromium 75.0'
+					.'<br>...'
+					.'<br>Fix missing packages - Chromium 65.0.3325.181-1'
 					.'<br>...'
 					.'<br>Fix symbol lookup errors in new update.',
 	'maintainer'  => 'r e r n',
@@ -217,6 +219,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbchro.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+	'hide'        => !$rune05
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
