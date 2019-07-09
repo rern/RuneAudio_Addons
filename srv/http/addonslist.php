@@ -154,6 +154,15 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
 	'hide'        => !$enha,
 ),
+'rrre' => array(
+	'title'       => 'Rune0.5+RuneUIe - Reset',
+	'maintainer'  => 'r e r n',
+	'description' => 'Reset Rune0.5+RuneUIe for initial setup.',
+	'buttonlabel' => 'Reset',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/setup.sh',
+	'hide'        => !$enha,
+),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
