@@ -219,7 +219,6 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbchro.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
-	'hide'        => !$rune05
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
