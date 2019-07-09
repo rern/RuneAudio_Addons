@@ -45,8 +45,8 @@ if [[ -z $installed ]]; then
 fi
 
 # for 0.4
-cp /usr/lib/libcrypto.so.1.0.0{.backup,} &> /dev/null
-cp /usr/lib/libssl.so.1.0.0{.backup,} &> /dev/null
+mv /usr/lib/libcrypto.so.1.0.0{.backup,} &> /dev/null
+mv /usr/lib/libssl.so.1.0.0{.backup,} &> /dev/null
 
 getinstallzip
 
