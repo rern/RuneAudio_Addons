@@ -161,7 +161,7 @@ $addons = array(
 	'buttonlabel' => 'Reset',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/setup.sh',
-	'hide'        => !$enha,
+	'hide'        => !$enha || !$rune05,
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
