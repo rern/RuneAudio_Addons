@@ -87,7 +87,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190703',
+	'version'     => '20190709',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
@@ -100,23 +100,19 @@ $addons = array(
 ),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
-	'version'     => '20190703',
-	'revision'    => 'Fix replace/remove/save coverart bug'
+	'version'     => '20190709',
+	'revision'    => 'General improvements'
+					.'<br>...'
+					.'<br>Fix replace/remove/save coverart bug'
 					.'<br>Fix volume not update on other devices'
 					.'<br>Fix albums/artists with % or # not show in Browse By CoverArt'
 					.'<br>Much faster loading long saved playlists'
-					.'<br>'
 					.'<br>...'
 					.'<br>Fix add webradio bug'
 					.'<br>Fix playlists conversion during install'
 					.'<br>Fix playlists with 1,000 tracks not show'
 					.'<br>Fix saved playlists with 1,000 tracks not load'
-					.'<br>Reinstate Last.fm as primary source for online coverarts'
-					.'<br>...'
-					.'<br>Add color picker to change colors of UI'
-					.'<br>Highlight keyword in search result'
-					.'<br>Faster saving for online fetched coverarts'
-					.'<br>Extend keyboard navigation to menu and context menus',
+					.'<br>Reinstate Last.fm as primary source for online coverarts',
 	'maintainer'  => 'r e r n',
 	'description' => 'Lots of new features. More <w>minimalism</w> and more <w>fluid</w> layout.',
 	'thumbnail'   => '/img/addons/thumbenha.gif',
