@@ -102,7 +102,7 @@ $( 'body' ).prepend( html );
 emptyinput = 0; // for 'textrequired'
 $( '#infoOverlay' ).keydown( function( e ) {
 	if ( $( '#infoOverlay' ).is( ':visible' ) ) {
-		if ( e.key == 'Enter' && !emptyinput ) {
+		if ( e.key == 'Enter' && !$( '#infoOk' ).hasClass( 'disabled' ) ) {
 			$( '#infoOk' ).click();
 		} else if ( e.key === 'Escape' ) {
 			infoReset();
