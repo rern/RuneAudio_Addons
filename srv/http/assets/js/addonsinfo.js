@@ -230,7 +230,7 @@ function info( O ) {
 				if ( !$( '.infotextbox input' ).eq( e ).val() ) blank++;
 			} );
 			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
-			$( '.infoinput' ).on( 'keyup', function() {
+			$( '.infoinput' ).on( 'input', function() {
 				emptyinput = 0;
 				O.textrequired.forEach( function( e ) {
 					if ( !$( '.infotextbox input' ).eq( e ).val() ) emptyinput++;
