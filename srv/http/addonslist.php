@@ -2,6 +2,9 @@
 if ( !exec( '/usr/bin/grep "hasClass" /srv/http/assets/js/addonsinfo.js' ) ) {
 	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio_Addons/raw/UPDATE/srv/http/assets/js/addonsinfo.js -O /srv/http/assets/js/addonsinfo.js' );
 }
+if ( exec( '/usr/bin/grep \'"hide" id="local_browserName"\' /srv/http/app/templates/settings.php' ) ) {
+	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/tmp/settings.php -O /srv/http/app/templates/settings.php' );
+}
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $rune05 = $redis->get( 'release' ) === '0.5';
