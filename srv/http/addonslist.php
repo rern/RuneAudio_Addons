@@ -8,10 +8,11 @@ $enha = $redisaddons[ 'enha' ];
 $enhacheck = array();
 if ( $redis->hGet( 'mpdconf', 'ffmpeg' ) === 'yes' ) $enhacheck[] = 0;
 if ( $redis->hGet( 'AccessPoint', 'enabled' ) == 1 ) $enhacheck[] = 1;
-if ( $rune05 ) {
-	if ( $redis->hget( 'local_browser', 'enable' ) == 1 ) $enhacheck[] = 2;
-} else {
-	if ( $redis->get( 'local_browser' ) == 1 ) $enhacheck[] = 2;
+if ( ( $rune05 && $redis->hget( 'local_browser', 'enable' ) == 1 )
+		|| $redis->get( 'local_browser' ) == 1
+) {
+	$enhacheck[] = 2;
+	$localbrowser = 1;
 }
 if ( $redis->hGet( 'airplay', 'enable' ) == 1 ) $enhacheck[] = 3;
 if ( $redis->hGet( 'dlna', 'enable' ) == 1 ) $enhacheck[] = 4;
@@ -488,7 +489,7 @@ $addons = array(
 	),
 ),
 'zoom' => array(
-	'title'       => 'Setting - Zoom Level',
+	'title'       => 'Setting - Local Browser - Zoom Level',
 	'maintainer'  => 'r e r n',
 	'description' => 'Change Zoom Level of local browser (for Midori and Chromium only)',
 	'buttonlabel' => 'Change',
@@ -508,10 +509,10 @@ $addons = array(
 			'checked' => $zoom,
 		),
 	),
-	'hide'        => ( $redis->get( 'local_browser' ) === '0' || $redis->hGet( 'local_browser', 'enable' ) === '0' ),
+	'hide'        => !$localbrowser || $rune05,
 ),
 'poin' => array(
-	'title'       => 'Setting - Mouse Pointer',
+	'title'       => 'Setting - Local Browser - Mouse Pointer',
 	'maintainer'  => 'r e r n',
 	'description' => 'Enable mouse pointer on local browser',
 	'buttonlabel' => 'Change',
@@ -527,7 +528,7 @@ $addons = array(
 			'checked' => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
 		),
 	),
-	'hide'        => $rune05,
+	'hide'        => !$localbrowser || $rune05,
 ),
 'wifi' => array(
 	'title'       => 'Setting - On/Off WiFi and Bluetooth',
