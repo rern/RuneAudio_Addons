@@ -517,6 +517,17 @@ $addons = array(
 	),
 	'hide'        => !$localbrowser || $rune05,
 ),
+'airp' => array(
+	'title'       => 'Setting - Airplay Output Device',
+	'maintainer'  => 'r e r n',
+	'description' => 'Set Airplay output device to match RuneAudio setting.',
+	'buttonlabel' => 'Change',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync/setoutput.sh',
+	'wait'        => 'Menu > MPD > set Audio output'
+					.'<br>For external DAC, power on before continue.',
+	'hide'        => !$rune05,
+),
 'poin' => array(
 	'title'       => 'Setting - Local Browser - Mouse Pointer',
 	'maintainer'  => 'r e r n',
