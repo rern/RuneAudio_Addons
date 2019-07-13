@@ -205,7 +205,7 @@ EOF
 		)
 	fi
 
-	curl -s -v -X POST 'http://localhost/pub?id=notify' -d "$data" &> /dev/null
+	curl -s -X POST 'http://localhost/pub?id=notify' -d "$data" &> /dev/null
 }
 installstart() { # $1-'u'=update
 	rm -f $0
