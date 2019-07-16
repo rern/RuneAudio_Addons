@@ -257,6 +257,9 @@ wh, gr { font-weight: 300; }
 		color: #e0e7ee;
 		background-color: hsl(200,3%,40%)/*cgh*/
 	}
+	.infolabel:hover {
+		color: #e0e7ee;
+	}
 	/* :active *********************************************************/
 	#infoX:active {
 		color: hsl(200,100%,30%)/*ca*/;
