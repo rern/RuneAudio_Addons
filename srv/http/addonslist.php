@@ -401,6 +401,15 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/samba/install.sh',
 	'option'      => $optsamb
 ),
+'shai' => array(
+	'title'       => 'Shairport Sync Upgrade',
+	'maintainer'  => 'r e r n',
+	'description' => 'Less configuration.',
+	'buttonlabel' => 'Upgrade',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/shairport-sync',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/shairport-sync/install.sh',
+	'hide'        => 1
+),
 'tran' => array(
 	'title'       => 'Transmission *',
 	'version'     => '20180715',
