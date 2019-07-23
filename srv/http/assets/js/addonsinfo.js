@@ -215,8 +215,8 @@ function info( O ) {
 			var labeltext = O.textlabel[ i ] || '';
 			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
 			boxhtml += i ? '<br>' : '';
-			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
-			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
+			var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
+			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 		}
 		$( '.infotextlabel' ).html( labelhtml );
 		$( '.infotextbox' ).html( boxhtml );
