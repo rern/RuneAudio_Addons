@@ -185,6 +185,9 @@ wh, gr { font-weight: 300; }
 	text-align: right;
 	color: #e0e7ee;
 }
+.infolabel:hover {
+	color: #e0e7ee;
+}
 .infoinput {
 	display: block;
 	margin: 2px 5px;
