@@ -211,10 +211,8 @@ function info( O ) {
 		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
 		for ( i = 0; i < iL; i++ ) {
 			var iid = i || '';
-			labelhtml += i ? '<br>' : '';
 			var labeltext = O.textlabel[ i ] || '';
 			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
-			boxhtml += i ? '<br>' : '';
 			var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) +'"' : '';
 			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 		}
