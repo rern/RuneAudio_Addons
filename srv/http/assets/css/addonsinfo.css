@@ -198,13 +198,7 @@ wh, gr { font-weight: 300; }
 }
 .infohtml {
 	display: table;
-	margin: 0 auto;
-	text-align: left;
-}
-#infoRadio,
-#infoCheckbox {
-	display: table;
-	margin: auto;
+	margin: 5px auto 0;
 	text-align: left;
 }
 #infoOverlay input[type=radio],
@@ -256,9 +250,6 @@ wh, gr { font-weight: 300; }
 	.infobtn-default:hover {
 		color: #e0e7ee;
 		background-color: hsl(200,3%,40%)/*cgh*/
-	}
-	.infolabel:hover {
-		color: #e0e7ee;
 	}
 	/* :active *********************************************************/
 	#infoX:active {
