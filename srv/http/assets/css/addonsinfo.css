@@ -180,11 +180,13 @@ wh, gr { font-weight: 300; }
 	text-align: left;
 }
 .infolabel {
-	display: inline-block;
+	display: block;
+	line-height: 38px;
 	text-align: right;
 	color: #e0e7ee;
 }
 .infoinput {
+	display: block;
 	margin: 2px 5px;
 	height: 36px;
 	padding: 0 10px;
