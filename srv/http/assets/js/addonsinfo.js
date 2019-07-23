@@ -215,7 +215,7 @@ function info( O ) {
 			var labeltext = O.textlabel[ i ] || '';
 			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
 			boxhtml += i ? '<br>' : '';
-			var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
+			var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) +'"' : '';
 			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 		}
 		$( '.infotextlabel' ).html( labelhtml );
@@ -238,11 +238,13 @@ function info( O ) {
 				$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
 			} );
 		}
-	} else if ( 'passwordlabel' in O ) {
+	}
+	if ( 'passwordlabel' in O ) {
 		$( '#infoPasswordLabel' ).html( O.passwordlabel );
 		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
 		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( 'fileoklabel' in O ) {
+	}
+	if ( 'fileoklabel' in O ) {
 		$( '#infoOk' )
 			.html( O.fileoklabel )
 			.hide();
@@ -281,7 +283,8 @@ function info( O ) {
 			$( '#infoFileLabel' ).css( 'background', '#34495e' );
 			$( '#infoFilename' ).html( '&ensp;'+ filename );
 		} );
-	} else if ( 'radio' in O ) {
+	}
+	if ( 'radio' in O ) {
 		if ( typeof O.radio === 'string' ) {
 			var html = O.radio;
 		} else {
@@ -292,7 +295,8 @@ function info( O ) {
 			} );
 		}
 		renderOption( $( '#infoRadio' ), html, O.checked || '' );
-	} else if ( 'select' in O ) {
+	}
+	if ( 'select' in O ) {
 		$( '#infoSelectLabel' ).html( O.selectlabel );
 		if ( typeof O.select === 'string' ) {
 			var html = O.select;
@@ -304,7 +308,8 @@ function info( O ) {
 		}
 		renderOption( $( '#infoSelectBox' ), html, O.checked || '' );
 		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( 'checkbox' in O ) {
+	}
+	if ( 'checkbox' in O ) {
 		if ( typeof O.checkbox === 'string' ) {
 			var html = O.checkbox;
 		} else {
