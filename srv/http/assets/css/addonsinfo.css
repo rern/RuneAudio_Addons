@@ -1,6 +1,7 @@
 /* 'addons' declared in <head> for cache busting */
 .fa {
 	font-family: addons, FontAwesome;
+	font-style: normal;
 }
 .fa-addons:before {
 	font-family: addons;
