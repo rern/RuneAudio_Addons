@@ -173,7 +173,7 @@ wh, gr { font-weight: 300; }
 }
 .infotextlabel {
 	display: inline-block;
-	line-height: 40px;
+	line-height: 38px;
 	text-align: right;
 }
 .infotextbox {
