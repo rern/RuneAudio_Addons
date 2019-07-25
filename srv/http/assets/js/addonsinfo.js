@@ -13,6 +13,7 @@ info( {                                     // default
 	autoclose     : N                       // (disabled)     (auto close in ms)
 	preshow       : FUNCTION                // (none)         (function before show)
 	
+	content       : 'HTML'                  //                (replace whole '#infoContent' html)
 	message       : 'MESSAGE'               // (blank)        (message under title)
 	messagealign  : 'CSS'                   // 'center'       (message under title)
 	
