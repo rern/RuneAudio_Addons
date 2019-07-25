@@ -121,6 +121,7 @@ function infoReset() {
 	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '.filebtn, .infobtn' ).css( 'background', '' ).off( 'click' );
+	$( '#infoIcon' ).removeAttr( 'class' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoOk' ).removeClass( 'disabled' );
 	$( '.extrabtn' ).remove();
@@ -134,7 +135,7 @@ function info( O ) {
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
 		$( '#infoMessage' ).html( O );
-		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
+		$( '#infoIcon' ).addClass( 'fa fa-info-circle' );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
 		alignVertical();
 		$( '#infoOk' ).html( 'OK' ).click( function() {
@@ -146,14 +147,13 @@ function info( O ) {
 	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
 	if ( 'icon' in O ) {
 		if ( O.icon.charAt( 0 ) !== '<' ) {
-			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
+			$( '#infoIcon' ).addClass( 'fa fa-'+ O.icon );
 		} else {
-			var iconhtml = O.icon;
+			$( '#infoIcon' ).html( O.icon );
 		}
 	} else {
-		var iconhtml = '<i class="fa fa-question-circle">';
+		$( '#infoIcon' ).addClass( 'fa fa-question-circle' );
 	}
-	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title || 'Information' );
 	if ( 'nox' in O ) $( '#infoX' ).hide();
 	if ( 'autoclose' in O ) {
