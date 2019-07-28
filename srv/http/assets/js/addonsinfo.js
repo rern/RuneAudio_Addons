@@ -183,9 +183,9 @@ function info( O ) {
 		}
 		if ( 'button' in O ) {
 			if ( !O.button.length ) O.button = [ O.button ];
-			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
+			if ( typeof O.buttonlabel !== 'object' ) O.buttonlabel = [ O.buttonlabel ];
 			O.buttoncolor = O.buttoncolor || '';
-			if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
+			if ( typeof O.buttoncolor !== 'object' ) O.buttoncolor = [ O.buttoncolor ];
 			var buttonhtml = '';
 			var iL = O.button.length;
 			for ( i = 0; i < iL; i++ ) {
@@ -214,8 +214,8 @@ function info( O ) {
 		if ( 'textlabel' in O || 'textvalue' in O ) {
 			O.textlabel = O.textlabel || '';
 			O.textvalue = O.textvalue || '';
-			if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
-			if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
+			if ( typeof O.textlabel !== 'object' ) O.textlabel = [ O.textlabel ];
+			if ( typeof O.textvalue !== 'object' ) O.textvalue = [ O.textvalue ];
 			var labelhtml = '';
 			var boxhtml = '';
 			var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
@@ -293,7 +293,7 @@ function info( O ) {
 			} );
 		}
 		if ( 'radio' in O ) {
-			if ( typeof O.radio === 'string' ) {
+			if ( typeof O.radio !== 'object' ) {
 				var html = O.radio;
 			} else {
 				var html = '';
@@ -306,7 +306,7 @@ function info( O ) {
 		}
 		if ( 'select' in O ) {
 			$( '#infoSelectLabel' ).html( O.selectlabel );
-			if ( typeof O.select === 'string' ) {
+			if ( typeof O.select !== 'object' ) {
 				var html = O.select;
 			} else {
 				var html = '';
@@ -318,7 +318,7 @@ function info( O ) {
 			$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 		}
 		if ( 'checkbox' in O ) {
-			if ( typeof O.checkbox === 'string' ) {
+			if ( typeof O.checkbox !== 'object' ) {
 				var html = O.checkbox;
 			} else {
 				var html = '';
