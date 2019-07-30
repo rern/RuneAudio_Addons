@@ -121,6 +121,7 @@ $( '#infoX' ).click( function() {
 
 function infoReset() {
 	$( '#infoContent' ).html( infocontenthtml );
+	$( '#infoX' ).show();
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .filebtn, .infobtn' ).hide();
 	$( '.infoinput' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
@@ -138,13 +139,13 @@ function info( O ) {
 	///////////////////////////////////////////////////////////////////
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
-		$( '#infoMessage' ).html( O );
 		$( '#infoIcon' ).addClass( 'fa fa-info-circle' );
+		$( '#infoTitle' ).text( 'Info' );
+		$( '#infoX' ).hide();
+		$( '#infoMessage' ).html( O );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
 		alignVertical();
-		$( '#infoOk' ).html( 'OK' ).click( function() {
-			infoReset();
-		});
+		$( '#infoOk' ).html( 'OK' ).click( infoReset );
 		return;
 	}
 	
