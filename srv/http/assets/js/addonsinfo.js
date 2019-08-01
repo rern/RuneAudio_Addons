@@ -224,7 +224,7 @@ function info( O ) {
 			for ( i = 0; i < iL; i++ ) {
 				var iid = i || '';
 				var labeltext = O.textlabel[ i ] || '';
-				labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
+				labelhtml += '<a class="infolabel">'+ labeltext +'</a>';
 				var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) +'"' : '';
 				boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 			}
@@ -260,7 +260,7 @@ function info( O ) {
 			for ( i = 0; i < iL; i++ ) {
 				var iid = i || '';
 				var labeltext = O.passwordlabel[ i ] || '';
-				labelhtml += '<a id="infoPasswordLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
+				labelhtml += '<a class="infolabel">'+ labeltext +'</a>';
 				boxhtml += '<input type="password" class="infoinput" id="infoPasswordBox'+ iid +'">';
 			}
 			$( '#infopasswordlabel' ).html( labelhtml );
