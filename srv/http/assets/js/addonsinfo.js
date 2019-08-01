@@ -91,7 +91,8 @@ infocontenthtml = heredoc( function() { /*
 				<div class="infotextbox"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
-				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
+				<div class="infopasswordlabel"></div>
+				<div class="infopasswordbox"></div>
 			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
@@ -249,8 +250,22 @@ function info( O ) {
 			}
 		}
 		if ( 'passwordlabel' in O ) {
-			$( '#infoPasswordLabel' ).html( O.passwordlabel );
+/*			$( '#infoPasswordLabel' ).html( O.passwordlabel );
 			$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
+			var $infofocus = $( '#infoPasswordBox' );*/
+			if ( typeof O.passwordlabel !== 'object' ) O.passwordlabel = [ O.passwordlabel ];
+			var labelhtml = '';
+			var boxhtml = '';
+			var iL = O.passwordlabel.length;
+			for ( i = 0; i < iL; i++ ) {
+				var iid = i || '';
+				var labeltext = O.passwordlabel[ i ] || '';
+				labelhtml += '<a id="infoPasswordLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
+				boxhtml += '<input type="password" class="infoinput" id="infoPasswordBox'+ iid +'">';
+			}
+			$( '.infopasswordlabel' ).html( labelhtml );
+			$( '.infopasswordbox' ).html( boxhtml );
+			$( '#infoPassword' ).show();
 			var $infofocus = $( '#infoPasswordBox' );
 		}
 		if ( 'fileoklabel' in O ) {
