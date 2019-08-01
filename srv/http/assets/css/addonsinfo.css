@@ -172,14 +172,14 @@ wh, gr { font-weight: 300; }
 	overflow: hidden;
 	color: hsl(200,3%,60%)/*cgl*/;
 }
-.infotextlabel,
-.infopasswordlabel {
+#infotextlabel,
+#infopasswordlabel {
 	display: inline-block;
 	line-height: 38px;
 	text-align: right;
 }
-.infotextbox,
-.infopasswordbox {
+#infotextbox,
+#infopasswordbox {
 	display: inline-block;
 	text-align: left;
 }
