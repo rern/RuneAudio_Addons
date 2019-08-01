@@ -87,12 +87,12 @@ var containerhtml = heredoc( function() { /*
 infocontenthtml = heredoc( function() { /*
 			<p id="infoMessage" class="infocontent"></p>
 			<div id="infoText" class="infocontent">
-				<div class="infotextlabel"></div>
-				<div class="infotextbox"></div>
+				<div id="infotextlabel"></div>
+				<div id="infotextbox"></div>
 			</div>
 			<div id="infoPassword" class="infocontent">
-				<div class="infopasswordlabel"></div>
-				<div class="infopasswordbox"></div>
+				<div id="infopasswordlabel"></div>
+				<div id="infopasswordbox"></div>
 			</div>
 			<div id="infoRadio" class="infocontent infohtml"></div>
 			<div id="infoCheckBox" class="infocontent infohtml"></div>
@@ -228,8 +228,8 @@ function info( O ) {
 				var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) +'"' : '';
 				boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 			}
-			$( '.infotextlabel' ).html( labelhtml );
-			$( '.infotextbox' ).html( boxhtml );
+			$( '#infotextlabel' ).html( labelhtml );
+			$( '#infotextbox' ).html( boxhtml );
 			var $infofocus = $( '#infoTextBox' );
 			$( '#infoText' ).show();
 			if ( 'textalign' in O ) $( '.infoinput' ).css( 'text-align', O.textalign );
@@ -263,8 +263,8 @@ function info( O ) {
 				labelhtml += '<a id="infoPasswordLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
 				boxhtml += '<input type="password" class="infoinput" id="infoPasswordBox'+ iid +'">';
 			}
-			$( '.infopasswordlabel' ).html( labelhtml );
-			$( '.infopasswordbox' ).html( boxhtml );
+			$( '#infopasswordlabel' ).html( labelhtml );
+			$( '#infopasswordbox' ).html( boxhtml );
 			$( '#infoPassword' ).show();
 			var $infofocus = $( '#infoPasswordBox' );
 		}
