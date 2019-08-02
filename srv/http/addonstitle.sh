@@ -287,9 +287,6 @@ restartlocalbrowser() {
 		xinit &> /dev/null &
 	fi
 }
-clearcache() {
-	restartlocalbrowser
-}
 ## restart nginx seamlessly without dropping client connections
 restartnginx() {
 	kill -s USR2 $( cat /run/nginx.pid )         # spawn new nginx master-worker set
