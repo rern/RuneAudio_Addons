@@ -131,7 +131,7 @@ echo $file
 cat << 'EOF' > $file
 [Unit]
 Description=Addons update check
-After=network-online.target
+After=multi-user.target
 [Service]
 Type=idle
 ExecStart=/srv/http/addonsupdate.sh &
