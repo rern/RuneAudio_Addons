@@ -136,7 +136,7 @@ function infoReset() {
 
 function info( O ) {
 	infoReset();
-//	setTimeout( function() { // force wait for infoReset()
+	setTimeout( function() { // force wait for infoReset()
 	///////////////////////////////////////////////////////////////////
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
@@ -374,7 +374,7 @@ function info( O ) {
 		$( '.infobtn' ).css( 'min-width', widest +'px' );
 	}
 	/////////////////////////////////////////////////////////////////////////////
-//	}, 0 );
+	}, 0 );
 }
 
 function alignVertical() {
