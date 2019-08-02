@@ -237,13 +237,13 @@ function info( O ) {
 				if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
 				var blank = 0;
 				O.textrequired.forEach( function( e ) {
-					if ( !$( '.infotextbox input' ).eq( e ).val() ) blank++;
+					if ( !$( '.infoinput' ).eq( e ).val() ) blank++;
 				} );
 				if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
 				$( '.infoinput' ).on( 'input', function() {
 					emptyinput = 0;
 					O.textrequired.forEach( function( e ) {
-						if ( !$( '.infotextbox input' ).eq( e ).val() ) emptyinput++;
+						if ( !$( '.infoinput' ).eq( e ).val() ) emptyinput++;
 					} );
 					$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
 				} );
