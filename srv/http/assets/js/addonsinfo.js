@@ -136,7 +136,7 @@ function infoReset() {
 
 function info( O ) {
 	infoReset();
-	setTimeout( function() { // force wait for infoReset()
+	setTimeout( function() { // fix: wait for infoReset() on 2nd info
 	///////////////////////////////////////////////////////////////////
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
