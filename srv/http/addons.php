@@ -202,7 +202,11 @@ $redis->del( 'restart' );
 <script>
 var addons = <?=json_encode( $addonslist )?>;
 var restart = '<?=$restart?>';
-if ( restart ) $.post( 'addonsdl.php', { bash: 'systemctl restart '+ restart } );
+if ( restart ) {
+	setTimeout( function() {
+		$.post( 'addonsdl.php', { bash: 'systemctl restart '+ restart } );
+	}, 2000 );
+}
 </script>
 
 </body>
