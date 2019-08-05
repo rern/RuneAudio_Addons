@@ -278,6 +278,8 @@ uninstallfinish() { # $1-'u'=update
 	title -l '=' "$bar $title uninstalled successfully."
 }
 restartlocalbrowser() {
+	! systemctl -q is-active local-browser && return
+	
 	title -nt "$bar Restart local browser ..."
 	if [[ -e /usr/bin/chromium ]]; then
 		systemctl restart local-browser
