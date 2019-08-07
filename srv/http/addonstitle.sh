@@ -157,7 +157,8 @@ getinstallzip() {
 	echo -e "$bar Install new files ..."
 	rm -rf /tmp/install
 	mkdir -p /tmp/install
-	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
+	bsdtar -tf $branch.zip | cut -d/ -f2- | grep / | grep -v '/$' | sed 's|^|/|' # list files
+	bsdtar -xf $branch.zip --strip 1 -C /tmp/install
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
