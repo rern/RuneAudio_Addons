@@ -172,7 +172,7 @@ file=/etc/php/conf.d/opcache.ini
 if grep -q 'opcache.enable=1' $file; then
 	title -nt "$info Disable PHP OPcache"
 	sed -i 's/opcache.enable=1/opcache.enable=0/' $file
-	redis-cli mset opcache 0 restart php-fpm &> /dev/null
+	redis-cli mset opcache 0 restart 'nginx php-fpm' &> /dev/null
 fi
 
 file=/etc/nginx/nginx.conf
