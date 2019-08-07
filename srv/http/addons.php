@@ -204,7 +204,7 @@ var addons = <?=json_encode( $addonslist )?>;
 var restart = '<?=$restart?>';
 if ( restart ) {
 	setTimeout( function() {
-		$.post( 'enhance.php', { bash: 'systemctl restart '+ restart } );
+		$.post( 'addonsdl.php', { bash: 'systemctl restart '+ restart } );
 	}, 1000 );
 }
 </script>
