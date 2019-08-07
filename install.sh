@@ -168,13 +168,11 @@ fi
 installfinish $@
 
 # disable OPcache
-title -nt "$info Disable PHP OPcache"
-redis-cli set opcache 0 &> /dev/null
-
 file=/etc/php/conf.d/opcache.ini
 if grep -q 'opcache.enable=1' $file; then
+	title -nt "$info Disable PHP OPcache"
 	sed -i 's/opcache.enable=1/opcache.enable=0/' $file
-	systemctl restart php-fpm
+	redis-cli mset opcache 0 restart php-fpm &> /dev/null
 fi
 
 file=/etc/nginx/nginx.conf
