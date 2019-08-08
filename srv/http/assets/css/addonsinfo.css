@@ -95,6 +95,10 @@ wh, gr { font-weight: 300; }
 #infoOverlay .fa {
 	vertical-align: -2px;
 }
+#infoCheckBox .fa,
+#infoRadio .fa {
+	vertical-align: 0;
+}
 #infoButtons .fa {
 	font-size: 18px;
 	margin-right: 5px;
