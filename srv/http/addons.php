@@ -2,9 +2,10 @@
 $redis = new Redis();
 $redis->pconnect( '127.0.0.1' );
 $time = time();
+$sudo = '/usr/bin/sudo /usr/bin';
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
-$MiBunpart = exec( "/usr/bin/sudo /usr/bin/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
+$MiBunpart = exec( "$sudo/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
 $MiBall = $MiBused + $MiBavail + $MiBunpart;
 
 $Wall = 170;
@@ -191,15 +192,22 @@ foreach( $arrayalias as $alias ) {
 	if ( $alias === 'addo' ) continue;
 	$addonslist[ $alias ] = array_intersect_key( $addons[ $alias ], array_flip( $keepkey ) );
 }
+$restart = $redis->get( 'restart' );
+$redis->del( 'restart' );
 ?>
-<script>
-var addons = <?=json_encode( $addonslist )?>;
-</script>
-
 <script src="/assets/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
 <script src="/assets/js/vendor/jquery.mobile.custom.min.<?=$time?>.js"></script>
 <script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
 <script src="/assets/js/addons.<?=$time?>.js"></script>
+<script>
+var addons = <?=json_encode( $addonslist )?>;
+var restart = '<?=$restart?>';
+if ( restart ) {
+	setTimeout( function() {
+		$.post( 'addonsdl.php', { bash: 'systemctl restart '+ restart } );
+	}, 1000 );
+}
+</script>
 
 </body>
 </html>

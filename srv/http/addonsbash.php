@@ -37,7 +37,7 @@ $heading = $alias !== 'cove' ? 'Addons Progress' : 'Update Thumbnails';
 <script src="/assets/js/vendor/jquery.documentsize.min.<?=$time?>.js"></script>
 <script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
 <script>
-$( 'head' ).append( '<style>#hidescrollv, pre { max-height: '+ ( $.documentHeight() - 140 ) +'px }</style>' );
+$( 'head' ).append( '<style>#hidescrollv, pre { max-height: '+ ( $.documentHeight() - 170 ) +'px }</style>' );
 // js for '<pre>' must be here before start stdout
 // php 'flush' loop waits for all outputs before going to next lines
 // but must 'setTimeout()' for '<pre>' to load to fix 'undefined'
@@ -212,6 +212,7 @@ if ( !$reinit ) pclose( $popencmd );
 		clearInterval( intscroll );
 		pre.scrollTop = pre.scrollHeight;
 		$( '#wait' ).remove();
+		$( '#hidescrollv' ).css( 'max-height', ( $( '#hidescrollv' ).height() + 30 ) +'px' );
 		$( '.close-root' )
 			.removeClass( 'disabled' )
 			.click( function() {

@@ -94,7 +94,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190709',
+	'version'     => '20190729',
 	'revision'    => 'Minor improvements'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'

@@ -1,15 +1,25 @@
 <?php
+$sudo = '/usr/bin/sudo /usr/bin';
 if ( isset( $_POST[ 'redis' ] ) ) {
 	$redis = new Redis(); 
 	$redis->connect( '127.0.0.1' );
 	$update = $redis->hGet( 'addons', $_POST[ 'redis' ] );
 	echo $update;
+} else if ( isset( $_POST[ 'bash' ] ) ) {
+	$bash = $_POST[ 'bash' ];
+	if ( !is_array( $bash ) ) $bash = array( $bash );
+	foreach( $bash as $cmd ) {
+		$sudo = $cmd[ 0 ] === '/' ? '/usr/bin/sudo ' : '/usr/bin/sudo /usr/bin/';
+		$command.= "$sudo$cmd;";
+	}
+	
+	exec( $command, $output, $std );
 } else if ( isset( $_POST[ 'backup' ] ) ) {  // settings backup only
 	$filename = 'rune-'.date( 'Ymd_His' ).'.tar.gz';
 	$file = '/srv/http/tmp/'.$filename;
 	$cmdlines = 'rm /srv/http/tmp/*'
-		.'; /usr/bin/sudo /usr/bin/redis-cli save'
-		.' && /usr/bin/sudo /usr/bin/bsdtar -czpf '.$file
+		."; $sudo/redis-cli save"
+		." && $sudo/bsdtar -czpf $file"
 			.' --exclude /etc/netctl/examples'
 			.' /etc/netctl'
 			.' /mnt/MPD/Webradio'

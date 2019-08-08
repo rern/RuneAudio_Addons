@@ -13,6 +13,7 @@ info( {                                     // default
 	autoclose     : N                       // (disabled)     (auto close in ms)
 	preshow       : FUNCTION                // (none)         (function before show)
 	
+	content       : 'HTML'                  //                (replace whole '#infoContent' html)
 	message       : 'MESSAGE'               // (blank)        (message under title)
 	messagealign  : 'CSS'                   // 'center'       (message under title)
 	
@@ -59,7 +60,7 @@ Note:
 function heredoc( fn ) {
 	return fn.toString().match( /\/\*\s*([\s\S]*?)\s*\*\//m )[ 1 ];
 };
-var html = heredoc( function() { /*
+var containerhtml = heredoc( function() { /*
 <div id="infoOverlay" tabindex="1">
 	<div id="infoBox">
 		<div id="infoTopBg">
@@ -70,19 +71,6 @@ var html = heredoc( function() { /*
 			<div style="clear: both"></div>
 		</div>
 		<div id="infoContent">
-			<p id="infoMessage" class="infocontent"></p>
-			<div id="infoText" class="infocontent">
-				<div class="infotextlabel"></div>
-				<div class="infotextbox"></div>
-			</div>
-			<div id="infoPassword" class="infocontent">
-				<a id="infoPasswordLabel" class="infolabel"></a><input type="password" class="infoinput" id="infoPasswordBox">
-			</div>
-			<div id="infoRadio" class="infocontent infohtml"></div>
-			<div id="infoCheckBox" class="infocontent infohtml"></div>
-			<div id="infoSelect" class="infocontent">
-				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectBox"></select>
-			</div>
 		</div>
 		<div id="infoButtons">
 			<div id="infoFile">
@@ -96,13 +84,30 @@ var html = heredoc( function() { /*
 	</div>
 </div>
 */ } );
+infocontenthtml = heredoc( function() { /*
+			<p id="infoMessage" class="infocontent"></p>
+			<div id="infoText" class="infocontent">
+				<div id="infotextlabel"></div>
+				<div id="infotextbox"></div>
+			</div>
+			<div id="infoPassword" class="infocontent">
+				<div id="infopasswordlabel"></div>
+				<div id="infopasswordbox"></div>
+			</div>
+			<div id="infoRadio" class="infocontent infohtml"></div>
+			<div id="infoCheckBox" class="infocontent infohtml"></div>
+			<div id="infoSelect" class="infocontent">
+				<a id="infoSelectLabel" class="infolabel"></a><select class="infohtml" id="infoSelectBox"></select>
+			</div>
+*/ } );
 
-$( 'body' ).prepend( html );
+$( 'body' ).prepend( containerhtml );
 
 emptyinput = 0; // for 'textrequired'
+
 $( '#infoOverlay' ).keydown( function( e ) {
 	if ( $( '#infoOverlay' ).is( ':visible' ) ) {
-		if ( e.key == 'Enter' && !emptyinput ) {
+		if ( e.key == 'Enter' && !$( '#infoOk' ).hasClass( 'disabled' ) ) {
 			$( '#infoOk' ).click();
 		} else if ( e.key === 'Escape' ) {
 			infoReset();
@@ -112,48 +117,50 @@ $( '#infoOverlay' ).keydown( function( e ) {
 // close: reset to default
 $( '#infoX' ).click( function() {
 	$( '#infoCancel' ).click();
-	infoReset();
+	$( '#infoContent' ).empty();
 } );
 
 function infoReset() {
+	$( '#infoContent' ).html( infocontenthtml );
+	$( '#infoX' ).show();
 	$( '#infoOverlay, .infocontent, .infolabel, .infoinput, .infohtml, .filebtn, .infobtn' ).hide();
-	$( '#infoMessage, .infotextlabel, .infotextbox, .infohtml, #infoFilename' ).empty();
-	$( '.infoinput' ).val( '' ).css( 'text-align', '' );
+	$( '.infoinput' ).css( 'text-align', '' );
 	$( '#infoBox, .infolabel, .infoinput' ).css( 'width', '' );
 	$( '.filebtn, .infobtn' ).css( 'background', '' ).off( 'click' );
+	$( '#infoIcon' ).removeAttr( 'class' );
 	$( '#infoFileBox' ).removeAttr( 'accept' );
 	$( '#infoOk' ).removeClass( 'disabled' );
 	$( '.extrabtn' ).remove();
 	$( '#loader' ).addClass( 'hide' ); // for 'X' click
 }
-infoReset();
 
 function info( O ) {
-	setTimeout( function() { // force wait for infoReset()
+	infoReset();
+	setTimeout( function() { // fix: wait for infoReset() on 2nd info
 	///////////////////////////////////////////////////////////////////
 	// simple use as info( 'message' )
 	if ( typeof O !== 'object' ) {
+		$( '#infoIcon' ).addClass( 'fa fa-info-circle' );
+		$( '#infoTitle' ).text( 'Info' );
+		$( '#infoX' ).hide();
 		$( '#infoMessage' ).html( O );
-		$( '#infoIcon' ).html( '<i class="fa fa-info-circle">' );
 		$( '#infoOverlay, #infoMessage, #infoOk' ).show();
 		alignVertical();
-		$( '#infoOk' ).html( 'OK' ).click( function() {
-			infoReset();
-		});
+		$( '#infoOk' ).html( 'OK' ).click( infoReset );
 		return;
 	}
+	
 	// title
 	$( '#infoBox' ).css( 'width', ( O.width || 400 ) +'px' );
 	if ( 'icon' in O ) {
 		if ( O.icon.charAt( 0 ) !== '<' ) {
-			var iconhtml = '<i class="fa fa-'+ O.icon +'">';
+			$( '#infoIcon' ).addClass( 'fa fa-'+ O.icon );
 		} else {
-			var iconhtml = O.icon;
+			$( '#infoIcon' ).html( O.icon );
 		}
 	} else {
-		var iconhtml = '<i class="fa fa-question-circle">';
+		$( '#infoIcon' ).addClass( 'fa fa-question-circle' );
 	}
-	$( '#infoIcon' ).html( iconhtml );
 	$( '#infoTitle' ).html( O.title || 'Information' );
 	if ( 'nox' in O ) $( '#infoX' ).hide();
 	if ( 'autoclose' in O ) {
@@ -162,13 +169,6 @@ function info( O ) {
 		}, O.autoclose );
 	}
 	
-	// message
-	if ( 'message' in O ) {
-		$( '#infoMessage' )
-			.html( O.message )
-			.css( 'text-align', O.messagealign || 'center' )
-			.show();
-	}
 	// buttons
 	if ( 'nobutton' in O === false ) {
 		$( '#infoOk' )
@@ -185,9 +185,9 @@ function info( O ) {
 		}
 		if ( 'button' in O ) {
 			if ( !O.button.length ) O.button = [ O.button ];
-			if ( typeof O.buttonlabel === 'string' ) O.buttonlabel = [ O.buttonlabel ];
+			if ( typeof O.buttonlabel !== 'object' ) O.buttonlabel = [ O.buttonlabel ];
 			O.buttoncolor = O.buttoncolor || '';
-			if ( typeof O.buttoncolor === 'string' ) O.buttoncolor = [ O.buttoncolor ];
+			if ( typeof O.buttoncolor !== 'object' ) O.buttoncolor = [ O.buttoncolor ];
 			var buttonhtml = '';
 			var iL = O.button.length;
 			for ( i = 0; i < iL; i++ ) {
@@ -200,121 +200,152 @@ function info( O ) {
 		}
 		$( '.infobtn' ).click( infoReset );
 	}
-	// inputs
-	if ( 'textlabel' in O || 'textvalue' in O ) {
-		O.textlabel = O.textlabel || '';
-		O.textvalue = O.textvalue || '';
-		if ( typeof O.textlabel === 'string' ) O.textlabel = [ O.textlabel ];
-		if ( typeof O.textvalue === 'string' ) O.textvalue = [ O.textvalue ];
-		var labelhtml = '';
-		var boxhtml = '';
-		var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
-		for ( i = 0; i < iL; i++ ) {
-			var iid = i || '';
-			labelhtml += i ? '<br>' : '';
-			var labeltext = O.textlabel[ i ] || '';
-			labelhtml += '<a id="infoTextLabel'+ iid +'" class="infolabel">'+ labeltext +'</a>';
-			boxhtml += i ? '<br>' : '';
-			var valuehtml = O.textvalue[ i ] ? 'value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) : '';
-			boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +'" spellcheck="false">';
+	
+	if ( O.content ) {
+		// custom html content
+		$( '#infoContent' ).html( O.content );
+	} else {
+		// message
+		if ( 'message' in O ) {
+			$( '#infoMessage' )
+				.html( O.message )
+				.css( 'text-align', O.messagealign || 'center' )
+				.show();
 		}
-		$( '.infotextlabel' ).html( labelhtml );
-		$( '.infotextbox' ).html( boxhtml );
-		var $infofocus = $( '#infoTextBox' );
-		$( '#infoText' ).show();
-		if ( 'textalign' in O ) $( '.infoinput' ).css( 'text-align', O.textalign );
-		if ( 'textrequired' in O ) {
-			if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
-			var blank = 0;
-			O.textrequired.forEach( function( e ) {
-				if ( !$( '.infotextbox input' ).eq( e ).val() ) blank++;
-			} );
-			if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
-			$( '.infoinput' ).on( 'keyup', function() {
-				emptyinput = 0;
-				O.textrequired.forEach( function( e ) {
-					if ( !$( '.infotextbox input' ).eq( e ).val() ) emptyinput++;
-				} );
-				$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
-			} );
-		}
-	} else if ( 'passwordlabel' in O ) {
-		$( '#infoPasswordLabel' ).html( O.passwordlabel );
-		$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
-		var $infofocus = $( '#infoPasswordBox' );
-	} else if ( 'fileoklabel' in O ) {
-		$( '#infoOk' )
-			.html( O.fileoklabel )
-			.hide();
-		$( '#infoFileLabel' ).click( function() {
-			$( '#infoFileBox' ).click();
-		} );
-		$( '#infoFile, #infoFileLabel' ).show();
-		if ( 'filetype' in O ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
-		$( '#infoFileBox' ).change( function() {
-			var file = this.files[ 0 ];
-			if ( !file ) return
-			
-			var filename = file.name;
-			var ext = filename.split( '.' ).pop();
-			if ( 'filetype' in O && O.filetype.indexOf( ext ) === -1 ) {
-				info( {
-					  icon    : 'warning'
-					, title   : O.title
-					, message : 'File extension must be: <code>'+ O.filetype +'</code>'
-					, ok      : function() {
-						info( {
-							  title       : O.title
-							, message     : O.message
-							, fileoklabel : O.fileoklabel
-							, filetype    : O.filetype
-							, ok          : function() {
-								info( O );
-							}
-						} );
-					}
-				} );
-				return;
+		// inputs
+		if ( 'textlabel' in O || 'textvalue' in O ) {
+			O.textlabel = O.textlabel || '';
+			O.textvalue = O.textvalue || '';
+			if ( typeof O.textlabel !== 'object' ) O.textlabel = [ O.textlabel ];
+			if ( typeof O.textvalue !== 'object' ) O.textvalue = [ O.textvalue ];
+			var labelhtml = '';
+			var boxhtml = '';
+			var iL = O.textlabel.length > 1 ? O.textlabel.length : O.textvalue.length;
+			for ( i = 0; i < iL; i++ ) {
+				var iid = i || '';
+				var labeltext = O.textlabel[ i ] || '';
+				labelhtml += '<a class="infolabel">'+ labeltext +'</a>';
+				var valuehtml = O.textvalue[ i ] ? ' value="'+ O.textvalue[ i ].toString().replace( /"/g, '&quot;' ) +'"' : '';
+				boxhtml += '<input type="text" class="infoinput" id="infoTextBox'+ iid +'"'+ valuehtml +' spellcheck="false">';
 			}
-			
-			$( '#infoOk' ).show();
-			$( '#infoFileLabel' ).css( 'background', '#34495e' );
-			$( '#infoFilename' ).html( '&ensp;'+ filename );
-		} );
-	} else if ( 'radio' in O ) {
-		if ( typeof O.radio === 'string' ) {
-			var html = O.radio;
-		} else {
-			var html = '';
-			$.each( O.radio, function( key, val ) {
-				// <label> for clickable label
-				html += '<label><input type="radio" name="inforadio" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
+			$( '#infotextlabel' ).html( labelhtml );
+			$( '#infotextbox' ).html( boxhtml );
+			var $infofocus = $( '#infoTextBox' );
+			$( '#infoText' ).show();
+			if ( 'textalign' in O ) $( '.infoinput' ).css( 'text-align', O.textalign );
+			if ( 'textrequired' in O ) {
+				if ( typeof O.textrequired !== 'object' ) O.textrequired = [ O.textrequired ];
+				var blank = 0;
+				O.textrequired.forEach( function( e ) {
+					if ( !$( '.infoinput' ).eq( e ).val() ) blank++;
+				} );
+				if ( blank ) $( '#infoOk' ).addClass( 'disabled' );
+				$( '.infoinput' ).on( 'input', function() {
+					emptyinput = 0;
+					O.textrequired.forEach( function( e ) {
+						if ( !$( '.infoinput' ).eq( e ).val() ) emptyinput++;
+					} );
+					$( '#infoOk' ).toggleClass( 'disabled', emptyinput !== 0 );
+				} );
+			}
+		}
+		if ( 'passwordlabel' in O ) {
+/*			$( '#infoPasswordLabel' ).html( O.passwordlabel );
+			$( '#infoPassword, #infoPasswordLabel, #infoPasswordBox' ).show();
+			var $infofocus = $( '#infoPasswordBox' );*/
+			if ( typeof O.passwordlabel !== 'object' ) O.passwordlabel = [ O.passwordlabel ];
+			var labelhtml = '';
+			var boxhtml = '';
+			var iL = O.passwordlabel.length;
+			for ( i = 0; i < iL; i++ ) {
+				var iid = i || '';
+				var labeltext = O.passwordlabel[ i ] || '';
+				labelhtml += '<a class="infolabel">'+ labeltext +'</a>';
+				boxhtml += '<input type="password" class="infoinput" id="infoPasswordBox'+ iid +'">';
+			}
+			$( '#infopasswordlabel' ).html( labelhtml );
+			$( '#infopasswordbox' ).html( boxhtml );
+			$( '#infoPassword' ).show();
+			var $infofocus = $( '#infoPasswordBox' );
+		}
+		if ( 'fileoklabel' in O ) {
+			$( '#infoOk' )
+				.html( O.fileoklabel )
+				.hide();
+			$( '#infoFileLabel' ).click( function() {
+				$( '#infoFileBox' ).click();
+			} );
+			$( '#infoFile, #infoFileLabel' ).show();
+			if ( 'filetype' in O ) $( '#infoFileBox' ).attr( 'accept', O.filetype );
+			$( '#infoFileBox' ).change( function() {
+				var file = this.files[ 0 ];
+				if ( !file ) return
+				
+				var filename = file.name;
+				var ext = filename.split( '.' ).pop();
+				if ( 'filetype' in O && O.filetype.indexOf( ext ) === -1 ) {
+					info( {
+						  icon    : 'warning'
+						, title   : O.title
+						, message : 'File extension must be: <code>'+ O.filetype +'</code>'
+						, ok      : function() {
+							info( {
+								  title       : O.title
+								, message     : O.message
+								, fileoklabel : O.fileoklabel
+								, filetype    : O.filetype
+								, ok          : function() {
+									info( O );
+								}
+							} );
+						}
+					} );
+					return;
+				}
+				
+				$( '#infoOk' ).show();
+				$( '#infoFileLabel' ).css( 'background', '#34495e' );
+				$( '#infoFilename' ).html( '&ensp;'+ filename );
 			} );
 		}
-		renderOption( $( '#infoRadio' ), html, O.checked || '' );
-	} else if ( 'select' in O ) {
-		$( '#infoSelectLabel' ).html( O.selectlabel );
-		if ( typeof O.select === 'string' ) {
-			var html = O.select;
-		} else {
-			var html = '';
-			$.each( O.select, function( key, val ) {
-				html += '<option value="'+ val.toString().replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
-			} );
+		if ( 'radio' in O ) {
+			if ( typeof O.radio !== 'object' ) {
+				var html = O.radio;
+			} else {
+				var html = '';
+				$.each( O.radio, function( key, val ) {
+					// <label> for clickable label
+					html += '<label><input type="radio" name="inforadio" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
+				} );
+			}
+			renderOption( $( '#infoRadio' ), html, O.checked || '' );
 		}
-		renderOption( $( '#infoSelectBox' ), html, O.checked || '' );
-		$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
-	} else if ( 'checkbox' in O ) {
-		if ( typeof O.checkbox === 'string' ) {
-			var html = O.checkbox;
-		} else {
-			var html = '';
-			$.each( O.checkbox, function( key, val ) {
-				html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
-			} );
+		if ( 'select' in O ) {
+			$( '#infoSelectLabel' ).html( O.selectlabel );
+			if ( typeof O.select !== 'object' ) {
+				var html = O.select;
+			} else {
+				var html = '';
+				$.each( O.select, function( key, val ) {
+					html += '<option value="'+ val.toString().replace( /"/g, '&quot;' ) +'">'+ key +'</option>';
+				} );
+			}
+			renderOption( $( '#infoSelectBox' ), html, O.checked || '' );
+			$( '#infoSelect, #infoSelectLabel, #infoSelectBox' ).show();
 		}
-		renderOption( $( '#infoCheckBox' ), html, 'checked' in O ? O.checked : '' );
+		if ( 'checkbox' in O ) {
+			if ( typeof O.checkbox !== 'object' ) {
+				var html = O.checkbox;
+			} else {
+				var html = '';
+				$.each( O.checkbox, function( key, val ) {
+					html += '<label><input type="checkbox" value="'+ val.toString().replace( /"/g, '&quot;' ) +'">&ensp;'+ key +'</label><br>';
+				} );
+			}
+			renderOption( $( '#infoCheckBox' ), html, 'checked' in O ? O.checked : '' );
+		}
 	}
+
 	if ( O.preshow ) O.preshow();
 	$( '#infoOverlay' )
 		.show()

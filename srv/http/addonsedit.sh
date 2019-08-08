@@ -321,6 +321,8 @@ appendAsset() {
 
 restorefile() {
 	for file in "$@"; do
+		[[ ! -e $file ]] && continue
+		
 		echo "$file"
 		sed -i -e "s/^<?php \/\*$alias\|$alias\*\/ ?>$//g
 		" -e "s/^#$alias//

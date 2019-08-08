@@ -157,7 +157,8 @@ getinstallzip() {
 	echo -e "$bar Install new files ..."
 	rm -rf /tmp/install
 	mkdir -p /tmp/install
-	bsdtar -xvf $branch.zip --strip 1 -C /tmp/install
+	bsdtar -tf $branch.zip | cut -d/ -f2- | grep / | grep -v '/$' | sed 's|^|/|' # list files
+	bsdtar -xf $branch.zip --strip 1 -C /tmp/install
 
 	rm $branch.zip /tmp/install/* &> /dev/null
 	
@@ -278,6 +279,8 @@ uninstallfinish() { # $1-'u'=update
 	title -l '=' "$bar $title uninstalled successfully."
 }
 restartlocalbrowser() {
+	! systemctl -q is-active local-browser && return
+	
 	title -nt "$bar Restart local browser ..."
 	if [[ -e /usr/bin/chromium ]]; then
 		systemctl restart local-browser
@@ -287,9 +290,6 @@ restartlocalbrowser() {
 		xinit &> /dev/null &
 	fi
 }
-clearcache() {
-	restartlocalbrowser
-}
 ## restart nginx seamlessly without dropping client connections
 restartnginx() {
 	kill -s USR2 $( cat /run/nginx.pid )         # spawn new nginx master-worker set
@@ -297,6 +297,8 @@ restartnginx() {
 	kill -s QUIT $( cat /run/nginx.pid.oldbin )  # stop old master process
 }
 reinitsystem() {
+	[[ -e /srv/http/enhancestartup ]] && return
+	
 	title -nt "$bar Reinitialize system ..."
 	systemctl restart rune_SY_wrk
 }

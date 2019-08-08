@@ -23,7 +23,7 @@ if [[ $versionlist > $versionredis ]]; then
 		rm /var/cache/pacman/pkg/*
 		(( $( df | grep '/$' | awk '{print $4}' ) < 1000 )) && exit 2
 	fi
-	curl --silent -s -X POST 'http://localhost/pub?id=addons' -d 1
+	curl -s -X POST 'http://localhost/pub?id=addons' -d 1
 	wget -qN --no-check-certificate $installurl -P /srv/http
 	chmod 755 /srv/http/install.sh || exit 1
 	
