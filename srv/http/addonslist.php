@@ -94,8 +94,8 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190729',
-	'revision'    => 'Minor improvements'
+	'version'     => '20190808',
+	'revision'    => 'General improvements'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
 					.'<br>Rank mirror package servers before install/upgrade',
