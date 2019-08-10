@@ -227,6 +227,9 @@ $addons = array(
 	'buttonlabel' => 'Upgrade',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
+	'option'      => array(
+		'confirm'   => 'Upgrade?'
+	),
 	'hide'        => !$rune05
 ),
 'dual' => array(
