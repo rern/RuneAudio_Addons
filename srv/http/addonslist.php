@@ -224,6 +224,7 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'A local browser replacement. RuneAudio 0.4 needs MPD Upgrade before install.',
 	'thumbnail'   => '/img/addons/thumbchro.png',
+	'buttonlabel' => 'Upgrade',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/chromium',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/chromium/install.sh',
 	'hide'        => !$rune05
