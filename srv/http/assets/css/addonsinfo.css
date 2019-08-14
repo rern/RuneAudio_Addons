@@ -47,7 +47,7 @@
 }
 wh { color: #e0e7ee; }
 gr { color: hsl(200,3%,60%)/*cgl*/; }
-wh, gr { font-weight: 300; }
+wh, gr { font-weight: normal !important; }
 .infobtn,
 .filebtn {
 	display: inline-block;
