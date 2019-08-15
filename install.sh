@@ -125,23 +125,8 @@ EOF
 chmod 4755 /usr/bin/sudo
 
 # update check
-file=/etc/systemd/system/addons.service
-echo $file
-
-cat << 'EOF' > $file
-[Unit]
-Description=Addons update check
-After=multi-user.target
-[Service]
-Type=idle
-ExecStart=/srv/http/addonsupdate.sh &
-[Install]
-WantedBy=multi-user.target
-EOF
-
 crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab - &> /dev/null
-systemctl daemon-reload
-systemctl enable --now addons cronie
+systemctl enable --now cronie
 
 # for backup file upload
 dir=/srv/http/tmp
