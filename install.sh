@@ -141,8 +141,7 @@ EOF
 
 crontab -l | { cat; echo '00 01 * * * /srv/http/addonsupdate.sh &'; } | crontab - &> /dev/null
 systemctl daemon-reload
-systemctl enable addons cronie
-systemctl start addons cronie
+systemctl enable --now addons cronie
 
 # for backup file upload
 dir=/srv/http/tmp
