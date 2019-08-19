@@ -1,10 +1,8 @@
 <?php
-if ( !exec( '/usr/bin/grep "hasClass" /srv/http/assets/js/addonsinfo.js' ) ) {
-	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio_Addons/raw/UPDATE/srv/http/assets/js/addonsinfo.js -O /srv/http/assets/js/addonsinfo.js' );
+if ( file_exists( '/srv/http/enhancestartup' ) ) {
+	exec( '/usr/bin/sudo /usr/bin/rm -f /usr/local/bin/{uninstall_enha*,uninstall_addo.sh}' );
 }
-if ( exec( '/usr/bin/grep \'id="local_browserBox">\*\' /srv/http/app/templates/settings.php' ) ) {
-	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/tmp/settings.php -O /srv/http/app/templates/settings.php' );
-}
+
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $rune05 = $redis->get( 'release' ) === '0.5';
