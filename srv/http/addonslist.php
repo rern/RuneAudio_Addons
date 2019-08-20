@@ -1,8 +1,4 @@
 <?php
-if ( file_exists( '/srv/http/enhancestartup' ) ) {
-	exec( '/usr/bin/sudo /usr/bin/rm -f /usr/local/bin/{uninstall_enha*,uninstall_addo.sh}' );
-}
-
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $rune05 = $redis->get( 'release' ) === '0.5';
