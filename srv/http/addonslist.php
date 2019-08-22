@@ -146,6 +146,7 @@ $addons = array(
 			'checked' => $enhacheck
 		),
 	),
+	'hide'        => $runee1
 ),
 'extr' => array(
 	'title'       => 'RuneUIe - Restore Extra Directories',
