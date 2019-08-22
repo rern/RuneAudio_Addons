@@ -23,7 +23,7 @@ if ( $MiBunpart < 10 ) {
 	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
 	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
 }
-$runeversion = ' (v '.$redis->get( 'release' ).')';
+$runeversion = file_exists( '/srv/http/startup.sh' ) ? '( <i class="fa fa-addons"></i> e1 )' : '(v '.$redis->get( 'release' ).')';
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,7 +57,7 @@ $runeversion = ' (v '.$redis->get( 'release' ).')';
 	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail.$htmlunpart ?>&nbsp;
-	<p id="disktext" class="disk"><?=$htmlfree.$runeversion ?></p>
+	<p id="disktext" class="disk"><?=$htmlfree.' '.$runeversion ?></p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 <?php
