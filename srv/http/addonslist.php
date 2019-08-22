@@ -156,13 +156,13 @@ $addons = array(
 	'hide'        => !$enha,
 ),
 'rrre' => array(
-	'title'       => 'Rune0.5+RuneUIe - Reset',
+	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 Reset',
 	'maintainer'  => 'r e r n',
-	'description' => 'Reset Rune0.5+RuneUIe for initial setup.',
+	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/setup.sh',
-	'hide'        => !$enha || !$rune05,
+	'hide'        => !file_exists( '/srv/http/startup.sh' )
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
