@@ -171,7 +171,7 @@ $addons = array(
 	'buttonlabel' => 'Restore',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
-	'hide'        => !$enha,
+	'hide'        => !$enha || $runee1
 ),
 'rrre' => array(
 	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 Reset',
