@@ -281,7 +281,7 @@ $addons = array(
 	'hide'        => $runee1
 ),
 'mpdu' => array(
-	'title'       => 'MPD Upgrade *',
+	'title'       => 'MPD Upgrade',
 	'needspace'   => 300,
 	'maintainer'  => 'r e r n',
 	'description' => 'Upgrade MPD to latest version, 0.21.9 as of 20190520:'
@@ -384,23 +384,8 @@ $addons = array(
 	),
 	'hide'        => $runee1
 ),
-/*
-'RuneYoutube' => array(
-	'title'       => 'RuneUI Youtube',
-	'version'     => '20171120',
-	'needspace'   => 15,
-	'revision'    => 'Fix bugs',
-	'maintainer'  => 'tuna',
-	'description' => 'This adds a youtube button to the Playlist screen of the rune audio player, '
-					.'simply paste a youtube video URL or a youtube playlist URL, '
-					.'wait for them to download, and these songs will be added to your playlist.',
-	'thumbnail'   => '/img/addons/thumbyout.png',
-	'sourcecode'  => 'https://github.com/RuneAddons/RuneYoutube',
-	'installurl'  => 'https://github.com/RuneAddons/RuneYoutube/raw/master/install.sh',
-),
-*/
 'samb' => array(
-	'title'       => 'Samba Upgrade *',
+	'title'       => 'Samba Upgrade',
 	'needspace'   => 43,
 	'maintainer'  => 'r e r n',
 	'description' => 'Faster and more customized shares.',
