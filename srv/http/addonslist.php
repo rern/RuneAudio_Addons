@@ -5,9 +5,6 @@ $runee1 = file_exists( '/srv/http/startup.sh' );
 // temp
 if ( $runee1 && !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
 
-$runee1 = file_exists( '/srv/http/startup.sh' );
-$redisaddons = $redis->hGetAll( 'addons' );
-
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
