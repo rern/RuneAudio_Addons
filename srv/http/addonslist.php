@@ -1,4 +1,9 @@
 <?php
+if ( !strpos( file_get_contents( 'addons.php' ), 'startup' ) ) {
+	exec( '/usr/bin/wget https://github.com/rern/RuneAudio_Addons/raw/UPDATE/srv/http/addons.php -O /srv/http/addons.php' );
+	exec( "/usr/bin/sed -i 's/enhancestartup/startup.sh/' /srv/http/addonstitle.sh" );
+}
+
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 $rune05 = $redis->get( 'release' ) === '0.5';
