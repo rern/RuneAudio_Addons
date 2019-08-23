@@ -343,6 +343,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbgpio.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'hide'        => !$runee1
 ),
 'lyri' => array(
 	'title'       => 'RuneUI Lyrics',
