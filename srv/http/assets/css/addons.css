@@ -572,6 +572,10 @@ ul,
 .disabled {
 	color: hsl(200,3%,60%)/*cgl*/;
 }
+.disabled:hover {
+	color: hsl(200,3%,60%)/*cgl*/;
+	background-color: hsl(200,3%,30%)/*cg*/ !important;
+}
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }
 .cbc  { color: #00ffff; background: #00ffff; }
