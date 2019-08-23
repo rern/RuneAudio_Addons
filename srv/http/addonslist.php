@@ -103,6 +103,18 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
+'rre1' => array(
+	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1',
+	'version'     => '20190822',
+	'revision'    => 'Minor improvements',
+	'maintainer'  => 'r e r n',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
+	'buttonlabel' => 'Update',
+	'nouninstall' => 1,
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/update.sh',
+	'hide'        => !$runee1
+),
 'enha' => array(
 	'title'       => 'RuneUI Enhancement **',
 	'version'     => '20190709',
@@ -159,18 +171,6 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
 	'hide'        => !$enha,
-),
-'rre1' => array(
-	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1',
-	'version'     => '20190822',
-	'revision'    => 'Minor improvements',
-	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
-	'buttonlabel' => 'Update',
-	'nouninstall' => 1,
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/update.sh',
-	'hide'        => !$runee1
 ),
 'rrre' => array(
 	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 Reset',
