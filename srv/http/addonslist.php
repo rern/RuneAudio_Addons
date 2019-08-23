@@ -1,12 +1,10 @@
 <?php
-if ( !exec( '/usr/bin/grep "hasClass" /srv/http/assets/js/addonsinfo.js' ) ) {
-	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio_Addons/raw/UPDATE/srv/http/assets/js/addonsinfo.js -O /srv/http/assets/js/addonsinfo.js' );
-}
-if ( exec( '/usr/bin/grep \'id="local_browserBox">\*\' /srv/http/app/templates/settings.php' ) ) {
-	exec( '/usr/bin/wget -q https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/tmp/settings.php -O /srv/http/app/templates/settings.php' );
-}
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
+$runee1 = file_exists( '/srv/http/startup.sh' );
+// temp
+if ( $runee1 && !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
+
 $rune05 = $redis->get( 'release' ) === '0.5';
 $redisaddons = $redis->hGetAll( 'addons' );
 $enha = $redisaddons[ 'enha' ];
@@ -151,6 +149,7 @@ $addons = array(
 			'checked' => $enhacheck
 		),
 	),
+	'hide'        => $runee1
 ),
 'extr' => array(
 	'title'       => 'RuneUIe - Restore Extra Directories',
@@ -161,14 +160,26 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
 	'hide'        => !$enha,
 ),
-'rrre' => array(
-	'title'       => 'Rune0.5+RuneUIe - Reset',
+'rre1' => array(
+	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1',
+	'version'     => '20190822',
+	'revision'    => 'Minor improvements',
 	'maintainer'  => 'r e r n',
-	'description' => 'Reset Rune0.5+RuneUIe for initial setup.',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
+	'buttonlabel' => 'Update',
+	'nouninstall' => 1,
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/update.sh',
+	'hide'        => !$runee1
+),
+'rrre' => array(
+	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 Reset',
+	'maintainer'  => 'r e r n',
+	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/setup.sh',
-	'hide'        => !$enha || !$rune05,
+	'hide'        => !$runee1
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
@@ -184,17 +195,7 @@ $addons = array(
 	'description' => 'Enable metadata editor feature in context menu.',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/kid3-cli',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/kid3-cli/install.sh',
-),
-'pers' => array(
-	'title'       => 'Persistent database and settings',
-	'version'     => '20190417',
-	'revision'    => 'Initial release',
-	'maintainer'  => 'r e r n',
-	'description' => 'Maintain database and settings across SD card reflashing. '
-					.'Reuse if previously moved data is available. Otherwise move existings to USB or NAS.',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/persistent_settings',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/persistent_settings/install.sh',
-	'hide'        => 1
+	'hide'        => $runee1
 ),
 'aria' => array(
 	'title'       => 'Aria2 *',
@@ -230,7 +231,7 @@ $addons = array(
 	'option'      => array(
 		'confirm'   => 'Upgrade?'
 	),
-	'hide'        => !$rune05
+	'hide'        => !$rune05 && !$runee1
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC *',
@@ -250,7 +251,7 @@ $addons = array(
 	'buttonlabel' => 'Expand',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'        => $redisaddons[ 'expa' ],
+	'hide'        => $redisaddons[ 'expa' ] || $runee1
 ),
 'motd' => array(
 	'title'       => 'Login Logo for Terminal',
@@ -276,6 +277,7 @@ $addons = array(
 			'checked' => 0
 		),
 	),
+	'hide'        => $runee1
 ),
 'mpdu' => array(
 	'title'       => 'MPD Upgrade *',
@@ -326,7 +328,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbfont.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/font_extended',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/font_extended/install.sh',
-	'hide'        => $rune05,
+	'hide'        => $rune05 || $runee1
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
@@ -354,6 +356,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumblyri.gif',
 	'sourcecode'  => 'https://github.com/RuneAddons/Lyrics',
 	'installurl'  => 'https://github.com/RuneAddons/Lyrics/raw/master/install.sh',
+	'hide'        => $runee1
 ),
 'paus' => array(
 	'title'       => 'RuneUI Pause Button',
@@ -364,7 +367,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbpaus.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/pause_button/install.sh',
-	'hide'        => $enha,
+	'hide'        => $enha || $runee1
 ),
 'uire' => array(
 	'title'       => 'RuneUI Reset',
@@ -378,6 +381,7 @@ $addons = array(
 		'confirm'   => 'All RuneUI addons and custom UI modifications'
 					  .'<br><w>will be removed</w>.'
 	),
+	'hide'        => $runee1
 ),
 /*
 'RuneYoutube' => array(
@@ -463,7 +467,7 @@ $addons = array(
 			'checked' => $redis->get( 'ao' )
 		),
 	),
-	'hide'        => !$acards
+	'hide'        => !$acards || $runee1
 ),
 'webr' => array(
 	'title'       => 'Webradio Import',
@@ -479,7 +483,7 @@ $addons = array(
 		'wait'      => 'Get webradio <code>*.pls</code> or <code>*.m3u</code> files or folders'
 					  .'<br>copied to <code>/mnt/MPD/Webradio</code>'
 	),
-	'hide'        => $enha,
+	'hide'        => $enha || $runee1
 ),
 'noti' => array(
 	'title'       => 'Setting - Notification Duration',
@@ -506,6 +510,7 @@ $addons = array(
 			'checked' => exec( 'grep setTimeout /srv/http/assets/js/enhancebanner.js | cut -d" " -f5' ) / 1000
 		),
 	),
+	'hide'        => $runee1
 ),
 'zoom' => array(
 	'title'       => 'Setting - Local Browser - Zoom Level',
@@ -528,7 +533,7 @@ $addons = array(
 			'checked' => $zoom,
 		),
 	),
-	'hide'        => !$localbrowser || $rune05,
+	'hide'        => !$localbrowser || $rune05 || $runee1
 ),
 'poin' => array(
 	'title'       => 'Setting - Local Browser - Mouse Pointer',
@@ -547,7 +552,7 @@ $addons = array(
 			'checked' => exec( "grep use_cursor /root/.xinitrc | sed 's/.*cursor \\(.*\\) &/\\1/'" ),
 		),
 	),
-	'hide'        => !$localbrowser || $rune05,
+	'hide'        => !$localbrowser || $rune05 || $runee1
 ),
 'wifi' => array(
 	'title'       => 'Setting - On/Off WiFi and Bluetooth',
@@ -566,6 +571,7 @@ $addons = array(
 			'checked' => file_exists( '/etc/systemd/system/multi-user.target.wants/netctl-auto@wlan0.service' ),
 		),
 	),
+	'hide'        => $runee1
 ),
 'soff' => array(
 	'title'       => 'Setting - Screen Off Timeout',
@@ -586,7 +592,7 @@ $addons = array(
 			'checked' => exec( "export DISPLAY=:0; xset q | grep Standby: | awk '{print $6}'" ) / 60
 		),
 	),
-	'hide'        => !$redis->get( 'local_browser' ),
+	'hide'        => !$redis->get( 'local_browser' ) || $runee1
 ),
 'back' => array(
 	'title'       => 'Settings+Databases Backup',
@@ -599,6 +605,7 @@ $addons = array(
 	'option'      => array(
 		'confirm'   => 'Backup all RuneAudio <w>settings and databases</w>?',
 	),
+	'hide'        => $runee1
 ),
 'rest' => array(
 	'title'       => 'Settings+Databases Restore',
@@ -616,6 +623,7 @@ $addons = array(
 			'type'    => '.tar.gz'
 		),
 	),
+	'hide'        => $runee1
 ),
 
 );
