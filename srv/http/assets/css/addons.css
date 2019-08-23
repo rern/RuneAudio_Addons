@@ -498,15 +498,18 @@ code {
 .btn {
 	text-transform: none;
 	min-width: 100px;
+	user-select: none;
+	background: -webkit-radial-gradient(50% -50%, 160% 200%, hsla(0,0%,100%,.3) 50%, hsla(0,0%,100%,0) 55%); /* button highlight - last % for anti-alias edge*/
+	background: radial-gradient(160% 100% at 50% 0% ,hsla(0,0%,100%,.3) 50%,hsla(0,0%,100%,0) 55%); /* (Width% Heigth% at H-center_offset% V-center_offset%, hsla(0,0%,100%,1st-T) 1st-area%, hsla(0,0%,100%,2nd-T) 2nd-area%)) */
 	box-shadow: 2px 2px 3px 1px #000000;
 }
 .btn-primary {
-	background: hsl(200,100%,40%)/*c*/;
+	background-color: hsl(200,100%,40%)/*c*/;
 	border: none;
 }
 .btn-default,
 .btn-default.disabled {
-	background: hsl(200,3%,30%)/*cg*/;
+	background-color: hsl(200,3%,30%)/*cg*/;
 }
 .btn i {
 	margin-right: 5px;
@@ -571,6 +574,11 @@ ul,
 .bl,
 .disabled {
 	color: hsl(200,3%,60%)/*cgl*/;
+}
+.disabled:hover {
+	color: hsl(200,3%,60%)/*cgl*/;
+	background-color: hsl(200,3%,30%)/*cg*/ !important;
+	cursor: default;
 }
 .cbgr { color: #808080; background: #808080; }
 .cbw  { color: #ffffff; background: #ffffff; }

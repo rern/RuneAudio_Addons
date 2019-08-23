@@ -70,6 +70,8 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 	} );
 } ).on( 'click', function () {
 	$this = $( this );
+	if ( $this.hasClass( 'disabled' ) ) return
+	
 	alias = $this.attr( 'alias' );
 	title = addons[ alias ].title.replace( / *\**$/, '' );
 	type = $this.text();

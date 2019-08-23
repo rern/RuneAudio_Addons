@@ -297,7 +297,7 @@ restartnginx() {
 	kill -s QUIT $( cat /run/nginx.pid.oldbin )  # stop old master process
 }
 reinitsystem() {
-	[[ -e /srv/http/enhancestartup ]] && return
+	[[ -e /srv/http/startup.sh ]] && return
 	
 	title -nt "$bar Reinitialize system ..."
 	systemctl restart rune_SY_wrk
