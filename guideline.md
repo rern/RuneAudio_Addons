@@ -291,6 +291,7 @@ do not isert/append into another insert/append
 	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
 /**/	'buttonlabel'   => 'LABEL',
+/**/	'nouninstall'   => TRUE,
 /**/	'depend'        => 'ALIAS',
 /**/	'conflict'      => 'ALIAS',
 /**/	'hide'          => BOOLEAN,
@@ -368,6 +369,9 @@ do not isert/append into another insert/append
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
+
+**`'nouninstall'`** - for non-uninstall addon
+- hide `Uninstall` button
 
 **`'hide'`** - for compatability and redundant
 - `'only03'` if for RuneAudio 0.3 only - omit for both versions compatible

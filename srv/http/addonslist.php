@@ -6,6 +6,7 @@ $runee1 = file_exists( '/srv/http/startup.sh' );
 if ( $runee1 && !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
 
 $rune05 = $redis->get( 'release' ) === '0.5';
+$runee1 = file_exists( '/srv/http/startup.sh' );
 $redisaddons = $redis->hGetAll( 'addons' );
 $enha = $redisaddons[ 'enha' ];
 // checked items
