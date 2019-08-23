@@ -333,9 +333,11 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO *',
-	'version'     => '20190704',
+	'version'     => '20190824',
 	'needspace'   => 5,
-	'revision'    => 'Link setting location to common directory'
+	'revision'    => 'Support RuneAudio+R e1'
+					.'<br>...'
+					.'<br>Link setting location to common directory'
 					.'<br>...'
 					.'<br>Improve notifications - show devices name',
 	'maintainer'  => 'r e r n',
