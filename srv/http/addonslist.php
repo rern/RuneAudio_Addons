@@ -1,7 +1,7 @@
 <?php
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
-// temp
+// temp - until next imgage released
 if ( !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
 
 ///////////////////////////////////////////////////////////////
