@@ -84,16 +84,7 @@ foreach( $arrayalias as $alias ) {
 		$buttonlabel = '<i class="fa fa-plus-circle"></i>Install';
 	}
 	
-	if ( isset( $addon[ 'nouninstall' ] ) ) {
-		if ( $addon[ 'version' ] == $versioninstalled ) {
-			$check = '<i class="fa fa-check status"></i> ';
-			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">Update</a>';
-		} else {
-			$check = '<i class="fa fa-refresh status"></i> ';
-			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
-		}
-		$btnun = '';
-	} else if ( $versioninstalled ) {
+	if ( $versioninstalled ) {
 		$check = '<i class="fa fa-check status"></i> ';
 		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $versioninstalled ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
@@ -104,7 +95,11 @@ foreach( $arrayalias as $alias ) {
 			$btnin = '<a class="btn btn-primary" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		$btnun = '<a class="btn btn-default" alias="'.$alias.'"'.$btnunattr.'><i class="fa fa-minus-circle"></i>Uninstall</a>';
+		if ( isset( $addon[ 'nouninstall' ] ) ) {
+			$btnun = '<a class="btn btn-default disabled" alias="'.$alias.'" style="pointer-events: unset"><i class="fa fa-minus-circle"></i>Uninstall</a>';
+		} else {
+			$btnun = '<a class="btn btn-default" alias="'.$alias.'"'.$btnunattr.'><i class="fa fa-minus-circle"></i>Uninstall</a>';
+		}
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;

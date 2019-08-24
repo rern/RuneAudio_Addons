@@ -25,16 +25,16 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
 ),
 'rre1' => array(
-	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1',
-	'version'     => '20190822',
+	'title'       => 'RuneAudio+R e1 ***',
+	'version'     => '20190824',
 	'revision'    => 'Fix: USB DAC plug and play.'
 					.'<br>Reserve mount parameters on failed mount.'
 					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
 	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
+	'description' => 'Updates for RuneAudio+R e1.',
 	'nouninstall' => 1,
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/update.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
 ),
 'extr' => array(
 	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 - Restore Extra Directories',
@@ -45,7 +45,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
 ),
 'rrre' => array(
-	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 Reset',
+	'title'       => 'RuneAudio+R e1 Reset',
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
