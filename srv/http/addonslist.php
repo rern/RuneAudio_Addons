@@ -13,7 +13,7 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190822',
+	'version'     => '20190824',
 	'revision'    => 'Add RuneAudio+R e1 support'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
