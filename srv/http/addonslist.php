@@ -24,7 +24,7 @@ $addons = array(
 	'title'       => 'RuneAudio+R e1 ***',
 	'version'     => '20190824',
 	'revision'    => 'Fix: USB DAC plug and play.'
-					.'<br>Preserve mount parameters on failed mount.'
+					.'<br>Preserve dialogue parameters on failed mount.'
 					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio+R e1.',
