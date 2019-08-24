@@ -4,6 +4,9 @@ $redis->connect( '127.0.0.1' );
 $runee1 = file_exists( '/srv/http/startup.sh' );
 // temp
 if ( $runee1 && !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
+if ( !exec( 'usr/bin/grep versioninstalled /srv/http/addons.php' ) ) {
+	exec( '/usr/bin/wget https://github.com/rern/RuneAudio_Addons/raw/master/srv/http/addons.php -O /srv/http/addons.php' );
+}
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
