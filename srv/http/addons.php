@@ -87,7 +87,7 @@ foreach( $arrayalias as $alias ) {
 	if ( isset( $addon[ 'nouninstall' ] ) ) {
 		if ( $addon[ 'version' ] == $versioninstalled ) {
 			$check = '<i class="fa fa-check status"></i> ';
-			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">'.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">Update</a>';
 		} else {
 			$check = '<i class="fa fa-refresh status"></i> ';
 			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
