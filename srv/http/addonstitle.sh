@@ -282,25 +282,13 @@ restartlocalbrowser() {
 	! systemctl -q is-active local-browser && return
 	
 	title -nt "$bar Restart local browser ..."
-	if [[ -e /usr/bin/chromium ]]; then
-		systemctl restart local-browser
-	else
-		killall Xorg &> /dev/null
-		sleep 3
-		xinit &> /dev/null &
-	fi
+	systemctl restart local-browser
 }
 ## restart nginx seamlessly without dropping client connections
 restartnginx() {
 	kill -s USR2 $( cat /run/nginx.pid )         # spawn new nginx master-worker set
 	kill -s WINCH $( cat /run/nginx.pid.oldbin ) # stop old worker process
 	kill -s QUIT $( cat /run/nginx.pid.oldbin )  # stop old master process
-}
-reinitsystem() {
-	[[ -e /srv/http/startup.sh ]] && return
-	
-	title -nt "$bar Reinitialize system ..."
-	systemctl restart rune_SY_wrk
 }
 setColor() {
 	if (( $# > 0 )); then
