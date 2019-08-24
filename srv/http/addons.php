@@ -86,8 +86,10 @@ foreach( $arrayalias as $alias ) {
 	
 	if ( isset( $addon[ 'nouninstall' ] ) ) {
 		if ( $addon[ 'version' ] == $versioninstalled ) {
+			$check = '<i class="fa fa-check status"></i> ';
 			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">'.$buttonlabel.'</a>';
 		} else {
+			$check = '<i class="fa fa-refresh status"></i> ';
 			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>'.$buttonlabel.'</a>';
 		}
 		$btnun = '';
@@ -138,7 +140,7 @@ foreach( $arrayalias as $alias ) {
 			$star = '';
 		}
 		if ( $check === '<i class="fa fa-refresh status"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list .= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
+		$list.= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
 	}
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
