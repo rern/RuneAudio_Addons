@@ -15,15 +15,7 @@ $Wunpart = $Wall - $Wused - $Wavail;
 $htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
 $htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
 $htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
-if ( $MiBunpart < 10 ) {
-	$redis->hSet( 'addons', 'expa', 1 );
-	$htmlunpart = '';
-	$expandable = '';
-} else {
-	$htmlunpart = '<p id="diskunpart" class="disk" style="width: '.$Wunpart.'px;">&nbsp;</p>';
-	$htmlfree.= ' ● <a>'.( $MiBunpart < 1024 ? $MiBunpart.' MiB' : round( $MiBunpart / 1024, 2 ).' GiB' ).'</a> expandable';
-}
-$runeversion = file_exists( '/srv/http/startup.sh' ) ? '( <i class="fa fa-addons"></i> e1 )' : '(v '.$redis->get( 'release' ).')';
+$runeversion = '( <i class="fa fa-addons"></i> e1 )';
 ?>
 <!DOCTYPE html>
 <html>
@@ -56,7 +48,7 @@ $runeversion = file_exists( '/srv/http/startup.sh' ) ? '( <i class="fa fa-addons
 		<i class="close-root fa fa-times"></i>
 	</h1>
 	<p class="bl"></p>
-	<?=$htmlused.$htmlavail.$htmlunpart ?>&nbsp;
+	<?=$htmlused.$htmlavail ?>&nbsp;
 	<p id="disktext" class="disk"><?=$htmlfree.' '.$runeversion ?></p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
