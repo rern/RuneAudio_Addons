@@ -32,7 +32,6 @@ $addons = array(
 					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
-	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/update.sh',
