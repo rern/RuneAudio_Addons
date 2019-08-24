@@ -90,7 +90,7 @@ foreach( $arrayalias as $alias ) {
 			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">'.$buttonlabel.'</a>';
 		} else {
 			$check = '<i class="fa fa-refresh status"></i> ';
-			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>Install</a>';
+			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
 		}
 		$btnun = '';
 	} else if ( $versioninstalled ) {
