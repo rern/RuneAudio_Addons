@@ -26,7 +26,7 @@ $addons = array(
 ),
 'rre1' => array(
 	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1',
-	'version'     => '20190824',
+	'version'     => '20190822',
 	'revision'    => 'Fix: USB DAC plug and play.'
 					.'<br>Reserve mount parameters on failed mount.'
 					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
