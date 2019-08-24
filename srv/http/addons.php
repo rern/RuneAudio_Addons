@@ -88,7 +88,7 @@ foreach( $arrayalias as $alias ) {
 		if ( $addon[ 'version' ] == $versioninstalled ) {
 			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">'.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>'.$addon[ 'version' ].'x'.$redisaddons[ $alias ].$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>'.$buttonlabel.'</a>';
 		}
 		$btnun = '';
 	} else if ( $versioninstalled ) {
