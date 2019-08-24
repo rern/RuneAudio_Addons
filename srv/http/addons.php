@@ -74,7 +74,7 @@ array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
 foreach( $arrayalias as $alias ) {
 	$addon = $addons[ $alias ];
-	
+	$version = $redis->hGet( 'addons', $alias );
 	// hide by conditions
 	if ( $addon[ 'hide' ] ) continue;
 	
@@ -85,15 +85,15 @@ foreach( $arrayalias as $alias ) {
 	}
 	
 	if ( isset( $addon[ 'nouninstall' ] ) ) {
-		if ( $addon[ 'version' ] == $redisaddons[ $alias ] ) {
+		if ( $addon[ 'version' ] == $version ) {
 			$btnin = '<a class="btn btn-default disabled" style="pointer-events: unset" alias="'.$alias.'">'.$buttonlabel.'</a>';
 		} else {
-			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>'.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-primary" style="pointer-events: unset" alias="'.$alias.'"><i class="fa fa-refresh"></i>'.$addon[ 'version' ].'x'.$redisaddons[ $alias ].$buttonlabel.'</a>';
 		}
 		$btnun = '';
-	} else if ( $redisaddons[ $alias ] || $redis->hGet( 'addons', $alias ) ) {
+	} else if ( $version ) {
 		$check = '<i class="fa fa-check status"></i> ';
-		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $redisaddons[ $alias ] ) {
+		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $version ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
 			$btnin = '<a class="btn btn-default disabled">'.$buttonlabel.'</a>';
 		} else {
