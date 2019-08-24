@@ -1,9 +1,8 @@
 <?php
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
-$runee1 = file_exists( '/srv/http/startup.sh' );
 // temp
-if ( $runee1 && !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
+if ( !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
