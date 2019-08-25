@@ -44,30 +44,29 @@ $( '.boxed-group .btn' ).on( 'taphold', function () {
 	alias = $this.attr( 'alias' );
 	title = addons[ alias ].title.replace( / *\**$/, '' );
 	type = $this.text() === 'Install' ? 'Install' : 'Update';
-	rollback = addons[ alias ].rollback ? addons[ alias ].rollback : '';
+	rollback = addons[ alias ].rollback || '';
 	opt = '';
 	branch = '';
-	if ( type === 'Install' ) {
-		branchtest( 'Install version?', 'install' );
-		return 1;
-	} else if ( !rollback ) {
-		branchtest( 'Install version?' );
-		return 1;
-	}
-	info( {
-		  title     : title
-		, message   : 'Upgrade / Downgrade ?'
-		, radiohtml : '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
-					 +'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
-		, ok        : function() {
-			if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
-				opt = rollback +' -b';
-				formtemp();
-			} else {
-				branchtest( 'Upgrade / Downgrade to ?' );
+	if ( rollback ) {
+		info( {
+			  title     : title
+			, message   : 'Upgrade / Downgrade ?'
+			, radiohtml : '<label><input type="radio" name="inforadio" value="1" checked>&ensp;Rollback to previous version</label><br>'
+						 +'<label><input type="radio" name="inforadio" value="Branch">&ensp;Tree # / Branch ...</label>'
+			, ok        : function() {
+				if ( $( '#infoRadio input[type=radio]:checked').val() == 1 ) {
+					opt = rollback +' -b';
+					formtemp();
+				} else {
+					branchtest( 'Upgrade / Downgrade to ?' );
+				}
 			}
-		}
-	} );
+		} );
+	} else if ( type === 'Install' ) {
+		branchtest( 'Install version?', 'install' );
+	} else {
+		branchtest( 'Install version?' );
+	}
 } ).on( 'click', function () {
 	$this = $( this );
 	if ( $this.hasClass( 'disabled' ) ) return
