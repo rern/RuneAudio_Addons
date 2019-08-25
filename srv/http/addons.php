@@ -46,7 +46,7 @@ $htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round(
 	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail ?>&nbsp;
-	<p id="disktext" class="disk"><?=$htmlfree?> ( <i class="fa fa-addons"></i> e1 )</p>
+	<p id="disktext" class="disk"><?=$htmlfree?>&emsp;<i class="fa fa-addons"></i> e1</p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 <?php
