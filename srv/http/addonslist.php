@@ -33,7 +33,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
 ),
 'extr' => array(
-	'title'       => 'RuneAudio <i class="fa fa-addons"></i> e1 - Restore Extra Directories',
+	'title'       => 'RuneAudio+R e1 - Restore Extra Directories',
 	'maintainer'  => 'r e r n',
 	'description' => 'Restore extra directories: bookmarks, coverarts, lyrics, playlists and webradios.',
 	'buttonlabel' => 'Restore',
