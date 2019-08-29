@@ -42,6 +42,7 @@ $addons = array(
 	'buttonlabel' => 'Restore',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
+	'hide'        => 1
 ),
 'rrre' => array(
 	'title'       => 'RuneAudio+R e1 Reset',
