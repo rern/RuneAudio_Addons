@@ -9,8 +9,10 @@ $addons = array(
 
 'addo' => array(
 	'title'       => 'Addons',
-	'version'     => '20190824',
-	'revision'    => 'Add RuneAudio+R e1 support'
+	'version'     => '20190828',
+	'revision'    => 'Fix bugs on RuneAudio+R e1'
+					.'<br>...'
+					.'<br>Add RuneAudio+R e1 support'
 					.'<br>...'
 					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
 					.'<br>Rank mirror package servers before install/upgrade',
