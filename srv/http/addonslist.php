@@ -49,8 +49,8 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BRuneUIe.img/setup.sh',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img/setup.sh',
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
