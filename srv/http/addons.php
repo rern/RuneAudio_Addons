@@ -5,17 +5,14 @@ $time = time();
 $sudo = '/usr/bin/sudo /usr/bin';
 $MiBused = exec( "df / | tail -n 1 | awk '{print $3 / 1024}'" );
 $MiBavail = exec( "df / | tail -n 1 | awk '{print $4 / 1024}'" );
-$MiBunpart = exec( "$sudo/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" );
-$MiBall = $MiBused + $MiBavail + $MiBunpart;
+$MiBall = $MiBused + $MiBavail;
 
 $Wall = 170;
 $Wused = round( $MiBused / $MiBall * $Wall );
 $Wavail = round( $MiBavail / $MiBall * $Wall );
-$Wunpart = $Wall - $Wused - $Wavail;
 $htmlused = '<p id="diskused" class="disk" style="width: '.$Wused.'px;">&nbsp;</p>';
 $htmlavail = $Wavail ? '<p id="diskfree" class="disk" style="width: '.$Wavail.'px;">&nbsp;</p>' : '';
 $htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round( $MiBavail / 1024, 2 ).' GiB' ).'</white> free';
-$runeversion = '( <i class="fa fa-addons"></i> e1 )';
 ?>
 <!DOCTYPE html>
 <html>
@@ -49,7 +46,7 @@ $runeversion = '( <i class="fa fa-addons"></i> e1 )';
 	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail ?>&nbsp;
-	<p id="disktext" class="disk"><?=$htmlfree.' '.$runeversion ?></p>
+	<p id="disktext" class="disk"><?=$htmlfree?>&emsp;<i class="fa fa-addons"></i> e1</p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 <?php
@@ -78,20 +75,20 @@ foreach( $arrayalias as $alias ) {
 	
 	if ( $versioninstalled ) {
 		$check = '<i class="fa fa-check status"></i> ';
+		if ( isset( $addon[ 'nouninstall' ] ) ) {
+			$taphold = ' alias="'.$alias.'" style="pointer-events: unset"';
+			$hide = ' hide';
+		}
 		if ( !isset( $addon[ 'version' ] ) || $addon[ 'version' ] == $versioninstalled ) {
 			// !!! mobile browsers: <button>s submit 'formtemp' with 'get' > 'failed', use <a> instead
-			$btnin = '<a class="btn btn-default disabled">'.$buttonlabel.'</a>';
+			$btnin = '<a class="btn btn-default disabled"'.$taphold.'>'.$buttonlabel.'</a>';
 		} else {
 			$updatecount++;
 			$check = '<i class="fa fa-refresh status"></i> ';
 			$btnin = '<a class="btn btn-primary" alias="'.$alias.'"><i class="fa fa-refresh"></i>Update</a>';
 		}
 		$btnunattr = isset( $addon[ 'rollback' ] ) ?' rollback="'.$addon[ 'rollback' ].'"' : '';
-		if ( isset( $addon[ 'nouninstall' ] ) ) {
-			$btnun = '<a class="btn btn-default disabled" alias="'.$alias.'" style="pointer-events: unset"><i class="fa fa-minus-circle"></i>Uninstall</a>';
-		} else {
-			$btnun = '<a class="btn btn-default" alias="'.$alias.'"'.$btnunattr.'><i class="fa fa-minus-circle"></i>Uninstall</a>';
-		}
+		$btnun = '<a class="btn btn-default'.$hide.'" alias="'.$alias.'"'.$btnunattr.'><i class="fa fa-minus-circle"></i>Uninstall</a>';
 	} else {
 		$check = '';
 		$needspace = isset( $addon[ 'needspace' ] ) ? $addon[ 'needspace' ] : 1;
