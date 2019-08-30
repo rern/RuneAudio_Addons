@@ -84,18 +84,6 @@ $addons = array(
 	'buttonlabel' => 'Link',
 	'installurl'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
 ),
-'mpdu' => array(
-	'title'       => 'MPD Upgrade',
-	'needspace'   => 300,
-	'maintainer'  => 'r e r n',
-	'description' => 'Upgrade MPD to latest version, 0.21.9 as of 20190520:'
-					.'<br>Fix conflicts, missing lib symlinks, missing packages'
-					.'<br>But local browser <w>Midori</w>, if enabled, needs to be replaced with Chromium.',
-	'thumbnail'   => '/img/addons/thumbmpdu.png',
-	'buttonlabel' => 'Upgrade',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/mpd',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/mpd/install.sh',
-),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
