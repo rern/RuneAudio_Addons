@@ -83,6 +83,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbdual.gif',
 	'buttonlabel' => 'Link',
 	'installurl'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
+	'hide'        => 1
 ),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
