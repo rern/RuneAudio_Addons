@@ -180,7 +180,7 @@ function info( O ) {
 			$( '#infoCancel' )
 				.html( O.cancellabel || 'Cancel' )
 				.css( 'background', O.cancelcolor || '' );
-			if ( 'cancelbutton' in O ) $( '#infoCancel' ).show();
+			if ( 'cancelbutton' in O || 'cancellabel' in O ) $( '#infoCancel' ).show();
 			if ( typeof O.cancel === 'function' ) $( '#infoCancel' ).click( O.cancel );
 		}
 		if ( 'button' in O ) {
