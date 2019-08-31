@@ -34,7 +34,7 @@ $htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round(
 			font-style : normal;
 		}
 	</style>
-	<link rel="stylesheet" href="/assets/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/assets/css/info.<?=$time?>.css">
 	<link rel="stylesheet" href="/assets/css/addons.<?=$time?>.css">
 	<link rel="icon" href="/assets/img/addons/addons.<?=$time?>.png">
 </head>
@@ -46,7 +46,7 @@ $htmlfree = '<white>'.( $MiBavail < 1024 ? round( $MiBavail, 2 ).' MiB' : round(
 	</h1>
 	<p class="bl"></p>
 	<?=$htmlused.$htmlavail ?>&nbsp;
-	<p id="disktext" class="disk"><?=$htmlfree?>&emsp;<i class="fa fa-addons"></i> e1</p>
+	<p id="disktext" class="disk"><?=$htmlfree?>&emsp;<i class="fa fa-addons"></i> e1.1</p>
 	<a id="issues" class="disk" href="http://www.runeaudio.com/forum/addons-menu-install-addons-the-easy-way-t5370-1000.html" target="_blank">issues&ensp;<i class="fa fa-external-link"></i>
 	</a>
 <?php
@@ -56,8 +56,8 @@ $blocks = '';
 // sort
 include 'addonslist.php';
 $arraytitle = array_column( $addons, 'title' );
-$addoindex = array_search( 'Addons Menu', $arraytitle );
-$arraytitle[ $addoindex ] = 0;
+//$addoindex = array_search( 'Addons Menu', $arraytitle );
+//$arraytitle[ $addoindex ] = 0;
 $updatecount = 0;
 array_multisort( $arraytitle, SORT_NATURAL | SORT_FLAG_CASE, $addons );
 $arrayalias = array_keys( $addons );
@@ -75,6 +75,7 @@ foreach( $arrayalias as $alias ) {
 	
 	if ( $versioninstalled ) {
 		$check = '<i class="fa fa-check status"></i> ';
+		$hide = '';
 		if ( isset( $addon[ 'nouninstall' ] ) ) {
 			$taphold = ' alias="'.$alias.'" style="pointer-events: unset"';
 			$hide = ' hide';
@@ -113,19 +114,16 @@ foreach( $arrayalias as $alias ) {
 	
 	// addon list ---------------------------------------------------------------
 	$title = $addon[ 'title' ];
-	// hide Addons Menu in list
-	if ( $alias !== 'addo' ) {
-		if ( substr( $title, -1 ) === '*' ) {
-			$last = array_pop( explode( ' ', $title ) );
-			$listtitle = preg_replace( '/\**$/', '', $title );
-			$star = '&nbsp;<a>'.str_replace( '*', '★', $last ).'</a>';
-		} else {
-			$listtitle = $title;
-			$star = '';
-		}
-		if ( $check === '<i class="fa fa-refresh status"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
-		$list.= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
+	if ( substr( $title, -1 ) === '*' ) {
+		$last = array_pop( explode( ' ', $title ) );
+		$listtitle = preg_replace( '/\**$/', '', $title );
+		$star = '&nbsp;<a>'.str_replace( '*', '★', $last ).'</a>';
+	} else {
+		$listtitle = $title;
+		$star = '';
 	}
+	if ( $check === '<i class="fa fa-refresh status"></i> ' ) $listtitle = '<blue>'.$listtitle.'</blue>';
+	$list.= '<li alias="'.$alias.'" title="Go to this addon">'.$check.$listtitle.$star.'</li>';
 	// addon blocks -------------------------------------------------------------
 	$version = isset( $addon[ 'version' ] ) ? $addon[ 'version' ] : '';
 	$revisionclass = $version ? 'revision' : 'revisionnone';
@@ -176,7 +174,7 @@ echo $blocks;
 ?>
 </div>
 <p id="bottom"></p> <!-- for bottom padding -->
-<div id="loader" class="hide"><img src="/img/runelogo.<?=$time?>.svg"></div>
+<div id="loader" class="hide"><i class="fa fa-addons blink"></i></div>
 
 <?php
 $keepkey = array( 'title', 'installurl', 'rollback', 'option' );
@@ -189,7 +187,7 @@ $redis->del( 'restart' );
 ?>
 <script src="/assets/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
 <script src="/assets/js/vendor/jquery.mobile.custom.min.<?=$time?>.js"></script>
-<script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
+<script src="/assets/js/info.<?=$time?>.js"></script>
 <script src="/assets/js/addons.<?=$time?>.js"></script>
 <script>
 var addons = <?=json_encode( $addonslist )?>;
