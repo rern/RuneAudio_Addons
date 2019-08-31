@@ -7,23 +7,8 @@ if ( !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 2019
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
-'addo' => array(
-	'title'       => 'Addons',
-	'version'     => '20190828',
-	'revision'    => 'Fix bugs on RuneAudio+R e1'
-					.'<br>...'
-					.'<br>Add RuneAudio+R e1 support'
-					.'<br>...'
-					.'<br>Pre-install common packages, <w>glibc</w> and <w>openssl-cryptodev</w>...'
-					.'<br>Rank mirror package servers before install/upgrade',
-	'maintainer'  => 'r e r n',
-	'description' => 'This Addons main page.',
-	'thumbnail'   => '/img/addons/thumbaddo.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio_Addons',
-	'installurl'  => 'https://github.com/rern/RuneAudio_Addons/raw/master/install.sh',
-),
 'rre1' => array(
-	'title'       => 'RuneAudio+R e1 ***',
+	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190825',
 	'revision'    => 'Fix: USB DAC plug and play.'
 					.'<br>Preserve dialogue parameters on failed mount.'
@@ -58,7 +43,7 @@ $addons = array(
 	'hide'        => 1,
 ),
 'aria' => array(
-	'title'       => 'Aria2 *',
+	'title'       => 'Aria2',
 	'version'     => '20170901',
 	'needspace'   => 15,
 	'revision'    => 'Initial release',
@@ -75,7 +60,7 @@ $addons = array(
 	),
 ),
 'dual' => array(
-	'title'       => 'Dual Boot: RuneAudio + OSMC *',
+	'title'       => 'Dual Boot: RuneAudio + OSMC',
 	'maintainer'  => 'r e r n',
 	'description' => 'Best of Audio Distro - <w>RuneAudio</w> 0.3 + Addons Menu ready (ArchLinux MPD)'
 					.'<br>Best of Video Distro - <w>OSMC</w> 2017-08-1 (Raspbian Kodi)'
@@ -112,7 +97,7 @@ $addons = array(
 	),
 ),
 'gpio' => array(
-	'title'       => 'RuneUI GPIO *',
+	'title'       => 'RuneUI GPIO',
 	'version'     => '20190824',
 	'needspace'   => 5,
 	'revision'    => 'Support RuneAudio+R e1'
@@ -127,7 +112,7 @@ $addons = array(
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ),
 'tran' => array(
-	'title'       => 'Transmission *',
+	'title'       => 'Transmission',
 	'version'     => '20180715',
 	'needspace'   => 9,
 	'revision'    => 'Fix bugs by reverting back to custom compiled package.'
