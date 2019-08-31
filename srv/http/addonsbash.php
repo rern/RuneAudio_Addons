@@ -26,16 +26,15 @@ $heading = $alias !== 'cove' ? 'Addons Progress' : 'Update Thumbnails';
 			font-style : normal;
 		}
 	</style>
-	<link rel="stylesheet" href="/assets/css/addonsinfo.<?=$time?>.css">
+	<link rel="stylesheet" href="/assets/css/info.<?=$time?>.css">
 	<link rel="stylesheet" href="/assets/css/addons.<?=$time?>.css">
 </head>
 <body>
 
 <?php include 'addonslist.php';?>
-<!-- php 'flush' on uninstall 'addo', addonsinfo.js file will be gone if put below 'flush' -->
 <script src="/assets/js/vendor/jquery-2.1.0.min.<?=$time?>.js"></script>
 <script src="/assets/js/vendor/jquery.documentsize.min.<?=$time?>.js"></script>
-<script src="/assets/js/addonsinfo.<?=$time?>.js"></script>
+<script src="/assets/js/info.<?=$time?>.js"></script>
 <script>
 $( 'head' ).append( '<style>#hidescrollv, pre { max-height: '+ ( $.documentHeight() - 170 ) +'px }</style>' );
 // js for '<pre>' must be here before start stdout
