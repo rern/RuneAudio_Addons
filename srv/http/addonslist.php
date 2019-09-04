@@ -30,12 +30,24 @@ $addons = array(
 	'hide'        => 1
 ),
 'rrre' => array(
-	'title'       => 'RuneAudio+R e1 Reset',
+	'title'       => 'RuneAudio+R e1 -  Reset',
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img/setup.sh',
+),
+'radi' => array(
+	'title'       => 'RuneAudio+R e1 - Import Webradio',
+	'maintainer'  => 'r e r n',
+	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
+	'buttonlabel' => 'Import',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/UPDATE/importwebradio.sh',
+	'option'      => array(
+		'wait'      => 'Copy directory with webradio files:'
+					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
+					  .'<br>before continue.'
+	),
 ),
 'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
