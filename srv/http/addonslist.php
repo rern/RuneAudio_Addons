@@ -68,11 +68,6 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbaria.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-	'option'      => array(
-		'yesno'     => array(
-			'message' => 'Start <w>Aria2</w> on system startup?'
-		)
-	),
 ),
 'dual' => array(
 	'title'       => 'Dual Boot: RuneAudio + OSMC',
@@ -142,14 +137,6 @@ $addons = array(
 		'password'  => array(
 			'message' => 'Password for user <w>root</w> (blank = no password):',
 			'label'   => 'Password',
-		),
-		'checkbox'  => array(
-			'message' => '',
-			'list'    => array(
-				'Install <w>WebUI</w> alternative?'            => 1,
-				'Start <w>Transmission</w> on system startup?' => 1
-			),
-			'checked' => array( 0, 1 )
 		),
 	),
 ),
