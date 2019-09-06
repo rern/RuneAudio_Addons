@@ -17,7 +17,7 @@ $addons = array(
 					.'<br>Preserve dialogue parameters on failed mount.'
 					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
 	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio+R e1.',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'thumbnail'   => '/img/addons/thumbenha.gif',
