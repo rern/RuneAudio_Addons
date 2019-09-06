@@ -1,11 +1,7 @@
 <?php
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
-// temp - until next imgage released
-if ( !$redis->hExists( 'addons', 'rre1' ) ) $redis->hSet( 'addons', 'rre1', 20190822 );
-if ( !exec( '/usr/bin/grep ow_gr /srv/http/addonstitle.sh' ) ) {
-	exec( 'wget -qN --no-check-certificate https://github.com/rern/RuneAudio-Re1/raw/UPDATE/srv/http/addonstitle.sh -O /srv/http/addonstitle.sh' );
-}
+// temp - minor updates
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
