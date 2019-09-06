@@ -20,6 +20,7 @@ $addons = array(
 	'description' => 'Updates for RuneAudio+R e1.',
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
+	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
 ),
