@@ -9,9 +9,7 @@ $addons = array(
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190825',
-	'revision'    => 'Fix: USB DAC plug and play.'
-					.'<br>Preserve dialogue parameters on failed mount.'
-					.'<br>Fix: play button on Add+Play when Open Playback on Add+Play is off.',
+	'revision'    => 'Release e1.1',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
