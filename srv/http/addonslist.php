@@ -40,7 +40,7 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
 	'buttonlabel' => 'Import',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/UPDATE/importwebradio.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
 	'option'      => array(
 		'wait'      => 'Copy directory with webradio files:'
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
