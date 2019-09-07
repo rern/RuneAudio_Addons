@@ -33,8 +33,8 @@ $addons = array(
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => 'Reset',
 //	'thumbnail'   => '/img/addons/thumbreset.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/RuneAudio%2BR_e1.img/setup.sh',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
 ),
 'radi' => array(
 	'title'       => 'RuneAudio+R e1 - Import Webradio',
