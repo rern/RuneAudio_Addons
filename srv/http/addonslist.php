@@ -8,8 +8,15 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20190825',
-	'revision'    => 'Release e1.1',
+	'version'     => '20190910',
+	'revision'    => 'Fix: MPD - "No volume" setting bug'
+					.'<br>Fix: MPD - "Play on startup" bug'
+					.'<br>Fix: Sysyem - URL not changed along with "Player name" setting'
+					.'<br>Fix: Network - LAN static IP setting bug'
+					.'<br>Fix: Network - Some hidden SSIDs show as blank'
+					.'<br>Add: Library - Context menu - Exclude directory from database'
+					.'<br>Add: Sources - Scan for available network shares (network neighborhood)'
+					.'<br>Change: Sources - Move Update button to Sources submenu',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
