@@ -16,8 +16,8 @@ $addons = array(
 					.'<br>Fix: Network - LAN static IP setting bug'
 					.'<br>Fix: Network - Some hidden SSIDs show as blank'
 					.'<br>Fix: Sources - Unresponsive while updating Library'
-					.'<br>Add: Library - Context menu - Exclude directory from database'
 					.'<br>Add: Sources - Scan for available network shares (network neighborhood)'
+					.'<br>Add: Library - Context menu - Exclude directory from database'
 					.'<br>Change: Sources - Move Update button to Sources submenu',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
