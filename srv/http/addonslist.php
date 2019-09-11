@@ -2,6 +2,7 @@
 $redis = new Redis();
 $redis->connect( '127.0.0.1' );
 // temp - minor updates
+exec( "/usr/bin/sed -i 's/Fotget/Forget/' /srv/http/assets/js/network.js" );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
