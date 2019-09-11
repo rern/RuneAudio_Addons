@@ -9,7 +9,7 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20190911',
+	'version'     => '20190912',
 	'revision'    => 'Fix: MPD - "No volume" setting bug'
 					.'<br>Fix: MPD - "Play on startup" bug'
 					.'<br>Fix: Sysyem - URL not changed along with "Player name" setting'
