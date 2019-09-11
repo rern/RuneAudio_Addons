@@ -115,7 +115,7 @@ $addons = array(
 ),
 'gpio' => array(
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20190824',
+	'version'     => '20190911',
 	'needspace'   => 5,
 	'revision'    => 'Support RuneAudio+R e1'
 					.'<br>...'
@@ -130,9 +130,11 @@ $addons = array(
 ),
 'tran' => array(
 	'title'       => 'Transmission',
-	'version'     => '20180715',
+	'version'     => '20190911',
 	'needspace'   => 9,
-	'revision'    => 'Fix bugs by reverting back to custom compiled package.'
+	'revision'    => 'Support RuneAudio+R e1'
+					.'<br>...'
+					.'<br>Fix bugs by reverting back to custom compiled package.'
 					.'<br>...'
 					.'<br>Update alternateive WebUI source',
 	'maintainer'  => 'r e r n',
