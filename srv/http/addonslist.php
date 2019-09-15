@@ -40,7 +40,7 @@ $addons = array(
 	'title'       => 'RuneAudio+R e1 -  Reset',
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
-	'buttonlabel' => 'Reset',
+	'buttonlabel' => '<i class="fa fa-reset"></i>Reset',
 //	'thumbnail'   => '/img/addons/thumbreset.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
@@ -49,7 +49,7 @@ $addons = array(
 	'title'       => 'RuneAudio+R e1 - Import Webradio',
 	'maintainer'  => 'r e r n',
 	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
-	'buttonlabel' => 'Import',
+	'buttonlabel' => '<i class="fa fa-input"></i>Import',
 //	'thumbnail'   => '/img/addons/thumbwebr.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/blob/master/importwebradio.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
@@ -76,24 +76,13 @@ $addons = array(
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 ),
-'dual' => array(
-	'title'       => 'Dual Boot: RuneAudio + OSMC',
-	'maintainer'  => 'r e r n',
-	'description' => 'Best of Audio Distro - <w>RuneAudio</w> 0.3 + Addons Menu ready (ArchLinux MPD)'
-					.'<br>Best of Video Distro - <w>OSMC</w> 2017-08-1 (Raspbian Kodi)'
-					.'<br>Best of Dual Boot - <w>NOOBS</w> 2.4',
-	'thumbnail'   => '/img/addons/thumbdual.gif',
-	'buttonlabel' => 'Link',
-	'installurl'  => 'http://www.runeaudio.com/forum/dual-boot-noobs-rune-osmc-pi2-pi3-t3822.html',
-	'hide'        => 1
-),
 'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
 	'description' => 'Fix package download errors caused by unreachable servers.'
 					.'<br>Rank mirror package servers by download speed and latency.',
 	'thumbnail'   => '/img/addons/thumbrank.png',
-	'buttonlabel' => 'Rank',
+	'buttonlabel' => '<i class="fa fa-bars"></i>Rank',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 	'option'      => array(
@@ -107,7 +96,6 @@ $addons = array(
 				'7'  => 7,
 				'8'  => 8,
 				'9'  => 9,
-				'10' => 10,
 			),
 			'checked' => 3,
 		),
