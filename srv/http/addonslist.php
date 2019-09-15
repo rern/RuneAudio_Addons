@@ -41,7 +41,7 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
 	'buttonlabel' => '<i class="fa fa-reset"></i>Reset',
-//	'thumbnail'   => '/img/addons/thumbreset.png',
+	'thumbnail'   => '/img/addons/thumbreset.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
 ),
@@ -50,7 +50,7 @@ $addons = array(
 	'maintainer'  => 'r e r n',
 	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
 	'buttonlabel' => '<i class="fa fa-input"></i>Import',
-//	'thumbnail'   => '/img/addons/thumbwebr.png',
+	'thumbnail'   => '/img/addons/thumbwebr.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/blob/master/importwebradio.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
 	'option'      => array(
