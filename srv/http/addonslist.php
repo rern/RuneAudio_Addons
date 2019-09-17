@@ -9,7 +9,12 @@ $addons = array(
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190917',
-	'revision'    => 'Fix: MPD - "No volume" setting bug'
+	'revision'    => 'Fix - Playback - embedded coverart not found.'
+					.'<br>Fix - Sources - Click USB and NAS list not open unmount dialogue box.'
+					.'<br>Add - MPD - Buffer settings'
+					.'<br>Add - System - UPnP settings for Google Play Music, Qobuz, Spotify and Tidal.'
+					.'<br>...'
+					.'<br>Fix: MPD - "No volume" setting bug'
 					.'<br>Fix: MPD - "Play on startup" bug'
 					.'<br>Fix: Sysyem - URL not changed along with "Player name" setting'
 					.'<br>Fix: Network - LAN static IP setting bug'
