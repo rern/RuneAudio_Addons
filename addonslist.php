@@ -1,5 +1,6 @@
 <?php
 // temp - minor updates
+file_put_contents( '/srv/http/data/system/version', 'e1.2' );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
