@@ -6,7 +6,7 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20190917',
+	'version'     => '20190929',
 	'revision'    => 'Fix - mission version'
 					.'<br>Fix - NAS mounts',
 	'maintainer'  => 'r e r n',
