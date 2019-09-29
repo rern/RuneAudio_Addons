@@ -7,20 +7,7 @@ $addons = array(
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190917',
-	'revision'    => 'Fix - Playback - embedded coverart not found.'
-					.'<br>Fix - Sources - Click USB and NAS list not open unmount dialogue box.'
-					.'<br>Add - MPD - Buffer settings'
-					.'<br>Add - System - UPnP settings for Google Play Music, Qobuz, Spotify and Tidal.'
-					.'<br>...'
-					.'<br>Fix: MPD - "No volume" setting bug'
-					.'<br>Fix: MPD - "Play on startup" bug'
-					.'<br>Fix: Sysyem - URL not changed along with "Player name" setting'
-					.'<br>Fix: Network - LAN static IP setting bug'
-					.'<br>Fix: Network - Some hidden SSIDs show as blank'
-					.'<br>Fix: Sources - Unresponsive while updating Library'
-					.'<br>Add: Sources - Scan for available network shares (network neighborhood)'
-					.'<br>Add: Library - Context menu - Exclude directory from database'
-					.'<br>Change: Sources - Move Update button to Sources submenu',
+	'revision'    => 'Initial release - R+Re 1.2',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
