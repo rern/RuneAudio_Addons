@@ -1,14 +1,14 @@
 <?php
 // temp - minor updates
-file_put_contents( '/srv/http/data/system/version', 'e1.2' );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20190917',
-	'revision'    => 'Initial release - R+Re 1.2',
+	'version'     => '20190929',
+	'revision'    => 'Fix - mission version'
+					.'<br>Fix - NAS mounts',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
