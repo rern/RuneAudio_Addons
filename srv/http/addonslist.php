@@ -30,6 +30,7 @@ $addons = array(
 	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
+	'hide'        => 1
 ),
 'extr' => array(
 	'title'       => 'RuneAudio+R e1 - Restore Extra Directories',
