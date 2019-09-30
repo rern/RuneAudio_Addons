@@ -7,8 +7,8 @@ $addons = array(
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190929',
-	'revision'    => 'Fix - mission version'
-					.'<br>Fix - NAS mounts',
+	'revision'    => 'Fix - NAS mounts to not require a reboot'
+					.'<br>Fix - mission version number',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
