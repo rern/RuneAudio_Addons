@@ -9,7 +9,7 @@ $addons = array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '20190917',
 	'maintainer'  => 'r e r n',
-	'description' => '<w>OBSOLETE:</w> Please upgrade to a <a href="https://www.runeaudio.com/forum/runeaudio-r-e1-an-improved-version-of-runeaudio-t6883-80.html#p28597">new version</a> <i class="fa fa-link"></i>',
+	'description' => '<w>OBSOLETE:</w> Please upgrade to <a href="https://www.runeaudio.com/forum/runeaudio-r-e1-an-improved-version-of-runeaudio-t6883-80.html#p28597">R+R e1.2</a> <i class="fa fa-link"></i>',
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'thumbnail'   => '/img/addons/thumbenha.gif',
