@@ -7,8 +7,13 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20190929',
-	'revision'    => 'Fix - NAS mounts to not require a reboot'
+	'version'     => '20191001',
+	'revision'    => 'Fix - Addons update badge showed but no updates.'
+					.'<br>Fix - Lyrics cannot be saved.'
+					.'<br>Fix - Playlists not showed not saved.'
+					.'<br>Fix - Bookmarks and webradio bugs.'
+					.'<br>...'
+					.'<br>Fix - NAS mounts to not require a reboot'
 					.'<br>Fix - mission version number',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
