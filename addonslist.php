@@ -14,7 +14,7 @@ $addons = array(
 					.'<br>Fix - Bookmarks and webradio bugs.'
 					.'<br>...'
 					.'<br>Fix - NAS mounts to not require a reboot'
-					.'<br>Fix - mission version number',
+					.'<br>Fix - missing version number',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
