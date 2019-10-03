@@ -7,8 +7,15 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20191001',
-	'revision'    => 'Fix - Addons update badge showed but no updates.'
+	'version'     => '20191004',
+	'revision'    => 'Fix - Library tools show/hide not working.'
+					.'<br>Fix - Bookmark thumbnails cannot be created.'
+					.'<br>Fix - NAS mounts data in persistent settings.'
+					.'<br>Fix - GPIO menu listed without installed addon.'
+					.'<br>Fix - RPi browser current screenoff duration display in seconds.'
+					.'<br>Fix - I2S module "Generic AKM AK4xxx" cannot be set.'
+					.'<br>...'
+					.'<br>Fix - Addons update badge showed but no updates.'
 					.'<br>Fix - Lyrics cannot be saved.'
 					.'<br>Fix - Playlists not showed not saved.'
 					.'<br>Fix - Bookmarks and webradio bugs.'
