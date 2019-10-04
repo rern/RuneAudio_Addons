@@ -1,6 +1,5 @@
 <?php
 // temp - minor updates
-@unlink( '/srv/http/install.sh' );
 
 ///////////////////////////////////////////////////////////////
 $addons = array(
