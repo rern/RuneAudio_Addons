@@ -6,8 +6,11 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20191004',
-	'revision'    => 'Fix - Library tools show/hide not working.'
+	'version'     => '20191006',
+	'revision'    => 'Fix - Update notification when Auto update enabled'
+					.'<br>Fix - System page layout on small screen.'
+					.'<br>...'
+					.'<br>Fix - Library tools show/hide not working.'
 					.'<br>Fix - Bookmark thumbnails cannot be created.'
 					.'<br>Fix - NAS mounts data in persistent settings.'
 					.'<br>Fix - GPIO menu listed without installed addon.'
@@ -17,10 +20,7 @@ $addons = array(
 					.'<br>Fix - Addons update badge showed but no updates.'
 					.'<br>Fix - Lyrics cannot be saved.'
 					.'<br>Fix - Playlists not showed not saved.'
-					.'<br>Fix - Bookmarks and webradio bugs.'
-					.'<br>...'
-					.'<br>Fix - NAS mounts to not require a reboot'
-					.'<br>Fix - missing version number',
+					.'<br>Fix - Bookmarks and webradio bugs.',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
