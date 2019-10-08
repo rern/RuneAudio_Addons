@@ -6,7 +6,7 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20191008',
+	'version'     => '201910081',
 	'revision'    => 'Fix - Switches in setting pages not responding'
 					.'<br>Fix - NAS mount notification bug'
 					.'<br>Allow consume mode while others still on.'
