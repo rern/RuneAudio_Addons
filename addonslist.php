@@ -6,8 +6,12 @@ $addons = array(
 
 'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '20191006',
-	'revision'    => 'Fix - Update notification when Auto update enabled'
+	'version'     => '20191008',
+	'revision'    => 'Fix - Switches in setting pages not responding'
+					.'<br>Fix - NAS mount notification bug'
+					.'<br>Allow consume mode while others still on.'
+					.'<br>...'
+					.'<br>Fix - Update notification when Auto update enabled'
 					.'<br>Fix - System page layout on small screen.'
 					.'<br>...'
 					.'<br>Fix - Library tools show/hide not working.'
@@ -15,12 +19,7 @@ $addons = array(
 					.'<br>Fix - NAS mounts data in persistent settings.'
 					.'<br>Fix - GPIO menu listed without installed addon.'
 					.'<br>Fix - RPi browser current screenoff duration display in seconds.'
-					.'<br>Fix - I2S module "Generic AKM AK4xxx" cannot be set.'
-					.'<br>...'
-					.'<br>Fix - Addons update badge showed but no updates.'
-					.'<br>Fix - Lyrics cannot be saved.'
-					.'<br>Fix - Playlists not showed not saved.'
-					.'<br>Fix - Bookmarks and webradio bugs.',
+					.'<br>Fix - I2S module "Generic AKM AK4xxx" cannot be set.',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
 	'buttonlabel' => 'Update',
