@@ -28,38 +28,6 @@ $addons = [
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
 ],
-'extr' => [
-	'title'       => 'RuneAudio+R e1 - Restore Extra Directories',
-	'maintainer'  => 'r e r n',
-	'description' => 'Restore extra directories: bookmarks, coverarts, lyrics, playlists and webradios.',
-	'buttonlabel' => 'Restore',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
-	'hide'        => 1
-],
-'rrre' => [
-	'title'       => 'RuneAudio+R e1 -  Reset',
-	'maintainer'  => 'r e r n',
-	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
-	'buttonlabel' => '<i class="fa fa-reset"></i>Reset',
-	'thumbnail'   => '/img/addons/thumbreset.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
-],
-'radi' => [
-	'title'       => 'RuneAudio+R e1 - Import Webradio',
-	'maintainer'  => 'r e r n',
-	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
-	'buttonlabel' => '<i class="fa fa-input"></i>Import',
-	'thumbnail'   => '/img/addons/thumbwebr.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/blob/master/importwebradio.sh',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
-	'option'      => [
-		'wait'      => 'Copy directory with webradio files:'
-					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
-					  .'<br>before continue.'
-	],
-],
 'cove' => [
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
