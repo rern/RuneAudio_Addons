@@ -1,10 +1,8 @@
 <?php
 // temp - minor updates
-
 ///////////////////////////////////////////////////////////////
-$addons = [
-
-'rre1' => [
+$addons = array(
+'rre1' => array(
 	'title'       => 'RuneAudio+R e1 *',
 	'version'     => '201910081',
 	'revision'    => 'Fix - Switches in setting pages not responding'
@@ -27,8 +25,8 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
-],
-'extr' => [
+),
+'extr' => array(
 	'title'       => 'RuneAudio+R e1 - Restore Extra Directories',
 	'maintainer'  => 'r e r n',
 	'description' => 'Restore extra directories: bookmarks, coverarts, lyrics, playlists and webradios.',
@@ -36,8 +34,8 @@ $addons = [
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
 	'hide'        => 1
-],
-'rrre' => [
+),
+'rrre' => array(
 	'title'       => 'RuneAudio+R e1 -  Reset',
 	'maintainer'  => 'r e r n',
 	'description' => 'Reset RuneAudio <i class="fa fa-addons"></i> e1 for initial setup.',
@@ -45,8 +43,8 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbreset.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/setup.sh',
-],
-'radi' => [
+),
+'radi' => array(
 	'title'       => 'RuneAudio+R e1 - Import Webradio',
 	'maintainer'  => 'r e r n',
 	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
@@ -54,30 +52,30 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbwebr.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/blob/master/importwebradio.sh',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
-	'option'      => [
+	'option'      => array(
 		'wait'      => 'Copy directory with webradio files:'
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
-	],
-],
-'cove' => [
+	),
+),
+'cove' => array(
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
-],
-'aria' => [
+),
+'aria' => array(
 	'title'       => 'Aria2',
 	'version'     => '20170901',
 	'needspace'   => 15,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Download utility that supports HTTP(S], FTP, BitTorrent, and Metalink.'
+	'description' => 'Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink.'
 					.'<br>Pre-configured and ready to use.',
 	'thumbnail'   => '/img/addons/thumbaria.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
-],
-'rank' => [
+),
+'rank' => array(
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
 	'description' => 'Fix package download errors caused by unreachable servers.'
@@ -86,10 +84,10 @@ $addons = [
 	'buttonlabel' => '<i class="fa fa-bars"></i>Rank',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'      => [
-		'radio'     => [
+	'option'      => array(
+		'radio'     => array(
 			'message' => 'Download test for each server(seconds):',
-			'list'    => [
+			'list'    => array(
 				'3'  => 3,
 				'4'  => 4,
 				'5'  => 5,
@@ -97,12 +95,12 @@ $addons = [
 				'7'  => 7,
 				'8'  => 8,
 				'9'  => 9,
-			],
+			),
 			'checked' => 3,
-		],
-	],
-],
-'gpio' => [
+		),
+	),
+),
+'gpio' => array(
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20191006',
 	'needspace'   => 5,
@@ -116,8 +114,8 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbgpio.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-],
-'tran' => [
+),
+'tran' => array(
 	'title'       => 'Transmission',
 	'version'     => '20190911',
 	'needspace'   => 9,
@@ -131,12 +129,11 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbtran.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/transmission',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/transmission/install.sh',
-	'option'      => [
-		'password'  => [
+	'option'      => array(
+		'password'  => array(
 			'message' => 'Password for user <w>root</w> (blank = no password):',
 			'label'   => 'Password',
-		],
-	],
-],
-
-];
+		),
+	),
+),
+);
