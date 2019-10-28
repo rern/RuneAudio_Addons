@@ -4,46 +4,36 @@
 ///////////////////////////////////////////////////////////////
 $addons = [
 
-'rre1' => [
-	'title'       => 'RuneAudio+R e1 *',
-	'version'     => '201910081',
-	'revision'    => 'Fix - Switches in setting pages not responding'
-					.'<br>Fix - NAS mount notification bug'
-					.'<br>Allow consume mode while others still on.'
-					.'<br>...'
-					.'<br>Fix - Update notification when Auto update enabled'
-					.'<br>Fix - System page layout on small screen.'
-					.'<br>...'
-					.'<br>Fix - Library tools show/hide not working.'
-					.'<br>Fix - Bookmark thumbnails cannot be created.'
-					.'<br>Fix - NAS mounts data in persistent settings.'
-					.'<br>Fix - GPIO menu listed without installed addon.'
-					.'<br>Fix - RPi browser current screenoff duration display in seconds.'
-					.'<br>Fix - I2S module "Generic AKM AK4xxx" cannot be set.',
+'rre2' => [
+	'title'       => 'RuneAudio+R e2 *',
+	'version'     => '20191101',
+	'revision'    => 'Initial Release',
 	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e1.',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'thumbnail'   => '/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
+	'hide'        => 1
+],
+'rest' => [
+	'title'       => 'R+R e2 - Restore settings',
+	'maintainer'  => 'r e r n',
+	'description' => 'Restore database and settings from backup.',
+	'buttonlabel' => 'Restore',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/raw/master/extradir',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/extradir/install.sh',
+	'option'      => [
+		'wait'      => 'Copy existing database and settings:'
+					  .'<br>directory <code>data</code> > <code>/srv/http</code>'
+					  .'<br>before continue.'
+	],
 ],
 'cove' => [
 	'title'       => 'Browse By CoverArt Thumbnails',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
-],
-'aria' => [
-	'title'       => 'Aria2',
-	'version'     => '20170901',
-	'needspace'   => 15,
-	'revision'    => 'Initial release',
-	'maintainer'  => 'r e r n',
-	'description' => 'Download utility that supports HTTP(S], FTP, BitTorrent, and Metalink.'
-					.'<br>Pre-configured and ready to use.',
-	'thumbnail'   => '/img/addons/thumbaria.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 ],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',
@@ -84,6 +74,18 @@ $addons = [
 	'thumbnail'   => '/img/addons/thumbgpio.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
 	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+],
+'aria' => [
+	'title'       => 'Aria2',
+	'version'     => '20170901',
+	'needspace'   => 15,
+	'revision'    => 'Initial release',
+	'maintainer'  => 'r e r n',
+	'description' => 'Download utility that supports HTTP(S], FTP, BitTorrent, and Metalink.'
+					.'<br>Pre-configured and ready to use.',
+	'thumbnail'   => '/img/addons/thumbaria.png',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/aria2',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/aria2/install.sh',
 ],
 'tran' => [
 	'title'       => 'Transmission',
