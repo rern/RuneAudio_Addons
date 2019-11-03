@@ -18,7 +18,7 @@ $addons = [
 	'hide'        => 1
 ],
 'rest' => [
-	'title'       => 'R+R e2 - Restore settings',
+	'title'       => 'RuneAudio+R e2 - Restore settings',
 	'maintainer'  => 'r e r n',
 	'description' => 'Restore database and settings from backup.',
 	'buttonlabel' => 'Restore',
