@@ -13,8 +13,8 @@ $addons = [
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'thumbnail'   => '/img/addons/thumbenha.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/install.sh',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/install.sh',
 	'hide'        => 1
 ],
 'rest' => [
