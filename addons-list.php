@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////
 $addons = [
 
-'rre2' => [
+'rare' => [
 	'title'       => 'RuneAudio+R e2 *',
 	'version'     => '20191101',
 	'revision'    => 'Initial Release',
