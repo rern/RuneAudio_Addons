@@ -35,6 +35,16 @@ $addons = [
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
 	'hide'        => 1,
 ],
+'expa' => [
+	'title'       => 'Expand Partition',
+	'maintainer'  => 'r e r n',
+	'description' => 'Expand SD card ROOT partition to full capacity.',
+	'thumbnail'   => '/img/addons/thumbpart.png',
+	'buttonlabel' => 'Expand',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
+	'hide'        => !$MiBunpart,
+],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
