@@ -6,8 +6,10 @@ $addons = [
 
 'rare' => [
 	'title'       => 'RuneAudio+R e2 *',
-	'version'     => '20191101',
-	'revision'    => 'Initial Release',
+	'version'     => '20191111',
+	'revision'    => 'Fix - Addons bugs'
+					.'<br>Fix - SD card bug'
+					.'<br>Improve - saved settings',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
 	'buttonlabel' => 'Update',
@@ -15,14 +17,13 @@ $addons = [
 	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/install.sh',
-	'hide'        => 1
 ],
 'rest' => [
 	'title'       => 'RuneAudio+R e2 - Restore settings',
 	'maintainer'  => 'r e r n',
 	'description' => 'Restore database and settings from backup.',
 	'buttonlabel' => 'Restore',
-	'thumbnail'   => '/assets/img/addons/thumbrest.gif',
+	'thumbnail'   => '/assets/img/addons/thumbrest.png',
 	'sourcecode'  => 'https://github.com/rern/RuneOS/raw/master/usr/local/bin/runerestore.sh',
 	'installurl'  => 'https://github.com/rern/RuneOS/raw/master/usr/local/bin/runerestore.sh',
 	'option'      => [
