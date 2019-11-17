@@ -72,6 +72,20 @@ $addons = [
 		],
 	],
 ],
+'radi' => [
+	'title'       => 'RuneAudio+R e1 - Import Webradio',
+	'maintainer'  => 'r e r n',
+	'description' => 'Import <code>*.pls</code> or <code>*.m3u</code> webradio files.',
+	'buttonlabel' => '<i class="fa fa-input"></i>Import',
+	'thumbnail'   => '/img/addons/thumbwebr.png',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re1/blob/master/importwebradio.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re1/raw/master/importwebradio.sh',
+	'option'      => [
+		'wait'      => 'Copy directory with webradio files:'
+					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
+					  .'<br>before continue.'
+	],
+],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20191113',
