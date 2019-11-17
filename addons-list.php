@@ -5,9 +5,11 @@
 $addons = [
 
 'rare' => [
-	'title'       => 'RuneAudio+R e2 *',
-	'version'     => '20191111',
-	'revision'    => 'Fix - Addons bugs'
+	'title'       => 'RuneAudio+R e2',
+	'version'     => '20191117',
+	'revision'    => 'Fix - bugs'
+					.'<br>...'
+					.'<br>Fix - Addons bugs'
 					.'<br>Fix - SD card bug'
 					.'<br>Improve - saved settings',
 	'maintainer'  => 'r e r n',
