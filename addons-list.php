@@ -8,8 +8,7 @@ $addons = [
 	'title'       => 'RuneAudio+R e2',
 	'version'     => '20200120',
 	'revision'    => 'Fixed - Auto update in MPD settings'
-					.'<br>Fixed - Bluetooth and WiFi in System settings'
-					.'<br>Fixed - Browser on RPi in System settings'
+					.'<br>Fixed - Bluetooth, Wi-Fi and Browser on RPi in System settings'
 					.'<br>Fixed - Add 1st Webradio not show unless refresh'
 					.'<br>Improved - Playback interface now responses without delay'
 					.'<br>...'
