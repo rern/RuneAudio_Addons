@@ -110,7 +110,7 @@ $addons = [
 ],
 'aria' => [
 	'title'       => 'Aria2',
-	'version'     => '20170901',
+	'version'     => '20190901',
 	'needspace'   => 15,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
