@@ -80,7 +80,7 @@ $addons = [
 	],
 ],
 'radi' => [
-	'title'       => 'RuneAudio+R e1 - Import Webradio',
+	'title'       => 'RuneAudio+R e2 - Import Webradio',
 	'maintainer'  => 'r e r n',
 	'description' => 'Import default format, <code>*.pls</code> or <code>*.m3u</code>, webradio files.',
 	'buttonlabel' => '<i class="fa fa-input"></i>Import',
