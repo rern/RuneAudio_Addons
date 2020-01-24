@@ -95,7 +95,7 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20191113',
+	'version'     => '20200120',
 	'needspace'   => 5,
 	'revision'    => 'Support RuneAudio+R e2'
 					.'<br>...'
