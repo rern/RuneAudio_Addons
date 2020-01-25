@@ -6,17 +6,17 @@ $addons = [
 
 'rare' => [
 	'title'       => 'RuneAudio+R e2',
-	'version'     => '20200120',
-	'revision'    => 'Fixed - Auto update in MPD settings'
+	'version'     => '20200125',
+	'revision'    => 'Fixed - Add 1st bookmark'
+					.'<br>Minor improvements'
+					.'<br>...'
+					.'<br>Fixed - Auto update in MPD settings'
 					.'<br>Fixed - Bluetooth, Wi-Fi and Browser on RPi in System settings'
 					.'<br>Fixed - Add 1st Webradio not show unless refresh'
 					.'<br>Improved - Playback interface now responses without delay'
 					.'<br>...'
 					.'<br>Fix - Select box not response on Android'
-					.'<br>Improve I2S module setting'
-					.'<br>...'
-					.'<br>Improve NAS mount'
-					.'<br>Improve system status',
+					.'<br>Improve I2S module setting',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
 	'buttonlabel' => 'Update',
