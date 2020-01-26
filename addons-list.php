@@ -6,15 +6,16 @@ $addons = [
 
 'rare' => [
 	'title'       => 'RuneAudio+R e2',
-	'version'     => '20200125',
-	'revision'    => 'Fixed - Add 1st bookmark'
+	'version'     => '20200126',
+	'revision'    => 'Fixed - Add bookmark'
+					.'<br>Improved - Edit Webradio'
+					.'<br>...'
 					.'<br>Minor improvements'
 					.'<br>...'
 					.'<br>Fixed - Auto update in MPD settings'
 					.'<br>Fixed - Bluetooth, Wi-Fi and Browser on RPi in System settings'
 					.'<br>Fixed - Add 1st Webradio not show unless refresh'
 					.'<br>Improved - Playback interface now responses without delay'
-					.'<br>...'
 					.'<br>Fix - Select box not response on Android'
 					.'<br>Improve I2S module setting',
 	'maintainer'  => 'r e r n',
