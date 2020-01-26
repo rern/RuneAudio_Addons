@@ -7,7 +7,7 @@ $addons = [
 'rare' => [
 	'title'       => 'RuneAudio+R e2',
 	'version'     => '20200126',
-	'revision'    => 'Fixed - Add bookmark'
+	'revision'    => 'Fixed - Add 1st bookmark'
 					.'<br>Improved - Edit Webradio'
 					.'<br>...'
 					.'<br>Minor improvements'
