@@ -27,8 +27,8 @@ $addons = [
 	'description' => 'Restore database and settings from backup.',
 	'buttonlabel' => 'Restore',
 	'thumbnail'   => '/assets/img/addons/thumbrest.png',
-	'sourcecode'  => 'https://github.com/rern/RuneOS/raw/master/usr/local/bin/runerestore.sh',
-	'installurl'  => 'https://github.com/rern/RuneOS/raw/master/usr/local/bin/runerestore.sh',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2/blob/master/usr/local/bin/runerestore.sh',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/usr/local/bin/runerestore.sh',
 	'option'      => [
 		'wait'      => 'Copy existing database and settings:'
 					  .'<br>directory <code>data</code> > <code>/srv/http</code>'
