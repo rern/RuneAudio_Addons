@@ -6,13 +6,20 @@ $addons = [
 
 'rare' => [
 	'title'       => 'RuneAudio+R e2',
-	'version'     => '20200127',
-	'revision'    => 'Improved - File sharing(Samba)'
+	'version'     => '20200211',
+	'revision'    => 'Improve setting pages'
+					.'<br>Fix Addons loading'
+					.'<br>Fix on-board devices setting'
+					.'<br>Fix Browser on RPi rotate'
+					.'<br>Fix Lyrics fetching songs with aphostrophe'
+					.'<br>Add System Status interval update (toggle)'
+					.'<br>Add Tap song = Replace + Play'
+					.'<br>Add on-screen keyboard for Browser on RPi (available on standard version)'
+					.'<br>Improve Restore Settings addon'
 					.'<br>...'
+					.'<br>Improved - File sharing(Samba)'
 					.'<br>Fixed - Add 1st bookmark'
-					.'<br>Improved - Edit Webradio'
-					.'<br>...'
-					.'<br>Minor improvements',
+					.'<br>Improved - Edit Webradio',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
 	'buttonlabel' => 'Update',
