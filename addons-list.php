@@ -6,8 +6,13 @@ $addons = [
 
 'rare' => [
 	'title'       => 'RuneAudio+R e2',
-	'version'     => '20200211',
-	'revision'    => 'Improve setting pages'
+	'version'     => '20200213',
+	'revision'    => 'Fix MPD update not saved'
+					.'<br>Fix last song at the screen bottom in Album view cannot be selected'
+					.'<br>Fix Network page - Wi-Fi listing'
+					.'<br>Add status to all setting pages'
+					.'<br>...'
+					.'<br>Improve setting pages'
 					.'<br>Fix Addons loading'
 					.'<br>Fix on-board devices setting'
 					.'<br>Fix Browser on RPi rotate'
@@ -67,8 +72,9 @@ $addons = [
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
 	'option'      => [
-		'radio'     => [
-			'message' => 'Download test for each server(seconds):',
+		'select'     => [
+			'message' => 'Download test for each server:',
+			'label'   => 'Seconds',
 			'list'    => [
 				'3'  => 3,
 				'4'  => 4,
