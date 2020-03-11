@@ -37,10 +37,10 @@ $addons = [
 ],
 'rre3' => [
 	'title'       => 'RuneAudio+R e3',
-	'version'     => '20200313',
+	'version'     => '20200311',
 	'revision'    => 'Fix bugs',
 	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e3.',
 	'buttonlabel' => 'Update',
 	'nouninstall' => 1,
 	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
