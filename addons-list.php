@@ -2,6 +2,7 @@
 // temp - minor updates
 
 ///////////////////////////////////////////////////////////////
+$version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
 
 'rare' => [
@@ -32,6 +33,20 @@ $addons = [
 	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/install.sh',
+	'hide'        => $version === 'e3'
+],
+'rre3' => [
+	'title'       => 'RuneAudio+R e3',
+	'version'     => '20200313',
+	'revision'    => 'Fix bugs',
+	'maintainer'  => 'r e r n',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
+	'buttonlabel' => 'Update',
+	'nouninstall' => 1,
+	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re3',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re3/raw/master/install.sh',
+	'hide'        => $version !== 'e3'
 ],
 'rest' => [
 	'title'       => 'RuneAudio+R e2 - Restore settings',
@@ -46,6 +61,7 @@ $addons = [
 					  .'<br>directory <code>data</code> > <code>/srv/http</code>'
 					  .'<br>before continue.'
 	],
+	'hide'        => $version === 'e3'
 ],
 'cove' => [
 	'title'       => 'Browse By CoverArt Thumbnails',
