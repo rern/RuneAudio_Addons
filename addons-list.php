@@ -1,6 +1,6 @@
 <?php
 // temp - minor updates
-exec( "sed -i '/sed -i/ d' /srv/http/addons-terminal.php &> /dev/null' );
+exec( "sed -i '/sed -i/ d' /srv/http/addons-terminal.php &> /dev/null" );
 ///////////////////////////////////////////////////////////////
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
