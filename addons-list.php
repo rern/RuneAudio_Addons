@@ -105,7 +105,7 @@ $addons = [
 	],
 ],
 'radi' => [
-	'title'       => 'RuneAudio+R e2 - Import Webradio',
+	'title'       => 'Import Webradio',
 	'maintainer'  => 'r e r n',
 	'description' => 'Import webradio files from other versions of RuneAudio.',
 	'buttonlabel' => '<i class="fa fa-input"></i>Import',
@@ -117,7 +117,6 @@ $addons = [
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
 	],
-	'hide'        => $version === 'e3'
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
