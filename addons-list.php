@@ -63,6 +63,11 @@ $addons = [
 	],
 	'hide'        => $version === 'e3'
 ],
+'cove' => [
+	'title'       => 'Browse By CoverArt Thumbnails',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
+	'hide'        => 1,
+],
 'expa' => [
 	'title'       => 'Expand Partition',
 	'maintainer'  => 'r e r n',
@@ -112,7 +117,6 @@ $addons = [
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
 	],
-	'hide'        => $version === 'e3'
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
