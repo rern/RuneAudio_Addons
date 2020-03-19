@@ -117,6 +117,7 @@ $addons = [
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
 	],
+	'hide'        => $version === 'e3'
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
