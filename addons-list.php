@@ -1,6 +1,10 @@
 <?php
 // temp - minor updates
-file_put_contents( '/srv/http/addons-terminal.php', fopen( 'https://github.com/rern/RuneAudio-Re3/raw/master/srv/http/addons-terminal.php', 'r' ) );
+exec( 'sed -i -e "/fa-times disabled/ d
+" -e \'/fa-addons/ a\
+<a href="/addons.php"><i class="close-root fa fa-times"></i></a>
+\' /tmp/addons-terminal.php' );
+exec( "sed -i 's|data/display|data/system|' /srv/http/bash/addons-functions.sh" );
 ///////////////////////////////////////////////////////////////
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
