@@ -3,7 +3,7 @@
 exec( 'sed -i -e "/fa-times disabled/ d
 " -e \'/fa-addons/ a\
 <a href="/addons.php"><i class="close-root fa fa-times"></i></a>
-\' /tmp/addons-terminal.php' );
+\' /srv/http/addons-terminal.php' );
 exec( "sed -i 's|data/display|data/system|' /srv/http/bash/addons-functions.sh" );
 ///////////////////////////////////////////////////////////////
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
