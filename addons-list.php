@@ -1,6 +1,6 @@
 <?php
 // temp - minor updates
-exec( "sed -i '/sed -i/ d' /srv/http/addons-terminal.php &> /dev/null" );
+file_put_contents( '/srv/http/addons-terminal.php', fopen( 'https://github.com/rern/RuneAudio-Re3/raw/master/srv/http/addons-terminal.php', 'r' ) );
 ///////////////////////////////////////////////////////////////
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
