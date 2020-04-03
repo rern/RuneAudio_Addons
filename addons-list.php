@@ -123,7 +123,6 @@ $addons = [
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20200404',
-	'needspace'   => 5,
 	'revision'    => 'Support RuneAudio+R e3'
 					.'<br>...'
 					.'<br>Link setting location to common directory'
@@ -138,7 +137,6 @@ $addons = [
 'aria' => [
 	'title'       => 'Aria2',
 	'version'     => '20190901',
-	'needspace'   => 15,
 	'revision'    => 'Initial release',
 	'maintainer'  => 'r e r n',
 	'description' => 'Download utility that supports HTTP(S], FTP, BitTorrent, and Metalink.'
@@ -150,7 +148,6 @@ $addons = [
 'tran' => [
 	'title'       => 'Transmission',
 	'version'     => '20190911',
-	'needspace'   => 9,
 	'revision'    => 'Support RuneAudio+R e1'
 					.'<br>...'
 					.'<br>Fix bugs by reverting back to custom compiled package.'
