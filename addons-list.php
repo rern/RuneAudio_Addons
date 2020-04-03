@@ -78,7 +78,7 @@ $addons = [
 	'buttonlabel' => 'Expand',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/expand_partition',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/expand_partition/expand.sh',
-	'hide'        => !$MiBunpart,
+	'hide'        => ( exec( "$sudo/sfdisk -F /dev/mmcblk0 | head -n1 | awk '{print $6 / 1024 / 1024}'" ) < 10 )
 ],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',
