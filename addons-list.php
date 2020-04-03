@@ -122,9 +122,9 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20200120',
+	'version'     => '20200404',
 	'needspace'   => 5,
-	'revision'    => 'Support RuneAudio+R e2'
+	'revision'    => 'Support RuneAudio+R e3'
 					.'<br>...'
 					.'<br>Link setting location to common directory'
 					.'<br>...'
