@@ -7,39 +7,9 @@ exec( "sed -i 's|data/display|data/system|' /srv/http/bash/addons-functions.sh" 
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
 
-'rare' => [
-	'title'       => 'RuneAudio+R e2',
-	'version'     => '20200213',
-	'revision'    => 'Fix MPD update not saved'
-					.'<br>Fix last song at the screen bottom in Album view cannot be selected'
-					.'<br>Fix Network page - Wi-Fi listing'
-					.'<br>Add status to all setting pages'
-					.'<br>...'
-					.'<br>Improve setting pages'
-					.'<br>Fix Addons loading'
-					.'<br>Fix on-board devices setting'
-					.'<br>Fix Browser on RPi rotate'
-					.'<br>Fix Lyrics fetching songs with aphostrophe'
-					.'<br>Add System Status interval update (toggle)'
-					.'<br>Add Tap song = Replace + Play'
-					.'<br>Add on-screen keyboard for Browser on RPi (available on standard version)'
-					.'<br>Improve Restore Settings addon'
-					.'<br>...'
-					.'<br>Improved - File sharing(Samba)'
-					.'<br>Fixed - Add 1st bookmark'
-					.'<br>Improved - Edit Webradio',
-	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e2.',
-	'buttonlabel' => 'Update',
-	'nouninstall' => 1,
-	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/install.sh',
-	'hide'        => $version === 'e3'
-],
 'rre3' => [
 	'title'       => 'RuneAudio+R e3',
-	'version'     => '20200403',
+	'version'     => '20200405',
 	'revision'    => 'Fix bugs',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e3.',
