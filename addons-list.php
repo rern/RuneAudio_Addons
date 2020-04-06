@@ -2,7 +2,6 @@
 // temp - minor updates
 $uploadfixed = exec( 'grep -q client_max_body_size /etc/nginx/nginx.conf && echo 1 || echo 0' );
 if ( !$uploadfixed ) file_put_contents( '/srv/http/addons-terminal.php', fopen( 'https://github.com/rern/RuneAudio-Re3/raw/master/srv/http/addons-terminal.php', 'r' ) );
-exec( "sed -i 's|data/display|data/system|' /srv/http/bash/addons-functions.sh" );
 ///////////////////////////////////////////////////////////////
 $version = rtrim( file_get_contents( '/srv/http/data/system/version' ) );
 $addons = [
