@@ -20,26 +20,6 @@ $addons = [
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re3/raw/master/install.sh',
 	'hide'        => $version !== 'e3'
 ],
-'rest' => [
-	'title'       => 'RuneAudio+R e2 - Restore settings',
-	'maintainer'  => 'r e r n',
-	'description' => 'Restore database and settings from backup.',
-	'buttonlabel' => 'Restore',
-	'thumbnail'   => '/assets/img/addons/thumbrest.png',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re2/blob/master/usr/local/bin/runerestore.sh',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re2/raw/master/usr/local/bin/runerestore.sh',
-	'option'      => [
-		'wait'      => 'Copy existing database and settings:'
-					  .'<br>directory <code>data</code> > <code>/srv/http</code>'
-					  .'<br>before continue.'
-	],
-	'hide'        => $version === 'e3'
-],
-'cove' => [
-	'title'       => 'Browse By CoverArt Thumbnails',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/coverarts/scan.sh',
-	'hide'        => 1,
-],
 'expa' => [
 	'title'       => 'Expand Partition',
 	'maintainer'  => 'r e r n',
@@ -92,12 +72,8 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20200404',
-	'revision'    => 'Support RuneAudio+R e3'
-					.'<br>...'
-					.'<br>Link setting location to common directory'
-					.'<br>...'
-					.'<br>Improve notifications - show devices name',
+	'version'     => '20200406',
+	'revision'    => 'Support RuneAudio+R e3',
 	'maintainer'  => 'r e r n',
 	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
