@@ -68,6 +68,7 @@ $addons = [
 		'wait'      => 'Copy playlist files to <code>/var/lib/mpd/playlists</code>'
 					  .'<br>before continue.'
 	],
+	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' )
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
