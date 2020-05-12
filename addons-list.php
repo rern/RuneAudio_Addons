@@ -57,6 +57,18 @@ $addons = [
 					  .'<br>before continue.'
 	],
 ],
+'plsi' => [
+	'title'       => 'Import Playlists',
+	'maintainer'  => 'r e r n',
+	'description' => 'Import playlists from other versions of RuneAudio.',
+	'buttonlabel' => '<i class="fa fa-input"></i>Import',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/playlist',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/playlist/importplaylist.sh',
+	'option'      => [
+		'wait'      => 'Copy playlist files to <code>/var/lib/mpd/playlists</code>'
+					  .'<br>before continue.'
+	],
+],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20200503',
