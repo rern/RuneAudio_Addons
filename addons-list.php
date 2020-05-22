@@ -17,31 +17,15 @@ $addons = [
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re3/raw/master/install.sh',
 	'hide'        => !file_exists( '/usr/bin/spotifyd' )
 ],
-'rank' => [
-	'title'       => 'Rank Mirror Package Servers',
+'gpio' => [
+	'title'       => 'RuneUI GPIO',
+	'version'     => '20200503',
+	'revision'    => 'Support RuneAudio+R e3',
 	'maintainer'  => 'r e r n',
-	'description' => 'Fix package download errors caused by unreachable servers.'
-					.'<br>Rank mirror package servers by download speed and latency.',
-	'thumbnail'   => '/assets/img/addons/thumbrank.png',
-	'buttonlabel' => '<i class="fa fa-bars"></i>Rank',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
-	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
-	'option'      => [
-		'select'     => [
-			'message' => 'Download test for each server:',
-			'label'   => 'Seconds',
-			'list'    => [
-				'3'  => 3,
-				'4'  => 4,
-				'5'  => 5,
-				'6'  => 6,
-				'7'  => 7,
-				'8'  => 8,
-				'9'  => 9,
-			],
-			'checked' => 3,
-		],
-	],
+	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
+	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
+	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
+	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ],
 'radi' => [
 	'title'       => 'Import Webradio',
@@ -70,15 +54,31 @@ $addons = [
 	],
 	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' )
 ],
-'gpio' => [
-	'title'       => 'RuneUI GPIO',
-	'version'     => '20200503',
-	'revision'    => 'Support RuneAudio+R e3',
+'rank' => [
+	'title'       => 'Rank Mirror Package Servers',
 	'maintainer'  => 'r e r n',
-	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
-	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
+	'description' => 'Fix package download errors caused by unreachable servers.'
+					.'<br>Rank mirror package servers by download speed and latency.',
+	'thumbnail'   => '/assets/img/addons/thumbrank.png',
+	'buttonlabel' => '<i class="fa fa-bars"></i>Rank',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/rankmirrors',
+	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh',
+	'option'      => [
+		'select'     => [
+			'message' => 'Download test for each server:',
+			'label'   => 'Seconds',
+			'list'    => [
+				'3'  => 3,
+				'4'  => 4,
+				'5'  => 5,
+				'6'  => 6,
+				'7'  => 7,
+				'8'  => 8,
+				'9'  => 9,
+			],
+			'checked' => 3,
+		],
+	],
 ],
 'aria' => [
 	'title'       => 'Aria2',
