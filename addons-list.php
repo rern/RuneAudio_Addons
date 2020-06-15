@@ -1,7 +1,7 @@
 <?php
 // temp - minor updates
+exec( '/usr/bin/sed -i "/color\|hidecover\|order\|updating_db\|update\|volumenone/ d" /srv/http/data/system/display' );
 exec( '/usr/bin/sed -i "/$( grep -B1 } /srv/http/data/system/display | head -1 )/ s/,$//" /srv/http/data/system/display' );
-
 ///////////////////////////////////////////////////////////////
 $addons = [
 
