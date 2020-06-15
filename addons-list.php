@@ -1,13 +1,12 @@
 <?php
 // temp - minor updates
-exec( '/usr/bin/sed -i "/color\|hidecover\|order\|updating_db\|update\|volumenone/ d" /srv/http/data/system/display' );
-exec( '/usr/bin/sed -i "/$( grep -B1 } /srv/http/data/system/display | head -1 )/ s/,$//" /srv/http/data/system/display' );
+
 ///////////////////////////////////////////////////////////////
 $addons = [
 
 'rre3' => [
 	'title'       => 'RuneAudio+R e3',
-	'version'     => '20200613',
+	'version'     => '20200615',
 	'revision'    => 'Fix bugs',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e3.',
