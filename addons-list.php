@@ -4,6 +4,19 @@
 ///////////////////////////////////////////////////////////////
 $addons = [
 
+'rre4' => [
+	'title'       => 'RuneAudio+R e4',
+	'version'     => '20200618',
+	'revision'    => 'Fix bugs',
+	'maintainer'  => 'r e r n',
+	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e4.',
+	'buttonlabel' => 'Update',
+	'nouninstall' => 1,
+	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
+	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re4',
+	'installurl'  => 'https://github.com/rern/RuneAudio-Re4/raw/master/install.sh',
+	'hide'        => !file_exists( '/srv/http/data/addons/rre4' )
+],
 'rre3' => [
 	'title'       => 'RuneAudio+R e3',
 	'version'     => '202006151',
