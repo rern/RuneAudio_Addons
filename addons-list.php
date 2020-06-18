@@ -28,7 +28,7 @@ $addons = [
 	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re3',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re3/raw/master/install.sh',
-	'hide'        => !file_exists( '/usr/bin/spotifyd' )
+	'hide'        => !file_exists( '/usr/bin/spotifyd' ) || file_exists( '/srv/http/data/addons/rre4' )
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
