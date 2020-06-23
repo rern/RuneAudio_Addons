@@ -1,6 +1,5 @@
-Addons for RuneAudio
+Addons for RuneAudio+R
 ---
-As of 20190822, most of addons have been integrated to [**RuneAudio+R e4**](https://github.com/rern/RuneAudio-Re4).
 
 ![addons](https://github.com/rern/_assets/blob/master/RuneAudio_Addons/addons.gif)  
 
