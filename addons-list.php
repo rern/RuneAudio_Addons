@@ -32,7 +32,7 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20200518',
+	'version'     => '20200624',
 	'revision'    => 'Support RuneAudio+R e3',
 	'maintainer'  => 'r e r n',
 	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
