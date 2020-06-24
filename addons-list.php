@@ -6,8 +6,8 @@ $addons = [
 
 'rre4' => [
 	'title'       => 'RuneAudio+R e4',
-	'version'     => '202006231',
-	'revision'    => 'Initial release',
+	'version'     => '20200624',
+	'revision'    => 'Fix bugs',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e4.',
 	'buttonlabel' => 'Update',
