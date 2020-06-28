@@ -17,19 +17,6 @@ $addons = [
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re4/raw/master/install.sh',
 	'hide'        => !file_exists( '/srv/http/data/addons/rre4' )
 ],
-'rre3' => [
-	'title'       => 'RuneAudio+R e3',
-	'version'     => '202006151',
-	'revision'    => 'Fix bugs',
-	'maintainer'  => 'r e r n',
-	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e3.',
-	'buttonlabel' => 'Update',
-	'nouninstall' => 1,
-	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re3',
-	'installurl'  => 'https://github.com/rern/RuneAudio-Re3/raw/master/install.sh',
-	'hide'        => !file_exists( '/usr/bin/spotifyd' ) || file_exists( '/srv/http/data/addons/rre4' )
-],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
 	'version'     => '20200624',
