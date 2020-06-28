@@ -45,7 +45,7 @@ $addons = [
 	'maintainer'  => 'r e r n',
 	'description' => 'Import webradio files from other versions of RuneAudio.',
 	'buttonlabel' => '<i class="fa fa-input"></i>Import',
-	'thumbnail'   => '/img/addons/thumbwebr.png',
+	'thumbnail'   => '/assets/img/addons/thumbwebr.png',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio/tree/master/webradio',
 	'installurl'  => 'https://github.com/rern/RuneAudio/raw/master/webradio/importwebradio.sh',
 	'option'      => [
