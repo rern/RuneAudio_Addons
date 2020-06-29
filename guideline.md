@@ -281,9 +281,7 @@ do not isert/append into another insert/append
 ```php
 'ALIAS' => array(
 /**/	'version'       => 'YYYMMDD',
-/**/	'rollback'      => 'TREE SHA',
 /**/	'revision'      => 'SUMMARY',
-/**/	'needspace'     => MB,
 	'title'         => 'ADDON NAME',
 	'maintainer'    => 'AUTHOR NAME',
 	'description'   => 'DESCRIPTION',
@@ -292,11 +290,10 @@ do not isert/append into another insert/append
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
 /**/	'buttonlabel'   => 'LABEL',
 /**/	'nouninstall'   => TRUE,
-/**/	'depend'        => 'ALIAS',
-/**/	'conflict'      => 'ALIAS',
 /**/	'hide'          => BOOLEAN,
 /**/	'option'        => array(
 	'wait'      => 'MESSAGE',
+	'warning'   => 'MESSAGE',
 	'confirm'   => 'MESSAGE',
 	'skip'      => 'MESSAGE',
 	'yesno'     => array(
@@ -358,14 +355,6 @@ do not isert/append into another insert/append
 	- omit > `Install` button always enable, no `Uninstall` button
 - run once addons:
 	- omit but `redis-cli hset addons <alias> 1` in install script > `Install` button disable after run
-
-**`'rollback'`** - for rollback to previous version
-- before merge to master brance, create a branch and name as current `'version'`
-- edit `'rollback'` to this branch name and will be the rollback version
-
-**`'needspace'`**
-- MB: downloaded packages files + installed files + downloaded files + decompress files
-- omit for 1 MB or less
 
 **`'buttonlabel'`** - for non-install only
 - `'Link'` - for information only (open `'sourceurl'`)
