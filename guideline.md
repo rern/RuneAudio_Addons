@@ -368,12 +368,6 @@ do not isert/append into another insert/append
 - `'exec'` if bash script result = true
 - `'php'` if php script result = true
 
-**`'depend'`** 
-- for depended addon which must be installed first 
-
-**`'conflict'`** 
-- for installed conflict addon which must be uninstalled  
-
 **`'option'`** - user inputs  
 - each `'key' => 'value'` open a dialog
 - each `'key'` will be appended as `install.sh` arguments / parameters
