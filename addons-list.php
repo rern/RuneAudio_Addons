@@ -22,8 +22,8 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20200624',
-	'revision'    => 'Support RuneAudio+R e3',
+	'version'     => '20200702',
+	'revision'    => 'Fix reset timer',
 	'maintainer'  => 'r e r n',
 	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
 	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
@@ -97,7 +97,7 @@ $addons = [
 'tran' => [
 	'title'       => 'Transmission',
 	'version'     => '20190911',
-	'revision'    => 'Support RuneAudio+R e1'
+	'revision'    => 'Support RuneAudio+R'
 					.'<br>...'
 					.'<br>Fix bugs by reverting back to custom compiled package.'
 					.'<br>...'
