@@ -23,7 +23,7 @@ $addons = [
 ],
 'gpio' => [
 	'title'       => 'RuneUI GPIO',
-	'version'     => '20200703',
+	'version'     => '20200704',
 	'revision'    => 'Fix reset timer',
 	'maintainer'  => 'r e r n',
 	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
