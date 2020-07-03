@@ -1,5 +1,6 @@
 <?php
 // temp - minor updates
+exec( '[[ $( cat /srv/http/data/system/version ) == e4 && ! -e /srv/http/data/addons/rre4 ]] && echo 20200628 > /srv/http/data/addons/rre4' );
 
 ///////////////////////////////////////////////////////////////
 $addons = [
