@@ -382,6 +382,8 @@ do not isert/append into another insert/append
 	- `'yesno'` = `No` `Yes`
 		- `Yes` = 1 | `No` = 0
 		- `checked` = set primary button
+	- `'warning'` = `Ok` (activated if not blank)
+		- `Ok` = back
 	- `'text'` = `<input type="text">`
 		- `Ok` = input
 		- `required` = ok button disabled if required field blank
