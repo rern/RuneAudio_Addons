@@ -21,16 +21,6 @@ $addons = [
 					."<br><br><a class='bl' href='https://www.runeaudio.com/forum/runeaudio-r-e4-t7084.html'>RuneAudio+R e4</a>" ),*/
 	'hide'        => !file_exists( '/srv/http/data/addons/rre4' )
 ],
-'gpio' => [
-	'title'       => 'RuneUI GPIO',
-	'version'     => '20200706',
-	'revision'    => 'Fix reset timer',
-	'maintainer'  => 'r e r n',
-	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
-	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
-],
 'radi' => [
 	'title'       => 'Import Webradio',
 	'maintainer'  => 'r e r n',
