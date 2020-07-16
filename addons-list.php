@@ -34,6 +34,7 @@ $addons = [
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
 	],
+	'postinfo'    => 'Directory <code>/mnt/MPD/Webradio</code> can be deleted.'
 ],
 'plsi' => [
 	'title'       => 'Import Playlists',
@@ -46,7 +47,8 @@ $addons = [
 		'wait'      => 'Copy playlist files to <code>/var/lib/mpd/playlists</code>'
 					  .'<br>before continue.'
 	],
-	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' )
+	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' ),
+	'postinfo'    => 'Files in /var/lib/mpd/playlists can be deleted.'
 ],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',
