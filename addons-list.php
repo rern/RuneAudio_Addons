@@ -7,7 +7,7 @@ $addons = [
 
 'rre4' => [
 	'title'       => 'RuneAudio+R e4',
-	'version'     => '20200703',
+	'version'     => '20200716',
 	'revision'    => 'Fix bugs',
 	'maintainer'  => 'r e r n',
 	'description' => 'Updates for RuneAudio <i class="fa fa-addons"></i> e4.',
@@ -20,16 +20,6 @@ $addons = [
 					.'<br>Please download latest image file:'
 					."<br><br><a class='bl' href='https://www.runeaudio.com/forum/runeaudio-r-e4-t7084.html'>RuneAudio+R e4</a>" ),*/
 	'hide'        => !file_exists( '/srv/http/data/addons/rre4' )
-],
-'gpio' => [
-	'title'       => 'RuneUI GPIO',
-	'version'     => '20200706',
-	'revision'    => 'Fix reset timer',
-	'maintainer'  => 'r e r n',
-	'description' => 'GPIO-connected relay module control for power on / off audio equipments.',
-	'thumbnail'   => '/assets/img/addons/thumbgpio.gif',
-	'sourcecode'  => 'https://github.com/rern/RuneUI_GPIO',
-	'installurl'  => 'https://github.com/rern/RuneUI_GPIO/raw/master/install.sh',
 ],
 'radi' => [
 	'title'       => 'Import Webradio',
@@ -44,6 +34,7 @@ $addons = [
 					  .'<br><code>Webradio/*</code> > <code>/mnt/MPD</code>'
 					  .'<br>before continue.'
 	],
+	'postinfo'    => 'Directory <code>/mnt/MPD/Webradio</code> can be deleted.'
 ],
 'plsi' => [
 	'title'       => 'Import Playlists',
@@ -56,7 +47,8 @@ $addons = [
 		'wait'      => 'Copy playlist files to <code>/var/lib/mpd/playlists</code>'
 					  .'<br>before continue.'
 	],
-	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' )
+	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' ),
+	'postinfo'    => 'Files in <code>/var/lib/mpd/playlists</code> can be deleted.'
 ],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',

@@ -288,6 +288,7 @@ do not isert/append into another insert/append
 	'sourcecode'    => 'https://github.com/RuneAddons/REPOSITORY',
 	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
 /**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
+/**/	'postinfo'      => 'POST INSTALL MESSAGE',
 /**/	'buttonlabel'   => 'LABEL',
 /**/	'nouninstall'   => TRUE,
 /**/	'hide'          => BOOLEAN,
