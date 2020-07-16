@@ -48,7 +48,7 @@ $addons = [
 					  .'<br>before continue.'
 	],
 	'hide'        => exec( '/usr/bin/grep -q "argv[ 2 ]" /srv/http/mpdplaylist.php && echo 0 || echo 1' ),
-	'postinfo'    => 'Files in /var/lib/mpd/playlists can be deleted.'
+	'postinfo'    => 'Files in <code>/var/lib/mpd/playlists</code> can be deleted.'
 ],
 'rank' => [
 	'title'       => 'Rank Mirror Package Servers',
