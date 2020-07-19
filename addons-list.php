@@ -114,3 +114,5 @@ $addons = [
 ],
 
 ];
+
+file_put_contents( '/srv/http/data/addons/addons-list.json', json_encode( $addons, JSON_PRETTY_PRINT ) );
