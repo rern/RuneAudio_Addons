@@ -1,9 +1,10 @@
 <?php
 // temp - push/minor updates
-exec( 'wget -qO /srv/http/addons-terminal.php https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/addons-terminal.php' );
-exec( 'wget -qO /srv/http/assets/js/addons.js https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/assets/js/addons.js' );
-exec( 'wget -qO /srv/http/bash/addons-functions.sh https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/bash/addons-functions.sh' );
-
+if ( file_get_contents( '/srv/http/data/addons/rre4' ) < 20200718 )
+	exec( 'wget -qO /srv/http/addons-terminal.php https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/addons-terminal.php' );
+	exec( 'wget -qO /srv/http/assets/js/addons.js https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/assets/js/addons.js' );
+	exec( 'wget -qO /srv/http/bash/addons-functions.sh https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/bash/addons-functions.sh' );
+}
 exec( '[[ $( cat /srv/http/data/system/version ) == e4 && ! -e /srv/http/data/addons/rre4 ]] && echo 20200628 > /srv/http/data/addons/rre4' );
 
 ///////////////////////////////////////////////////////////////
