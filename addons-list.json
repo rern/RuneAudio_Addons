@@ -3,7 +3,6 @@
         "title":       "RuneAudio+R e4",
         "version":     "20200722",
         "revision":    "Fix bugs",
-        "maintainer":  "r e r n",
         "description": "Updates for RuneAudio <i class=\"fa fa-addons\"><\/i> e4.",
         "buttonlabel": "Update",
         "nouninstall": 1,
@@ -14,7 +13,6 @@
     },
     "radi": {
         "title":       "Import Webradio",
-        "maintainer":  "r e r n",
         "description": "Import webradio files from other versions of RuneAudio.",
         "buttonlabel": "<i class=\"fa fa-input\"><\/i>Import",
         "thumbnail":   "\/assets\/img\/addons\/thumbwebr.png",
@@ -27,7 +25,6 @@
     },
     "plsi": {
         "title":       "Import Playlists",
-        "maintainer":  "r e r n",
         "description": "Import playlists from other versions of RuneAudio.",
         "buttonlabel": "<i class=\"fa fa-input\"><\/i>Import",
         "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio\/tree\/master\/playlist",
@@ -40,7 +37,6 @@
     },
     "rank": {
         "title":       "Rank Mirror Package Servers",
-        "maintainer":  "r e r n",
         "description": "Fix package download errors caused by unreachable servers.<br>Rank mirror package servers by download speed and latency.",
         "thumbnail":   "\/assets\/img\/addons\/thumbrank.png",
         "buttonlabel": "<i class=\"fa fa-bars\"><\/i>Rank",
@@ -64,7 +60,6 @@
         "title":       "Aria2",
         "version":     "20190901",
         "revision":    "Initial release",
-        "maintainer":  "r e r n",
         "description": "Download utility that supports HTTP(S], FTP, BitTorrent, and Metalink.<br>Pre-configured and ready to use.",
         "thumbnail":   "\/assets\/img\/addons\/thumbaria.png",
         "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio\/tree\/master\/aria2",
@@ -74,7 +69,6 @@
         "title":       "Transmission",
         "version":     "20190911",
         "revision":    "Support RuneAudio+R<br>...<br>Fix bugs by reverting back to custom compiled package.<br>...<br>Update alternateive WebUI source",
-        "maintainer":  "r e r n",
         "description": "Fast, easy, and free BitTorrent client. Pre-configured and ready to use.",
         "thumbnail":   "\/assets\/img\/addons\/thumbtran.png",
         "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio\/tree\/master\/transmission",
