@@ -21,7 +21,7 @@ $addons = [
 	'thumbnail'   => '/assets/img/addons/thumbenha.gif',
 	'sourcecode'  => 'https://github.com/rern/RuneAudio-Re4',
 	'installurl'  => 'https://github.com/rern/RuneAudio-Re4/raw/master/install.sh',
-	'warning'     => ( exec( 'cat /srv/http/data/addons/rre4' ) > '20200718' ? '' : 'Your <wh>RuneAudio+R</wh> cannot be updated.'
+	'warning'     => ( exec( 'cat /srv/http/data/addons/rre4' ) < '20200718' ? '' : 'Your <wh>RuneAudio+R</wh> cannot be updated.'
 					.'<br>Please download latest image file:'
 					."<br><br><a class='bl' href='https://www.runeaudio.com/forum/runeaudio-r-e4-t7084.html'>RuneAudio+R e4</a>" ),
 	'hide'        => !file_exists( '/srv/http/data/addons/rre4' )
