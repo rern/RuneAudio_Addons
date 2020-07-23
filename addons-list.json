@@ -9,7 +9,6 @@
         "thumbnail":   "\/assets\/img\/addons\/thumbenha.gif",
         "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio-Re4",
         "installurl":  "https:\/\/github.com\/rern\/RuneAudio-Re4\/raw\/master\/install.sh",
-        "hide":        false
     },
     "radi": {
         "title":       "Import Webradio",
@@ -32,7 +31,6 @@
         "option": {
             "wait":    "Copy playlist files to <code>\/var\/lib\/mpd\/playlists<\/code><br>before continue."
         },
-        "hide": "0",
         "postinfo":    "Files in <code>\/var\/lib\/mpd\/playlists<\/code> can be deleted."
     },
     "rank": {
