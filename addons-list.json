@@ -8,7 +8,7 @@
         "nouninstall": 1,
         "thumbnail":   "\/assets\/img\/addons\/thumbenha.gif",
         "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio-Re4",
-        "installurl":  "https:\/\/github.com\/rern\/RuneAudio-Re4\/raw\/master\/install.sh"
+        "installurl":  "https:\/\/github.com\/rern\/RuneAudio-Re4\/raw\/master\/install.sh",
         "postinfo":    "Please <wh>update</wh> Library database again."
     },
     "radi": {
