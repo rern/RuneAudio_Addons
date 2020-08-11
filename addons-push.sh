@@ -1,3 +1,3 @@
 #!/bin/bash
 
-wget https://github.com/rern/RuneAudio-Re4/raw/master/srv/http/bash/addons-functions.sh -qO /srv/http/bash/addons-functions.sh
+wget https://github.com/rern/RuneAudio-Re5/raw/master/srv/http/addons.php -qO /srv/http/addons.php
