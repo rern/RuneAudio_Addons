@@ -1,3 +1,6 @@
 #!/bin/bash
 
-[[ -e /srv/http/data/addons/rre4 ]] && wget https://github.com/rern/RuneAudio-Re5/raw/master/srv/http/addons.php -qO /srv/http/addons.php
+file=/srv/http/addons.php
+if ! grep -q 'addonhide === 1' $file; then
+	wget -q https://github.com/rern/RuneAudio-Re5/raw/master$file -O $file
+fi
