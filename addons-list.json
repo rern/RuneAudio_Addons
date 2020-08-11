@@ -1,9 +1,21 @@
 {
+    "rre5": {
+        "title":       "RuneAudio+R e5",
+        "version":     "20200811",
+        "revision":    "Fix bugs",
+        "description": "Updates for RuneAudio <i class=\"fa fa-addons\"><\/i> e5",
+        "buttonlabel": "Update",
+        "nouninstall": 1,
+        "thumbnail":   "\/assets\/img\/addons\/thumbenha.gif",
+        "sourcecode":  "https:\/\/github.com\/rern\/RuneAudio-Re4",
+        "installurl":  "https:\/\/github.com\/rern\/RuneAudio-Re4\/raw\/master\/install.sh",
+        "hide":        "test -e /srv/http/data/addons/rre5 && echo 0 || echo 1"
+    },
     "rre4": {
         "title":       "RuneAudio+R e4",
         "version":     "202008061",
         "revision":    "Fix bugs",
-        "description": "Updates for RuneAudio <i class=\"fa fa-addons\"><\/i> e4.",
+        "description": "Updates for RuneAudio <i class=\"fa fa-addons\"><\/i> e4",
         "buttonlabel": "Update",
         "nouninstall": 1,
         "thumbnail":   "\/assets\/img\/addons\/thumbenha.gif",
