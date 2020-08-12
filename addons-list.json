@@ -1,4 +1,8 @@
 {
+    "push": {
+        "url":  "",
+        "hide": 1
+    },
     "rre5": {
         "title":       "RuneAudio+R e5",
         "version":     "20200811",
@@ -91,9 +95,5 @@
                 "label":   "Password"
             }
         }
-    },
-    "push": {
-        "cmd":  [],
-        "hide": 1
     }
 }
