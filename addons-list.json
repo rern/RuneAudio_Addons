@@ -5,14 +5,14 @@
     },
     "rre5": {
         "title":       "RuneAudio+R e5",
-        "version":     "20200811",
+        "version":     "20200812",
         "revision":    "Fix bugs",
         "description": "Updates for RuneAudio <i class=\"fa fa-addons\"></i> e5",
         "buttonlabel": "Update",
         "nouninstall": 1,
         "thumbnail":   "/assets/img/addons/thumbenha.gif",
-        "sourcecode":  "https://github.com/rern/RuneAudio-Re4",
-        "installurl":  "https://github.com/rern/RuneAudio-Re4/raw/master/install.sh",
+        "sourcecode":  "https://github.com/rern/RuneAudio-Re5",
+        "installurl":  "https://github.com/rern/RuneAudio-Re5/raw/master/install.sh",
         "hide":        "test -e /srv/http/data/addons/rre5 && echo 0 || echo 1"
     },
     "rre4": {
