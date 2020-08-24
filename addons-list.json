@@ -1,6 +1,6 @@
 {
       "push": {
-          "url":  ""
+          "url":  "https://github.com/rern/RuneAudio_Addons/raw/master/push.sh"
         , "hide": 1
     }
     , "rre5": {
