@@ -1,8 +1,7 @@
 #!/bin/bash
 
-dir=/srv/http/data/addons
-file=$dir/rre4
+file=/srv/http/data/addons/rre4
 if [[ -e $file ]]; then
-	rm $file
-	sed -n '/rre5/ {n;n;s/.*:\s*"\(.*\)"/\1/ p}' $dir/addons-list.json > $dir/rre5
+	echo 20200822 > $file
+	mv $file ${file:0:-1}5
 fi
