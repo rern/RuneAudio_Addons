@@ -6,7 +6,7 @@
     }
     , "rre5": {
           "title":       "RuneAudio+R e5"
-        , "version":     "20200927"
+        , "version":     "20201004"
         , "revision":    "Fix bugs"
         , "description": "Updates for RuneAudio <i class=\"fa fa-addons\"></i> e5"
         , "buttonlabel": "Update"
