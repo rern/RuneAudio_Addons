@@ -6,9 +6,9 @@
     }
     , "rre5": {
           "title":       "RuneAudio+R e5"
-        , "version":     "20201004"
-        , "revision":    "Upgrade to MPD 0.22"
-        , "description": "Updates for RuneAudio <i class=\"fa fa-addons\"></i> e5"
+        , "version":     "20201006"
+        , "revision":    "Fix - Add <code>*.cue</code> albums to Playlist<br>...<br>Upgrade to MPD 0.22"
+        , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e5"
         , "buttonlabel": "Update"
         , "nouninstall": 1
         , "thumbnail":   "/assets/img/cover.svg"
@@ -19,7 +19,7 @@
     , "radi": {
           "title":       "Import Webradio"
         , "description": "Import webradio files from other versions of RuneAudio."
-        , "buttonlabel": "<i class=\"fa fa-input\"></i>Import"
+        , "buttonlabel": "<i class='fa fa-input'></i>Import"
         , "thumbnail":   "/assets/img/addons/thumbwebr.png"
         , "sourcecode":  "https://github.com/rern/RuneAudio/tree/master/webradio"
         , "installurl":  "https://github.com/rern/RuneAudio/raw/master/webradio/importwebradio.sh"
@@ -31,7 +31,7 @@
     , "plsi": {
           "title":       "Import Playlists"
         , "description": "Import playlists from other versions of RuneAudio."
-        , "buttonlabel": "<i class=\"fa fa-input\"></i>Import"
+        , "buttonlabel": "<i class='fa fa-input'></i>Import"
         , "sourcecode":  "https://github.com/rern/RuneAudio/tree/master/playlist"
         , "installurl":  "https://github.com/rern/RuneAudio/raw/master/playlist/importplaylist.sh"
         , "option": {
@@ -43,7 +43,7 @@
           "title":       "Rank Mirror Package Servers"
         , "description": "Fix package download errors caused by unreachable servers.<br>Rank mirror package servers by download speed and latency."
         , "thumbnail":   "/assets/img/addons/thumbrank.png"
-        , "buttonlabel": "<i class=\"fa fa-bars\"></i>Rank"
+        , "buttonlabel": "<i class='fa fa-bars'></i>Rank"
         , "sourcecode":  "https://github.com/rern/RuneAudio/tree/master/rankmirrors"
         , "installurl":  "https://github.com/rern/RuneAudio/raw/master/rankmirrors/rankmirrors.sh"
         , "option": {
