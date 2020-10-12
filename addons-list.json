@@ -4,6 +4,18 @@
         , "url":  ""
         , "hide": 1
     }
+    , "rre6": {
+          "title":       "RuneAudio+R e6"
+        , "version":     "20201014"
+        , "revision":    "Initial release"
+        , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
+        , "buttonlabel": "Update"
+        , "nouninstall": 1
+        , "thumbnail":   "/assets/img/cover.svg"
+        , "sourcecode":  "https://github.com/rern/RuneAudio-Re6"
+        , "installurl":  "https://github.com/rern/RuneAudio-Re6/raw/master/install.sh"
+        , "hide":        "test -e /srv/http/data/addons/rre6 && echo 0 || echo 1"
+    }
     , "rre5": {
           "title":       "RuneAudio+R e5"
         , "version":     "20201007"
