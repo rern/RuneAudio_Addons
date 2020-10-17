@@ -13,7 +13,7 @@
         , "nouninstall": 1
         , "thumbnail":   "/assets/img/cover.svg"
         , "sourcecode":  "https://github.com/rern/RuneAudio-Re6"
-        , "installurl":  "https://github.com/rern/RuneAudio-Re6/raw/main/install.sh"
+        , "installurl":  "https://github.com/rern/RuneAudio-Re6/raw/master/install.sh"
         , "hide":        "test -e /srv/http/data/addons/rre6 && echo 0 || echo 1"
     }
     , "rre5": {
