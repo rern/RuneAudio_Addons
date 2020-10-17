@@ -6,7 +6,7 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201014"
+        , "version":     "20201017"
         , "revision":    "Initial release"
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
