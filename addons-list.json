@@ -6,8 +6,8 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201019"
-        , "revision":    "Initial release"
+        , "version":     "20201020"
+        , "revision":    [ "- Fix - Password login feature", "- Fix - Create thumbnail icon in Album > No coverarts found." ]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
         , "nouninstall": 1
