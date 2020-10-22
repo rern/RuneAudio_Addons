@@ -6,7 +6,7 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201020"
+        , "version":     "20201023"
         , "revision":    [ 
 			  "- Improve - Bluetooth pairing without manual autorization."
 			, "- Improve - Dedicated Features page."
