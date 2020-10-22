@@ -7,7 +7,12 @@
     , "rre6": {
           "title":       "RuneAudio+R e6"
         , "version":     "20201020"
-        , "revision":    [ "- Fix - Password login feature", "- Fix - Create thumbnail icon in Album > No coverarts found." ]
+        , "revision":    [ 
+			  "- Improve - Bluetooth pairing without manual autorization."
+			, "- Improve - Dedicated Features page."
+			, "- Improve - Disable IPv6."
+			, "- Fix - WebRadio index bar not working."
+		]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
         , "nouninstall": 1
