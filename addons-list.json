@@ -6,9 +6,12 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201026"
+        , "version":     "202010261"
         , "revision":    [
-			  "- Fix - Broken Album browsing with very large Library."
+			  "- Fix - Inaccessible System page."
+			, "- Add - MPD setting: <code>max_output_buffer_size</code> for extremely large library."
+			, "..."
+			, "- Fix - Broken Album browsing with very large Library."
 			, "..."
 			, "- Improve - Bluetooth pairing without manual autorization."
 			, "- Improve - Dedicated Features page."
