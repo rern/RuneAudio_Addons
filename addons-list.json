@@ -5,7 +5,7 @@
         , "hide": 1
     }
     , "rre6": {
-          "title":       "RuneAudio+R e6"
+          "title":       "RuneAudio <i class='fa fa-plus-r gr'></i> e6"
         , "version":     "202010261"
         , "revision":    [
 			  "- Fix - Inaccessible System page."
