@@ -1,6 +1,10 @@
 {
       "push": {
+<<<<<<< Updated upstream
           "bash": "sed -i 's|/.*addons.php|/settings/addons.php|' /srv/http/addons-progress.php &> /devnull"
+=======
+          "bash": "[[ $( cat /srv/http/data/addons/rre6 ) == 202010102 ]] && sed -i 's|/addons.php|/settings&|' /srv/http/addons-progress.php &> /devnull"
+>>>>>>> Stashed changes
         , "url":  ""
         , "hide": 1
     }
