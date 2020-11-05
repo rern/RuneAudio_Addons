@@ -6,7 +6,7 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "202010102"
+        , "version":     "20201105"
         , "revision":    [
 			  "Fix - Non-responsive index bars"
 			, "..."
