@@ -6,14 +6,13 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201105"
+        , "version":     "20201106"
         , "revision":    [
-			  "Fix - Non-responsive index bars"
+			  "Fix - UPnP - broken"
+			, "Fix - Browser on RPi - zoom setting"
+			, "Fix - Addons - scrolling"
 			, "..."
-			, "General improvements"
-			, "..."
-			, "- Fix - Inaccessible System page."
-			, "- Add - MPD setting: <code>max_output_buffer_size</code> for extremely large library."
+			, "Fix - Non-responsive index bars"
 		]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
