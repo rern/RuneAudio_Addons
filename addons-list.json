@@ -6,14 +6,17 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201106"
+        , "version":     "20201107"
         , "revision":    [
-			  "Fix - UPnP - broken"
-			, "Fix - Browser on RPi - zoom setting"
-			, "Fix - Addons - scrolling"
-			, "..."
-			, "Fix - Non-responsive index bars"
-		]
+              "Improve - Playback page on small screens"
+            , "Fix - Browser on RPi - mouse pointer setting"
+            , "..."
+            , "Fix - UPnP - broken"
+            , "Fix - Browser on RPi - zoom setting"
+            , "Fix - Addons - scrolling"
+            , "..."
+            , "Fix - Non-responsive index bars"
+        ]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
         , "nouninstall": 1
