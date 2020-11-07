@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sed -i 's|/addons.php|/settings&|' /srv/http/addons-progress.php &> /devnull
+sed -i 's|/addons.php|/settings&|' /srv/http/addons-progress.php &> /dev/null
 
 [[ -e /srv/http/addons.php ]] && file=/srv/http/addons.php || file=/srv/http/settings/addons.php
 
