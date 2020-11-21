@@ -6,17 +6,19 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201108"
+        , "version":     "20201121"
         , "revision":    [
-              "Fix - Status when updated from local display"
+              "Add - Character LCD support (Latest image file needed)"
+            , "Add - MPD user's custom setting"
+            , "Add - MPD custom SoXR setting"
+            , "Fix - Connect to SSID with sapces in name"
+            , "Improve - Settings with options"
+            , "..."
+            , "Fix - Status when updated from local display"
             , "Fix - Missing network icons in Sources page"
             , "..."
             , "Improve - Playback page on small screens"
             , "Fix - Browser on RPi - mouse pointer setting"
-            , "..."
-            , "Fix - UPnP - broken"
-            , "Fix - Browser on RPi - zoom setting"
-            , "Fix - Addons - scrolling"
         ]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
