@@ -9,7 +9,7 @@
         , "version":     "20201122"
         , "revision":    [
               "Fix - MPD option settings"
-            , "Fix - MPD WebRadio name changed after play"
+            , "Fix - WebRadio station name changed after play"
             , "..."
             , "Add - Character LCD support (Latest image file needed)"
             , "Add - MPD user's custom setting"
