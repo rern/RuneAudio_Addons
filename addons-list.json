@@ -6,8 +6,12 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201122"
+        , "version":     "20201127"
         , "revision":    [
+              "Fix - MPD, System and Features setting"
+            , "Fix - New Wi-Fi connection"
+            , "Improve - Settings with options show default or last set values before enable."
+            , "..."
               "Fix - MPD option settings"
             , "Fix - WebRadio station name changed after play"
             , "..."
@@ -16,9 +20,6 @@
             , "Add - MPD custom SoXR setting"
             , "Fix - Connect to SSID with sapces in name"
             , "Improve - Settings with options"
-            , "..."
-            , "Fix - Status when updated from local display"
-            , "Fix - Missing network icons in Sources page"
         ]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
