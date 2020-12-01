@@ -6,20 +6,18 @@
     }
     , "rre6": {
           "title":       "RuneAudio+R e6"
-        , "version":     "20201127"
+        , "version":     "20201201"
         , "revision":    [
-              "Fix - MPD, System and Features setting"
+              "Fix - Access point not assign IPs."
+            , "Fix - Progess status in Playlist page"
+			, "Add - Bottom bar menu in setting pages"
+            , "..."
+            , "Fix - MPD, System and Features setting"
             , "Fix - New Wi-Fi connection"
             , "Improve - Settings with options show default or last set values before enable."
             , "..."
             , "Fix - MPD option settings"
             , "Fix - WebRadio station name changed after play"
-            , "..."
-            , "Add - Character LCD support (Latest image file needed)"
-            , "Add - MPD user's custom setting"
-            , "Add - MPD custom SoXR setting"
-            , "Fix - Connect to SSID with sapces in name"
-            , "Improve - Settings with options"
         ]
         , "description": "Updates for RuneAudio <i class='fa fa-addons'></i> e6"
         , "buttonlabel": "Update"
