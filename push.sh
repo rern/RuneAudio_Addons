@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sed i 's/rpi=1$/&;;/' /srv/http/bash/datareset.sh
+sed -i 's/rpi=1$/&;;/' /srv/http/bash/datareset.sh
