@@ -252,58 +252,58 @@ do not isert/append into another insert/append
 ```
   
 
-### 2. `<alias> => array(...)` in `addonslist.php`
+### 2. `addons-list.json`
 
-**`<alias> => array(...)` template**   
-```php
-'ALIAS' => [
-/**/	'version'       => 'YYYMMDD',
-/**/	'revision'      => 'SUMMARY',
-	'title'         => 'ADDON NAME',
-	'maintainer'    => 'AUTHOR NAME',
-	'description'   => 'DESCRIPTION',
-	'sourcecode'    => 'https://github.com/RuneAddons/REPOSITORY',
-	'installurl'    => 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
-/**/	'thumbnail'     => 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
-/**/	'postinfo'      => 'POST INSTALL MESSAGE',
-/**/	'buttonlabel'   => 'LABEL',
-/**/	'nouninstall'   => TRUE,
-/**/	'hide'          => BOOLEAN,
-/**/	'option'        => array(
-	'wait'      => 'MESSAGE',
-	'warning'   => 'MESSAGE',
-	'confirm'   => 'MESSAGE',
-	'skip'      => 'MESSAGE',
-	'yesno'     => [
-		'message'     => 'MESSAGE',
-/**/			'mgsalign'    => 'CSS',
-/**/			'cancellabel' => 'LABEL',
-/**/			'oklabel'     => 'LABEL',
-	],
-	'text'      => [
-/**/		'message'  => 'MESSAGE',
-		'label'    => 'LABEL',
-/**/		'boxwidth'    => PIXEL,
-/**/		'required' => INDEX
-	],
-	'password'  => [
-/**/		'message'  => 'MESSAGE',
-		'label'    => 'LABEL',
-/**/		'required' => TRUE,
-	],
-	'file'  => [
-/**/		'message'  => 'MESSAGE',
-		'label'    => 'LABEL',
-/**/		'type'     => 'FILETYPE'
-	],
-	'radio'     => [
-/**/		'message' => 'MESSAGE',
-		'list'    => [
-			'LABEL' => 'VALUE',
-/**/			'custom' => '?',
-		],
+**template**   
+```json
+ALIAS: {
+/**/	'version'       : 'YYYMMDD',
+/**/	'revision'      : 'SUMMARY',
+	'title'         : 'ADDON NAME',
+	'maintainer'    : 'AUTHOR NAME',
+	'description'   : 'DESCRIPTION',
+	'sourcecode'    : 'https://github.com/RuneAddons/REPOSITORY',
+	'installurl'    : 'https://github.com/RuneAddons/REPOSITORY/raw/master/install.sh',
+/**/	'thumbnail'     : 'https://github.com/RuneAddons/REPOSITORY/image/FILENAME',
+/**/	'postinfo'      : 'POST INSTALL MESSAGE',
+/**/	'buttonlabel'   : 'LABEL',
+/**/	'nouninstall'   : TRUE,
+/**/	'hide'          : BOOLEAN,
+/**/	'option'        : {
+	'wait'      : 'MESSAGE',
+	'warning'   : 'MESSAGE',
+	'confirm'   : 'MESSAGE',
+	'skip'      : 'MESSAGE',
+	'yesno'     : {
+		'message'     : 'MESSAGE',
+/**/			'mgsalign'    : 'CSS',
+/**/			'cancellabel' : 'LABEL',
+/**/			'oklabel'     : 'LABEL',
+	},
+	'text'      : {
+/**/		'message'  : 'MESSAGE',
+		'label'    : 'LABEL',
+/**/		'boxwidth' : PIXEL,
+/**/		'required' : INDEX
+	},
+	'password'  : {
+/**/		'message'  : 'MESSAGE',
+		'label'    : 'LABEL',
+/**/		'required' : TRUE,
+	},
+	'file'  : {
+/**/		'message'  : 'MESSAGE',
+		'label'    : 'LABEL',
+/**/		'type'     : 'FILETYPE'
+	},
+	'radio'     : {
+/**/		'message' : 'MESSAGE',
+		'list'    : {
+			'LABEL' : 'VALUE',
+/**/			'custom' : '?',
+		},
 /**/		'ckecked' => INDEX,
-	],
+	},
 	'select'    => [
 /**/		'message' => 'MESSAGE',
 /**/		'label'   => 'LABEL',
