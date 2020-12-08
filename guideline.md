@@ -275,7 +275,7 @@ ALIAS: {
 	'confirm'   : 'MESSAGE',
 	'skip'      : 'MESSAGE',
 	'yesno'     : {
-		'message'     : 'MESSAGE',
+		'message'  : 'MESSAGE',
 /**/			'mgsalign'    : 'CSS',
 /**/			'cancellabel' : 'LABEL',
 /**/			'oklabel'     : 'LABEL',
@@ -292,9 +292,9 @@ ALIAS: {
 /**/		'required' : TRUE,
 	},
 	'file'  : {
-/**/		'message'  : 'MESSAGE',
+/**/		'message' : 'MESSAGE',
 		'label'    : 'LABEL',
-/**/		'type'     : 'FILETYPE'
+/**/		'type'    : 'FILETYPE'
 	},
 	'radio'     : {
 /**/		'message' : 'MESSAGE',
