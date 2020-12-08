@@ -12,43 +12,28 @@ _revision 20190308_
 
 - **Menu** > **Addons**
 	- download list
-		- `addonsmenu.js` > `addonsdl.php` > `addonsdl.sh` > `addonslist.php`
-	- compare version
-		- version from `addonslist.php`
-		- installed version `redis-cli hget addons addo`
-	- update if available
-		- switch spinning refresh 'connecting...' to spinning gear 'updating...'
-		- download, uninstall and reinstall if update available
-	- clear cache
-		- `opcache_reset()` > `addons.php`
+		- `addons-list.json`
 		
 - **Addons** page
 	- populate list and block
-		- `addonslist.php` > `addons.php`
+		- `addons-list.json` > `addons.php`
 	- install/uninstall/update buttons status based on:
-		- installed markers:
-			- `uninstall_<alias>.sh` - file: installed status
-			- `redis-cli hget addons <alias>` - database: installed version
-		- `addonslist.php` - `'version'`: current version
+		- current version vs installed version : `addons-list.json` vs`/srv/http/data/addons/ADDON`
 	- user input options
-		- `addonsinfo.js`
-		- confirm dialog
+		- `addons.js`
 		- user input dialogs for options
 		- cancel any time by `X` button
 	- send script
 		- append options
-		- `addons.js` > `addonsbash.php`
+		- `addons.js` > `addons-progress.php`
 		
 - **Addons Progress** page
 	- prepare command and options
-		- get download url from `addonslist.php`
+		- get download url from `addons-list.json`
 	- run script
-		- `addonsbash.php`
+		- `addons.php`
 	- line-by-line output of bash scripts on screen
 		- `ob_implicit_flush(); ob_end_flush();`
-	- finish
-		- `opcache_reset()`
-		- enable `X` button after finished > back to Addons page
 ---
 
 ### Requirement for each addon  
@@ -69,15 +54,8 @@ _revision 20190308_
 	- install `.../archive/$branch.zip` files from repository with `getinstallzip`
 		- extracted to respective directory of target root
 		- files in repository root will be removed
-	- modify `*.js *.php *.html *.css` with [provided edit commands](#provided-edit-commands) for easy restore
-	- use override over modify:
-		- `runeui.css`: append modified css with the same selector (otherwise modify minified `runeui.css`)
-		- `runeui.js`: append modified function with the same name (otherwise modify both `runeui.js` and `runeui.min.js`}
-	- use non-invasive modifications so other addons can survive after install / uninstall
-	- use modify over replace files unless necessary and always backup
 
 - uninstall script
-	- for update, save installed options to redis database before files remove / restore
 	- restore everything to pre-install state
 		- restore files modified by [provided edit commands](#provided-edit-commands) with `restorefile FILE1 FILE2 ...`
 	- no need for non-install type
@@ -87,7 +65,6 @@ _revision 20190308_
 		- for install with individual downloads
 			- must be the same as `install.sh` to use `getuninstall` function
 			- destination must be `/usr/local/bin/`
-	- consult with [JS plugin list](https://github.com/rern/RuneAudio_Addons/blob/master/js_plugins.md) used by other addons to avoid critical uninstall
 	
 - update:
 	- will be done by uninstall > install
@@ -100,7 +77,7 @@ _revision 20190308_
 alias=<alias>
 
 ### template - import default variables, functions
-. /srv/http/addonstitle.sh
+. /srv/http/addons.sh
 . /srv/http/addonsedit.sh
 
 ### template - function: start message, installed check
@@ -279,7 +256,7 @@ do not isert/append into another insert/append
 
 **`<alias> => array(...)` template**   
 ```php
-'ALIAS' => array(
+'ALIAS' => [
 /**/	'version'       => 'YYYMMDD',
 /**/	'revision'      => 'SUMMARY',
 	'title'         => 'ADDON NAME',
@@ -297,52 +274,57 @@ do not isert/append into another insert/append
 	'warning'   => 'MESSAGE',
 	'confirm'   => 'MESSAGE',
 	'skip'      => 'MESSAGE',
-	'yesno'     => array(
+	'yesno'     => [
 		'message'     => 'MESSAGE',
 /**/			'mgsalign'    => 'CSS',
 /**/			'cancellabel' => 'LABEL',
 /**/			'oklabel'     => 'LABEL',
-	),
-	'text'      => array(
+	],
+	'text'      => [
 /**/		'message'  => 'MESSAGE',
 		'label'    => 'LABEL',
 /**/		'boxwidth'    => PIXEL,
 /**/		'required' => INDEX
-	),
-	'password'  => array(
+	],
+	'password'  => [
 /**/		'message'  => 'MESSAGE',
 		'label'    => 'LABEL',
 /**/		'required' => TRUE,
-	),
-	'file'  => array(
+	],
+	'file'  => [
 /**/		'message'  => 'MESSAGE',
 		'label'    => 'LABEL',
 /**/		'type'     => 'FILETYPE'
-	'radio'     => array(
+	],
+	'radio'     => [
 /**/		'message' => 'MESSAGE',
-		'list'    => array(
+		'list'    => [
 			'LABEL' => 'VALUE',
 /**/			'custom' => '?',
-		),
+		],
 /**/		'ckecked' => INDEX,
-	),
-	'select'    => array(
+	],
+	'select'    => [
 /**/		'message' => 'MESSAGE',
 /**/		'label'   => 'LABEL',
-		'list'    => array(
+		'list'    => [
 			'LABEL' => 'VALUE',
 /**/			'custom' => '?',
-		),
+		],
 /**/		'ckecked' => INDEX
-	),
-	'checkbox'  => array(
+	],
+	'checkbox'  => [
 /**/		'message' => 'MESSAGE',
-		'list'    => array(
+		'list'    => [
 			'LABEL' => 'VALUE',
-		),
+		],
 /**/		'ckecked' => INDEX
-	),
-),
+	],
+/**/	'verify' => [
+		'command'     => 'COMMAND LINE'
+		'notverified' => 'MESSAGE'
+	],
+],
 ```
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
