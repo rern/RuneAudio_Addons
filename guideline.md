@@ -270,61 +270,62 @@ ALIAS: {
 /**/	'nouninstall'   : TRUE,
 /**/	'hide'          : BOOLEAN,
 /**/	'option'        : {
-	'wait'      : 'MESSAGE',
-	'warning'   : 'MESSAGE',
-	'confirm'   : 'MESSAGE',
-	'skip'      : 'MESSAGE',
-	'yesno'     : {
-		'message'  : 'MESSAGE',
-/**/			'mgsalign'    : 'CSS',
-/**/			'cancellabel' : 'LABEL',
-/**/			'oklabel'     : 'LABEL',
-	},
-	'text'      : {
-/**/		'message'  : 'MESSAGE',
-		'label'    : 'LABEL',
-/**/		'boxwidth' : PIXEL,
-/**/		'required' : INDEX
-	},
-	'password'  : {
-/**/		'message'  : 'MESSAGE',
-		'label'    : 'LABEL',
-/**/		'required' : TRUE,
-	},
-	'file'  : {
-/**/		'message' : 'MESSAGE',
-		'label'   : 'LABEL',
-/**/		'type'    : 'FILETYPE'
-	},
-	'radio'     : {
-/**/		'message' : 'MESSAGE',
-		'list'    : {
-			'LABEL'  : 'VALUE',
-/**/			'custom' : '?',
+		'wait'      : 'MESSAGE',
+		'warning'   : 'MESSAGE',
+		'confirm'   : 'MESSAGE',
+		'skip'      : 'MESSAGE',
+		'yesno'     : {
+			'message'  : 'MESSAGE',
+/**/				'mgsalign'    : 'CSS',
+/**/				'cancellabel' : 'LABEL',
+/**/				'oklabel'     : 'LABEL',
 		},
-/**/		'ckecked' : INDEX,
-	},
-	'select'    : {
-/**/		'message' : 'MESSAGE',
-/**/		'label'   : 'LABEL',
-		'list'    : {
-			'LABEL' : 'VALUE',
-/**/			'custom' : '?',
+		'text'      : {
+/**/			'message'  : 'MESSAGE',
+			'label'    : 'LABEL',
+/**/			'boxwidth' : PIXEL,
+/**/			'required' : INDEX
 		},
-/**/		'ckecked' : INDEX
-	},
-	'checkbox'  : {
-/**/		'message' : 'MESSAGE',
-		'list'    : [
-			'LABEL' : 'VALUE',
+		'password'  : {
+/**/			'message'  : 'MESSAGE',
+			'label'    : 'LABEL',
+/**/			'required' : TRUE,
 		},
-/**/		'ckecked' : INDEX
+		'file'  : {
+/**/			'message' : 'MESSAGE',
+			'label'   : 'LABEL',
+/**/			'type'    : 'FILETYPE'
+		},
+		'radio'     : {
+/**/			'message' : 'MESSAGE',
+			'list'    : {
+				'LABEL'  : 'VALUE',
+/**/				'custom' : '?',
+			},
+/**/			'ckecked' : INDEX,
+		},
+		'select'    : {
+/**/			'message' : 'MESSAGE',
+/**/			'label'   : 'LABEL',
+			'list'    : {
+				'LABEL' : 'VALUE',
+/**/				'custom' : '?',
+			},
+/**/			'ckecked' : INDEX
+		},
+		'checkbox'  : {
+/**/			'message' : 'MESSAGE',
+			'list'    : [
+				'LABEL' : 'VALUE',
+			},
+/**/			'ckecked' : INDEX
+		},
 	},
 /**/	'verify' : {
 		'command'     : 'COMMAND LINE'
 		'notverified' : 'MESSAGE'
-	},
-],
+	}
+}
 ```
 `/**/` - optional  
 `'sourcecode'` - 'blank' = no 'detail' link (only for built-in scripts)  
