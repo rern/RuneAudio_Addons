@@ -269,6 +269,10 @@ ALIAS: {
 /**/	'buttonlabel'   : 'LABEL',
 /**/	'nouninstall'   : TRUE,
 /**/	'hide'          : BOOLEAN,
+/**/	'verify' : {
+		'command'     : 'COMMAND LINE'
+		'notverified' : 'MESSAGE'
+	}
 /**/	'option'        : {
 		'wait'      : 'MESSAGE',
 		'warning'   : 'MESSAGE',
@@ -321,10 +325,6 @@ ALIAS: {
 /**/			'ckecked' : INDEX
 		},
 	},
-/**/	'verify' : {
-		'command'     : 'COMMAND LINE'
-		'notverified' : 'MESSAGE'
-	}
 }
 ```
 `/**/` - optional  
