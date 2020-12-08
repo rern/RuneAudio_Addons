@@ -293,13 +293,13 @@ ALIAS: {
 	},
 	'file'  : {
 /**/		'message' : 'MESSAGE',
-		'label'    : 'LABEL',
+		'label'   : 'LABEL',
 /**/		'type'    : 'FILETYPE'
 	},
 	'radio'     : {
 /**/		'message' : 'MESSAGE',
 		'list'    : {
-			'LABEL' : 'VALUE',
+			'LABEL'  : 'VALUE',
 /**/			'custom' : '?',
 		},
 /**/		'ckecked' : INDEX,
