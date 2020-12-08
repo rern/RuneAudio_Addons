@@ -255,7 +255,7 @@ do not isert/append into another insert/append
 ### 2. `addons-list.json`
 
 **template**   
-```json
+```sh
 ALIAS: {
 /**/	'version'       : 'YYYMMDD',
 /**/	'revision'      : 'SUMMARY',
