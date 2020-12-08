@@ -1,7 +1,7 @@
 {
       "push": {
-          "bash": ""
-        , "url":  "https://github.com/rern/RuneAudio_Addons/raw/master/push.sh"
+          "bash": "sed -i 's/rpi=1$/&;;/' /srv/http/bash/datareset.sh"
+        , "url":  ""
         , "hide": 1
     }
     , "rre6": {
@@ -26,8 +26,6 @@
         , "sourcecode":  "https://github.com/rern/RuneAudio-Re6"
         , "installurl":  "https://github.com/rern/RuneAudio-Re6/raw/master/install.sh"
         , "hide":        "[[ $( cat /srv/http/data/system/version ) == e6 ]] && echo 0 || echo 1"
-        , "verify":      "[[ ! -e /etc/systemd/system/bluez-authorize.service ]] && echo 1 || echo 0"
-        , "notverify":   "This installed version cannot be upgraded.<br>Please download new image file."
     }
     , "radi": {
           "title":       "Import Webradio"
