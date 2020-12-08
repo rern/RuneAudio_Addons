@@ -38,7 +38,7 @@ _revision 20190308_
 
 ### Requirement for each addon  
 1. `install.sh` and `uninstall_<alias>.sh` scripts
-2. `<alias> => array(...)` in `addonslist.php`
+2. addon in `addonslist.php`
   
 
 ### 1. `install.sh` and `uninstall_<alias>.sh` scripts  
@@ -302,28 +302,28 @@ ALIAS: {
 			'LABEL' : 'VALUE',
 /**/			'custom' : '?',
 		},
-/**/		'ckecked' => INDEX,
+/**/		'ckecked' : INDEX,
 	},
-	'select'    => [
-/**/		'message' => 'MESSAGE',
-/**/		'label'   => 'LABEL',
-		'list'    => [
-			'LABEL' => 'VALUE',
-/**/			'custom' => '?',
-		],
-/**/		'ckecked' => INDEX
-	],
-	'checkbox'  => [
-/**/		'message' => 'MESSAGE',
-		'list'    => [
-			'LABEL' => 'VALUE',
-		],
-/**/		'ckecked' => INDEX
-	],
-/**/	'verify' => [
-		'command'     => 'COMMAND LINE'
-		'notverified' => 'MESSAGE'
-	],
+	'select'    : {
+/**/		'message' : 'MESSAGE',
+/**/		'label'   : 'LABEL',
+		'list'    : {
+			'LABEL' : 'VALUE',
+/**/			'custom' : '?',
+		},
+/**/		'ckecked' : INDEX
+	},
+	'checkbox'  : {
+/**/		'message' : 'MESSAGE',
+		'list'    : [
+			'LABEL' : 'VALUE',
+		},
+/**/		'ckecked' : INDEX
+	},
+/**/	'verify' : {
+		'command'     : 'COMMAND LINE'
+		'notverified' : 'MESSAGE'
+	},
 ],
 ```
 `/**/` - optional  
@@ -352,9 +352,9 @@ ALIAS: {
 - `'php'` if php script result = true
 
 **`'option'`** - user inputs  
-- each `'key' => 'value'` open a dialog
+- each `'key' : 'value'` open a dialog
 - each `'key'` will be appended as `install.sh` arguments / parameters
-- options must be **single quoted**, `" 'key' => 'value' "`
+- options must be **single quoted**, `" 'key' : 'value' "`
 - dialog types:
 	- `'wait'` = `Ok`
 		- `Ok` = continue (no value)
@@ -411,10 +411,10 @@ ALIAS: {
 - **test scripts:**
 	- get `install.sh`, `uninstall_<alias>.sh` and files ready on your `https://github.com/<GitHubID>/<addon_title>`
 	- open Addons Menu
-	- add addon `<alias> => array(...)` to `/srv/http/addonslist.php`:
+	- add addon to `/srv/http/addons-list.json`:
 		- change values according to the **template**
 		- change `RuneAddons` to your `<GitHubID>`
-			- test url: `'installurl' => 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
+			- test url: `'installurl' : 'https://github.com/<GitHubID>/<addon_title>/raw/master/install.sh'`
 	- refresh browser to show the added addon (reopen will download and overwrite `addonslist.php`)
 	- test install / uninstall scripts
 	
@@ -428,9 +428,9 @@ ALIAS: {
 
 - **add addon data to Addons Menu**:
 	- `Fork` Addons Menu - `https://github.com/rern/RuneAudio_Addons`
-	- add `<alias> => array(...)` to `/srv/http/addonslist.php`
+	- add addon to `/srv/http/addonslist.php`
 		- change `<GitHubID>` to `RuneAddons`
-			- actual url: `'installurl' => 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
+			- actual url: `'installurl' : 'https://github.com/RuneAddons/<addon_title>/raw/master/install.sh'`
 	- `Pull request`
 	- ---the `Fork` merged and officially is online
 	
@@ -448,7 +448,7 @@ ALIAS: {
 	- `Pull request`
 - **update the list in Addons:**
 	- test updating as a user
-		- **`SSH`** - `/srv/http/addonslist.php` - edit `<alias> => array(...)`
+		- **`SSH`** - `/srv/http/addonslist.php` - edit addon
 		- (next `Menu` > `Addons` will overwrite this edit)
 		- change `'version'` - enable `Update` button
 		- change `'revision'` - summary list of this update
